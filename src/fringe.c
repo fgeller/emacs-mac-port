@@ -1532,6 +1532,19 @@ init_fringe_bitmap (which, fb, once_p)
 	}
 #endif /* HAVE_X_WINDOWS */
 
+#ifdef HAVE_MACGUI
+      unsigned short *bits = fb->bits;
+      int j;
+      for (j = 0; j < fb->height; j++)
+	{
+	  unsigned short b = *bits;
+	  b <<= (16 - fb->width);
+#ifndef WORDS_BIG_ENDIAN
+	  b = ((b >> 8) | (b << 8));
+#endif
+	  *bits++ = b;
+	}
+#endif
     }
 
   if (!once_p)
@@ -1845,10 +1858,15 @@ init_fringe ()
     }
 }
 
-#ifdef HAVE_NTGUI
+#if defined (HAVE_NTGUI) || defined (HAVE_MACGUI)
 
 void
-w32_init_fringe (struct redisplay_interface *rif)
+#ifdef HAVE_NTGUI
+w32_init_fringe (rif)
+#else  /* HAVE_MACGUI */
+mac_init_fringe (rif)
+#endif
+     struct redisplay_interface *rif;
 {
   int bt;
 
@@ -1861,7 +1879,9 @@ w32_init_fringe (struct redisplay_interface *rif)
       rif->define_fringe_bitmap (bt, fb->bits, fb->height, fb->width);
     }
 }
+#endif
 
+#ifdef HAVE_NTGUI
 void
 w32_reset_fringes ()
 {

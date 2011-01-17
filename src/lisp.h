@@ -398,6 +398,7 @@ enum pvec_type
      (var) = ((EMACS_INT) (type)) | ((EMACS_INT) (ptr)))
 
 #define XPNTR(a) ((EMACS_INT) ((a) & ~TYPEMASK))
+#define XUNTAG(a, type) ((EMACS_UINT) (a) - (type))
 
 #else  /* not USE_LSB_TAG */
 
@@ -525,6 +526,7 @@ extern size_t pure_size;
 #define XPNTR(a) ((EMACS_INT) XUINT (a))
 #endif
 #endif /* not HAVE_SHM */
+#define XUNTAG(a, type) XPNTR (a)
 #endif /* no XPNTR */
 
 /* Largest and smallest representable fixnum values.  These are the C
@@ -554,15 +556,20 @@ extern size_t pure_size;
 
 /* Extract a value or address from a Lisp_Object.  */
 
-#define XCONS(a) (eassert (CONSP(a)),(struct Lisp_Cons *) XPNTR(a))
-#define XVECTOR(a) (eassert (VECTORLIKEP(a)),(struct Lisp_Vector *) XPNTR(a))
-#define XSTRING(a) (eassert (STRINGP(a)),(struct Lisp_String *) XPNTR(a))
-#define XSYMBOL(a) (eassert (SYMBOLP(a)),(struct Lisp_Symbol *) XPNTR(a))
-#define XFLOAT(a) (eassert (FLOATP(a)),(struct Lisp_Float *) XPNTR(a))
+#define XCONS(a) (eassert (CONSP(a)), \
+		  (struct Lisp_Cons *) XUNTAG(a, Lisp_Cons))
+#define XVECTOR(a) (eassert (VECTORLIKEP(a)), \
+		    (struct Lisp_Vector *) XUNTAG(a, Lisp_Vectorlike))
+#define XSTRING(a) (eassert (STRINGP(a)), \
+		    (struct Lisp_String *) XUNTAG(a, Lisp_String))
+#define XSYMBOL(a) (eassert (SYMBOLP(a)), \
+		    (struct Lisp_Symbol *) XUNTAG(a, Lisp_Symbol))
+#define XFLOAT(a) (eassert (FLOATP(a)), \
+		   (struct Lisp_Float *) XUNTAG(a, Lisp_Float))
 
 /* Misc types.  */
 
-#define XMISC(a)   ((union Lisp_Misc *) XPNTR(a))
+#define XMISC(a)   ((union Lisp_Misc *) XUNTAG(a, Lisp_Misc))
 #define XMISCANY(a)	(eassert (MISCP (a)), &(XMISC(a)->u_any))
 #define XMISCTYPE(a)   (XMISCANY (a)->type)
 #define XMARKER(a)	(eassert (MARKERP (a)), &(XMISC(a)->u_marker))
@@ -580,14 +587,22 @@ extern size_t pure_size;
 
 /* Pseudovector types.  */
 
-#define XPROCESS(a) (eassert (PROCESSP(a)),(struct Lisp_Process *) XPNTR(a))
-#define XWINDOW(a) (eassert (WINDOWP(a)),(struct window *) XPNTR(a))
-#define XTERMINAL(a) (eassert (TERMINALP(a)),(struct terminal *) XPNTR(a))
-#define XSUBR(a) (eassert (SUBRP(a)),(struct Lisp_Subr *) XPNTR(a))
-#define XBUFFER(a) (eassert (BUFFERP(a)),(struct buffer *) XPNTR(a))
-#define XCHAR_TABLE(a) (eassert (CHAR_TABLE_P (a)), (struct Lisp_Char_Table *) XPNTR(a))
-#define XSUB_CHAR_TABLE(a) (eassert (SUB_CHAR_TABLE_P (a)), (struct Lisp_Sub_Char_Table *) XPNTR(a))
-#define XBOOL_VECTOR(a) (eassert (BOOL_VECTOR_P (a)), (struct Lisp_Bool_Vector *) XPNTR(a))
+#define XPROCESS(a) (eassert (PROCESSP(a)), \
+		     (struct Lisp_Process *) XUNTAG(a, Lisp_Vectorlike))
+#define XWINDOW(a) (eassert (WINDOWP(a)), \
+		    (struct window *) XUNTAG(a, Lisp_Vectorlike))
+#define XTERMINAL(a) (eassert (TERMINALP(a)), \
+		      (struct terminal *) XUNTAG(a, Lisp_Vectorlike))
+#define XSUBR(a) (eassert (SUBRP(a)), \
+		  (struct Lisp_Subr *) XUNTAG(a, Lisp_Vectorlike))
+#define XBUFFER(a) (eassert (BUFFERP(a)), \
+		    (struct buffer *) XUNTAG(a, Lisp_Vectorlike))
+#define XCHAR_TABLE(a) (eassert (CHAR_TABLE_P (a)), \
+			(struct Lisp_Char_Table *) XUNTAG(a, Lisp_Vectorlike))
+#define XSUB_CHAR_TABLE(a) (eassert (SUB_CHAR_TABLE_P (a)), \
+			    (struct Lisp_Sub_Char_Table *) XUNTAG(a, Lisp_Vectorlike))
+#define XBOOL_VECTOR(a) (eassert (BOOL_VECTOR_P (a)), \
+			 (struct Lisp_Bool_Vector *) XUNTAG(a, Lisp_Vectorlike))
 
 /* Construct a Lisp_Object from a value or address.  */
 
@@ -1145,7 +1160,7 @@ struct Lisp_Hash_Table
 
 
 #define XHASH_TABLE(OBJ) \
-     ((struct Lisp_Hash_Table *) XPNTR (OBJ))
+     ((struct Lisp_Hash_Table *) XUNTAG(OBJ, Lisp_Vectorlike))
 
 #define XSET_HASH_TABLE(VAR, PTR) \
      (XSETPSEUDOVECTOR (VAR, PTR, PVEC_HASH_TABLE))
@@ -3437,8 +3452,26 @@ extern void syms_of_xterm P_ ((void));
 EXFUN (Fmsdos_downcase_filename, 1);
 #endif
 
+#ifdef HAVE_MACGUI
+/* Defined in macfns.c */
+extern void syms_of_macfns P_ ((void));
+
+/* Defined in macselect.c */
+extern void syms_of_macselect P_ ((void));
+
+/* Defined in macterm.c */
+extern void syms_of_macterm P_ ((void));
+
+/* Defined in macmenu.c */
+extern void syms_of_macmenu P_ ((void));
+
+/* Defined in mac.c */
+extern void syms_of_mac P_ ((void));
+extern void init_mac_osx_environment P_ ((void));
+#endif /* HAVE_MACGUI */
+
 #ifdef HAVE_MENUS
-/* Defined in (x|w32)fns.c, nsfns.m...  */
+/* Defined in (x|mac|w32)fns.c, nsfns.m...  */
 extern int have_menus_p P_ ((void));
 #endif
 
