@@ -1,0 +1,25 @@
+1. What's this?
+
+   This is "Mac port" addition to GNU Emacs 23. This provides a native GUI
+support for Mac OS X 10.2 - 10.6.  Note that Emacs 23 already contains the
+official GUI support via the NS (Cocoa) port for Mac OS X 10.4 and later.  So
+if it is good enough for you, then you don't need to try this.
+
+   More about this fork, please read README-mac.
+
+2. How to install
+
+   a. Make sure you have Xcode and git installed
+
+   b. Get the latest code from git repository
+
+      if you are new here:
+      	 git clone git://github.com/railwaycat/emacs-mac-port.git
+      
+      if you cloned this repository before:
+      	 git pull
+
+   c. Follow the step g. h. i. in "2. Build instructions" from README-mac
+
+      You can SKIP step a. b. c. d. e. and f. because code in this repository
+      was patched already.
