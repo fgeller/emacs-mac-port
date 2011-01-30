@@ -19,15 +19,16 @@
       formula directory(usually at /usr/local/Library/Formula/), and
       	 $ brew install emacs-mac
 
-   c. else, Get the latest code from git repository
+   c. else, 
+      i. Get the latest code from git repository
 
-      if you are new here:
-      	 $ git clone git://github.com/railwaycat/emacs-mac-port.git
+      	 if you are new here:
+      	    $ git clone git://github.com/railwaycat/emacs-mac-port.git
       
-      if you cloned this repository before:
-      	 $ git pull
+	 if you cloned this repository before:
+      	    $ git pull
 
-   d. Follow the step g. h. i. in "2. Build instructions" from README-mac
+      ii. Follow the step g. h. i. in "2. Build instructions" from README-mac
 
-      You can SKIP step a. b. c. d. e. and f. because code in this repository
-      was patched already.
+      	  You can SKIP step a. b. c. d. e. and f. because code in this
+      	  repository was patched already.
