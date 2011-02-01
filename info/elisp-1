@@ -2,7 +2,7 @@ This is ../../info/elisp, produced by makeinfo version 4.13 from
 elisp.texi.
 
 This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 23.2.92.
+corresponding to Emacs version 23.2.93.
 
    Copyright (C) 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1998, 1999,
 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
@@ -33,7 +33,7 @@ Emacs Lisp
 **********
 
 This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 23.2.92.
+corresponding to Emacs version 23.2.93.
 
    Copyright (C) 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1998, 1999,
 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
@@ -1269,9 +1269,8 @@ The `display' Property
 * Replacing Specs::         Display specs that replace the text.
 * Specified Space::         Displaying one space with a specified width.
 * Pixel Specification::     Specifying space width or height in pixels.
-* Other Display Specs::     Displaying an image; magnifying text; moving it
-                              up or down on the page; adjusting the width
-                              of spaces within text.
+* Other Display Specs::     Displaying an image; adjusting the height,
+                              spacing, and other properties of text.
 * Display Margins::         Displaying text or images to the side of
                               the main text.
 
@@ -1411,7 +1410,7 @@ chapters describe features that are peculiar to Emacs Lisp or relate
 specifically to editing.
 
    This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 23.2.92.
+corresponding to Emacs version 23.2.93.
 
 * Menu:
 
@@ -7099,4 +7098,113 @@ possible to add elements to the list, or remove elements.
 * Vector Functions::      Functions specifically for vectors.
 * Char-Tables::           How to work with char-tables.
 * Bool-Vectors::          How to work with bool-vectors.
+
+
+File: elisp,  Node: Sequence Functions,  Next: Arrays,  Up: Sequences Arrays Vectors
+
+6.1 Sequences
+=============
+
+In Emacs Lisp, a "sequence" is either a list or an array.  The common
+property of all sequences is that they are ordered collections of
+elements.  This section describes functions that accept any kind of
+sequence.
+
+ -- Function: sequencep object
+     Returns `t' if OBJECT is a list, vector, string, bool-vector, or
+     char-table, `nil' otherwise.
+
+ -- Function: length sequence
+     This function returns the number of elements in SEQUENCE.  If
+     SEQUENCE is a dotted list, a `wrong-type-argument' error is
+     signaled.  Circular lists may cause an infinite loop.  For a
+     char-table, the value returned is always one more than the maximum
+     Emacs character code.
+
+     *Note Definition of safe-length::, for the related function
+     `safe-length'.
+
+          (length '(1 2 3))
+              => 3
+          (length ())
+              => 0
+          (length "foobar")
+              => 6
+          (length [1 2 3])
+              => 3
+          (length (make-bool-vector 5 nil))
+              => 5
+
+See also `string-bytes', in *note Text Representations::.
+
+ -- Function: elt sequence index
+     This function returns the element of SEQUENCE indexed by INDEX.
+     Legitimate values of INDEX are integers ranging from 0 up to one
+     less than the length of SEQUENCE.  If SEQUENCE is a list,
+     out-of-range values behave as for `nth'.  *Note Definition of
+     nth::.  Otherwise, out-of-range values trigger an
+     `args-out-of-range' error.
+
+          (elt [1 2 3 4] 2)
+               => 3
+          (elt '(1 2 3 4) 2)
+               => 3
+          ;; We use `string' to show clearly which character `elt' returns.
+          (string (elt "1234" 2))
+               => "3"
+          (elt [1 2 3 4] 4)
+               error--> Args out of range: [1 2 3 4], 4
+          (elt [1 2 3 4] -1)
+               error--> Args out of range: [1 2 3 4], -1
+
+     This function generalizes `aref' (*note Array Functions::) and
+     `nth' (*note Definition of nth::).
+
+ -- Function: copy-sequence sequence
+     Returns a copy of SEQUENCE.  The copy is the same type of object
+     as the original sequence, and it has the same elements in the same
+     order.
+
+     Storing a new element into the copy does not affect the original
+     SEQUENCE, and vice versa.  However, the elements of the new
+     sequence are not copies; they are identical (`eq') to the elements
+     of the original.  Therefore, changes made within these elements, as
+     found via the copied sequence, are also visible in the original
+     sequence.
+
+     If the sequence is a string with text properties, the property
+     list in the copy is itself a copy, not shared with the original's
+     property list.  However, the actual values of the properties are
+     shared.  *Note Text Properties::.
+
+     This function does not work for dotted lists.  Trying to copy a
+     circular list may cause an infinite loop.
+
+     See also `append' in *note Building Lists::, `concat' in *note
+     Creating Strings::, and `vconcat' in *note Vector Functions::, for
+     other ways to copy sequences.
+
+          (setq bar '(1 2))
+               => (1 2)
+          (setq x (vector 'foo bar))
+               => [foo (1 2)]
+          (setq y (copy-sequence x))
+               => [foo (1 2)]
+
+          (eq x y)
+               => nil
+          (equal x y)
+               => t
+          (eq (elt x 1) (elt y 1))
+               => t
+
+          ;; Replacing an element of one sequence.
+          (aset x 0 'quux)
+          x => [quux (1 2)]
+          y => [foo (1 2)]
+
+          ;; Modifying the inside of a shared element.
+          (setcar (aref x 1) 69)
+          x => [quux (69 2)]
+          y => [foo (69 2)]
 

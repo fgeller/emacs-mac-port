@@ -2,7 +2,7 @@ This is ../../info/emacs, produced by makeinfo version 4.13 from
 emacs.texi.
 
 This is the Sixteenth edition of the `GNU Emacs Manual',
-updated for Emacs version 23.2.92.
+updated for Emacs version 23.2.93.
 
    Copyright (C) 1985, 1986, 1987, 1993, 1994, 1995, 1996, 1997, 1998,
 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
@@ -176,15 +176,13 @@ File: emacs,  Node: Regexps,  Next: Regexp Backslash,  Prev: Regexp Search,  Up:
 ==================================
 
 This manual describes regular expression features that users typically
-want to use.  There are additional features that are mainly used in
-Lisp programs; see *note Regular Expressions: (elisp)Regular
-Expressions.
+use.  *Note Regular Expressions: (elisp)Regular Expressions, for
+additional features used mainly in Lisp programs.
 
    Regular expressions have a syntax in which a few characters are
 special constructs and the rest are "ordinary".  An ordinary character
-is a simple regular expression which matches that same character and
-nothing else.  The special characters are `$', `^', `.', `*', `+', `?',
-`[', and `\'.  The character `]' is special if it ends a character
+matches that same character and nothing else.  The special characters
+are `$^.*+?[\'.  The character `]' is special if it ends a character
 alternative (see later).  The character `-' is special inside a
 character alternative.  Any other character appearing in a regular
 expression is ordinary, unless a `\' precedes it.  (When you use
@@ -202,23 +200,21 @@ exception.)
    Any two regular expressions A and B can be concatenated.  The result
 is a regular expression which matches a string if A matches some amount
 of the beginning of that string and B matches the rest of the string.
-
-   As a simple example, we can concatenate the regular expressions `f'
-and `o' to get the regular expression `fo', which matches only the
-string `fo'.  Still trivial.  To do something nontrivial, you need to
-use one of the special characters.  Here is a list of them.
+For example, concatenating the regular expressions `f' and `o' gives
+the regular expression `fo', which matches only the string `fo'.  Still
+trivial.  To do something nontrivial, you need to use one of the special
+characters.  Here is a list of them.
 
 `.' (Period)
      is a special character that matches any single character except a
-     newline.  Using concatenation, we can make regular expressions
-     like `a.b', which matches any three-character string that begins
-     with `a' and ends with `b'.
+     newline.  For example, the regular expressions `a.b' matches any
+     three-character string that begins with `a' and ends with `b'.
 
 `*'
      is not a construct by itself; it is a postfix operator that means
-     to match the preceding regular expression repetitively as many
-     times as possible.  Thus, `o*' matches any number of `o's
-     (including no `o's).
+     to match the preceding regular expression repetitively any number
+     of times, as many times as possible.  Thus, `o*' matches any number
+     of `o's, including no `o's.
 
      `*' always applies to the _smallest_ possible preceding
      expression.  Thus, `fo*' has a repeating `o', not a repeating
@@ -237,21 +233,20 @@ use one of the special characters.  Here is a list of them.
 
 `+'
      is a postfix operator, similar to `*' except that it must match
-     the preceding expression at least once.  So, for example, `ca+r'
-     matches the strings `car' and `caaaar' but not the string `cr',
-     whereas `ca*r' matches all three strings.
+     the preceding expression at least once.  Thus, `ca+r' matches the
+     strings `car' and `caaaar' but not the string `cr', whereas `ca*r'
+     matches all three strings.
 
 `?'
      is a postfix operator, similar to `*' except that it can match the
-     preceding expression either once or not at all.  For example,
-     `ca?r' matches `car' or `cr'; nothing else.
+     preceding expression either once or not at all.  Thus, `ca?r'
+     matches `car' or `cr', and nothing else.
 
 `*?', `+?', `??'
-     are non-greedy variants of the operators above.  The normal
-     operators `*', `+', `?' are "greedy" in that they match as much as
-     they can, as long as the overall regexp can still match.  With a
-     following `?', they are non-greedy: they will match as little as
-     possible.
+     are non-"greedy" variants of the operators above.  The normal
+     operators `*', `+', `?' match as much as they can, as long as the
+     overall regexp can still match.  With a following `?', they will
+     match as little as possible.
 
      Thus, both `ab*' and `ab*?' can match the string `a' and the
      string `abbbb'; but if you try to match them both against the text
@@ -266,30 +261,28 @@ use one of the special characters.  Here is a list of them.
      _can_ match starting at the first `a', it does.
 
 `\{N\}'
-     is a postfix operator that specifies repetition N times--that is,
-     the preceding regular expression must match exactly N times in a
-     row.  For example, `x\{4\}' matches the string `xxxx' and nothing
-     else.
+     is a postfix operator specifying N repetitions--that is, the
+     preceding regular expression must match exactly N times in a row.
+     For example, `x\{4\}' matches the string `xxxx' and nothing else.
 
 `\{N,M\}'
-     is a postfix operator that specifies repetition between N and M
-     times--that is, the preceding regular expression must match at
-     least N times, but no more than M times.  If M is omitted, then
-     there is no upper limit, but the preceding regular expression must
-     match at least N times.
+     is a postfix operator specifying between N and M repetitions--that
+     is, the preceding regular expression must match at least N times,
+     but no more than M times.  If M is omitted, then there is no upper
+     limit, but the preceding regular expression must match at least N
+     times.
      `\{0,1\}' is equivalent to `?'.
      `\{0,\}' is equivalent to `*'.
      `\{1,\}' is equivalent to `+'.
 
 `[ ... ]'
-     is a "character set", which begins with `[' and is terminated by
-     `]'.  In the simplest case, the characters between the two
-     brackets are what this set can match.
+     is a "character set", beginning with `[' and terminated by `]'.
 
-     Thus, `[ad]' matches either one `a' or one `d', and `[ad]*'
-     matches any string composed of just `a's and `d's (including the
-     empty string), from which it follows that `c[ad]*r' matches `cr',
-     `car', `cdr', `caddaar', etc.
+     In the simplest case, the characters between the two brackets are
+     what this set can match.  Thus, `[ad]' matches either one `a' or
+     one `d', and `[ad]*' matches any string composed of just `a's and
+     `d's (including the empty string).  It follows that `c[ad]*r'
+     matches `cr', `car', `cdr', `caddaar', etc.
 
      You can also include character ranges in a character set, by
      writing the starting and ending characters with a `-' between
@@ -298,9 +291,11 @@ use one of the special characters.  Here is a list of them.
      `[a-z$%.]', which matches any lower-case ASCII letter or `$', `%'
      or period.
 
-     Note that the usual regexp special characters are not special
-     inside a character set.  A completely different set of special
-     characters exists inside character sets: `]', `-' and `^'.
+     You can also include certain special "character classes" in a
+     character set.  A `[:' and balancing `:]' enclose a character
+     class inside a character alternative.  For instance, `[[:alnum:]]'
+     matches any letter or digit.  *Note Char Classes: (elisp)Char
+     Classes, for a list of character classes.
 
      To include a `]' in a character set, you must make it the first
      character.  For example, `[]a]' matches `]' or `a'.  To include a
@@ -3121,24 +3116,20 @@ name you specify.  Setting `find-file-visit-truename' also implies the
 effect of `find-file-existing-other-name'.
 
    Sometimes, a directory is ordinarily accessed through a symbolic
-link, and you may want Emacs to preferentially display its "linked"
-name instead of its truename.  To do this, customize the variable
-`directory-abbrev-alist'.  Each element in this list should have the
-form `(FROM . TO)', which says to replace FROM with TO when it appears
-in a directory name.  For this feature to work properly, FROM and TO
-should point to the same file.  The FROM string is actually a regular
-expression (*note Regexps::); it should always start with `\`', to avoid
-matching to an incorrect part of the original directory name.  The TO
-string should be an ordinary absolute directory name.  Do not use `~'
-to stand for a home directory in the TO string; Emacs performs these
-substitutions separately.
+link, and you may want Emacs to preferentially show its "linked" name.
+To do this, customize `directory-abbrev-alist'.  Each element in this
+list should have the form `(FROM . TO)', which means to replace FROM
+with TO whenever FROM appears in a directory name.  The FROM string is a
+regular expression (*note Regexps::).  It is matched against directory
+names anchored at the first character, and should start with `\`' (to
+support directory names with embedded newlines, which would defeat
+`^').  The TO string should be an ordinary absolute directory name
+pointing to the same directory.  Do not use `~' to stand for a home
+directory in the TO string; Emacs performs these substitutions
+separately.  Here's an example, from a system on which `/home/fsf' is
+normally accessed through a symbolic link named `/fsf':
 
-   Here's an example, from a system on which file system `/home/fsf'
-and so on are normally accessed through symbolic links named `/fsf' and
-so on.
-
-     (("\\`/home/fsf" . "/fsf")
-      ("\\`/home/gd" . "/gd"))
+     (("\\`/home/fsf" . "/fsf"))
 
 
 File: emacs,  Node: Directories,  Next: Comparing Files,  Prev: File Aliases,  Up: Files

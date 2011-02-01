@@ -2,7 +2,7 @@ This is ../../info/elisp, produced by makeinfo version 4.13 from
 elisp.texi.
 
 This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 23.2.92.
+corresponding to Emacs version 23.2.93.
 
    Copyright (C) 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1998, 1999,
 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
@@ -988,6 +988,26 @@ represented as absolute file names.)
      name as a string.  When the user runs `locate-library'
      interactively, the argument INTERACTIVE-CALL is `t', and this
      tells `locate-library' to display the file name in the echo area.
+
+ -- Command: list-load-path-shadows &optional stringp
+     This command shows a list of "shadowed" Emacs Lisp files.  A
+     shadowed file is one that will not normally be loaded, despite
+     being in a directory on `load-path', due to the existence of
+     another similarly-named file in a directory earlier on `load-path'.
+
+     For instance, suppose `load-path' is set to
+
+            ("/opt/emacs/site-lisp" "/usr/share/emacs/23.3/lisp")
+
+     and that both these directories contain a file named `foo.el'.
+     Then `(require 'foo)' never loads the file in the second
+     directory.  Such a situation might indicate a problem in the way
+     Emacs was installed.
+
+     When called from Lisp, this function prints a message listing the
+     shadowed files, instead of displaying them in a buffer.  If the
+     optional argument `stringp' is non-`nil', it instead returns the
+     shadowed files as a string.
 
 
 File: elisp,  Node: Loading Non-ASCII,  Next: Autoload,  Prev: Library Search,  Up: Loading

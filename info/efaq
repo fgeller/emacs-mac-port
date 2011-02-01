@@ -36,13 +36,13 @@ File: efaq,  Node: Top,  Next: FAQ notation,  Prev: (dir),  Up: (dir)
 The GNU Emacs FAQ
 *****************
 
-This is the GNU Emacs FAQ, last updated on 14 January 2011.
+This is the GNU Emacs FAQ, last updated on 31 January 2011.
 
    This FAQ is maintained as a part of GNU Emacs.  If you find any
 errors, or have any suggestions, please use `M-x report-emacs-bug' to
 report them.
 
-   This is the version of the FAQ distributed with Emacs 23.2.92, and
+   This is the version of the FAQ distributed with Emacs 23.2.93, and
 mainly describes that version.  Although there is some information on
 older versions, details about very old releases (now only of historical
 interest) have been removed.  If you are interested in this, consult
@@ -879,7 +879,7 @@ File: efaq,  Node: Latest version of Emacs,  Next: New in Emacs 23,  Prev: Origi
 4.2 What is the latest version of Emacs?
 ========================================
 
-Emacs 23.2.92 is the current version as of this writing.  A version
+Emacs 23.2.93 is the current version as of this writing.  A version
 number with two components (e.g. `22.1') indicates a released version;
 three components indicate a development version (e.g. `23.0.50' is what
 will eventually become `23.1').

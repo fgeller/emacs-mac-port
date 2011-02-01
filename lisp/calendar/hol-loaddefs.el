@@ -168,7 +168,7 @@ Requires floating point.
 ;;;;;;  "cal-mayan.el" "cal-menu.el" "cal-move.el" "cal-persia.el"
 ;;;;;;  "cal-tex.el" "cal-x.el" "calendar.el" "diary-lib.el" "diary-loaddefs.el"
 ;;;;;;  "holidays.el" "icalendar.el" "lunar.el" "parse-time.el" "time-date.el"
-;;;;;;  "timeclock.el" "todo-mode.el") (19761 5799 251765))
+;;;;;;  "timeclock.el" "todo-mode.el") (19783 30331 754411))
 
 ;;;***
 
