@@ -19,7 +19,7 @@ class EmacsMac <Formula
     EOS
 
     s += <<-EOS.undent
-        Emacs.app was installed to: /Applications
+        Emacs.app was installed to: #{prefix}
 
     EOS
 
@@ -33,7 +33,7 @@ class EmacsMac <Formula
             "--infodir=#{info}/emacs"]
 
     # build
-    args << "--with-mac" << "--enable-mac-app"
+    args << "--with-mac" << "--enable-mac-app=#{prefix}"
     system "./configure", *args
     system "make"
     system "make install"
