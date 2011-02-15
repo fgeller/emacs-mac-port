@@ -2,7 +2,7 @@ This is ../../info/emacs, produced by makeinfo version 4.13 from
 emacs.texi.
 
 This is the Sixteenth edition of the `GNU Emacs Manual',
-updated for Emacs version 23.2.93.
+updated for Emacs version 23.2.94.
 
    Copyright (C) 1985, 1986, 1987, 1993, 1994, 1995, 1996, 1997, 1998,
 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
@@ -3666,7 +3666,7 @@ Key (Character) Index
 * C-x v g:                               Old Revisions.       (line  85)
 * C-x v h:                               Version Headers.     (line  29)
 * C-x v i:                               Registering.         (line   6)
-* C-x v l:                               VC Change Log.       (line  13)
+* C-x v l:                               VC Change Log.       (line  21)
 * C-x v m:                               Merging.             (line  16)
 * C-x v r:                               Making Revision Tags.
                                                               (line  13)
@@ -3974,7 +3974,7 @@ Key (Character) Index
 * u (Rmail):                             Rmail Deletion.      (line  44)
 * UP:                                    Moving Point.        (line  16)
 * v (Dired):                             Dired Visiting.      (line  38)
-* v (Rmail):                             Rmail Display.       (line  55)
+* v (Rmail):                             Rmail Display.       (line  56)
 * w (Dired):                             Misc Dired Features. (line  18)
 * w (Rmail):                             Rmail Output.        (line  32)
 * x (Calendar mode):                     Holidays.            (line  40)

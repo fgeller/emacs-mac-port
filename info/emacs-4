@@ -2,7 +2,7 @@ This is ../../info/emacs, produced by makeinfo version 4.13 from
 emacs.texi.
 
 This is the Sixteenth edition of the `GNU Emacs Manual',
-updated for Emacs version 23.2.93.
+updated for Emacs version 23.2.94.
 
    Copyright (C) 1985, 1986, 1987, 1993, 1994, 1995, 1996, 1997, 1998,
 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
@@ -1413,6 +1413,14 @@ File: emacs,  Node: VC Change Log,  Next: VC Undo,  Prev: Registering,  Up: Seco
      Display the change history for the current repository
      (`vc-print-root-log').
 
+`C-x v I'
+     Display the changes that will be received with a pull operation
+     (`vc-log-incoming').
+
+`C-x v O'
+     Display the changes that will be sent by the next push operation
+     (`vc-log-outgoing').
+
    The command `C-x v l' (`vc-print-log') displays a buffer named
 `*vc-change-log*' in a new window.  This buffer lists the changes to
 the current file, including the associated log entries.  (These are the
@@ -1428,6 +1436,19 @@ buffer showing the history of the version-controlled directory tree as
 a whole.  With a prefix argument, the command prompts for the maximum
 number of revisions to display.  RCS, SCCS, and CVS do not support this
 feature.
+
+   On a distributed version control system, the `C-x v I'
+(`vc-log-incoming') command displays a log buffer showing the changes
+that will be applied, the next time you run the version control
+system's "pull" command to get new revisions from another repository.
+This other repository is the default one from which changes are pulled,
+as defined by the version control system; with a prefix argument,
+`vc-log-incoming' prompts for a specific repository from which changes
+would be pulled, and lists the changes accordingly.  Similarly, `C-x v
+O' (`vc-log-outgoing') shows the changes that will be sent to another
+repository, the next time you run the "push" command; with a prefix
+argument, it prompts for a specific repository to which changes would
+be pushed.
 
    In the `*vc-change-log*' buffer, you can use the following keys to
 move between the logs of revisions and of files, to view past
@@ -1856,6 +1877,11 @@ file revision with user B's changes in it is 1.11.
 you can type `M-x vc-resolve-conflicts' after visiting the file.  This
 starts an Ediff session, as described above.  Don't forget to commit
 the merged version afterwards.
+
+   If there is more than one conflicted file in a merge, type `M-x
+vc-find-conflicted-file' after resolving the conflicts in each file.
+This command visits the next conflicted file, and moves point to the
+first conflict marker in that file.
 
 
 File: emacs,  Node: Multi-User Branching,  Prev: Merging,  Up: Branches
@@ -6020,24 +6046,34 @@ header fields to highlight; if it matches the beginning of a header
 field, that whole field is highlighted.  To disable this feature, set
 `rmail-highlighted-headers' to `nil'.
 
-   By default, Rmail automatically decodes MIME (Multipurpose Internet
-Mail Extensions) messages.  If the message contains multiple parts
-(MIME entities), each part is represented by a tagline in the Rmail
-buffer.  The tagline summarizes the part's depth, index, and type, and
-may also contain a button for handling it, e.g. saving it to a file or
-displaying it as an image in the Rmail buffer.
+   If a message is in MIME (Multipurpose Internet Mail Extensions)
+format and contains multiple parts (MIME entities), Rmail displays each
+part with a "tagline".  The tagline summarizes the part's index, size,
+and content type.  Depending on the content type, it may also contain
+one or more buttons; these perform actions such as saving the part into
+a file.
 
 `<RET>'
      Hide or show the MIME part at point (`rmail-mime-toggle-hidden').
 
 `<TAB>'
-     Move point to the next MIME part (`rmail-mime-next-item').
+     Move point to the next MIME tagline button.
+     (`rmail-mime-next-item').
 
 `<BackTab>'
      Move point to the previous MIME part (`rmail-mime-previous-item').
 
 `v'
      Toggle between MIME display and raw message (`rmail-mime').
+
+   Each plain-text MIME part is initially displayed immediately after
+its tagline, as part of the Rmail buffer, while MIME parts of other
+types are represented only by their taglines, with their actual
+contents hidden.  In either case, you can toggle a MIME part between
+its "displayed" and "hidden" states by typing <RET> anywhere in the
+part--or anywhere in its tagline, apart from a tagline button for some
+other action.  Type <RET> (or click with the mouse) to activate a
+tagline button, and <TAB> to cycle point between tagline buttons.
 
    The `v' (`rmail-mime') command toggles between the default MIME
 display described above, and a "raw" display showing the undecoded MIME
@@ -6758,140 +6794,4 @@ unflag files.)
      `dired-undo' restores the original names in the Dired buffer,
      which gets the Dired buffer out of sync with the actual contents of
      the directory.
-
-
-File: emacs,  Node: Operating on Files,  Next: Shell Commands in Dired,  Prev: Marks vs Flags,  Up: Dired
-
-37.7 Operating on Files
-=======================
-
-This section describes the basic Dired commands to operate on one file
-or several files.  All of these commands are capital letters; all of
-them use the minibuffer, either to read an argument or to ask for
-confirmation, before they act.  All of them let you specify the files
-to manipulate in these ways:
-
-   * If you give the command a numeric prefix argument N, it operates
-     on the next N files, starting with the current file.  (If N is
-     negative, the command operates on the -N files preceding the
-     current line.)
-
-   * Otherwise, if some files are marked with `*', the command operates
-     on all those files.
-
-   * Otherwise, the command operates on the current file only.
-
-Certain other Dired commands, such as `!' and the `%' commands, use the
-same conventions to decide which files to work on.
-
-   Commands which ask for a destination directory, such as those which
-copy and rename files or create links for them, try to guess the default
-target directory for the operation.  Normally, they suggest the Dired
-buffer's default directory, but if the variable `dired-dwim-target' is
-non-`nil', and if there is another Dired buffer displayed in the next
-window, that other buffer's directory is suggested instead.
-
-   Here are the file-manipulating Dired commands that operate on files.
-
-`C NEW <RET>'
-     Copy the specified files (`dired-do-copy').  The argument NEW is
-     the directory to copy into, or (if copying a single file) the new
-     name.  This is like the shell command `cp'.
-
-     If `dired-copy-preserve-time' is non-`nil', then copying with this
-     command preserves the modification time of the old file in the
-     copy, like `cp -p'.
-
-     The variable `dired-recursive-copies' controls whether to copy
-     directories recursively (like `cp -r').  The default is `nil',
-     which means that directories cannot be copied.
-
-`D'
-     Delete the specified files (`dired-do-delete').  This is like the
-     shell command `rm'.
-
-     Like the other commands in this section, this command operates on
-     the _marked_ files, or the next N files.  By contrast, `x'
-     (`dired-do-flagged-delete') deletes all "flagged" files.
-
-`R NEW <RET>'
-     Rename the specified files (`dired-do-rename').  If you rename a
-     single file, the argument NEW is the new name of the file.  If you
-     rename several files, the argument NEW is the directory into which
-     to move the files (this is like the shell command `mv').
-
-     Dired automatically changes the visited file name of buffers
-     associated with renamed files so that they refer to the new names.
-
-`H NEW <RET>'
-     Make hard links to the specified files (`dired-do-hardlink').
-     This is like the shell command `ln'.  The argument NEW is the
-     directory to make the links in, or (if making just one link) the
-     name to give the link.
-
-`S NEW <RET>'
-     Make symbolic links to the specified files (`dired-do-symlink').
-     This is like `ln -s'.  The argument NEW is the directory to make
-     the links in, or (if making just one link) the name to give the
-     link.
-
-`M MODESPEC <RET>'
-     Change the mode (also called "permission bits") of the specified
-     files (`dired-do-chmod').  This uses the `chmod' program, so
-     MODESPEC can be any argument that `chmod' can handle.
-
-`G NEWGROUP <RET>'
-     Change the group of the specified files to NEWGROUP
-     (`dired-do-chgrp').
-
-`O NEWOWNER <RET>'
-     Change the owner of the specified files to NEWOWNER
-     (`dired-do-chown').  (On most systems, only the superuser can do
-     this.)
-
-     The variable `dired-chown-program' specifies the name of the
-     program to use to do the work (different systems put `chown' in
-     different places).
-
-`T TIMESTAMP <RET>'
-     Touch the specified files (`dired-do-touch').  This means updating
-     their modification times to the present time.  This is like the
-     shell command `touch'.
-
-`P COMMAND <RET>'
-     Print the specified files (`dired-do-print').  You must specify the
-     command to print them with, but the minibuffer starts out with a
-     suitable guess made using the variables `lpr-command' and
-     `lpr-switches' (the same variables that `lpr-buffer' uses; *note
-     Printing::).
-
-`Z'
-     Compress the specified files (`dired-do-compress').  If the file
-     appears to be a compressed file already, uncompress it instead.
-
-`L'
-     Load the specified Emacs Lisp files (`dired-do-load').  *Note Lisp
-     Libraries::.
-
-`B'
-     Byte compile the specified Emacs Lisp files
-     (`dired-do-byte-compile').  *Note Byte Compilation: (elisp)Byte
-     Compilation.
-
-`A REGEXP <RET>'
-     Search all the specified files for the regular expression REGEXP
-     (`dired-do-search').
-
-     This command is a variant of `tags-search'.  The search stops at
-     the first match it finds; use `M-,' to resume the search and find
-     the next match.  *Note Tags Search::.
-
-`Q REGEXP <RET> TO <RET>'
-     Perform `query-replace-regexp' on each of the specified files,
-     replacing matches for REGEXP with the string TO
-     (`dired-do-query-replace-regexp').
-
-     This command is a variant of `tags-query-replace'.  If you exit the
-     query replace loop, you can use `M-,' to resume the scan and
-     replace more matches.  *Note Tags Search::.
 

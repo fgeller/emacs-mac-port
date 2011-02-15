@@ -2,7 +2,7 @@ This is ../../info/emacs, produced by makeinfo version 4.13 from
 emacs.texi.
 
 This is the Sixteenth edition of the `GNU Emacs Manual',
-updated for Emacs version 23.2.93.
+updated for Emacs version 23.2.94.
 
    Copyright (C) 1985, 1986, 1987, 1993, 1994, 1995, 1996, 1997, 1998,
 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
@@ -25,6 +25,142 @@ INFO-DIR-SECTION Emacs
 START-INFO-DIR-ENTRY
 * Emacs: (emacs).       The extensible self-documenting text editor.
 END-INFO-DIR-ENTRY
+
+
+File: emacs,  Node: Operating on Files,  Next: Shell Commands in Dired,  Prev: Marks vs Flags,  Up: Dired
+
+37.7 Operating on Files
+=======================
+
+This section describes the basic Dired commands to operate on one file
+or several files.  All of these commands are capital letters; all of
+them use the minibuffer, either to read an argument or to ask for
+confirmation, before they act.  All of them let you specify the files
+to manipulate in these ways:
+
+   * If you give the command a numeric prefix argument N, it operates
+     on the next N files, starting with the current file.  (If N is
+     negative, the command operates on the -N files preceding the
+     current line.)
+
+   * Otherwise, if some files are marked with `*', the command operates
+     on all those files.
+
+   * Otherwise, the command operates on the current file only.
+
+Certain other Dired commands, such as `!' and the `%' commands, use the
+same conventions to decide which files to work on.
+
+   Commands which ask for a destination directory, such as those which
+copy and rename files or create links for them, try to guess the default
+target directory for the operation.  Normally, they suggest the Dired
+buffer's default directory, but if the variable `dired-dwim-target' is
+non-`nil', and if there is another Dired buffer displayed in the next
+window, that other buffer's directory is suggested instead.
+
+   Here are the file-manipulating Dired commands that operate on files.
+
+`C NEW <RET>'
+     Copy the specified files (`dired-do-copy').  The argument NEW is
+     the directory to copy into, or (if copying a single file) the new
+     name.  This is like the shell command `cp'.
+
+     If `dired-copy-preserve-time' is non-`nil', then copying with this
+     command preserves the modification time of the old file in the
+     copy, like `cp -p'.
+
+     The variable `dired-recursive-copies' controls whether to copy
+     directories recursively (like `cp -r').  The default is `nil',
+     which means that directories cannot be copied.
+
+`D'
+     Delete the specified files (`dired-do-delete').  This is like the
+     shell command `rm'.
+
+     Like the other commands in this section, this command operates on
+     the _marked_ files, or the next N files.  By contrast, `x'
+     (`dired-do-flagged-delete') deletes all "flagged" files.
+
+`R NEW <RET>'
+     Rename the specified files (`dired-do-rename').  If you rename a
+     single file, the argument NEW is the new name of the file.  If you
+     rename several files, the argument NEW is the directory into which
+     to move the files (this is like the shell command `mv').
+
+     Dired automatically changes the visited file name of buffers
+     associated with renamed files so that they refer to the new names.
+
+`H NEW <RET>'
+     Make hard links to the specified files (`dired-do-hardlink').
+     This is like the shell command `ln'.  The argument NEW is the
+     directory to make the links in, or (if making just one link) the
+     name to give the link.
+
+`S NEW <RET>'
+     Make symbolic links to the specified files (`dired-do-symlink').
+     This is like `ln -s'.  The argument NEW is the directory to make
+     the links in, or (if making just one link) the name to give the
+     link.
+
+`M MODESPEC <RET>'
+     Change the mode (also called "permission bits") of the specified
+     files (`dired-do-chmod').  This uses the `chmod' program, so
+     MODESPEC can be any argument that `chmod' can handle.
+
+`G NEWGROUP <RET>'
+     Change the group of the specified files to NEWGROUP
+     (`dired-do-chgrp').
+
+`O NEWOWNER <RET>'
+     Change the owner of the specified files to NEWOWNER
+     (`dired-do-chown').  (On most systems, only the superuser can do
+     this.)
+
+     The variable `dired-chown-program' specifies the name of the
+     program to use to do the work (different systems put `chown' in
+     different places).
+
+`T TIMESTAMP <RET>'
+     Touch the specified files (`dired-do-touch').  This means updating
+     their modification times to the present time.  This is like the
+     shell command `touch'.
+
+`P COMMAND <RET>'
+     Print the specified files (`dired-do-print').  You must specify the
+     command to print them with, but the minibuffer starts out with a
+     suitable guess made using the variables `lpr-command' and
+     `lpr-switches' (the same variables that `lpr-buffer' uses; *note
+     Printing::).
+
+`Z'
+     Compress the specified files (`dired-do-compress').  If the file
+     appears to be a compressed file already, uncompress it instead.
+
+`L'
+     Load the specified Emacs Lisp files (`dired-do-load').  *Note Lisp
+     Libraries::.
+
+`B'
+     Byte compile the specified Emacs Lisp files
+     (`dired-do-byte-compile').  *Note Byte Compilation: (elisp)Byte
+     Compilation.
+
+`A REGEXP <RET>'
+     Search all the specified files for the regular expression REGEXP
+     (`dired-do-search').
+
+     This command is a variant of `tags-search'.  The search stops at
+     the first match it finds; use `M-,' to resume the search and find
+     the next match.  *Note Tags Search::.
+
+`Q REGEXP <RET> TO <RET>'
+     Perform `query-replace-regexp' on each of the specified files,
+     replacing matches for REGEXP with the string TO
+     (`dired-do-query-replace-regexp').
+
+     This command is a variant of `tags-query-replace'.  If you exit the
+     query replace loop, you can use `M-,' to resume the scan and
+     replace more matches.  *Note Tags Search::.
 
 
 File: emacs,  Node: Shell Commands in Dired,  Next: Transforming File Names,  Prev: Operating on Files,  Up: Dired
@@ -5852,7 +5988,7 @@ Examining::.
 most interesting variables for a non-programmer user are those meant
 for users to change--these are called "user options".  *Note Easy
 Customization::, for information about using the Customize facility to
-set user options.  In the following sections, we describe will other
+set user options.  In the following sections, we will describe other
 aspects of Emacs variables, such as how to set them outside Customize.
 
    Emacs Lisp allows any variable (with a few exceptions) to have any
@@ -6824,35 +6960,4 @@ keys, using the variables `keypad-setup', `keypad-numlock-setup',
 be found in the `keyboard' customization group (*note Easy
 Customization::).  You can rebind the keys to perform other tasks, such
 as issuing numeric prefix arguments.
-
-
-File: emacs,  Node: Named ASCII Chars,  Next: Mouse Buttons,  Prev: Function Keys,  Up: Key Bindings
-
-57.4.9 Named ASCII Control Characters
--------------------------------------
-
-<TAB>, <RET>, <BS>, <LFD>, <ESC> and <DEL> started out as names for
-certain ASCII control characters, used so often that they have special
-keys of their own.  For instance, <TAB> was another name for `C-i'.
-Later, users found it convenient to distinguish in Emacs between these
-keys and the "same" control characters typed with the <CTRL> key.
-Therefore, on most modern terminals, they are no longer the same: <TAB>
-is different from `C-i'.
-
-   Emacs can distinguish these two kinds of input if the keyboard does.
-It treats the "special" keys as function keys named `tab', `return',
-`backspace', `linefeed', `escape', and `delete'.  These function keys
-translate automatically into the corresponding ASCII characters _if_
-they have no bindings of their own.  As a result, neither users nor
-Lisp programs need to pay attention to the distinction unless they care
-to.
-
-   If you do not want to distinguish between (for example) <TAB> and
-`C-i', make just one binding, for the ASCII character <TAB> (octal code
-011).  If you do want to distinguish, make one binding for this ASCII
-character, and another for the "function key" `tab'.
-
-   With an ordinary ASCII terminal, there is no way to distinguish
-between <TAB> and `C-i' (and likewise for other such pairs), because
-the terminal sends the same character in both cases.
 

@@ -2158,6 +2158,10 @@ File: tramp,  Node: Frequently Asked Questions,  Next: Function Index,  Prev: Bu
 
                [ $TERM = "dumb" ] && unsetopt zle && PS1='$ '
 
+          Furthermore it has been reported, that TRAMP (like sshfs,
+          incidentally) doesn't work with WinSSHD due to strange prompt
+          settings.
+
         - Echoed characters after login
 
           When the remote machine opens an echoing shell, there might
@@ -3531,14 +3535,14 @@ Ref: Running a debugger on a remote host85057
 Node: Cleanup remote connections86032
 Node: Bug Reports87156
 Node: Frequently Asked Questions89327
-Node: Files directories and localnames108497
-Node: Localname deconstruction108912
-Node: External packages109643
-Node: Traces and Profiles112087
-Node: Issues114287
-Node: GNU Free Documentation License115996
-Node: Function Index141142
-Node: Variable Index143042
-Node: Concept Index145061
+Node: Files directories and localnames108658
+Node: Localname deconstruction109073
+Node: External packages109804
+Node: Traces and Profiles112248
+Node: Issues114448
+Node: GNU Free Documentation License116157
+Node: Function Index141303
+Node: Variable Index143203
+Node: Concept Index145222
 
 End Tag Table

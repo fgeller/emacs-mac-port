@@ -2291,14 +2291,12 @@ each appears under its `sc-'COMMAND name and its COMMAND name.
                                                                (line  6)
 * sc-recite-region:                      Citing Commands.      (line 35)
 * sc-setup-filladapt:                    Filling Cited Text.   (line  3)
-* sc-submit-bug-report:                  Getting Connected.    (line 36)
 * sc-uncite-region:                      Citing Commands.      (line 27)
 * set-variable:                          Variable Toggling Shortcuts.
                                                                (line 46)
 * setup-filladapt (sc-):                 Filling Cited Text.   (line  3)
 * string-match:                          Frames You Can Customize.
                                                                (line 42)
-* submit-bug-report (sc-):               Getting Connected.    (line 36)
 * uncite-region (sc-):                   Citing Commands.      (line 27)
 
 
@@ -2565,7 +2563,7 @@ Node: Thanks and History69487
 Node: GNU Free Documentation License71544
 Node: Concept Index96721
 Node: Command Index104575
-Node: Key Index111846
-Node: Variable Index114219
+Node: Key Index111700
+Node: Variable Index114073
 
 End Tag Table

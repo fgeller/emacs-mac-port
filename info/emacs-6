@@ -2,7 +2,7 @@ This is ../../info/emacs, produced by makeinfo version 4.13 from
 emacs.texi.
 
 This is the Sixteenth edition of the `GNU Emacs Manual',
-updated for Emacs version 23.2.93.
+updated for Emacs version 23.2.94.
 
    Copyright (C) 1985, 1986, 1987, 1993, 1994, 1995, 1996, 1997, 1998,
 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
@@ -25,6 +25,37 @@ INFO-DIR-SECTION Emacs
 START-INFO-DIR-ENTRY
 * Emacs: (emacs).       The extensible self-documenting text editor.
 END-INFO-DIR-ENTRY
+
+
+File: emacs,  Node: Named ASCII Chars,  Next: Mouse Buttons,  Prev: Function Keys,  Up: Key Bindings
+
+57.4.9 Named ASCII Control Characters
+-------------------------------------
+
+<TAB>, <RET>, <BS>, <LFD>, <ESC> and <DEL> started out as names for
+certain ASCII control characters, used so often that they have special
+keys of their own.  For instance, <TAB> was another name for `C-i'.
+Later, users found it convenient to distinguish in Emacs between these
+keys and the "same" control characters typed with the <CTRL> key.
+Therefore, on most modern terminals, they are no longer the same: <TAB>
+is different from `C-i'.
+
+   Emacs can distinguish these two kinds of input if the keyboard does.
+It treats the "special" keys as function keys named `tab', `return',
+`backspace', `linefeed', `escape', and `delete'.  These function keys
+translate automatically into the corresponding ASCII characters _if_
+they have no bindings of their own.  As a result, neither users nor
+Lisp programs need to pay attention to the distinction unless they care
+to.
+
+   If you do not want to distinguish between (for example) <TAB> and
+`C-i', make just one binding, for the ASCII character <TAB> (octal code
+011).  If you do want to distinguish, make one binding for this ASCII
+character, and another for the "function key" `tab'.
+
+   With an ordinary ASCII terminal, there is no way to distinguish
+between <TAB> and `C-i' (and likewise for other such pairs), because
+the terminal sends the same character in both cases.
 
 
 File: emacs,  Node: Mouse Buttons,  Next: Disabling,  Prev: Named ASCII Chars,  Up: Key Bindings
@@ -4828,7 +4859,7 @@ Appendix E Emacs 22 Antinews
 
 For those users who live backwards in time, here is information about
 downgrading to Emacs version 22.3.  We hope you will enjoy the greater
-simplicity that results from the absence of many Emacs 23.2.93 features.
+simplicity that results from the absence of many Emacs 23.2.94 features.
 
    * We have switched to a character representation specially designed
      for Emacs.  Rather than forcing all the widely used scripts into

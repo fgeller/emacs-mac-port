@@ -2,7 +2,7 @@ This is ../../info/elisp, produced by makeinfo version 4.13 from
 elisp.texi.
 
 This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 23.2.93.
+corresponding to Emacs version 23.2.94.
 
    Copyright (C) 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1998, 1999,
 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
@@ -2489,10 +2489,17 @@ various parts of it.
                     (+ (cdr x-y) (cadr edges)))))
 
  -- Function: posn-col-row position
-     Return the row and column (in units of the frame's default
-     character height and width) of POSITION, as a cons cell `(COL .
-     ROW)'.  These are computed from the X and Y values actually found
-     in POSITION.
+     This function returns a cons cell `(COL .  ROW)', containing the
+     estimated column and row corresponding to buffer position
+     POSITION.  The return value is given in units of the frame's
+     default character width and height, as computed from the X and Y
+     values corresponding to POSITION.  (So, if the actual characters
+     have non-default sizes, the actual row and column may differ from
+     these computed values.)
+
+     Note that ROW is counted from the top of the text area.  If the
+     window possesses a header line (*note Header Lines::), it is _not_
+     counted as the first line.
 
  -- Function: posn-actual-col-row position
      Return the actual row and column in POSITION, as a cons cell `(COL

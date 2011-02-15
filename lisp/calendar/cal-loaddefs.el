@@ -763,7 +763,7 @@ See `calendar-frame-setup' for more information.
 ;;;;;;  diary-insert-monthly-entry diary-insert-weekly-entry diary-insert-entry
 ;;;;;;  diary-make-entry diary-mark-entries diary-show-all-entries
 ;;;;;;  diary-view-other-diary-entries diary-view-entries diary-set-maybe-redraw
-;;;;;;  diary-live-p) "diary-lib" "diary-lib.el" (19752 41642))
+;;;;;;  diary-live-p) "diary-lib" "diary-lib.el" (19788 46601))
 ;;; Generated autoloads from diary-lib.el
 
 (autoload 'diary-live-p "diary-lib" "\
@@ -953,7 +953,7 @@ Local time of sunrise and sunset for month under cursor or at EVENT.
 
 ;;;### (autoloads nil nil ("appt.el" "cal-dst.el" "cal-menu.el" "calendar.el"
 ;;;;;;  "icalendar.el" "parse-time.el" "time-date.el" "timeclock.el"
-;;;;;;  "todo-mode.el") (19783 30330 282768))
+;;;;;;  "todo-mode.el") (19801 62228 461188))
 
 ;;;***
 
