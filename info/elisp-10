@@ -1,7 +1,7 @@
-This is ../../info/elisp, produced by makeinfo version 4.13 from
+This is ../../info/elisp, produced by makeinfo version 4.8 from
 elisp.texi.
 
-This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
+   This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
 corresponding to Emacs version 23.2.94.
 
    Copyright (C) 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1998, 1999,
@@ -3096,7 +3096,7 @@ handled.
      `"Scan error"'
      This happens when certain syntax-parsing functions find invalid
      syntax or mismatched parentheses.
-     *Note List Motion::, and *note Parsing Expressions::.
+     *Note List Motion::, and *Note Parsing Expressions::.
 
 `search-failed'
      `"Search failed"'
@@ -3261,7 +3261,7 @@ variables will not be listed here.
      *Note Desktop Save Mode::.
 
 `enable-multibyte-characters'
-     *note Text Representations::.
+     *Note Text Representations::.
 
 `fill-column'
      *Note Margins::.

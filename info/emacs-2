@@ -1,7 +1,7 @@
-This is ../../info/emacs, produced by makeinfo version 4.13 from
+This is ../../info/emacs, produced by makeinfo version 4.8 from
 emacs.texi.
 
-This is the Sixteenth edition of the `GNU Emacs Manual',
+   This is the Sixteenth edition of the `GNU Emacs Manual',
 updated for Emacs version 23.2.94.
 
    Copyright (C) 1985, 1986, 1987, 1993, 1994, 1995, 1996, 1997, 1998,
@@ -530,6 +530,7 @@ Here is an example of a regexp--the regexp that Emacs uses, by default,
 to recognize the end of a sentence, not including the following space
 (i.e., the variable `sentence-end-base'):
 
+
      [.?!][]\"'””)}]*
 
 This contains two parts in succession: a character set matching period,
@@ -839,7 +840,7 @@ exits the `query-replace' and then kills to end of line.
 minibuffer to read its arguments.  *Note C-x ESC ESC: Repetition.
 
    *Note Operating on Files::, for the Dired `Q' command which performs
-query replace on selected files.  See also *note Transforming File
+query replace on selected files.  See also *Note Transforming File
 Names::, for Dired commands to rename, copy, or link files by replacing
 regexp matches in file names.
 
@@ -884,7 +885,7 @@ of the buffer, or on the region if it is active.
      select it.
 
      After using `M-x occur', you can use `next-error' to visit the
-     occurrences found, one by one.  *note Compilation Mode::.
+     occurrences found, one by one.  *Note Compilation Mode::.
 
 `M-s o'
      Run `occur' using the search string of the last incremental string
@@ -1420,8 +1421,8 @@ after each successive word.
 more keystrokes to its definition by typing `C-u <F3>'.  This is
 equivalent to plain <F3> followed by retyping the whole definition so
 far.  As a consequence, it re-executes the macro as previously defined.
-If you change the variable `kmacro-execute-before-append' to `nil', the
-existing macro will not be re-executed before appending to it (the
+If you change the variable `kmacro-execute-before-append' to `nil',
+the existing macro will not be re-executed before appending to it (the
 default is `t').  You can also add to the end of the definition of the
 last keyboard macro without re-executing it by typing `C-u C-u <F3>'.
 
@@ -2052,13 +2053,13 @@ bar) use the toolkit's standard "File Selection" dialog instead of
 prompting for the file name in the minibuffer.  On GNU/Linux and Unix
 platforms, Emacs does this when built with GTK, LessTif, and Motif
 toolkits; on MS-Windows and Mac, the GUI version does that by default.
-For information on how to customize this, see *note Dialog Boxes::.
+For information on how to customize this, see *Note Dialog Boxes::.
 
    Secondly, Emacs supports "drag and drop": dropping a file into an
 ordinary Emacs window visits the file using that window.  As an
 exception, dropping a file into a window displaying a Dired buffer
 moves or copies the file into the displayed directory.  For details,
-see *note Drag and Drop::, and *note Misc Dired Features::.
+see *Note Drag and Drop::, and *Note Misc Dired Features::.
 
    What if you want to create a new file?  Just visit it.  Emacs
 displays `(New file)' in the echo area, but in other respects behaves
@@ -3142,7 +3143,7 @@ is a list of all the files in a directory.  Emacs provides commands to
 create and delete directories, and to make directory listings in brief
 format (file names only) and verbose format (sizes, dates, and authors
 included).  Emacs also includes a directory browser feature called
-Dired; see *note Dired::.
+Dired; see *Note Dired::.
 
 `C-x C-d DIR-OR-PATTERN <RET>'
      Display a brief directory listing (`list-directory').
@@ -3223,7 +3224,7 @@ make to the file if you save the buffer.
 
    The command `M-x compare-windows' compares the text in the current
 window with that in the next window.  (For more information about
-windows in Emacs, *note Windows::.)  Comparison starts at point in each
+windows in Emacs, *Note Windows::.)  Comparison starts at point in each
 window, after pushing each initial point value on the mark ring in its
 respective buffer.  Then it moves point forward in each window, one
 character at a time, until it reaches characters that don't match.
@@ -3407,7 +3408,7 @@ the contents of the region into the specified file.  `M-x
 append-to-file' adds the text of the region to the end of the specified
 file.  *Note Accumulating Text::.  The variable
 `write-region-inhibit-fsync' applies to these commands, as well as
-saving files; see *note Customize Save::.
+saving files; see *Note Customize Save::.
 
    `M-x delete-file' deletes the specified file, like the `rm' command
 in the shell.  If you are deleting many files in one directory, it may
@@ -3655,7 +3656,7 @@ file whose name is `~hack' in directory `/tmp'.
    Quoting with `/:' is also a way to enter in the minibuffer a file
 name that contains `$'.  In order for this to work, the `/:' must be at
 the beginning of the minibuffer contents.  (You can also double each
-`$'; see *note File Names with $::.)
+`$'; see *Note File Names with $::.)
 
    You can also quote wildcard characters with `/:', for visiting.  For
 example, `/:/tmp/foo*bar' visits the file `/tmp/foo*bar'.
@@ -3921,7 +3922,7 @@ Visiting::.
    You can control how certain buffers are handled by these commands by
 customizing the variables `special-display-buffer-names',
 `special-display-regexps', `same-window-buffer-names', and
-`same-window-regexps'.  See *note Force Same Window::, and *note
+`same-window-regexps'.  See *Note Force Same Window::, and *Note
 Special Buffer Frames::, for more about these variables.  In addition,
 if the value of `display-buffer-reuse-frames' is non-`nil', and the
 buffer you want to switch to is already displayed in some frame, Emacs
@@ -4900,8 +4901,8 @@ on how far away from the window edge the mouse has gone; the variable
 
    Clicking with the middle mouse button, `Mouse-2', moves point to the
 position where you clicked and performs a yank (`mouse-yank-at-click').
-*Note Yanking::.  If you change the variable `mouse-yank-at-point' to a
-non-`nil' value, `Mouse-2' does not move point.  Then it does not
+*Note Yanking::.  If you change the variable `mouse-yank-at-point' to
+a non-`nil' value, `Mouse-2' does not move point.  Then it does not
 matter where you click, or even which of the frame's windows you click
 on; the yank occurs at the existing point.  This variable also affects
 yanking the primary and secondary selections (*note Cut/Paste Other
@@ -5039,8 +5040,8 @@ does it if the text is shorter than the value of `x-cut-buffer-max'
 
    You can yank the primary selection into Emacs using the usual yank
 commands, such as `C-y' (`yank') and `Mouse-2' (`mouse-yank-at-click').
-These commands actually check the primary selection before referring to
-the kill ring; if no primary selection is available, the kill ring
+These commands actually check the primary selection before referring
+to the kill ring; if no primary selection is available, the kill ring
 contents are used.  To prevent yank commands from accessing the primary
 selection, set the variable `x-select-enable-primary' to `nil'.
 
@@ -5762,7 +5763,7 @@ font.
    Colors, fonts, and other attributes of the frame's display can also
 be customized by setting frame parameters in the variable
 `default-frame-alist' (*note Creating Frames::).  For a detailed
-description of frame parameters and customization, see *note Frame
+description of frame parameters and customization, see *Note Frame
 Parameters: (elisp)Frame Parameters.
 
 
@@ -6079,14 +6080,14 @@ all the related activities:
      your language environment (*note Language Environments::) takes
      care of setting up the coding systems and other options for a
      specific language or culture.  Alternatively, you can specify how
-     Emacs should encode or decode text for each command; see *note
+     Emacs should encode or decode text for each command; see *Note
      Text Coding::.
 
    * You can display non-ASCII characters encoded by the various
      scripts.  This works by using appropriate fonts on graphics
      displays (*note Defining Fontsets::), and by sending special codes
      to text-only displays (*note Terminal Coding::).  If some
-     characters are displayed incorrectly, refer to *note Undisplayable
+     characters are displayed incorrectly, refer to *Note Undisplayable
      Characters::, which describes possible problems and explains how
      to solve them.
 
@@ -6097,11 +6098,11 @@ all the related activities:
      keyboard can produce non-ASCII characters, you can select an
      appropriate keyboard coding system (*note Terminal Coding::), and
      Emacs will accept those characters.  Latin-1 characters can also
-     be input by using the `C-x 8' prefix, see *note Unibyte Mode::.
+     be input by using the `C-x 8' prefix, see *Note Unibyte Mode::.
 
      On X Window systems, your locale should be set to an appropriate
      value to make sure Emacs interprets keyboard input correctly; see
-     *note locales: Language Environments.
+     *Note locales: Language Environments.
 
    The rest of this chapter describes these issues in detail.
 
@@ -6168,7 +6169,7 @@ multibyte characters, coding systems, and input methods.
 
    The command `C-x =' (`what-cursor-position') shows information about
 the character at point.  In addition to the character position, which
-was described in *note Position Info::, this command displays how the
+was described in *Note Position Info::, this command displays how the
 character is encoded.  For instance, it displays the following line in
 the echo area for the character `c':
 
@@ -6369,10 +6370,12 @@ language environment is useful for, and lists the character sets,
 coding systems, and input methods that go with it.  It also shows some
 sample text to illustrate scripts used in this language environment.
 If you give an empty input for LANG-ENV, this command describes the
-chosen language environment.    You can customize any language
-environment with the normal hook `set-language-environment-hook'.  The
-command `set-language-environment' runs that hook after setting up the
-new language environment.  The hook functions can test for a specific
+chosen language environment.
+
+   You can customize any language environment with the normal hook
+`set-language-environment-hook'.  The command
+`set-language-environment' runs that hook after setting up the new
+language environment.  The hook functions can test for a specific
 language environment by checking the variable
 `current-language-environment'.  This hook is where you should put
 non-default settings for specific language environment, such as coding
@@ -6500,7 +6503,7 @@ area (but not when you are in the minibuffer).
 
    Another facility for typing characters not on your keyboard is by
 using the `C-x 8 <RET>' (`ucs-insert') to insert a single character
-based on its Unicode name or code-point; see *note Inserting Text::.
+based on its Unicode name or code-point; see *Note Inserting Text::.
 
 
 File: emacs,  Node: Select Input Method,  Next: Coding Systems,  Prev: Input Methods,  Up: International

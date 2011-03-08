@@ -1,7 +1,7 @@
-This is ../../info/elisp, produced by makeinfo version 4.13 from
+This is ../../info/elisp, produced by makeinfo version 4.8 from
 elisp.texi.
 
-This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
+   This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
 corresponding to Emacs version 23.2.94.
 
    Copyright (C) 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1998, 1999,
@@ -178,11 +178,11 @@ effective only in a particular buffer.  This feature allows each buffer
 to override the values of certain variables.  Most major modes override
 variables such as `fill-column' or `comment-column' in this way.  For
 more information about buffer-local variables and functions related to
-them, see *note Buffer-Local Variables::.
+them, see *Note Buffer-Local Variables::.
 
    For functions and variables related to visiting files in buffers, see
-*note Visiting Files:: and *note Saving Buffers::.  For functions and
-variables related to the display of buffers in windows, see *note
+*Note Visiting Files:: and *Note Saving Buffers::.  For functions and
+variables related to the display of buffers in windows, see *Note
 Buffers and Windows::.
 
  -- Function: bufferp object
@@ -214,7 +214,7 @@ current, to prevent confusion: the buffer that the cursor is in when
 Emacs reads a command is the buffer that the command will apply to.
 (*Note Command Loop::.)  Therefore, `set-buffer' is not the way to
 switch visibly to a different buffer so that the user can edit it.  For
-that, you must use the functions described in *note Displaying
+that, you must use the functions described in *Note Displaying
 Buffers::.
 
    *Warning:* Lisp functions that change to a different current buffer
@@ -324,7 +324,7 @@ Using `save-current-buffer', as we did, handles quitting, errors, and
      The current buffer is restored even in case of an abnormal exit via
      `throw' or error (*note Nonlocal Exits::).
 
-     See also `with-temp-file' in *note Writing to Files: Definition of
+     See also `with-temp-file' in *Note Writing to Files: Definition of
      with-temp-file.
 
 
@@ -343,7 +343,7 @@ argument called BUFFER must be an actual buffer object, not a name.
 have names starting with a space, so that the `list-buffers' and
 `buffer-menu' commands don't mention them (but if such a buffer visits
 a file, it *is* mentioned).  A name starting with space also initially
-disables recording undo information; see *note Undo::.
+disables recording undo information; see *Note Undo::.
 
  -- Function: buffer-name &optional buffer
      This function returns the name of BUFFER as a string.  BUFFER
@@ -390,7 +390,7 @@ disables recording undo information; see *note Undo::.
           (get-buffer "Frazzle-nots")
                => nil
 
-     See also the function `get-buffer-create' in *note Creating
+     See also the function `get-buffer-create' in *Note Creating
      Buffers::.
 
  -- Function: generate-new-buffer-name starting-name &optional ignore
@@ -414,7 +414,7 @@ disables recording undo information; see *note Undo::.
           (generate-new-buffer-name "foo" "foo<6>")
                => "foo<5>"
 
-     See the related function `generate-new-buffer' in *note Creating
+     See the related function `generate-new-buffer' in *Note Creating
      Buffers::.
 
 
@@ -458,7 +458,7 @@ Visiting Files::.
      This buffer-local variable holds the abbreviated truename of the
      file visited in the current buffer, or `nil' if no file is visited.
      It is a permanent local, unaffected by `kill-all-local-variables'.
-     *Note Truenames::, and *note Definition of abbreviate-file-name::.
+     *Note Truenames::, and *Note Definition of abbreviate-file-name::.
 
  -- Variable: buffer-file-number
      This buffer-local variable holds the file number and directory
@@ -469,7 +469,7 @@ Visiting Files::.
      The value is normally a list of the form `(FILENUM DEVNUM)'.  This
      pair of numbers uniquely identifies the file among all files
      accessible on the system.  See the function `file-attributes', in
-     *note File Attributes::, for more information about them.
+     *Note File Attributes::, for more information about them.
 
      If `buffer-file-name' is the name of a symbolic link, then both
      numbers refer to the recursive target.
@@ -564,7 +564,7 @@ does not match the newly-visited file, even if it is unchanged from the
 file formerly visited.
 
    The functions that modify the contents of buffers are described in
-*note Text::.
+*Note Text::.
 
  -- Function: buffer-modified-p &optional buffer
      This function returns `t' if the buffer BUFFER has been modified
@@ -659,7 +659,7 @@ how to examine a file's modification time.)
      This function returns the current buffer's recorded last file
      modification time, as a list of the form `(HIGH LOW)'.  (This is
      the same format that `file-attributes' uses to return time values;
-     see *note File Attributes::.)
+     see *Note File Attributes::.)
 
      If the buffer has no recorded last modification time, this function
      returns zero.  This case occurs, for instance, if the buffer is not
@@ -704,7 +704,7 @@ how to examine a file's modification time.)
      occasions.  It exists so you can customize Emacs by redefining it.
      See the file `userlock.el' for the standard definition.
 
-     See also the file locking mechanism in *note File Locks::.
+     See also the file locking mechanism in *Note File Locks::.
 
 
 File: elisp,  Node: Read Only Buffers,  Next: The Buffer List,  Prev: Modification Time,  Up: Buffers
@@ -792,7 +792,7 @@ Lisp programmer which directly manipulate the buffer list.
 maintains a local buffer list for each frame, in which the buffers that
 have been displayed (or had their windows selected) in that frame come
 first.  (This order is recorded in the frame's `buffer-list' frame
-parameter; see *note Buffer Parameters::.)  Buffers never displayed in
+parameter; see *Note Buffer Parameters::.)  Buffers never displayed in
 that frame come afterward, ordered according to the fundamental buffer
 list.
 
@@ -933,7 +933,7 @@ can also create a buffer (*note Processes::).
 
      The major mode for a newly created buffer is set to Fundamental
      mode.  (The default value of the variable `major-mode' is handled
-     at a higher level; see *note Auto Major Mode::.)  If the name
+     at a higher level; see *Note Auto Major Mode::.)  If the name
      begins with a space, the buffer initially disables undo
      information recording (*note Undo::).
 
@@ -958,7 +958,7 @@ can also create a buffer (*note Processes::).
      default value of the variable `major-mode' is handled at a higher
      level.  *Note Auto Major Mode::.
 
-     See the related function `generate-new-buffer-name' in *note
+     See the related function `generate-new-buffer-name' in *Note
      Buffer Names::.
 
 
@@ -1249,7 +1249,7 @@ buffer is displayed.  The term is also used to refer to a Lisp object
 that represents that screen area in Emacs Lisp.  It should be clear
 from the context which is meant.
 
-   Emacs groups windows into frames; see *note Frames::.  A frame
+   Emacs groups windows into frames; see *Note Frames::.  A frame
 represents an area of screen available for Emacs to use.  Each frame
 always contains at least one window, but you can subdivide it
 vertically or horizontally into multiple, nonoverlapping Emacs windows.
@@ -1261,14 +1261,14 @@ less visible.  (*Note Cursor Parameters::, for customizing this.)  At
 any time, one frame is the selected frame; and the window selected
 within that frame is "the selected window".  The selected window's
 buffer is usually the current buffer (except when `set-buffer' has been
-used); see *note Current Buffer::.
+used); see *Note Current Buffer::.
 
    For practical purposes, a window exists only while it is displayed in
 a frame.  Once removed from the frame, the window is effectively deleted
 and should not be used, _even though there may still be references to
-it_ from other Lisp objects; see *note Deleting Windows::.  Restoring a
+it_ from other Lisp objects; see *Note Deleting Windows::.  Restoring a
 saved window configuration is the only way for a window no longer on the
-screen to come back to life; see *note Window Configurations::.
+screen to come back to life; see *Note Window Configurations::.
 
    Users create multiple windows so they can look at several buffers at
 once.  Lisp libraries use multiple windows for a variety of reasons, but
@@ -1384,7 +1384,7 @@ previously visible in the window that was split.
      Normally, Emacs indicates the border between two side-by-side
      windows with a scroll bar (*note Scroll Bars::), or with `|'
      characters.  The display table can specify alternative border
-     characters; see *note Display Tables::.
+     characters; see *Note Display Tables::.
 
  -- Command: split-window-vertically &optional size
      This function splits the selected window into two windows, one
@@ -1629,7 +1629,7 @@ offering various criteria for the choice.
 
      The optional arguments MINIBUF and ALL-FRAMES specify the set of
      windows to include in the scan.  See the description of
-     `next-window' in *note Cyclic Window Ordering::, for details.
+     `next-window' in *Note Cyclic Window Ordering::, for details.
 
 
 File: elisp,  Node: Cyclic Window Ordering,  Next: Buffers and Windows,  Prev: Selecting Windows,  Up: Windows
@@ -1639,8 +1639,8 @@ File: elisp,  Node: Cyclic Window Ordering,  Next: Buffers and Windows,  Prev: S
 
 When you use the command `C-x o' (`other-window') to select some other
 window, it moves through the windows on the screen in a specific order.
-For any given configuration of windows, this order never varies.  It is
-called the "cyclic ordering of windows".
+For any given configuration of windows, this order never varies.  It
+is called the "cyclic ordering of windows".
 
    For a particular frame, this ordering generally goes from top to
 bottom, and from left to right.  But it may go down first or go right
@@ -1665,7 +1665,7 @@ In general, within each set of siblings at any level in the window tree
      MINIBUF is `nil', the minibuffer is included only if it is
      currently "active"; this matches the behavior of `C-x o'.  (The
      minibuffer window is active while the minibuffer is in use; see
-     *note Minibuffers::.)
+     *Note Minibuffers::.)
 
      If MINIBUF is `t', the cyclic ordering includes the minibuffer
      window even if it is not active.  If MINIBUF is neither `t' nor
@@ -1872,13 +1872,13 @@ the display of buffers in windows.
      human can see the buffer and subsequent keyboard commands will
      apply to it.  Contrast this with `set-buffer', which makes
      BUFFER-OR-NAME the current buffer but does not display it in the
-     selected window; see *note Current Buffer::.
+     selected window; see *Note Current Buffer::.
 
      If BUFFER-OR-NAME is `nil', `switch-to-buffer' chooses a buffer
      using `other-buffer'.  If BUFFER-OR-NAME is a string that does not
      identify an existing buffer, then a new buffer by that name is
      created.  The major mode for the new buffer is set according to
-     the variable `major-mode'; see *note Auto Major Mode::.
+     the variable `major-mode'; see *Note Auto Major Mode::.
 
      When the selected window is the minibuffer window or is strongly
      dedicated to its buffer (*note Dedicated Windows::), this function
@@ -1917,7 +1917,7 @@ the described features.
      This command makes BUFFER-OR-NAME the current buffer and switches
      to it in some window, preferably not the window previously
      selected.  The "popped-to" window becomes the selected window.
-     Its frame is given the X server's focus, if possible; see *note
+     Its frame is given the X server's focus, if possible; see *Note
      Input Focus::.  The return value is the buffer that was switched
      to.
 
@@ -1939,7 +1939,7 @@ the described features.
 
      If the variable `pop-up-windows' is non-`nil', windows may be
      split to create a new window that is different from the original
-     window.  For details, see *note Choosing Window::.
+     window.  For details, see *Note Choosing Window::.
 
      If OTHER-WINDOW is non-`nil', `pop-to-buffer' finds or creates
      another window even if BUFFER-OR-NAME is already visible in the
@@ -3198,7 +3198,7 @@ fixed-size windows are not resized by these functions.
      WINDOW-OR-FRAME specifies a window, it balances this window and
      its "siblings" only.  Think of a sibling as the other (original or
      new) window with respect to the present one, involved in the
-     process of splitting; see *note Splitting Windows::.  Since a
+     process of splitting; see *Note Splitting Windows::.  Since a
      sibling may have been split again, a window can have more than one
      sibling.
 
@@ -3308,12 +3308,12 @@ margins, and scroll bar settings.  It also includes the value of
 `minibuffer-scroll-window'.  As a special exception, the window
 configuration does not record the value of point in the selected window
 for the current buffer.  Also, the window configuration does not record
-the values of window parameters; see *note Window Parameters::.
+the values of window parameters; see *Note Window Parameters::.
 
    You can bring back an entire frame layout by restoring a previously
 saved window configuration.  If you want to record the layout of all
 frames instead of just one, use a frame configuration instead of a
-window configuration; see *note Frame Configurations::.
+window configuration; see *Note Frame Configurations::.
 
  -- Function: current-window-configuration &optional frame
      This function returns a new object representing FRAME's current
@@ -3551,6 +3551,9 @@ from several remote locations.  *Note Multiple Terminals::.
     `w32'
           The frame is displayed on MS-Windows 9X/NT.
 
+    `mac'
+          The frame is displayed on Mac OS X.
+
     `ns'
           The frame is displayed on a GNUstep or Macintosh Cocoa
           display.
@@ -3669,7 +3672,7 @@ terminal object has the following attributes:
 
    * The kind of display associated with the terminal.  This is the
      symbol returned by the function `terminal-live-p' (i.e., `x', `t',
-     `w32', `ns', or `pc').  *Note Frames::.
+     `w32', `mac', `ns', or `pc').  *Note Frames::.
 
    * A list of terminal parameters.  *Note Terminal Parameters::.
 
@@ -3846,7 +3849,7 @@ These functions let you read and change the parameter values of a frame.
      is `nil', it defaults to the selected frame.
 
      You can use this function to define frame-local bindings for
-     variables, see *note Frame-Local Variables::.
+     variables, see *Note Frame-Local Variables::.
 
  -- Function: set-frame-parameter frame parm value
      This function sets the frame parameter PARM to the specified
@@ -4069,12 +4072,12 @@ text-only terminals they count characters or lines instead.
 
 `height'
      The height of the frame contents, in characters.  (To get the
-     height in pixels, call `frame-pixel-height'; see *note Size and
+     height in pixels, call `frame-pixel-height'; see *Note Size and
      Position::.)
 
 `width'
      The width of the frame contents, in characters.  (To get the width
-     in pixels, call `frame-pixel-width'; see *note Size and
+     in pixels, call `frame-pixel-width'; see *Note Size and
      Position::.)
 
 `user-size'
@@ -4411,7 +4414,7 @@ usual fashion.
 
    Here are some special features for working with sizes and positions.
 (For the precise meaning of "selected frame" used by these functions,
-see *note Input Focus::.)
+see *Note Input Focus::.)
 
  -- Function: set-frame-position frame left top
      This function sets the position of the top left corner of FRAME to
@@ -4681,7 +4684,7 @@ File: elisp,  Node: Finding All Frames,  Next: Frames and Windows,  Prev: Deleti
      Like `next-frame', but cycles through all frames in the opposite
      direction.
 
-   See also `next-window' and `previous-window', in *note Cyclic Window
+   See also `next-window' and `previous-window', in *Note Cyclic Window
 Ordering::.
 
 
@@ -5329,12 +5332,31 @@ general, but it does support the clipboard.  `x-get-selection' and
 clipboard holds other types of data, Emacs treats the clipboard as
 empty.
 
+   On Mac OS X, selection-like data transfer between applications is
+performed through a mechanism called "pasteboards".  The clipboard is a
+particular pasteboard named `Apple CFPasteboard general'.  Types of
+pasteboard data are called "pasteboard data types", which are
+identified by strings such as `NSStringPboardType'.  The Mac port of
+Emacs associates a selection with a pasteboard, and a selection type
+with a pasteboard data type via `mac-pasteboard-name' and
+`mac-pasteboard-data-type' properties, respectively.
+
+     (get 'CLIPBOARD 'mac-pasteboard-name)
+          => "Apple CFPasteboard general"
+     (get 'NSStringPboardType 'mac-pasteboard-data-type)
+          => "NSStringPboardType"
+
+   Conventionally, selection types for pasteboard data types on Mac OS X
+are named according to the identifiers defined in the NSPasteboard
+class, (e.g., `NSStringPboardType', `NSTIFFPboardType', and
+`NSFilenamesPboardType').
+
  -- User Option: x-select-enable-clipboard
      If this is non-`nil', the Emacs yank functions consult the
      clipboard before the primary selection, and the kill functions
      store in the clipboard as well as the primary selection.
      Otherwise they do not access the clipboard at all.  The default is
-     `nil' on most systems, but `t' on MS-Windows.
+     `nil' on most systems, but `t' on MS-Windows and the Mac port.
 
 
 File: elisp,  Node: Drag and Drop,  Next: Color Names,  Prev: Window System Selections,  Up: Frames
@@ -5383,7 +5405,7 @@ numerical RGB specification of colors.)
 
    These functions provide a way to determine which color names are
 valid, and what they look like.  In some cases, the value depends on the
-"selected frame", as described below; see *note Input Focus::, for the
+"selected frame", as described below; see *Note Input Focus::, for the
 meaning of the term "selected frame."
 
    To read user input of color names with completion, use `read-color'
@@ -5478,7 +5500,7 @@ the standard set of colors and will try to use them automatically.
 are used by Emacs.
 
    Several of these functions use or return "rgb values", described in
-*note Color Names::.
+*Note Color Names::.
 
    These functions accept a display (either a frame or the name of a
 terminal) as an optional argument.  We hope in the future to make Emacs
@@ -5593,7 +5615,7 @@ display to ask the question about.  It can be a display name, a frame
 (which designates the display that frame is on), or `nil' (which refers
 to the selected frame's display, *note Input Focus::).
 
-   *Note Color Names::, *note Text Terminal Colors::, for other
+   *Note Color Names::, *Note Text Terminal Colors::, for other
 functions to obtain information about displays.
 
  -- Function: display-popup-menus-p &optional display
@@ -6080,7 +6102,7 @@ control characters are displayed.
      corresponding to the buffer position POS.  If POS is `nil' or
      omitted, the current buffer position is used.
 
-   Also see the functions `bolp' and `eolp' in *note Near Point::.
+   Also see the functions `bolp' and `eolp' in *Note Near Point::.
 These functions do not move point, but test whether it is already at the
 beginning or end of a line.
 
@@ -6241,9 +6263,9 @@ File: elisp,  Node: List Motion,  Next: Skipping Characters,  Prev: Screen Lines
 Here are several functions concerned with balanced-parenthesis
 expressions (also called "sexps" in connection with moving across them
 in Emacs).  The syntax table controls how these functions interpret
-various characters; see *note Syntax Tables::.  *Note Parsing
+various characters; see *Note Syntax Tables::.  *Note Parsing
 Expressions::, for lower-level primitives for scanning sexps or parts of
-sexps.  For user-level commands, see *note Commands for Editing with
+sexps.  For user-level commands, see *Note Commands for Editing with
 Parentheses: (emacs)Parentheses.
 
  -- Command: forward-list &optional arg
@@ -6333,7 +6355,7 @@ File: elisp,  Node: Skipping Characters,  Prev: List Motion,  Up: Motion
 
 The following two functions move point over a specified set of
 characters.  For example, they are often used to skip whitespace.  For
-related functions, see *note Motion and Syntax::.
+related functions, see *Note Motion and Syntax::.
 
    These functions convert the set string to multibyte if the buffer is
 multibyte, and they convert it to unibyte if the buffer is unibyte, as
@@ -6399,7 +6421,7 @@ buffer, and its values of point and the mark, and restores them after
 the completion of the excursion.
 
    The forms for saving and restoring the configuration of windows are
-described elsewhere (see *note Window Configurations::, and *note Frame
+described elsewhere (see *Note Window Configurations::, and *note Frame
 Configurations::).  When only the identity of the current buffer needs
 to be saved and restored, it is preferable to use `save-current-buffer'
 instead.
@@ -6477,7 +6499,7 @@ save the entire buffer regardless of any narrowing.
 
    If you need to display in a single buffer several very different
 types of text, consider using an alternative facility described in
-*note Swapping Text::.
+*Note Swapping Text::.
 
  -- Command: narrow-to-region start end
      This function sets the accessible portion of the current buffer to
@@ -6578,82 +6600,4 @@ deleted, so that it stays with the two characters on either side of it.
 * Moving Markers::           Moving the marker to a new buffer or position.
 * The Mark::                 How "the mark" is implemented with a marker.
 * The Region::               How to access "the region".
-
-
-File: elisp,  Node: Overview of Markers,  Next: Predicates on Markers,  Up: Markers
-
-31.1 Overview of Markers
-========================
-
-A marker specifies a buffer and a position in that buffer.  The marker
-can be used to represent a position in the functions that require one,
-just as an integer could be used.  In that case, the marker's buffer is
-normally ignored.  Of course, a marker used in this way usually points
-to a position in the buffer that the function operates on, but that is
-entirely the programmer's responsibility.  *Note Positions::, for a
-complete description of positions.
-
-   A marker has three attributes: the marker position, the marker
-buffer, and the insertion type.  The marker position is an integer that
-is equivalent (at a given time) to the marker as a position in that
-buffer.  But the marker's position value can change often during the
-life of the marker.  Insertion and deletion of text in the buffer
-relocate the marker.  The idea is that a marker positioned between two
-characters remains between those two characters despite insertion and
-deletion elsewhere in the buffer.  Relocation changes the integer
-equivalent of the marker.
-
-   Deleting text around a marker's position leaves the marker between
-the characters immediately before and after the deleted text.  Inserting
-text at the position of a marker normally leaves the marker either in
-front of or after the new text, depending on the marker's "insertion
-type" (*note Marker Insertion Types::)--unless the insertion is done
-with `insert-before-markers' (*note Insertion::).
-
-   Insertion and deletion in a buffer must check all the markers and
-relocate them if necessary.  This slows processing in a buffer with a
-large number of markers.  For this reason, it is a good idea to make a
-marker point nowhere if you are sure you don't need it any more.
-Unreferenced markers are garbage collected eventually, but until then
-will continue to use time if they do point somewhere.
-
-   Because it is common to perform arithmetic operations on a marker
-position, most of the arithmetic operations (including `+' and `-')
-accept markers as arguments.  In such cases, the marker stands for its
-current position.
-
-   Here are examples of creating markers, setting markers, and moving
-point to markers:
-
-     ;; Make a new marker that initially does not point anywhere:
-     (setq m1 (make-marker))
-          => #<marker in no buffer>
-
-     ;; Set `m1' to point between the 99th and 100th characters
-     ;;   in the current buffer:
-     (set-marker m1 100)
-          => #<marker at 100 in markers.texi>
-
-     ;; Now insert one character at the beginning of the buffer:
-     (goto-char (point-min))
-          => 1
-     (insert "Q")
-          => nil
-
-     ;; `m1' is updated appropriately.
-     m1
-          => #<marker at 101 in markers.texi>
-
-     ;; Two markers that point to the same position
-     ;;   are not `eq', but they are `equal'.
-     (setq m2 (copy-marker m1))
-          => #<marker at 101 in markers.texi>
-     (eq m1 m2)
-          => nil
-     (equal m1 m2)
-          => t
-
-     ;; When you are finished using a marker, make it point nowhere.
-     (set-marker m1 nil)
-          => #<marker in no buffer>
 

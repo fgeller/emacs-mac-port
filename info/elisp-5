@@ -1,7 +1,7 @@
-This is ../../info/elisp, produced by makeinfo version 4.13 from
+This is ../../info/elisp, produced by makeinfo version 4.8 from
 elisp.texi.
 
-This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
+   This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
 corresponding to Emacs version 23.2.94.
 
    Copyright (C) 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1998, 1999,
@@ -465,7 +465,7 @@ the initialization function, and the use of keymaps and other tables.
 
    In addition, there are several conventions that are specific to
 minor modes.  (The easiest way to follow all the conventions is to use
-the macro `define-minor-mode'; *note Defining Minor Modes::.)
+the macro `define-minor-mode'; *Note Defining Minor Modes::.)
 
    * Make a variable whose name ends in `-mode' to control the minor
      mode.  We call this the "mode variable".  The minor mode command
@@ -592,8 +592,8 @@ mode in one self-contained definition.
  -- Macro: define-minor-mode mode doc [init-value [lighter [keymap]]]
           keyword-args... body...
      This macro defines a new minor mode whose name is MODE (a symbol).
-     It defines a command named MODE to toggle the minor mode, with DOC
-     as its documentation string.  It also defines a variable named
+     It defines a command named MODE to toggle the minor mode, with
+     DOC as its documentation string.  It also defines a variable named
      MODE, which is set to `t' or `nil' by enabling or disabling the
      mode.  The variable is initialized to INIT-VALUE.  Except in
      unusual circumstances (see below), this value must be `nil'.
@@ -826,7 +826,7 @@ defined to have mode-line constructs as their values.
 `STRING'
      A string as a mode-line construct appears verbatim except for
      "`%'-constructs" in it.  These stand for substitution of other
-     data; see *note %-Constructs::.
+     data; see *Note %-Constructs::.
 
      If parts of the string have `face' properties, they control
      display of the text just as they would text in the buffer.  Any
@@ -1129,7 +1129,7 @@ right.
 
 `%n'
      `Narrow' when narrowing is in effect; nothing otherwise (see
-     `narrow-to-region' in *note Narrowing::).
+     `narrow-to-region' in *Note Narrowing::).
 
 `%p'
      The percentage of the buffer text above the *top* of window, or
@@ -1686,8 +1686,8 @@ behavior using the OVERRIDE element of a SUBEXP-HIGHLIGHTER.
      If LAXMATCH is non-`nil', it means there should be no error if
      there is no subexpression numbered SUBEXP in MATCHER.  Obviously,
      fontification of the subexpression numbered SUBEXP will not occur.
-     However, fontification of other subexpressions (and other regexps)
-     will continue.  If LAXMATCH is `nil', and the specified
+     However, fontification of other subexpressions (and other
+     regexps) will continue.  If LAXMATCH is `nil', and the specified
      subexpression is missing, then an error is signaled which
      terminates search-based fontification.
 
@@ -2958,9 +2958,9 @@ of documentation strings is not sufficient as a manual because a good
 manual is not organized in that fashion; it is organized in terms of
 topics of discussion.
 
-   For commands to display documentation strings, see *note Help:
+   For commands to display documentation strings, see *Note Help:
 (emacs)Help.  For the conventions for writing documentation strings,
-see *note Documentation Tips::.
+see *Note Documentation Tips::.
 
 * Menu:
 
@@ -2993,7 +2993,7 @@ string.  Also, you should not indent the second line of a documentation
 string, if it has one, because that looks odd when you use `C-h f'
 (`describe-function') or `C-h v' (`describe-variable') to view the
 documentation string.  There are many other conventions for doc
-strings; see *note Documentation Tips::.
+strings; see *Note Documentation Tips::.
 
    Documentation strings can contain several special substrings, which
 stand for key bindings to be looked up in the current keymaps when the
@@ -3342,7 +3342,7 @@ File: elisp,  Node: Help Functions,  Prev: Describing Characters,  Up: Documenta
 
 Emacs provides a variety of on-line help functions, all accessible to
 the user as subcommands of the prefix `C-h'.  For more information
-about them, see *note Help: (emacs)Help.  Here we describe some
+about them, see *Note Help: (emacs)Help.  Here we describe some
 program-level interfaces to the same information.
 
  -- Command: apropos pattern &optional do-all
@@ -3433,8 +3433,8 @@ program-level interfaces to the same information.
  -- Function: describe-prefix-bindings
      This function calls `describe-bindings' to display a list of all
      the subcommands of the prefix key of the most recent key sequence.
-     The prefix described consists of all but the last event of that key
-     sequence.  (The last event is, presumably, the help character.)
+     The prefix described consists of all but the last event of that
+     key sequence.  (The last event is, presumably, the help character.)
 
    The following two functions are meant for modes that want to provide
 help without relinquishing control, such as the "electric" modes.
@@ -3525,8 +3525,8 @@ File: elisp,  Node: Files,  Next: Backups and Auto-Saving,  Prev: Documentation,
 In Emacs, you can find, create, view, save, and otherwise work with
 files and file directories.  This chapter describes most of the
 file-related functions of Emacs Lisp, but a few others are described in
-*note Buffers::, and those related to backups and auto-saving are
-described in *note Backups and Auto-Saving::.
+*Note Buffers::, and those related to backups and auto-saving are
+described in *Note Backups and Auto-Saving::.
 
    Many of the file functions take one or more arguments that are file
 names.  A file name is actually a string.  Most of these functions
@@ -3618,7 +3618,7 @@ temporary buffer.  Visiting the file is not necessary and takes longer.
 
           (switch-to-buffer (find-file-noselect filename nil nil wildcards))
 
-     (See `switch-to-buffer' in *note Displaying Buffers::.)
+     (See `switch-to-buffer' in *Note Displaying Buffers::.)
 
      If WILDCARDS is non-`nil', which is always true in an interactive
      call, then `find-file' expands wildcard characters in FILENAME and
@@ -3678,7 +3678,7 @@ temporary buffer.  Visiting the file is not necessary and takes longer.
  -- Command: find-file-other-window filename &optional wildcards
      This command selects a buffer visiting the file FILENAME, but does
      so in a window other than the selected window.  It may use another
-     existing window or split a window; see *note Displaying Buffers::.
+     existing window or split a window; see *Note Displaying Buffers::.
 
      When this command is called interactively, it prompts for FILENAME.
 
@@ -3740,7 +3740,7 @@ are sometimes useful in user Lisp code: `create-file-buffer' and
      This function creates a suitably named buffer for visiting
      FILENAME, and returns it.  It uses FILENAME (sans directory) as
      the name if that name is free; otherwise, it appends a string such
-     as `<2>' to get an unused name.  See also *note Creating Buffers::.
+     as `<2>' to get an unused name.  See also *Note Creating Buffers::.
 
      *Please note:* `create-file-buffer' does _not_ associate the new
      buffer with a file and does not select the buffer.  It also does
@@ -3982,7 +3982,7 @@ You can copy a file from the disk and insert it into a buffer using the
      (*note Coding Systems::) used for decoding the file's contents,
      including end-of-line conversion.  However, if the file contains
      null bytes, it is by default visited without any code conversions;
-     see *note inhibit-null-byte-detection: Lisp and Coding Systems,
+     see *Note inhibit-null-byte-detection: Lisp and Coding Systems,
      for how to control this behavior.
 
      If VISIT is non-`nil', this function additionally marks the buffer
@@ -4020,7 +4020,7 @@ You can copy a file from the disk and insert it into a buffer using the
 
    If you want to pass a file name to another process so that another
 program can read the file, use the function `file-local-copy'; see
-*note Magic File Names::.
+*Note Magic File Names::.
 
 
 File: elisp,  Node: Writing to Files,  Next: File Locks,  Prev: Reading from Files,  Up: Files
@@ -4116,7 +4116,7 @@ visited; that could cause confusion in the mechanisms for visiting.
      The current buffer is restored even in case of an abnormal exit via
      `throw' or error (*note Nonlocal Exits::).
 
-     See also `with-temp-buffer' in *note The Current Buffer:
+     See also `with-temp-buffer' in *Note The Current Buffer:
      Definition of with-temp-buffer.
 
 
@@ -4139,7 +4139,7 @@ that you and another user will both lock the same file "simultaneously."
 If this happens, it is possible for the two users to make changes
 simultaneously, but Emacs will still warn the user who saves second.
 Also, the detection of modification of a buffer visiting a file changed
-on disk catches some cases of simultaneous editing; see *note
+on disk catches some cases of simultaneous editing; see *Note
 Modification Time::.
 
  -- Function: file-locked-p filename
@@ -4531,7 +4531,7 @@ parent directories.
        4. The time of last access, as a list of two integers.  The
           first integer has the high-order 16 bits of time, the second
           has the low 16 bits.  (This is similar to the value of
-          `current-time'; see *note Time of Day::.)  Note that on some
+          `current-time'; see *Note Time of Day::.)  Note that on some
           FAT-based filesystems, only the date of last access is
           recorded, so this time will always hold the midnight of the
           day of last access.
@@ -4676,7 +4676,7 @@ for a file.
      name as its single argument.  If PREDICATE is `nil' or unspecified,
      `locate-file' uses `file-readable-p' as the default predicate.
      Useful non-default predicates include `file-executable-p',
-     `file-directory-p', and other predicates described in *note Kinds
+     `file-directory-p', and other predicates described in *Note Kinds
      of Files::.
 
      For compatibility, PREDICATE can also be one of the symbols
@@ -4761,7 +4761,7 @@ with its (recursive) target.
      names for one file are not allowed.  Some systems implement
      multiple names by copying the file instead.
 
-     See also `file-nlinks' in *note File Attributes::.
+     See also `file-nlinks' in *Note File Attributes::.
 
  -- Command: rename-file filename newname &optional ok-if-already-exists
      This command renames the file FILENAME as NEWNAME.
@@ -4813,7 +4813,7 @@ with its (recursive) target.
      with its target, but it does follow symbolic links at all levels
      of parent directories.
 
-     See also `delete-directory' in *note Create/Delete Dirs::.
+     See also `delete-directory' in *Note Create/Delete Dirs::.
 
  -- Command: set-file-modes filename mode
      This function sets mode bits of FILENAME to MODE (which must be an
@@ -5374,7 +5374,7 @@ File: elisp,  Node: File Name Completion,  Next: Standard File Names,  Prev: Uni
 ---------------------------
 
 This section describes low-level subroutines for completing a file
-name.  For higher level functions, see *note Reading File Names::.
+name.  For higher level functions, see *Note Reading File Names::.
 
  -- Function: file-name-all-completions partial-filename directory
      This function returns a list of all possible completions for a file
@@ -5896,7 +5896,7 @@ The function `write-region':
    This shows the symmetry of the lowest-level operations; reading and
 writing handle things in opposite order.  The rest of this section
 describes the two facilities surrounding the three variables named
-above, as well as some related functions.  *note Coding Systems::, for
+above, as well as some related functions.  *Note Coding Systems::, for
 details on character encoding and decoding.
 
 
@@ -6245,9 +6245,9 @@ File: elisp,  Node: Making Backups,  Next: Rename or Copy,  Up: Backup Files
      This variable's value is a function to be called on certain
      occasions to decide whether a file should have backup files.  The
      function receives one argument, an absolute file name to consider.
-     If the function returns `nil', backups are disabled for that file.
-     Otherwise, the other variables in this section say whether and how
-     to make backups.
+     If the function returns `nil', backups are disabled for that
+     file.  Otherwise, the other variables in this section say whether
+     and how to make backups.
 
      The default value is `normal-backup-enable-predicate', which checks
      for files in `temporary-file-directory' and

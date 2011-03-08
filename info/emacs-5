@@ -1,7 +1,7 @@
-This is ../../info/emacs, produced by makeinfo version 4.13 from
+This is ../../info/emacs, produced by makeinfo version 4.8 from
 emacs.texi.
 
-This is the Sixteenth edition of the `GNU Emacs Manual',
+   This is the Sixteenth edition of the `GNU Emacs Manual',
 updated for Emacs version 23.2.94.
 
    Copyright (C) 1985, 1986, 1987, 1993, 1994, 1995, 1996, 1997, 1998,
@@ -237,7 +237,7 @@ files, using a new name made by transforming the existing name.
    Like the basic Dired file-manipulation commands (*note Operating on
 Files::), the commands described here operate either on the next N
 files, or on all files marked with `*', or on the current file.  (To
-mark files, use the commands described in *note Marks vs Flags::.)
+mark files, use the commands described in *Note Marks vs Flags::.)
 
    All of the commands described in this section work _interactively_:
 they ask you to confirm the operation for each candidate file.  Thus,
@@ -565,9 +565,9 @@ use `M-x find-grep-dired'.  This command reads two minibuffer
 arguments, DIRECTORY and REGEXP; it chooses all the files in DIRECTORY
 or its subdirectories that contain a match for REGEXP.  It works by
 running the programs `find' and `grep'.  See also `M-x grep-find', in
-*note Grep Searching::.  Remember to write the regular expression for
+*Note Grep Searching::.  Remember to write the regular expression for
 `grep', not for Emacs.  (An alternative method of showing files whose
-contents match a given regexp is the `% g REGEXP' command, see *note
+contents match a given regexp is the `% g REGEXP' command, see *Note
 Marks vs Flags::.)
 
    The most general command in this series is `M-x find-dired', which
@@ -2094,7 +2094,7 @@ automatically just after midnight.  You can force an update at any time
 by re-enabling appointment notification.  Both these actions also
 display the day's diary buffer, unless you set `appt-display-diary' to
 `nil'.  The appointments list is also updated whenever the diary file
-(or a file it includes; see *note Fancy Diary Display::) is saved.
+(or a file it includes; see *Note Fancy Diary Display::) is saved.
 
    You can also use the appointment notification facility like an alarm
 clock.  The command `M-x appt-add' adds entries to the appointment list
@@ -2784,8 +2784,8 @@ File: emacs,  Node: Sexp Diary Entries,  Prev: Fancy Diary Display,  Up: Advance
 Sexp diary entries allow you to do more than just have complicated
 conditions under which a diary entry applies.  Sexp entries should be
 preceded by `diary-sexp-entry-symbol' (default `%%') in the diary file.
-With the fancy diary display, sexp entries can generate the text of the
-entry depending on the date itself.
+With the fancy diary display, sexp entries can generate the text of
+the entry depending on the date itself.
 
    For example, an anniversary diary entry can insert the number of
 years since the anniversary date into the text of the diary entry.
@@ -3130,7 +3130,7 @@ Gnus is an Emacs package primarily designed for reading and posting
 Usenet news.  It can also be used to read and respond to messages from a
 number of other sources--mail, remote directories, digests, and so on.
 Here we introduce Gnus and describe several basic features.  For full
-details, see *note Gnus: (gnus)Top.
+details, see *Note Gnus: (gnus)Top.
 
    To start Gnus, type `M-x gnus <RET>'.
 
@@ -3603,8 +3603,8 @@ of the special key bindings of Shell mode:
 
 `M-x send-invisible <RET> TEXT <RET>'
      Send TEXT as input to the shell, after reading it without echoing.
-     This is useful when a shell command runs a program that asks for a
-     password.
+     This is useful when a shell command runs a program that asks for
+     a password.
 
      Please note that Emacs will not echo passwords by default.  If you
      really want them to be echoed, evaluate the following Lisp
@@ -3945,7 +3945,7 @@ To run a subshell in a terminal emulator, use `M-x term'.  This creates
 coming from your keyboard, and output going to that buffer.
 
    The terminal emulator uses Term mode, which has two input modes.  In
-line mode, Term basically acts like Shell mode; see *note Shell Mode::.
+line mode, Term basically acts like Shell mode; see *Note Shell Mode::.
 
    In char mode, each character is sent directly to the inferior
 subshell, as "terminal input."  Any "echoing" of your input is the
@@ -3984,7 +3984,7 @@ File: emacs,  Node: Term Mode,  Next: Paging in Term,  Prev: Terminal emulator, 
 ==============
 
 The terminal emulator uses Term mode, which has two input modes.  In
-line mode, Term basically acts like Shell mode; see *note Shell Mode::.
+line mode, Term basically acts like Shell mode; see *Note Shell Mode::.
 In char mode, each character is sent directly to the inferior subshell,
 except for the Term escape character, normally `C-c'.
 
@@ -4059,7 +4059,7 @@ File: emacs,  Node: Serial Terminal,  Prev: Remote Host,  Up: Shell
 If you have a device connected to a serial port of your computer, you
 can use Emacs to communicate with it.  `M-x serial-term' will ask you
 for a serial port name and speed and will then open a new window in
-*note Term Mode::.
+*Note Term Mode::.
 
    The speed of the serial port is measured in bits per second.  The
 most common speed is 9600 bits per second.  You can change the speed
@@ -5056,11 +5056,11 @@ point instead.)
 
    Info mode, Help mode and the Dired-like modes are examples of modes
 that have links in the buffer.  The Tags facility links between uses
-and definitions in source files, see *note Tags::.  Imenu provides
-navigation amongst items indexed in the current buffer, see *note
+and definitions in source files, see *Note Tags::.  Imenu provides
+navigation amongst items indexed in the current buffer, see *Note
 Imenu::.  Info-lookup provides mode-specific lookup of definitions in
-Info indexes, see *note Documentation::.  Speedbar maintains a frame in
-which links to files, and locations in files are displayed, see *note
+Info indexes, see *Note Documentation::.  Speedbar maintains a frame in
+which links to files, and locations in files are displayed, see *Note
 Speedbar::.
 
    Other non-mode-specific facilities described in this section enable
@@ -5225,9 +5225,9 @@ sample texts produce the best results.
 
    A positive argument to `M-x dissociated-press' tells it to operate
 character by character, and specifies the number of overlap characters.
-A negative argument tells it to operate word by word, and specifies the
-number of overlap words.  In this mode, whole words are treated as the
-elements to be permuted, rather than characters.  No argument is
+A negative argument tells it to operate word by word, and specifies
+the number of overlap words.  In this mode, whole words are treated as
+the elements to be permuted, rather than characters.  No argument is
 equivalent to an argument of two.  For your againformation, the output
 goes only into the buffer `*Dissociation*'.  The buffer you start with
 is not changed.
@@ -5317,11 +5317,11 @@ File: emacs,  Node: Customization,  Next: Quitting,  Prev: Amusements,  Up: Top
 This chapter describes some simple methods to customize the behavior of
 Emacs.
 
-   Apart from the methods described here, see *note X Resources:: for
-information about using X resources to customize Emacs, and see *note
+   Apart from the methods described here, see *Note X Resources:: for
+information about using X resources to customize Emacs, and see *Note
 Keyboard Macros:: for information about recording and replaying
 keyboard macros.  Making more far-reaching and open-ended changes
-involves writing Emacs Lisp code; see *note Emacs Lisp: (elisp)Top.
+involves writing Emacs Lisp code; see *Note Emacs Lisp: (elisp)Top.
 
 * Menu:
 
@@ -5778,9 +5778,9 @@ File: emacs,  Node: Face Customization,  Next: Specific Customization,  Prev: Sa
 ------------------------
 
 In addition to variables, some customization groups also include faces.
-When you show the contents of a group, both the variables and the faces
-in the group appear in the customization buffer.  Here is an example of
-how a face looks:
+When you show the contents of a group, both the variables and the
+faces in the group appear in the customization buffer.  Here is an
+example of how a face looks:
 
      Custom Changed Face:(sample) [Hide Face]
         [State]: STANDARD.
@@ -6553,7 +6553,7 @@ File: emacs,  Node: Keymaps,  Next: Prefix Keymaps,  Up: Key Bindings
 57.4.1 Keymaps
 --------------
 
-As described in *note Commands::, each Emacs command is a Lisp function
+As described in *Note Commands::, each Emacs command is a Lisp function
 whose definition provides for interactive use.  Like every Lisp
 function, a command has a function name, which usually consists of
 lower-case letters and hyphens.
@@ -6621,9 +6621,9 @@ and <ESC> as prefix keys appear in the global map, so these prefix keys
 are always available.
 
    Aside from ordinary prefix keys, there is a fictitious "prefix key"
-which represents the menu bar; see *note Menu Bar: (elisp)Menu Bar, for
+which represents the menu bar; see *Note Menu Bar: (elisp)Menu Bar, for
 special information about menu bar key bindings.  Mouse button events
-that invoke pop-up menus are also prefix keys; see *note Menu Keymaps:
+that invoke pop-up menus are also prefix keys; see *Note Menu Keymaps:
 (elisp)Menu Keymaps, for more details.
 
    Some prefix keymaps are stored in variables with names:
@@ -6844,7 +6844,7 @@ You can use a vector for the simple cases too:
    Language and coding systems may cause problems with key bindings for
 non-ASCII characters.  *Note Init Non-ASCII::.
 
-   As described in *note Local Keymaps::, major modes and minor modes
+   As described in *Note Local Keymaps::, major modes and minor modes
 can define local keymaps.  These keymaps are constructed when the mode
 is used for the first time in a session.  If you wish to change one of
 these keymaps, you must use the "mode hook" (*note Hooks::).

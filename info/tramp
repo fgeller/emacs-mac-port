@@ -1,7 +1,7 @@
-This is ../../info/tramp, produced by makeinfo version 4.13 from
+This is ../../info/tramp, produced by makeinfo version 4.8 from
 tramp.texi.
 
-Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007,
+   Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007,
 2008, 2009, 2010, 2011 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
@@ -419,7 +419,7 @@ startup may drown out the improvement in file transfer times.
    External methods should be configured such a way that they don't
 require a password (with `ssh-agent', or such alike).  Modern `scp'
 implementations offer options to reuse existing `ssh' connections, see
-method `scpc'.  If it isn't possible, you should consider *note
+method `scpc'.  If it isn't possible, you should consider *Note
 Password handling::, otherwise you will be prompted for a password
 every copy action.
 
@@ -444,7 +444,7 @@ access to external commands to perform that task.
    TRAMP checks the availability and usability of commands like
 `mimencode' (part of the `metamail' package) or `uuencode' on the
 remote host.  The first reliable command will be used.  The search path
-can be customized, see *note Remote Programs::.
+can be customized, see *Note Remote Programs::.
 
    If both commands aren't available on the remote host, TRAMP
 transfers a small piece of Perl code to the remote host, and tries to
@@ -493,7 +493,7 @@ speed for large text files.
      uses the `su' program to allow you to edit files as another user.
      That means, the specified host name in the file name must be either
      `localhost' or the host name as returned by the function
-     `(system-name)'.  For an exception of this rule see *note
+     `(system-name)'.  For an exception of this rule see *Note
      Multi-hops::.
 
 `sudo'
@@ -737,7 +737,7 @@ fair trade-off between both approaches.
 
      Since authorization is done on share level, you will be prompted
      always for a password if you access another share on the same host.
-     This can be suppressed by *note Password handling::.
+     This can be suppressed by *Note Password handling::.
 
      MS Windows uses for authorization both a user name and a domain
      name.  Because of this, the TRAMP syntax has been extended: you can
@@ -1329,8 +1329,8 @@ TRAMP depends on a number of programs on the remote host in order to
 function, including `ls', `test', `find' and `cat'.
 
    In addition to these required tools, there are various tools that
-may be required based on the connection method.  See *note Inline
-methods:: and *note External methods:: for details on these.
+may be required based on the connection method.  See *Note Inline
+methods:: and *Note External methods:: for details on these.
 
    Certain other tools, such as `perl' (or `perl5') and `grep' will be
 used if they can be found.  When they are available, they are used to
@@ -1386,7 +1386,7 @@ File: tramp,  Node: Remote shell setup,  Next: Windows setup hints,  Prev: Remot
 4.15 Remote shell setup hints
 =============================
 
-As explained in the *note Overview:: section, TRAMP connects to the
+As explained in the *Note Overview:: section, TRAMP connects to the
 remote host and talks to the shell it finds there.  Of course, when you
 log in, the shell executes its init files.  Suppose your init file
 requires you to enter the birth date of your mother; clearly TRAMP does
@@ -1863,7 +1863,7 @@ exploit GNU Emacs packages without modification for remote file names.
 It does not work for the `ftp' and `smb' methods.  Association of a
 pty, as specified in `start-file-process', is not supported.
 
-   If the remote host is mounted via GVFS (see *note GVFS based
+   If the remote host is mounted via GVFS (see *Note GVFS based
 methods::), the remote filesystem is mounted locally.  Therefore, there
 are no remote processes; all processes run still locally on your
 machine with an adapted `default-directory'.  This section does not
@@ -1877,7 +1877,7 @@ packages is planned, any help for this is welcome!
 
    When your program is not found in the default search path TRAMP sets
 on the remote machine, you should either use an absolute path, or
-extend `tramp-remote-path' (see *note Remote Programs::):
+extend `tramp-remote-path' (see *Note Remote Programs::):
 
      (add-to-list 'tramp-remote-path "~/bin")
      (add-to-list 'tramp-remote-path "/appli/pub/bin")
@@ -1977,7 +1977,7 @@ corresponding entry to the variable `tramp-default-proxies-alist'
 -----------------------------------------
 
 `gud.el' offers an unified interface to several symbolic debuggers
-(*note Debuggers: (emacs)Debuggers.).  With TRAMP, it is possible to
+(*Note Debuggers: (emacs)Debuggers.).  With TRAMP, it is possible to
 debug programs on remote hosts.  You can call `gdb' with a remote file
 name:
 
@@ -2698,11 +2698,11 @@ for analysing problems; sending a TRAMP bug report should be done with
 `tramp-verbose' set to a verbosity level of at least 6 (*note Bug
 Reports::).
 
-   The debug buffer is in *note Outline Mode: (emacs)Outline Mode.
+   The debug buffer is in *Note Outline Mode: (emacs)Outline Mode.
 That means, you can change the level of messages to be viewed.  If you
 want, for example, see only messages up to verbosity level 5, you must
 enter `C-u 6 C-c C-q'.  Other keys for navigating are described in
-*note Outline Visibility: (emacs)Outline Visibility.
+*Note Outline Visibility: (emacs)Outline Visibility.
 
    TRAMP errors are handled internally in order to raise the verbosity
 level 1 messages.  When you want to get a Lisp backtrace in case of an
@@ -3280,7 +3280,7 @@ Function Index
 * tramp-parse-rhosts:                    Customizing Completion.
                                                                (line 41)
 * tramp-parse-shostkeys:                 Customizing Completion.
-                                                               (line 55)
+                                                               (line 60)
 * tramp-parse-shosts:                    Customizing Completion.
                                                                (line 46)
 * tramp-set-completion-function:         Customizing Completion.
@@ -3317,7 +3317,7 @@ Variable Index
 * tramp-own-remote-path:                 Remote Programs.     (line  17)
 * tramp-password-prompt-regexp:          Remote shell setup.  (line  60)
 * tramp-persistency-file-name:           Connection caching.  (line   6)
-* tramp-remote-path:                     Remote Programs.     (line  17)
+* tramp-remote-path:                     Remote Programs.     (line  18)
 * tramp-shell-prompt-pattern:            Remote shell setup.  (line  49)
 * tramp-terminal-type:                   Remote shell setup.  (line  98)
 * tramp-wrong-passwd-regexp:             Remote shell setup.  (line  60)
@@ -3388,8 +3388,8 @@ Concept Index
 * how it works:                          Overview.            (line  48)
 * imap method:                           External methods.    (line 202)
 * imaps method:                          External methods.    (line 202)
-* inline methods <1>:                    Inline methods.      (line   6)
-* inline methods:                        Connection types.    (line  16)
+* inline methods <1>:                    Connection types.    (line  16)
+* inline methods:                        Inline methods.      (line   6)
 * Kerberos (with krlogin method):        Inline methods.      (line 106)
 * krlogin method:                        Inline methods.      (line 106)
 * method dav:                            GVFS based methods.  (line  16)
@@ -3500,49 +3500,49 @@ Concept Index
 
 
 Tag Table:
-Node: Top1077
-Node: Overview5349
-Ref: Overview-Footnote-111101
-Node: Obtaining Tramp11253
-Node: History12841
-Node: Configuration14091
-Node: Connection types16327
-Node: Inline methods18167
-Node: External methods24420
-Node: GVFS based methods34182
-Node: Gateway methods35580
-Node: Default Method37033
-Node: Default User41002
-Node: Default Host42952
-Node: Multi-hops43725
-Ref: Multi-hops-Footnote-147917
-Node: Customizing Methods48272
-Node: Customizing Completion48680
-Node: Password handling52092
-Ref: Using an authentication file52802
-Ref: Caching passwords53817
-Node: Connection caching54790
-Node: Remote Programs56444
-Node: Remote shell setup59241
-Node: Auto-save and Backup67452
-Node: Windows setup hints70339
-Node: Usage72117
-Node: Filename Syntax73439
-Node: Alternative Syntax76000
-Node: Filename completion76987
-Node: Remote processes79964
-Ref: Running a debugger on a remote host85057
-Node: Cleanup remote connections86032
-Node: Bug Reports87156
-Node: Frequently Asked Questions89327
-Node: Files directories and localnames108658
-Node: Localname deconstruction109073
-Node: External packages109804
-Node: Traces and Profiles112248
-Node: Issues114448
-Node: GNU Free Documentation License116157
-Node: Function Index141303
-Node: Variable Index143203
-Node: Concept Index145222
+Node: Top1079
+Node: Overview5351
+Ref: Overview-Footnote-111103
+Node: Obtaining Tramp11255
+Node: History12843
+Node: Configuration14093
+Node: Connection types16329
+Node: Inline methods18169
+Node: External methods24422
+Node: GVFS based methods34184
+Node: Gateway methods35582
+Node: Default Method37035
+Node: Default User41004
+Node: Default Host42954
+Node: Multi-hops43727
+Ref: Multi-hops-Footnote-147919
+Node: Customizing Methods48274
+Node: Customizing Completion48682
+Node: Password handling52094
+Ref: Using an authentication file52804
+Ref: Caching passwords53819
+Node: Connection caching54792
+Node: Remote Programs56446
+Node: Remote shell setup59243
+Node: Auto-save and Backup67454
+Node: Windows setup hints70341
+Node: Usage72119
+Node: Filename Syntax73441
+Node: Alternative Syntax76002
+Node: Filename completion76989
+Node: Remote processes79966
+Ref: Running a debugger on a remote host85059
+Node: Cleanup remote connections86034
+Node: Bug Reports87158
+Node: Frequently Asked Questions89329
+Node: Files directories and localnames108660
+Node: Localname deconstruction109075
+Node: External packages109806
+Node: Traces and Profiles112250
+Node: Issues114450
+Node: GNU Free Documentation License116159
+Node: Function Index141305
+Node: Variable Index143205
+Node: Concept Index145224
 
 End Tag Table
