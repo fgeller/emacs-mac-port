@@ -18,7 +18,7 @@ attributing replies to mail and news messages.
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs network features
 START-INFO-DIR-ENTRY
 * SC: (sc).                     Supercite lets you cite parts of messages
                                   you're replying to, in flexible ways.
@@ -2529,41 +2529,41 @@ each appears under its `sc-'VARIABLE name and its VARIABLE name.
 
 
 Tag Table:
-Node: Top1170
-Node: Introduction2589
-Node: Usage Overview3616
-Node: What Supercite Does Not Do4778
-Node: What Supercite Does5910
-Node: Citations8742
-Node: Citation Elements11032
-Node: Recognizing Citations12915
-Node: Information Keys and the Info Alist14674
-Node: Reference Headers17261
-Node: The Built-in Header Rewrite Functions18827
-Node: Electric References21277
-Node: Getting Connected24157
-Node: Replying and Yanking27290
-Node: Reply Buffer Initialization27608
-Node: Filling Cited Text34496
-Node: Selecting an Attribution37969
-Node: Attribution Preferences38827
-Node: Anonymous Attributions42743
-Node: Author Names45783
-Node: Configuring the Citation Engine48263
-Node: Using Regi49988
-Node: Frames You Can Customize53863
-Node: Post-yank Formatting Commands56391
-Node: Citing Commands57537
-Node: Insertion Commands59748
-Node: Variable Toggling Shortcuts60688
-Node: Mail Field Commands63047
-Node: Miscellaneous Commands65384
-Node: Hints to MUA Authors65822
-Node: Thanks and History69487
-Node: GNU Free Documentation License71544
-Node: Concept Index96721
-Node: Command Index104575
-Node: Key Index111700
-Node: Variable Index114073
+Node: Top1187
+Node: Introduction2606
+Node: Usage Overview3633
+Node: What Supercite Does Not Do4795
+Node: What Supercite Does5927
+Node: Citations8759
+Node: Citation Elements11049
+Node: Recognizing Citations12932
+Node: Information Keys and the Info Alist14691
+Node: Reference Headers17278
+Node: The Built-in Header Rewrite Functions18844
+Node: Electric References21294
+Node: Getting Connected24174
+Node: Replying and Yanking27307
+Node: Reply Buffer Initialization27625
+Node: Filling Cited Text34513
+Node: Selecting an Attribution37986
+Node: Attribution Preferences38844
+Node: Anonymous Attributions42760
+Node: Author Names45800
+Node: Configuring the Citation Engine48280
+Node: Using Regi50005
+Node: Frames You Can Customize53880
+Node: Post-yank Formatting Commands56408
+Node: Citing Commands57554
+Node: Insertion Commands59765
+Node: Variable Toggling Shortcuts60705
+Node: Mail Field Commands63064
+Node: Miscellaneous Commands65401
+Node: Hints to MUA Authors65839
+Node: Thanks and History69504
+Node: GNU Free Documentation License71561
+Node: Concept Index96738
+Node: Command Index104592
+Node: Key Index111717
+Node: Variable Index114090
 
 End Tag Table

@@ -31,7 +31,7 @@ EMACSOPT = -batch --no-site-file --multibyte
 CC=gcc
 CFLAGS=-g -O2 -Wdeclaration-after-statement -Wno-pointer-sign  
 version=23.3
-configuration=x86_64-apple-darwin10.6.0
+configuration=x86_64-apple-darwin10.7.0
 EXEEXT=
 
 # Program name transformation.
@@ -70,11 +70,11 @@ localstatedir=${prefix}/var
 # since the variable here has `/lib-src' added at the end.
 
 # We use $(srcdir) explicitly in dependencies so as not to depend on VPATH.
-srcdir=/Users/sinx/Factory/emacs-mac-port/lib-src
-VPATH=/Users/sinx/Factory/emacs-mac-port/lib-src
+srcdir=/Users/nix/Factory/emacs-23.3/lib-src
+VPATH=/Users/nix/Factory/emacs-23.3/lib-src
 
 # The top-level source directory, also set by configure.
-top_srcdir=/Users/sinx/Factory/emacs-mac-port
+top_srcdir=/Users/nix/Factory/emacs-23.3
 
 # ==================== Emacs-specific directories ====================
 

@@ -21,7 +21,7 @@ Emacs, and interacting with an IDL shell run as a subprocess.
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs editing modes
 START-INFO-DIR-ENTRY
 * IDLWAVE: (idlwave).           Major mode and shell for IDL files.
 END-INFO-DIR-ENTRY
@@ -3681,9 +3681,9 @@ common problems and their solutions are documented below.
      or similar when attempting to load IDLWAVE under XEmacs.*
 
      You don't have the `browse-url' (or other required) XEmacs package.
-     Unlike GNU Emacs, XEmacs distributes many packages separately from
-     the main program.  IDLWAVE is actually among these, but is not
-     always the most up to date.  When installing IDLWAVE as an XEmacs
+     Unlike Emacs, XEmacs distributes many packages separately from the
+     main program.  IDLWAVE is actually among these, but is not always
+     the most up to date.  When installing IDLWAVE as an XEmacs
      package, it should prompt you for required additional packages.
      When installing it from source, it won't and you'll get this
      error.  The easiest solution is to install all the packages when
@@ -4688,77 +4688,77 @@ Index
 
 
 Tag Table:
-Node: Top1193
-Node: Introduction5813
-Ref: Introduction-Footnote-19474
-Node: IDLWAVE in a Nutshell9597
-Node: Getting Started12430
-Node: Lesson I -- Development Cycle12707
-Node: Lesson II -- Customization20619
-Node: Lesson III -- User Catalog25607
-Node: The IDLWAVE Major Mode28375
-Node: Code Formatting29464
-Node: Code Indentation30774
-Node: Continued Statement Indentation32301
-Node: Comment Indentation35524
-Node: Continuation Lines36511
-Node: Syntax Highlighting38961
-Node: Octals and Highlighting39990
-Node: Routine Info41070
-Ref: Routine Info-Footnote-147708
-Node: Online Help47874
-Node: Help with HTML Documentation51922
-Node: Help with Source55481
-Node: Completion58398
-Node: Case of Completed Words62511
-Node: Object Method Completion and Class Ambiguity64325
-Node: Object Method Completion in the Shell67005
-Node: Class and Keyword Inheritance67855
-Node: Structure Tag Completion70171
-Node: Routine Source71921
-Node: Resolving Routines73027
-Node: Code Templates74007
-Node: Abbreviations74505
-Node: Actions78376
-Node: Block Boundary Check80213
-Node: Padding Operators81262
-Node: Case Changes83389
-Node: Doc Header84878
-Node: Motion Commands86137
-Node: Misc Options87216
-Node: The IDLWAVE Shell87814
-Node: Starting the Shell88821
-Node: Using the Shell92376
-Ref: Using the Shell-Footnote-196202
-Node: Commands Sent to the Shell96390
-Node: Debugging IDL Programs98508
-Node: A Tale of Two Modes99905
-Node: Debug Key Bindings101030
-Node: Breakpoints and Stepping102910
-Node: Compiling Programs108745
-Node: Walking the Calling Stack110202
-Node: Electric Debug Mode111295
-Ref: Electric Debug Mode-Footnote-1117258
-Node: Examining Variables117385
-Ref: Examining Variables-Footnote-1122250
-Node: Custom Expression Examination122336
-Ref: Custom Expression Examination-Footnote-1125825
-Node: Acknowledgements126029
-Node: Sources of Routine Info128052
-Node: Routine Definitions128762
-Node: Routine Information Sources130143
-Node: Catalogs133647
-Node: Library Catalogs136261
-Node: User Catalog139135
-Ref: User Catalog-Footnote-1142196
-Ref: User Catalog-Footnote-2142279
-Node: Load-Path Shadows142315
-Node: Documentation Scan144903
-Node: HTML Help Browser Tips146375
-Node: Configuration Examples149522
-Node: Windows and MacOS156611
-Node: Troubleshooting158807
-Node: GNU Free Documentation License168536
-Node: Index193707
+Node: Top1207
+Node: Introduction5827
+Ref: Introduction-Footnote-19488
+Node: IDLWAVE in a Nutshell9611
+Node: Getting Started12444
+Node: Lesson I -- Development Cycle12721
+Node: Lesson II -- Customization20633
+Node: Lesson III -- User Catalog25621
+Node: The IDLWAVE Major Mode28389
+Node: Code Formatting29478
+Node: Code Indentation30788
+Node: Continued Statement Indentation32315
+Node: Comment Indentation35538
+Node: Continuation Lines36525
+Node: Syntax Highlighting38975
+Node: Octals and Highlighting40004
+Node: Routine Info41084
+Ref: Routine Info-Footnote-147722
+Node: Online Help47888
+Node: Help with HTML Documentation51936
+Node: Help with Source55495
+Node: Completion58412
+Node: Case of Completed Words62525
+Node: Object Method Completion and Class Ambiguity64339
+Node: Object Method Completion in the Shell67019
+Node: Class and Keyword Inheritance67869
+Node: Structure Tag Completion70185
+Node: Routine Source71935
+Node: Resolving Routines73041
+Node: Code Templates74021
+Node: Abbreviations74519
+Node: Actions78390
+Node: Block Boundary Check80227
+Node: Padding Operators81276
+Node: Case Changes83403
+Node: Doc Header84892
+Node: Motion Commands86151
+Node: Misc Options87230
+Node: The IDLWAVE Shell87828
+Node: Starting the Shell88835
+Node: Using the Shell92390
+Ref: Using the Shell-Footnote-196216
+Node: Commands Sent to the Shell96404
+Node: Debugging IDL Programs98522
+Node: A Tale of Two Modes99919
+Node: Debug Key Bindings101044
+Node: Breakpoints and Stepping102924
+Node: Compiling Programs108759
+Node: Walking the Calling Stack110216
+Node: Electric Debug Mode111309
+Ref: Electric Debug Mode-Footnote-1117272
+Node: Examining Variables117399
+Ref: Examining Variables-Footnote-1122264
+Node: Custom Expression Examination122350
+Ref: Custom Expression Examination-Footnote-1125839
+Node: Acknowledgements126043
+Node: Sources of Routine Info128066
+Node: Routine Definitions128776
+Node: Routine Information Sources130157
+Node: Catalogs133661
+Node: Library Catalogs136275
+Node: User Catalog139149
+Ref: User Catalog-Footnote-1142210
+Ref: User Catalog-Footnote-2142293
+Node: Load-Path Shadows142329
+Node: Documentation Scan144917
+Node: HTML Help Browser Tips146389
+Node: Configuration Examples149536
+Node: Windows and MacOS156625
+Node: Troubleshooting158821
+Node: GNU Free Documentation License168546
+Node: Index193717
 
 End Tag Table

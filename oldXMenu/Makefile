@@ -43,8 +43,8 @@
 
 ### Code:
 
-srcdir=/Users/sinx/Factory/emacs-mac-port/oldXMenu
-VPATH=/Users/sinx/Factory/emacs-mac-port/oldXMenu
+srcdir=/Users/nix/Factory/emacs-23.3/oldXMenu
+VPATH=/Users/nix/Factory/emacs-23.3/oldXMenu
 C_SWITCH_X_SITE=
 
 EXTRA=insque.o

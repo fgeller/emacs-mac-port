@@ -1,8 +1,8 @@
-This is ../../info/elisp, produced by makeinfo version 4.8 from
+This is ../../info/elisp, produced by makeinfo version 4.13 from
 elisp.texi.
 
-   This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 23.2.94.
+This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
+corresponding to Emacs version 23.3.
 
    Copyright (C) 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1998, 1999,
 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
@@ -21,7 +21,7 @@ Free Software Foundation, Inc.
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION GNU Emacs Lisp
 START-INFO-DIR-ENTRY
 * Elisp: (elisp).       The Emacs Lisp Reference Manual.
 END-INFO-DIR-ENTRY
@@ -3096,7 +3096,7 @@ handled.
      `"Scan error"'
      This happens when certain syntax-parsing functions find invalid
      syntax or mismatched parentheses.
-     *Note List Motion::, and *Note Parsing Expressions::.
+     *Note List Motion::, and *note Parsing Expressions::.
 
 `search-failed'
      `"Search failed"'
@@ -3261,7 +3261,7 @@ variables will not be listed here.
      *Note Desktop Save Mode::.
 
 `enable-multibyte-characters'
-     *Note Text Representations::.
+     *note Text Representations::.
 
 `fill-column'
      *Note Margins::.

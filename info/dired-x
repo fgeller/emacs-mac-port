@@ -16,7 +16,7 @@ Copyright (C) 1994, 1995, 1999, 2001, 2002, 2003, 2004, 2005, 2006,
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
 * Dired-X: (dired-x).           Dired Extra Features.
 END-INFO-DIR-ENTRY
@@ -99,10 +99,10 @@ Some features provided by Dired Extra
   3. Guessing shell commands in Dired buffers.
           *Note Shell Command Guessing::.
 
-  4. Running Dired command in non-Dired buffers.
+  4. Running Dired commands in non-Dired buffers.
           *Note Virtual Dired::.
 
-  5. Finding a file mentioned in a buffer
+  5. Finding a file mentioned in a buffer.
           *Note Find File At Point::.
 
   6. Commands using file marking.
@@ -110,8 +110,8 @@ Some features provided by Dired Extra
 
 `dired-x.el' binds some functions to keys in Dired Mode (*note Key
 Index::) and also binds `C-x C-j' and `C-x 4 C-j' _globally_ to
-`dired-jump' (*note Miscellaneous Commands::).  It may also bind `C-x
-C-f' and `C-x 4 C-f' to `dired-x-find-file' and
+`dired-jump' (*note Miscellaneous Commands::).  Optionally, it also
+binds `C-x C-f' and `C-x 4 C-f' to `dired-x-find-file' and
 `dired-x-find-file-other-window', respectively (*note Find File At
 Point::).
 
@@ -425,7 +425,7 @@ viewed it will be
 
 You can set `dired-local-variables-file' to `nil' to suppress this.
 The value of `dired-enable-local-variables' controls if and how these
-local variables are read.  This variable exists so that if may override
+local variables are read.  This variable exists so that it may override
 the default value of `enable-local-variables'.
 
 Please see the GNU Emacs Manual to learn more about local variables.
@@ -1643,32 +1643,32 @@ Variable Index
 
 
 Tag Table:
-Node: Top983
-Node: Introduction2426
-Node: Features2739
-Node: Technical Details3720
-Node: Installation4142
-Node: Optional Installation Dired Jump5243
-Node: Optional Installation File At Point6013
-Node: Omitting Files in Dired7065
-Node: Omitting Variables8553
-Node: Omitting Examples11762
-Node: Omitting Technical12992
-Node: Local Variables13389
-Node: Shell Command Guessing15267
-Node: Virtual Dired18524
-Node: Advanced Mark Commands20049
-Node: Advanced Cleaning Functions21448
-Node: Advanced Cleaning Variables22254
-Node: Special Marking Function23377
-Node: Multiple Dired Directories24940
-Node: Find File At Point26157
-Node: Miscellaneous Commands28917
-Node: Bugs32397
-Node: GNU Free Documentation License32653
-Node: Concept Index57821
-Node: Command Index62118
-Node: Key Index65692
-Node: Variable Index67842
+Node: Top997
+Node: Introduction2440
+Node: Features2753
+Node: Technical Details3745
+Node: Installation4167
+Node: Optional Installation Dired Jump5268
+Node: Optional Installation File At Point6038
+Node: Omitting Files in Dired7090
+Node: Omitting Variables8578
+Node: Omitting Examples11787
+Node: Omitting Technical13017
+Node: Local Variables13414
+Node: Shell Command Guessing15292
+Node: Virtual Dired18549
+Node: Advanced Mark Commands20074
+Node: Advanced Cleaning Functions21473
+Node: Advanced Cleaning Variables22279
+Node: Special Marking Function23402
+Node: Multiple Dired Directories24965
+Node: Find File At Point26182
+Node: Miscellaneous Commands28942
+Node: Bugs32422
+Node: GNU Free Documentation License32678
+Node: Concept Index57846
+Node: Command Index62143
+Node: Key Index65717
+Node: Variable Index67867
 
 End Tag Table

@@ -17,7 +17,7 @@ Foundation, Inc.
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs network features
 START-INFO-DIR-ENTRY
 * Gnus: (gnus).                 The newsreader Gnus.
 END-INFO-DIR-ENTRY
@@ -4058,10 +4058,10 @@ say `%3(hello%)' to have `hello' mouse-highlighted with
 `gnus-balloon-face-*' variables should be either strings or symbols
 naming functions that return a string.  When the mouse passes over text
 with this property set, a balloon window will appear and display the
-string.  Please refer to *note Tooltips: (emacs)Tooltips, (in GNU
-Emacs) or the doc string of `balloon-help-mode' (in XEmacs) for more
-information on this.  (For technical reasons, the guillemets have been
-approximated as `<<' and `>>' in this paragraph.)
+string.  Please refer to *note Tooltips: (emacs)Tooltips, (in Emacs) or
+the doc string of `balloon-help-mode' (in XEmacs) for more information
+on this.  (For technical reasons, the guillemets have been approximated
+as `<<' and `>>' in this paragraph.)
 
    Here's an alternative recipe for the group buffer:
 

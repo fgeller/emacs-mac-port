@@ -448,8 +448,8 @@ Copyright (C) 2010 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-ac_pwd='/Users/sinx/Factory/emacs-mac-port'
-srcdir='/Users/sinx/Factory/emacs-mac-port'
+ac_pwd='/Users/nix/Factory/emacs-23.3'
+srcdir='/Users/nix/Factory/emacs-23.3'
 INSTALL='/usr/bin/install -c'
 test -n "$AWK" || AWK=awk
 # The default lists apply if the user does not specify any file.
@@ -548,7 +548,7 @@ _ASBOX
 #
 # INIT-COMMANDS
 #
-GCC="yes" NON_GNU_CPP="" CPP="cc -E -no-cpp-precomp" CPP_NEED_TRADITIONAL="no" CPPFLAGS="  " cpp_undefs=" -UUsers -Usinx -UFactory -Uemacs -Umac -Uport -Ux86_64 -Uapple -Udarwin10   -Ux86_64 -Uapple -Udarwin10   -Uunix"
+GCC="yes" NON_GNU_CPP="" CPP="cc -E -no-cpp-precomp" CPP_NEED_TRADITIONAL="no" CPPFLAGS="  " cpp_undefs=" -UUsers -Unix -UFactory -Uemacs   -Ux86_64 -Uapple -Udarwin10   -Ux86_64 -Uapple -Udarwin10   -Uunix"
 
 
 # Handling of arguments.
@@ -662,9 +662,9 @@ S["x_default_search_path"]="/usr/X11/share/X11/%L/%T/%N%C%S:/usr/X11/share/X11/%
 S["lisppath"]="${locallisppath}:${lispdir}:${datadir}/emacs/${version}/leim"
 S["locallisppath"]="${datadir}/emacs/${version}/site-lisp:${datadir}/emacs/site-lisp"
 S["lispdir"]="${datadir}/emacs/${version}/lisp"
-S["srcdir"]="/Users/sinx/Factory/emacs-mac-port"
-S["canonical"]="x86_64-apple-darwin10.6.0"
-S["configuration"]="x86_64-apple-darwin10.6.0"
+S["srcdir"]="/Users/nix/Factory/emacs-23.3"
+S["canonical"]="x86_64-apple-darwin10.7.0"
+S["configuration"]="x86_64-apple-darwin10.7.0"
 S["version"]="23.3"
 S["GETOPTOBJS"]="getopt.o getopt1.o"
 S["GETOPT_H"]="getopt.h"
@@ -719,14 +719,14 @@ S["CPPFLAGS"]="  "
 S["LDFLAGS"]=" "
 S["CFLAGS"]="-g -O2 -Wdeclaration-after-statement -Wno-pointer-sign  "
 S["CC"]="gcc"
-S["host_os"]="darwin10.6.0"
+S["host_os"]="darwin10.7.0"
 S["host_vendor"]="apple"
 S["host_cpu"]="x86_64"
-S["host"]="x86_64-apple-darwin10.6.0"
-S["build_os"]="darwin10.6.0"
+S["host"]="x86_64-apple-darwin10.7.0"
+S["build_os"]="darwin10.7.0"
 S["build_vendor"]="apple"
 S["build_cpu"]="x86_64"
-S["build"]="x86_64-apple-darwin10.6.0"
+S["build"]="x86_64-apple-darwin10.7.0"
 S["MAINT"]="#"
 S["target_alias"]=""
 S["host_alias"]=""
@@ -977,7 +977,7 @@ D["HAVE_LANGINFO_CODESET"]=" 1"
 D["HAVE_SIZE_T"]=" 1"
 D["HAVE_MBSTATE_T"]=" 1"
 D["__restrict_arr"]=" __restrict"
-D["EMACS_CONFIGURATION"]=" \"x86_64-apple-darwin10.6.0\""
+D["EMACS_CONFIGURATION"]=" \"x86_64-apple-darwin10.7.0\""
 D["EMACS_CONFIG_OPTIONS"]=" \" '--with-mac'\""
 D["config_machfile"]=" \"m/amdx86-64.h\""
 D["config_opsysfile"]=" \"s/darwin.h\""

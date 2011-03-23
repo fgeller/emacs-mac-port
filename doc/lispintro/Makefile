@@ -21,8 +21,8 @@
 
 SHELL = /bin/sh
 
-srcdir = /Users/sinx/Factory/emacs-mac-port/doc/lispintro
-VPATH = /Users/sinx/Factory/emacs-mac-port/doc/lispintro
+srcdir = /Users/nix/Factory/emacs-23.3/doc/lispintro
+VPATH = /Users/nix/Factory/emacs-23.3/doc/lispintro
 
 infodir = ../../info
 # Directory with the (customized) texinfo.tex file.

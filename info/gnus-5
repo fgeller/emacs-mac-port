@@ -17,7 +17,7 @@ Foundation, Inc.
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs network features
 START-INFO-DIR-ENTRY
 * Gnus: (gnus).                 The newsreader Gnus.
 END-INFO-DIR-ENTRY

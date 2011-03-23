@@ -1,8 +1,8 @@
-This is ../../info/emacs, produced by makeinfo version 4.8 from
+This is ../../info/emacs, produced by makeinfo version 4.13 from
 emacs.texi.
 
-   This is the Sixteenth edition of the `GNU Emacs Manual',
-updated for Emacs version 23.2.94.
+This is the Sixteenth edition of the `GNU Emacs Manual',
+updated for Emacs version 23.3.
 
    Copyright (C) 1985, 1986, 1987, 1993, 1994, 1995, 1996, 1997, 1998,
 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
@@ -3340,8 +3340,8 @@ Key (Character) Index
 * C-h .:                                 Help Echo.           (line  14)
 * C-h a:                                 Apropos.             (line  31)
 * C-h b:                                 Misc Help.           (line  42)
-* C-h c:                                 Key Help.            (line   6)
 * C-h C:                                 Coding Systems.      (line  42)
+* C-h c:                                 Key Help.            (line   6)
 * C-h C-\:                               Select Input Method. (line  14)
 * C-h C-c:                               Help Files.          (line  13)
 * C-h C-d:                               Help Files.          (line  13)
@@ -3356,22 +3356,22 @@ Key (Character) Index
 * C-h C-w:                               Help Files.          (line  13)
 * C-h d:                                 Apropos.             (line  81)
 * C-h e:                                 Misc Help.           (line  33)
-* C-h f:                                 Name Help.           (line   6)
 * C-h F:                                 Name Help.           (line  55)
+* C-h f:                                 Name Help.           (line   6)
 * C-h g:                                 Help Files.          (line  13)
 * C-h h:                                 International Chars. (line  18)
 * C-h I:                                 Select Input Method. (line  14)
 * C-h i:                                 Misc Help.           (line   6)
-* C-h k:                                 Key Help.            (line  12)
 * C-h K:                                 Key Help.            (line  16)
-* C-h l:                                 Misc Help.           (line  28)
+* C-h k:                                 Key Help.            (line  12)
 * C-h L:                                 Language Environments.
                                                               (line  76)
+* C-h l:                                 Misc Help.           (line  28)
 * C-h m:                                 Misc Help.           (line  37)
 * C-h p:                                 Library Keywords.    (line   6)
+* C-h s:                                 Syntax.              (line  18)
 * C-h S <1>:                             Info Lookup.         (line   6)
 * C-h S:                                 Misc Help.           (line  22)
-* C-h s:                                 Syntax.              (line  18)
 * C-h t:                                 Basic.               (line   6)
 * C-h v:                                 Name Help.           (line  40)
 * C-h w:                                 Key Help.            (line  25)
@@ -3692,8 +3692,8 @@ Key (Character) Index
 * C-z (X windows):                       Frame Commands.      (line   9)
 * d (Calendar mode):                     Displaying the Diary.
                                                               (line  36)
-* d (Dired):                             Dired Deletion.      (line  22)
 * D (Dired):                             Operating on Files.  (line  48)
+* d (Dired):                             Dired Deletion.      (line  22)
 * D (GDB breakpoints buffer):            Breakpoints Buffer.  (line  19)
 * D (GDB speedbar):                      Watch Expressions.   (line  25)
 * d (Rmail):                             Rmail Deletion.      (line  29)
@@ -3754,8 +3754,8 @@ Key (Character) Index
 * k (Rmail):                             Rmail Labels.        (line  34)
 * l (Dired):                             Dired Updating.      (line  34)
 * L (Dired):                             Operating on Files.  (line 110)
-* L (Gnus Group mode):                   Summary of Gnus.     (line  25)
 * l (Gnus Group mode):                   Summary of Gnus.     (line  29)
+* L (Gnus Group mode):                   Summary of Gnus.     (line  25)
 * l (Rmail):                             Rmail Make Summary.  (line  41)
 * LEFT:                                  Moving Point.        (line  16)
 * m (Calendar mode):                     Displaying the Diary.
@@ -3922,8 +3922,8 @@ Key (Character) Index
 * q (Calendar mode):                     General Calendar.    (line  36)
 * Q (Dired):                             Operating on Files.  (line 127)
 * q (Gnus Group mode):                   Summary of Gnus.     (line  18)
-* Q (Rmail summary):                     Rmail Summary Edit.  (line 102)
 * q (Rmail summary):                     Rmail Summary Edit.  (line 102)
+* Q (Rmail summary):                     Rmail Summary Edit.  (line 102)
 * q (Rmail):                             Rmail Basics.        (line  35)
 * R (Dired):                             Operating on Files.  (line  55)
 * r (Rmail):                             Rmail Reply.         (line  33)
@@ -3935,11 +3935,11 @@ Key (Character) Index
                                                               (line  32)
 * RET (Shell mode):                      Shell Mode.          (line  13)
 * RIGHT:                                 Moving Point.        (line  16)
-* S (Calendar mode):                     Sunrise/Sunset.      (line  25)
 * s (Calendar mode):                     Displaying the Diary.
                                                               (line  62)
-* S (Dired):                             Operating on Files.  (line  70)
+* S (Calendar mode):                     Sunrise/Sunset.      (line  25)
 * s (Dired):                             Dired Updating.      (line  67)
+* S (Dired):                             Operating on Files.  (line  70)
 * s (Gnus Summary mode):                 Summary of Gnus.     (line  85)
 * s (Rmail):                             Rmail Basics.        (line  28)
 * S-<TAB> (Help mode):                   Help Mode.           (line  42)
@@ -3953,9 +3953,9 @@ Key (Character) Index
 * SPC (Gnus):                            Summary of Gnus.     (line  49)
 * SPC (Rmail):                           Rmail Scrolling.     (line  23)
 * t (Calendar mode):                     Writing Calendar Files.
-                                                              (line  41)
-* t (Dired):                             Marks vs Flags.      (line  76)
+                                                              (line  23)
 * T (Dired):                             Operating on Files.  (line  94)
+* t (Dired):                             Marks vs Flags.      (line  76)
 * t (Rmail):                             Rmail Display.       (line  12)
 * TAB:                                   Completion Commands. (line  29)
 * TAB (and major modes):                 Major Modes.         (line   6)
@@ -3978,9 +3978,9 @@ Key (Character) Index
 * w (Dired):                             Misc Dired Features. (line  18)
 * w (Rmail):                             Rmail Output.        (line  32)
 * x (Calendar mode):                     Holidays.            (line  40)
-* x (Dired):                             Dired Deletion.      (line  36)
 * X (Dired):                             Shell Commands in Dired.
                                                               (line   6)
+* x (Dired):                             Dired Deletion.      (line  36)
 * x (Rmail):                             Rmail Deletion.      (line  44)
 * Z (Dired):                             Operating on Files.  (line 106)
 * ~ (Dired):                             Flagging Many Files. (line  34)
@@ -4059,16 +4059,16 @@ Command-Line Options Index
 * -fw:                                   Window Size X.       (line  31)
 * -g:                                    Window Size X.       (line  10)
 * -ib:                                   Borders X.           (line  14)
-* -l:                                    Action Arguments.    (line  37)
 * -L:                                    Action Arguments.    (line  48)
+* -l:                                    Action Arguments.    (line  37)
 * -lsp:                                  Misc X.              (line  11)
 * -mm:                                   Window Size X.       (line  22)
 * -ms:                                   Colors.              (line  41)
 * -nbc:                                  Misc X.              (line  15)
 * -nbi:                                  Icons X.             (line  11)
 * -nw:                                   Initial Options.     (line  29)
-* -q:                                    Initial Options.     (line  74)
 * -Q:                                    Initial Options.     (line  92)
+* -q:                                    Initial Options.     (line  74)
 * -r:                                    Colors.              (line  46)
 * -rv:                                   Colors.              (line  47)
 * -T:                                    Title X.             (line  16)

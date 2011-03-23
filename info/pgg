@@ -18,7 +18,7 @@ implementations.
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs network features
 START-INFO-DIR-ENTRY
 * PGG: (pgg).                   Emacs interface to various PGP implementations.
 END-INFO-DIR-ENTRY
@@ -1033,22 +1033,22 @@ Variable Index
 
 
 Tag Table:
-Node: Top1061
-Node: Overview2489
-Node: Prerequisites2974
-Node: How to use3966
-Node: User Commands5169
-Node: Selecting an implementation8380
-Node: Caching passphrase9386
-Ref: Caching passphrase-Footnote-112672
-Node: Default user identity12837
-Node: Architecture13877
-Node: Initializing14527
-Node: Back end methods15261
-Node: Getting output17702
-Node: Parsing OpenPGP packets18337
-Node: GNU Free Documentation License19052
-Node: Function Index44236
-Node: Variable Index45770
+Node: Top1078
+Node: Overview2506
+Node: Prerequisites2991
+Node: How to use3983
+Node: User Commands5186
+Node: Selecting an implementation8397
+Node: Caching passphrase9403
+Ref: Caching passphrase-Footnote-112689
+Node: Default user identity12854
+Node: Architecture13894
+Node: Initializing14544
+Node: Back end methods15278
+Node: Getting output17719
+Node: Parsing OpenPGP packets18354
+Node: GNU Free Documentation License19069
+Node: Function Index44253
+Node: Variable Index45787
 
 End Tag Table

@@ -18,7 +18,7 @@ This file documents the Emacs MIME interface functionality.
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs lisp libraries
 START-INFO-DIR-ENTRY
 * Emacs MIME: (emacs-mime).     Emacs MIME de/composition library.
 END-INFO-DIR-ENTRY
@@ -2330,42 +2330,42 @@ File: emacs-mime,  Node: Index,  Prev: GNU Free Documentation License,  Up: Top
 
 
 Tag Table:
-Node: Top1065
-Node: Decoding and Viewing3261
-Node: Dissection4042
-Node: Non-MIME4416
-Node: Handles6002
-Node: Display6854
-Node: Display Customization7575
-Ref: Display Customization-Footnote-114045
-Ref: Display Customization-Footnote-214125
-Node: Files and Directories14252
-Node: New Viewers15973
-Node: Composing17097
-Node: Simple MML Example18058
-Node: MML Definition18701
-Node: Advanced MML Example22522
-Node: Encoding Customization25262
-Node: Charset Translation29698
-Node: Conversion32234
-Node: Flowed text33355
-Node: Interface Functions34440
-Node: Basic Functions39998
-Node: rfc204541042
-Node: rfc223141557
-Node: ietf-drums42846
-Node: rfc204743931
-Node: time-date47270
-Node: qp50714
-Node: base6451681
-Node: binhex52634
-Node: uudecode53030
-Node: yenc53386
-Node: rfc184353664
-Node: mailcap54273
-Node: Standards55197
-Node: GNU Free Documentation License56618
-Node: Index81768
+Node: Top1080
+Node: Decoding and Viewing3276
+Node: Dissection4057
+Node: Non-MIME4431
+Node: Handles6017
+Node: Display6869
+Node: Display Customization7590
+Ref: Display Customization-Footnote-114060
+Ref: Display Customization-Footnote-214140
+Node: Files and Directories14267
+Node: New Viewers15988
+Node: Composing17112
+Node: Simple MML Example18073
+Node: MML Definition18716
+Node: Advanced MML Example22537
+Node: Encoding Customization25277
+Node: Charset Translation29713
+Node: Conversion32249
+Node: Flowed text33370
+Node: Interface Functions34455
+Node: Basic Functions40013
+Node: rfc204541057
+Node: rfc223141572
+Node: ietf-drums42861
+Node: rfc204743946
+Node: time-date47285
+Node: qp50729
+Node: base6451696
+Node: binhex52649
+Node: uudecode53045
+Node: yenc53401
+Node: rfc184353679
+Node: mailcap54288
+Node: Standards55212
+Node: GNU Free Documentation License56633
+Node: Index81783
 
 End Tag Table
 

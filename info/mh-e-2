@@ -26,7 +26,7 @@ This is version 8.2 of `The MH-E Manual', last updated 2009-06-13.
           section entitled "GNU General Public License."
 
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs network features
 START-INFO-DIR-ENTRY
 * MH-E: (mh-e).                 Emacs interface to the MH mail system.
 END-INFO-DIR-ENTRY

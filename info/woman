@@ -19,7 +19,7 @@ Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
 * WoMan: (woman).               Browse UN*X Manual Pages "W.O. (without) Man".
 END-INFO-DIR-ENTRY
@@ -1871,35 +1871,35 @@ Concept Index
 
 
 Tag Table:
-Node: Top1073
-Node: Introduction3052
-Node: Background5570
-Node: Finding12827
-Node: Topic14383
-Node: Cache18768
-Node: Word at point20476
-Node: Filename21408
-Node: Automatic23658
-Node: Browsing25216
-Node: Fonts26442
-Node: Navigation27098
-Node: References27976
-Node: Changing29366
-Node: Convenience31374
-Node: Imenu32113
-Node: Customization32906
-Node: Interface Options34890
-Node: Formatting Options43589
-Node: Faces45139
-Node: Special symbols46418
-Node: Log47645
-Node: Technical48760
-Node: Bugs49471
-Node: Acknowledgements50234
-Node: GNU Free Documentation License52156
-Node: Command Index77325
-Node: Variable Index79310
-Node: Keystroke Index81939
-Node: Concept Index83694
+Node: Top1087
+Node: Introduction3066
+Node: Background5584
+Node: Finding12841
+Node: Topic14397
+Node: Cache18782
+Node: Word at point20490
+Node: Filename21422
+Node: Automatic23672
+Node: Browsing25230
+Node: Fonts26456
+Node: Navigation27112
+Node: References27990
+Node: Changing29380
+Node: Convenience31388
+Node: Imenu32127
+Node: Customization32920
+Node: Interface Options34904
+Node: Formatting Options43603
+Node: Faces45153
+Node: Special symbols46432
+Node: Log47659
+Node: Technical48774
+Node: Bugs49485
+Node: Acknowledgements50248
+Node: GNU Free Documentation License52170
+Node: Command Index77339
+Node: Variable Index79324
+Node: Keystroke Index81953
+Node: Concept Index83708
 
 End Tag Table

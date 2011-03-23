@@ -22,11 +22,11 @@
 # Where to find the source code.  $(srcdir) will be the man-aux
 # subdirectory of the source tree.  This is
 # set by the configure script's `--srcdir' option.
-srcdir=/Users/sinx/Factory/emacs-mac-port/doc/misc
-top_srcdir=/Users/sinx/Factory/emacs-mac-port
+srcdir=/Users/nix/Factory/emacs-23.3/doc/misc
+top_srcdir=/Users/nix/Factory/emacs-23.3
 
 # Tell make where to find source files; this is needed for the makefiles.
-VPATH=/Users/sinx/Factory/emacs-mac-port/doc/misc
+VPATH=/Users/nix/Factory/emacs-23.3/doc/misc
 
 ## Where the output files go.
 ## Note that the setfilename command in the .texi files assumes this.

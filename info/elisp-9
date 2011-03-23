@@ -1,8 +1,8 @@
-This is ../../info/elisp, produced by makeinfo version 4.8 from
+This is ../../info/elisp, produced by makeinfo version 4.13 from
 elisp.texi.
 
-   This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 23.2.94.
+This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
+corresponding to Emacs version 23.3.
 
    Copyright (C) 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1998, 1999,
 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
@@ -21,10 +21,161 @@ Free Software Foundation, Inc.
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION GNU Emacs Lisp
 START-INFO-DIR-ENTRY
 * Elisp: (elisp).       The Emacs Lisp Reference Manual.
 END-INFO-DIR-ENTRY
+
+
+File: elisp,  Node: Managing Overlays,  Next: Overlay Properties,  Up: Overlays
+
+38.9.1 Managing Overlays
+------------------------
+
+This section describes the functions to create, delete and move
+overlays, and to examine their contents.  Overlay changes are not
+recorded in the buffer's undo list, since the overlays are not part of
+the buffer's contents.
+
+ -- Function: overlayp object
+     This function returns `t' if OBJECT is an overlay.
+
+ -- Function: make-overlay start end &optional buffer front-advance
+          rear-advance
+     This function creates and returns an overlay that belongs to
+     BUFFER and ranges from START to END.  Both START and END must
+     specify buffer positions; they may be integers or markers.  If
+     BUFFER is omitted, the overlay is created in the current buffer.
+
+     The arguments FRONT-ADVANCE and REAR-ADVANCE specify the marker
+     insertion type for the start of the overlay and for the end of the
+     overlay, respectively.  *Note Marker Insertion Types::.  If they
+     are both `nil', the default, then the overlay extends to include
+     any text inserted at the beginning, but not text inserted at the
+     end.  If FRONT-ADVANCE is non-`nil', text inserted at the
+     beginning of the overlay is excluded from the overlay.  If
+     REAR-ADVANCE is non-`nil', text inserted at the end of the overlay
+     is included in the overlay.
+
+ -- Function: overlay-start overlay
+     This function returns the position at which OVERLAY starts, as an
+     integer.
+
+ -- Function: overlay-end overlay
+     This function returns the position at which OVERLAY ends, as an
+     integer.
+
+ -- Function: overlay-buffer overlay
+     This function returns the buffer that OVERLAY belongs to.  It
+     returns `nil' if OVERLAY has been deleted.
+
+ -- Function: delete-overlay overlay
+     This function deletes OVERLAY.  The overlay continues to exist as
+     a Lisp object, and its property list is unchanged, but it ceases
+     to be attached to the buffer it belonged to, and ceases to have
+     any effect on display.
+
+     A deleted overlay is not permanently disconnected.  You can give
+     it a position in a buffer again by calling `move-overlay'.
+
+ -- Function: move-overlay overlay start end &optional buffer
+     This function moves OVERLAY to BUFFER, and places its bounds at
+     START and END.  Both arguments START and END must specify buffer
+     positions; they may be integers or markers.
+
+     If BUFFER is omitted, OVERLAY stays in the same buffer it was
+     already associated with; if OVERLAY was deleted, it goes into the
+     current buffer.
+
+     The return value is OVERLAY.
+
+     This is the only valid way to change the endpoints of an overlay.
+     Do not try modifying the markers in the overlay by hand, as that
+     fails to update other vital data structures and can cause some
+     overlays to be "lost."
+
+ -- Function: remove-overlays &optional start end name value
+     This function removes all the overlays between START and END whose
+     property NAME has the value VALUE.  It can move the endpoints of
+     the overlays in the region, or split them.
+
+     If NAME is omitted or `nil', it means to delete all overlays in
+     the specified region.  If START and/or END are omitted or `nil',
+     that means the beginning and end of the buffer respectively.
+     Therefore, `(remove-overlays)' removes all the overlays in the
+     current buffer.
+
+ -- Function: copy-overlay overlay
+     This function returns a copy of OVERLAY.  The copy has the same
+     endpoints and properties as OVERLAY.  However, the marker
+     insertion type for the start of the overlay and for the end of the
+     overlay are set to their default values (*note Marker Insertion
+     Types::).
+
+   Here are some examples:
+
+     ;; Create an overlay.
+     (setq foo (make-overlay 1 10))
+          => #<overlay from 1 to 10 in display.texi>
+     (overlay-start foo)
+          => 1
+     (overlay-end foo)
+          => 10
+     (overlay-buffer foo)
+          => #<buffer display.texi>
+     ;; Give it a property we can check later.
+     (overlay-put foo 'happy t)
+          => t
+     ;; Verify the property is present.
+     (overlay-get foo 'happy)
+          => t
+     ;; Move the overlay.
+     (move-overlay foo 5 20)
+          => #<overlay from 5 to 20 in display.texi>
+     (overlay-start foo)
+          => 5
+     (overlay-end foo)
+          => 20
+     ;; Delete the overlay.
+     (delete-overlay foo)
+          => nil
+     ;; Verify it is deleted.
+     foo
+          => #<overlay in no buffer>
+     ;; A deleted overlay has no position.
+     (overlay-start foo)
+          => nil
+     (overlay-end foo)
+          => nil
+     (overlay-buffer foo)
+          => nil
+     ;; Undelete the overlay.
+     (move-overlay foo 1 20)
+          => #<overlay from 1 to 20 in display.texi>
+     ;; Verify the results.
+     (overlay-start foo)
+          => 1
+     (overlay-end foo)
+          => 20
+     (overlay-buffer foo)
+          => #<buffer display.texi>
+     ;; Moving and deleting the overlay does not change its properties.
+     (overlay-get foo 'happy)
+          => t
+
+   Emacs stores the overlays of each buffer in two lists, divided
+around an arbitrary "center position."  One list extends backwards
+through the buffer from that center position, and the other extends
+forwards from that center position.  The center position can be anywhere
+in the buffer.
+
+ -- Function: overlay-recenter pos
+     This function recenters the overlays of the current buffer around
+     position POS.  That makes overlay lookup faster for positions near
+     POS, but slower for positions far away from POS.
+
+   A loop that scans the buffer forwards, creating overlays, can run
+faster if you do `(overlay-recenter (point-max))' first.
 
 
 File: elisp,  Node: Overlay Properties,  Next: Finding Overlays,  Prev: Managing Overlays,  Up: Overlays
@@ -136,7 +287,7 @@ them:
 `help-echo'
      If an overlay has a `help-echo' property, then when you move the
      mouse onto the text in the overlay, Emacs displays a help string
-     in the echo area, or in the tooltip window.  For details see *Note
+     in the echo area, or in the tooltip window.  For details see *note
      Text help-echo::.
 
 `modification-hooks'
@@ -310,7 +461,7 @@ File: elisp,  Node: Width,  Next: Line Height,  Prev: Overlays,  Up: Display
 ===========
 
 Since not all characters have the same width, these functions let you
-check the width of a character.  *Note Primitive Indent::, and *Note
+check the width of a character.  *Note Primitive Indent::, and *note
 Screen Lines::, for related functions.
 
  -- Function: char-width char
@@ -563,9 +714,8 @@ directly is preferable.
                The kind of window system the frame uses--either
                `graphic' (any graphics-capable display), `x', `pc' (for
                the MS-DOS console), `w32' (for MS Windows 9X/NT/2K/XP),
-               `mac' (for the Mac OS X display), or `tty' (a
-               non-graphics-capable display).  *Note window-system:
-               Window Systems.
+               or `tty' (a non-graphics-capable display).  *Note
+               window-system: Window Systems.
 
          `class'
                What kinds of colors the frame supports--either `color',
@@ -673,7 +823,7 @@ attribute is ignored.
 
      The value can also be a floating point number or a function, which
      specifies the height relative to an "underlying face" (i.e., a
-     face that has a lower priority in the list described in *Note
+     face that has a lower priority in the list described in *note
      Displaying Faces::).  If the value is a floating point number,
      that specifies the amount by which to scale the height of the
      underlying face.  If the value is a function, that function is
@@ -3316,9 +3466,9 @@ called `insert-...button'.
 
    The button-creation functions all take the `&rest' argument
 PROPERTIES, which should be a sequence of PROPERTY VALUE pairs,
-specifying properties to add to the button; see *Note Button
+specifying properties to add to the button; see *note Button
 Properties::.  In addition, the keyword argument `:type' may be used to
-specify a button-type from which to inherit other properties; see *Note
+specify a button-type from which to inherit other properties; see *note
 Button Types::.  Any properties not explicitly specified during
 creation will be inherited from the button's type (if the type defines
 such a property).
@@ -3472,8 +3622,8 @@ File: elisp,  Node: Abstract Display,  Next: Blinking,  Prev: Buttons,  Up: Disp
 
 The Ewoc package constructs buffer text that represents a structure of
 Lisp objects, and updates the text to follow changes in that structure.
-This is like the "view" component in the "model/view/controller"
-design paradigm.
+This is like the "view" component in the "model/view/controller" design
+paradigm.
 
    An "ewoc" is a structure that organizes information required to
 construct buffer text that represents certain Lisp data.  The buffer
@@ -3919,9 +4069,9 @@ A display table is actually a char-table (*note Char-Tables::) with
 
    The ordinary elements of the display table are indexed by character
 codes; the element at index C says how to display the character code C.
-The value should be `nil' or a vector of the glyphs to be output
-(*note Glyphs::).  `nil' says to display the character C according to
-the usual display conventions (*note Usual Display::).
+The value should be `nil' or a vector of the glyphs to be output (*note
+Glyphs::).  `nil' says to display the character C according to the
+usual display conventions (*note Usual Display::).
 
    *Warning:* if you use the display table to change the display of
 newline characters, the whole buffer will be displayed as one long
@@ -4146,9 +4296,6 @@ concerned; the individual Emacs windows are not known to X at all.
     `w32'
           Emacs is displaying the frame using native MS-Windows GUI.
 
-    `mac'
-          Emacs is displaying the frame using native Mac OS X GUI.
-
     `ns'
           Emacs is displaying the frame using the Nextstep interface
           (used on GNUstep and Mac OS X).
@@ -4178,7 +4325,7 @@ predicates or boolean flag variables, if you want to write code that
 works differently on text terminals and graphic displays.  That is
 because `window-system' is not a good indicator of Emacs capabilities
 on a given display type.  Instead, use `display-graphic-p' or any of
-the other `display-*-p' predicates described in *Note Display Feature
+the other `display-*-p' predicates described in *note Display Feature
 Testing::.
 
  -- Variable: window-setup-hook
@@ -4540,7 +4687,7 @@ initializations for terminals that do not have their own libraries.
      You can use `term-setup-hook' to override the definitions made by a
      terminal-specific file.
 
-   See `window-setup-hook' in *Note Window Systems::, for a related
+   See `window-setup-hook' in *note Window Systems::, for a related
 feature.
 
 
@@ -4601,7 +4748,7 @@ and how you can customize them.
      arguments is in `command-line-args'.)
 
      The command-line arguments are parsed by the `command-line-1'
-     function in the `startup.el' file.  See also *Note Command Line
+     function in the `startup.el' file.  See also *note Command Line
      Arguments for Emacs Invocation: (emacs)Emacs Invocation.
 
  -- Variable: command-line-args
@@ -4666,7 +4813,7 @@ killing Emacs is `kill-emacs'.
 
      If EXIT-DATA is an integer, then it is used as the exit status of
      the Emacs process.  (This is useful primarily in batch operation;
-     see *Note Batch Mode::.)
+     see *note Batch Mode::.)
 
      If EXIT-DATA is a string, its contents are stuffed into the
      terminal input buffer so that the shell (or whatever program next
@@ -4973,7 +5120,7 @@ useful for constructing frame titles (*note Frame Titles::).
  -- Variable: initial-environment
      This variable holds the list of environment variables Emacs
      inherited from its parent process.  It is computed during startup,
-     see *Note Startup Summary::.
+     see *note Startup Summary::.
 
  -- Variable: path-separator
      This variable holds a string which says which character separates
@@ -5537,7 +5684,7 @@ elapsed and processor time, used by the Emacs process.
      "uptime"--the elapsed wall-clock time this instance of Emacs is
      running.  The string is formatted by `format-seconds' according to
      the optional argument FORMAT.  For the available format
-     descriptors, see *Note format-seconds: Time Parsing.  If FORMAT is
+     descriptors, see *note format-seconds: Time Parsing.  If FORMAT is
      `nil' or omitted, it defaults to `"%Y, %D, %H, %M, %z%S"'.
 
      When called interactively, it prints the uptime in the echo area.
@@ -5780,8 +5927,8 @@ set up to repeat will subsequently run another time, one by one.
  -- Function: current-idle-time
      If Emacs is idle, this function returns the length of time Emacs
      has been idle, as a list of three integers: `(HIGH LOW MICROSEC)'.
-     The integers HIGH and LOW combine to give the number of seconds
-     of idleness, which is HIGH * 2**16 + LOW.
+     The integers HIGH and LOW combine to give the number of seconds of
+     idleness, which is HIGH * 2**16 + LOW.
 
      The third element, MICROSEC, gives the microseconds since the
      start of the current second (or 0 for systems that return time with
@@ -5836,7 +5983,7 @@ File: elisp,  Node: Terminal Input,  Next: Terminal Output,  Prev: Idle Timers, 
 ====================
 
 This section describes functions and variables for recording or
-manipulating terminal input.  See *Note Display::, for related
+manipulating terminal input.  See *note Display::, for related
 functions.
 
 * Menu:
@@ -5999,7 +6146,7 @@ than optimal.  To fix the problem, set `baud-rate'.
      You close the termscript file by calling this function with an
      argument of `nil'.
 
-     See also `open-dribble-file' in *Note Recording Input::.
+     See also `open-dribble-file' in *note Recording Input::.
 
           (open-termscript "../junk/termscript")
                => nil
@@ -6181,7 +6328,7 @@ Appendix A Emacs 22 Antinews
 
 For those users who live backwards in time, here is information about
 downgrading to Emacs version 22.3.  We hope you will enjoy the greater
-simplicity that results from the absence of many Emacs 23.2.94 features.
+simplicity that results from the absence of many Emacs 23.3 features.
 
 A.1 Old Lisp Features in Emacs 22
 =================================

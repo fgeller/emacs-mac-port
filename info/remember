@@ -18,7 +18,7 @@ Software Foundation, Inc.
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
 * Remember: (remember).         Simple information manager for Emacs.
 END-INFO-DIR-ENTRY
@@ -884,20 +884,20 @@ Index
 
 
 Tag Table:
-Node: Top1014
-Node: Preface2795
-Node: Introduction3140
-Node: Installation5487
-Node: Implementation5835
-Node: Quick Start8158
-Node: Function Reference10407
-Node: Keystrokes11590
-Node: Backends12030
-Node: Text File12447
-Node: Diary12865
-Node: Mailbox13263
-Node: Org13694
-Node: GNU Free Documentation License13919
-Node: Concept Index39092
+Node: Top1028
+Node: Preface2809
+Node: Introduction3154
+Node: Installation5501
+Node: Implementation5849
+Node: Quick Start8172
+Node: Function Reference10421
+Node: Keystrokes11604
+Node: Backends12044
+Node: Text File12461
+Node: Diary12879
+Node: Mailbox13277
+Node: Org13708
+Node: GNU Free Documentation License13933
+Node: Concept Index39106
 
 End Tag Table

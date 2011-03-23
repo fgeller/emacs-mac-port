@@ -1,7 +1,7 @@
-This is ../../info/tramp, produced by makeinfo version 4.8 from
+This is ../../info/tramp, produced by makeinfo version 4.13 from
 tramp.texi.
 
-   Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007,
+Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007,
 2008, 2009, 2010, 2011 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
@@ -16,10 +16,10 @@ tramp.texi.
      and modify this GNU manual.  Buying copies from the FSF supports
      it in developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION GNU Emacs
+INFO-DIR-SECTION Emacs network features
 START-INFO-DIR-ENTRY
 * TRAMP: (tramp).               Transparent Remote Access, Multiple Protocol
-                                GNU Emacs remote file access via rsh and rcp.
+                                Emacs remote file access via rsh and rcp.
 END-INFO-DIR-ENTRY
 
 
@@ -29,7 +29,7 @@ TRAMP version 2.1.20 User Manual
 ********************************
 
 This file documents TRAMP version 2.1.20, a remote file editing package
-for GNU Emacs.
+for Emacs.
 
    TRAMP stands for `Transparent Remote (file) Access, Multiple
 Protocol'.  This package provides remote file editing, similar to
@@ -114,7 +114,7 @@ Using TRAMP
 * Filename Syntax::             TRAMP filename conventions.
 * Alternative Syntax::          URL-like filename syntax.
 * Filename completion::         Filename completion.
-* Remote processes::            Integration with other GNU Emacs packages.
+* Remote processes::            Integration with other Emacs packages.
 * Cleanup remote connections::  Cleanup remote connections.
 
 How file names, directories and localnames are mangled and managed
@@ -129,10 +129,10 @@ File: tramp,  Node: Overview,  Next: Obtaining Tramp,  Prev: Top,  Up: Top
 1 An overview of TRAMP
 **********************
 
-After the installation of TRAMP into your GNU Emacs, you will be able
-to access files on remote machines as though they were local.  Access
-to the remote file system for editing files, version control, and
-`dired' are transparently enabled.
+After the installation of TRAMP into your Emacs, you will be able to
+access files on remote machines as though they were local.  Access to
+the remote file system for editing files, version control, and `dired'
+are transparently enabled.
 
    Your access to the remote machine can be with the `rsh', `rlogin',
 `telnet' programs or with any similar connection method.  This
@@ -182,7 +182,7 @@ happens:
    * TRAMP discovers that it needs a connection to the host.  So it
      invokes `telnet HOST' or `rsh HOST -l USER' or a similar tool to
      connect to the remote host.  Communication with this process
-     happens through an GNU Emacs buffer, that is, the output from the
+     happens through an Emacs buffer, that is, the output from the
      remote end goes into a buffer.
 
    * The remote host may prompt for a login name (for `telnet').  The
@@ -272,9 +272,9 @@ File: tramp,  Node: Obtaining Tramp,  Next: History,  Prev: Overview,  Up: Top
 TRAMP is freely available on the Internet and the latest release may be
 downloaded from `ftp://ftp.gnu.org/gnu/tramp/'.  This release includes
 the full documentation and code for TRAMP, suitable for installation.
-But GNU Emacs (22 or later) includes TRAMP already, and there is a
-TRAMP package for XEmacs, as well.  So maybe it is easier to just use
-those.  But if you want the bleeding edge, read on......
+But Emacs (22 or later) includes TRAMP already, and there is a TRAMP
+package for XEmacs, as well.  So maybe it is easier to just use those.
+But if you want the bleeding edge, read on......
 
    For the especially brave, TRAMP is available from CVS.  The CVS
 version is the latest version of the code and may contain incomplete
@@ -330,10 +330,10 @@ gateways exists since April 2007.  GVFS integration started in February
 2009.
 
    In December 2001, TRAMP has been added to the XEmacs package
-repository.  Being part of the GNU Emacs repository happened in June
-2002, the first release including TRAMP was GNU Emacs 22.1.
+repository.  Being part of the Emacs repository happened in June 2002,
+the first release including TRAMP was Emacs 22.1.
 
-   TRAMP is also a GNU/Linux Debian package since February 2001.
+   TRAMP is also a Debian GNU/Linux package since February 2001.
 
 
 File: tramp,  Node: Configuration,  Next: Usage,  Prev: History,  Up: Top
@@ -419,7 +419,7 @@ startup may drown out the improvement in file transfer times.
    External methods should be configured such a way that they don't
 require a password (with `ssh-agent', or such alike).  Modern `scp'
 implementations offer options to reuse existing `ssh' connections, see
-method `scpc'.  If it isn't possible, you should consider *Note
+method `scpc'.  If it isn't possible, you should consider *note
 Password handling::, otherwise you will be prompted for a password
 every copy action.
 
@@ -438,13 +438,13 @@ hosts, see below.)
 
    These methods depend on the existence of a suitable encoding and
 decoding command on remote machine.  Locally, TRAMP may be able to use
-features of GNU Emacs to decode and encode the files or it may require
+features of Emacs to decode and encode the files or it may require
 access to external commands to perform that task.
 
    TRAMP checks the availability and usability of commands like
 `mimencode' (part of the `metamail' package) or `uuencode' on the
 remote host.  The first reliable command will be used.  The search path
-can be customized, see *Note Remote Programs::.
+can be customized, see *note Remote Programs::.
 
    If both commands aren't available on the remote host, TRAMP
 transfers a small piece of Perl code to the remote host, and tries to
@@ -493,7 +493,7 @@ speed for large text files.
      uses the `su' program to allow you to edit files as another user.
      That means, the specified host name in the file name must be either
      `localhost' or the host name as returned by the function
-     `(system-name)'.  For an exception of this rule see *Note
+     `(system-name)'.  For an exception of this rule see *note
      Multi-hops::.
 
 `sudo'
@@ -522,7 +522,7 @@ speed for large text files.
      without such questions.
 
      This is also useful for Windows users where `ssh', when invoked
-     from an GNU Emacs buffer, tells them that it is not allocating a
+     from an Emacs buffer, tells them that it is not allocating a
      pseudo tty.  When this happens, the login shell is wont to not
      print any shell prompt, which confuses TRAMP mightily.
 
@@ -657,7 +657,7 @@ fair trade-off between both approaches.
      TRAMP a more-or-less `standard' login shell to work with.
 
      This is also useful for Windows users where `ssh', when invoked
-     from an GNU Emacs buffer, tells them that it is not allocating a
+     from an Emacs buffer, tells them that it is not allocating a
      pseudo tty.  When this happens, the login shell is wont to not
      print any shell prompt, which confuses TRAMP mightily.
 
@@ -737,7 +737,7 @@ fair trade-off between both approaches.
 
      Since authorization is done on share level, you will be prompted
      always for a password if you access another share on the same host.
-     This can be suppressed by *Note Password handling::.
+     This can be suppressed by *note Password handling::.
 
      MS Windows uses for authorization both a user name and a domain
      name.  Because of this, the TRAMP syntax has been extended: you can
@@ -763,10 +763,10 @@ fair trade-off between both approaches.
 
      The `smb' method supports the `-p' argument.
 
-     *Please note:* If GNU Emacs runs locally under MS Windows, this
-     method isn't available.  Instead of, you can use UNC file names
-     like `//melancholia/daniel$$/.emacs'.  The only disadvantage is
-     that there's no possibility to specify another user name.
+     *Please note:* If Emacs runs locally under MS Windows, this method
+     isn't available.  Instead of, you can use UNC file names like
+     `//melancholia/daniel$$/.emacs'.  The only disadvantage is that
+     there's no possibility to specify another user name.
 
 `imap'
      Accessing an IMAP mailbox is intended to save files there as
@@ -795,7 +795,7 @@ is mounted locally through FUSE.  TRAMP uses internally this local
 mounted directory.
 
    The communication with GVFS is implemented via D-Bus messages.
-Therefore, your GNU Emacs must have D-Bus integration, *note D-Bus:
+Therefore, your Emacs must have D-Bus integration, *note D-Bus:
 (dbus)Top.
 
 `dav'
@@ -1003,7 +1003,7 @@ File: tramp,  Node: Default Host,  Next: Multi-hops,  Prev: Default User,  Up: C
 Finally, it is even possible to omit the host name part of a TRAMP file
 name.  This case, the value of the variable `tramp-default-host' is
 used.  Per default, it is initialized with the host name your local
-GNU Emacs is running.
+Emacs is running.
 
    If you, for example, use TRAMP mainly to contact the host `target'
 as user `john', you can specify:
@@ -1270,8 +1270,8 @@ the same user name and host name, independently of the connection
 method.
 
    Passwords are not saved permanently, that means the password caching
-is limited to the lifetime of your GNU Emacs session.  You can
-influence the lifetime of password caching by customizing the variable
+is limited to the lifetime of your Emacs session.  You can influence
+the lifetime of password caching by customizing the variable
 `password-cache-expiry'.  The value is the number of seconds how long
 passwords are cached.  Setting it to `nil' disables the expiration.
 
@@ -1296,8 +1296,8 @@ information are written.  Its default value is `~/.emacs.d/tramp'.  It
 is recommended to choose a local file name.
 
    TRAMP reads this file during startup, and writes it when exiting
-GNU Emacs.  You can simply remove this file if TRAMP shall be urged to
-recompute these information next GNU Emacs startup time.
+Emacs.  You can simply remove this file if TRAMP shall be urged to
+recompute these information next Emacs startup time.
 
    Using such persistent information can be disabled by setting
 `tramp-persistency-file-name' to `nil'.
@@ -1329,8 +1329,8 @@ TRAMP depends on a number of programs on the remote host in order to
 function, including `ls', `test', `find' and `cat'.
 
    In addition to these required tools, there are various tools that
-may be required based on the connection method.  See *Note Inline
-methods:: and *Note External methods:: for details on these.
+may be required based on the connection method.  See *note Inline
+methods:: and *note External methods:: for details on these.
 
    Certain other tools, such as `perl' (or `perl5') and `grep' will be
 used if they can be found.  When they are available, they are used to
@@ -1345,8 +1345,8 @@ improve the performance and accuracy of remote file access.
      machines.  The symbol `tramp-default-remote-path' is a place
      holder, it is replaced by the list of directories received via the
      command `getconf PATH' on your remote machine.  For example, on
-     GNU Debian this is `/bin:/usr/bin', whereas on Solaris this is
-     `/usr/xpg4/bin:/usr/ccs/bin:/usr/bin:/opt/SUNWspro/bin'.  It is
+     Debian GNU/Linux this is `/bin:/usr/bin', whereas on Solaris this
+     is `/usr/xpg4/bin:/usr/ccs/bin:/usr/bin:/opt/SUNWspro/bin'.  It is
      recommended to apply this symbol on top of `tramp-remote-path'.
 
      It is possible, however, that your local (or remote ;) system
@@ -1376,9 +1376,9 @@ improve the performance and accuracy of remote file access.
 
    TRAMP caches several information, like the Perl binary location.
 The changed remote search path wouldn't affect these settings.  In
-order to force TRAMP to recompute these values, you must exit GNU
-Emacs, remove your persistency file (*note Connection caching::), and
-restart GNU Emacs.
+order to force TRAMP to recompute these values, you must exit Emacs,
+remove your persistency file (*note Connection caching::), and restart
+Emacs.
 
 
 File: tramp,  Node: Remote shell setup,  Next: Windows setup hints,  Prev: Remote Programs,  Up: Configuration
@@ -1386,7 +1386,7 @@ File: tramp,  Node: Remote shell setup,  Next: Windows setup hints,  Prev: Remot
 4.15 Remote shell setup hints
 =============================
 
-As explained in the *Note Overview:: section, TRAMP connects to the
+As explained in the *note Overview:: section, TRAMP connects to the
 remote host and talks to the shell it finds there.  Of course, when you
 log in, the shell executes its init files.  Suppose your init file
 requires you to enter the birth date of your mother; clearly TRAMP does
@@ -1558,7 +1558,7 @@ File: tramp,  Node: Auto-save and Backup,  Prev: Windows setup hints,  Up: Confi
 4.16 Auto-save and Backup configuration
 =======================================
 
-Normally, GNU Emacs writes backup files to the same directory as the
+Normally, Emacs writes backup files to the same directory as the
 original files, but this behavior can be changed via the variable
 `backup-directory-alist'.  In connection with TRAMP, this can have
 unexpected side effects.  Suppose that you specify that all backups
@@ -1608,10 +1608,10 @@ The backup file name of `/su:root@localhost:/etc/secretfile' would be
 an auto-saved file should go.  By default, it is initialized for TRAMP
 files to the local temporary directory.
 
-   On some versions of GNU Emacs, namely the version built for Debian
+   On some versions of Emacs, namely the version built for Debian
 GNU/Linux, the variable `auto-save-file-name-transforms' contains the
-directory where GNU Emacs was built.  A workaround is to manually set
-the variable to a sane value.
+directory where Emacs was built.  A workaround is to manually set the
+variable to a sane value.
 
    If auto-saved files should go into the same directory as the original
 files, `auto-save-file-name-transforms' should be set to `nil'.
@@ -1628,7 +1628,7 @@ File: tramp,  Node: Windows setup hints,  Next: Auto-save and Backup,  Prev: Rem
 This section needs a lot of work!  Please help.
 
    The recent Cygwin installation of `ssh' works only with a Cygwinized
-GNU Emacs.  You can check it by typing `M-x eshell', and starting `ssh
+Emacs.  You can check it by typing `M-x eshell', and starting `ssh
 test.machine'.  The problem is evident if you see a message like this:
 
      Pseudo-terminal will not be allocated because stdin is not a terminal.
@@ -1638,7 +1638,7 @@ selecting `sshx' as the connection method.  You can find information
 about setting up Cygwin in their FAQ at `http://cygwin.com/faq/'.
 
    If you wish to use the `scpx' connection method, then you might have
-the problem that GNU Emacs calls `scp' with a Windows filename such as
+the problem that Emacs calls `scp' with a Windows filename such as
 `c:/foo'.  The Cygwin version of `scp' does not know about Windows
 filenames and interprets this as a remote filename on the host `c'.
 
@@ -1648,10 +1648,10 @@ converts the Windows filename to a Cygwinized filename.
    If you want to use either `ssh' based method on Windows, then you
 might encounter problems with `ssh-agent'.  Using this program, you can
 avoid typing the pass-phrase every time you log in.  However, if you
-start GNU Emacs from a desktop shortcut, then the environment variable
-`SSH_AUTH_SOCK' is not set and so GNU Emacs and thus TRAMP and thus
-`ssh' and `scp' started from TRAMP cannot communicate with `ssh-agent'.
-It works better to start GNU Emacs from the shell.
+start Emacs from a desktop shortcut, then the environment variable
+`SSH_AUTH_SOCK' is not set and so Emacs and thus TRAMP and thus `ssh'
+and `scp' started from TRAMP cannot communicate with `ssh-agent'.  It
+works better to start Emacs from the shell.
 
    If anyone knows how to start `ssh-agent' under Windows in such a way
 that desktop shortcuts can profit, please holler.  I don't really know
@@ -1671,21 +1671,21 @@ in to as though they were local.
 details of the system to connect to.  This is similar to the syntax used
 by the Ange-FTP package.
 
-   Something that might happen which surprises you is that GNU Emacs
+   Something that might happen which surprises you is that Emacs
 remembers all your keystrokes, so if you see a password prompt from
-GNU Emacs, say, and hit `<RET>' twice instead of once, then the second
-keystroke will be processed by GNU Emacs after TRAMP has done its
-thing.  Why, this type-ahead is normal behavior, you say.  Right you
-are, but be aware that opening a remote file might take quite a while,
-maybe half a minute when a connection needs to be opened.  Maybe after
-half a minute you have already forgotten that you hit that key!
+Emacs, say, and hit `<RET>' twice instead of once, then the second
+keystroke will be processed by Emacs after TRAMP has done its thing.
+Why, this type-ahead is normal behavior, you say.  Right you are, but
+be aware that opening a remote file might take quite a while, maybe
+half a minute when a connection needs to be opened.  Maybe after half a
+minute you have already forgotten that you hit that key!
 
 * Menu:
 
 * Filename Syntax::             TRAMP filename conventions.
 * Alternative Syntax::          URL-like filename syntax.
 * Filename completion::         Filename completion.
-* Remote processes::            Integration with other GNU Emacs packages.
+* Remote processes::            Integration with other Emacs packages.
 * Cleanup remote connections::  Cleanup remote connections.
 
 
@@ -1840,7 +1840,7 @@ Example:
      C-x C-f /telnet:melancholia:/usr/local/bin///etc <TAB>
           -| /etc
 
-   A remote directory might have changed its contents out of GNU Emacs
+   A remote directory might have changed its contents out of Emacs
 control, for example by creation or deletion of files by other
 processes.  Therefore, during filename completion the remote directory
 contents is reread regularly in order to detect such changes, which
@@ -1855,15 +1855,15 @@ would be invisible otherwise (*note Connection caching::).
 
 File: tramp,  Node: Remote processes,  Next: Cleanup remote connections,  Prev: Filename completion,  Up: Usage
 
-5.4 Integration with other GNU Emacs packages.
-==============================================
+5.4 Integration with other Emacs packages.
+==========================================
 
 TRAMP supports running processes on a remote host.  This allows to
-exploit GNU Emacs packages without modification for remote file names.
-It does not work for the `ftp' and `smb' methods.  Association of a
-pty, as specified in `start-file-process', is not supported.
+exploit Emacs packages without modification for remote file names.  It
+does not work for the `ftp' and `smb' methods.  Association of a pty,
+as specified in `start-file-process', is not supported.
 
-   If the remote host is mounted via GVFS (see *Note GVFS based
+   If the remote host is mounted via GVFS (see *note GVFS based
 methods::), the remote filesystem is mounted locally.  Therefore, there
 are no remote processes; all processes run still locally on your
 machine with an adapted `default-directory'.  This section does not
@@ -1877,7 +1877,7 @@ packages is planned, any help for this is welcome!
 
    When your program is not found in the default search path TRAMP sets
 on the remote machine, you should either use an absolute path, or
-extend `tramp-remote-path' (see *Note Remote Programs::):
+extend `tramp-remote-path' (see *note Remote Programs::):
 
      (add-to-list 'tramp-remote-path "~/bin")
      (add-to-list 'tramp-remote-path "/appli/pub/bin")
@@ -1904,8 +1904,8 @@ in your `.emacs':
        (setenv "HISTORY" nil)
        (setq tramp-remote-process-environment process-environment))
 
-   If you use other GNU Emacs packages which do not run out-of-the-box
-on a remote host, please let us know.  We will try to integrate them as
+   If you use other Emacs packages which do not run out-of-the-box on a
+remote host, please let us know.  We will try to integrate them as
 well.  *Note Bug Reports::.
 
 5.4.1 Running remote programs that create local X11 windows
@@ -1955,7 +1955,7 @@ you have started `eshell', you could perform commands like this:
      #<buffer shadow>
      /sudo:root@host:/etc $
 
-   Since GNU Emacs 23.2, `eshell' has also an own implementation of the
+   Since Emacs 23.2, `eshell' has also an own implementation of the
 `su' and `sudo' commands.  Both commands change the default directory
 of the `*eshell*' buffer to the value related to the user the command
 has switched to.  This works even on remote hosts, adding silently a
@@ -1977,7 +1977,7 @@ corresponding entry to the variable `tramp-default-proxies-alist'
 -----------------------------------------
 
 `gud.el' offers an unified interface to several symbolic debuggers
-(*Note Debuggers: (emacs)Debuggers.).  With TRAMP, it is possible to
+(*note Debuggers: (emacs)Debuggers.).  With TRAMP, it is possible to
 debug programs on remote hosts.  You can call `gdb' with a remote file
 name:
 
@@ -2091,13 +2091,13 @@ File: tramp,  Node: Frequently Asked Questions,  Next: Function Index,  Prev: Bu
 
    * Which systems does it work on?
 
-     The package has been used successfully on GNU Emacs 22, GNU Emacs
-     23, XEmacs 21 (starting with 21.4), and SXEmacs 22.
+     The package has been used successfully on Emacs 22, Emacs 23,
+     XEmacs 21 (starting with 21.4), and SXEmacs 22.
 
      The package was intended to work on Unix, and it really expects a
      Unix-like system on the remote end (except the `smb' and `imap'
      methods), but some people seemed to have some success getting it
-     to work on MS Windows XP/Vista/7 GNU Emacs.
+     to work on MS Windows XP/Vista/7 Emacs.
 
    * How could I speed up TRAMP?
 
@@ -2243,8 +2243,7 @@ File: tramp,  Node: Frequently Asked Questions,  Next: Function Index,  Prev: Bu
    * How can I get notified when TRAMP file transfers are complete?
 
      The following snippet can be put in your `~/.emacs' file.  It
-     makes GNU Emacs beep after reading from or writing to the remote
-     host.
+     makes Emacs beep after reading from or writing to the remote host.
 
           (defadvice tramp-handle-write-region
             (after tramp-write-beep-advice activate)
@@ -2268,8 +2267,8 @@ File: tramp,  Node: Frequently Asked Questions,  Next: Function Index,  Prev: Bu
 
      When you are working with `root' privileges, it might be useful to
      get an indication in the buffer's modeline.  The following code,
-     tested with GNU Emacs 22.1, does the job.  You should put it into
-     your `~/.emacs':
+     tested with Emacs 22.1, does the job.  You should put it into your
+     `~/.emacs':
 
           (defun my-mode-line-function ()
             (when (string-match "^/su\\(do\\)?:" default-directory)
@@ -2281,8 +2280,8 @@ File: tramp,  Node: Frequently Asked Questions,  Next: Function Index,  Prev: Bu
 
    * I'ld like to see a host indication in the mode line when I'm remote
 
-     The following code has been tested with GNU Emacs 22.1.  You
-     should put it into your `~/.emacs':
+     The following code has been tested with Emacs 22.1.  You should
+     put it into your `~/.emacs':
 
           (defconst my-mode-line-buffer-identification
             (list
@@ -2308,7 +2307,7 @@ File: tramp,  Node: Frequently Asked Questions,  Next: Function Index,  Prev: Bu
                mode-line-buffer-identification
                my-mode-line-buffer-identification)))
 
-     Since GNU Emacs 23.1, the mode line contains an indication if
+     Since Emacs 23.1, the mode line contains an indication if
      `default-directory' for the current buffer is on a remote host.
      The corresponding tooltip includes the name of that host.  If you
      still want the host name as part of the mode line, you can use the
@@ -2325,8 +2324,8 @@ File: tramp,  Node: Frequently Asked Questions,  Next: Function Index,  Prev: Bu
    * My remote host does not understand default directory listing
      options
 
-     GNU Emacs computes the `dired' options depending on the local host
-     you are working.  If your `ls' command on the remote host does not
+     Emacs computes the `dired' options depending on the local host you
+     are working.  If your `ls' command on the remote host does not
      understand those options, you can change them like this:
 
           (add-hook
@@ -2393,8 +2392,8 @@ File: tramp,  Node: Frequently Asked Questions,  Next: Function Index,  Prev: Bu
        3. Use environment variables:
 
           File names typed in the minibuffer can be expanded by
-          environment variables.  You can set them outside GNU Emacs,
-          or even with Lisp:
+          environment variables.  You can set them outside Emacs, or
+          even with Lisp:
 
                (setenv "xy" "/ssh:news@news.my.domain:/opt/news/etc/")
 
@@ -2405,8 +2404,8 @@ File: tramp,  Node: Frequently Asked Questions,  Next: Function Index,  Prev: Bu
 
        4. Define own keys:
 
-          You can define your own key sequences in GNU Emacs, which can
-          be used instead of `C-x C-f':
+          You can define your own key sequences in Emacs, which can be
+          used instead of `C-x C-f':
 
                (global-set-key
                 [(control x) (control y)]
@@ -2532,7 +2531,7 @@ File: tramp,  Node: Frequently Asked Questions,  Next: Function Index,  Prev: Bu
      I would like to thank all TRAMP users, who have contributed to the
      different recipes!
 
-   * How can I use TRAMP to connect to a remote GNU Emacs session?
+   * How can I use TRAMP to connect to a remote Emacs session?
 
      You can configure Emacs Client doing this.  *Note Emacs Server:
      (emacs)Emacs Server.
@@ -2698,11 +2697,11 @@ for analysing problems; sending a TRAMP bug report should be done with
 `tramp-verbose' set to a verbosity level of at least 6 (*note Bug
 Reports::).
 
-   The debug buffer is in *Note Outline Mode: (emacs)Outline Mode.
+   The debug buffer is in *note Outline Mode: (emacs)Outline Mode.
 That means, you can change the level of messages to be viewed.  If you
 want, for example, see only messages up to verbosity level 5, you must
 enter `C-u 6 C-c C-q'.  Other keys for navigating are described in
-*Note Outline Visibility: (emacs)Outline Visibility.
+*note Outline Visibility: (emacs)Outline Visibility.
 
    TRAMP errors are handled internally in order to raise the verbosity
 level 1 messages.  When you want to get a Lisp backtrace in case of an
@@ -2751,9 +2750,9 @@ File: tramp,  Node: Issues,  Next: GNU Free Documentation License,  Prev: Traces
      But I have decided that this is too fragile to reliably work, so
      on some systems you'll have to do without the uuencode methods.
 
-   * The TRAMP filename syntax differs between GNU Emacs and XEmacs.
+   * The TRAMP filename syntax differs between Emacs and XEmacs.
 
-     The GNU Emacs maintainers wish to use a unified filename syntax for
+     The Emacs maintainers wish to use a unified filename syntax for
      Ange-FTP and TRAMP so that users don't have to learn a new syntax.
      It is sufficient to learn some extensions to the old syntax.
 
@@ -3280,7 +3279,7 @@ Function Index
 * tramp-parse-rhosts:                    Customizing Completion.
                                                                (line 41)
 * tramp-parse-shostkeys:                 Customizing Completion.
-                                                               (line 60)
+                                                               (line 55)
 * tramp-parse-shosts:                    Customizing Completion.
                                                                (line 46)
 * tramp-set-completion-function:         Customizing Completion.
@@ -3317,7 +3316,7 @@ Variable Index
 * tramp-own-remote-path:                 Remote Programs.     (line  17)
 * tramp-password-prompt-regexp:          Remote shell setup.  (line  60)
 * tramp-persistency-file-name:           Connection caching.  (line   6)
-* tramp-remote-path:                     Remote Programs.     (line  18)
+* tramp-remote-path:                     Remote Programs.     (line  17)
 * tramp-shell-prompt-pattern:            Remote shell setup.  (line  49)
 * tramp-terminal-type:                   Remote shell setup.  (line  98)
 * tramp-wrong-passwd-regexp:             Remote shell setup.  (line  60)
@@ -3388,8 +3387,8 @@ Concept Index
 * how it works:                          Overview.            (line  48)
 * imap method:                           External methods.    (line 202)
 * imaps method:                          External methods.    (line 202)
-* inline methods <1>:                    Connection types.    (line  16)
-* inline methods:                        Inline methods.      (line   6)
+* inline methods <1>:                    Inline methods.      (line   6)
+* inline methods:                        Connection types.    (line  16)
 * Kerberos (with krlogin method):        Inline methods.      (line 106)
 * krlogin method:                        Inline methods.      (line 106)
 * method dav:                            GVFS based methods.  (line  16)
@@ -3481,8 +3480,7 @@ Concept Index
 * ssh (with scpx method):                External methods.    (line  81)
 * ssh (with sftp method):                External methods.    (line  56)
 * ssh method:                            Inline methods.      (line  40)
-* SSH_AUTH_SOCK and GNU Emacs on Windows: Windows setup hints.
-                                                              (line  26)
+* SSH_AUTH_SOCK and Emacs on Windows:    Windows setup hints. (line  26)
 * sshx method:                           Inline methods.      (line  83)
 * sshx method with Cygwin:               Windows setup hints. (line   8)
 * su method:                             Inline methods.      (line  66)
@@ -3500,49 +3498,49 @@ Concept Index
 
 
 Tag Table:
-Node: Top1079
-Node: Overview5351
-Ref: Overview-Footnote-111103
-Node: Obtaining Tramp11255
-Node: History12843
-Node: Configuration14093
-Node: Connection types16329
-Node: Inline methods18169
-Node: External methods24422
-Node: GVFS based methods34184
-Node: Gateway methods35582
-Node: Default Method37035
-Node: Default User41004
-Node: Default Host42954
-Node: Multi-hops43727
-Ref: Multi-hops-Footnote-147919
-Node: Customizing Methods48274
-Node: Customizing Completion48682
-Node: Password handling52094
-Ref: Using an authentication file52804
-Ref: Caching passwords53819
-Node: Connection caching54792
-Node: Remote Programs56446
-Node: Remote shell setup59243
-Node: Auto-save and Backup67454
-Node: Windows setup hints70341
-Node: Usage72119
-Node: Filename Syntax73441
-Node: Alternative Syntax76002
-Node: Filename completion76989
-Node: Remote processes79966
-Ref: Running a debugger on a remote host85059
-Node: Cleanup remote connections86034
-Node: Bug Reports87158
-Node: Frequently Asked Questions89329
-Node: Files directories and localnames108660
-Node: Localname deconstruction109075
-Node: External packages109806
-Node: Traces and Profiles112250
-Node: Issues114450
-Node: GNU Free Documentation License116159
-Node: Function Index141305
-Node: Variable Index143205
-Node: Concept Index145224
+Node: Top1086
+Node: Overview5350
+Ref: Overview-Footnote-111094
+Node: Obtaining Tramp11246
+Node: History12829
+Node: Configuration14071
+Node: Connection types16307
+Node: Inline methods18147
+Node: External methods24392
+Node: GVFS based methods34146
+Node: Gateway methods35540
+Node: Default Method36993
+Node: Default User40962
+Node: Default Host42912
+Node: Multi-hops43681
+Ref: Multi-hops-Footnote-147873
+Node: Customizing Methods48228
+Node: Customizing Completion48636
+Node: Password handling52048
+Ref: Using an authentication file52758
+Ref: Caching passwords53773
+Node: Connection caching54742
+Node: Remote Programs56388
+Node: Remote shell setup59183
+Node: Auto-save and Backup67394
+Node: Windows setup hints70269
+Node: Usage72028
+Node: Filename Syntax73333
+Node: Alternative Syntax75894
+Node: Filename completion76881
+Node: Remote processes79854
+Ref: Running a debugger on a remote host84928
+Node: Cleanup remote connections85903
+Node: Bug Reports87027
+Node: Frequently Asked Questions89198
+Node: Files directories and localnames108480
+Node: Localname deconstruction108895
+Node: External packages109626
+Node: Traces and Profiles112070
+Node: Issues114270
+Node: GNU Free Documentation License115971
+Node: Function Index141117
+Node: Variable Index143017
+Node: Concept Index145036
 
 End Tag Table

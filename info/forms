@@ -18,7 +18,7 @@ This file documents Forms mode, a form-editing major mode for GNU Emacs.
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
 * Forms: (forms).               Emacs package for editing data bases
                                   by filling in forms.
@@ -1365,19 +1365,19 @@ Index
 
 
 Tag Table:
-Node: Top1119
-Node: Forms Example3449
-Node: Entering and Exiting Forms Mode4649
-Node: Forms Commands6859
-Node: Data File Format10661
-Node: Control File Format12001
-Node: Format Description16630
-Node: Modifying Forms Contents19963
-Node: Miscellaneous21841
-Node: Error Messages23380
-Node: Long Example27624
-Node: Credits30706
-Node: GNU Free Documentation License31480
-Node: Index56648
+Node: Top1133
+Node: Forms Example3463
+Node: Entering and Exiting Forms Mode4663
+Node: Forms Commands6873
+Node: Data File Format10675
+Node: Control File Format12015
+Node: Format Description16644
+Node: Modifying Forms Contents19977
+Node: Miscellaneous21855
+Node: Error Messages23394
+Node: Long Example27638
+Node: Credits30720
+Node: GNU Free Documentation License31494
+Node: Index56662
 
 End Tag Table

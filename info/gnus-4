@@ -17,7 +17,7 @@ Foundation, Inc.
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs network features
 START-INFO-DIR-ENTRY
 * Gnus: (gnus).                 The newsreader Gnus.
 END-INFO-DIR-ENTRY
@@ -1056,7 +1056,7 @@ New features in Gnus 5.10:
           `make.bat' `/copy' as the second parameter.
 
           `make.bat' has been rewritten from scratch, it now features
-          automatic recognition of XEmacs and GNU Emacs, generates
+          automatic recognition of XEmacs and Emacs, generates
           `gnus-load.el', checks if errors occur while compilation and
           generation of info files and reports them at the end of the
           build process.  It now uses `makeinfo' if it is available and

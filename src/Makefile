@@ -33,8 +33,8 @@
 
 # Here are the things that we expect ../configure to edit.
 # We use $(srcdir) explicitly in dependencies so as not to depend on VPATH.
-srcdir=/Users/sinx/Factory/emacs-mac-port/src
-VPATH=/Users/sinx/Factory/emacs-mac-port/src
+srcdir=/Users/nix/Factory/emacs-23.3/src
+VPATH=/Users/nix/Factory/emacs-23.3/src
 CC=gcc
 CPP=cc -E -no-cpp-precomp
 CFLAGS=-g -O2 -Wdeclaration-after-statement -Wno-pointer-sign  

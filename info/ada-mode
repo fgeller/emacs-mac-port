@@ -16,7 +16,7 @@ Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007,
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs editing modes
 START-INFO-DIR-ENTRY
 * Ada mode: (ada-mode).         Emacs mode for editing and compiling Ada code.
 END-INFO-DIR-ENTRY
@@ -2002,34 +2002,34 @@ Index
 
 
 Tag Table:
-Node: Top1004
-Node: Overview2817
-Node: Installation4120
-Node: Customization5243
-Node: Non-standard file names6145
-Node: Other compiler7637
-Node: Other customization8135
-Node: Compiling Executing8783
-Node: Compile commands9449
-Node: Compiler errors12181
-Node: Project files13055
-Node: Project File Overview13753
-Node: GUI Editor16050
-Node: Project file variables16520
-Node: Compiling Examples23593
-Node: No project files24386
-Node: Set compiler options29067
-Node: Set source search path31027
-Node: Use GNAT project file33299
-Node: Use multiple GNAT project files35477
-Node: Moving Through Ada Code37361
-Node: Identifier completion39312
-Node: Automatic Smart Indentation40869
-Node: Formatting Parameter Lists43681
-Node: Automatic Casing44082
-Node: Statement Templates47321
-Node: Comment Handling48784
-Node: GNU Free Documentation License49310
-Node: Index74483
+Node: Top1018
+Node: Overview2831
+Node: Installation4134
+Node: Customization5257
+Node: Non-standard file names6159
+Node: Other compiler7651
+Node: Other customization8149
+Node: Compiling Executing8797
+Node: Compile commands9463
+Node: Compiler errors12195
+Node: Project files13069
+Node: Project File Overview13767
+Node: GUI Editor16064
+Node: Project file variables16534
+Node: Compiling Examples23607
+Node: No project files24400
+Node: Set compiler options29081
+Node: Set source search path31041
+Node: Use GNAT project file33313
+Node: Use multiple GNAT project files35491
+Node: Moving Through Ada Code37375
+Node: Identifier completion39326
+Node: Automatic Smart Indentation40883
+Node: Formatting Parameter Lists43695
+Node: Automatic Casing44096
+Node: Statement Templates47335
+Node: Comment Handling48798
+Node: GNU Free Documentation License49324
+Node: Index74497
 
 End Tag Table

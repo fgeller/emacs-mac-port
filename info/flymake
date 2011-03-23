@@ -19,7 +19,7 @@ Software Foundation, Inc.
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
 * Flymake: (flymake).           A universal on-the-fly syntax checker.
 END-INFO-DIR-ENTRY
@@ -1267,32 +1267,32 @@ Index
 
 
 Tag Table:
-Node: Top1087
-Node: Overview of Flymake2222
-Node: Installing Flymake4033
-Node: Using Flymake4720
-Node: Flymake mode5016
-Node: Running the syntax check5547
-Node: Navigating to error lines6067
-Node: Viewing error messages6822
-Node: Syntax check statuses7410
-Node: Troubleshooting9172
-Node: Configuring Flymake9688
-Node: Customizable variables10066
-Node: Adding support for a new syntax check tool12317
-Node: Example -- Configuring a tool called directly14551
-Node: Example -- Configuring a tool called via make16168
-Node: Flymake Implementation17615
-Node: Determining whether syntax check is possible18709
-Node: Making a temporary copy20084
-Node: Locating a master file21389
-Node: Getting the include directories22765
-Node: Locating the buildfile23817
-Node: Starting the syntax check process25289
-Node: Parsing the output25821
-Node: Highlighting erroneous lines27261
-Node: Interaction with other modes27769
-Node: GNU Free Documentation License28838
-Node: Index54016
+Node: Top1101
+Node: Overview of Flymake2236
+Node: Installing Flymake4047
+Node: Using Flymake4734
+Node: Flymake mode5030
+Node: Running the syntax check5561
+Node: Navigating to error lines6081
+Node: Viewing error messages6836
+Node: Syntax check statuses7424
+Node: Troubleshooting9186
+Node: Configuring Flymake9702
+Node: Customizable variables10080
+Node: Adding support for a new syntax check tool12331
+Node: Example -- Configuring a tool called directly14565
+Node: Example -- Configuring a tool called via make16182
+Node: Flymake Implementation17629
+Node: Determining whether syntax check is possible18723
+Node: Making a temporary copy20098
+Node: Locating a master file21403
+Node: Getting the include directories22779
+Node: Locating the buildfile23831
+Node: Starting the syntax check process25303
+Node: Parsing the output25835
+Node: Highlighting erroneous lines27275
+Node: Interaction with other modes27783
+Node: GNU Free Documentation License28852
+Node: Index54030
 
 End Tag Table

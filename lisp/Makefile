@@ -19,9 +19,9 @@
 
 SHELL = /bin/sh
 
-lisp=/Users/sinx/Factory/emacs-mac-port/lisp
-VPATH=/Users/sinx/Factory/emacs-mac-port/lisp
-srcdir=/Users/sinx/Factory/emacs-mac-port/lisp/..
+lisp=/Users/nix/Factory/emacs-23.3/lisp
+VPATH=/Users/nix/Factory/emacs-23.3/lisp
+srcdir=/Users/nix/Factory/emacs-23.3/lisp/..
 
 # You can specify a different executable on the make command line,
 # e.g. "make EMACS=../src/emacs ...".

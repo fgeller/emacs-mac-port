@@ -1,8 +1,8 @@
-This is ../../info/emacs, produced by makeinfo version 4.8 from
+This is ../../info/emacs, produced by makeinfo version 4.13 from
 emacs.texi.
 
-   This is the Sixteenth edition of the `GNU Emacs Manual',
-updated for Emacs version 23.2.94.
+This is the Sixteenth edition of the `GNU Emacs Manual',
+updated for Emacs version 23.3.
 
    Copyright (C) 1985, 1986, 1987, 1993, 1994, 1995, 1996, 1997, 1998,
 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
@@ -2287,9 +2287,9 @@ File: emacs,  Node: Renaming and VC,  Next: Version Headers,  Prev: Change Logs 
 When you rename a registered file, you must also rename its master file
 correspondingly to get proper results.  Use `vc-rename-file' to rename
 the source file as you specify, and rename its master file accordingly.
-It also updates any tags (*note Revision Tags::) that mention the
-file, so that they use the new name; despite this, the tag thus
-modified may not completely work (*note Revision Tag Caveats::).
+It also updates any tags (*note Revision Tags::) that mention the file,
+so that they use the new name; despite this, the tag thus modified may
+not completely work (*note Revision Tag Caveats::).
 
    Some back ends do not provide an explicit rename operation to their
 repositories.  After issuing `vc-rename-file', use `C-x v v' on the
@@ -2398,7 +2398,7 @@ this variable to `nil'.
 file registered in more than one system (*note Local Version
 Control::), VC uses the system that comes first in
 `vc-handled-backends' by default.  The order is also significant when
-you register a file for the first time, see *Note Registering::, for
+you register a file for the first time, see *note Registering::, for
 details.
 
 * Menu:
@@ -2873,7 +2873,7 @@ File: emacs,  Node: Create Tags Table,  Next: Etags Regexps,  Prev: Tag Syntax, 
 ---------------------------
 
 The `etags' program is used to create a tags table file.  It knows the
-syntax of several languages, as described in *Note Tag Syntax::.  Here
+syntax of several languages, as described in *note Tag Syntax::.  Here
 is how to run `etags':
 
      etags INPUTFILES...
@@ -2943,12 +2943,12 @@ typing a dash in place of the file names, like this:
      find . -name "*.[chCH]" -print | etags -
 
    Use the option `--language=NAME' to specify the language explicitly.
-You can intermix these options with file names; each one applies to
-the file names that follow it.  Specify `--language=auto' to tell
-`etags' to resume guessing the language from the file names and file
-contents.  Specify `--language=none' to turn off language-specific
-processing entirely; then `etags' recognizes tags by regexp matching
-alone (*note Etags Regexps::).
+You can intermix these options with file names; each one applies to the
+file names that follow it.  Specify `--language=auto' to tell `etags'
+to resume guessing the language from the file names and file contents.
+Specify `--language=none' to turn off language-specific processing
+entirely; then `etags' recognizes tags by regexp matching alone (*note
+Etags Regexps::).
 
    The option `--parse-stdin=FILE' is mostly useful when calling
 `etags' from programs.  It can be used (only once) in place of a file
@@ -3325,7 +3325,7 @@ It provides some of the features of an IDE, or "Integrated Development
 Environment", in Emacs.
 
    This section provides a brief description of EDE usage.  For full
-details, see *Note EDE: (ede)Top.
+details, see *note EDE: (ede)Top.
 
    EDE is implemented as a global minor mode (*note Minor Modes::).  To
 enable it, type `M-x global-ede-mode' or click on the `Project Support
@@ -3371,8 +3371,8 @@ File: emacs,  Node: Emerge,  Prev: EDE,  Up: Maintaining
 It's not unusual for programmers to get their signals crossed and
 modify the same program in two different directions.  To recover from
 this confusion, you need to merge the two versions.  Emerge makes this
-easier.  For other ways to compare files, see *Note Comparing Files::,
-and *Note Ediff: (ediff)Top.
+easier.  For other ways to compare files, see *note Comparing Files::,
+and *note Ediff: (ediff)Top.
 
 * Menu:
 
@@ -3713,9 +3713,9 @@ this:
 While this example shows C preprocessor conditionals delimiting the two
 alternative versions, you can specify the strings to use by setting the
 variable `emerge-combine-versions-template' to a string of your choice.
-In the string, `%a' says where to put version A, and `%b' says where
-to put version B.  The default setting, which produces the results
-shown above, looks like this:
+In the string, `%a' says where to put version A, and `%b' says where to
+put version B.  The default setting, which produces the results shown
+above, looks like this:
 
      "#ifdef NEW\n%a#else /* not NEW */\n%b#endif /* not NEW */\n"
 
@@ -3946,8 +3946,8 @@ replacements at once.  This command is effective even if Abbrev mode is
 not enabled.
 
    Expanding any abbrev runs `abbrev-expand-functions', a special hook.
-Functions in this special hook can make arbitrary changes to the
-abbrev expansion.  *Note Abbrev Expansion: (elisp)Abbrev Expansion.
+Functions in this special hook can make arbitrary changes to the abbrev
+expansion.  *Note Abbrev Expansion: (elisp)Abbrev Expansion.
 
 
 File: emacs,  Node: Editing Abbrevs,  Next: Saving Abbrevs,  Prev: Expanding Abbrevs,  Up: Abbrevs
@@ -5322,7 +5322,7 @@ default inbox file depends on your operating system; often it is
 `/usr/spool/mail/USERNAME'.
 
    You can specify the inbox file(s) for any Rmail file for the current
-session with the command `set-rmail-inbox-list'; see *Note Rmail
+session with the command `set-rmail-inbox-list'; see *note Rmail
 Files::.
 
    There are two reasons for having separate Rmail files and inboxes.
@@ -6120,8 +6120,8 @@ characters displayed as empty boxes, this may have happened.
 
    You can correct the problem by decoding the message again using the
 right coding system, if you can figure out or guess which one is right.
-To do this, invoke the `M-x rmail-redecode-body' command.  It reads
-the name of a coding system, and then redecodes the message using the
+To do this, invoke the `M-x rmail-redecode-body' command.  It reads the
+name of a coding system, and then redecodes the message using the
 coding system you specified.  If you specified the right coding system,
 the result should be readable.
 
@@ -6219,7 +6219,7 @@ formats, such as plain UNIX mailboxes, `maildir' and `MH' mailboxes,
 etc.  It is able to access remote mailboxes using the POP3 or IMAP4
 protocol, and can retrieve mail from them using a TLS encrypted
 channel.  It also accepts mailbox arguments in URL form.  The detailed
-description of mailbox URLs can be found in *Note URL: (mailutils)URL.
+description of mailbox URLs can be found in *note URL: (mailutils)URL.
 In short, a URL is:
 
      PROTO://[USER[:PASSWORD]@]HOST-OR-FILE-NAME
@@ -6451,7 +6451,7 @@ include short options (that is, single characters) requiring no
 arguments, and long options (starting with `--') whose arguments are
 specified with `='.
 
-   On MS-Windows and MS-DOS systems, Emacs _emulates_ `ls'; see *Note
+   On MS-Windows and MS-DOS systems, Emacs _emulates_ `ls'; see *note
 ls in Lisp::, for options and peculiarities of that emulation.
 
    To display the Dired buffer in another window rather than in the
@@ -6482,8 +6482,8 @@ that file.
    `M-s f C-s' (`dired-isearch-filenames') performs a forward
 incremental search in the Dired buffer, looking for matches only
 amongst the file names and ignoring the rest of the text in the buffer.
-`M-s f M-C-s' (`dired-isearch-filenames-regexp') does the same, using
-a regular expression search.  If you change the variable
+`M-s f M-C-s' (`dired-isearch-filenames-regexp') does the same, using a
+regular expression search.  If you change the variable
 `dired-isearch-filenames' to `t', then the usual search commands also
 limit themselves to the file names; for instance, `C-s' behaves like
 `M-s f C-s'.  If the value is `dwim', then search commands match the

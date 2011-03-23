@@ -90,7 +90,7 @@ version=23.3
 
 ### This should be the name of the configuration we're building Emacs
 ### for, like `mips-dec-ultrix' or `sparc-sun-sunos'.
-configuration=x86_64-apple-darwin10.6.0
+configuration=x86_64-apple-darwin10.7.0
 
 # ==================== Where To Install Things ====================
 
@@ -158,13 +158,13 @@ bitmapdir=/usr/include/X11/bitmaps
 # set by the configure script's `--srcdir' option.
 
 # We use $(srcdir) explicitly in dependencies so as not to depend on VPATH.
-srcdir=/Users/sinx/Factory/emacs-mac-port
+srcdir=/Users/nix/Factory/emacs-23.3
 
 # Where the manpage source files are kept.
 mansrcdir=$(srcdir)/doc/man
 
 # Tell make where to find source files; this is needed for the makefiles.
-VPATH=/Users/sinx/Factory/emacs-mac-port
+VPATH=/Users/nix/Factory/emacs-23.3
 
 # Where to find the application default.
 x_default_search_path=/usr/X11/share/X11/%L/%T/%N%C%S:/usr/X11/share/X11/%l/%T/%N%C%S:/usr/X11/share/X11/%T/%N%C%S:/usr/X11/share/X11/%L/%T/%N%S:/usr/X11/share/X11/%l/%T/%N%S:/usr/X11/share/X11/%T/%N%S:/usr/X11/lib/X11/%L/%T/%N%C%S:/usr/X11/lib/X11/%l/%T/%N%C%S:/usr/X11/lib/X11/%T/%N%C%S:/usr/X11/lib/X11/%L/%T/%N%S:/usr/X11/lib/X11/%l/%T/%N%S:/usr/X11/lib/X11/%T/%N%S

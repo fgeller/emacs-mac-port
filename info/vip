@@ -15,7 +15,7 @@ Copyright (C) 1987, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008,
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
 * VIP: (vip).                   An older VI-emulation for Emacs.
 END-INFO-DIR-ENTRY
@@ -2604,50 +2604,50 @@ Concept Index
 
 
 Tag Table:
-Node: Top973
-Node: Survey2832
-Node: Basic Concepts3360
-Node: Loading VIP5014
-Node: Modes in VIP5757
-Node: Emacs Mode8368
-Node: Vi Mode8731
-Node: Insert Mode9048
-Node: Differences from Vi9680
-Node: Undoing10863
-Node: Changing11227
-Node: Searching11854
-Node: z Command12576
-Node: Counts12918
-Node: Marking13430
-Node: Region Commands13939
-Node: New Commands14616
-Node: New Bindings17376
-Node: Window Commands19552
-Node: Buffer Commands20028
-Node: File Commands20522
-Node: Misc Commands20898
-Node: Vi Commands21323
-Node: Numeric Arguments22343
-Node: Important Keys22838
-Node: Buffers and Windows24587
-Node: Files26816
-Node: Viewing the Buffer30067
-Node: Mark Commands31975
-Node: Motion Commands32817
-Node: Searching and Replacing38360
-Node: Modifying Commands40640
-Node: Delete Commands42067
-Node: Yank Commands43779
-Node: Put Back Commands44670
-Node: Change Commands46130
-Node: Repeating and Undoing Modifications47158
-Node: Other Vi Commands47982
-Node: Commands in Insert Mode51619
-Node: Ex Commands53697
-Node: Ex Command Reference54880
-Node: Customization61348
-Node: Customizing Constants61775
-Node: Customizing Key Bindings63104
-Node: GNU Free Documentation License64161
+Node: Top987
+Node: Survey2846
+Node: Basic Concepts3374
+Node: Loading VIP5028
+Node: Modes in VIP5771
+Node: Emacs Mode8382
+Node: Vi Mode8745
+Node: Insert Mode9062
+Node: Differences from Vi9694
+Node: Undoing10877
+Node: Changing11241
+Node: Searching11868
+Node: z Command12590
+Node: Counts12932
+Node: Marking13444
+Node: Region Commands13953
+Node: New Commands14630
+Node: New Bindings17390
+Node: Window Commands19566
+Node: Buffer Commands20042
+Node: File Commands20536
+Node: Misc Commands20912
+Node: Vi Commands21337
+Node: Numeric Arguments22357
+Node: Important Keys22852
+Node: Buffers and Windows24601
+Node: Files26830
+Node: Viewing the Buffer30081
+Node: Mark Commands31989
+Node: Motion Commands32831
+Node: Searching and Replacing38374
+Node: Modifying Commands40654
+Node: Delete Commands42081
+Node: Yank Commands43793
+Node: Put Back Commands44684
+Node: Change Commands46144
+Node: Repeating and Undoing Modifications47172
+Node: Other Vi Commands47996
+Node: Commands in Insert Mode51633
+Node: Ex Commands53711
+Node: Ex Command Reference54894
+Node: Customization61362
+Node: Customizing Constants61789
+Node: Customizing Key Bindings63118
+Node: GNU Free Documentation License64175
 
 End Tag Table

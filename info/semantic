@@ -18,7 +18,7 @@ This manual documents the Semantic library and utilities.
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
 * Semantic: (semantic).         Source code parser library and utilities.
 END-INFO-DIR-ENTRY
@@ -2456,62 +2456,62 @@ Index
 
 
 Tag Table:
-Node: Top1048
-Node: Introduction2734
-Node: Semantic Components6011
-Node: Using Semantic7357
-Node: Semantic mode8779
-Node: Semantic mode user commands11657
-Node: SemanticDB14830
-Node: Semanticdb Tag Storage16205
-Node: Semanticdb Search Configuration18770
-Node: Search Throttle20195
-Node: Semanticdb Roots22384
-Node: Include paths23863
-Node: Semanticdb search debugging commands25163
-Node: Changing Backends26538
-Node: Create System Databases27291
-Node: Idle Scheduler27921
-Node: Reparsing Options29625
-Node: Idle Working Options31103
-Node: Debugging Idle Time Issues32368
-Node: Idle Summary Mode33047
-Node: Idle Completions Mode34663
-Node: Analyzer37645
-Node: Smart Completion38192
-Node: Smart Summary41334
-Node: Smart Jump42245
-Node: Analyzer Debug43264
-Node: Speedbar49736
-Node: SymRef51022
-Node: MRU Bookmarks52972
-Node: Sticky Func Mode53914
-Node: Highlight Func Mode55064
-Node: Tag Decoration Mode56116
-Node: Semantic Internals60111
-Node: Parser code60830
-Node: Tag handling62579
-Node: Semanticdb Internals64253
-Node: Analyzer Internals66380
-Node: Tools68338
-Node: Tests70020
-Node: Glossary70473
-Ref: BNF70625
-Ref: bovinate70824
-Ref: bovine lambda70913
-Ref: bovine parser71096
-Ref: context71222
-Ref: LALR71231
-Ref: lexer71237
-Ref: LL71451
-Ref: nonterminal71455
-Ref: overloadable71647
-Ref: parser71755
-Ref: tag71808
-Ref: token72153
-Ref: token stream72271
-Ref: wisent parser72350
-Node: GNU Free Documentation License72516
-Node: Index97681
+Node: Top1062
+Node: Introduction2748
+Node: Semantic Components6025
+Node: Using Semantic7371
+Node: Semantic mode8793
+Node: Semantic mode user commands11671
+Node: SemanticDB14844
+Node: Semanticdb Tag Storage16219
+Node: Semanticdb Search Configuration18784
+Node: Search Throttle20209
+Node: Semanticdb Roots22398
+Node: Include paths23877
+Node: Semanticdb search debugging commands25177
+Node: Changing Backends26552
+Node: Create System Databases27305
+Node: Idle Scheduler27935
+Node: Reparsing Options29639
+Node: Idle Working Options31117
+Node: Debugging Idle Time Issues32382
+Node: Idle Summary Mode33061
+Node: Idle Completions Mode34677
+Node: Analyzer37659
+Node: Smart Completion38206
+Node: Smart Summary41348
+Node: Smart Jump42259
+Node: Analyzer Debug43278
+Node: Speedbar49750
+Node: SymRef51036
+Node: MRU Bookmarks52986
+Node: Sticky Func Mode53928
+Node: Highlight Func Mode55078
+Node: Tag Decoration Mode56130
+Node: Semantic Internals60125
+Node: Parser code60844
+Node: Tag handling62593
+Node: Semanticdb Internals64267
+Node: Analyzer Internals66394
+Node: Tools68352
+Node: Tests70034
+Node: Glossary70487
+Ref: BNF70639
+Ref: bovinate70838
+Ref: bovine lambda70927
+Ref: bovine parser71110
+Ref: context71236
+Ref: LALR71245
+Ref: lexer71251
+Ref: LL71465
+Ref: nonterminal71469
+Ref: overloadable71661
+Ref: parser71769
+Ref: tag71822
+Ref: token72167
+Ref: token stream72285
+Ref: wisent parser72364
+Node: GNU Free Documentation License72530
+Node: Index97695
 
 End Tag Table

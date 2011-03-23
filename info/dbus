@@ -16,7 +16,7 @@ Inc.
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs lisp libraries
 START-INFO-DIR-ENTRY
 * D-Bus: (dbus).                Using D-Bus in Emacs.
 END-INFO-DIR-ENTRY
@@ -807,10 +807,10 @@ when the corresponding D-Bus message is created:
      list            ==>   DBUS_TYPE_ARRAY
 
    Other Lisp objects, like symbols or hash tables, are not accepted as
-input parameter.
+input parameters.
 
    If it is necessary to use another D-Bus type, a corresponding type
-symbol can be preceeded to the corresponding Lisp object. Basic D-Bus
+symbol can be prepended to the corresponding Lisp object.  Basic D-Bus
 types are represented by the type symbols `:byte', `:boolean',
 `:int16', `:uint16', `:int32', `:uint32', `:int64', `:uint64',
 `:double', `:string', `:object-path' and `:signature'.
@@ -2014,25 +2014,25 @@ permit their use in free software.
 
 
 Tag Table:
-Node: Top922
-Node: Overview2554
-Node: Inspection4900
-Node: Bus names5437
-Node: Introspection8789
-Ref: Introspection-Footnote-116411
-Ref: Introspection-Footnote-216564
-Node: Nodes and Interfaces16716
-Node: Methods and Signal20979
-Node: Properties and Annotations23966
-Ref: Properties and Annotations-Footnote-129697
-Ref: Properties and Annotations-Footnote-229798
-Node: Arguments and Signatures29889
-Node: Type Conversion32062
-Node: Synchronous Methods38945
-Node: Asynchronous Methods43757
-Node: Receiving Method Calls45554
-Node: Signals54399
-Node: Errors and Events58165
-Node: GNU Free Documentation License62559
+Node: Top937
+Node: Overview2569
+Node: Inspection4915
+Node: Bus names5452
+Node: Introspection8804
+Ref: Introspection-Footnote-116426
+Ref: Introspection-Footnote-216579
+Node: Nodes and Interfaces16731
+Node: Methods and Signal20994
+Node: Properties and Annotations23981
+Ref: Properties and Annotations-Footnote-129712
+Ref: Properties and Annotations-Footnote-229813
+Node: Arguments and Signatures29904
+Node: Type Conversion32077
+Node: Synchronous Methods38962
+Node: Asynchronous Methods43774
+Node: Receiving Method Calls45571
+Node: Signals54416
+Node: Errors and Events58182
+Node: GNU Free Documentation License62576
 
 End Tag Table

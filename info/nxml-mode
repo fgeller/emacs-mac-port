@@ -25,7 +25,7 @@ Inc.
      copy of the license to the document, as described in section 6 of
      the license.
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs editing modes
 START-INFO-DIR-ENTRY
 * nXML Mode: (nxml-mode).       XML editing mode with RELAX NG support.
 END-INFO-DIR-ENTRY
@@ -818,21 +818,21 @@ nXML mode has some limitations:
 
 
 Tag Table:
-Node: Top1362
-Node: Introduction2765
-Node: Completion4934
-Node: Inserting end-tags9272
-Node: Paragraphs10587
-Node: Outlining12842
-Node: Locating a schema18452
-Node: Commands for locating a schema19894
-Node: Schema locating files22513
-Node: Schema locating file syntax basics23401
-Node: Using the document's URI to locate a schema25288
-Node: Using the document element to locate a schema27808
-Node: Using type identifiers in schema locating files28869
-Node: Using multiple schema locating files31280
-Node: DTDs33103
-Node: Limitations34563
+Node: Top1376
+Node: Introduction2779
+Node: Completion4948
+Node: Inserting end-tags9286
+Node: Paragraphs10601
+Node: Outlining12856
+Node: Locating a schema18466
+Node: Commands for locating a schema19908
+Node: Schema locating files22527
+Node: Schema locating file syntax basics23415
+Node: Using the document's URI to locate a schema25302
+Node: Using the document element to locate a schema27822
+Node: Using type identifiers in schema locating files28883
+Node: Using multiple schema locating files31294
+Node: DTDs33117
+Node: Limitations34577
 
 End Tag Table

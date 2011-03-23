@@ -16,7 +16,7 @@ Foundation, Inc.
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs network features
 START-INFO-DIR-ENTRY
 * Rcirc: (rcirc).               Internet Relay Chat (IRC) client.
 END-INFO-DIR-ENTRY
@@ -1494,29 +1494,29 @@ Index
 
 
 Tag Table:
-Node: Top942
-Node: Basics2699
-Node: Internet Relay Chat2960
-Node: Getting started with rcirc4476
-Node: Reference7353
-Node: rcirc commands7690
-Node: Useful IRC commands10552
-Node: Configuration11279
-Node: Fighting Information Overload16187
-Node: Channels16682
-Node: People18253
-Node: Keywords19859
-Node: Notices20359
-Node: Hacking and Tweaking21252
-Node: Skipping /away messages using handlers21717
-Node: Using fly spell mode22464
-Node: Scrolling conservatively22885
-Node: Changing the time stamp format23557
-Node: Defining a new command23933
-Node: Reconnecting after you have lost the connection24753
-Node: GNU Free Documentation License26618
-Node: Key Index51796
-Node: Variable Index53177
-Node: Index54681
+Node: Top959
+Node: Basics2716
+Node: Internet Relay Chat2977
+Node: Getting started with rcirc4493
+Node: Reference7370
+Node: rcirc commands7707
+Node: Useful IRC commands10569
+Node: Configuration11296
+Node: Fighting Information Overload16204
+Node: Channels16699
+Node: People18270
+Node: Keywords19876
+Node: Notices20376
+Node: Hacking and Tweaking21269
+Node: Skipping /away messages using handlers21734
+Node: Using fly spell mode22481
+Node: Scrolling conservatively22902
+Node: Changing the time stamp format23574
+Node: Defining a new command23950
+Node: Reconnecting after you have lost the connection24770
+Node: GNU Free Documentation License26635
+Node: Key Index51813
+Node: Variable Index53194
+Node: Index54698
 
 End Tag Table

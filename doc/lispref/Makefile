@@ -21,10 +21,10 @@
 
 
 # Standard configure variables.
-srcdir = /Users/sinx/Factory/emacs-mac-port/doc/lispref
+srcdir = /Users/nix/Factory/emacs-23.3/doc/lispref
 
 # Tell make where to find source files; this is needed for the makefiles.
-VPATH=/Users/sinx/Factory/emacs-mac-port/doc/lispref
+VPATH=/Users/nix/Factory/emacs-23.3/doc/lispref
 
 infodir = ../../info
 # Directory with the (customized) texinfo.tex file.

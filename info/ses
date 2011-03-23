@@ -17,7 +17,7 @@ This file documents SES: the Simple Emacs Spreadsheet.
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
 * SES: (ses).                   Simple Emacs Spreadsheet.
 END-INFO-DIR-ENTRY
@@ -1459,32 +1459,32 @@ permit their use in free software.
 
 
 Tag Table:
-Node: Top1013
-Node: Sales Pitch2647
-Node: The Basics3461
-Node: Formulas4776
-Node: Resizing6180
-Node: Printer functions7317
-Node: Clearing cells9068
-Node: Copy/cut/paste9396
-Node: Customizing SES11610
-Node: Advanced Features12973
-Node: The print area13847
-Node: Ranges in formulas14527
-Node: Sorting by column16041
-Node: Standard formula functions16963
-Node: More on cell printing17636
-Node: Import and export19642
-Node: Virus protection20249
-Node: Spreadsheets with details and summary21647
-Node: For Gurus22833
-Node: Deferred updates23090
-Node: Nonrelocatable references24609
-Node: The data area25509
-Node: Buffer-local variables in spreadsheets26728
-Node: Uses of defadvice in SES28174
-Node: Index28992
-Node: Acknowledgements37328
-Node: GNU Free Documentation License38496
+Node: Top1027
+Node: Sales Pitch2661
+Node: The Basics3475
+Node: Formulas4790
+Node: Resizing6194
+Node: Printer functions7331
+Node: Clearing cells9082
+Node: Copy/cut/paste9410
+Node: Customizing SES11624
+Node: Advanced Features12987
+Node: The print area13861
+Node: Ranges in formulas14541
+Node: Sorting by column16055
+Node: Standard formula functions16977
+Node: More on cell printing17650
+Node: Import and export19656
+Node: Virus protection20263
+Node: Spreadsheets with details and summary21661
+Node: For Gurus22847
+Node: Deferred updates23104
+Node: Nonrelocatable references24623
+Node: The data area25523
+Node: Buffer-local variables in spreadsheets26742
+Node: Uses of defadvice in SES28188
+Node: Index29006
+Node: Acknowledgements37342
+Node: GNU Free Documentation License38510
 
 End Tag Table

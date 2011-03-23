@@ -17,7 +17,7 @@ Free Software Foundation, Inc.
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
 * PCL-CVS: (pcl-cvs).           Emacs front-end to CVS.
 END-INFO-DIR-ENTRY
@@ -1911,38 +1911,38 @@ this manual.
 
 
 Tag Table:
-Node: Top1026
-Node: About PCL-CVS4371
-Node: Contributors5466
-Node: Getting started8011
-Node: Buffer contents10707
-Node: Selected files14996
-Node: Commands16630
-Node: Entering PCL-CVS18032
-Node: Setting flags20248
-Node: Updating the buffer22718
-Node: Movement commands23778
-Node: Marking files24355
-Node: Committing changes25491
-Node: Editing files27403
-Node: Getting info about files28310
-Node: Adding and removing files28824
-Node: Undoing changes30092
-Node: Removing handled entries30563
-Node: Ignoring files31418
-Node: Viewing differences31973
-Node: Invoking Ediff33545
-Node: Updating files34402
-Node: Tagging files34663
-Node: Miscellaneous commands35436
-Node: Log Edit Mode36401
-Node: Log View Mode37739
-Node: Customization38310
-Node: Customizing Faces41937
-Node: Bugs42732
-Node: GNU Free Documentation License44271
-Node: Function and Variable Index69453
-Node: Concept Index76859
-Node: Key Index85278
+Node: Top1040
+Node: About PCL-CVS4385
+Node: Contributors5480
+Node: Getting started8025
+Node: Buffer contents10721
+Node: Selected files15010
+Node: Commands16644
+Node: Entering PCL-CVS18046
+Node: Setting flags20262
+Node: Updating the buffer22732
+Node: Movement commands23792
+Node: Marking files24369
+Node: Committing changes25505
+Node: Editing files27417
+Node: Getting info about files28324
+Node: Adding and removing files28838
+Node: Undoing changes30106
+Node: Removing handled entries30577
+Node: Ignoring files31432
+Node: Viewing differences31987
+Node: Invoking Ediff33559
+Node: Updating files34416
+Node: Tagging files34677
+Node: Miscellaneous commands35450
+Node: Log Edit Mode36415
+Node: Log View Mode37753
+Node: Customization38324
+Node: Customizing Faces41951
+Node: Bugs42746
+Node: GNU Free Documentation License44285
+Node: Function and Variable Index69467
+Node: Concept Index76873
+Node: Key Index85292
 
 End Tag Table

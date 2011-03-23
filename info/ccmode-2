@@ -19,7 +19,7 @@ Foundation, Inc.
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs editing modes
 START-INFO-DIR-ENTRY
 * CC Mode: (ccmode).            Emacs mode for editing C, C++, Objective-C,
                                 Java, Pike, AWK, and CORBA IDL code.

@@ -20,7 +20,7 @@ Foundation, Inc.
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
 * Ediff: (ediff).       A visual interface for comparing and merging programs.
 END-INFO-DIR-ENTRY
@@ -3157,31 +3157,31 @@ Index
 
 
 Tag Table:
-Node: Top1119
-Node: Introduction2690
-Node: Major Entry Points5080
-Node: Session Commands15127
-Node: Quick Help Commands16646
-Node: Other Session Commands35096
-Node: Registry of Ediff Sessions37896
-Node: Session Groups39452
-Node: Remote and Compressed Files45617
-Node: Customization46844
-Node: Hooks48797
-Node: Quick Help Customization54096
-Node: Window and Frame Configuration55107
-Node: Selective Browsing61072
-Node: Highlighting Difference Regions66168
-Node: Narrowing70910
-Node: Refinement of Difference Regions72188
-Node: Patch and Diff Programs75123
-Node: Merging and diff379690
-Node: Support for Version Control89493
-Node: Customizing the Mode Line91118
-Node: Miscellaneous91972
-Node: Notes on Heavy-duty Customization97220
-Node: Credits99805
-Node: GNU Free Documentation License105208
-Node: Index130369
+Node: Top1133
+Node: Introduction2704
+Node: Major Entry Points5094
+Node: Session Commands15141
+Node: Quick Help Commands16660
+Node: Other Session Commands35110
+Node: Registry of Ediff Sessions37910
+Node: Session Groups39466
+Node: Remote and Compressed Files45631
+Node: Customization46858
+Node: Hooks48811
+Node: Quick Help Customization54110
+Node: Window and Frame Configuration55121
+Node: Selective Browsing61086
+Node: Highlighting Difference Regions66182
+Node: Narrowing70924
+Node: Refinement of Difference Regions72202
+Node: Patch and Diff Programs75137
+Node: Merging and diff379704
+Node: Support for Version Control89507
+Node: Customizing the Mode Line91132
+Node: Miscellaneous91986
+Node: Notes on Heavy-duty Customization97234
+Node: Credits99819
+Node: GNU Free Documentation License105222
+Node: Index130383
 
 End Tag Table

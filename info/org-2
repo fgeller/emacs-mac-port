@@ -23,7 +23,7 @@ Software Foundation
      copy of the license to the document, as described in section 6 of
      the license.
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs editing modes
 START-INFO-DIR-ENTRY
 * Org Mode: (org).              Outline-based notes management and organizer.
 END-INFO-DIR-ENTRY

@@ -1,7 +1,7 @@
 This is ../../info/eintr, produced by makeinfo version 4.13 from
 emacs-lisp-intro.texi.
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION GNU Emacs Lisp
 START-INFO-DIR-ENTRY
 * Emacs Lisp Intro: (eintr).
                           A simple introduction to Emacs Lisp programming.

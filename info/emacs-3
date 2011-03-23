@@ -1,8 +1,8 @@
-This is ../../info/emacs, produced by makeinfo version 4.8 from
+This is ../../info/emacs, produced by makeinfo version 4.13 from
 emacs.texi.
 
-   This is the Sixteenth edition of the `GNU Emacs Manual',
-updated for Emacs version 23.2.94.
+This is the Sixteenth edition of the `GNU Emacs Manual',
+updated for Emacs version 23.3.
 
    Copyright (C) 1985, 1986, 1987, 1993, 1994, 1995, 1996, 1997, 1998,
 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
@@ -811,7 +811,7 @@ character sets at a time.  To specify _which_ of these codes to use,
 invoke `M-x set-language-environment' and specify a suitable language
 environment such as `Latin-N'.
 
-   For more information about unibyte operation, see *Note Enabling
+   For more information about unibyte operation, see *note Enabling
 Multibyte::.  Note particularly that you probably want to ensure that
 your initialization files are read as unibyte if they contain non-ASCII
 characters.
@@ -1295,12 +1295,12 @@ even regularly spaced.  The tab stops are stored in the variable
 which creates and selects a buffer containing a description of the tab
 stop settings.  You can edit this buffer to specify different tab
 stops, and then type `C-c C-c' to make those new tab stops take effect.
-The buffer uses Overwrite mode (*note Minor Modes::).
-`edit-tab-stops' records which buffer was current when you invoked it,
-and stores the tab stops back in that buffer; normally all buffers
-share the same tab stops and changing them in one buffer affects all,
-but if you happen to make `tab-stop-list' local in one buffer then
-`edit-tab-stops' in that buffer will edit the local settings.
+The buffer uses Overwrite mode (*note Minor Modes::).  `edit-tab-stops'
+records which buffer was current when you invoked it, and stores the
+tab stops back in that buffer; normally all buffers share the same tab
+stops and changing them in one buffer affects all, but if you happen to
+make `tab-stop-list' local in one buffer then `edit-tab-stops' in that
+buffer will edit the local settings.
 
    Here is what the text representing the tab stops looks like for
 ordinary tab stops every eight columns.
@@ -1792,7 +1792,7 @@ as filling it.  This means that extra spaces are inserted to make the
 right margin line up exactly at the fill column.  To remove the extra
 spaces, use `M-q' with no argument.  (Likewise for `fill-region'.)
 Another way to control justification, and choose other styles of
-filling, is with the `justification' text property; see *Note Format
+filling, is with the `justification' text property; see *note Format
 Justification::.
 
    The command `M-o M-s' (`center-line') centers the current line
@@ -3392,7 +3392,7 @@ region.
 variable.  Setting the variable directly affects only the current
 buffer.  However, customizing it in a Custom buffer sets (as always)
 the default value for buffers that do not override it.  *Note Locals::,
-and *Note Easy Customization::.
+and *note Easy Customization::.
 
 
 File: emacs,  Node: Format Properties,  Next: Forcing Enriched Mode,  Prev: Format Justification,  Up: Formatted Text
@@ -3618,7 +3618,7 @@ cells.  These commands are:
 `M-x table-unrecognize-cell'
      Deactivate the cell under point.
 
-   For another way of converting text into tables, see *Note Table
+   For another way of converting text into tables, see *note Table
 Conversion::.
 
 
@@ -3982,7 +3982,7 @@ character before point, in these modes.
    Separate manuals are available for the modes for Ada (*note Ada
 Mode: (ada-mode)Top.), C/C++/Objective C/Java/Corba IDL/Pike/AWK (*note
 CC Mode: (ccmode)Top.) and the IDLWAVE modes (*note IDLWAVE:
-(idlwave)Top.).  For Fortran mode, see *Note Fortran::.
+(idlwave)Top.).  For Fortran mode, see *note Fortran::.
 
    Turning on a major mode runs a normal hook called the "mode hook",
 which is the value of a Lisp variable.  Each major mode has a mode
@@ -4397,7 +4397,7 @@ the indentation of the "anchor statement".
      Select a predefined style STYLE (`c-set-style').
 
    A "style" is a named collection of customizations that can be used
-in C mode and the related modes.  *Note Styles: (ccmode)Styles, for a
+in C mode and the related modes.  *note Styles: (ccmode)Styles, for a
 complete description.  Emacs comes with several predefined styles,
 including `gnu', `k&r', `bsd', `stroustrup', `linux', `python', `java',
 `whitesmith', `ellemtel', and `awk'.  Some of these styles are
@@ -4433,7 +4433,7 @@ Project for C; it is the default, so as to encourage use of our
 recommended style.
 
    *Note Indentation Engine Basics: (ccmode)Indentation Engine Basics,
-and *Note Customizing Indentation: (ccmode)Customizing Indentation, for
+and *note Customizing Indentation: (ccmode)Customizing Indentation, for
 more information on customizing indentation for C and related modes,
 including how to override parts of an existing style and how to define
 your own styles.
@@ -4751,7 +4751,7 @@ the indentation of a triple-semicolon comment at all.
 setting the variables `c-indent-comment-alist' and
 `c-indent-comments-syntactically-p'.  For example, on a line ending in
 a closing brace, `M-;' puts the comment one space after the brace
-rather than at `comment-column'.  For full details see *Note Comment
+rather than at `comment-column'.  For full details see *note Comment
 Commands: (ccmode)Comment Commands.
 
 
@@ -4960,7 +4960,7 @@ pops up a window with possible candidates asking you to choose one of
 them.
 
    For more information about setting up and using `M-x woman', see
-*Note WoMan: (woman)Top.
+*note WoMan: (woman)Top.
 
    ---------- Footnotes ----------
 
@@ -5132,7 +5132,7 @@ File: emacs,  Node: Semantic,  Next: Misc for Programs,  Prev: Glasses,  Up: Pro
 
 Semantic is a package that provides language-aware editing commands
 based on `source code parsers'.  This section provides a brief
-description of Semantic; for full details, see *Note Semantic:
+description of Semantic; for full details, see *note Semantic:
 (semantic)Top.
 
    Most of the "language aware" features in Emacs, such as font lock
@@ -6346,7 +6346,7 @@ highlighted, instead of the entire source line.
 similar to `M-x grep', but it supplies a different initial default for
 the command--one that runs both `find' and `grep', so as to search
 every file in a directory tree.  See also the `find-grep-dired'
-command, in *Note Dired and Find::.
+command, in *note Dired and Find::.
 
    The commands `M-x lgrep' (local grep) and `M-x rgrep' (recursive
 grep) are more user-friendly versions of `grep' and `grep-find', which
@@ -6390,7 +6390,7 @@ and `M-x flymake-goto-prev-error'.  To display any error messages
 associated with the current line, use `M-x
 flymake-display-err-menu-for-current-line'.
 
-   For more details about using Flymake, see *Note Flymake:
+   For more details about using Flymake, see *note Flymake:
 (flymake)Top.
 
 
@@ -6430,7 +6430,7 @@ corresponding to a particular debugger program.
 
 `M-x gdb <RET> FILE <RET>'
      Run GDB as a subprocess of Emacs.  This uses an IDE-like graphical
-     interface; see *Note GDB Graphical Interface::.  Only GDB works
+     interface; see *note GDB Graphical Interface::.  Only GDB works
      with the graphical interface.
 
 `M-x gud-gdb <RET> FILE <RET>'

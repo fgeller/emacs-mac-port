@@ -22,7 +22,7 @@ pages directory system (PH/QI)
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs network features
 START-INFO-DIR-ENTRY
 * EUDC: (eudc).                 Emacs client for directory servers (LDAP, PH).
 END-INFO-DIR-ENTRY
@@ -1478,31 +1478,31 @@ Variables Index
 
 
 Tag Table:
-Node: Top1207
-Node: Overview2630
-Node: LDAP3699
-Node: CCSO PH/QI4675
-Node: BBDB5650
-Node: Installation6667
-Node: LDAP Requirements7551
-Node: Usage7876
-Node: Querying Servers8728
-Node: Selecting a Server9247
-Node: Return Attributes11067
-Node: Duplicate Attributes12145
-Node: Query Form14717
-Node: Display of Query Results17199
-Node: Inline Query Expansion20169
-Node: The Server Hotlist24618
-Node: The Hotlist Edit Buffer26222
-Node: Multi-server Queries27282
-Node: Creating BBDB Records28565
-Ref: Creating BBDB Records-Footnote-133467
-Node: Server/Protocol Locals33596
-Node: Manipulating local bindings34103
-Node: Credits36770
-Node: GNU Free Documentation License37093
-Node: Command and Function Index62274
-Node: Variables Index66486
+Node: Top1224
+Node: Overview2647
+Node: LDAP3716
+Node: CCSO PH/QI4692
+Node: BBDB5667
+Node: Installation6684
+Node: LDAP Requirements7568
+Node: Usage7893
+Node: Querying Servers8745
+Node: Selecting a Server9264
+Node: Return Attributes11084
+Node: Duplicate Attributes12162
+Node: Query Form14734
+Node: Display of Query Results17216
+Node: Inline Query Expansion20186
+Node: The Server Hotlist24635
+Node: The Hotlist Edit Buffer26239
+Node: Multi-server Queries27299
+Node: Creating BBDB Records28582
+Ref: Creating BBDB Records-Footnote-133484
+Node: Server/Protocol Locals33613
+Node: Manipulating local bindings34120
+Node: Credits36787
+Node: GNU Free Documentation License37110
+Node: Command and Function Index62291
+Node: Variables Index66503
 
 End Tag Table

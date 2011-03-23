@@ -16,7 +16,7 @@ Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008,
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs lisp libraries
 START-INFO-DIR-ENTRY
 * Widget: (widget).             The "widget" package used by the Emacs
                                   Customization facility.
@@ -2304,39 +2304,39 @@ variables, and widgets described in this manual.
 
 
 Tag Table:
-Node: Top1044
-Node: Introduction2235
-Node: User Interface5306
-Node: Programming Example11027
-Node: Setting Up the Buffer15234
-Node: Basic Types16953
-Node: link23577
-Node: url-link24085
-Node: info-link24389
-Node: push-button24671
-Node: editable-field25238
-Node: text26626
-Node: menu-choice26915
-Node: radio-button-choice27763
-Node: item29345
-Node: choice-item29725
-Node: toggle30215
-Node: checkbox30962
-Node: checklist31261
-Node: editable-list32696
-Node: group33870
-Node: Sexp Types34150
-Node: constants34494
-Node: generic35562
-Node: atoms36112
-Node: composite38033
-Node: Widget Properties41013
-Node: Defining New Widgets44066
-Node: Widget Browser50094
-Node: Widget Minor Mode50947
-Node: Utilities51496
-Node: Widget Wishlist51979
-Node: GNU Free Documentation License53236
-Node: Index78406
+Node: Top1059
+Node: Introduction2250
+Node: User Interface5321
+Node: Programming Example11042
+Node: Setting Up the Buffer15249
+Node: Basic Types16968
+Node: link23592
+Node: url-link24100
+Node: info-link24404
+Node: push-button24686
+Node: editable-field25253
+Node: text26641
+Node: menu-choice26930
+Node: radio-button-choice27778
+Node: item29360
+Node: choice-item29740
+Node: toggle30230
+Node: checkbox30977
+Node: checklist31276
+Node: editable-list32711
+Node: group33885
+Node: Sexp Types34165
+Node: constants34509
+Node: generic35577
+Node: atoms36127
+Node: composite38048
+Node: Widget Properties41028
+Node: Defining New Widgets44081
+Node: Widget Browser50109
+Node: Widget Minor Mode50962
+Node: Utilities51511
+Node: Widget Wishlist51994
+Node: GNU Free Documentation License53251
+Node: Index78421
 
 End Tag Table

@@ -1,8 +1,8 @@
-This is ../../info/elisp, produced by makeinfo version 4.8 from
+This is ../../info/elisp, produced by makeinfo version 4.13 from
 elisp.texi.
 
-   This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 23.2.94.
+This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
+corresponding to Emacs version 23.3.
 
    Copyright (C) 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1998, 1999,
 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
@@ -21,10 +21,204 @@ Free Software Foundation, Inc.
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION GNU Emacs Lisp
 START-INFO-DIR-ENTRY
 * Elisp: (elisp).       The Emacs Lisp Reference Manual.
 END-INFO-DIR-ENTRY
+
+
+File: elisp,  Node: Excursions,  Next: Narrowing,  Prev: Motion,  Up: Positions
+
+30.3 Excursions
+===============
+
+It is often useful to move point "temporarily" within a localized
+portion of the program, or to switch buffers temporarily.  This is
+called an "excursion", and it is done with the `save-excursion' special
+form.  This construct initially remembers the identity of the current
+buffer, and its values of point and the mark, and restores them after
+the completion of the excursion.
+
+   The forms for saving and restoring the configuration of windows are
+described elsewhere (see *note Window Configurations::, and *note Frame
+Configurations::).  When only the identity of the current buffer needs
+to be saved and restored, it is preferable to use `save-current-buffer'
+instead.
+
+ -- Special Form: save-excursion body...
+     The `save-excursion' special form saves the identity of the current
+     buffer and the values of point and the mark in it, evaluates BODY,
+     and finally restores the buffer and its saved values of point and
+     the mark.  All three saved values are restored even in case of an
+     abnormal exit via `throw' or error (*note Nonlocal Exits::).
+
+     The `save-excursion' special form is the standard way to move
+     point within one part of a program and avoid affecting the rest of
+     the program.  It is used more than 4000 times in the Lisp sources
+     of Emacs.
+
+     `save-excursion' does not save the values of point and the mark for
+     other buffers, so changes in other buffers remain in effect after
+     `save-excursion' exits.
+
+     Likewise, `save-excursion' does not restore window-buffer
+     correspondences altered by functions such as `switch-to-buffer'.
+     One way to restore these correspondences, and the selected window,
+     is to use `save-window-excursion' inside `save-excursion' (*note
+     Window Configurations::).
+
+     The value returned by `save-excursion' is the result of the last
+     form in BODY, or `nil' if no body forms were given.
+
+          (save-excursion FORMS)
+          ==
+          (let ((old-buf (current-buffer))
+                (old-pnt (point-marker))
+                (old-mark (copy-marker (mark-marker))))
+            (unwind-protect
+                (progn FORMS)
+              (set-buffer old-buf)
+              (goto-char old-pnt)
+              (set-marker (mark-marker) old-mark)))
+
+   *Warning:* Ordinary insertion of text adjacent to the saved point
+value relocates the saved value, just as it relocates all markers.
+More precisely, the saved value is a marker with insertion type `nil'.
+*Note Marker Insertion Types::.  Therefore, when the saved point value
+is restored, it normally comes before the inserted text.
+
+   Although `save-excursion' saves the location of the mark, it does
+not prevent functions which modify the buffer from setting
+`deactivate-mark', and thus causing the deactivation of the mark after
+the command finishes.  *Note The Mark::.
+
+
+File: elisp,  Node: Narrowing,  Prev: Excursions,  Up: Positions
+
+30.4 Narrowing
+==============
+
+"Narrowing" means limiting the text addressable by Emacs editing
+commands to a limited range of characters in a buffer.  The text that
+remains addressable is called the "accessible portion" of the buffer.
+
+   Narrowing is specified with two buffer positions which become the
+beginning and end of the accessible portion.  For most editing commands
+and most Emacs primitives, these positions replace the values of the
+beginning and end of the buffer.  While narrowing is in effect, no text
+outside the accessible portion is displayed, and point cannot move
+outside the accessible portion.
+
+   Values such as positions or line numbers, which usually count from
+the beginning of the buffer, do so despite narrowing, but the functions
+which use them refuse to operate on text that is inaccessible.
+
+   The commands for saving buffers are unaffected by narrowing; they
+save the entire buffer regardless of any narrowing.
+
+   If you need to display in a single buffer several very different
+types of text, consider using an alternative facility described in
+*note Swapping Text::.
+
+ -- Command: narrow-to-region start end
+     This function sets the accessible portion of the current buffer to
+     start at START and end at END.  Both arguments should be character
+     positions.
+
+     In an interactive call, START and END are set to the bounds of the
+     current region (point and the mark, with the smallest first).
+
+ -- Command: narrow-to-page &optional move-count
+     This function sets the accessible portion of the current buffer to
+     include just the current page.  An optional first argument
+     MOVE-COUNT non-`nil' means to move forward or backward by
+     MOVE-COUNT pages and then narrow to one page.  The variable
+     `page-delimiter' specifies where pages start and end (*note
+     Standard Regexps::).
+
+     In an interactive call, MOVE-COUNT is set to the numeric prefix
+     argument.
+
+ -- Command: widen
+     This function cancels any narrowing in the current buffer, so that
+     the entire contents are accessible.  This is called "widening".
+     It is equivalent to the following expression:
+
+          (narrow-to-region 1 (1+ (buffer-size)))
+
+ -- Special Form: save-restriction body...
+     This special form saves the current bounds of the accessible
+     portion, evaluates the BODY forms, and finally restores the saved
+     bounds, thus restoring the same state of narrowing (or absence
+     thereof) formerly in effect.  The state of narrowing is restored
+     even in the event of an abnormal exit via `throw' or error (*note
+     Nonlocal Exits::).  Therefore, this construct is a clean way to
+     narrow a buffer temporarily.
+
+     The value returned by `save-restriction' is that returned by the
+     last form in BODY, or `nil' if no body forms were given.
+
+     *Caution:* it is easy to make a mistake when using the
+     `save-restriction' construct.  Read the entire description here
+     before you try it.
+
+     If BODY changes the current buffer, `save-restriction' still
+     restores the restrictions on the original buffer (the buffer whose
+     restrictions it saved from), but it does not restore the identity
+     of the current buffer.
+
+     `save-restriction' does _not_ restore point and the mark; use
+     `save-excursion' for that.  If you use both `save-restriction' and
+     `save-excursion' together, `save-excursion' should come first (on
+     the outside).  Otherwise, the old point value would be restored
+     with temporary narrowing still in effect.  If the old point value
+     were outside the limits of the temporary narrowing, this would
+     fail to restore it accurately.
+
+     Here is a simple example of correct use of `save-restriction':
+
+          ---------- Buffer: foo ----------
+          This is the contents of foo
+          This is the contents of foo
+          This is the contents of foo-!-
+          ---------- Buffer: foo ----------
+
+          (save-excursion
+            (save-restriction
+              (goto-char 1)
+              (forward-line 2)
+              (narrow-to-region 1 (point))
+              (goto-char (point-min))
+              (replace-string "foo" "bar")))
+
+          ---------- Buffer: foo ----------
+          This is the contents of bar
+          This is the contents of bar
+          This is the contents of foo-!-
+          ---------- Buffer: foo ----------
+
+
+File: elisp,  Node: Markers,  Next: Text,  Prev: Positions,  Up: Top
+
+31 Markers
+**********
+
+A "marker" is a Lisp object used to specify a position in a buffer
+relative to the surrounding text.  A marker changes its offset from the
+beginning of the buffer automatically whenever text is inserted or
+deleted, so that it stays with the two characters on either side of it.
+
+* Menu:
+
+* Overview of Markers::      The components of a marker, and how it relocates.
+* Predicates on Markers::    Testing whether an object is a marker.
+* Creating Markers::         Making empty markers or markers at certain places.
+* Information from Markers:: Finding the marker's buffer or character position.
+* Marker Insertion Types::   Two ways a marker can relocate when you
+                               insert where it points.
+* Moving Markers::           Moving the marker to a new buffer or position.
+* The Mark::                 How "the mark" is implemented with a marker.
+* The Region::               How to access "the region".
 
 
 File: elisp,  Node: Overview of Markers,  Next: Predicates on Markers,  Up: Markers
@@ -636,7 +830,7 @@ File: elisp,  Node: Near Point,  Next: Buffer Contents,  Up: Text
 
 Many functions are provided to look at the characters around point.
 Several simple functions are described here.  See also `looking-at' in
-*Note Regexp Search::.
+*note Regexp Search::.
 
    In the following four functions, "beginning" or "end" of buffer
 refers to the beginning or end of the accessible portion.
@@ -692,7 +886,7 @@ refers to the beginning or end of the accessible portion.
  -- Function: bobp
      This function returns `t' if point is at the beginning of the
      buffer.  If narrowing is in effect, this means the beginning of the
-     accessible portion of the text.  See also `point-min' in *Note
+     accessible portion of the text.  See also `point-min' in *note
      Point::.
 
  -- Function: eobp
@@ -1010,7 +1204,7 @@ programs.
 
      This command performs abbrev expansion if Abbrev mode is enabled
      and the inserted character does not have word-constituent syntax.
-     (*Note Abbrevs::, and *Note Syntax Class Table::.)  It is also
+     (*Note Abbrevs::, and *note Syntax Class Table::.)  It is also
      responsible for calling `blink-paren-function' when the inserted
      character has close parenthesis syntax (*note Blinking::).
 
@@ -1386,9 +1580,9 @@ copy into the buffer.
  -- Function: insert-for-yank string
      This function normally works like `insert' except that it doesn't
      insert the text properties in the `yank-excluded-properties' list.
-     However, if any part of STRING has a non-`nil' `yank-handler'
-     text property, that property can do various special processing on
-     that part of the text being inserted.
+     However, if any part of STRING has a non-`nil' `yank-handler' text
+     property, that property can do various special processing on that
+     part of the text being inserted.
 
  -- Function: insert-buffer-substring-as-yank buf &optional start end
      This function resembles `insert-buffer-substring' except that it
@@ -1663,7 +1857,7 @@ Most buffers have an "undo list", which records all changes made to the
 buffer's text so that they can be undone.  (The buffers that don't have
 one are usually special-purpose buffers for which Emacs assumes that
 undoing is not useful.  In particular, any buffer whose name begins
-with a space has its undo recording off by default; see *Note Buffer
+with a space has its undo recording off by default; see *note Buffer
 Names::.)  All the primitives that modify the text in the buffer
 automatically add elements to the front of the undo list, which is in
 the variable `buffer-undo-list'.
@@ -2125,7 +2319,7 @@ When "Adaptive Fill Mode" is enabled, Emacs determines the fill prefix
 automatically from the text in each paragraph being filled rather than
 using a predetermined value.  During filling, this fill prefix gets
 inserted at the start of the second and subsequent lines of the
-paragraph as described in *Note Filling::, and in *Note Auto Filling::.
+paragraph as described in *note Filling::, and in *note Auto Filling::.
 
  -- User Option: adaptive-fill-mode
      Adaptive Fill mode is enabled when this variable is non-`nil'.  It
@@ -2210,7 +2404,7 @@ File: elisp,  Node: Auto Filling,  Next: Sorting,  Prev: Adaptive Fill,  Up: Tex
 Auto Fill mode is a minor mode that fills lines automatically as text
 is inserted.  This section describes the hook used by Auto Fill mode.
 For a description of functions that you can call explicitly to fill and
-justify existing text, see *Note Filling::.
+justify existing text, see *note Filling::.
 
    Auto Fill mode also enables the functions that change the margins and
 justification style to refill portions of the text.  *Note Margins::.
@@ -2499,7 +2693,7 @@ also ignore overlays and text properties, aside from invisibility.
      the characters between the start of the current line and point.
 
      For an example of using `current-column', see the description of
-     `count-lines' in *Note Text Lines::.
+     `count-lines' in *note Text Lines::.
 
  -- Command: move-to-column column &optional force
      This function moves point to COLUMN in the current line.  The
@@ -3537,7 +3731,7 @@ each Emacs command.  *Note Adjusting Point::.
      the beginning and end of the inserted text.  The functions are
      called _after_ the actual insertion takes place.
 
-     See also *Note Change Hooks::, for other hooks that are called
+     See also *note Change Hooks::, for other hooks that are called
      when you change text in a buffer.
 
 `point-entered'
@@ -3595,7 +3789,7 @@ File: elisp,  Node: Format Properties,  Next: Sticky Properties,  Prev: Special 
 ---------------------------------
 
 These text properties affect the behavior of the fill commands.  They
-are used for representing formatted text.  *Note Filling::, and *Note
+are used for representing formatted text.  *Note Filling::, and *note
 Margins::.
 
 `hard'
@@ -4072,7 +4266,7 @@ finding the boundaries of intervals, assuming that intervals are always
 coalesced whenever possible.  *Note Property Search::.
 
    Emacs also provides explicit intervals as a presentation feature; see
-*Note Overlays::.
+*note Overlays::.
 
 
 File: elisp,  Node: Substitution,  Next: Transposition,  Prev: Text Properties,  Up: Text
@@ -4332,7 +4526,7 @@ digests.
 
    ---------- Footnotes ----------
 
-   (1) For an explanation of what is an RFC, see the footnote in *Note
+   (1) For an explanation of what is an RFC, see the footnote in *note
 Base 64::.
 
 
@@ -4424,7 +4618,7 @@ File: elisp,  Node: Change Hooks,  Prev: Atomic Changes,  Up: Text
 
 These hook variables let you arrange to take notice of all changes in
 all buffers (or in a particular buffer, if you make them buffer-local).
-See also *Note Special Properties::, for how to detect changes to
+See also *note Special Properties::, for how to detect changes to
 specific parts of the text.
 
    The functions you use in these hooks should save and restore the
@@ -5397,9 +5591,9 @@ Here are the Lisp facilities for working with coding systems:
 
  -- Function: coding-system-list &optional base-only
      This function returns a list of all coding system names (symbols).
-     If BASE-ONLY is non-`nil', the value includes only the base
-     coding systems.  Otherwise, it includes alias and variant coding
-     systems as well.
+     If BASE-ONLY is non-`nil', the value includes only the base coding
+     systems.  Otherwise, it includes alias and variant coding systems
+     as well.
 
  -- Function: coding-system-p object
      This function returns `t' if OBJECT is a coding system name or
@@ -5426,13 +5620,13 @@ Here are the Lisp facilities for working with coding systems:
 
      If this function returns a vector, Emacs will decide, as part of
      the text encoding or decoding process, what eol conversion to use.
-     For decoding, the end-of-line format of the text is
-     auto-detected, and the eol conversion is set to match it (e.g.,
-     DOS-style CRLF format will imply `dos' eol conversion).  For
-     encoding, the eol conversion is taken from the appropriate default
-     coding system (e.g., default value of `buffer-file-coding-system'
-     for `buffer-file-coding-system'), or from the default eol
-     conversion appropriate for the underlying platform.
+     For decoding, the end-of-line format of the text is auto-detected,
+     and the eol conversion is set to match it (e.g., DOS-style CRLF
+     format will imply `dos' eol conversion).  For encoding, the eol
+     conversion is taken from the appropriate default coding system
+     (e.g., default value of `buffer-file-coding-system' for
+     `buffer-file-coding-system'), or from the default eol conversion
+     appropriate for the underlying platform.
 
  -- Function: coding-system-change-eol-conversion coding-system eol-type
      This function returns a coding system which is like CODING-SYSTEM
@@ -5479,7 +5673,7 @@ Here are the Lisp facilities for working with coding systems:
      some coding systems cannot encode some of the characters, the
      value is an alist, each element of which has the form
      `(CODING-SYSTEM1 POS1 POS2 ...)', meaning that CODING-SYSTEM1
-     cannot encode characters at buffer positions POS1, POS2, .....
+     cannot encode characters at buffer positions POS1, POS2, ....
 
      START may be a string, in which case END is ignored and the
      returned value references string indices instead of buffer
@@ -6159,7 +6353,7 @@ future, symbols may also be usable as input method names.
      it is good for.
 
    The fundamental interface to input methods is through the variable
-`input-method-function'.  *Note Reading One Event::, and *Note Invoking
+`input-method-function'.  *Note Reading One Event::, and *note Invoking
 the Input Method::.
 
 
@@ -6244,7 +6438,7 @@ portions of it.
 
    The `skip-chars...' functions also perform a kind of searching.
 *Note Skipping Characters::.  To search for changes in character
-properties, see *Note Property Search::.
+properties, see *note Property Search::.
 
 
 File: elisp,  Node: String Search,  Next: Searching and Case,  Up: Searching and Matching
@@ -6410,67 +6604,4 @@ functions used in Lisp code.
 
      This variable is used by passing it as an argument to the function
      `replace-match'.  *Note Replacing Match::.
-
-
-File: elisp,  Node: Regular Expressions,  Next: Regexp Search,  Prev: Searching and Case,  Up: Searching and Matching
-
-34.3 Regular Expressions
-========================
-
-A "regular expression", or "regexp" for short, is a pattern that
-denotes a (possibly infinite) set of strings.  Searching for matches for
-a regexp is a very powerful operation.  This section explains how to
-write regexps; the following section says how to search for them.
-
-   For convenient interactive development of regular expressions, you
-can use the `M-x re-builder' command.  It provides a convenient
-interface for creating regular expressions, by giving immediate visual
-feedback in a separate buffer.  As you edit the regexp, all its matches
-in the target buffer are highlighted.  Each parenthesized
-sub-expression of the regexp is shown in a distinct face, which makes
-it easier to verify even very complex regexps.
-
-* Menu:
-
-* Syntax of Regexps::       Rules for writing regular expressions.
-* Regexp Example::          Illustrates regular expression syntax.
-* Regexp Functions::        Functions for operating on regular expressions.
-
-
-File: elisp,  Node: Syntax of Regexps,  Next: Regexp Example,  Up: Regular Expressions
-
-34.3.1 Syntax of Regular Expressions
-------------------------------------
-
-Regular expressions have a syntax in which a few characters are special
-constructs and the rest are "ordinary".  An ordinary character is a
-simple regular expression that matches that character and nothing else.
-The special characters are `.', `*', `+', `?', `[', `^', `$', and `\';
-no new special characters will be defined in the future.  The character
-`]' is special if it ends a character alternative (see later).  The
-character `-' is special inside a character alternative.  A `[:' and
-balancing `:]' enclose a character class inside a character
-alternative.  Any other character appearing in a regular expression is
-ordinary, unless a `\' precedes it.
-
-   For example, `f' is not a special character, so it is ordinary, and
-therefore `f' is a regular expression that matches the string `f' and
-no other string.  (It does _not_ match the string `fg', but it does
-match a _part_ of that string.)  Likewise, `o' is a regular expression
-that matches only `o'.
-
-   Any two regular expressions A and B can be concatenated.  The result
-is a regular expression that matches a string if A matches some amount
-of the beginning of that string and B matches the rest of the string.
-
-   As a simple example, we can concatenate the regular expressions `f'
-and `o' to get the regular expression `fo', which matches only the
-string `fo'.  Still trivial.  To do something more powerful, you need
-to use one of the special regular expression constructs.
-
-* Menu:
-
-* Regexp Special::      Special characters in regular expressions.
-* Char Classes::        Character classes used in regular expressions.
-* Regexp Backslash::    Backslash-sequences in regular expressions.
 

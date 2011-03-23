@@ -23,7 +23,7 @@ This file describes the Emacs auth-source library.
      copy of the license to the document, as described in section 6 of
      the license.
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs lisp libraries
 START-INFO-DIR-ENTRY
 * Auth-source: (auth).          The Emacs auth-source library.
 END-INFO-DIR-ENTRY
@@ -208,7 +208,7 @@ The auth-source library only has one function for external use.
      HOST is a string containing the host name.
 
      PORT contains the protocol name (e.g. "imap") or a port number.
-     It must be a string, corresponding to the port in the users' netrc
+     It must be a string, corresponding to the port in the user's netrc
      files.
 
           ;; IMAP example
@@ -253,12 +253,12 @@ File: auth,  Node: Variable Index,  Prev: Function Index,  Up: Top
 
 
 Tag Table:
-Node: Top1296
-Node: Overview2828
-Node: Help for users3487
-Node: Help for developers7606
-Node: Index9079
-Node: Function Index9205
-Node: Variable Index9419
+Node: Top1311
+Node: Overview2843
+Node: Help for users3502
+Node: Help for developers7621
+Node: Index9094
+Node: Function Index9220
+Node: Variable Index9434
 
 End Tag Table

@@ -26,14 +26,14 @@ along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.  */
    path is usually identical to PATH_LOADSEARCH except that the entry
    for the directory containing the installed lisp files has been
    replaced with ../lisp.  */
-#define PATH_DUMPLOADSEARCH "/Users/sinx/Factory/emacs-mac-port/lisp"
+#define PATH_DUMPLOADSEARCH "/Users/nix/Factory/emacs-23.3/lisp"
 
 /* The extra search path for programs to invoke.  This is appended to
    whatever the PATH environment variable says to set the Lisp
    variable exec-path and the first file name in it sets the Lisp
    variable exec-directory.  exec-directory is used for finding
    executables and other architecture-dependent files.  */
-#define PATH_EXEC "/usr/local/libexec/emacs/23.3/x86_64-apple-darwin10.6.0"
+#define PATH_EXEC "/usr/local/libexec/emacs/23.3/x86_64-apple-darwin10.7.0"
 
 /* Where Emacs should look for its architecture-independent data
    files, like the NEWS file.  The lisp variable data-directory

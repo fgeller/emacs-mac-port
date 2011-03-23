@@ -18,7 +18,7 @@ Software Foundation, Inc.
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs network features
 START-INFO-DIR-ENTRY
 * Newsticker: (newsticker).     A Newsticker for Emacs.
 END-INFO-DIR-ENTRY
@@ -766,14 +766,14 @@ Index
 
 
 Tag Table:
-Node: Top1012
-Node: Overview2359
-Node: Requirements3965
-Node: Installation4690
-Node: Usage5161
-Node: Configuration6466
-Node: Remarks9264
-Node: GNU Free Documentation License9438
-Node: Index34604
+Node: Top1029
+Node: Overview2376
+Node: Requirements3982
+Node: Installation4707
+Node: Usage5178
+Node: Configuration6483
+Node: Remarks9281
+Node: GNU Free Documentation License9455
+Node: Index34621
 
 End Tag Table

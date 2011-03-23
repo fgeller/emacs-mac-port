@@ -1,8 +1,8 @@
-This is ../../info/elisp, produced by makeinfo version 4.8 from
+This is ../../info/elisp, produced by makeinfo version 4.13 from
 elisp.texi.
 
-   This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 23.2.94.
+This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
+corresponding to Emacs version 23.3.
 
    Copyright (C) 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1998, 1999,
 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011
@@ -21,10 +21,36 @@ Free Software Foundation, Inc.
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION GNU Emacs Lisp
 START-INFO-DIR-ENTRY
 * Elisp: (elisp).       The Emacs Lisp Reference Manual.
 END-INFO-DIR-ENTRY
+
+
+File: elisp,  Node: Mode Help,  Next: Derived Modes,  Prev: Auto Major Mode,  Up: Major Modes
+
+23.2.4 Getting Help about a Major Mode
+--------------------------------------
+
+The `describe-mode' function is used to provide information about major
+modes.  It is normally called with `C-h m'.  The `describe-mode'
+function uses the value of `major-mode', which is why every major mode
+function needs to set the `major-mode' variable.
+
+ -- Command: describe-mode
+     This function displays the documentation of the current major mode.
+
+     The `describe-mode' function calls the `documentation' function
+     using the value of `major-mode' as an argument.  Thus, it displays
+     the documentation string of the major mode function.  (*Note
+     Accessing Documentation::.)
+
+ -- Variable: major-mode
+     This buffer-local variable holds the symbol for the current
+     buffer's major mode.  This symbol should have a function
+     definition that is the command to switch to that major mode.  The
+     `describe-mode' function uses the documentation string of the
+     function as the documentation of the major mode.
 
 
 File: elisp,  Node: Derived Modes,  Next: Generic Modes,  Prev: Mode Help,  Up: Major Modes
@@ -465,7 +491,7 @@ the initialization function, and the use of keymaps and other tables.
 
    In addition, there are several conventions that are specific to
 minor modes.  (The easiest way to follow all the conventions is to use
-the macro `define-minor-mode'; *Note Defining Minor Modes::.)
+the macro `define-minor-mode'; *note Defining Minor Modes::.)
 
    * Make a variable whose name ends in `-mode' to control the minor
      mode.  We call this the "mode variable".  The minor mode command
@@ -592,8 +618,8 @@ mode in one self-contained definition.
  -- Macro: define-minor-mode mode doc [init-value [lighter [keymap]]]
           keyword-args... body...
      This macro defines a new minor mode whose name is MODE (a symbol).
-     It defines a command named MODE to toggle the minor mode, with
-     DOC as its documentation string.  It also defines a variable named
+     It defines a command named MODE to toggle the minor mode, with DOC
+     as its documentation string.  It also defines a variable named
      MODE, which is set to `t' or `nil' by enabling or disabling the
      mode.  The variable is initialized to INIT-VALUE.  Except in
      unusual circumstances (see below), this value must be `nil'.
@@ -826,7 +852,7 @@ defined to have mode-line constructs as their values.
 `STRING'
      A string as a mode-line construct appears verbatim except for
      "`%'-constructs" in it.  These stand for substitution of other
-     data; see *Note %-Constructs::.
+     data; see *note %-Constructs::.
 
      If parts of the string have `face' properties, they control
      display of the text just as they would text in the buffer.  Any
@@ -1129,7 +1155,7 @@ right.
 
 `%n'
      `Narrow' when narrowing is in effect; nothing otherwise (see
-     `narrow-to-region' in *Note Narrowing::).
+     `narrow-to-region' in *note Narrowing::).
 
 `%p'
      The percentage of the buffer text above the *top* of window, or
@@ -1686,8 +1712,8 @@ behavior using the OVERRIDE element of a SUBEXP-HIGHLIGHTER.
      If LAXMATCH is non-`nil', it means there should be no error if
      there is no subexpression numbered SUBEXP in MATCHER.  Obviously,
      fontification of the subexpression numbered SUBEXP will not occur.
-     However, fontification of other subexpressions (and other
-     regexps) will continue.  If LAXMATCH is `nil', and the specified
+     However, fontification of other subexpressions (and other regexps)
+     will continue.  If LAXMATCH is `nil', and the specified
      subexpression is missing, then an error is signaled which
      terminates search-based fontification.
 
@@ -2958,9 +2984,9 @@ of documentation strings is not sufficient as a manual because a good
 manual is not organized in that fashion; it is organized in terms of
 topics of discussion.
 
-   For commands to display documentation strings, see *Note Help:
+   For commands to display documentation strings, see *note Help:
 (emacs)Help.  For the conventions for writing documentation strings,
-see *Note Documentation Tips::.
+see *note Documentation Tips::.
 
 * Menu:
 
@@ -2993,7 +3019,7 @@ string.  Also, you should not indent the second line of a documentation
 string, if it has one, because that looks odd when you use `C-h f'
 (`describe-function') or `C-h v' (`describe-variable') to view the
 documentation string.  There are many other conventions for doc
-strings; see *Note Documentation Tips::.
+strings; see *note Documentation Tips::.
 
    Documentation strings can contain several special substrings, which
 stand for key bindings to be looked up in the current keymaps when the
@@ -3342,7 +3368,7 @@ File: elisp,  Node: Help Functions,  Prev: Describing Characters,  Up: Documenta
 
 Emacs provides a variety of on-line help functions, all accessible to
 the user as subcommands of the prefix `C-h'.  For more information
-about them, see *Note Help: (emacs)Help.  Here we describe some
+about them, see *note Help: (emacs)Help.  Here we describe some
 program-level interfaces to the same information.
 
  -- Command: apropos pattern &optional do-all
@@ -3433,8 +3459,8 @@ program-level interfaces to the same information.
  -- Function: describe-prefix-bindings
      This function calls `describe-bindings' to display a list of all
      the subcommands of the prefix key of the most recent key sequence.
-     The prefix described consists of all but the last event of that
-     key sequence.  (The last event is, presumably, the help character.)
+     The prefix described consists of all but the last event of that key
+     sequence.  (The last event is, presumably, the help character.)
 
    The following two functions are meant for modes that want to provide
 help without relinquishing control, such as the "electric" modes.
@@ -3525,8 +3551,8 @@ File: elisp,  Node: Files,  Next: Backups and Auto-Saving,  Prev: Documentation,
 In Emacs, you can find, create, view, save, and otherwise work with
 files and file directories.  This chapter describes most of the
 file-related functions of Emacs Lisp, but a few others are described in
-*Note Buffers::, and those related to backups and auto-saving are
-described in *Note Backups and Auto-Saving::.
+*note Buffers::, and those related to backups and auto-saving are
+described in *note Backups and Auto-Saving::.
 
    Many of the file functions take one or more arguments that are file
 names.  A file name is actually a string.  Most of these functions
@@ -3618,7 +3644,7 @@ temporary buffer.  Visiting the file is not necessary and takes longer.
 
           (switch-to-buffer (find-file-noselect filename nil nil wildcards))
 
-     (See `switch-to-buffer' in *Note Displaying Buffers::.)
+     (See `switch-to-buffer' in *note Displaying Buffers::.)
 
      If WILDCARDS is non-`nil', which is always true in an interactive
      call, then `find-file' expands wildcard characters in FILENAME and
@@ -3626,6 +3652,25 @@ temporary buffer.  Visiting the file is not necessary and takes longer.
 
      When `find-file' is called interactively, it prompts for FILENAME
      in the minibuffer.
+
+ -- Command: find-file-literally filename
+     This command visits FILENAME, like `find-file' does, but it does
+     not perform any format conversions (*note Format Conversion::),
+     character code conversions (*note Coding Systems::), or end-of-line
+     conversions (*note End of line conversion: Coding System Basics.).
+     The buffer visiting the file is made unibyte, and its major mode is
+     Fundamental mode, regardless of the file name.  File local variable
+     specifications  in the file (*note File Local Variables::) are
+     ignored, and automatic decompression and adding a newline at the
+     end of the file due to `require-final-newline' (*note
+     require-final-newline: Saving Buffers.) are also disabled.
+
+     Note that if Emacs already has a buffer visiting the same file
+     non-literally, it will not visit the same file literally, but
+     instead just switch to the existing buffer.  If you want to be
+     sure of accessing a file's contents literally, you should create a
+     temporary buffer and then read the file contents into it using
+     `insert-file-contents-literally' (*note Reading from Files::).
 
  -- Function: find-file-noselect filename &optional nowarn rawfile
           wildcards
@@ -3678,7 +3723,7 @@ temporary buffer.  Visiting the file is not necessary and takes longer.
  -- Command: find-file-other-window filename &optional wildcards
      This command selects a buffer visiting the file FILENAME, but does
      so in a window other than the selected window.  It may use another
-     existing window or split a window; see *Note Displaying Buffers::.
+     existing window or split a window; see *note Displaying Buffers::.
 
      When this command is called interactively, it prompts for FILENAME.
 
@@ -3726,6 +3771,16 @@ temporary buffer.  Visiting the file is not necessary and takes longer.
      This is not a normal hook because the values of the functions are
      used, and in many cases only some of the functions are called.
 
+ -- Variable: find-file-literally
+     This buffer-local variable, if set to a non-`nil' value, makes
+     `save-buffer' behave as if the buffer were visiting its file
+     literally, i.e. without conversions of any kind.  The command
+     `find-file-literally' sets this variable's local value, but other
+     equivalent functions and commands can do that as well, e.g. to
+     avoid automatic addition of a newline at the end of the file.
+     This variable us permanent local, so it is unaffected by changes
+     of major modes.
+
 
 File: elisp,  Node: Subroutines of Visiting,  Prev: Visiting Functions,  Up: Visiting Files
 
@@ -3740,7 +3795,7 @@ are sometimes useful in user Lisp code: `create-file-buffer' and
      This function creates a suitably named buffer for visiting
      FILENAME, and returns it.  It uses FILENAME (sans directory) as
      the name if that name is free; otherwise, it appends a string such
-     as `<2>' to get an unused name.  See also *Note Creating Buffers::.
+     as `<2>' to get an unused name.  See also *note Creating Buffers::.
 
      *Please note:* `create-file-buffer' does _not_ associate the new
      buffer with a file and does not select the buffer.  It also does
@@ -3982,7 +4037,7 @@ You can copy a file from the disk and insert it into a buffer using the
      (*note Coding Systems::) used for decoding the file's contents,
      including end-of-line conversion.  However, if the file contains
      null bytes, it is by default visited without any code conversions;
-     see *Note inhibit-null-byte-detection: Lisp and Coding Systems,
+     see *note inhibit-null-byte-detection: Lisp and Coding Systems,
      for how to control this behavior.
 
      If VISIT is non-`nil', this function additionally marks the buffer
@@ -4020,7 +4075,7 @@ You can copy a file from the disk and insert it into a buffer using the
 
    If you want to pass a file name to another process so that another
 program can read the file, use the function `file-local-copy'; see
-*Note Magic File Names::.
+*note Magic File Names::.
 
 
 File: elisp,  Node: Writing to Files,  Next: File Locks,  Prev: Reading from Files,  Up: Files
@@ -4116,7 +4171,7 @@ visited; that could cause confusion in the mechanisms for visiting.
      The current buffer is restored even in case of an abnormal exit via
      `throw' or error (*note Nonlocal Exits::).
 
-     See also `with-temp-buffer' in *Note The Current Buffer:
+     See also `with-temp-buffer' in *note The Current Buffer:
      Definition of with-temp-buffer.
 
 
@@ -4139,7 +4194,7 @@ that you and another user will both lock the same file "simultaneously."
 If this happens, it is possible for the two users to make changes
 simultaneously, but Emacs will still warn the user who saves second.
 Also, the detection of modification of a buffer visiting a file changed
-on disk catches some cases of simultaneous editing; see *Note
+on disk catches some cases of simultaneous editing; see *note
 Modification Time::.
 
  -- Function: file-locked-p filename
@@ -4531,7 +4586,7 @@ parent directories.
        4. The time of last access, as a list of two integers.  The
           first integer has the high-order 16 bits of time, the second
           has the low 16 bits.  (This is similar to the value of
-          `current-time'; see *Note Time of Day::.)  Note that on some
+          `current-time'; see *note Time of Day::.)  Note that on some
           FAT-based filesystems, only the date of last access is
           recorded, so this time will always hold the midnight of the
           day of last access.
@@ -4676,7 +4731,7 @@ for a file.
      name as its single argument.  If PREDICATE is `nil' or unspecified,
      `locate-file' uses `file-readable-p' as the default predicate.
      Useful non-default predicates include `file-executable-p',
-     `file-directory-p', and other predicates described in *Note Kinds
+     `file-directory-p', and other predicates described in *note Kinds
      of Files::.
 
      For compatibility, PREDICATE can also be one of the symbols
@@ -4761,7 +4816,7 @@ with its (recursive) target.
      names for one file are not allowed.  Some systems implement
      multiple names by copying the file instead.
 
-     See also `file-nlinks' in *Note File Attributes::.
+     See also `file-nlinks' in *note File Attributes::.
 
  -- Command: rename-file filename newname &optional ok-if-already-exists
      This command renames the file FILENAME as NEWNAME.
@@ -4813,7 +4868,7 @@ with its (recursive) target.
      with its target, but it does follow symbolic links at all levels
      of parent directories.
 
-     See also `delete-directory' in *Note Create/Delete Dirs::.
+     See also `delete-directory' in *note Create/Delete Dirs::.
 
  -- Command: set-file-modes filename mode
      This function sets mode bits of FILENAME to MODE (which must be an
@@ -5374,7 +5429,7 @@ File: elisp,  Node: File Name Completion,  Next: Standard File Names,  Prev: Uni
 ---------------------------
 
 This section describes low-level subroutines for completing a file
-name.  For higher level functions, see *Note Reading File Names::.
+name.  For higher level functions, see *note Reading File Names::.
 
  -- Function: file-name-all-completions partial-filename directory
      This function returns a list of all possible completions for a file
@@ -5896,7 +5951,7 @@ The function `write-region':
    This shows the symmetry of the lowest-level operations; reading and
 writing handle things in opposite order.  The rest of this section
 describes the two facilities surrounding the three variables named
-above, as well as some related functions.  *Note Coding Systems::, for
+above, as well as some related functions.  *note Coding Systems::, for
 details on character encoding and decoding.
 
 
@@ -6245,9 +6300,9 @@ File: elisp,  Node: Making Backups,  Next: Rename or Copy,  Up: Backup Files
      This variable's value is a function to be called on certain
      occasions to decide whether a file should have backup files.  The
      function receives one argument, an absolute file name to consider.
-     If the function returns `nil', backups are disabled for that
-     file.  Otherwise, the other variables in this section say whether
-     and how to make backups.
+     If the function returns `nil', backups are disabled for that file.
+     Otherwise, the other variables in this section say whether and how
+     to make backups.
 
      The default value is `normal-backup-enable-predicate', which checks
      for files in `temporary-file-directory' and
@@ -6513,210 +6568,4 @@ If you change one, you probably need to change the rest.
 
      Some file comparison commands use this function so that they can
      automatically compare a file with its most recent backup.
-
-
-File: elisp,  Node: Auto-Saving,  Next: Reverting,  Prev: Backup Files,  Up: Backups and Auto-Saving
-
-26.2 Auto-Saving
-================
-
-Emacs periodically saves all files that you are visiting; this is
-called "auto-saving".  Auto-saving prevents you from losing more than a
-limited amount of work if the system crashes.  By default, auto-saves
-happen every 300 keystrokes, or after around 30 seconds of idle time.
-*Note Auto Save: (emacs)Auto Save, for information on auto-save for
-users.  Here we describe the functions used to implement auto-saving
-and the variables that control them.
-
- -- Variable: buffer-auto-save-file-name
-     This buffer-local variable is the name of the file used for
-     auto-saving the current buffer.  It is `nil' if the buffer should
-     not be auto-saved.
-
-          buffer-auto-save-file-name
-               => "/xcssun/users/rms/lewis/#backups.texi#"
-
- -- Command: auto-save-mode arg
-     When used interactively without an argument, this command is a
-     toggle switch: it turns on auto-saving of the current buffer if it
-     is off, and vice versa.  With an argument ARG, the command turns
-     auto-saving on if the value of ARG is `t', a nonempty list, or a
-     positive integer.  Otherwise, it turns auto-saving off.
-
- -- Function: auto-save-file-name-p filename
-     This function returns a non-`nil' value if FILENAME is a string
-     that could be the name of an auto-save file.  It assumes the usual
-     naming convention for auto-save files: a name that begins and ends
-     with hash marks (`#') is a possible auto-save file name.  The
-     argument FILENAME should not contain a directory part.
-
-          (make-auto-save-file-name)
-               => "/xcssun/users/rms/lewis/#backups.texi#"
-          (auto-save-file-name-p "#backups.texi#")
-               => 0
-          (auto-save-file-name-p "backups.texi")
-               => nil
-
-     The standard definition of this function is as follows:
-
-          (defun auto-save-file-name-p (filename)
-            "Return non-nil if FILENAME can be yielded by..."
-            (string-match "^#.*#$" filename))
-
-     This function exists so that you can customize it if you wish to
-     change the naming convention for auto-save files.  If you redefine
-     it, be sure to redefine the function `make-auto-save-file-name'
-     correspondingly.
-
- -- Function: make-auto-save-file-name
-     This function returns the file name to use for auto-saving the
-     current buffer.  This is just the file name with hash marks (`#')
-     prepended and appended to it.  This function does not look at the
-     variable `auto-save-visited-file-name' (described below); callers
-     of this function should check that variable first.
-
-          (make-auto-save-file-name)
-               => "/xcssun/users/rms/lewis/#backups.texi#"
-
-     Here is a simplified version of the standard definition of this
-     function:
-
-          (defun make-auto-save-file-name ()
-            "Return file name to use for auto-saves \
-          of current buffer.."
-            (if buffer-file-name
-                (concat
-                 (file-name-directory buffer-file-name)
-                 "#"
-                 (file-name-nondirectory buffer-file-name)
-                 "#")
-              (expand-file-name
-               (concat "#%" (buffer-name) "#"))))
-
-     This exists as a separate function so that you can redefine it to
-     customize the naming convention for auto-save files.  Be sure to
-     change `auto-save-file-name-p' in a corresponding way.
-
- -- User Option: auto-save-visited-file-name
-     If this variable is non-`nil', Emacs auto-saves buffers in the
-     files they are visiting.  That is, the auto-save is done in the
-     same file that you are editing.  Normally, this variable is `nil',
-     so auto-save files have distinct names that are created by
-     `make-auto-save-file-name'.
-
-     When you change the value of this variable, the new value does not
-     take effect in an existing buffer until the next time auto-save
-     mode is reenabled in it.  If auto-save mode is already enabled,
-     auto-saves continue to go in the same file name until
-     `auto-save-mode' is called again.
-
- -- Function: recent-auto-save-p
-     This function returns `t' if the current buffer has been
-     auto-saved since the last time it was read in or saved.
-
- -- Function: set-buffer-auto-saved
-     This function marks the current buffer as auto-saved.  The buffer
-     will not be auto-saved again until the buffer text is changed
-     again.  The function returns `nil'.
-
- -- User Option: auto-save-interval
-     The value of this variable specifies how often to do auto-saving,
-     in terms of number of input events.  Each time this many
-     additional input events are read, Emacs does auto-saving for all
-     buffers in which that is enabled.  Setting this to zero disables
-     autosaving based on the number of characters typed.
-
- -- User Option: auto-save-timeout
-     The value of this variable is the number of seconds of idle time
-     that should cause auto-saving.  Each time the user pauses for this
-     long, Emacs does auto-saving for all buffers in which that is
-     enabled.  (If the current buffer is large, the specified timeout
-     is multiplied by a factor that increases as the size increases;
-     for a million-byte buffer, the factor is almost 4.)
-
-     If the value is zero or `nil', then auto-saving is not done as a
-     result of idleness, only after a certain number of input events as
-     specified by `auto-save-interval'.
-
- -- Variable: auto-save-hook
-     This normal hook is run whenever an auto-save is about to happen.
-
- -- User Option: auto-save-default
-     If this variable is non-`nil', buffers that are visiting files
-     have auto-saving enabled by default.  Otherwise, they do not.
-
- -- Command: do-auto-save &optional no-message current-only
-     This function auto-saves all buffers that need to be auto-saved.
-     It saves all buffers for which auto-saving is enabled and that
-     have been changed since the previous auto-save.
-
-     If any buffers are auto-saved, `do-auto-save' normally displays a
-     message saying `Auto-saving...' in the echo area while auto-saving
-     is going on.  However, if NO-MESSAGE is non-`nil', the message is
-     inhibited.
-
-     If CURRENT-ONLY is non-`nil', only the current buffer is
-     auto-saved.
-
- -- Function: delete-auto-save-file-if-necessary &optional force
-     This function deletes the current buffer's auto-save file if
-     `delete-auto-save-files' is non-`nil'.  It is called every time a
-     buffer is saved.
-
-     Unless FORCE is non-`nil', this function only deletes the file if
-     it was written by the current Emacs session since the last true
-     save.
-
- -- User Option: delete-auto-save-files
-     This variable is used by the function
-     `delete-auto-save-file-if-necessary'.  If it is non-`nil', Emacs
-     deletes auto-save files when a true save is done (in the visited
-     file).  This saves disk space and unclutters your directory.
-
- -- Function: rename-auto-save-file
-     This function adjusts the current buffer's auto-save file name if
-     the visited file name has changed.  It also renames an existing
-     auto-save file, if it was made in the current Emacs session.  If
-     the visited file name has not changed, this function does nothing.
-
- -- Variable: buffer-saved-size
-     The value of this buffer-local variable is the length of the
-     current buffer, when it was last read in, saved, or auto-saved.
-     This is used to detect a substantial decrease in size, and turn
-     off auto-saving in response.
-
-     If it is -1, that means auto-saving is temporarily shut off in
-     this buffer due to a substantial decrease in size.  Explicitly
-     saving the buffer stores a positive value in this variable, thus
-     reenabling auto-saving.  Turning auto-save mode off or on also
-     updates this variable, so that the substantial decrease in size is
-     forgotten.
-
-     If it is -2, that means this buffer should disregard changes in
-     buffer size; in particular, it should not shut off auto-saving
-     temporarily due to changes in buffer size.
-
- -- Variable: auto-save-list-file-name
-     This variable (if non-`nil') specifies a file for recording the
-     names of all the auto-save files.  Each time Emacs does
-     auto-saving, it writes two lines into this file for each buffer
-     that has auto-saving enabled.  The first line gives the name of
-     the visited file (it's empty if the buffer has none), and the
-     second gives the name of the auto-save file.
-
-     When Emacs exits normally, it deletes this file; if Emacs crashes,
-     you can look in the file to find all the auto-save files that
-     might contain work that was otherwise lost.  The `recover-session'
-     command uses this file to find them.
-
-     The default name for this file specifies your home directory and
-     starts with `.saves-'.  It also contains the Emacs process ID and
-     the host name.
-
- -- User Option: auto-save-list-file-prefix
-     After Emacs reads your init file, it initializes
-     `auto-save-list-file-name' (if you have not already set it
-     non-`nil') based on this prefix, adding the host name and process
-     ID.  If you set this to `nil' in your init file, then Emacs does
-     not initialize `auto-save-list-file-name'.
 

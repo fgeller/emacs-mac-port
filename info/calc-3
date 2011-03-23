@@ -19,7 +19,7 @@ Copyright (C) 1990, 1991, 2001, 2002, 2003, 2004, 2005, 2006, 2007,
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
 * Calc: (calc).                 Advanced desk calculator and mathematical tool.
 END-INFO-DIR-ENTRY

@@ -1,6 +1,6 @@
 This is ../../info/url, produced by makeinfo version 4.13 from url.texi.
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs lisp libraries
 START-INFO-DIR-ENTRY
 * URL: (url).                   URL loading package.
 END-INFO-DIR-ENTRY
@@ -1685,47 +1685,47 @@ Concept Index
 
 
 Tag Table:
-Node: Top1048
-Node: Getting Started2605
-Node: Configuration3995
-Node: Parsed URLs4253
-Node: Retrieving URLs5605
-Node: Supported URL Types6518
-Node: http/https7378
-Node: Cookies8559
-Node: HTTP language/coding9545
-Node: HTTP URL Options11172
-Node: Dealing with HTTP documents12103
-Node: file/ftp13080
-Node: info13980
-Node: mailto14247
-Node: news/nntp/snews15355
-Node: rlogin/telnet/tn327016589
-Node: irc17156
-Node: data18063
-Node: nfs18528
-Node: cid19278
-Node: about19384
-Node: ldap19485
-Node: imap19626
-Node: man19734
-Node: Defining New URLs19932
-Node: Naming conventions20216
-Node: Required functions20354
-Node: Optional functions20519
-Node: Asynchronous fetching20687
-Node: Supporting file-name-handlers20872
-Node: General Facilities21046
-Node: Disk Caching21262
-Node: Proxies23243
-Node: Gateways in general25298
-Ref: Gateways in general-Footnote-129344
-Node: Suppressing network connections29419
-Node: History30070
-Node: Customization31909
-Node: GNU Free Documentation License33783
-Node: Function Index58957
-Node: Variable Index62059
-Node: Concept Index66637
+Node: Top1063
+Node: Getting Started2620
+Node: Configuration4010
+Node: Parsed URLs4268
+Node: Retrieving URLs5620
+Node: Supported URL Types6533
+Node: http/https7393
+Node: Cookies8574
+Node: HTTP language/coding9560
+Node: HTTP URL Options11187
+Node: Dealing with HTTP documents12118
+Node: file/ftp13095
+Node: info13995
+Node: mailto14262
+Node: news/nntp/snews15370
+Node: rlogin/telnet/tn327016604
+Node: irc17171
+Node: data18078
+Node: nfs18543
+Node: cid19293
+Node: about19399
+Node: ldap19500
+Node: imap19641
+Node: man19749
+Node: Defining New URLs19947
+Node: Naming conventions20231
+Node: Required functions20369
+Node: Optional functions20534
+Node: Asynchronous fetching20702
+Node: Supporting file-name-handlers20887
+Node: General Facilities21061
+Node: Disk Caching21277
+Node: Proxies23258
+Node: Gateways in general25313
+Ref: Gateways in general-Footnote-129359
+Node: Suppressing network connections29434
+Node: History30085
+Node: Customization31924
+Node: GNU Free Documentation License33798
+Node: Function Index58972
+Node: Variable Index62074
+Node: Concept Index66652
 
 End Tag Table

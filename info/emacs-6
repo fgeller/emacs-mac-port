@@ -1,8 +1,8 @@
-This is ../../info/emacs, produced by makeinfo version 4.8 from
+This is ../../info/emacs, produced by makeinfo version 4.13 from
 emacs.texi.
 
-   This is the Sixteenth edition of the `GNU Emacs Manual',
-updated for Emacs version 23.2.94.
+This is the Sixteenth edition of the `GNU Emacs Manual',
+updated for Emacs version 23.3.
 
    Copyright (C) 1985, 1986, 1987, 1993, 1994, 1995, 1996, 1997, 1998,
 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
@@ -251,7 +251,7 @@ some English text to explain its meaning.
 
    A syntax table is actually a Lisp object, a char-table, whose
 elements are cons cells.  For full information on the syntax table, see
-*Note Syntax Tables: (elisp)Syntax Tables.
+*note Syntax Tables: (elisp)Syntax Tables.
 
 
 File: emacs,  Node: Init File,  Prev: Syntax,  Up: Customization
@@ -773,7 +773,7 @@ File: emacs,  Node: Lossage,  Next: Bugs,  Prev: Quitting,  Up: Top
 
 This section describes various conditions in which Emacs fails to work
 normally, and how to recognize them and correct them.  For a list of
-additional problems you might encounter, see *Note Bugs and problems:
+additional problems you might encounter, see *note Bugs and problems:
 (efaq)Bugs and problems, and the file `etc/PROBLEMS' in the Emacs
 distribution.  Type `C-h C-f' to read the FAQ; type `C-h C-p' to read
 the `PROBLEMS' file.
@@ -1074,7 +1074,7 @@ main places you can read about known issues:
      running Emacs.  Often, there are suggestions for workarounds and
      solutions.
 
-   * Some additional user-level problems can be found in *Note Bugs and
+   * Some additional user-level problems can be found in *note Bugs and
      problems: (efaq)Bugs and problems.
 
    * The `bug-gnu-emacs' mailing list (also available as the newsgroup
@@ -1147,9 +1147,9 @@ to conclusions, show the problem to someone who knows for certain.
 possible definition for editing with.  This is a very important sort of
 problem, but it is also a matter of judgment.  Also, it is easy to come
 to such a conclusion out of ignorance of some of the existing features.
-It is probably best not to complain about such a problem until you
-have checked the documentation in the usual ways, feel confident that
-you understand it, and know for certain that what you want is not
+It is probably best not to complain about such a problem until you have
+checked the documentation in the usual ways, feel confident that you
+understand it, and know for certain that what you want is not
 available.  Ask other Emacs users, too.  If you are not sure what the
 command is supposed to do after a careful reading of the manual, check
 the index and glossary for any terms that may be unclear.
@@ -3278,7 +3278,7 @@ software) inherit the environment from Emacs, too.
    Inside Emacs, the command `M-x getenv' gets the value of an
 environment variable.  `M-x setenv' sets a variable in the Emacs
 environment.  (Environment variable substitutions with `$' work in the
-value just as in file names; see *Note File Names with $::.)  The
+value just as in file names; see *note File Names with $::.)  The
 variable `initial-environment' stores the initial environment inherited
 by Emacs.
 
@@ -4161,7 +4161,7 @@ class that it belongs to:
 
 `menuBar' (class `MenuBar')
      Give frames menu bars if `on'; don't have menu bars if `off'.
-     *Note Lucid Resources::, and *Note LessTif Resources::, for how to
+     *Note Lucid Resources::, and *note LessTif Resources::, for how to
      control the appearance of the menu bar if you have one.
 
 `minibuffer' (class `Minibuffer')
@@ -4192,8 +4192,8 @@ class that it belongs to:
 
 `selectionFont' (class `SelectionFont')
      Font name for pop-up menu items, in non-toolkit versions of Emacs.
-     (For toolkit versions, see *Note Lucid Resources::, also see
-     *Note LessTif Resources::.)
+     (For toolkit versions, see *note Lucid Resources::, also see *note
+     LessTif Resources::.)
 
 `selectionTimeout' (class `SelectionTimeout')
      Number of milliseconds to wait for a selection reply.  If the
@@ -4780,8 +4780,8 @@ possible states are:
      PIXMAP should be the image file name.  GTK can use a number of
      image file formats, including XPM, XBM, GIF, JPEG and PNG.  If you
      want a widget to use the same image as its parent, use `<parent>'.
-     If you don't want any image, use `<none>'.  `<none>' is the way
-     to cancel a background image inherited from a parent style.
+     If you don't want any image, use `<none>'.  `<none>' is the way to
+     cancel a background image inherited from a parent style.
 
      You can't specify the file by its absolute file name.  GTK looks
      for the pixmap file in directories specified in `pixmap_path'.
@@ -4859,7 +4859,7 @@ Appendix E Emacs 22 Antinews
 
 For those users who live backwards in time, here is information about
 downgrading to Emacs version 22.3.  We hope you will enjoy the greater
-simplicity that results from the absence of many Emacs 23.2.94 features.
+simplicity that results from the absence of many Emacs 23.3 features.
 
    * We have switched to a character representation specially designed
      for Emacs.  Rather than forcing all the widely used scripts into
@@ -5034,8 +5034,8 @@ names.  However, if you use the regular Emacs key sequences, such as
    On GNUstep, in an X-windows environment you need to use <Cmd-c>
 instead of one of the <C-w> or <M-w> commands to transfer text to the X
 primary selection; otherwise, Emacs will use the "clipboard" selection.
-Likewise, <Cmd-y> (instead of <C-y>) yanks from the X primary
-selection instead of the kill-ring or clipboard.
+Likewise, <Cmd-y> (instead of <C-y>) yanks from the X primary selection
+instead of the kill-ring or clipboard.
 
 F.1.1 Grabbing environment variables
 ------------------------------------
@@ -5529,7 +5529,7 @@ and later, and either `C:\WINDOWS\Application Data' or
 `C:\WINDOWS\Profiles\USERNAME\Application Data' on the older Windows
 9X/ME systems.
 
-   `HOME' can also be set in the system registry, for details see *Note
+   `HOME' can also be set in the system registry, for details see *note
 MS-Windows Registry::.
 
    The home directory is where your init file `.emacs' is stored.  When
@@ -6025,7 +6025,7 @@ G.12 Emacs and MS-DOS
 This section briefly describes the peculiarities of using Emacs on the
 MS-DOS "operating system" (also known as "MS-DOG").  Information about
 peculiarities common to MS-DOS and Microsoft's current operating
-systems Windows (also known as "Losedows") is in *Note Microsoft
+systems Windows (also known as "Losedows") is in *note Microsoft
 Windows::.
 
    If you build Emacs for MS-DOS, the binary will also run on Windows

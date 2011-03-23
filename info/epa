@@ -23,7 +23,7 @@ Inc.
      copy of the license to the document, as described in section 6 of
      the license.
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
 * EasyPG Assistant: (epa).      An Emacs user interface to GNU Privacy Guard.
 END-INFO-DIR-ENTRY
@@ -369,15 +369,15 @@ behavior are below.
 
 
 Tag Table:
-Node: Top1308
-Node: Overview2840
-Node: Quick start3200
-Node: Commands3747
-Node: Key management4088
-Node: Cryptographic operations on regions6765
-Node: Cryptographic operations on files8753
-Node: Dired integration9343
-Node: Mail-mode integration9934
-Node: Encrypting/decrypting *.gpg files11156
+Node: Top1322
+Node: Overview2854
+Node: Quick start3214
+Node: Commands3761
+Node: Key management4102
+Node: Cryptographic operations on regions6779
+Node: Cryptographic operations on files8767
+Node: Dired integration9357
+Node: Mail-mode integration9948
+Node: Encrypting/decrypting *.gpg files11170
 
 End Tag Table

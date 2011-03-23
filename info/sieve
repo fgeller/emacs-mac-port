@@ -19,7 +19,7 @@ filtering.
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs network features
 START-INFO-DIR-ENTRY
 * Sieve: (sieve).               Managing Sieve scripts in Emacs.
 END-INFO-DIR-ENTRY
@@ -816,14 +816,14 @@ Index
 
 
 Tag Table:
-Node: Top1053
-Node: Installation2846
-Node: Sieve Mode3319
-Node: Managing Sieve4287
-Node: Examples5787
-Node: Manage Sieve API7109
-Node: Standards8569
-Node: GNU Free Documentation License9056
-Node: Index34219
+Node: Top1070
+Node: Installation2863
+Node: Sieve Mode3336
+Node: Managing Sieve4304
+Node: Examples5804
+Node: Manage Sieve API7126
+Node: Standards8586
+Node: GNU Free Documentation License9073
+Node: Index34236
 
 End Tag Table

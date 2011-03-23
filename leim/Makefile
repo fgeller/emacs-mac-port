@@ -32,7 +32,7 @@ version=23.3
 prefix=/usr/local
 datarootdir=${prefix}/share
 datadir=${datarootdir}
-srcdir=/Users/sinx/Factory/emacs-mac-port/leim
+srcdir=/Users/nix/Factory/emacs-23.3/leim
 ns_appresdir=
 
 # Where to install LEIM files.

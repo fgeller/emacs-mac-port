@@ -20,7 +20,7 @@ Foundation, Inc.
      All Emacs Lisp code contained in this document may be used,
      distributed, and modified without restriction.
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs network features
 START-INFO-DIR-ENTRY
 * ERC: (erc).                   Powerful and extensible IRC client for Emacs.
 END-INFO-DIR-ENTRY
@@ -2258,25 +2258,25 @@ Index
 
 
 Tag Table:
-Node: Top1114
-Node: Introduction3611
-Node: Obtaining ERC4280
-Node: Releases4939
-Node: Development5514
-Node: Installation8627
-Node: Getting Started10264
-Node: Sample Session11230
-Node: Special Features13633
-Node: Keystroke Summary15926
-Node: Modules18463
-Node: Advanced Usage20527
-Node: Connecting20874
-Node: Sample Configuration24223
-Node: Options27587
-Node: Getting Help and Reporting Bugs27840
-Node: History28969
-Node: Copying31043
-Node: GNU Free Documentation License68538
-Node: Concept Index93620
+Node: Top1131
+Node: Introduction3628
+Node: Obtaining ERC4297
+Node: Releases4956
+Node: Development5531
+Node: Installation8644
+Node: Getting Started10281
+Node: Sample Session11247
+Node: Special Features13650
+Node: Keystroke Summary15943
+Node: Modules18480
+Node: Advanced Usage20544
+Node: Connecting20891
+Node: Sample Configuration24240
+Node: Options27604
+Node: Getting Help and Reporting Bugs27857
+Node: History28986
+Node: Copying31060
+Node: GNU Free Documentation License68555
+Node: Concept Index93637
 
 End Tag Table

@@ -16,7 +16,7 @@ Copyright (C) 1994, 1995, 1999, 2001, 2002, 2003, 2004, 2005, 2006,
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
 * Autotype: (autotype).         Convenient features for text that you
                                   enter frequently in Emacs.
@@ -1180,22 +1180,22 @@ Variable Index
 
 
 Tag Table:
-Node: Top1062
-Node: Using Skeletons4359
-Node: Wrapping Skeletons5830
-Node: Skeletons as Abbrevs8434
-Node: Skeleton Language9325
-Node: Inserting Pairs12903
-Node: Autoinserting15285
-Node: Copyrights19071
-Node: Executables20939
-Node: Timestamps22636
-Node: QuickURL24011
-Node: Tempo24877
-Node: Hippie Expand26060
-Node: GNU Free Documentation License27092
-Node: Concept Index52270
-Node: Command Index53381
-Node: Variable Index54841
+Node: Top1076
+Node: Using Skeletons4373
+Node: Wrapping Skeletons5844
+Node: Skeletons as Abbrevs8448
+Node: Skeleton Language9339
+Node: Inserting Pairs12917
+Node: Autoinserting15299
+Node: Copyrights19085
+Node: Executables20953
+Node: Timestamps22650
+Node: QuickURL24025
+Node: Tempo24891
+Node: Hippie Expand26074
+Node: GNU Free Documentation License27106
+Node: Concept Index52284
+Node: Command Index53395
+Node: Variable Index54855
 
 End Tag Table

@@ -18,7 +18,7 @@ This manual is for Eshell, the Emacs shell.
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
 * Eshell: (eshell).             A command shell implemented in Emacs Lisp.
 END-INFO-DIR-ENTRY
@@ -1482,44 +1482,44 @@ Key Index
 
 
 Tag Table:
-Node: Top1043
-Node: What is Eshell?2756
-Ref: What is Eshell?-Footnote-15405
-Ref: What is Eshell?-Footnote-25495
-Node: Contributors to Eshell5688
-Node: Command basics6842
-Node: Commands verbs7398
-Node: Command arguments9162
-Node: Commands10413
-Node: Invocation10796
-Ref: Invocation-Footnote-111422
-Node: Completion11515
-Node: Aliases11631
-Node: History11738
-Node: Scripts12405
-Node: Built-ins12511
-Node: Arguments14987
-Node: The Parser15178
-Node: Variables15278
-Node: Substitution15397
-Node: Globbing15520
-Node: Predicates15636
-Node: Input/Output15735
-Node: Process control15855
-Node: Extension modules15989
-Node: Writing a module16294
-Node: Module testing16425
-Node: Directory handling16579
-Node: Key rebinding16738
-Node: Smart scrolling16888
-Node: Terminal emulation17042
-Node: Built-in UNIX commands17211
-Node: Extras and Goodies17364
-Node: Bugs and ideas17509
-Node: Known problems18104
-Node: GNU Free Documentation License33253
-Node: Concept Index58430
-Node: Function and Variable Index59610
-Node: Key Index60448
+Node: Top1057
+Node: What is Eshell?2770
+Ref: What is Eshell?-Footnote-15419
+Ref: What is Eshell?-Footnote-25509
+Node: Contributors to Eshell5702
+Node: Command basics6856
+Node: Commands verbs7412
+Node: Command arguments9176
+Node: Commands10427
+Node: Invocation10810
+Ref: Invocation-Footnote-111436
+Node: Completion11529
+Node: Aliases11645
+Node: History11752
+Node: Scripts12419
+Node: Built-ins12525
+Node: Arguments15001
+Node: The Parser15192
+Node: Variables15292
+Node: Substitution15411
+Node: Globbing15534
+Node: Predicates15650
+Node: Input/Output15749
+Node: Process control15869
+Node: Extension modules16003
+Node: Writing a module16308
+Node: Module testing16439
+Node: Directory handling16593
+Node: Key rebinding16752
+Node: Smart scrolling16902
+Node: Terminal emulation17056
+Node: Built-in UNIX commands17225
+Node: Extras and Goodies17378
+Node: Bugs and ideas17523
+Node: Known problems18118
+Node: GNU Free Documentation License33267
+Node: Concept Index58444
+Node: Function and Variable Index59624
+Node: Key Index60462
 
 End Tag Table

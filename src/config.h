@@ -58,7 +58,7 @@ along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.  */
 /* #undef DOUG_LEA_MALLOC */
 
 /* Define to the canonical Emacs configuration name. */
-#define EMACS_CONFIGURATION "x86_64-apple-darwin10.6.0"
+#define EMACS_CONFIGURATION "x86_64-apple-darwin10.7.0"
 
 /* Define to the options passed to configure. */
 #define EMACS_CONFIG_OPTIONS " '--with-mac'"

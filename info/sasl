@@ -24,7 +24,7 @@ Free Software Foundation, Inc.
      copy of the license to the document, as described in section 6 of
      the license.
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs network features
 START-INFO-DIR-ENTRY
 * SASL: (sasl).                 The Emacs SASL library.
 END-INFO-DIR-ENTRY
@@ -294,16 +294,16 @@ File: sasl,  Node: Variable Index,  Prev: Function Index,  Up: Top
 
 
 Tag Table:
-Node: Top1325
-Node: Overview2930
-Node: How to use3612
-Node: Data types3995
-Node: Mechanisms4297
-Node: Clients5637
-Node: Steps6935
-Node: Back end drivers8109
-Node: Index8250
-Node: Function Index8373
-Node: Variable Index9609
+Node: Top1342
+Node: Overview2947
+Node: How to use3629
+Node: Data types4012
+Node: Mechanisms4314
+Node: Clients5654
+Node: Steps6952
+Node: Back end drivers8126
+Node: Index8267
+Node: Function Index8390
+Node: Variable Index9626
 
 End Tag Table

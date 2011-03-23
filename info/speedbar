@@ -16,7 +16,7 @@ Copyright (C) 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007,
      modify this GNU manual.  Buying copies from the FSF supports it in
      developing GNU and promoting software freedom."
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
 * Speedbar: (speedbar).         File/Tag summarizing utility.
 END-INFO-DIR-ENTRY
@@ -1787,33 +1787,33 @@ Concept Index
 
 
 Tag Table:
-Node: Top987
-Node: Introduction3609
-Node: Basic Navigation5131
-Node: Basic Key Bindings5571
-Node: Basic Visuals7707
-Node: Mouse Bindings11657
-Node: Displays Submenu13277
-Node: File Mode13952
-Node: Directory Display14554
-Node: Hidden Files17589
-Node: File Key Bindings18805
-Node: Buffer Mode20234
-Node: Minor Modes21344
-Node: RMAIL22198
-Node: Info23091
-Node: GDB23693
-Node: Customizing24486
-Node: Frames and Faces25292
-Node: Tag Hierarchy Methods26625
-Node: Version Control28846
-Node: Hooks30183
-Node: Extending31434
-Node: Minor Display Modes32500
-Node: Major Display Modes34486
-Node: Tagging Extensions39256
-Node: Creating a display40658
-Node: GNU Free Documentation License45196
-Node: Index70362
+Node: Top1001
+Node: Introduction3623
+Node: Basic Navigation5145
+Node: Basic Key Bindings5585
+Node: Basic Visuals7721
+Node: Mouse Bindings11671
+Node: Displays Submenu13291
+Node: File Mode13966
+Node: Directory Display14568
+Node: Hidden Files17603
+Node: File Key Bindings18819
+Node: Buffer Mode20248
+Node: Minor Modes21358
+Node: RMAIL22212
+Node: Info23105
+Node: GDB23707
+Node: Customizing24500
+Node: Frames and Faces25306
+Node: Tag Hierarchy Methods26639
+Node: Version Control28860
+Node: Hooks30197
+Node: Extending31448
+Node: Minor Display Modes32514
+Node: Major Display Modes34500
+Node: Tagging Extensions39270
+Node: Creating a display40672
+Node: GNU Free Documentation License45210
+Node: Index70376
 
 End Tag Table

@@ -23,8 +23,8 @@
 # This was taken from the output of Imake using Lucid's Imakefile.
 # and set up to be configured by ../configure.
 
-srcdir=/Users/sinx/Factory/emacs-mac-port/lwlib
-VPATH=/Users/sinx/Factory/emacs-mac-port/lwlib
+srcdir=/Users/nix/Factory/emacs-23.3/lwlib
+VPATH=/Users/nix/Factory/emacs-23.3/lwlib
 C_SWITCH_X_SITE=
 
 CC=gcc
