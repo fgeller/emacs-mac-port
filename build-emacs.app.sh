@@ -23,7 +23,7 @@ mv $installprefix/share/man $app_dir
 rm -rf $installprefix/share
 mv $installprefix/var $app_dir
 mv $installprefix/bin $app_dir/../MacOS/bin
-mkdir $app_dir/../MacOS/libexec
+# mkdir $app_dir/../MacOS/libexec
 mv $installprefix/libexec/emacs/$version/$compver $app_dir/../MacOS/libexec
 rm -rf $installprefix/libexec
 # Make the application binary a hard link
