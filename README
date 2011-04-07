@@ -1,4 +1,6 @@
 0. current
+
+   + add "build-emacs.app.sh"
    + update 03/23/2011: Emacs 23.3    with emacs-23.3-mac-1.9992
    + update 03/08/2011: Emacs 23 bzr  with emacs-23.2.93-mac-1.9991
    + update 02/15/2011: Emacs 23.2.94 with emacs-23.2.93-mac-1.9991 
@@ -15,24 +17,25 @@
 
    More about this fork, please read README-mac.
 
-2. How to install
+2. How to install 
 
-   a. Make sure you have Xcode and git installed
+   1). build a self-contained Emacs.app with build-emacs.app.sh
+       Only test in Snow Leopard!
 
-   b. if you are using Homebrew, copy "emacs-mac.rb" to your brew's
-      formula directory(usually at /usr/local/Library/Formula/), and
-      	 $ brew install emacs-mac
+   2). if you are using Homebrew, copy "emacs-mac.rb" to your brew's
+       formula directory(usually at /usr/local/Library/Formula/), and
+       
+       $ brew install emacs-mac
 
-   c. else, 
-      i. Get the latest code from git repository
+   3). i. Get the latest code from git repository
 
-      	 if you are new here:
-      	    $ git clone git://github.com/railwaycat/emacs-mac-port.git
+       	  if you are new here:
+      	     $ git clone git://github.com/railwaycat/emacs-mac-port.git
       
-	 if you cloned this repository before:
-      	    $ git pull
+	  if you cloned this repository before:
+     	     $ git pull
 
-      ii. Follow the step g. h. i. in "2. Build instructions" from README-mac
+       ii. Follow the step g. h. i. in "2. Build instructions" from README-mac
 
       	  You can SKIP step a. b. c. d. e. and f. because code in this
       	  repository was patched already.
