@@ -30,5 +30,5 @@ rm -rf $installprefix/libexec
 rm $app_dir/../MacOS/Emacs
 ln $app_dir/../MacOS/bin/emacs $app_dir/../MacOS/Emacs
 
-echo 'Done! Find your Emacs.app at '$installprefix' and copy it to where you like.'
+echo 'Done! Find your Emacs.app at '$installprefix'.'
 
