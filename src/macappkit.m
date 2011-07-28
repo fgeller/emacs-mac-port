@@ -8912,11 +8912,6 @@ mac_appkit_do_applescript (script, result)
 int
 mac_webkit_supports_svg_p ()
 {
-#if __LP64__
-  /* Disabled for now, because WebKit may hang during plugin loading
-     in some cases.  */
-  return 0;
-#else
   int result;
 
   BLOCK_INPUT;
@@ -8924,7 +8919,6 @@ mac_webkit_supports_svg_p ()
   UNBLOCK_INPUT;
 
   return result;
-#endif
 }
 
 int
@@ -8949,8 +8943,14 @@ mac_svg_load_image (f, img, contents, size, color,
 			  green:(color->green / 65535.0)
 			   blue:(color->blue / 65535.0)
 			  alpha:1.0];
+  /* WebKit may repeatedly call waitpid for a child process
+     (WebKitPluginHost) while it returns -1 in its plug-in
+     initialization.  So we need to avoid calling wait3 for an
+     arbitrary child process in our own SIGCHLD handler.  */
+  int mask = sigblock (sigmask (SIGCHLD));
   int result = [loader loadData:data backgroundColor:backgroundColor];
 
+  sigsetmask (mask);
   [loader release];
 
   return result;
