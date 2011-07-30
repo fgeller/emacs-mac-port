@@ -1,6 +1,6 @@
 0. current
 
-   + update 07/25/2011: Emacs 23.3    with emacs-23.3-mac-1.9993
+   + update 07/25/2011: Emacs 23.3    with emacs-23.3-mac-1.9993 + svg64.patch
    + add "build-emacs.app.sh"
    + update 03/23/2011: Emacs 23.3    with emacs-23.3-mac-1.9992
    + update 03/08/2011: Emacs 23 bzr  with emacs-23.2.93-mac-1.9991
@@ -21,7 +21,7 @@
 2. How to install 
 
    1). build a self-contained Emacs.app with build-emacs.app.sh
-       Only test in Snow Leopard!
+       *Tested in Snow Leopard and Lion*
 
    2). if you are using Homebrew, copy "emacs-mac.rb" to your brew's
        formula directory(usually at /usr/local/Library/Formula/), and
