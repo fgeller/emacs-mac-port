@@ -204,20 +204,25 @@ typedef unsigned int NSUInteger;
      started.  */
   NSSize resizeTrackingStartWindowSize;
 
-  /* Event number of the current resize control tracking session.  */
+  /* Event number of the current resize control tracking session.
+     Don't compare this with the value of a drag event: the latter is
+     is always 0 if the event comes via Screen Sharing.  */
   NSInteger resizeTrackingEventNumber;
 
   /* Whether the window should be made visible when the application
      gets unhidden next time.  */
   BOOL needsOrderFrontOnUnhide;
+
+  /* Whether to suppress the usual -constrainFrameRect:toScreen:
+     behavior.  */
+  BOOL constrainingToScreenSuspended;
 }
-- (BOOL)resizeTrackingSuspendedByEvent:(NSEvent *)event;
-- (void)suspendResizeTracking:(NSEvent *)event;
+- (void)suspendResizeTracking:(NSEvent *)event
+	   positionAdjustment:(NSPoint)adjustment;
 - (void)resumeResizeTracking;
 - (BOOL)needsOrderFrontOnUnhide;
 - (void)setNeedsOrderFrontOnUnhide:(BOOL)flag;
-- (void)updateApplicationPresentationOptions;
-- (void)showMenuBar;
+- (void)setConstrainingToScreenSuspended:(BOOL)flag;
 @end
 
 @interface EmacsFullscreenWindow : EmacsWindow
@@ -259,14 +264,27 @@ typedef unsigned int NSUInteger;
   /* The last window frame before maximize/fullscreen.  The position
      is relative to the top left corner of the screen.  */
   NSRect savedFrame;
+
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
+  /* Window manager state after the full screen transition.  */
+  WMState fullScreenTargetState;
+
+  /* Pointer to the Lisp symbol that is set as `fullscreen' frame
+     parameter after the full screen transition.  */
+  Lisp_Object *fullscreenFrameParameterAfterTransition;
+
+  /* Window used for the full screen transition.  */
+  NSWindow *fullScreenTransitionWindow;
+#endif
 }
 - (id)initWithEmacsFrame:(struct frame *)emacsFrame;
 - (void)setupEmacsView;
 - (void)setupWindow;
 - (struct frame *)emacsFrame;
+- (void)updateApplicationPresentationOptions;
+- (void)showMenuBar;
 - (void)changeWindowManagerStateWithFlags:(WMState)flagsToSet
 				    clear:(WMState)flagsToClear;
-- (void)adjustOverlayWindowFrame;
 - (BOOL)emacsViewCanDraw;
 - (void)lockFocusOnEmacsView;
 - (void)unlockFocusOnEmacsView;
@@ -275,6 +293,7 @@ typedef unsigned int NSUInteger;
 - (NSPoint)convertEmacsViewPointFromScreen:(NSPoint)point;
 - (NSRect)convertEmacsViewRectToScreen:(NSRect)rect;
 - (NSRect)centerScanEmacsViewRect:(NSRect)rect;
+- (void)invalidateCursorRectsForEmacsView;
 @end
 
 /* Class for Emacs view that handles drawing events only.  It is used
@@ -312,7 +331,7 @@ typedef unsigned int NSUInteger;
   /* Position in the last normal (non-momentum) wheel event.  */
   NSPoint savedWheelPoint;
 
-  /* Modifers in the last normal (non-momentum) wheel event.  */
+  /* Modifiers in the last normal (non-momentum) wheel event.  */
   int savedWheelModifiers;
 }
 - (id)target;
@@ -340,6 +359,7 @@ typedef unsigned int NSUInteger;
 }
 - (void)setHighlighted:(BOOL)flag;
 - (void)setShowsResizeIndicator:(BOOL)flag;
+- (void)adjustWindowFrame;
 @end
 
 /* Class for scroller that doesn't do modal mouse tracking.  */
@@ -653,16 +673,25 @@ enum {
   NSApplicationPresentationDisableProcessSwitching	= 1 << 5,
   NSApplicationPresentationDisableForceQuit		= 1 << 6,
   NSApplicationPresentationDisableSessionTermination	= 1 << 7,
-  NSApplicationPresentationDisableHideApplication	= 1 << 8
+  NSApplicationPresentationDisableHideApplication	= 1 << 8,
+  NSApplicationPresentationDisableMenuBarTransparency	= 1 << 9
 };
 typedef NSUInteger NSApplicationPresentationOptions;
 
 @interface NSApplication (AvailableOn1060AndLater)
 - (void)setPresentationOptions:(NSApplicationPresentationOptions)newOptions;
+- (NSApplicationPresentationOptions)presentationOptions;
 - (void)registerUserInterfaceItemSearchHandler:(id<NSUserInterfaceItemSearching>)handler;
 - (BOOL)searchString:(NSString *)searchString inUserInterfaceItemString:(NSString *)stringToSearch
 	 searchRange:(NSRange)searchRange foundRange:(NSRange *)foundRange;
 @end
+#endif
+
+#if MAC_OS_X_VERSION_MAX_ALLOWED < 1070
+enum {
+  NSApplicationPresentationFullScreen			= 1 << 10,
+  NSApplicationPresentationAutoHideToolbar		= 1 << 11
+};
 #endif
 
 #if MAC_OS_X_VERSION_MAX_ALLOWED < 1040
@@ -682,6 +711,40 @@ typedef NSUInteger NSWindowCollectionBehavior;
 @interface NSWindow (AvailableOn1050AndLater)
 - (NSWindowCollectionBehavior)collectionBehavior;
 - (void)setCollectionBehavior:(NSWindowCollectionBehavior)behavior;
+@end
+#endif
+
+#if MAC_OS_X_VERSION_MAX_ALLOWED < 1060
+@interface NSWindow (AvailableOn1060AndLater)
+- (void)setStyleMask:(NSUInteger)styleMask;
+@end
+#endif
+
+#if MAC_OS_X_VERSION_MAX_ALLOWED < 1070
+enum {
+  NSWindowCollectionBehaviorFullScreenPrimary	= 1 << 7,
+  NSWindowCollectionBehaviorFullScreenAuxiliary	= 1 << 8
+};
+#endif
+
+#if MAC_OS_X_VERSION_MAX_ALLOWED < 1070
+enum {
+  NSWindowAnimationBehaviorDefault		= 0,
+  NSWindowAnimationBehaviorNone			= 2,
+  NSWindowAnimationBehaviorDocumentWindow	= 3,
+  NSWindowAnimationBehaviorUtilityWindow	= 4,
+  NSWindowAnimationBehaviorAlertPanel		= 5
+};
+typedef NSInteger NSWindowAnimationBehavior;
+
+enum {
+  NSFullScreenWindowMask = 1 << 14
+};
+
+@interface NSWindow (AvailableOn1070AndLater)
+- (NSWindowAnimationBehavior)animationBehavior;
+- (void)setAnimationBehavior:(NSWindowAnimationBehavior)newAnimationBehavior;
+- (void)toggleFullScreen:(id)sender;
 @end
 #endif
 
@@ -750,4 +813,13 @@ typedef NSUInteger NSEventPhase;
 - (id)accessibilityAttributeValue:(NSString *)attribute
 		     forParameter:(id)parameter;
 @end
+#endif
+
+#if MAC_OS_X_VERSION_MAX_ALLOWED < 1070
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
+@interface NSAnimationContext (AvailableOn1070AndLater)
++ (void)runAnimationGroup:(void (^)(NSAnimationContext *context))changes
+        completionHandler:(void (^)(void))completionHandler;
+@end
+#endif
 #endif

@@ -726,6 +726,22 @@ has_resize_indicator_at_bottom_right_p ()
   return floor (NSAppKitVersionNumber) <= NSAppKitVersionNumber10_6;
 }
 
+/* Whether NSTrackingArea works with -[NSWindow
+   invalidateCursorRectsForView:].  */
+int
+mac_tracking_area_works_with_cursor_rects_invalidation_p ()
+{
+  return !(floor (NSAppKitVersionNumber) <= NSAppKitVersionNumber10_5);
+}
+
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
+static int
+has_full_screen_with_dedicated_desktop ()
+{
+  return !(floor (NSAppKitVersionNumber) <= NSAppKitVersionNumber10_6);
+}
+#endif
+
 /* Autorelease pool.  */
 
 void *
@@ -910,6 +926,13 @@ extern UInt32 mac_mapped_modifiers P_ ((UInt32, UInt32));
 	  break;
 	}
 
+      if ((newOptions & NSApplicationPresentationDisableMenuBarTransparency)
+	  && !(floor (NSAppKitVersionNumber) <= NSAppKitVersionNumber10_4)
+	  && (mode == kUIModeContentSuppressed || mode == kUIModeContentHidden))
+	/* kUIOptionDisableMenuBarTransparency, but this constant was
+	   changed between 10.5 (1 << 7) and 10.6 (1 << 9).  */
+	options |= (1 << 7);
+
       if (message)
 	[NSException raise:NSInvalidArgumentException format:@"%@", message];
 
@@ -924,21 +947,6 @@ extern UInt32 mac_mapped_modifiers P_ ((UInt32, UInt32));
       if (floor (NSAppKitVersionNumber) <= NSAppKitVersionNumber10_2)
 	options &= ~kUIOptionDisableHide;
 #endif
-#if 0
-      if (newOptions & NSApplicationPresentationDisableAppleMenu)
-	options |= kUIOptionDisableAppleMenu;
-      if (newOptions & NSApplicationPresentationDisableProcessSwitching)
-	options |= kUIOptionDisableProcessSwitch;
-      if (newOptions & NSApplicationPresentationDisableForceQuit)
-	options |= kUIOptionDisableForceQuit;
-      if (newOptions & NSApplicationPresentationDisableSessionTermination)
-	options |= kUIOptionDisableSessionTerminate;
-#if MAC_OS_X_VERSION_MAX_ALLOWED < 1030 || MAC_OS_X_VERSION_MIN_REQUIRED == 1020
-      if (!(floor (NSAppKitVersionNumber) <= NSAppKitVersionNumber10_2))
-#endif
-	if (newOptions & NSApplicationPresentationDisableHideApplication)
-	  options |= kUIOptionDisableHide;
-#endif
 
       /* If SetSystemUIMode is called unconditionally, then the menu
 	 bar does not get updated after Command-H -> Dock icon click
@@ -951,7 +959,6 @@ extern UInt32 mac_mapped_modifiers P_ ((UInt32, UInt32));
 #endif
 
 @end				// EmacsApplication
-
 
 @implementation EmacsController
 
@@ -1054,7 +1061,7 @@ extern UInt32 mac_mapped_modifiers P_ ((UInt32, UInt32));
 
 /* Event handling  */
 
-static EventRef peek_next_event P_ ((void));
+extern EventRef mac_peek_next_event P_ ((void));
 static EventRef peek_if_next_event_activates_menu_bar P_ ((void));
 
 /* Store BUFP to kbd_buffer.  */
@@ -1203,15 +1210,15 @@ static EventRef peek_if_next_event_activates_menu_bar P_ ((void));
 
 	  if (trackingObject)
 	    {
-	      NSEvent *event =
+	      NSEvent *leftMouseEvent =
 		[NSApp nextEventMatchingMask:
 			 (NSLeftMouseDraggedMask|NSLeftMouseUpMask)
 		       untilDate:expiration
 		       inMode:NSDefaultRunLoopMode dequeue:NO];
 
-	      if (event)
+	      if (leftMouseEvent)
 		{
-		  if ([event type] == NSLeftMouseDragged)
+		  if ([leftMouseEvent type] == NSLeftMouseDragged)
 		    [trackingObject performSelector:trackingResumeSelector];
 		  [self setTrackingObject:nil
 			andResumeSelector:@selector(dummy)];
@@ -1311,7 +1318,7 @@ emacs_windows_need_display_p ()
 {
   if (![NSApp isRunning])
     {
-      if (peek_next_event () || emacs_windows_need_display_p ())
+      if (mac_peek_next_event () || emacs_windows_need_display_p ())
 	[NSApp postDummyEvent];
       else
 	mac_flush (NULL);
@@ -1568,58 +1575,6 @@ extern void mac_save_keyboard_input_source P_ ((void));
   [super dealloc];
 }
 
-- (BOOL)resizeTrackingTriggeredByEvent:(NSEvent *)event
-{
-  if ([event type] == NSLeftMouseDown
-      && [event eventNumber] != resizeTrackingEventNumber)
-    {
-      NSPoint locationInWindow = [event locationInWindow];
-      NSRect frame = [self frame], resizeRect;
-      CGFloat width, height;
-
-      if ([self respondsToSelector:@selector(userSpaceScaleFactor)])
-	{
-	  CGFloat scaleFactor = [self userSpaceScaleFactor];
-
-	  width = round (RESIZE_CONTROL_WIDTH * scaleFactor);
-	  height = round (RESIZE_CONTROL_HEIGHT * scaleFactor);
-	}
-      else
-	{
-	  width = RESIZE_CONTROL_WIDTH;
-	  height = RESIZE_CONTROL_HEIGHT;
-	}
-
-      resizeRect = NSMakeRect (NSWidth (frame) - width, 0, width, height);
-      if (NSMouseInRect (locationInWindow, resizeRect, NO))
-	return YES;
-
-      /* Resize tracking from the corner other than bottom-right is
-	 disabled for now, because it causes unpleasant effect.  Also,
-	 tracking from an edge is not simple because it might trigger
-	 window movement (e.g., vertical movement from the right edge)
-	 rather than resizing.  */
-#if 0
-      if (!has_resize_indicator_at_bottom_right_p ())
-	{
-	  resizeRect.origin.x = 0;
-	  if (NSMouseInRect (locationInWindow, resizeRect, NO))
-	    return YES;
-
-	  resizeRect.origin.y = NSHeight (frame) - height;
-	  if (NSMouseInRect (locationInWindow, resizeRect, NO))
-	    return YES;
-
-	  resizeRect.origin.x = NSWidth (frame) - width;
-	  if (NSMouseInRect (locationInWindow, resizeRect, NO))
-	    return YES;
-	}
-#endif
-    }
-
-  return NO;
-}
-
 - (void)setupResizeTracking:(NSEvent *)event
 {
   resizeTrackingStartWindowSize = [self frame].size;
@@ -1627,15 +1582,22 @@ extern void mac_save_keyboard_input_source P_ ((void));
   resizeTrackingEventNumber = [event eventNumber];
 }
 
-- (BOOL)resizeTrackingSuspendedByEvent:(NSEvent *)event
-{
-  return [event eventNumber] == resizeTrackingEventNumber;
-}
-
 - (void)suspendResizeTracking:(NSEvent *)event
+	   positionAdjustment:(NSPoint)adjustment
 {
+  NSPoint locationInWindow = [event locationInWindow];
+
+  if (!has_resize_indicator_at_bottom_right_p ())
+    {
+      if (resizeTrackingStartLocation.x * 2
+	  < resizeTrackingStartWindowSize.width)
+	locationInWindow.x += adjustment.x;
+      if (!(resizeTrackingStartLocation.y * 2
+	    <= resizeTrackingStartWindowSize.height))
+	locationInWindow.y -= adjustment.y;
+    }
   mouseUpEvent = [[event mouseEventByChangingType:NSLeftMouseUp
-			 andLocation:[event locationInWindow]] retain];
+			 andLocation:locationInWindow] retain];
   [NSApp postEvent:mouseUpEvent atStart:YES];
   /* Use notification?  */
   [[NSApp delegate] setTrackingObject:self
@@ -1656,18 +1618,52 @@ extern void mac_save_keyboard_input_source P_ ((void));
     }
   else
     {
+      NSPoint hysteresisCancelLocation;
+      NSEvent *hysteresisCancelDragEvent;
+
       if (resizeTrackingStartLocation.x * 2
 	  < resizeTrackingStartWindowSize.width)
-	location.x = resizeTrackingStartLocation.x;
+	{
+	  location.x = resizeTrackingStartLocation.x;
+	  if (resizeTrackingStartLocation.x < RESIZE_CONTROL_WIDTH)
+	    hysteresisCancelLocation.x = location.x + RESIZE_CONTROL_WIDTH;
+	  else
+	    hysteresisCancelLocation.x = location.x;
+	}
       else
-	location.x = (NSWidth (frame) + resizeTrackingStartLocation.x
-		      - resizeTrackingStartWindowSize.width);
+	{
+	  location.x = (NSWidth (frame) + resizeTrackingStartLocation.x
+			- resizeTrackingStartWindowSize.width);
+	  if (resizeTrackingStartLocation.x
+	      >= resizeTrackingStartWindowSize.width - RESIZE_CONTROL_WIDTH)
+	    hysteresisCancelLocation.x = location.x - RESIZE_CONTROL_WIDTH;
+	  else
+	    hysteresisCancelLocation.x = location.x;
+	}
       if (resizeTrackingStartLocation.y * 2
-	  < resizeTrackingStartWindowSize.height)
-	location.y = resizeTrackingStartLocation.y;
+	  <= resizeTrackingStartWindowSize.height)
+	{
+	  location.y = resizeTrackingStartLocation.y;
+	  if (resizeTrackingStartLocation.y <= RESIZE_CONTROL_HEIGHT)
+	    hysteresisCancelLocation.y = location.y + RESIZE_CONTROL_HEIGHT;
+	  else
+	    hysteresisCancelLocation.y = location.y;
+	}
       else
-	location.y = (NSHeight (frame) + resizeTrackingStartLocation.y
-		      - resizeTrackingStartWindowSize.height);
+	{
+	  location.y = (NSHeight (frame) + resizeTrackingStartLocation.y
+			- resizeTrackingStartWindowSize.height);
+	  if (resizeTrackingStartLocation.y
+	      > resizeTrackingStartWindowSize.height - RESIZE_CONTROL_HEIGHT)
+	    hysteresisCancelLocation.y = location.y - RESIZE_CONTROL_HEIGHT;
+	  else
+	    hysteresisCancelLocation.y = location.y;
+	}
+
+      hysteresisCancelDragEvent =
+	[mouseUpEvent mouseEventByChangingType:NSLeftMouseDragged
+				   andLocation:hysteresisCancelLocation];
+      [NSApp postEvent:hysteresisCancelDragEvent atStart:YES];
     }
 
   mouseDownEvent = [mouseUpEvent mouseEventByChangingType:NSLeftMouseDown
@@ -1679,7 +1675,8 @@ extern void mac_save_keyboard_input_source P_ ((void));
 
 - (void)sendEvent:(NSEvent *)event
 {
-  if ([self resizeTrackingTriggeredByEvent:event])
+  if ([event type] == NSLeftMouseDown
+      && [event eventNumber] != resizeTrackingEventNumber)
     [self setupResizeTracking:event];
 
   [super sendEvent:event];
@@ -1704,27 +1701,25 @@ extern void mac_save_keyboard_input_source P_ ((void));
     }
 }
 
+- (void)setConstrainingToScreenSuspended:(BOOL)flag
+{
+  constrainingToScreenSuspended = flag;
+}
+
 - (NSRect)constrainFrameRect:(NSRect)frameRect toScreen:(NSScreen *)screen
 {
-  id delegate = [self delegate];
+  if (!constrainingToScreenSuspended)
+    {
+      id delegate = [self delegate];
 
-  frameRect = [super constrainFrameRect:frameRect toScreen:screen];
-  if ([delegate
-	respondsToSelector:@selector(window:willConstrainFrame:toScreen:)])
-    frameRect = [delegate window:self willConstrainFrame:frameRect
-			toScreen:screen];
+      frameRect = [super constrainFrameRect:frameRect toScreen:screen];
+      if ([delegate
+	    respondsToSelector:@selector(window:willConstrainFrame:toScreen:)])
+	frameRect = [delegate window:self willConstrainFrame:frameRect
+			    toScreen:screen];
+    }
 
   return frameRect;
-}
-
-- (void)updateApplicationPresentationOptions
-{
-  [NSApp setPresentationOptions:NSApplicationPresentationDefault];
-}
-
-- (void)showMenuBar
-{
-  /* The menu bar is already shown.  */
 }
 
 - (void)zoom:(id)sender
@@ -1739,6 +1734,7 @@ extern void mac_save_keyboard_input_source P_ ((void));
     [super zoom:sender];
 }
 
+#if MAC_OS_X_VERSION_MAX_ALLOWED < 1030 || MAC_OS_X_VERSION_MIN_REQUIRED == 1020
 - (void)setAlphaValue:(CGFloat)windowAlpha
 {
   NSEnumerator *enumerator = [[self childWindows] objectEnumerator];
@@ -1749,6 +1745,7 @@ extern void mac_save_keyboard_input_source P_ ((void));
 
   [super setAlphaValue:windowAlpha];
 }
+#endif
 
 @end				// EmacsWindow
 
@@ -1778,27 +1775,6 @@ extern void mac_save_keyboard_input_source P_ ((void));
   frameRect = [self constrainFrameRect:frameRect toScreen:nil];
 
   [super setFrameOrigin:frameRect.origin];
-}
-
-- (void)updateApplicationPresentationOptions
-{
-  NSScreen *screen = [self screen];
-  NSApplicationPresentationOptions options;
-
-  if ([screen isEqual:[[NSScreen screens] objectAtIndex:0]])
-    options = (NSApplicationPresentationAutoHideMenuBar
-	       | NSApplicationPresentationAutoHideDock);
-  else if ([screen containsDock])
-    options = NSApplicationPresentationAutoHideDock;
-  else
-    options = NSApplicationPresentationDefault;
-  [NSApp setPresentationOptions:options];
-}
-
-- (void)showMenuBar
-{
-  if ([[self screen] isEqual:[[NSScreen screens] objectAtIndex:0]])
-    [NSApp setPresentationOptions:NSApplicationPresentationAutoHideDock];
 }
 
 @end				// EmacsFullscreenWindow
@@ -1923,8 +1899,13 @@ extern void mac_save_keyboard_input_source P_ ((void));
       [window setRepresentedFilename:[oldWindow representedFilename]];
       if ([window respondsToSelector:@selector(setCollectionBehavior:)])
 	[window setCollectionBehavior:[oldWindow collectionBehavior]];
+      if ([window respondsToSelector:@selector(setAnimationBehavior:)])
+	[window setAnimationBehavior:[oldWindow animationBehavior]];
 
       [oldWindow setDelegate:nil];
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= 1030 && MAC_OS_X_VERSION_MIN_REQUIRED != 1020
+      [oldWindow removeObserver:self forKeyPath:@"alphaValue"];
+#endif
       [oldWindow removeChildWindow:overlayWindow];
       [hourglass release];
       hourglass = nil;
@@ -1954,8 +1935,17 @@ extern void mac_save_keyboard_input_source P_ ((void));
       [window setShowsResizeIndicator:NO];
       [self setupOverlayWindowAndView];
       [window addChildWindow:overlayWindow ordered:NSWindowAbove];
-      [self adjustOverlayWindowFrame];
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= 1030 && MAC_OS_X_VERSION_MIN_REQUIRED != 1020
+      [window addObserver:self forKeyPath:@"alphaValue" options:0 context:NULL];
+#endif
+      [overlayView adjustWindowFrame];
       [overlayWindow orderFront:nil];
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
+      if (has_full_screen_with_dedicated_desktop ())
+	[window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
+#endif
+      if ([window respondsToSelector:@selector(setAnimationBehavior:)])
+	[window setAnimationBehavior:NSWindowAnimationBehaviorDocumentWindow];
     }
   else
     {
@@ -1964,6 +1954,8 @@ extern void mac_save_keyboard_input_source P_ ((void));
       [window setLevel:NSScreenSaverWindowLevel];
       if ([window respondsToSelector:@selector(setIgnoresMouseEvents:)])
 	[window setIgnoresMouseEvents:YES];
+      if ([window respondsToSelector:@selector(setAnimationBehavior:)])
+	[window setAnimationBehavior:NSWindowAnimationBehaviorNone];
     }
 }
 
@@ -2073,12 +2065,184 @@ extern void mac_save_keyboard_input_source P_ ((void));
   return frameRect;
 }
 
+- (void)updateApplicationPresentationOptions
+{
+  NSApplicationPresentationOptions options;
+
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
+  if (has_full_screen_with_dedicated_desktop ()
+      && (windowManagerState & WM_STATE_DEDICATED_DESKTOP))
+    {
+      options = [NSApp presentationOptions];
+      if ((options & (NSApplicationPresentationFullScreen
+		      | NSApplicationPresentationAutoHideMenuBar))
+	  == NSApplicationPresentationFullScreen)
+	{
+	  options |= NSApplicationPresentationAutoHideMenuBar;
+	  [NSApp setPresentationOptions:options];
+	}
+    }
+  else
+#endif
+  if (windowManagerState & WM_STATE_FULLSCREEN)
+    {
+      struct frame *f = emacsFrame;
+      NSWindow *window = FRAME_MAC_WINDOW (f);
+      NSScreen *screen = [window screen];
+
+      if ([screen isEqual:[[NSScreen screens] objectAtIndex:0]])
+	options = (NSApplicationPresentationAutoHideMenuBar
+		   | NSApplicationPresentationAutoHideDock);
+      else if ([screen containsDock])
+	options = NSApplicationPresentationAutoHideDock;
+      else
+	options = NSApplicationPresentationDefault;
+      [NSApp setPresentationOptions:options];
+    }
+  else
+    [NSApp setPresentationOptions:NSApplicationPresentationDefault];
+}
+
+- (void)showMenuBar
+{
+  NSApplicationPresentationOptions options;
+
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
+  if (has_full_screen_with_dedicated_desktop ()
+      && (windowManagerState & WM_STATE_DEDICATED_DESKTOP))
+    {
+      options = [NSApp presentationOptions];
+      if ((options & (NSApplicationPresentationFullScreen
+		      | NSApplicationPresentationAutoHideMenuBar))
+	  == (NSApplicationPresentationFullScreen
+	      | NSApplicationPresentationAutoHideMenuBar))
+	{
+	  options &= ~NSApplicationPresentationAutoHideMenuBar;
+	  [NSApp setPresentationOptions:options];
+	}
+    }
+  else
+#endif
+  if (windowManagerState & WM_STATE_FULLSCREEN)
+    {
+      struct frame *f = emacsFrame;
+      NSWindow *window = FRAME_MAC_WINDOW (f);
+
+      if ([[window screen] isEqual:[[NSScreen screens] objectAtIndex:0]])
+	{
+	  options = (NSApplicationPresentationAutoHideDock
+		     | NSApplicationPresentationDisableMenuBarTransparency);
+	  [NSApp setPresentationOptions:options];
+	}
+    }
+}
+
+- (void)updateCollectionBehavior
+{
+  struct frame *f = emacsFrame;
+  NSWindow *window = FRAME_MAC_WINDOW (f);
+  NSWindowCollectionBehavior behavior;
+
+  if (windowManagerState & WM_STATE_NO_MENUBAR)
+    {
+      behavior = ((windowManagerState & WM_STATE_STICKY)
+		  ? NSWindowCollectionBehaviorCanJoinAllSpaces
+		  : NSWindowCollectionBehaviorMoveToActiveSpace);
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
+      if (has_full_screen_with_dedicated_desktop ()
+	  && (windowManagerState & WM_STATE_DEDICATED_DESKTOP))
+	behavior |= NSWindowCollectionBehaviorFullScreenPrimary;
+#endif
+    }
+  else
+    {
+      behavior = ((windowManagerState & WM_STATE_STICKY)
+		  ? NSWindowCollectionBehaviorCanJoinAllSpaces
+		  : NSWindowCollectionBehaviorDefault);
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
+      if (has_full_screen_with_dedicated_desktop ())
+	behavior |= NSWindowCollectionBehaviorFullScreenPrimary;
+#endif
+    }
+  [window setCollectionBehavior:behavior];
+}
+
+- (NSRect)preprocessWindowManagerStateChange:(WMState)newState
+{
+  struct frame *f = emacsFrame;
+  NSWindow *window = FRAME_MAC_WINDOW (f);
+  NSRect frameRect = [window frame], screenRect = [[window screen] frame];
+  WMState oldState, diff;
+
+  oldState = windowManagerState;
+  diff = (oldState ^ newState);
+
+  if (diff & (WM_STATE_MAXIMIZED_HORZ | WM_STATE_FULLSCREEN))
+    {
+      if (!(oldState & (WM_STATE_MAXIMIZED_HORZ | WM_STATE_FULLSCREEN)))
+	{
+	  savedFrame.origin.x = NSMinX (frameRect) - NSMinX (screenRect);
+	  savedFrame.size.width = NSWidth (frameRect);
+	}
+      else
+	{
+	  frameRect.origin.x = NSMinX (savedFrame) + NSMinX (screenRect);
+	  frameRect.size.width = NSWidth (savedFrame);
+	}
+    }
+
+  if (diff & (WM_STATE_MAXIMIZED_VERT | WM_STATE_FULLSCREEN))
+    {
+      if (!(oldState & (WM_STATE_MAXIMIZED_VERT | WM_STATE_FULLSCREEN)))
+	{
+	  savedFrame.origin.y = NSMinY (frameRect) - NSMaxY (screenRect);
+	  savedFrame.size.height = NSHeight (frameRect);
+	}
+      else
+	{
+	  frameRect.origin.y = NSMinY (savedFrame) + NSMaxY (screenRect);
+	  frameRect.size.height = NSHeight (savedFrame);
+	}
+    }
+
+  windowManagerState ^=
+    (diff & (WM_STATE_MAXIMIZED_HORZ | WM_STATE_MAXIMIZED_VERT
+	     | WM_STATE_FULLSCREEN | WM_STATE_DEDICATED_DESKTOP));
+
+  return frameRect;
+}
+
+- (NSRect)postprocessWindowManagerStateChange:(NSRect)frameRect
+{
+  struct frame *f = emacsFrame;
+  NSWindow *window = FRAME_MAC_WINDOW (f);
+
+  frameRect = [window constrainFrameRect:frameRect toScreen:nil];
+  if (!(windowManagerState & WM_STATE_FULLSCREEN))
+    {
+      NSSize hintedFrameSize = [self hintedWindowFrameSize:frameRect.size
+					      allowsLarger:NO];
+
+      if (!(windowManagerState & WM_STATE_MAXIMIZED_HORZ))
+	frameRect.size.width = hintedFrameSize.width;
+      if (!(windowManagerState & WM_STATE_MAXIMIZED_VERT))
+	frameRect.size.height = hintedFrameSize.height;
+    }
+
+  return frameRect;
+}
+
 - (void)changeWindowManagerStateWithFlags:(WMState)flagsToSet
 				    clear:(WMState)flagsToClear
 {
   struct frame *f = emacsFrame;
   NSWindow *window = FRAME_MAC_WINDOW (f);
   WMState oldState, newState, diff;
+  enum {
+    SET_FRAME_UNNECESSARY,
+    SET_FRAME_NECESSARY,
+    SET_FRAME_TOGGLE_FULL_SCREEN_LATER
+  } setFrameType = SET_FRAME_UNNECESSARY;
 
   oldState = windowManagerState;
   newState = (oldState & ~flagsToClear) | flagsToSet;
@@ -2087,92 +2251,127 @@ extern void mac_save_keyboard_input_source P_ ((void));
   if (diff == 0)
     return;
 
-  windowManagerState = newState;
-
-  if (diff & WM_STATE_STICKY)
-    if ([window respondsToSelector:@selector(setCollectionBehavior:)])
-      {
-	NSWindowCollectionBehavior behavior =
-	  ((newState & WM_STATE_STICKY)
-	   ? NSWindowCollectionBehaviorCanJoinAllSpaces
-	   : NSWindowCollectionBehaviorDefault);
-
-	[window setCollectionBehavior:behavior];
-      }
-
-  if (diff & (WM_STATE_MAXIMIZED_HORZ | WM_STATE_MAXIMIZED_VERT
-	      | WM_STATE_FULLSCREEN))
+  if (diff & (WM_STATE_STICKY | WM_STATE_NO_MENUBAR))
     {
-      NSRect frameRect = [window frame], screenRect = [[window screen] frame];
+      windowManagerState ^= (diff & (WM_STATE_STICKY | WM_STATE_NO_MENUBAR));
 
-      if (diff & (WM_STATE_MAXIMIZED_HORZ | WM_STATE_FULLSCREEN))
-	{
-	  if (!(oldState & (WM_STATE_MAXIMIZED_HORZ | WM_STATE_FULLSCREEN)))
-	    {
-	      savedFrame.origin.x = NSMinX (frameRect) - NSMinX (screenRect);
-	      savedFrame.size.width = NSWidth (frameRect);
-	    }
-	  else
-	    {
-	      frameRect.origin.x = NSMinX (savedFrame) + NSMinX (screenRect);
-	      frameRect.size.width = NSWidth (savedFrame);
-	    }
-	}
+      if ([window respondsToSelector:@selector(setCollectionBehavior:)])
+	[self updateCollectionBehavior];
+    }
 
-      if (diff & (WM_STATE_MAXIMIZED_VERT | WM_STATE_FULLSCREEN))
-	{
-	  if (!(oldState & (WM_STATE_MAXIMIZED_VERT | WM_STATE_FULLSCREEN)))
-	    {
-	      savedFrame.origin.y = NSMinY (frameRect) - NSMaxY (screenRect);
-	      savedFrame.size.height = NSHeight (frameRect);
-	    }
-	  else
-	    {
-	      frameRect.origin.y = NSMinY (savedFrame) + NSMaxY (screenRect);
-	      frameRect.size.height = NSHeight (savedFrame);
-	    }
-	}
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
+  if (has_full_screen_with_dedicated_desktop ()
+      && (diff & WM_STATE_DEDICATED_DESKTOP))
+    {
+      window.collectionBehavior |= NSWindowCollectionBehaviorFullScreenPrimary;
 
       if (diff & WM_STATE_FULLSCREEN)
 	{
-	  [self setupWindow];
-	  window = FRAME_MAC_WINDOW (f);
+	  fullScreenTargetState = newState;
+	  [window toggleFullScreen:nil];
 	}
-
-      if (has_resize_indicator_at_bottom_right_p ())
+      else if (newState & WM_STATE_DEDICATED_DESKTOP)
+	setFrameType = SET_FRAME_TOGGLE_FULL_SCREEN_LATER;
+      else
 	{
-	  BOOL showsResizeIndicator;
-
-	  if ((newState & WM_STATE_FULLSCREEN)
-	      || ((newState
-		   & (WM_STATE_MAXIMIZED_HORZ | WM_STATE_MAXIMIZED_VERT))
-		  == (WM_STATE_MAXIMIZED_HORZ | WM_STATE_MAXIMIZED_VERT)))
-	    showsResizeIndicator = NO;
-	  else
-	    showsResizeIndicator = YES;
-	  [overlayView setShowsResizeIndicator:showsResizeIndicator];
+	  /* Direct transition fullscreen -> fullboth is not trivial
+	     even if we use -[NSWindow setStyleMask:], which is
+	     available from 10.6, instead of window class replacement,
+	     because AppKit strips off NSFullScreenWindowMask after
+	     exiting from the full screen mode.  We make such a
+	     transition via maximized state, i.e, fullscreen ->
+	     maximized -> fullboth.  */
+	  fullScreenTargetState = (newState & ~WM_STATE_FULLSCREEN
+				   | WM_STATE_MAXIMIZED_HORZ
+				   | WM_STATE_MAXIMIZED_VERT);
+	  [window toggleFullScreen:nil];
+	  fullscreenFrameParameterAfterTransition = &Qfullboth;
 	}
-
-      frameRect = [window constrainFrameRect:frameRect toScreen:nil];
-      if (!(newState & WM_STATE_FULLSCREEN))
-	{
-	  NSSize hintedFrameSize = [self hintedWindowFrameSize:frameRect.size
-						  allowsLarger:NO];
-
-	  if (!(newState & WM_STATE_MAXIMIZED_HORZ))
-	    frameRect.size.width = hintedFrameSize.width;
-	  if (!(newState & WM_STATE_MAXIMIZED_VERT))
-	    frameRect.size.height = hintedFrameSize.height;
-	}
-      [window setFrame:frameRect display:YES];
     }
-}
+  else
+#endif
+    if (diff & (WM_STATE_MAXIMIZED_HORZ | WM_STATE_MAXIMIZED_VERT
+		| WM_STATE_FULLSCREEN))
+      setFrameType = SET_FRAME_NECESSARY;
 
-- (void)adjustOverlayWindowFrame
-{
-  NSWindow *parentWindow = [overlayWindow parentWindow];
+  if (setFrameType != SET_FRAME_UNNECESSARY)
+    {
+      NSRect frameRect;
+      BOOL showsResizeIndicator;
 
-  [overlayWindow setFrame:[parentWindow frame] display:YES];
+      if ((diff & WM_STATE_FULLSCREEN)
+	  || setFrameType == SET_FRAME_TOGGLE_FULL_SCREEN_LATER)
+	{
+	  Lisp_Object tool_bar_lines = get_frame_param (f, Qtool_bar_lines);
+
+	  if (INTEGERP (tool_bar_lines) && XINT (tool_bar_lines) > 0)
+	    x_set_tool_bar_lines (f, make_number (0), tool_bar_lines);
+	  FRAME_NATIVE_TOOL_BAR_P (f) =
+	    (setFrameType != SET_FRAME_TOGGLE_FULL_SCREEN_LATER
+	     ? ((newState & WM_STATE_FULLSCREEN) != 0)
+	     : !(newState & WM_STATE_DEDICATED_DESKTOP));
+	  if (INTEGERP (tool_bar_lines) && XINT (tool_bar_lines) > 0)
+	    x_set_tool_bar_lines (f, tool_bar_lines, make_number (0));
+	}
+
+      frameRect = [self preprocessWindowManagerStateChange:newState];
+
+      if ((diff & WM_STATE_FULLSCREEN)
+	  || setFrameType == SET_FRAME_TOGGLE_FULL_SCREEN_LATER)
+	{
+	  if (floor (NSAppKitVersionNumber) <= NSAppKitVersionNumber10_6)
+	    {
+	      [self setupWindow];
+	      window = FRAME_MAC_WINDOW (f);
+	    }
+	  else
+	    {
+	      /* Changing NSFullScreenWindowMask does not preserve the
+		 toolbar visibility value on Mac OS X 10.7.  */
+	      BOOL isToolbarVisible = [[window toolbar] isVisible];
+
+	      [window setStyleMask:([window styleMask]
+				    ^ NSFullScreenWindowMask)];
+	      [[window toolbar] setVisible:isToolbarVisible];
+	      if ([window isKeyWindow])
+		{
+		  [self updateApplicationPresentationOptions];
+		  /* This is a workaround.  On Mac OS X 10.7, the
+		     first call above doesn't change the presentation
+		     options when S-magnify-up -> C-x 5 2 -> C-x 5 o
+		     -> S-magnify-down for unknown reason.  */
+		  [self updateApplicationPresentationOptions];
+		}
+	    }
+	}
+
+      if ((newState & WM_STATE_FULLSCREEN)
+	  || ((newState & (WM_STATE_MAXIMIZED_HORZ | WM_STATE_MAXIMIZED_VERT))
+	      == (WM_STATE_MAXIMIZED_HORZ | WM_STATE_MAXIMIZED_VERT)))
+	showsResizeIndicator = NO;
+      else
+	showsResizeIndicator = YES;
+      if (has_resize_indicator_at_bottom_right_p ())
+	[overlayView setShowsResizeIndicator:showsResizeIndicator];
+      else
+	{
+	  NSUInteger styleMask = [window styleMask];
+
+	  if (showsResizeIndicator)
+	    styleMask |= NSResizableWindowMask;
+	  else
+	    styleMask &= ~NSResizableWindowMask;
+	  [window setStyleMask:styleMask];
+	}
+
+      frameRect = [self postprocessWindowManagerStateChange:frameRect];
+      [window setFrame:frameRect display:YES];
+
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
+      if (setFrameType == SET_FRAME_TOGGLE_FULL_SCREEN_LATER)
+	[window toggleFullScreen:nil];
+#endif
+    }
 }
 
 - (BOOL)emacsViewCanDraw
@@ -2250,6 +2449,11 @@ extern void mac_save_keyboard_input_source P_ ((void));
 #endif
 }
 
+- (void)invalidateCursorRectsForEmacsView
+{
+  [[emacsView window] invalidateCursorRectsForView:emacsView];
+}
+
 /* Delegete Methods.  */
 
 - (void)windowDidBecomeKey:(NSNotification *)notification
@@ -2268,7 +2472,7 @@ extern void mac_save_keyboard_input_source P_ ((void));
 
   [[NSApp delegate] setConflictingKeyBindingsDisabled:YES];
 
-  [window updateApplicationPresentationOptions];
+  [self updateApplicationPresentationOptions];
 }
 
 - (void)windowDidResignKey:(NSNotification *)notification
@@ -2313,8 +2517,8 @@ extern void mac_save_keyboard_input_source P_ ((void));
   /* `windowDidMove:' above is not called when both size and location
      are changed.  */
   mac_handle_origin_change (f);
-  if (overlayWindow)
-    [self adjustOverlayWindowFrame];
+  if (overlayView)
+    [overlayView adjustWindowFrame];
 }
 
 - (void)windowDidChangeScreen:(NSNotification *)notification
@@ -2322,7 +2526,7 @@ extern void mac_save_keyboard_input_source P_ ((void));
   EmacsWindow *window = [notification object];
 
   if ([window isKeyWindow])
-    [window updateApplicationPresentationOptions];
+    [self updateApplicationPresentationOptions];
 }
 
 - (BOOL)windowShouldClose:(id)sender
@@ -2354,6 +2558,10 @@ extern void mac_save_keyboard_input_source P_ ((void));
 {
   NSWindow *window = [notification object];
 
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= 1030 && MAC_OS_X_VERSION_MIN_REQUIRED != 1020
+  if (overlayWindow)
+    [window removeObserver:self forKeyPath:@"alphaValue"];
+#endif
   [window setDelegate:nil];
   [self release];
 }
@@ -2373,9 +2581,6 @@ extern void mac_save_keyboard_input_source P_ ((void));
   BOOL leftMouseDragged = ([currentEvent type] == NSLeftMouseDragged);
   NSSize result;
 
-  if (leftMouseDragged && [window resizeTrackingSuspendedByEvent:currentEvent])
-    [window suspendResizeTracking:currentEvent];
-
   if (windowManagerState & WM_STATE_FULLSCREEN)
     {
       NSRect screenFrame = [[window screen] frame];
@@ -2394,6 +2599,18 @@ extern void mac_save_keyboard_input_source P_ ((void));
 	result.width = NSWidth (screenVisibleFrame);
       if (windowManagerState & WM_STATE_MAXIMIZED_VERT)
 	result.height = NSHeight (screenVisibleFrame);
+    }
+
+  if (leftMouseDragged
+      && (has_resize_indicator_at_bottom_right_p ()
+	  || (([currentEvent modifierFlags] &
+	       (NSShiftKeyMask | NSAlternateKeyMask | NSCommandKeyMask)) == 0)))
+    {
+      NSRect frameRect = [window frame];
+      NSPoint adjustment = NSMakePoint (result.width - NSWidth (frameRect),
+					result.height - NSHeight (frameRect));
+
+      [window suspendResizeTracking:currentEvent positionAdjustment:adjustment];
     }
 
   return result;
@@ -2442,8 +2659,229 @@ extern void mac_save_keyboard_input_source P_ ((void));
   return windowFrame;
 }
 
-@end				// EmacsFrameController
+- (void)storeModifyFrameParametersEvent:(Lisp_Object)alist
+{
+  struct frame *f = emacsFrame;
+  struct input_event inev;
+  Lisp_Object Qframe = intern ("frame"), tag_Lisp = build_string ("Lisp");
+  Lisp_Object arg;
 
+  EVENT_INIT (inev);
+  inev.kind = MAC_APPLE_EVENT;
+  inev.x = Qframe;
+  inev.y = intern ("modify-frame-parameters");
+  XSETFRAME (inev.frame_or_window, f);
+  arg = list2 (Fcons (Qframe, Fcons (tag_Lisp, inev.frame_or_window)),
+	       Fcons (intern ("alist"), Fcons (tag_Lisp, alist)));
+  inev.arg = Fcons (build_string ("aevt"), arg);
+  [[NSApp delegate] storeEvent:&inev];
+}
+
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
+- (void)setupFullScreenTransitionWindow
+{
+  struct frame *f = emacsFrame;
+  NSWindow *window, *transitionWindow;
+  NSView *frameView, *transitionContentView;
+  NSRect frameViewRect;
+  NSBitmapImageRep *bitmap;
+  CALayer *layer;
+
+  window = FRAME_MAC_WINDOW (f);
+
+  transitionWindow =
+    [[NSWindow alloc] initWithContentRect:[window frame]
+				styleMask:NSBorderlessWindowMask
+				  backing:NSBackingStoreBuffered
+				    defer:YES];
+  [transitionWindow setBackgroundColor:[NSColor clearColor]];
+  [transitionWindow setOpaque:NO];
+  [transitionWindow setIgnoresMouseEvents:YES];
+
+  frameView = [[window contentView] superview];
+  frameViewRect = [frameView visibleRect];
+  bitmap = [frameView bitmapImageRepForCachingDisplayInRect:frameViewRect];
+  [frameView cacheDisplayInRect:frameViewRect toBitmapImageRep:bitmap];
+
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= 1050
+  layer = [CALayer layer];
+#else
+  layer = [(NSClassFromString (@"CALayer")) layer];
+#endif
+  layer.bounds = CGRectMake (0, 0, [bitmap pixelsWide], [bitmap pixelsHigh]);
+  layer.contents = (id) [bitmap CGImage];
+  layer.contentsGravity = kCAGravityTopLeft;
+  transitionContentView = [transitionWindow contentView];
+  [transitionContentView setLayer:layer];
+  [transitionContentView setWantsLayer:YES];
+
+  fullScreenTransitionWindow = transitionWindow;
+}
+
+- (NSApplicationPresentationOptions)window:(NSWindow *)window
+      willUseFullScreenPresentationOptions:(NSApplicationPresentationOptions)proposedOptions
+{
+  return proposedOptions | NSApplicationPresentationAutoHideToolbar;
+}
+
+- (void)windowDidEnterFullScreen:(NSNotification *)notification
+{
+  if (fullscreenFrameParameterAfterTransition)
+    {
+      Lisp_Object alist =
+	list1 (Fcons (Qfullscreen, *fullscreenFrameParameterAfterTransition));
+
+      [self storeModifyFrameParametersEvent:alist];
+      fullscreenFrameParameterAfterTransition = NULL;
+    }
+}
+
+- (void)windowDidExitFullScreen:(NSNotification *)notification
+{
+  struct frame *f = emacsFrame;
+  NSWindow *window = FRAME_MAC_WINDOW (f);
+
+  if (fullscreenFrameParameterAfterTransition)
+    {
+      Lisp_Object alist =
+	list1 (Fcons (Qfullscreen, *fullscreenFrameParameterAfterTransition));
+
+      [self storeModifyFrameParametersEvent:alist];
+      fullscreenFrameParameterAfterTransition = NULL;
+    }
+
+  if ([window isKeyWindow])
+    [self updateApplicationPresentationOptions];
+
+  [self updateCollectionBehavior];
+}
+
+- (NSArray *)customWindowsToEnterFullScreenForWindow:(NSWindow *)window
+{
+  [self setupFullScreenTransitionWindow];
+
+  return [NSArray arrayWithObjects:window, fullScreenTransitionWindow, nil];
+}
+
+- (void)window:(NSWindow *)window
+  startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration
+{
+  CGFloat previousAlphaValue = [window alphaValue];
+  NSRect emacsViewRect, frameRect;
+
+  emacsViewRect = [emacsView convertRect:[emacsView bounds] toView:nil];
+
+  if (!(fullScreenTargetState & WM_STATE_DEDICATED_DESKTOP))
+    {
+      fullscreenFrameParameterAfterTransition = &Qfullscreen;
+      fullScreenTargetState = WM_STATE_FULLSCREEN | WM_STATE_DEDICATED_DESKTOP;
+    }
+  frameRect = [self preprocessWindowManagerStateChange:fullScreenTargetState];
+
+  [fullScreenTransitionWindow orderFront:nil];
+  [window setAlphaValue:0];
+  [window setStyleMask:([window styleMask] | NSFullScreenWindowMask)];
+
+  frameRect = [self postprocessWindowManagerStateChange:frameRect];
+
+  [window setFrame:frameRect display:YES];
+
+  [
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= 1060
+   NSAnimationContext
+#else
+   (NSClassFromString (@"NSAnimationContext"))
+#endif
+      runAnimationGroup:^(NSAnimationContext *context) {
+      NSRect transitionWindowFrameRect = [fullScreenTransitionWindow frame];
+
+      transitionWindowFrameRect.origin.x = frameRect.origin.x;
+      transitionWindowFrameRect.origin.y =
+	NSMaxY (frameRect) - NSMaxY (emacsViewRect);
+
+      [context setDuration:duration];
+      [[window animator] setAlphaValue:1];
+      [[fullScreenTransitionWindow animator] setAlphaValue:0];
+      [[fullScreenTransitionWindow animator]
+	setFrame:transitionWindowFrameRect display:YES];
+    } completionHandler:^{
+      [fullScreenTransitionWindow close];
+      fullScreenTransitionWindow = nil;
+      [window setAlphaValue:previousAlphaValue];
+    }];
+}
+
+- (NSArray *)customWindowsToExitFullScreenForWindow:(NSWindow *)window
+{
+  [self setupFullScreenTransitionWindow];
+
+  return [NSArray arrayWithObjects:window, fullScreenTransitionWindow, nil];
+}
+
+- (void)window:(NSWindow *)window
+  startCustomAnimationToExitFullScreenWithDuration:(NSTimeInterval)duration
+{
+  CGFloat previousAlphaValue = [window alphaValue];
+  NSRect srcRect = [window frame], destRect, emacsViewRect;
+
+  if (fullScreenTargetState & WM_STATE_DEDICATED_DESKTOP)
+    {
+      fullscreenFrameParameterAfterTransition = &Qnil;
+      fullScreenTargetState = 0;
+    }
+  destRect = [self preprocessWindowManagerStateChange:fullScreenTargetState];
+
+  [fullScreenTransitionWindow orderFront:nil];
+  [window setAlphaValue:1];
+  [window setStyleMask:([window styleMask] & ~NSFullScreenWindowMask)];
+
+  destRect = [self postprocessWindowManagerStateChange:destRect];
+  [window setFrame:destRect display:YES];
+
+  emacsViewRect = [emacsView convertRect:[emacsView bounds] toView:nil];
+  srcRect.origin.y = NSMaxY (srcRect) - NSMaxY (emacsViewRect);
+  srcRect.size = destRect.size;
+  [(EmacsWindow *)window setConstrainingToScreenSuspended:YES];
+  [window setFrame:srcRect display:YES];
+
+  [
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= 1060
+   NSAnimationContext
+#else
+   (NSClassFromString (@"NSAnimationContext"))
+#endif
+      runAnimationGroup:^(NSAnimationContext *context) {
+      NSRect transitionWindowFrameRect = destRect;
+
+      transitionWindowFrameRect.size.height = NSMaxY (emacsViewRect);
+
+      [context setDuration:duration];
+      [[window animator] setFrame:destRect display:YES];
+      [[fullScreenTransitionWindow animator] setAlphaValue:0];
+      [[fullScreenTransitionWindow animator]
+	setFrame:transitionWindowFrameRect display:YES];
+    } completionHandler:^{
+      [fullScreenTransitionWindow close];
+      fullScreenTransitionWindow = nil;
+      [window setAlphaValue:previousAlphaValue];
+      [(EmacsWindow *)window setConstrainingToScreenSuspended:NO];
+    }];
+}
+#endif
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
+			change:(NSDictionary *)change context:(void *)context
+{
+  if ([keyPath isEqualToString:@"alphaValue"])
+    {
+      struct frame *f = emacsFrame;
+      NSWindow *window = FRAME_MAC_WINDOW (f);
+
+      [overlayWindow setAlphaValue:[window alphaValue]];
+    }
+}
+
+@end				// EmacsFrameController
 
 /* Window Manager function replacements.  */
 
@@ -2485,16 +2923,29 @@ mac_is_frame_window_collapsed (f)
   return [window isMiniaturized];
 }
 
-void
-mac_bring_frame_window_to_front (f)
+static void
+mac_bring_frame_window_to_front_and_activate (f, activate_p)
      struct frame *f;
+     Boolean activate_p;
 {
   EmacsWindow *window = FRAME_MAC_WINDOW (f);
 
   if (![NSApp isHidden])
-    [window orderFront:nil];
+    {
+      if (activate_p)
+	[window makeKeyAndOrderFront:nil];
+      else
+	[window orderFront:nil];
+    }
   else
     [window setNeedsOrderFrontOnUnhide:YES];
+}
+
+void
+mac_bring_frame_window_to_front (f)
+     struct frame *f;
+{
+  mac_bring_frame_window_to_front_and_activate (f, false);
 }
 
 void
@@ -2526,10 +2977,7 @@ mac_show_frame_window (f)
   NSWindow *window = FRAME_MAC_WINDOW (f);
 
   if (![window isVisible])
-    {
-      mac_bring_frame_window_to_front (f);
-      [window makeKeyWindow];
-    }
+    mac_bring_frame_window_to_front_and_activate (f, true);
 }
 
 OSStatus
@@ -2936,6 +3384,15 @@ mac_change_frame_window_wm_state (f, flags_to_set, flags_to_clear)
 					       clear:flags_to_clear];
 }
 
+void
+mac_invalidate_frame_cursor_rects (f)
+     struct frame *f;
+{
+  EmacsFrameController *frameController = FRAME_CONTROLLER (f);
+
+  [frameController invalidateCursorRectsForEmacsView];
+}
+
 
 /************************************************************************
 			   View and Drawing
@@ -3030,6 +3487,25 @@ static int mac_event_to_emacs_modifiers P_ ((NSEvent *));
     selector:@selector(viewFrameDidChange:)
     name:@"NSViewFrameDidChangeNotification"
     object:self];
+
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= 1050
+  if (mac_tracking_area_works_with_cursor_rects_invalidation_p ())
+    {
+      NSTrackingArea *trackingAreaForCursor =
+	[
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= 1050
+	 [NSTrackingArea alloc]
+#else
+         [(NSClassFromString (@"NSTrackingArea")) alloc]
+#endif
+	    initWithRect:NSZeroRect options:(NSTrackingCursorUpdate
+					     | NSTrackingActiveInKeyWindow
+					     | NSTrackingInVisibleRect)
+	    owner:self userInfo:nil];
+      [self addTrackingArea:trackingAreaForCursor];
+      [trackingAreaForCursor release];
+    }
+#endif
 
   return self;
 }
@@ -3249,15 +3725,13 @@ static int mac_event_to_emacs_modifiers P_ ((NSEvent *));
       break;
 
     case NSEventTypeMagnify:
+    case NSEventTypeGesture:
       deltaY = [theEvent magnification];
       break;
 
     case NSEventTypeRotate:
       deltaX = [theEvent rotation];
       break;
-
-    case NSEventTypeGesture:
-      return;
 
     default:
       abort ();
@@ -3268,7 +3742,7 @@ static int mac_event_to_emacs_modifiers P_ ((NSEvent *));
 	 get accepted.  */
       f != mac_focus_frame (&one_mac_display_info) ||
 #endif
-      deltaX == 0 && deltaY == 0 && deltaZ == 0
+      deltaX == 0 && (deltaY == 0 && type != NSEventTypeGesture) && deltaZ == 0
       && scrollingDeltaX == 0 && scrollingDeltaY == 0
       && NILP (phase) && NILP (momentumPhase))
     return;
@@ -3300,13 +3774,14 @@ static int mac_event_to_emacs_modifiers P_ ((NSEvent *));
 				     list1 (list2 (phase, momentumPhase)));
 	}
     }
-  else if (type == NSEventTypeMagnify)
+  else if (type == NSEventTypeMagnify || type == NSEventTypeGesture)
     inputEvent.arg = Fcons (make_float (deltaY), Qnil);
   else if (type == NSEventTypeRotate)
     inputEvent.arg = Fcons (make_float (deltaX), Qnil);
   else
     inputEvent.arg = Qnil;
   inputEvent.kind = (deltaY != 0 || scrollingDeltaY != 0
+		     || type == NSEventTypeGesture
 		     ? WHEEL_EVENT : HORIZ_WHEEL_EVENT);
   inputEvent.code = 0;
   inputEvent.modifiers =
@@ -3408,6 +3883,23 @@ static int mac_event_to_emacs_modifiers P_ ((NSEvent *));
 - (void)mouseDragged:(NSEvent *)theEvent
 {
   [self mouseMoved:theEvent];
+}
+
+- (void)rightMouseDragged:(NSEvent *)theEvent
+{
+  [self mouseMoved:theEvent];
+}
+
+- (void)otherMouseDragged:(NSEvent *)theEvent
+{
+  [self mouseMoved:theEvent];
+}
+
+- (void)cursorUpdate:(NSEvent *)event
+{
+  struct frame *f = [self emacsFrame];
+
+  SetThemeCursor (f->output_data.mac->current_cursor);
 }
 
 - (void)keyDown:(NSEvent *)theEvent
@@ -4054,6 +4546,9 @@ extern CFStringRef mac_ax_string_for_range P_ ((struct frame *,
       NSRect frameRect = [self frame];
 
       mac_handle_size_change (f, NSWidth (frameRect), NSHeight (frameRect));
+      /* Exit from select_and_poll_event so as to react to the frame
+	 size change.  */
+      [NSApp postDummyEvent];
     }
 }
 
@@ -4222,7 +4717,7 @@ create_resize_indicator_image ()
 				  backing:NSBackingStoreBuffered
 				    defer:NO];
   NSView *frameView = [[window contentView] superview];
-  NSBitmapImageRep *rep;
+  NSBitmapImageRep *bitmap;
   NSImage *image;
 
   [window setOpaque:NO];
@@ -4230,13 +4725,15 @@ create_resize_indicator_image ()
 
   [frameView display];
   [frameView lockFocus];
-  rep = [[NSBitmapImageRep alloc] initWithFocusedViewRect:resizeIndicatorRect];
+  bitmap =
+    [[NSBitmapImageRep alloc] initWithFocusedViewRect:resizeIndicatorRect];
   [frameView unlockFocus];
-  [window release];
 
   image = [[NSImage alloc] initWithSize:resizeIndicatorRect.size];
-  [image addRepresentation:rep];
-  [rep release];
+  [image addRepresentation:bitmap];
+  [bitmap release];
+
+  [window release];
 
   return image;
 }
@@ -4286,7 +4783,16 @@ create_resize_indicator_image ()
     }
 }
 
-@end
+- (void)adjustWindowFrame
+{
+  NSWindow *window = [self window];
+  NSWindow *parentWindow = [window parentWindow];
+
+  [window setFrame:[parentWindow frame] display:YES];
+}
+
+@end				// EmacsOverlayView
+
 
 /************************************************************************
 			     Scroll bars
@@ -4951,7 +5457,6 @@ scroller_part_to_scroll_bar_part (part, flags)
 }
 
 @end				// EmacsFrameController (ScrollBar)
-
 
 /* Create a scroll bar control for BAR.  The created control is stored
    in some members of BAR.  */
@@ -5669,8 +6174,6 @@ mac_set_font_info_for_selection (f, face_id, c, pos, object)
 			    Event Handling
  ************************************************************************/
 
-extern void mac_get_screen_info P_ ((struct mac_display_info *));
-
 static void update_apple_event_handler P_ ((void));
 static void update_dragged_types P_ ((void));
 
@@ -5757,12 +6260,17 @@ static void update_dragged_types P_ ((void));
 	 in the frame.  */
       clear_mouse_face (dpyinfo);
       dpyinfo->mouse_face_mouse_frame = 0;
-      if (!dpyinfo->grabbed)
-	{
-	  struct redisplay_interface *rif = FRAME_RIF (f);
+#if MAC_OS_X_VERSION_MIN_REQUIRED < 1060
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= 1050
+      if (!mac_tracking_area_works_with_cursor_rects_invalidation_p ())
+#endif
+	if (!dpyinfo->grabbed)
+	  {
+	    struct redisplay_interface *rif = FRAME_RIF (f);
 
-	  rif->define_frame_cursor (f, f->output_data.mac->nontext_cursor);
-	}
+	    rif->define_frame_cursor (f, f->output_data.mac->nontext_cursor);
+	  }
+#endif
     }
 
   x = point.x;
@@ -5868,11 +6376,32 @@ mac_event_to_emacs_modifiers (event)
   return mac_to_emacs_modifiers (modifiers, 0);
 }
 
-/* Run the current run loop in the default mode until some input
-   happens or TIMEOUT seconds passes unless it is negative.  Return
-   true if timeout occurs first.  */
+void
+mac_get_screen_info (dpyinfo)
+     struct mac_display_info *dpyinfo;
+{
+  NSArray *screens = [NSScreen screens];
+  NSWindowDepth depth = [[screens objectAtIndex:0] depth];
+  NSEnumerator *enumerator = [screens objectEnumerator];
+  NSScreen *screen;
+  NSRect frame;
 
-Boolean
+  dpyinfo->n_planes = NSBitsPerPixelFromDepth (depth);
+  dpyinfo->color_p = dpyinfo->n_planes > NSBitsPerSampleFromDepth (depth);
+
+  frame = NSZeroRect;
+  while ((screen = [enumerator nextObject]) != nil)
+    frame = NSUnionRect (frame, [screen frame]);
+  dpyinfo->width = NSWidth (frame);
+  dpyinfo->height = NSHeight (frame);
+}
+
+/* Run the current run loop in the default mode until some input
+   happens or TIMEOUT seconds passes unless it is negative.  Return 0
+   if timeout occurs first.  Return the remaining timeout unless the
+   original TIMEOUT value is negative.  */
+
+EventTimeout
 mac_run_loop_run_once (timeout)
      EventTimeout timeout;
 {
@@ -5885,43 +6414,14 @@ mac_run_loop_run_once (timeout)
 
   [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
 			      beforeDate:expiration];
-  return [expiration timeIntervalSinceNow] <= 0;
-}
-
-/* Return next event in the main queue if it exists.  Otherwise return
-   NULL.  */
-
-static EventRef
-peek_next_event ()
-{
-  EventRef event;
-
-#if MAC_OS_X_VERSION_MAX_ALLOWED >= 1030
-#if MAC_OS_X_VERSION_MIN_REQUIRED == 1020
-  if (AcquireFirstMatchingEventInQueue != NULL)
-#endif
+  if (timeout > 0)
     {
-      event = AcquireFirstMatchingEventInQueue (GetCurrentEventQueue (), 0,
-						NULL, kEventQueueOptionsNone);
-      if (event)
-	ReleaseEvent (event);
+      timeout = [expiration timeIntervalSinceNow];
+      if (timeout < 0)
+	timeout = 0;
     }
-#if MAC_OS_X_VERSION_MIN_REQUIRED == 1020
-  else			/* AcquireFirstMatchingEventInQueue == NULL */
-#endif
-#endif	/* MAC_OS_X_VERSION_MAX_ALLOWED >= 1030  */
-#if MAC_OS_X_VERSION_MAX_ALLOWED < 1030 || MAC_OS_X_VERSION_MIN_REQUIRED == 1020
-    {
-      OSStatus err;
 
-      err = ReceiveNextEvent (0, NULL, kEventDurationNoWait,
-			      kEventLeaveInQueue, &event);
-      if (err != noErr)
-	event = NULL;
-    }
-#endif
-
-  return event;
+  return timeout;
 }
 
 /* Return next event in the main queue if it exists and is a mouse
@@ -5930,7 +6430,7 @@ peek_next_event ()
 static EventRef
 peek_if_next_event_activates_menu_bar ()
 {
-  EventRef event = peek_next_event ();
+  EventRef event = mac_peek_next_event ();
 
   if (event
       && GetEventClass (event) == kEventClassMouse
@@ -6177,6 +6677,7 @@ mac_hide_hourglass (f)
 
 @implementation EmacsSavePanel
 
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= 1060
 /* Like the original runModal, but run the application event loop if
    not.  */
 
@@ -6186,7 +6687,6 @@ mac_hide_hourglass (f)
     return [super runModal];
   else
     {
-#if MAC_OS_X_VERSION_MIN_REQUIRED >= 1060
       __block NSInteger response;
 
       [NSApp runTemporarilyWithBlock:^{
@@ -6194,24 +6694,9 @@ mac_hide_hourglass (f)
 	}];
 
       return response;
-#else
-      NSMethodSignature *signature = [self methodSignatureForSelector:_cmd];
-      NSInvocation *invocation =
-	[NSInvocation invocationWithMethodSignature:signature];
-      NSInteger response;
-
-      [invocation setTarget:self];
-      [invocation setSelector:_cmd];
-
-      [NSApp runTemporarilyWithInvocation:invocation];
-
-      [invocation getReturnValue:&response];
-
-      return response;
-#endif
     }
 }
-
+#else
 /* Like the original runModalForDirectory:file:, but run the
    application event loop if not.  */
 
@@ -6221,15 +6706,6 @@ mac_hide_hourglass (f)
     return [super runModalForDirectory:path file:filename];
   else
     {
-#if MAC_OS_X_VERSION_MIN_REQUIRED >= 1060
-      __block NSInteger response;
-
-      [NSApp runTemporarilyWithBlock:^{
-	  response = [self runModalForDirectory:path file:filename];
-	}];
-
-      return response;
-#else
       NSMethodSignature *signature = [self methodSignatureForSelector:_cmd];
       NSInvocation *invocation =
 	[NSInvocation invocationWithMethodSignature:signature];
@@ -6245,9 +6721,9 @@ mac_hide_hourglass (f)
       [invocation getReturnValue:&response];
 
       return response;
-#endif
     }
 }
+#endif
 
 /* Simulate kNavDontConfirmReplacement.  */
 
@@ -6260,42 +6736,26 @@ mac_hide_hourglass (f)
 
 @implementation EmacsOpenPanel
 
-/* Like the original runModalForTypes:, but run the application event
-   loop if not.  */
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= 1060
+/* Like the original runModal, but run the application event loop if
+   not.  */
 
-- (NSInteger)runModalForTypes:(NSArray *)fileTypes
+- (NSInteger)runModal
 {
   if ([NSApp isRunning])
-    return [super runModalForTypes:fileTypes];
+    return [super runModal];
   else
     {
-#if MAC_OS_X_VERSION_MIN_REQUIRED >= 1060
       __block NSInteger response;
 
       [NSApp runTemporarilyWithBlock:^{
-	  response = [self runModalForTypes:fileTypes];
+	  response = [self runModal];
 	}];
 
       return response;
-#else
-      NSMethodSignature *signature = [self methodSignatureForSelector:_cmd];
-      NSInvocation *invocation =
-	[NSInvocation invocationWithMethodSignature:signature];
-      NSInteger response;
-
-      [invocation setTarget:self];
-      [invocation setSelector:_cmd];
-      [invocation setArgument:&fileTypes atIndex:2];
-
-      [NSApp runTemporarilyWithInvocation:invocation];
-
-      [invocation getReturnValue:&response];
-
-      return response;
-#endif
     }
 }
-
+#else
 /* Like the original runModalForDirectory:file:types:, but run the
    application event loop if not.  */
 
@@ -6308,16 +6768,6 @@ mac_hide_hourglass (f)
 		  file:filename types:fileTypes];
   else
     {
-#if MAC_OS_X_VERSION_MIN_REQUIRED >= 1060
-      __block NSInteger response;
-
-      [NSApp runTemporarilyWithBlock:^{
-	  response = [self runModalForDirectory:absoluteDirectoryPath
-					   file:filename types:fileTypes];
-	}];
-
-      return response;
-#else
       NSMethodSignature *signature = [self methodSignatureForSelector:_cmd];
       NSInvocation *invocation =
 	[NSInvocation invocationWithMethodSignature:signature];
@@ -6334,9 +6784,9 @@ mac_hide_hourglass (f)
       [invocation getReturnValue:&response];
 
       return response;
-#endif
     }
 }
+#endif
 
 @end				// EmacsOpenPanel
 
@@ -6349,7 +6799,7 @@ mac_file_dialog (prompt, dir, default_filename, mustmatch, only_dir_p)
   Lisp_Object file = Qnil;
   int count = SPECPDL_INDEX ();
   struct gcpro gcpro1, gcpro2, gcpro3, gcpro4, gcpro5, gcpro6;
-  NSString *directory = nil, *nondirectory = nil;
+  NSString *directory, *nondirectory = nil;
 
   check_mac ();
 
@@ -6359,20 +6809,14 @@ mac_file_dialog (prompt, dir, default_filename, mustmatch, only_dir_p)
 
   BLOCK_INPUT;
 
+  dir = Fexpand_file_name (dir, Qnil);
+  directory = [NSString stringWithLispString:dir];
+
   if (STRINGP (default_filename))
     {
-      Lisp_Object tem;
+      Lisp_Object tem = Ffile_name_nondirectory (default_filename);
 
-      tem = Ffile_name_directory (default_filename);
-      directory = [NSString stringWithLispString:tem];
-      tem = Ffile_name_nondirectory (default_filename);
       nondirectory = [NSString stringWithLispString:tem];
-    }
-
-  if (directory == nil)
-    {
-      dir = Fexpand_file_name (dir, Qnil);
-      directory = [NSString stringWithLispString:dir];
     }
 
   if (NILP (only_dir_p) && NILP (mustmatch))
@@ -6386,14 +6830,25 @@ mac_file_dialog (prompt, dir, default_filename, mustmatch, only_dir_p)
       if ([savePanel respondsToSelector:@selector(setNameFieldLabel:)])
 	[savePanel setNameFieldLabel:@"Enter Name:"];
 
-      if (directory)
-	response = [savePanel runModalForDirectory:directory
-			      file:nondirectory];
-      else
-	response = [savePanel runModal];
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= 1060
+      [savePanel setDirectoryURL:[NSURL fileURLWithPath:directory
+					    isDirectory:YES]];
+      if (nondirectory)
+	[savePanel setNameFieldStringValue:nondirectory];
+      response = [savePanel runModal];
+      if (response == NSFileHandlingPanelOKButton)
+	{
+	  NSURL *url = [savePanel URL];
 
+	  if ([url isFileURL])
+	    file = [[url path] lispString];
+	}
+#else
+      response = [savePanel runModalForDirectory:directory
+					    file:nondirectory];
       if (response == NSFileHandlingPanelOKButton)
 	file = [[savePanel filename] lispString];
+#endif
     }
   else
     {
@@ -6407,14 +6862,26 @@ mac_file_dialog (prompt, dir, default_filename, mustmatch, only_dir_p)
       [openPanel setCanChooseDirectories:YES];
       [openPanel setCanChooseFiles:(NILP (only_dir_p))];
 
-      if (directory)
-	response = [openPanel runModalForDirectory:directory
-			      file:nondirectory types:nil];
-      else
-	response = [openPanel runModalForTypes:nil];
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= 1060
+      [openPanel setDirectoryURL:[NSURL fileURLWithPath:directory
+					    isDirectory:YES]];
+      if (nondirectory)
+	[openPanel setNameFieldStringValue:nondirectory];
+      [openPanel setAllowedFileTypes:nil];
+      response = [openPanel runModal];
+      if (response == NSOKButton)
+	{
+	  NSURL *url = [[openPanel URLs] objectAtIndex:0];
 
+	  if ([url isFileURL])
+	    file = [[url path] lispString];
+	}
+#else
+      response = [openPanel runModalForDirectory:directory
+					    file:nondirectory types:nil];
       if (response == NSOKButton)
 	file = [[[openPanel filenames] objectAtIndex:0] lispString];
+#endif
     }
 
   UNBLOCK_INPUT;
@@ -6587,6 +7054,8 @@ extern int name_is_separator P_ ((const char *));
 
 static void update_services_menu_types P_ ((void));
 static void mac_fake_menu_bar_click P_ ((EventPriority));
+
+static NSString *localizedMenuTitleForEdit;
 
 @implementation NSMenu (Emacs)
 
@@ -6764,7 +7233,11 @@ static void mac_fake_menu_bar_click P_ ((EventPriority));
 	      break;
 
 	    case 98:	 /* Show Help menu, Mac OS X 10.5 and later */
-	      [(EmacsWindow *)window showMenuBar];
+	      {
+		EmacsFrameController *frameController = [window delegate];
+
+		[frameController showMenuBar];
+	      }
 	      break;
 	    }
 	}
@@ -6891,7 +7364,7 @@ restore_show_help_function (old_show_help_function)
 		 kEventClassMenu event is still pending on Mac OS X
 		 10.6 when selecting menu item via search field on the
 		 Help menu.  */
-	      if (peek_next_event ())
+	      if (mac_peek_next_event ())
 		continue;
 	    }
 	  else
@@ -6911,7 +7384,11 @@ restore_show_help_function (old_show_help_function)
 
       window = [NSApp keyWindow];
       if ([window isKindOfClass:[EmacsWindow class]])
-	[(EmacsWindow *)window updateApplicationPresentationOptions];
+	{
+	  EmacsFrameController *frameController = [window delegate];
+
+	  [frameController updateApplicationPresentationOptions];
+	}
     }
   else
     {
@@ -7108,6 +7585,7 @@ init_menu_bar ()
   NSMenu *windowsMenu = [[NSMenu alloc] init];
   NSMenu *appleMenu = [[NSMenu alloc] init];
   EmacsMenu *mainMenu = [[EmacsMenu alloc] init];
+  NSBundle *appKitBundle = [NSBundle bundleWithIdentifier:@"com.apple.AppKit"];
 
   [NSApp setServicesMenu:servicesMenu];
 
@@ -7147,6 +7625,11 @@ init_menu_bar ()
   [appleMenu release];
   [windowsMenu release];
   [servicesMenu release];
+
+  localizedMenuTitleForEdit =
+    NSLocalizedStringFromTableInBundle (@"Edit", @"InputManager",
+					appKitBundle, NULL);
+  [localizedMenuTitleForEdit retain];
 }
 
 /* Fill menu bar with the items defined by WV.  If DEEP_P, consider
@@ -7187,6 +7670,14 @@ mac_fill_menubar (wv, deep_p)
       submenu = [[NSMenu alloc] initWithTitle:title];
       [submenu setAutoenablesItems:NO];
 
+      /* To make Input Manager add "Special Characters..." to the
+	 "Edit" menu, we have to localize the menu title.  */
+      if ([title isEqualToString:@"Edit"])
+	{
+	  [title release];
+	  title = [localizedMenuTitleForEdit retain];
+	}
+
       [newMenu setSubmenu:submenu
 		  forItem:[newMenu addItemWithTitle:title action:nil
 				      keyEquivalent:@""]];
@@ -7225,7 +7716,11 @@ mac_fake_menu_bar_click (priority)
   NSWindow *window = [NSApp keyWindow];
 
   if ([window isKindOfClass:[EmacsWindow class]])
-    [(EmacsWindow *)window showMenuBar];
+    {
+      EmacsFrameController *frameController = [window delegate];
+
+      [frameController showMenuBar];
+    }
 
   /* CopyEventAs is not available on Mac OS X 10.2.  */
   for (i = 0; i < 2; i++)
@@ -7618,6 +8113,8 @@ create_and_show_dialog (f, first_wv)
   [panel setContentView:dialogView];
   [dialogView release];
   [panel setTitle:(first_wv->name[0] == 'Q' ? @"Question" : @"Information")];
+  if ([panel respondsToSelector:@selector(setAnimationBehavior:)])
+    [panel setAnimationBehavior:NSWindowAnimationBehaviorAlertPanel];
   [panel makeKeyAndOrderFront:nil];
 
   popup_activated_flag = 1;
@@ -8427,8 +8924,8 @@ is_services_handler_selector (selector)
 
 /* Return the method signature of services handlers.  */
 
-static
-NSMethodSignature *services_handler_signature ()
+static NSMethodSignature *
+services_handler_signature ()
 {
   static NSMethodSignature *signature;
 
@@ -8549,8 +9046,8 @@ is_action_selector (selector)
 
 /* Return the method signature of actions.  */
 
-static
-NSMethodSignature *action_signature ()
+static NSMethodSignature *
+action_signature ()
 {
   static NSMethodSignature *signature;
 
@@ -11018,6 +11515,7 @@ mac_font_shape_1 (font, string, glyph_layouts, glyph_len, screen_font_p)
 	  NSPoint location;
 	  NSRect *glyphRects;
 	  NSUInteger nrects;
+	  CGFloat maxX;
 
 	  characterIndex = [layoutManager
 			     characterIndexForGlyphAtIndex:glyphIndex];
@@ -11048,8 +11546,9 @@ mac_font_shape_1 (font, string, glyph_layouts, glyph_len, screen_font_p)
 			 rectArrayForGlyphRange:(NSMakeRange (glyphIndex, 1))
 			 withinSelectedGlyphRange:(NSMakeRange (NSNotFound, 0))
 			 inTextContainer:textContainer rectCount:&nrects];
-	  gl->advance = NSMaxX (glyphRects[0]) - totalAdvance;
-	  totalAdvance = NSMaxX (glyphRects[0]);
+	  maxX = max (NSMaxX (glyphRects[0]), totalAdvance);
+	  gl->advance = maxX - totalAdvance;
+	  totalAdvance = maxX;
 
 	  glyphIndex++;
 	}

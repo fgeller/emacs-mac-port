@@ -1704,8 +1704,26 @@ macfont_list (frame, spec)
       if (! pat_desc)
 	goto err;
 
-      descs = mac_font_descriptor_create_matching_font_descriptors (pat_desc,
-								    NULL);
+      /* CTFontDescriptorCreateMatchingFontDescriptors on Mac OS X
+	 10.7 returns NULL if pat_desc represents the LastResort font.
+	 So we use CTFontDescriptorCreateMatchingFontDescriptor (no
+	 trailing "s") for such a font.  */
+      if (CFStringCompare (family_name, CFSTR ("LastResort"), 0)
+	  != kCFCompareEqualTo)
+	descs = mac_font_descriptor_create_matching_font_descriptors (pat_desc,
+								      NULL);
+      else
+	{
+	  FontDescriptorRef lr_desc =
+	    mac_font_descriptor_create_matching_font_descriptor (pat_desc,
+								 NULL);
+	  if (lr_desc)
+	    {
+	      descs = CFArrayCreate (NULL, (const void **) &lr_desc, 1,
+				     &kCFTypeArrayCallBacks);
+	      CFRelease (lr_desc);
+	    }
+	}
       CFRelease (pat_desc);
       if (! descs)
 	goto err;
@@ -2274,37 +2292,27 @@ macfont_draw (s, from, to, x, y, with_background)
       CGContextSetTextPosition (context, x + advance_delta, -y);
 
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= 1070
+      if (macfont_info->color_bitmap_p
 #if MAC_OS_X_VERSION_MIN_REQUIRED < 1070
-      if (CTFontDrawGlyphs != NULL)
+	  && CTFontDrawGlyphs != NULL
 #endif
+	  )
 	{
-	  if (macfont_info->color_bitmap_p)
+	  if (len > 0)
 	    {
-	      if (len > 0)
-		{
-		  CGPoint *positions = alloca (sizeof (CGPoint) * len);
+	      CGPoint *positions = alloca (sizeof (CGPoint) * len);
 
-		  positions[0] = CGPointZero;
-		  for (i = 1; i < len; i++)
-		    {
-		      positions[i].x = positions[i-1].x + advances[i-1].width;
-		      positions[i].y = positions[i-1].y + advances[i-1].height;
-		    }
-		  CTFontDrawGlyphs (macfont, glyphs, positions, len, context);
+	      positions[0] = CGPointZero;
+	      for (i = 1; i < len; i++)
+		{
+		  positions[i].x = positions[i-1].x + advances[i-1].width;
+		  positions[i].y = positions[i-1].y + advances[i-1].height;
 		}
-	    }
-	  else
-	    {
-	      CGContextSetFont (context, macfont_info->cgfont);
-	      CGContextSetFontSize (context, font_size);
-	      CGContextShowGlyphsWithAdvances (context, glyphs, advances, len);
+	      CTFontDrawGlyphs (macfont, glyphs, positions, len, context);
 	    }
 	}
-#if MAC_OS_X_VERSION_MIN_REQUIRED < 1070
-      else			/* CTFontDrawGlyphs == NULL */
-#endif
+      else
 #endif	/* MAC_OS_X_VERSION_MAX_ALLOWED >= 1070 */
-#if MAC_OS_X_VERSION_MIN_REQUIRED < 1070
 	{
 	  CGContextSetFont (context, macfont_info->cgfont);
 	  CGContextSetFontSize (context, font_size);
@@ -2312,7 +2320,6 @@ macfont_draw (s, from, to, x, y, with_background)
 	     even in Mac OS X 10.2.  */
 	  CGContextShowGlyphsWithAdvances (context, glyphs, advances, len);
 	}
-#endif
     }
 
   mac_end_cg_clip (f);
@@ -3096,12 +3103,11 @@ mac_ctfont_shape (font, string, glyph_layouts, glyph_len)
   if (used <= glyph_len)
     {
       CFArrayRef ctruns = CTLineGetGlyphRuns (ctline);
-      CFIndex i, j, k, ctrun_count = CFArrayGetCount (ctruns);
+      CFIndex i, k, ctrun_count = CFArrayGetCount (ctruns);
       CFRange comp_range = CFRangeMake (0, 0);
-      CGFloat total_advance = 0, comp_offset;
+      CGFloat total_advance = 0;
 
-      comp_offset = CTLineGetOffsetForStringIndex (ctline, 0, NULL);
-      for (i = j = k = 0; k < ctrun_count; k++)
+      for (i = k = 0; k < ctrun_count; k++)
 	{
 	  CTRunRef ctrun = CFArrayGetValueAtIndex (ctruns, k);
 	  CFIndex glyph_count = CTRunGetGlyphCount (ctrun);
@@ -3111,27 +3117,20 @@ mac_ctfont_shape (font, string, glyph_layouts, glyph_len)
 	       range.location++, i++)
 	    {
 	      CFIndex index;
-	      CGFloat offset;
 	      CGPoint position;
 
 	      CTRunGetStringIndices (ctrun, range, &index);
-	      offset = CTLineGetOffsetForStringIndex (ctline, index, NULL);
-	      if (offset != comp_offset)
+	      if (index >= comp_range.location + comp_range.length)
 		{
-		  CGPoint pos = CGPointMake (offset, 0);
+		  CFRange new_range =
+		    CFStringGetRangeOfComposedCharactersAtIndex (string, index);
 
-		  /* Glyph indices are not always increasing in a
-		     composed character (e.g., the first one of
-		     "Hindi" in its native name).  */
-		  comp_range.length =
-		    (CTLineGetStringIndexForPosition (ctline, pos)
-		     - comp_range.location);
-		  for (; j < i; j++)
-		    glyph_layouts[j].comp_range = comp_range;
-		  comp_range.location += comp_range.length;
-		  comp_offset = offset;
+		  comp_range.location = comp_range.location + comp_range.length;
+		  comp_range.length = (new_range.location + new_range.length
+				       - comp_range.location);
 		}
 
+	      glyph_layouts[i].comp_range = comp_range;
 	      glyph_layouts[i].string_index = index;
 	      CTRunGetGlyphs (ctrun, range, &glyph_layouts[i].glyph_id);
 
@@ -3143,9 +3142,6 @@ mac_ctfont_shape (font, string, glyph_layouts, glyph_len)
 	      total_advance += glyph_layouts[i].advance;
 	    }
 	}
-      comp_range.length = CFStringGetLength (string) - comp_range.location;
-      for (; j < i; j++)
-	glyph_layouts[j].comp_range = comp_range;
 
       result = used;
     }
