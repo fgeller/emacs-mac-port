@@ -1,5 +1,8 @@
 0. current
 
+   + update 10/14/2011: Emacs 23.3a   with emacs-23.3a-mac-1.9995
+                                         + unerased-cursor.patch
+                                         + lion-toolbar.patch
    + update 08/28/2011: Emacs 23.3a   with emacs-23.3a-mac-1.9995
    + update 07/25/2011: Emacs 23.3    with emacs-23.3-mac-1.9993 + svg64.patch
    + add "build-emacs.app.sh"

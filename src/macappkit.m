@@ -5249,6 +5249,11 @@ static BOOL NonmodalScrollerPagingBehavior;
   return NO;
 }
 
+- (BOOL)isOpaque
+{
+  return YES;
+}
+
 - (CGFloat)knobSlotSpan
 {
   if (knobSlotSpan < 0)
@@ -5842,7 +5847,16 @@ update_frame_tool_bar (f)
 	  count = [items count];
 	}
 
-      if (identifier != NSToolbarSeparatorItemIdentifier)
+      if (identifier == NSToolbarSeparatorItemIdentifier)
+	{
+	  /* On Mac OS X 10.7, items with the identifier
+	     NSToolbarSeparatorItemIdentifier are not added.  */
+	  if (pos < count
+	      && [identifier isEqualToString:[[items objectAtIndex:pos]
+					       itemIdentifier]])
+	    pos++;
+	}
+      else
 	{
 	  EmacsToolbarItem *item = [items objectAtIndex:pos];
 
@@ -5850,8 +5864,8 @@ update_frame_tool_bar (f)
 	  [item setLabel:label];
 	  [item setEnabled:(enabled_p || idx >= 0)];
 	  [item setTag:i];
+	  pos++;
 	}
-      pos++;
 #undef PROP
     }
 
