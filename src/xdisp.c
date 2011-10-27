@@ -14477,7 +14477,7 @@ try_window_reusing_current_matrix (w)
 	  if (row < bottom_row)
 	    {
 	      struct glyph *glyph = row->glyphs[TEXT_AREA] + w->cursor.hpos;
-	      struct glyph *end = glyph + row->used[TEXT_AREA];
+	      struct glyph *end = row->glyphs[TEXT_AREA] + row->used[TEXT_AREA];
 
 	      for (; glyph < end
 		     && (!BUFFERP (glyph->object)

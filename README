@@ -1,5 +1,6 @@
 0. current
 
+   + update 10/27/2011: Emacs 23.3a   with emacs-23.3a-mac-1.9996
    + update 10/14/2011: Emacs 23.3a   with emacs-23.3a-mac-1.9995
                                          + unerased-cursor.patch
                                          + lion-toolbar.patch
@@ -24,15 +25,15 @@
 
 2. How to install 
 
-   1). build a self-contained Emacs.app with build-emacs.app.sh
+   Plan A. build a self-contained Emacs.app with build-emacs.app.sh
        *Tested in Snow Leopard and Lion*
 
-   2). if you are using Homebrew, copy "emacs-mac.rb" to your brew's
+   Plan B. if you are using Homebrew, copy "emacs-mac.rb" to your brew's
        formula directory(usually at /usr/local/Library/Formula/), and
        
        $ brew install emacs-mac
 
-   3). i. Get the latest code from git repository
+   Plan C. i. Get the latest code from git repository
 
        	  if you are new here:
       	     $ git clone git://github.com/railwaycat/emacs-mac-port.git
