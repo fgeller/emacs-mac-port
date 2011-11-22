@@ -25,17 +25,22 @@
 
 2. How to install 
 
-   Plan A. 
+   Plan A.
+   	Without clone and compile, just download from
+
+	https://github.com/downloads/railwaycat/emacs-mac-port/Emacs_1027.zip
+
+   Plan B. 
    	Build a self-contained Emacs.app with build-emacs.app.sh
  	*Tested in Snow Leopard and Lion*
 
-   Plan B.  
+   Plan C.  
    	If you are using Homebrew, copy "emacs-mac.rb" to your brew's
    	formula directory(usually at /usr/local/Library/Formula/), and
        
        $ brew install emacs-mac
 
-   Plan C. 
+   Plan D. 
    	1). Get the latest code from git repository
 
        	  if you are new here:
