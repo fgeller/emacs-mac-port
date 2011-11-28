@@ -1,5 +1,6 @@
 0. current
 
+   + update 11/28/2011: Emacs 23.3b   with emacs-23.3b-mac-1.9997
    + update 10/27/2011: Emacs 23.3a   with emacs-23.3a-mac-1.9996
    + update 10/14/2011: Emacs 23.3a   with emacs-23.3a-mac-1.9995
                                          + unerased-cursor.patch
@@ -32,7 +33,7 @@
 
    Plan B. 
    	Build a self-contained Emacs.app with build-emacs.app.sh
- 	*Tested in Snow Leopard and Lion*
+ 	*Tested on Mac OS X 10.7.2*
 
    Plan C.  
    	If you are using Homebrew, copy "emacs-mac.rb" to your brew's
