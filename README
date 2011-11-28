@@ -29,7 +29,7 @@
    Plan A.
    	Without clone and compile, just download from
 
-	https://github.com/downloads/railwaycat/emacs-mac-port/Emacs_1027.zip
+	https://github.com/downloads/railwaycat/emacs-mac-port/Emacs.zip
 
    Plan B. 
    	Build a self-contained Emacs.app with build-emacs.app.sh
