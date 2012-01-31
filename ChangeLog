@@ -1,3 +1,11 @@
+2012-01-19  Chong Yidong  <cyd@gnu.org>
+
+	* Version 23.4 released.
+
+2012-01-15  Chong Yidong  <cyd@gnu.org>
+
+	* make-dist: Distribute the etc/grammars subdirectory.
+
 2012-01-12  Glenn Morris  <rgm@gnu.org>
 
 	* configure.in: Add i386 to cpp_undefs (Bug#8497).
