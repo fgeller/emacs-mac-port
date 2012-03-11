@@ -3,8 +3,7 @@ ebrowse.texi.
 
 This file documents Ebrowse, a C++ class browser for GNU Emacs.
 
-   Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008,
-2009, 2010, 2011, 2012  Free Software Foundation, Inc.
+   Copyright (C) 2000-2012  Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -26,13 +25,14 @@ END-INFO-DIR-ENTRY
 
 File: ebrowse,  Node: Top,  Next: Overview,  Prev: (dir),  Up: (dir)
 
-   You can browse C++ class hierarchies from within Emacs by using
-Ebrowse.
+Ebrowse
+*******
+
+You can browse C++ class hierarchies from within Emacs by using Ebrowse.
 
    This file documents Ebrowse, a C++ class browser for GNU Emacs.
 
-   Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008,
-2009, 2010, 2011, 2012  Free Software Foundation, Inc.
+   Copyright (C) 2000-2012  Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -381,7 +381,7 @@ name.
 
 `SPC'
      This command views the class declaration if the database contains
-     informations about it.  If you don't parse the entire source you
+     information about it.  If you don't parse the entire source you
      are working on, some classes will only be known to exist but the
      location of their declarations and definitions will not be known.
 
@@ -1794,51 +1794,51 @@ Concept Index
 
 
 Tag Table:
-Node: Top1068
-Node: Overview2584
-Node: Generating browser files6177
-Node: Input files7323
-Node: Output file8587
-Node: Structs and unions9496
-Node: Matching9940
-Node: Verbosity11904
-Node: Loading a Tree12338
-Node: Tree Buffers13352
-Node: Source Display14629
-Node: Member Display15416
-Node: Go to Class17193
-Node: Quitting17920
-Node: File Name Display18118
-Node: Expanding and Collapsing19070
-Node: Tree Indentation20067
-Node: Killing Classes20454
-Node: Saving a Tree20824
-Node: Statistics21195
-Node: Marking Classes21474
-Node: Member Buffers22289
-Node: Switching Member Lists23902
-Node: Finding/Viewing24706
-Node: Inherited Members25761
-Node: Searching Members26079
-Node: Switching to Tree26987
-Node: Filters27335
-Node: Attributes28080
-Node: Long and Short Display29147
-Node: Regexp Display30101
-Node: Switching Classes30645
-Node: Killing/Burying31450
-Node: Column Width31677
-Node: Redisplay31951
-Node: Getting Help32338
-Node: Tags-like Functions32463
-Node: Finding and Viewing33264
-Node: Position Stack34802
-Node: Search & Replace36102
-Node: Members in Files37227
-Node: Apropos37500
-Node: Symbol Completion38120
-Node: Member Buffer Display38349
-Node: GNU Free Documentation License38609
-Node: Concept Index63792
+Node: Top1001
+Node: Overview2464
+Node: Generating browser files6057
+Node: Input files7203
+Node: Output file8467
+Node: Structs and unions9376
+Node: Matching9820
+Node: Verbosity11784
+Node: Loading a Tree12218
+Node: Tree Buffers13232
+Node: Source Display14509
+Node: Member Display15295
+Node: Go to Class17072
+Node: Quitting17799
+Node: File Name Display17997
+Node: Expanding and Collapsing18949
+Node: Tree Indentation19946
+Node: Killing Classes20333
+Node: Saving a Tree20703
+Node: Statistics21074
+Node: Marking Classes21353
+Node: Member Buffers22168
+Node: Switching Member Lists23781
+Node: Finding/Viewing24585
+Node: Inherited Members25640
+Node: Searching Members25958
+Node: Switching to Tree26866
+Node: Filters27214
+Node: Attributes27959
+Node: Long and Short Display29026
+Node: Regexp Display29980
+Node: Switching Classes30524
+Node: Killing/Burying31329
+Node: Column Width31556
+Node: Redisplay31830
+Node: Getting Help32217
+Node: Tags-like Functions32342
+Node: Finding and Viewing33143
+Node: Position Stack34681
+Node: Search & Replace35981
+Node: Members in Files37106
+Node: Apropos37379
+Node: Symbol Completion37999
+Node: Member Buffer Display38228
+Node: GNU Free Documentation License38488
+Node: Concept Index63671
 
 End Tag Table

@@ -3,8 +3,7 @@ This is ../../info/sc, produced by makeinfo version 4.13 from sc.texi.
 This document describes Supercite, an Emacs package for citing and
 attributing replies to mail and news messages.
 
-   Copyright (C) 1993, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008,
-2009, 2010, 2011, 2012 Free Software Foundation, Inc.
+   Copyright (C) 1993, 2001-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -27,11 +26,13 @@ END-INFO-DIR-ENTRY
 
 File: sc,  Node: Top,  Next: Introduction,  Prev: (dir),  Up: (dir)
 
-   This document describes Supercite, an Emacs package for citing and
+Supercite
+*********
+
+This document describes Supercite, an Emacs package for citing and
 attributing replies to mail and news messages.
 
-   Copyright (C) 1993, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008,
-2009, 2010, 2011, 2012 Free Software Foundation, Inc.
+   Copyright (C) 1993, 2001-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -1568,7 +1569,7 @@ been continuously added through the comments and suggestions of the
 Supercite mailing list participants.
 
    With version 3, Supercite underwent an almost complete rewrite,
-benefitting in a number of ways, including vast improvements in the
+benefiting in a number of ways, including vast improvements in the
 speed of performance, a big reduction in size of the code and in the use
 of Emacs resources, and a much cleaner and flexible internal
 architecture.  Most of this work was internal and not of very great
@@ -2529,41 +2530,41 @@ each appears under its `sc-'VARIABLE name and its VARIABLE name.
 
 
 Tag Table:
-Node: Top1193
-Node: Introduction2618
-Node: Usage Overview3645
-Node: What Supercite Does Not Do4807
-Node: What Supercite Does5939
-Node: Citations8771
-Node: Citation Elements11061
-Node: Recognizing Citations12944
-Node: Information Keys and the Info Alist14703
-Node: Reference Headers17290
-Node: The Built-in Header Rewrite Functions18856
-Node: Electric References21306
-Node: Getting Connected24186
-Node: Replying and Yanking27319
-Node: Reply Buffer Initialization27637
-Node: Filling Cited Text34525
-Node: Selecting an Attribution37998
-Node: Attribution Preferences38856
-Node: Anonymous Attributions42772
-Node: Author Names45812
-Node: Configuring the Citation Engine48292
-Node: Using Regi50017
-Node: Frames You Can Customize53892
-Node: Post-yank Formatting Commands56420
-Node: Citing Commands57566
-Node: Insertion Commands59777
-Node: Variable Toggling Shortcuts60717
-Node: Mail Field Commands63076
-Node: Miscellaneous Commands65413
-Node: Hints to MUA Authors65851
-Node: Thanks and History69516
-Node: GNU Free Documentation License71573
-Node: Concept Index96750
-Node: Command Index104604
-Node: Key Index111729
-Node: Variable Index114102
+Node: Top1132
+Node: Introduction2514
+Node: Usage Overview3541
+Node: What Supercite Does Not Do4703
+Node: What Supercite Does5835
+Node: Citations8667
+Node: Citation Elements10957
+Node: Recognizing Citations12840
+Node: Information Keys and the Info Alist14599
+Node: Reference Headers17186
+Node: The Built-in Header Rewrite Functions18752
+Node: Electric References21202
+Node: Getting Connected24082
+Node: Replying and Yanking27215
+Node: Reply Buffer Initialization27533
+Node: Filling Cited Text34421
+Node: Selecting an Attribution37894
+Node: Attribution Preferences38752
+Node: Anonymous Attributions42668
+Node: Author Names45708
+Node: Configuring the Citation Engine48188
+Node: Using Regi49913
+Node: Frames You Can Customize53788
+Node: Post-yank Formatting Commands56316
+Node: Citing Commands57462
+Node: Insertion Commands59673
+Node: Variable Toggling Shortcuts60613
+Node: Mail Field Commands62972
+Node: Miscellaneous Commands65309
+Node: Hints to MUA Authors65747
+Node: Thanks and History69412
+Node: GNU Free Documentation License71468
+Node: Concept Index96645
+Node: Command Index104499
+Node: Key Index111624
+Node: Variable Index113997
 
 End Tag Table

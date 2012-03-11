@@ -7,8 +7,9 @@
 
 installprefix=`pwd`/build
 app_dir=$installprefix/Emacs.app/Contents/Resources
-version=`grep 'defconst[ ]*emacs-version' ./lisp/version.el \
-    | sed -e 's/^[^"]*"\([^"]*\)".*$/\1/'`
+# version=`grep 'defconst[ ]*emacs-version' ./lisp/version.el \
+#     | sed -e 's/^[^"]*"\([^"]*\)".*$/\1/'`
+version=24.0.94
 compver=x86_64-apple-darwin`uname -r`
 
 # make an emacs bundle

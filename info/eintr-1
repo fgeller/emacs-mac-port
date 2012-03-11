@@ -1,5 +1,6 @@
-This is ../../info/eintr, produced by makeinfo version 4.13 from
-emacs-lisp-intro.texi.
+This is /home/cyd/trunk/doc/lispintro/../../info/eintr, produced by
+makeinfo version 4.13 from
+/home/cyd/trunk/doc/lispintro/emacs-lisp-intro.texi.
 
 INFO-DIR-SECTION GNU Emacs Lisp
 START-INFO-DIR-ENTRY
@@ -12,9 +13,8 @@ who are not programmers.
 
    Edition 3.10, 28 October 2009
 
-   Copyright (C) 1990, 1991, 1992, 1993, 1994, 1995, 1997, 2001,
-2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
-Free Software Foundation, Inc.
+   Copyright (C) 1990-1995, 1997, 2001-2012 Free Software Foundation,
+Inc.
 
    Published by the:
 
@@ -50,9 +50,8 @@ are not programmers.
 
    Edition 3.10, 28 October 2009
 
-   Copyright (C) 1990, 1991, 1992, 1993, 1994, 1995, 1997, 2001,
-2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012
-Free Software Foundation, Inc.
+   Copyright (C) 1990-1995, 1997, 2001-2012 Free Software Foundation,
+Inc.
 
    Published by the:
 
@@ -104,7 +103,7 @@ every node in every chapter.
 * Conclusion::                  Now you have the basics.
 * the-the::                     An appendix: how to find reduplicated words.
 * Kill Ring::                   An appendix: how the kill ring works.
-* Full Graph::                  How to create a graph with labelled axes.
+* Full Graph::                  How to create a graph with labeled axes.
 * Free Software and Free Manuals::
 * GNU Free Documentation License::
 * Index::
@@ -450,21 +449,21 @@ Regular Expression Searches
 Counting: Repetition and Regexps
 
 * Why Count Words::
-* count-words-region::          Use a regexp, but find a problem.
+* count-words-example::         Use a regexp, but find a problem.
 * recursive-count-words::       Start with case of no words in region.
 * Counting Exercise::
 
-The `count-words-region' Function
+The `count-words-example' Function
 
-* Design count-words-region::   The definition using a `while' loop.
-* Whitespace Bug::              The Whitespace Bug in `count-words-region'.
+* Design count-words-example::  The definition using a `while' loop.
+* Whitespace Bug::              The Whitespace Bug in `count-words-example'.
 
 Counting Words in a `defun'
 
 * Divide and Conquer::
 * Words and Symbols::           What to count?
 * Syntax::                      What constitutes a word or symbol?
-* count-words-in-defun::        Very like `count-words'.
+* count-words-in-defun::        Very like `count-words-example'.
 * Several defuns::              Counting several defuns in a file.
 * Find a File::                 Do you want to look at a file?
 * lengths-list-file::           A list of the lengths of many definitions.
@@ -537,9 +536,9 @@ The `current-kill' Function
 * Digression concerning error::  How to mislead humans, but not computers.
 * Determining the Element::
 
-A Graph with Labelled Axes
+A Graph with Labeled Axes
 
-* Labelled Example::
+* Labeled Example::
 * print-graph Varlist::         `let' expression in `print-graph'.
 * print-Y-axis::                Print a label for the vertical axis.
 * print-X-axis::                Print a horizontal label.
@@ -633,7 +632,7 @@ but in this case, it is best to treat it as a novel or as a travel guide
 to a country not yet visited: interesting, but not the same as being
 there.
 
-   Much of this introduction is dedicated to walk-throughs or guided
+   Much of this introduction is dedicated to walkthroughs or guided
 tours of code used in GNU Emacs.  These tours are designed for two
 purposes: first, to give you familiarity with real, working code (code
 you use every day); and, second, to give you familiarity with the way
@@ -752,13 +751,13 @@ by typing `M-C-\'.  (You can, if you wish, change the keys that are
 typed to invoke the command; this is called "rebinding".  *Note
 Keymaps: Keymaps.)  The abbreviation `M-C-\' means that you type your
 <META> key, <CTRL> key and <\> key all at the same time.  (On many
-modern keyboards the <META> key is labelled <ALT>.)  Sometimes a
+modern keyboards the <META> key is labeled <ALT>.)  Sometimes a
 combination like this is called a keychord, since it is similar to the
 way you play a chord on a piano.  If your keyboard does not have a
 <META> key, the <ESC> key prefix is used in place of it.  In this case,
 `M-C-\' means that you press and release your <ESC> key and then type
 the <CTRL> key and the <\> key at the same time.  But usually `M-C-\'
-means press the <CTRL> key along with the key that is labelled <ALT>
+means press the <CTRL> key along with the key that is labeled <ALT>
 and, at the same time, press the <\> key.
 
    In addition to typing a lone keychord, you can prefix what you type
@@ -1069,7 +1068,7 @@ is a harmless activity; and indeed, we will often try to generate error
 messages intentionally.  Once you understand the jargon, error messages
 can be informative.  Instead of being called "error" messages, they
 should be called "help" messages.  They are like signposts to a
-traveller in a strange country; deciphering them can be hard, but once
+traveler in a strange country; deciphering them can be hard, but once
 understood, they can point the way.
 
    The error message is generated by a built-in GNU Emacs debugger.  We
@@ -1612,7 +1611,7 @@ the first argument.  This function takes three arguments.  Its first
 argument is the string of characters, the second and third arguments are
 numbers that indicate the beginning and end of the substring.  The
 numbers are a count of the number of characters (including spaces and
-punctuations) from the beginning of the string.
+punctuation) from the beginning of the string.
 
    For example, if you evaluate the following:
 
@@ -3869,7 +3868,7 @@ the function whose source code you want to see, such as
 `mark-whole-buffer', and then type <RET>.  Emacs will switch buffers
 and display the source code for the function on your screen.  To switch
 back to your current buffer, type `C-x b <RET>'.  (On some keyboards,
-the <META> key is labelled <ALT>.)
+the <META> key is labeled <ALT>.)
 
    Depending on how the initial default values of your copy of Emacs are
 set, you may also need to specify the location of your `tags table',
@@ -6530,7 +6529,7 @@ let us look at the definition of `kill-region', with comments added:
           ;;    it will be set in an error
           (setq this-command 'kill-region)
           ;;    Finally, in the then-part, send a message if you may copy
-          ;;    the text to the kill ring without signally an error, but
+          ;;    the text to the kill ring without signaling an error, but
           ;;    don't if you may not.
           (if kill-read-only-ok
               (progn (message "Read only text copied to kill ring") nil)

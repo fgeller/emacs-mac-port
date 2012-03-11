@@ -1,8 +1,7 @@
 This is ../../info/viper, produced by makeinfo version 4.13 from
 viper.texi.
 
-Copyright (C) 1995, 1996, 1997, 2001, 2002, 2003, 2004, 2005, 2006,
-2007, 2008, 2009, 2010, 2011, 2012 Free Software Foundation, Inc.
+Copyright (C) 1995-1997, 2001-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -68,8 +67,7 @@ may be visited as needed.
 the current address for Viper bug reports.  Please use the Ex command
 `:submitReport' for this purpose.
 
-   Copyright (C) 1995, 1996, 1997, 2001, 2002, 2003, 2004, 2005, 2006,
-2007, 2008, 2009, 2010, 2011, 2012 Free Software Foundation, Inc.
+   Copyright (C) 1995-1997, 2001-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -5249,60 +5247,60 @@ Concept Index
 
 
 Tag Table:
-Node: Top1132
-Node: Overview4408
-Node: Emacs Preliminaries6004
-Node: Loading Viper11359
-Node: States in Viper13545
-Node: Emacs State18609
-Node: Vi State20090
-Node: Insert State26969
-Node: Replace State29847
-Node: The Minibuffer31511
-Node: Multiple Files in Viper33414
-Node: Unimplemented Features36856
-Node: Improvements over Vi37579
-Node: Basics38665
-Node: Undo and Backups41116
-Node: History42289
-Node: Macros and Registers43895
-Node: Completion45579
-Node: Improved Search46013
-Node: Abbreviation Facilities48373
-Node: Movement and Markers49353
-Node: New Commands52404
-Node: Useful Packages58492
-Node: Customization60554
-Node: Rudimentary Changes62361
-Node: Key Bindings77178
-Node: Packages that Change Keymaps87023
-Node: Viper Specials92897
-Node: Vi Macros110611
-Node: Commands124015
-Node: Groundwork124854
-Node: Text Handling131322
-Node: Move Commands131994
-Node: Marking135747
-Node: Appending Text136989
-Node: Editing in Insert State139327
-Node: Deleting Text139917
-Node: Changing Text141261
-Node: Search and Replace144263
-Node: Yanking146821
-Node: Undoing147742
-Node: Display148085
-Node: File and Buffer Handling149397
-Node: Mapping153923
-Node: Shell Commands155621
-Node: Options157461
-Node: Emacs Related Commands159664
-Node: Mouse-bound Commands161240
-Node: Acknowledgments162107
-Node: GNU Free Documentation License165248
-Node: Key Index190379
-Node: Function Index207989
-Node: Variable Index219666
-Node: Package Index225332
-Node: Concept Index225986
+Node: Top1064
+Node: Overview4272
+Node: Emacs Preliminaries5868
+Node: Loading Viper11223
+Node: States in Viper13409
+Node: Emacs State18473
+Node: Vi State19954
+Node: Insert State26833
+Node: Replace State29711
+Node: The Minibuffer31375
+Node: Multiple Files in Viper33278
+Node: Unimplemented Features36720
+Node: Improvements over Vi37443
+Node: Basics38529
+Node: Undo and Backups40980
+Node: History42153
+Node: Macros and Registers43759
+Node: Completion45443
+Node: Improved Search45877
+Node: Abbreviation Facilities48237
+Node: Movement and Markers49217
+Node: New Commands52268
+Node: Useful Packages58356
+Node: Customization60418
+Node: Rudimentary Changes62225
+Node: Key Bindings77042
+Node: Packages that Change Keymaps86887
+Node: Viper Specials92761
+Node: Vi Macros110475
+Node: Commands123879
+Node: Groundwork124718
+Node: Text Handling131186
+Node: Move Commands131858
+Node: Marking135611
+Node: Appending Text136853
+Node: Editing in Insert State139191
+Node: Deleting Text139781
+Node: Changing Text141125
+Node: Search and Replace144127
+Node: Yanking146685
+Node: Undoing147606
+Node: Display147949
+Node: File and Buffer Handling149261
+Node: Mapping153787
+Node: Shell Commands155485
+Node: Options157325
+Node: Emacs Related Commands159528
+Node: Mouse-bound Commands161104
+Node: Acknowledgments161971
+Node: GNU Free Documentation License165112
+Node: Key Index190243
+Node: Function Index207853
+Node: Variable Index219530
+Node: Package Index225196
+Node: Concept Index225850
 
 End Tag Table

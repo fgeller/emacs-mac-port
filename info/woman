@@ -4,8 +4,7 @@ woman.texi.
 This file documents WoMan: A program to browse Unix manual pages `W.O.
 (without) man'.
 
-Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
-2010, 2011, 2012 Free Software Foundation, Inc.
+Copyright (C) 2001-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -41,8 +40,7 @@ WoMan: Browse Unix Manual Pages "W.O. (without) Man"
 This file documents WoMan: A program to browse Unix manual pages `W.O.
 (without) man'.
 
-Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
-2010, 2011, 2012 Free Software Foundation, Inc.
+Copyright (C) 2001-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -971,8 +969,8 @@ browse, and the appearance of the browsing interface.
      extensions for which decompressors are available and handled by
      auto-compression mode.  It should begin with `\\.' and end with
      `\\'' and _must not_ be optional.  The default value is
-     `"\\.\\(g?z\\|bz2\\)\\'"', which matches the `gzip' and `bzip2'
-     compression extensions.
+     `"\\.\\(g?z\\|bz2\\|xz\\)\\'"', which matches the `gzip', `bzip2',
+     and `xz' compression extensions.
 
      _Do not change this unless you are sure you know what you are
      doing!_
@@ -1871,35 +1869,35 @@ Concept Index
 
 
 Tag Table:
-Node: Top1093
-Node: Introduction3078
-Node: Background5596
-Node: Finding12853
-Node: Topic14409
-Node: Cache18794
-Node: Word at point20502
-Node: Filename21434
-Node: Automatic23684
-Node: Browsing25242
-Node: Fonts26468
-Node: Navigation27124
-Node: References28002
-Node: Changing29392
-Node: Convenience31400
-Node: Imenu32139
-Node: Customization32932
-Node: Interface Options34916
-Node: Formatting Options43615
-Node: Faces45165
-Node: Special symbols46444
-Node: Log47671
-Node: Technical48786
-Node: Bugs49497
-Node: Acknowledgements50260
-Node: GNU Free Documentation License52182
-Node: Command Index77351
-Node: Variable Index79336
-Node: Keystroke Index81965
-Node: Concept Index83720
+Node: Top1032
+Node: Introduction2956
+Node: Background5474
+Node: Finding12731
+Node: Topic14287
+Node: Cache18672
+Node: Word at point20380
+Node: Filename21312
+Node: Automatic23562
+Node: Browsing25120
+Node: Fonts26346
+Node: Navigation27002
+Node: References27880
+Node: Changing29270
+Node: Convenience31278
+Node: Imenu32017
+Node: Customization32810
+Node: Interface Options34794
+Node: Formatting Options43505
+Node: Faces45055
+Node: Special symbols46334
+Node: Log47561
+Node: Technical48676
+Node: Bugs49387
+Node: Acknowledgements50150
+Node: GNU Free Documentation License52072
+Node: Command Index77241
+Node: Variable Index79226
+Node: Keystroke Index81855
+Node: Concept Index83610
 
 End Tag Table
