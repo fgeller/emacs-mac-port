@@ -1537,7 +1537,7 @@ expressions".  For example, a typical forward search would be invoked by
 `:/PAT/'.  If you wish to include `/' as part of PAT you must preceded
 it by `\'.  VIP strips off these `\''s before `/' and the resulting PAT
 becomes the actual search pattern.  Emacs provides a different and
-richer class or regular expressions than Vi/Ex, and VIP uses Emacs'
+richer class or regular expressions than Vi/Ex, and VIP uses Emacs's
 regular expressions.  See GNU Emacs Manual for details of regular
 expressions.
 
@@ -2642,10 +2642,10 @@ Node: Repeating and Undoing Modifications47062
 Node: Other Vi Commands47886
 Node: Commands in Insert Mode51523
 Node: Ex Commands53601
-Node: Ex Command Reference54784
-Node: Customization61252
-Node: Customizing Constants61679
-Node: Customizing Key Bindings63008
-Node: GNU Free Documentation License64065
+Node: Ex Command Reference54785
+Node: Customization61253
+Node: Customizing Constants61680
+Node: Customizing Key Bindings63009
+Node: GNU Free Documentation License64066
 
 End Tag Table

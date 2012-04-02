@@ -217,7 +217,7 @@ determine which major mode apply at point.
 ;;;***
 
 ;;;### (autoloads (semanticdb-file-table-object) "semantic/db" "db.el"
-;;;;;;  "f0a62603b7446a5a63c4e24bbdb84daa")
+;;;;;;  "26fbc1e4c0b18956cf2d76ef5aa7c7d1")
 ;;; Generated autoloads from db.el
 
 (defvar semanticdb-current-database nil "\
@@ -252,7 +252,7 @@ DONTLOAD does not affect the creation of new database objects.
 ;;;;;;  semanticdb-find-adebug-lost-includes semanticdb-find-test-translate-path
 ;;;;;;  semanticdb-find-table-for-include semanticdb-find-translate-path
 ;;;;;;  semanticdb-find-default-throttle) "semantic/db-find" "db-find.el"
-;;;;;;  "c7be88c88e06a6bd41cd0556e5fd83d5")
+;;;;;;  "8e8a923a29921a74a1e288670623dd99")
 ;;; Generated autoloads from db-find.el
 
 (defvar semanticdb-find-default-throttle '(local project unloaded system recursive) "\
@@ -1453,7 +1453,7 @@ Use the alternate LALR(1) parser.
 ;;;***
 
 ;;;### (autoloads (wisent-javascript-setup-parser) "semantic/wisent/javascript"
-;;;;;;  "wisent/javascript.el" "b7cf7b233a7267ce59ddf73bf8e30bc8")
+;;;;;;  "wisent/javascript.el" "7c79634b37023230deb56b8644f71dfb")
 ;;; Generated autoloads from wisent/javascript.el
 
 (autoload 'wisent-javascript-setup-parser "semantic/wisent/javascript" "\

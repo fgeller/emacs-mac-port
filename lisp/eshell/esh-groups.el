@@ -24,7 +24,7 @@
 
 ;;;***
 
-;;;### (autoloads nil "em-cmpl" "em-cmpl.el" "253a046bb8f5885d9c0ac662f6350647")
+;;;### (autoloads nil "em-cmpl" "em-cmpl.el" "95a428650ff03f39029ef94b85b7f35e")
 ;;; Generated autoloads from em-cmpl.el
 
 (eshell-defgroup eshell-cmpl nil "This module provides a programmable completion function bound to\nthe TAB key, which allows for completing command names, file names,\nvariable names, arguments, etc." :tag "Argument completion" :group 'eshell-module)
@@ -101,17 +101,17 @@
 
 ;;;***
 
-;;;### (autoloads nil "em-unix" "em-unix.el" "66858dd1676cec525fac8ba29c0471c3")
+;;;### (autoloads nil "em-unix" "em-unix.el" "bcd545babfa601376b1d2bc000130521")
 ;;; Generated autoloads from em-unix.el
 
 (eshell-defgroup eshell-unix nil "This module defines many of the more common UNIX utilities as\naliases implemented in Lisp.  These include mv, ln, cp, rm, etc.  If\nthe user passes arguments which are too complex, or are unrecognized\nby the Lisp variant, the external version will be called (if\navailable).  The only reason not to use them would be because they are\nusually much slower.  But in several cases their tight integration\nwith Eshell makes them more versatile than their traditional cousins\n(such as being able to use `kill' to kill Eshell background processes\nby name)." :tag "UNIX commands in Lisp" :group 'eshell-module)
 
 ;;;***
 
-;;;### (autoloads nil "em-xtra" "em-xtra.el" "68d9fde80e4c8e79b0e2f6744a0d9415")
+;;;### (autoloads nil "em-xtra" "em-xtra.el" "9834b70faac2a0d51172828cf48480eb")
 ;;; Generated autoloads from em-xtra.el
 
-(eshell-defgroup eshell-xtra nil "This module defines some extra alias functions which are entirely\noptional.  They can be viewed as samples for how to write Eshell alias\nfunctions, or as aliases which make some of Emacs' behavior more\nnaturally accessible within Emacs." :tag "Extra alias functions" :group 'eshell-module)
+(eshell-defgroup eshell-xtra nil "This module defines some extra alias functions which are entirely\noptional.  They can be viewed as samples for how to write Eshell alias\nfunctions, or as aliases which make some of Emacs's behavior more\nnaturally accessible within Emacs." :tag "Extra alias functions" :group 'eshell-module)
 
 ;;;***
 

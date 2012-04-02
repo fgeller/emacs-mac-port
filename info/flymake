@@ -456,9 +456,13 @@ this target might look like this:
 check-syntax:
 	gcc -o /dev/null -S ${CHK_SOURCES}
 
-   The format of error messages reported by `gcc' is already supported
-by Flymake, so we don't have to add a new entry to
-`flymake-err-line-patterns'.
+The format of error messages reported by `gcc' is already supported by
+Flymake, so we don't have to add a new entry to
+`flymake-err-line-patterns'.  Note that if you are using Automake, you
+may want to replace `gcc' with the standard Automake variable `COMPILE':
+
+check-syntax:
+	$(COMPILE) -o /dev/null -S ${CHK_SOURCES}
 
 
 File: flymake,  Node: Flymake Implementation,  Next: GNU Free Documentation License,  Prev: Configuring Flymake,  Up: Top
@@ -519,7 +523,7 @@ Syntax check is considered possible if there's an entry in
    Flymake contains implementations of all functionality required to
 support different syntax check modes described above (making temporary
 copies, finding master files, etc.), as well as some tool-specific
-(routines for `make', `Ant', etc.) code.
+(routines for Make, Ant, etc.) code.
 
 
 File: flymake,  Node: Making a temporary copy,  Next: Locating a master file,  Prev: Determining whether syntax check is possible,  Up: Flymake Implementation
@@ -619,10 +623,10 @@ scripts and html pages, can be checked by directly invoking a
 corresponding tool. Files that are usually more complex and generally
 used as part of larger projects, might require non-trivial options to
 be passed to the syntax check tool, like include directories for C++.
-The latter files are syntax checked using some build tool, like `make'
-or `Ant'.
+The latter files are syntax checked using some build tool, like Make or
+Ant.
 
-   All `make' configuration data is usually stored in a file called
+   All Make configuration data is usually stored in a file called
 `Makefile'. To allow for future extensions, flymake uses a notion of
 buildfile to reference the 'project configuration' file.
 
@@ -1280,17 +1284,17 @@ Node: Customizable variables10006
 Node: Adding support for a new syntax check tool12257
 Node: Example -- Configuring a tool called directly14491
 Node: Example -- Configuring a tool called via make16108
-Node: Flymake Implementation17561
-Node: Determining whether syntax check is possible18655
-Node: Making a temporary copy20030
-Node: Locating a master file21335
-Node: Getting the include directories22711
-Node: Locating the buildfile23763
-Node: Starting the syntax check process25235
-Node: Parsing the output25767
-Node: Highlighting erroneous lines27207
-Node: Interaction with other modes27715
-Node: GNU Free Documentation License28784
-Node: Index53962
+Node: Flymake Implementation17731
+Node: Determining whether syntax check is possible18825
+Node: Making a temporary copy20196
+Node: Locating a master file21501
+Node: Getting the include directories22877
+Node: Locating the buildfile23929
+Node: Starting the syntax check process25395
+Node: Parsing the output25927
+Node: Highlighting erroneous lines27367
+Node: Interaction with other modes27875
+Node: GNU Free Documentation License28944
+Node: Index54122
 
 End Tag Table

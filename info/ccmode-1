@@ -3,7 +3,7 @@ cc-mode.texi.
 
 This manual is for CC Mode in Emacs.
 
-   Copyright (C) 1995-2012  Free Software Foundation, Inc.
+   Copyright (C) 1995-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -38,7 +38,7 @@ classes etc - there are other packages for that.
 
    This manual is for CC Mode in Emacs.
 
-   Copyright (C) 1995-2012  Free Software Foundation, Inc.
+   Copyright (C) 1995-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -5569,7 +5569,7 @@ circumstances, can locate the top-most opening brace much more quickly
 than `beginning-of-defun'.  Preliminary testing has shown that for
 styles where these braces are hung (e.g. most JDK-derived Java styles),
 this hack can improve performance of the core syntax parsing routines
-from 3 to 60 times.  However, for styles which _do_ conform to Emacs'
+from 3 to 60 times.  However, for styles which _do_ conform to Emacs's
 recommended style of putting top-level braces in column zero, this hack
 can degrade performance by about as much.  Thus this variable is set to
 `nil' by default, since the Emacs-friendly styles should be more common
@@ -5669,7 +5669,7 @@ Appendix A Frequently Asked Questions
 
    * _Why doesn't the `RET' key indent the new line?_
 
-     Emacs' convention is that `RET' just adds a newline, and that
+     Emacs's convention is that `RET' just adds a newline, and that
      `C-j' adds a newline and indents it.  You can make `RET' do this
      too by adding this to your `c-initialization-hook':
 

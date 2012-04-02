@@ -2049,8 +2049,8 @@ File: gnus,  Node: Archived Messages,  Next: Posting Styles,  Prev: Mail and Pos
 Gnus provides a few different methods for storing the mail and news you
 send.  The default method is to use the "archive virtual server" to
 store the messages.  If you want to disable this completely, the
-`gnus-message-archive-group' variable should be `nil', which is the
-default.
+`gnus-message-archive-group' variable should be `nil'.  The default is
+"sent.%Y-%m", which gives you one archive group per month.
 
    For archiving interesting messages in a group you read, see the `B
 c' (`gnus-summary-copy-article') command (*note Mail Group Commands::).
@@ -5640,7 +5640,7 @@ future.  Here are some high and low points on each:
      but Babyl had its own internal format to which mail was converted,
      primarily involving creating a spool-file-like entity with a
      scheme for inserting Babyl-specific headers and status bits above
-     the top of each message in the file.  Rmail was Emacs' first mail
+     the top of each message in the file.  Rmail was Emacs's first mail
      reader, it was written by Richard Stallman, and Stallman came out
      of that TOPS/Babyl environment, so he wrote Rmail to understand
      the mail files folks already had in existence.  Gnus (and VM, for

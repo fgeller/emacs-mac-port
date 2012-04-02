@@ -199,7 +199,7 @@ information, and so forth.
 * Analyzer::            Semantic tools for analyzing code.
 * Speedbar::            Using Semantic with the Speedbar.
 * SymRef::              Interface to symbol reference tools.
-* MRU Bookmarks::       Managing tag ``bookmarks''.
+* MRU Bookmarks::       Managing tag "bookmarks".
 * Sticky Func Mode::    Showing declarations in the header line.
 * Highlight Func Mode:: Highlight the current function declaration.
 * Tag Decoration Mode:: Minor mode to decorate tags.
@@ -2460,58 +2460,58 @@ Node: Top1024
 Node: Introduction2672
 Node: Semantic Components5949
 Node: Using Semantic7295
-Node: Semantic mode8717
-Node: Semantic mode user commands11595
-Node: SemanticDB14767
-Node: Semanticdb Tag Storage16142
-Node: Semanticdb Search Configuration18707
-Node: Search Throttle20132
-Node: Semanticdb Roots22321
-Node: Include paths23801
-Node: Semanticdb search debugging commands25101
-Node: Changing Backends26476
-Node: Create System Databases27229
-Node: Idle Scheduler27859
-Node: Reparsing Options29563
-Node: Idle Working Options31042
-Node: Debugging Idle Time Issues32307
-Node: Idle Summary Mode32985
-Node: Idle Completions Mode34601
-Node: Analyzer37583
-Node: Smart Completion38130
-Node: Smart Summary41272
-Node: Smart Jump42183
-Node: Analyzer Debug43197
-Node: Speedbar49669
-Node: SymRef50955
-Node: MRU Bookmarks52905
-Node: Sticky Func Mode53847
-Node: Highlight Func Mode54997
-Node: Tag Decoration Mode56049
-Node: Semantic Internals60044
-Node: Parser code60763
-Node: Tag handling62512
-Node: Semanticdb Internals64186
-Node: Analyzer Internals66314
-Node: Tools68271
-Node: Tests69953
-Node: Glossary70406
-Ref: BNF70558
-Ref: bovinate70757
-Ref: bovine lambda70846
-Ref: bovine parser71029
-Ref: context71155
-Ref: LALR71164
-Ref: lexer71170
-Ref: LL71384
-Ref: nonterminal71388
-Ref: overloadable71580
-Ref: parser71688
-Ref: tag71741
-Ref: token72086
-Ref: token stream72204
-Ref: wisent parser72283
-Node: GNU Free Documentation License72449
-Node: Index97614
+Node: Semantic mode8715
+Node: Semantic mode user commands11593
+Node: SemanticDB14765
+Node: Semanticdb Tag Storage16140
+Node: Semanticdb Search Configuration18705
+Node: Search Throttle20130
+Node: Semanticdb Roots22319
+Node: Include paths23799
+Node: Semanticdb search debugging commands25099
+Node: Changing Backends26474
+Node: Create System Databases27227
+Node: Idle Scheduler27857
+Node: Reparsing Options29561
+Node: Idle Working Options31040
+Node: Debugging Idle Time Issues32305
+Node: Idle Summary Mode32983
+Node: Idle Completions Mode34599
+Node: Analyzer37581
+Node: Smart Completion38128
+Node: Smart Summary41270
+Node: Smart Jump42181
+Node: Analyzer Debug43195
+Node: Speedbar49667
+Node: SymRef50953
+Node: MRU Bookmarks52903
+Node: Sticky Func Mode53845
+Node: Highlight Func Mode54995
+Node: Tag Decoration Mode56047
+Node: Semantic Internals60042
+Node: Parser code60761
+Node: Tag handling62510
+Node: Semanticdb Internals64184
+Node: Analyzer Internals66312
+Node: Tools68269
+Node: Tests69951
+Node: Glossary70404
+Ref: BNF70556
+Ref: bovinate70755
+Ref: bovine lambda70844
+Ref: bovine parser71027
+Ref: context71153
+Ref: LALR71162
+Ref: lexer71168
+Ref: LL71382
+Ref: nonterminal71386
+Ref: overloadable71578
+Ref: parser71686
+Ref: tag71739
+Ref: token72084
+Ref: token stream72202
+Ref: wisent parser72281
+Node: GNU Free Documentation License72447
+Node: Index97612
 
 End Tag Table

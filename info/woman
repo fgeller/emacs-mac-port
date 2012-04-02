@@ -379,7 +379,7 @@ Topic Cache: Cache, for further details.
 * Menu:
 
 * Cache::               The WoMan Topic Cache
-* Word at point::       Using the ``Word at Point'' as a Topic Suggestion
+* Word at point::       Using the "Word at Point" as a Topic Suggestion
 
 
 File: woman,  Node: Cache,  Next: Word at point,  Prev: Topic,  Up: Topic
@@ -1874,30 +1874,30 @@ Node: Introduction2956
 Node: Background5474
 Node: Finding12731
 Node: Topic14287
-Node: Cache18672
-Node: Word at point20380
-Node: Filename21312
-Node: Automatic23562
-Node: Browsing25120
-Node: Fonts26346
-Node: Navigation27002
-Node: References27880
-Node: Changing29270
-Node: Convenience31278
-Node: Imenu32017
-Node: Customization32810
-Node: Interface Options34794
-Node: Formatting Options43505
-Node: Faces45055
-Node: Special symbols46334
-Node: Log47561
-Node: Technical48676
-Node: Bugs49387
-Node: Acknowledgements50150
-Node: GNU Free Documentation License52072
-Node: Command Index77241
-Node: Variable Index79226
-Node: Keystroke Index81855
-Node: Concept Index83610
+Node: Cache18670
+Node: Word at point20378
+Node: Filename21310
+Node: Automatic23560
+Node: Browsing25118
+Node: Fonts26344
+Node: Navigation27000
+Node: References27878
+Node: Changing29268
+Node: Convenience31276
+Node: Imenu32015
+Node: Customization32808
+Node: Interface Options34792
+Node: Formatting Options43503
+Node: Faces45053
+Node: Special symbols46332
+Node: Log47559
+Node: Technical48674
+Node: Bugs49385
+Node: Acknowledgements50148
+Node: GNU Free Documentation License52070
+Node: Command Index77239
+Node: Variable Index79224
+Node: Keystroke Index81853
+Node: Concept Index83608
 
 End Tag Table

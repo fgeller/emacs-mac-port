@@ -1,6 +1,6 @@
 This is ../../info/org, produced by makeinfo version 4.13 from org.texi.
 
-This manual is for Org version 7.8.03.
+This manual is for Org version 7.8.07.
 
    Copyright (C) 2004-2012  Free Software Foundation, Inc.
 
@@ -33,7 +33,7 @@ File: org,  Node: Top,  Next: Introduction,  Prev: (dir),  Up: (dir)
 Org Mode Manual
 ***************
 
-This manual is for Org version 7.8.03.
+This manual is for Org version 7.8.07.
 
    Copyright (C) 2004-2012  Free Software Foundation, Inc.
 
@@ -354,12 +354,14 @@ DocBook export
 OpenDocument Text export
 
 * Pre-requisites for ODT export::  What packages ODT exporter relies on
-* ODT export commands::  How to invoke ODT export
+* ODT export commands::         How to invoke ODT export
+* Extending ODT export::        How to produce `doc', `pdf' files
 * Applying custom styles::      How to apply custom styles to the output
-* Links in ODT export::  How links will be interpreted and formatted
-* Tables in ODT export::  How Tables are exported
-* Images in ODT export::  How to insert images
+* Links in ODT export::         How links will be interpreted and formatted
+* Tables in ODT export::        How Tables are exported
+* Images in ODT export::        How to insert images
 * Math formatting in ODT export::  How LaTeX fragments are formatted
+* Labels and captions in ODT export::  How captions are rendered
 * Literal examples in ODT export::  How source and example blocks are formatted
 * Advanced topics in ODT export::  Read this if you are a power user
 
@@ -370,7 +372,7 @@ Math formatting in ODT export
 
 Advanced topics in ODT export
 
-* Exporting and converting to other formats::  How to produce `pdf' and other formats
+* Configuring a document converter::  How to register a document converter
 * Working with OpenDocument style files::  Explore the internals
 * Creating one-off styles::     How to produce custom highlighting etc
 * Customizing tables in ODT export::  How to define and use Table templates
@@ -449,6 +451,7 @@ Specific header arguments
 * session::                     Preserve the state of code evaluation
 * noweb::                       Toggle expansion of noweb references
 * noweb-ref::                   Specify block's noweb reference resolution target
+* noweb-sep::                   String used to separate noweb references
 * cache::                       Avoid re-evaluating unchanged code blocks
 * sep::                         Delimiter for writing tabular results outside Org
 * hlines::                      Handle horizontal lines in tables
@@ -1121,8 +1124,7 @@ File: org,  Node: Structure editing,  Next: Sparse trees,  Prev: Motion,  Up: Do
      sequence the keywords have been defined in the setup) or by the
      value of a property.  Reverse sorting is possible as well.  You
      can also supply your own function to extract the sorting key.
-     With a `C-u' prefix, sorting will be case-sensitive.  With two
-     `C-u C-u' prefixes, duplicate entries will also be removed.  
+     With a `C-u' prefix, sorting will be case-sensitive.  
 
 `C-x n s'     (`org-narrow-to-subtree')
      Narrow buffer to current subtree.  
@@ -1255,12 +1257,10 @@ the first line.  In particular, if an ordered list reaches number
 other numbers in the list.  An item ends before the next line that is
 less or equally indented than its bullet/number.
 
-   Two methods(5) are provided to terminate lists.  A list ends
-whenever every item has ended, which means before any line less or
-equally indented than items at top level.  It also ends before two blank
-lines(6).  In that case, all items are closed.  For finer control, you
-can end lists with any pattern set in `org-list-end-regexp'.  Here is
-an example:
+   A list ends whenever every item has ended, which means before any
+line less or equally indented than items at top level.  It also ends
+before two blank lines(5).  In that case, all items are closed.  Here
+is an example:
 
      ** Lord of the Rings
         My favorite scenes are (in this order)
@@ -1278,7 +1278,7 @@ an example:
           him very well from his role as Mikey Walsh in The Goonies.
 
    Org supports these lists by tuning filling and wrapping commands to
-deal with them correctly(7), and by exporting them properly (*note
+deal with them correctly(6), and by exporting them properly (*note
 Exporting::).  Since indentation is what governs the structure of these
 lists, many structural constructs like `#+BEGIN_...' blocks can be
 indented to signal that they belong to a particular item.
@@ -1312,7 +1312,7 @@ If some of these actions get in your way, configure
      Insert new item at current level.  With a prefix argument, force a
      new heading (*note Structure editing::).  If this command is used
      in the middle of an item, that item is _split_ in two, and the
-     second part becomes the new item(8).  If this command is executed
+     second part becomes the new item(7).  If this command is executed
      _before item's body_, the new item is created _before_ the current
      one.
 
@@ -1321,14 +1321,14 @@ If some of these actions get in your way, configure
 
 `S-up'
 `S-down'
-     Jump to the previous/next item in the current list(9), but only if
+     Jump to the previous/next item in the current list(8), but only if
      `org-support-shift-select' is off.  If not, you can still use
      paragraph jumping commands like `C-<up>' and `C-<down>' to quite
      similar effect.  
 
 `M-up'
 `M-down'
-     Move the item including subitems up/down(10) (swap with
+     Move the item including subitems up/down(9) (swap with
      previous/next item of same indentation).  If the list is ordered,
      renumbering is automatic.  
 
@@ -1360,7 +1360,7 @@ If some of these actions get in your way, configure
      Cycle the entire list level through the different
      itemize/enumerate bullets (`-', `+', `*', `1.', `1)') or a subset
      of them, depending on `org-plain-list-ordered-item-terminator',
-     the type of list, and its position(11).  With a numeric prefix
+     the type of list, and its position(10).  With a numeric prefix
      argument N, select the Nth bullet from this list.  If there is an
      active region when calling this, selected text will be changed
      into an item.  With a prefix argument, all lines will be converted
@@ -1408,23 +1408,21 @@ will automatically fallback to numbers.
 _before_ the checkbox.  If you have activated alphabetical lists, you
 can also use counters like `[@b]'.
 
-   (5) To disable either of them, configure `org-list-ending-method'.
+   (5) See also `org-empty-line-terminates-plain-lists'.
 
-   (6) See also `org-empty-line-terminates-plain-lists'.
-
-   (7) Org only changes the filling settings for Emacs.  For XEmacs,
+   (6) Org only changes the filling settings for Emacs.  For XEmacs,
 you should use Kyle E. Jones' `filladapt.el'.  To turn this on, put
 into `.emacs': `(require 'filladapt)'
 
-   (8) If you do not want the item to be split, customize the variable
+   (7) If you do not want the item to be split, customize the variable
 `org-M-RET-may-split-line'.
 
-   (9) If you want to cycle around items that way, you may customize
+   (8) If you want to cycle around items that way, you may customize
 `org-list-use-circular-motion'.
 
-   (10) See `org-liste-use-circular-motion' for a cyclic behavior.
+   (9) See `org-liste-use-circular-motion' for a cyclic behavior.
 
-   (11) See `bullet' rule in `org-list-automatic-rules' for more
+   (10) See `bullet' rule in `org-list-automatic-rules' for more
 information.
 
 
@@ -1617,7 +1615,7 @@ File: org,  Node: Tables,  Next: Hyperlinks,  Prev: Document Structure,  Up: Top
 
 Org comes with a fast and intuitive table editor.  Spreadsheet-like
 calculations are supported using the Emacs `calc' package (*note Calc:
-(Calc)Top.).
+(calc)Top.).
 
 * Menu:
 
@@ -1922,9 +1920,9 @@ of columns, much like horizontal lines can do for groups of rows.  In
 order to specify column groups, you can use a special row where the
 first field contains only `/'.  The further fields can either contain
 `<' to indicate that this column should start a group, `>' to indicate
-the end of a column, or `<>' to make a column a group of its own.
-Boundaries between column groups will upon export be marked with
-vertical lines.  Here is an example:
+the end of a column, or `<>' (no space between `<' and `>') to make a
+column a group of its own.  Boundaries between column groups will upon
+export be marked with vertical lines.  Here is an example:
 
      | N | N^2 | N^3 | N^4 | sqrt(n) | sqrt[4](N) |
      |---+-----+-----+-----+---------+------------|
@@ -2158,7 +2156,7 @@ A formula can be any algebraic expression understood by the Emacs
 `Calc' package.  Note that `calc' has the non-standard convention that
 `/' has lower precedence than `*', so that `a/b*c' is interpreted as
 `a/(b*c)'.  Before evaluation by `calc-eval' (*note calc-eval:
-(Calc)Calling Calc from Your Programs.), variable substitution takes
+(calc)Calling Calc from Your Programs.), variable substitution takes
 place according to the rules described above.  The range vectors can be
 directly fed into the Calc vector functions like `vmean' and `vsum'.
 
@@ -4910,9 +4908,9 @@ TIMESTAMP WITH REPEATER INTERVAL
 DIARY-STYLE SEXP ENTRIES
      For more complex date specifications, Org mode supports using the
      special sexp diary entries implemented in the Emacs calendar/diary
-     package(3).  For example
+     package(3).  For example with optional time
 
-          * The nerd meeting on every 2nd Thursday of the month
+          * 22:00-23:00 The nerd meeting on every 2nd Thursday of the month
             <%%(org-float t 4 2)>
 
 TIME/DATE RANGE
@@ -6393,9 +6391,7 @@ To simplify this process, you can use the following special command:
      Jump to the location where `org-refile' last moved a tree to.
 
 `C-2 C-c C-w'
-     Refile as the child of the item currently being clocked.
-
-`C-0 C-c C-w  or  C-u C-u C-u C-c C-w'
+     Refile as the child of the item currently being clocked.  
 
 `C-0 C-c C-w  or  C-u C-u C-u C-c C-w     (`org-refile-cache-clear')'
      Clear the target cache.  Caching of refile targets can be turned

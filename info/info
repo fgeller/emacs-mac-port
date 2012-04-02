@@ -938,9 +938,9 @@ through the last menu item; this is so you need not count how many
 entries are there.
 
    If your display supports multiple fonts, colors or underlining, and
-you are using Emacs' Info mode to read Info files, the third, sixth and
-ninth menu items have a `*' that stands out, either in color or in some
-other attribute, such as underline; this makes it easy to see at a
+you are using Emacs's Info mode to read Info files, the third, sixth
+and ninth menu items have a `*' that stands out, either in color or in
+some other attribute, such as underline; this makes it easy to see at a
 glance which number to use for an item.
 
    Some terminals don't support either multiple fonts, colors or
@@ -1434,6 +1434,7 @@ topics discussed in this document.
 * stale tags tables:                     Tags.                (line  16)
 * t (Info mode):                         Help-Int.            (line  59)
 * tags tables in Info files:             Tags.                (line   6)
+* Texinfo:                               Expert Info.         (line   6)
 * u (Info mode):                         Help-FOO.            (line  13)
 * unstructured documents:                Add.                 (line  45)
 * update Info tags table:                Tags.                (line  16)
@@ -1461,16 +1462,16 @@ Node: Search Text35872
 Node: Search Index37662
 Node: Go to node40098
 Node: Choose menu subtopic41120
-Node: Create Info buffer42302
-Node: Emacs Info Variables43641
-Node: Expert Info47423
-Node: Add48772
-Ref: Add-Footnote-151769
-Node: Menus52022
-Node: Cross-refs54909
-Node: Help-Cross55680
-Node: Tags56344
-Node: Checking57855
-Node: Index58777
+Node: Create Info buffer42303
+Node: Emacs Info Variables43642
+Node: Expert Info47424
+Node: Add48773
+Ref: Add-Footnote-151770
+Node: Menus52023
+Node: Cross-refs54910
+Node: Help-Cross55681
+Node: Tags56345
+Node: Checking57856
+Node: Index58778
 
 End Tag Table

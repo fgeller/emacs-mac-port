@@ -1,12 +1,10 @@
-This is
-/Volumes/Data/Midway/emacs-24.0.94/doc/lispref/../../info/elisp,
-produced by makeinfo version 4.8 from
-/Volumes/Data/Midway/emacs-24.0.94/doc/lispref/elisp.texi.
+This is /home/cyd/trunk/doc/lispref/../../info/elisp, produced by
+makeinfo version 4.13 from /home/cyd/trunk/doc/lispref/elisp.texi.
 
-   This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 24.0.94.
+This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
+corresponding to Emacs version 24.0.95.
 
-   Copyright (C) 1990-1996, 1998-2012  Free Software Foundation, Inc.
+   Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -25,6 +23,50 @@ INFO-DIR-SECTION GNU Emacs Lisp
 START-INFO-DIR-ENTRY
 * Elisp: (elisp).       The Emacs Lisp Reference Manual.
 END-INFO-DIR-ENTRY
+
+
+File: elisp,  Node: Pointer Shape,  Next: Window System Selections,  Prev: Dialog Boxes,  Up: Frames
+
+29.17 Pointer Shape
+===================
+
+You can specify the mouse pointer style for particular text or images
+using the `pointer' text property, and for images with the `:pointer'
+and `:map' image properties.  The values you can use in these
+properties are `text' (or `nil'), `arrow', `hand', `vdrag', `hdrag',
+`modeline', and `hourglass'.  `text' stands for the usual mouse pointer
+style used over text.
+
+   Over void parts of the window (parts that do not correspond to any
+of the buffer contents), the mouse pointer usually uses the `arrow'
+style, but you can specify a different style (one of those above) by
+setting `void-text-area-pointer'.
+
+ -- Variable: void-text-area-pointer
+     This variable specifies the mouse pointer style for void text
+     areas.  These include the areas after the end of a line or below
+     the last line in the buffer.  The default is to use the `arrow'
+     (non-text) pointer style.
+
+   When using X, you can specify what the `text' pointer style really
+looks like by setting the variable `x-pointer-shape'.
+
+ -- Variable: x-pointer-shape
+     This variable specifies the pointer shape to use ordinarily in the
+     Emacs frame, for the `text' pointer style.
+
+ -- Variable: x-sensitive-text-pointer-shape
+     This variable specifies the pointer shape to use when the mouse is
+     over mouse-sensitive text.
+
+   These variables affect newly created frames.  They do not normally
+affect existing frames; however, if you set the mouse color of a frame,
+that also installs the current value of those two variables.  *Note
+Font and Color Parameters::.
+
+   The values you can use, to specify either of these pointer shapes,
+are defined in the file `lisp/term/x-win.el'.  Use `M-x apropos <RET>
+x-pointer <RET>' to see a list of them.
 
 
 File: elisp,  Node: Window System Selections,  Next: Drag and Drop,  Prev: Pointer Shape,  Up: Frames
@@ -85,25 +127,6 @@ general, but it does support the clipboard.  `x-get-selection' and
 clipboard holds other types of data, Emacs treats the clipboard as
 empty.
 
-   On Mac OS X, selection-like data transfer between applications is
-performed through a mechanism called "pasteboards".  The clipboard is a
-particular pasteboard named `Apple CFPasteboard general'.  Types of
-pasteboard data are called "pasteboard data types", which are
-identified by strings such as `NSStringPboardType'.  The Mac port of
-Emacs associates a selection with a pasteboard, and a selection type
-with a pasteboard data type via `mac-pasteboard-name' and
-`mac-pasteboard-data-type' properties, respectively.
-
-     (get 'CLIPBOARD 'mac-pasteboard-name)
-          => "Apple CFPasteboard general"
-     (get 'NSStringPboardType 'mac-pasteboard-data-type)
-          => "NSStringPboardType"
-
-   Conventionally, selection types for pasteboard data types on Mac OS X
-are named according to the identifiers defined in the NSPasteboard
-class, (e.g., `NSStringPboardType', `NSTIFFPboardType', and
-`NSFilenamesPboardType').
-
 
 File: elisp,  Node: Drag and Drop,  Next: Color Names,  Prev: Window System Selections,  Up: Frames
 
@@ -151,7 +174,7 @@ numerical RGB specification of colors.)
 
    These functions provide a way to determine which color names are
 valid, and what they look like.  In some cases, the value depends on the
-"selected frame", as described below; see *Note Input Focus::, for the
+"selected frame", as described below; see *note Input Focus::, for the
 meaning of the term "selected frame."
 
    To read user input of color names with completion, use `read-color'
@@ -235,22 +258,22 @@ File: elisp,  Node: Text Terminal Colors,  Next: Resources,  Prev: Color Names, 
 29.21 Text Terminal Colors
 ==========================
 
-Text-only terminals usually support only a small number of colors, and
-the computer uses small integers to select colors on the terminal.
-This means that the computer cannot reliably tell what the selected
-color looks like; instead, you have to inform your application which
-small integers correspond to which colors.  However, Emacs does know
-the standard set of colors and will try to use them automatically.
+Text terminals usually support only a small number of colors, and the
+computer uses small integers to select colors on the terminal.  This
+means that the computer cannot reliably tell what the selected color
+looks like; instead, you have to inform your application which small
+integers correspond to which colors.  However, Emacs does know the
+standard set of colors and will try to use them automatically.
 
    The functions described in this section control how terminal colors
 are used by Emacs.
 
    Several of these functions use or return "rgb values", described in
-*Note Color Names::.
+*note Color Names::.
 
    These functions accept a display (either a frame or the name of a
 terminal) as an optional argument.  We hope in the future to make Emacs
-support different colors on different text-only terminals; then this
+support different colors on different text terminals; then this
 argument will specify which terminal to operate on (the default being
 the selected frame's terminal; *note Input Focus::).  At present,
 though, the FRAME argument has no effect.
@@ -266,12 +289,12 @@ though, the FRAME argument has no effect.
      will not know what it looks like.
 
  -- Function: tty-color-clear &optional frame
-     This function clears the table of defined colors for a text-only
+     This function clears the table of defined colors for a text
      terminal.
 
  -- Function: tty-color-alist &optional frame
      This function returns an alist recording the known colors
-     supported by a text-only terminal.
+     supported by a text terminal.
 
      Each element has the form `(NAME NUMBER . RGB)' or `(NAME
      NUMBER)'.  Here, NAME is the color name, NUMBER is the number used
@@ -361,7 +384,7 @@ display to ask the question about.  It can be a display name, a frame
 (which designates the display that frame is on), or `nil' (which refers
 to the selected frame's display, *note Input Focus::).
 
-   *Note Color Names::, *Note Text Terminal Colors::, for other
+   *Note Color Names::, *note Text Terminal Colors::, for other
 functions to obtain information about displays.
 
  -- Function: display-popup-menus-p &optional display
@@ -373,7 +396,7 @@ functions to obtain information about displays.
      This function returns `t' if DISPLAY is a graphic display capable
      of displaying several frames and several different fonts at once.
      This is true for displays that use a window system such as X, and
-     false for text-only terminals.
+     false for text terminals.
 
  -- Function: display-mouse-p &optional display
      This function returns `t' if DISPLAY has a mouse available, `nil'
@@ -839,19 +862,20 @@ control characters are displayed.
      them, considered in isolation, must contain at least one line
      unless it is empty.
 
-     Here is an example of using `count-lines':
+ -- Command: count-words start end
+     This function returns the number of words between the positions
+     START and END in the current buffer.
 
-          (defun current-line ()
-            "Return the vertical position of point..."
-            (+ (count-lines (window-start) (point))
-               (if (= (current-column) 0) 1 0)))
+     This function can also be called interactively.  In that case, it
+     prints a message reporting the number of lines, words, and
+     characters in the buffer, or in the region if the region is active.
 
  -- Function: line-number-at-pos &optional pos
      This function returns the line number in the current buffer
      corresponding to the buffer position POS.  If POS is `nil' or
      omitted, the current buffer position is used.
 
-   Also see the functions `bolp' and `eolp' in *Note Near Point::.
+   Also see the functions `bolp' and `eolp' in *note Near Point::.
 These functions do not move point, but test whether it is already at the
 beginning or end of a line.
 
@@ -1012,9 +1036,9 @@ File: elisp,  Node: List Motion,  Next: Skipping Characters,  Prev: Screen Lines
 Here are several functions concerned with balanced-parenthesis
 expressions (also called "sexps" in connection with moving across them
 in Emacs).  The syntax table controls how these functions interpret
-various characters; see *Note Syntax Tables::.  *Note Parsing
+various characters; see *note Syntax Tables::.  *Note Parsing
 Expressions::, for lower-level primitives for scanning sexps or parts of
-sexps.  For user-level commands, see *Note Commands for Editing with
+sexps.  For user-level commands, see *note Commands for Editing with
 Parentheses: (emacs)Parentheses.
 
  -- Command: forward-list &optional arg
@@ -1104,7 +1128,7 @@ File: elisp,  Node: Skipping Characters,  Prev: List Motion,  Up: Motion
 
 The following two functions move point over a specified set of
 characters.  For example, they are often used to skip whitespace.  For
-related functions, see *Note Motion and Syntax::.
+related functions, see *note Motion and Syntax::.
 
    These functions convert the set string to multibyte if the buffer is
 multibyte, and they convert it to unibyte if the buffer is unibyte, as
@@ -1174,8 +1198,8 @@ the Lisp sources of Emacs.
    If you only need to save and restore the identity of the current
 buffer, use `save-current-buffer' or `with-current-buffer' instead
 (*note Current Buffer::).  If you need to save or restore window
-configurations, see the forms described in *Note Window
-Configurations:: and in *Note Frame Configurations::.
+configurations, see the forms described in *note Window
+Configurations:: and in *note Frame Configurations::.
 
  -- Special Form: save-excursion body...
      This special form saves the identity of the current buffer and the
@@ -1248,7 +1272,7 @@ save the entire buffer regardless of any narrowing.
 
    If you need to display in a single buffer several very different
 types of text, consider using an alternative facility described in
-*Note Swapping Text::.
+*note Swapping Text::.
 
  -- Command: narrow-to-region start end
      This function sets the accessible portion of the current buffer to
@@ -1356,9 +1380,9 @@ File: elisp,  Node: Overview of Markers,  Next: Predicates on Markers,  Up: Mark
 31.1 Overview of Markers
 ========================
 
-A marker specifies a buffer and a position in that buffer.  The marker
-can be used to represent a position in the functions that require one,
-just as an integer could be used.  In that case, the marker's buffer is
+A marker specifies a buffer and a position in that buffer.  A marker
+can be used to represent a position in functions that require one, just
+as an integer could be used.  In that case, the marker's buffer is
 normally ignored.  Of course, a marker used in this way usually points
 to a position in the buffer that the function operates on, but that is
 entirely the programmer's responsibility.  *Note Positions::, for a
@@ -1367,12 +1391,12 @@ complete description of positions.
    A marker has three attributes: the marker position, the marker
 buffer, and the insertion type.  The marker position is an integer that
 is equivalent (at a given time) to the marker as a position in that
-buffer.  But the marker's position value can change often during the
-life of the marker.  Insertion and deletion of text in the buffer
-relocate the marker.  The idea is that a marker positioned between two
-characters remains between those two characters despite insertion and
-deletion elsewhere in the buffer.  Relocation changes the integer
-equivalent of the marker.
+buffer.  But the marker's position value can change during the life of
+the marker, and often does.  Insertion and deletion of text in the
+buffer relocate the marker.  The idea is that a marker positioned
+between two characters remains between those two characters despite
+insertion and deletion elsewhere in the buffer.  Relocation changes the
+integer equivalent of the marker.
 
    Deleting text around a marker's position leaves the marker between
 the characters immediately before and after the deleted text.  Inserting
@@ -1385,13 +1409,13 @@ with `insert-before-markers' (*note Insertion::).
 relocate them if necessary.  This slows processing in a buffer with a
 large number of markers.  For this reason, it is a good idea to make a
 marker point nowhere if you are sure you don't need it any more.
-Unreferenced markers are garbage collected eventually, but until then
-will continue to use time if they do point somewhere.
+Markers that can no longer be accessed are eventually removed (*note
+Garbage Collection::).
 
    Because it is common to perform arithmetic operations on a marker
-position, most of the arithmetic operations (including `+' and `-')
-accept markers as arguments.  In such cases, the marker stands for its
-current position.
+position, most of these operations (including `+' and `-') accept
+markers as arguments.  In such cases, the marker stands for its current
+position.
 
    Here are examples of creating markers, setting markers, and moving
 point to markers:
@@ -1494,7 +1518,7 @@ marker.
           (point-min-marker)
                => #<marker at 1 in markers.texi>
           (point-max-marker)
-               => #<marker at 15573 in markers.texi>
+               => #<marker at 24080 in markers.texi>
 
           (narrow-to-region 100 200)
                => nil
@@ -1522,8 +1546,8 @@ marker.
           (copy-marker 0)
                => #<marker at 1 in markers.texi>
 
-          (copy-marker 20000)
-               => #<marker at 7572 in markers.texi>
+          (copy-marker 90000)
+               => #<marker at 24080 in markers.texi>
 
      An error is signaled if MARKER is neither a marker nor an integer.
 
@@ -1676,11 +1700,11 @@ that the mark is active.  A command can call the function
 deactivation of the mark upon return to the editor command loop by
 setting the variable `deactivate-mark' to a non-`nil' value.
 
-   If Transient Mode is enabled, certain editing commands that normally
-apply to text near point, apply instead to the region when the mark is
-active.  This is the main motivation for using Transient Mark mode.
-(Another is that this enables highlighting of the region when the mark
-is active.  *Note Display::.)
+   If Transient Mark mode is enabled, certain editing commands that
+normally apply to text near point, apply instead to the region when the
+mark is active.  This is the main motivation for using Transient Mark
+mode.  (Another is that this enables highlighting of the region when
+the mark is active.  *Note Display::.)
 
    In addition to the mark, each buffer has a "mark ring" which is a
 list of markers containing previous values of the mark.  When editing
@@ -1746,8 +1770,7 @@ programming.  So we do not describe it here.
  -- Function: push-mark &optional position nomsg activate
      This function sets the current buffer's mark to POSITION, and
      pushes a copy of the previous mark onto `mark-ring'.  If POSITION
-     is `nil', then the value of point is used.  `push-mark' returns
-     `nil'.
+     is `nil', then the value of point is used.
 
      The function `push-mark' normally _does not_ activate the mark.
      To do that, specify `t' for the argument ACTIVATE.
@@ -1759,8 +1782,6 @@ programming.  So we do not describe it here.
      that mark become the buffer's actual mark.  This does not move
      point in the buffer, and it does nothing if `mark-ring' is empty.
      It deactivates the mark.
-
-     The return value is not meaningful.
 
  -- User Option: transient-mark-mode
      This variable, if non-`nil', enables Transient Mark mode.  In
@@ -1822,8 +1843,9 @@ programming.  So we do not describe it here.
  -- Variable: deactivate-mark-hook
      These normal hooks are run, respectively, when the mark becomes
      active and when it becomes inactive.  The hook
-     `activate-mark-hook' is also run at the end of a command if the
-     mark is active and it is possible that the region may have changed.
+     `activate-mark-hook' is also run at the end of the command loop if
+     the mark is active and it is possible that the region may have
+     changed.
 
  -- Function: handle-shift-selection
      This function implements the "shift-selection" behavior of
@@ -1881,17 +1903,24 @@ is inactive.
      integer).  This is the position of either point or the mark,
      whichever is larger.
 
-   Few programs need to use the `region-beginning' and `region-end'
-functions.  A command designed to operate on a region should normally
-use `interactive' with the `r' specification to find the beginning and
-end of the region.  This lets other Lisp programs specify the bounds
-explicitly as arguments.  (*Note Interactive Codes::.)
+   Instead of using `region-beginning' and `region-end', a command
+designed to operate on a region should normally use `interactive' with
+the `r' specification to find the beginning and end of the region.
+This lets other Lisp programs specify the bounds explicitly as
+arguments.  *Note Interactive Codes::.
 
  -- Function: use-region-p
      This function returns `t' if Transient Mark mode is enabled, the
-     mark is active, and there's a valid region in the buffer.  Commands
-     that operate on the region (instead of on text near point) when
-     there's an active mark should use this to test whether to do that.
+     mark is active, and there is a valid region in the buffer.  This
+     function is intended to be used by commands that operate on the
+     region, instead of on text near point, when the mark is active.
+
+     A region is valid if it has a non-zero size, or if the user option
+     `use-empty-active-region' is non-`nil' (by default, it is `nil').
+     The function `region-active-p' is similar to `use-region-p', but
+     considers all regions as valid.  In most cases, you should not use
+     `region-active-p', since if the region is empty it is often more
+     appropriate to operate on point.
 
 
 File: elisp,  Node: Text,  Next: Non-ASCII Characters,  Prev: Markers,  Up: Top
@@ -1948,8 +1977,8 @@ the character after point.
 * Registers::        How registers are implemented.  Accessing the text or
                        position stored in a register.
 * Base 64::          Conversion to or from base 64 encoding.
-* Checksum/Hash::    Computing "message digests"/"checksums"/"hashes".
-* Parsing HTML::     Parsing HTML and XML.
+* Checksum/Hash::    Computing cryptographic hashes.
+* Parsing HTML/XML:: Parsing HTML and XML.
 * Atomic Changes::   Installing several buffer changes "atomically".
 * Change Hooks::     Supplying functions to be run when text is changed.
 
@@ -1961,7 +1990,7 @@ File: elisp,  Node: Near Point,  Next: Buffer Contents,  Up: Text
 
 Many functions are provided to look at the characters around point.
 Several simple functions are described here.  See also `looking-at' in
-*Note Regexp Search::.
+*note Regexp Search::.
 
    In the following four functions, "beginning" or "end" of buffer
 refers to the beginning or end of the accessible portion.
@@ -2017,7 +2046,7 @@ refers to the beginning or end of the accessible portion.
  -- Function: bobp
      This function returns `t' if point is at the beginning of the
      buffer.  If narrowing is in effect, this means the beginning of the
-     accessible portion of the text.  See also `point-min' in *Note
+     accessible portion of the text.  See also `point-min' in *note
      Point::.
 
  -- Function: eobp
@@ -2051,10 +2080,6 @@ any portion of the text in the buffer into a string.
      the buffer, `buffer-substring' signals an `args-out-of-range'
      error.
 
-     It is not necessary for START to be less than END; the arguments
-     can be given in either order.  But most often the smaller argument
-     is written first.
-
      Here's an example which assumes Font-Lock mode is not enabled:
 
           ---------- Buffer: foo ----------
@@ -2083,14 +2108,18 @@ any portion of the text in the buffer into a string.
      properties, just the characters themselves.  *Note Text
      Properties::.
 
+ -- Function: buffer-string
+     This function returns the contents of the entire accessible
+     portion of the current buffer as a string.  It is equivalent to
+     `(buffer-substring (point-min) (point-max))'.
+
  -- Function: filter-buffer-substring start end &optional delete
      This function passes the buffer text between START and END through
      the filter functions specified by the wrapper hook
-     `filter-buffer-substring-functions', and returns the final result
-     of applying all filters.  The obsolete variable
-     `buffer-substring-filters' is also consulted.  If both of these
-     variables are `nil', the value is the unaltered text from the
-     buffer, as `buffer-substring' would return.
+     `filter-buffer-substring-functions', and returns the result.  The
+     obsolete variable `buffer-substring-filters' is also consulted.
+     If both of these variables are `nil', the value is the unaltered
+     text from the buffer, i.e. what `buffer-substring' would return.
 
      If DELETE is non-`nil', this function deletes the text between
      START and END after copying it, like `delete-and-extract-region'.
@@ -2120,19 +2149,15 @@ any portion of the text in the buffer into a string.
      actual return value is the result of all the hook functions acting
      in sequence.
 
- -- Function: buffer-string
-     This function returns the contents of the entire accessible
-     portion of the current buffer as a string.  It is equivalent to
-
-          (buffer-substring (point-min) (point-max))
-
-          ---------- Buffer: foo ----------
-          This is the contents of buffer foo
-
-          ---------- Buffer: foo ----------
-
-          (buffer-string)
-               => "This is the contents of buffer foo\n"
+ -- Variable: buffer-substring-filters
+     This variable is obsoleted by `filter-buffer-substring-functions',
+     but is still supported for backward compatibility.  Its value
+     should should be a list of functions which accept a single string
+     argument and return another string.  `filter-buffer-substring'
+     passes the buffer substring to the first function in this list,
+     and the return value of each function is passed to the next
+     function.  The return value of the last function is passed to
+     `filter-buffer-substring-functions'.
 
  -- Function: current-word &optional strict really-word
      This function returns the symbol (or word) at or near point, as a
@@ -2336,7 +2361,7 @@ programs.
 
      This command performs abbrev expansion if Abbrev mode is enabled
      and the inserted character does not have word-constituent syntax.
-     (*Note Abbrevs::, and *Note Syntax Class Table::.)  It is also
+     (*Note Abbrevs::, and *note Syntax Class Table::.)  It is also
      responsible for calling `blink-paren-function' when the inserted
      character has close parenthesis syntax (*note Blinking::).
 
@@ -2901,13 +2926,10 @@ Window System Selections::).
      access by `yank-pop'.
 
      The normal use of this function is to get the window system's
-     primary selection as the most recent kill, even if the selection
-     belongs to another application.  *Note Window System Selections::.
-     However, if the selection was provided by the current Emacs
-     session, this function should return `nil'.  (If it is hard to
-     tell whether Emacs or some other program provided the selection,
-     it should be good enough to use `string=' to compare it with the
-     last text Emacs provided.)
+     clipboard as the most recent kill, even if the selection belongs to
+     another application.  *Note Window System Selections::.  However,
+     if the clipboard contents come from the current Emacs session, this
+     function should return `nil'.
 
  -- Variable: interprogram-cut-function
      This variable provides a way of communicating killed text to other
@@ -2917,9 +2939,8 @@ Window System Selections::).
      If the value is a function, `kill-new' and `kill-append' call it
      with the new first element of the kill ring as the argument.
 
-     The normal use of this function is to set the window system's
-     primary selection from the newly killed text.  *Note Window System
-     Selections::.
+     The normal use of this function is to put newly killed text in the
+     window system's clipboard.  *Note Window System Selections::.
 
 
 File: elisp,  Node: Internals of Kill Ring,  Prev: Low-Level Kill Ring,  Up: The Kill Ring
@@ -2997,7 +3018,7 @@ Most buffers have an "undo list", which records all changes made to the
 buffer's text so that they can be undone.  (The buffers that don't have
 one are usually special-purpose buffers for which Emacs assumes that
 undoing is not useful.  In particular, any buffer whose name begins
-with a space has its undo recording off by default; see *Note Buffer
+with a space has its undo recording off by default; see *note Buffer
 Names::.)  All the primitives that modify the text in the buffer
 automatically add elements to the front of the undo list, which is in
 the variable `buffer-undo-list'.
@@ -3459,7 +3480,7 @@ When "Adaptive Fill Mode" is enabled, Emacs determines the fill prefix
 automatically from the text in each paragraph being filled rather than
 using a predetermined value.  During filling, this fill prefix gets
 inserted at the start of the second and subsequent lines of the
-paragraph as described in *Note Filling::, and in *Note Auto Filling::.
+paragraph as described in *note Filling::, and in *note Auto Filling::.
 
  -- User Option: adaptive-fill-mode
      Adaptive Fill mode is enabled when this variable is non-`nil'.  It
@@ -3544,7 +3565,7 @@ File: elisp,  Node: Auto Filling,  Next: Sorting,  Prev: Adaptive Fill,  Up: Tex
 Auto Fill mode is a minor mode that fills lines automatically as text
 is inserted.  This section describes the hook used by Auto Fill mode.
 For a description of functions that you can call explicitly to fill and
-justify existing text, see *Note Filling::.
+justify existing text, see *note Filling::.
 
    Auto Fill mode also enables the functions that change the margins and
 justification style to refill portions of the text.  *Note Margins::.
@@ -3833,7 +3854,7 @@ also ignore overlays and text properties, aside from invisibility.
      the characters between the start of the current line and point.
 
      For an example of using `current-column', see the description of
-     `count-lines' in *Note Text Lines::.
+     `count-lines' in *note Text Lines::.
 
  -- Command: move-to-column column &optional force
      This function moves point to COLUMN in the current line.  The
@@ -3927,51 +3948,70 @@ to indent properly for the language being edited.  This section
 describes the mechanism of the <TAB> key and how to control it.  The
 functions in this section return unpredictable values.
 
- -- Variable: indent-line-function
-     This variable's value is the function to be used by <TAB> (and
-     various commands) to indent the current line.  The command
-     `indent-according-to-mode' does little more than call this
-     function.
+ -- Command: indent-for-tab-command &optional rigid
+     This is the command bound to <TAB> in most editing modes.  Its
+     usual action is to indent the current line, but it can
+     alternatively insert a tab character or indent a region.
 
-     In Lisp mode, the value is the symbol `lisp-indent-line'; in C
-     mode, `c-indent-line'; in Fortran mode, `fortran-indent-line'.
-     The default value is `indent-relative'.  *Note Auto-Indentation::.
+     Here is what it does:
+
+        * First, it checks whether Transient Mark mode is enabled and
+          the region is active.  If so, it called `indent-region' to
+          indent all the text in the region (*note Region Indent::).
+
+        * Otherwise, if the indentation function in
+          `indent-line-function' is `indent-to-left-margin' (a trivial
+          command that inserts a tab character), or if the variable
+          `tab-always-indent' specifies that a tab character ought to
+          be inserted (see below), then it inserts a tab character.
+
+        * Otherwise, it indents the current line; this is done by
+          calling the function in `indent-line-function'.  If the line
+          is already indented, and the value of `tab-always-indent' is
+          `complete' (see below), it tries completing the text at point.
+
+     If RIGID is non-`nil' (interactively, with a prefix argument),
+     then after this command indents a line or inserts a tab, it also
+     rigidly indents the entire balanced expression which starts at the
+     beginning of the current line, in order to reflect the new
+     indentation.  This argument is ignored if the command indents the
+     region.
+
+ -- Variable: indent-line-function
+     This variable's value is the function to be used by
+     `indent-for-tab-command', and various other indentation commands,
+     to indent the current line.  It is usually assigned by the major
+     mode; for instance, Lisp mode sets it to `lisp-indent-line', C mode
+     sets it to `c-indent-line', and so on.  The default value is
+     `indent-relative'.  *Note Auto-Indentation::.
 
  -- Command: indent-according-to-mode
      This command calls the function in `indent-line-function' to
      indent the current line in a way appropriate for the current major
      mode.
 
- -- Command: indent-for-tab-command &optional rigid
-     This command calls the function in `indent-line-function' to
-     indent the current line; however, if that function is
-     `indent-to-left-margin', `insert-tab' is called instead.  (That is
-     a trivial command that inserts a tab character.)  If RIGID is
-     non-`nil', this function also rigidly indents the entire balanced
-     expression that starts at the beginning of the current line, to
-     reflect change in indentation of the current line.
-
  -- Command: newline-and-indent
      This function inserts a newline, then indents the new line (the one
      following the newline just inserted) according to the major mode.
-
-     It does indentation by calling the current `indent-line-function'.
-     In programming language modes, this is the same thing <TAB> does,
-     but in some text modes, where <TAB> inserts a tab,
-     `newline-and-indent' indents to the column specified by
-     `left-margin'.
+     It does indentation by calling `indent-according-to-mode'.
 
  -- Command: reindent-then-newline-and-indent
      This command reindents the current line, inserts a newline at
      point, and then indents the new line (the one following the
-     newline just inserted).
+     newline just inserted).  It does indentation on both lines by
+     calling `indent-according-to-mode'.
 
-     This command does indentation on both lines according to the
-     current major mode, by calling the current value of
-     `indent-line-function'.  In programming language modes, this is
-     the same thing <TAB> does, but in some text modes, where <TAB>
-     inserts a tab, `reindent-then-newline-and-indent' indents to the
-     column specified by `left-margin'.
+ -- User Option: tab-always-indent
+     This variable can be used to customize the behavior of the <TAB>
+     (`indent-for-tab-command') command.  If the value is `t' (the
+     default), the command normally just indents the current line.  If
+     the value is `nil', the command indents the current line only if
+     point is at the left margin or in the line's indentation;
+     otherwise, it inserts a tab character.  If the value is
+     `complete', the command first tries to indent the current line,
+     and if the line was already indented, it calls
+     `completion-at-point' to complete the text at point (*note
+     Completion in Buffers::).
 
 
 File: elisp,  Node: Region Indent,  Next: Relative Indent,  Prev: Mode-Specific Indent,  Up: Indentation
@@ -4497,7 +4537,7 @@ faster to process chunks of text that have the same property value.
 comparing property values.  In all cases, OBJECT defaults to the
 current buffer.
 
-   For high performance, it's very important to use the LIMIT argument
+   For good performance, it's very important to use the LIMIT argument
 to these functions, especially the ones that search for a single
 property--otherwise, they may spend a long time scanning to the end of
 the buffer, if the property you are interested in does not change.
@@ -4509,15 +4549,15 @@ different properties.
 
  -- Function: next-property-change pos &optional object limit
      The function scans the text forward from position POS in the
-     string or buffer OBJECT till it finds a change in some text
+     string or buffer OBJECT until it finds a change in some text
      property, then returns the position of the change.  In other
      words, it returns the position of the first character beyond POS
      whose properties are not identical to those of the character just
      after POS.
 
      If LIMIT is non-`nil', then the scan ends at position LIMIT.  If
-     there is no property change before that point,
-     `next-property-change' returns LIMIT.
+     there is no property change before that point, this function
+     returns LIMIT.
 
      The value is `nil' if the properties remain unchanged all the way
      to the end of OBJECT and LIMIT is `nil'.  If the value is
@@ -4639,10 +4679,9 @@ each Emacs command.  *Note Adjusting Point::.
      the character.
 
 `face'
-     You can use the property `face' to control the font and color of
-     text.  *Note Faces::, for more information.
-
-     `face' can be the following:
+     The `face' property controls the appearance of the character, such
+     as its font and color.  *Note Faces::.  The value of the property
+     can be the following:
 
         * A face name (a symbol or string).
 
@@ -4653,8 +4692,8 @@ each Emacs command.  *Note Adjusting Point::.
           you want to specify a particular attribute for certain text.
           *Note Face Attributes::.
 
-     `face' can also be a list, where each element uses one of the
-     forms listed above.
+        * A list, where each element uses one of the two forms listed
+          above.
 
      Font Lock mode (*note Font Lock Mode::) works in most buffers by
      dynamically updating the `face' property of characters based on
@@ -4794,20 +4833,39 @@ each Emacs command.  *Note Adjusting Point::.
      Fields::.
 
 `cursor'
-     Normally, the cursor is displayed at the end of any overlay and
-     text property strings present at the current buffer position.  You
-     can place the cursor on any desired character of these strings by
-     giving that character a non-`nil' `cursor' text property.  In
-     addition, if the value of the `cursor' property of an overlay
-     string is an integer number, it specifies the number of buffer's
-     character positions associated with the overlay string; this way,
-     Emacs will display the cursor on the character with that property
-     regardless of whether the current buffer position is actually
-     covered by the overlay.  Specifically, if the value of the `cursor'
-     property of a character is the number N, the cursor will be
-     displayed on this character for any buffer position in the range
-     `[OVPOS..OVPOS+N]', where OVPOS is the starting buffer position
-     covered by the overlay (*note Managing Overlays::).
+     Normally, the cursor is displayed at the beginning or the end of
+     any overlay and text property strings present at the current buffer
+     position.  You can place the cursor on any desired character of
+     these strings by giving that character a non-`nil' `cursor' text
+     property.  In addition, if the value of the `cursor' property is
+     an integer number, it specifies the number of buffer's character
+     positions, starting with the position where the overlay or the
+     `display' property begins, for which the cursor should be
+     displayed on that character.  Specifically, if the value of the
+     `cursor' property of a character is the number N, the cursor will
+     be displayed on this character for any buffer position in the
+     range `[OVPOS..OVPOS+N)', where OVPOS is the overlay's starting
+     position given by `overlay-start' (*note Managing Overlays::), or
+     the position where the `display' text property begins in the
+     buffer.
+
+     In other words, the string character with the `cursor' property of
+     any non-`nil' value is the character where to display the cursor.
+     The value of the property says for which buffer positions to
+     display the cursor there.  If the value is an integer number N,
+     the cursor is displayed there when point is anywhere between the
+     beginning of the overlay or `display' property and N positions
+     after that.  If the value is anything else and non-`nil', the
+     cursor is displayed there only when point is at the beginning of
+     the `display' property or at `overlay-start'.
+
+     When the buffer has many overlay strings (e.g., *note
+     before-string: Overlay Properties.) or `display' properties that
+     are strings, it is a good idea to use the `cursor' property on
+     these strings to cue the Emacs display about the places where to
+     put the cursor while traversing these strings.  This directly
+     communicates to the display engine where the Lisp program wants to
+     put the cursor, or where the user would expect the cursor.
 
 `pointer'
      This specifies a specific pointer shape when the mouse pointer is
@@ -4881,7 +4939,7 @@ each Emacs command.  *Note Adjusting Point::.
      the beginning and end of the inserted text.  The functions are
      called _after_ the actual insertion takes place.
 
-     See also *Note Change Hooks::, for other hooks that are called
+     See also *note Change Hooks::, for other hooks that are called
      when you change text in a buffer.
 
 `point-entered'
@@ -4911,7 +4969,7 @@ each Emacs command.  *Note Adjusting Point::.
      actual change in the value of point runs these hook functions.
 
      The variable `inhibit-point-motion-hooks' can inhibit running the
-     `point-left' and `point-entered' hooks, see *Note Inhibit point
+     `point-left' and `point-entered' hooks, see *note Inhibit point
      motion hooks::.
 
 `composition'
@@ -4942,7 +5000,7 @@ File: elisp,  Node: Format Properties,  Next: Sticky Properties,  Prev: Special 
 ---------------------------------
 
 These text properties affect the behavior of the fill commands.  They
-are used for representing formatted text.  *Note Filling::, and *Note
+are used for representing formatted text.  *Note Filling::, and *note
 Margins::.
 
 `hard'
@@ -4973,15 +5031,15 @@ File: elisp,  Node: Sticky Properties,  Next: Lazy Properties,  Prev: Format Pro
 Self-inserting characters normally take on the same properties as the
 preceding character.  This is called "inheritance" of properties.
 
-   In a Lisp program, you can do insertion with inheritance or without,
-depending on your choice of insertion primitive.  The ordinary text
-insertion functions such as `insert' do not inherit any properties.
+   A Lisp program can do insertion with inheritance or without,
+depending on the choice of insertion primitive.  The ordinary text
+insertion functions, such as `insert', do not inherit any properties.
 They insert text with precisely the properties of the string being
 inserted, and no others.  This is correct for programs that copy text
 from one context to another--for example, into or out of the kill ring.
-To insert with inheritance, use the special primitives described in this
-section.  Self-inserting characters inherit properties because they work
-using these primitives.
+To insert with inheritance, use the special primitives described in
+this section.  Self-inserting characters inherit properties because
+they work using these primitives.
 
    When you do insertion with inheritance, _which_ properties are
 inherited, and from where, depends on which properties are "sticky".
@@ -5336,8 +5394,8 @@ fall within the accessible portion.  *Note Narrowing::.
      NEW-POS that is in the same field as OLD-POS.
 
      If NEW-POS is `nil', then `constrain-to-field' uses the value of
-     point instead, and moves point to the resulting position as well
-     as returning it.
+     point instead, and moves point to the resulting position in
+     addition to returning that position.
 
      If OLD-POS is at the boundary of two fields, then the acceptable
      final positions depend on the argument ESCAPE-FROM-EDGE.  If
@@ -5419,7 +5477,7 @@ finding the boundaries of intervals, assuming that intervals are always
 coalesced whenever possible.  *Note Property Search::.
 
    Emacs also provides explicit intervals as a presentation feature; see
-*Note Overlays::.
+*note Overlays::.
 
 
 File: elisp,  Node: Substitution,  Next: Transposition,  Prev: Text Properties,  Up: Text
@@ -5635,108 +5693,109 @@ usually written by technical experts acting on their own initiative,
 and are traditionally written in a pragmatic, experience-driven manner.
 
 
-File: elisp,  Node: Checksum/Hash,  Next: Parsing HTML,  Prev: Base 64,  Up: Text
+File: elisp,  Node: Checksum/Hash,  Next: Parsing HTML/XML,  Prev: Base 64,  Up: Text
 
 32.24 Checksum/Hash
 ===================
 
-MD5 cryptographic checksums, or "message digests", are 128-bit
-"fingerprints" of a document or program.  They are used to verify that
-you have an exact and unaltered copy of the data.  The algorithm to
-calculate the MD5 message digest is defined in Internet RFC(1)1321.
-This section describes the Emacs facilities for computing message
-digests and other forms of "secure hash".
+Emacs has built-in support for computing "cryptographic hashes".  A
+cryptographic hash, or "checksum", is a digital "fingerprint" of a
+piece of data (e.g. a block of text) which can be used to check that
+you have an unaltered copy of that data.
 
- -- Function: md5 object &optional start end coding-system noerror
-     This function returns the MD5 message digest of OBJECT, which
+   Emacs supports several common cryptographic hash algorithms: MD5,
+SHA-1, SHA-2, SHA-224, SHA-256, SHA-384 and SHA-512.  MD5 is the oldest
+of these algorithms, and is commonly used in "message digests" to check
+the integrity of messages transmitted over a network.  MD5 is not
+"collision resistant" (i.e. it is possible to deliberately design
+different pieces of data which have the same MD5 hash), so you should
+not used it for anything security-related.  A similar theoretical
+weakness also exists in SHA-1.  Therefore, for security-related
+applications you should use the other hash types, such as SHA-2.
+
+ -- Function: secure-hash algorithm object &optional start end binary
+     This function returns a hash for OBJECT.  The argument ALGORITHM
+     is a symbol stating which hash to compute: one of `md5', `sha1',
+     `sha224', `sha256', `sha384' or `sha512'.  The argument OBJECT
      should be a buffer or a string.
 
-     The two optional arguments START and END are character positions
+     The optional arguments START and END are character positions
      specifying the portion of OBJECT to compute the message digest
-     for.  If they are `nil' or omitted, the digest is computed for the
+     for.  If they are `nil' or omitted, the hash is computed for the
      whole of OBJECT.
 
-     The function `md5' does not compute the message digest directly
-     from the internal Emacs representation of the text (*note Text
-     Representations::).  Instead, it encodes the text using a coding
-     system, and computes the message digest from the encoded text.  The
-     optional fourth argument CODING-SYSTEM specifies which coding
-     system to use for encoding the text.  It should be the same coding
-     system that you used to read the text, or that you used or will use
-     when saving or sending the text.  *Note Coding Systems::, for more
-     information about coding systems.
+     If the argument BINARY is omitted or `nil', the function returns
+     the "text form" of the hash, as an ordinary Lisp string.  If
+     BINARY is non-`nil', it returns the hash in "binary form", as a
+     sequence of bytes stored in a unibyte string.
 
-     If CODING-SYSTEM is `nil' or omitted, the default depends on
-     OBJECT.  If OBJECT is a buffer, the default for CODING-SYSTEM is
-     whatever coding system would be chosen by default for writing this
-     text into a file.  If OBJECT is a string, the user's most
-     preferred coding system (*note prefer-coding-system:
-     (emacs)Recognize Coding.) is used.
+     This function does not compute the hash directly from the internal
+     representation of OBJECT's text (*note Text Representations::).
+     Instead, it encodes the text using a coding system (*note Coding
+     Systems::), and computes the hash from that encoded text.  If
+     OBJECT is a buffer, the coding system used is the one which would
+     be chosen by default for writing the text into a file.  If OBJECT
+     is a string, the user's preferred coding system is used (*note
+     Recognize Coding: (emacs)Recognize Coding.).
+
+ -- Function: md5 object &optional start end coding-system noerror
+     This function returns an MD5 hash.  It is semi-obsolete, since for
+     most purposes it is equivalent to calling `secure-hash' with `md5'
+     as the ALGORITHM argument.  The OBJECT, START and END arguments
+     have the same meanings as in `secure-hash'.
+
+     If CODING-SYSTEM is non-`nil', it specifies a coding system to use
+     to encode the text; if omitted or `nil', the default coding system
+     is used, like in `secure-hash'.
 
      Normally, `md5' signals an error if the text can't be encoded
      using the specified or chosen coding system.  However, if NOERROR
      is non-`nil', it silently uses `raw-text' coding instead.
 
- -- Function: secure-hash algorithm object &optional start end binary
-     This function provides a general interface to a variety of secure
-     hashing algorithms.  As well as the MD5 algorithm, it supports
-     SHA-1, SHA-2, SHA-224, SHA-256, SHA-384 and SHA-512.  The argument
-     ALGORITHM is a symbol stating which hash to compute.  The
-     arguments OBJECT, START, and END are as for the `md5' function.
-     If the optional argument BINARY is non-`nil', returns a string in
-     binary form.
-
-   ---------- Footnotes ----------
-
-   (1) For an explanation of what is an RFC, see the footnote in *Note
-Base 64::.
-
 
-File: elisp,  Node: Parsing HTML,  Next: Atomic Changes,  Prev: Checksum/Hash,  Up: Text
+File: elisp,  Node: Parsing HTML/XML,  Next: Atomic Changes,  Prev: Checksum/Hash,  Up: Text
 
-32.25 Parsing HTML
-==================
+32.25 Parsing HTML and XML
+==========================
+
+When Emacs is compiled with libxml2 support, the following functions
+are available to parse HTML or XML text into Lisp object trees.
 
  -- Function: libxml-parse-html-region start end &optional base-url
-     This function provides HTML parsing via the `libxml2' library.  It
-     parses "real world" HTML and tries to return a sensible parse tree
-     regardless.
+     This function parses the text between START and END as HTML, and
+     returns a list representing the HTML "parse tree".  It attempts to
+     handle "real world" HTML by robustly coping with syntax mistakes.
 
-     In addition to START and END (specifying the start and end of the
-     region to act on), it takes an optional parameter, BASE-URL, which
-     is used to expand relative URLs in the document, if any.
+     The optional argument BASE-URL, if non-`nil', should be a string
+     specifying the base URL for relative URLs occurring in links.
 
-     Here's an example demonstrating the structure of the parsed data
-     you get out.  Given this HTML document:
+     In the parse tree, each HTML node is represented by a list in which
+     the first element is a symbol representing the node name, the
+     second element is an alist of node attributes, and the remaining
+     elements are the subnodes.
 
-          <html><hEad></head><body width=101><div class=thing>Foo<div>Yes
+     The following example demonstrates this.  Given this (malformed)
+     HTML document:
 
-     You get this parse tree:
+          <html><head></head><body width=101><div class=thing>Foo<div>Yes
 
-          (html
-           (head)
-           (body
-            (:width . "101")
-            (div
-             (:class . "thing")
-             (text . "Foo")
-             (div
-              (text . "Yes\n")))))
+     A call to `libxml-parse-html-region' returns this:
 
-     It's a simple tree structure, where the `car' for each node is the
-     name of the node, and the `cdr' is the value, or the list of
-     values.
-
-     Attributes are coded the same way as child nodes, but with `:' as
-     the first character.
+          (html ()
+            (head ())
+            (body ((width . "101"))
+             (div ((class . "thing"))
+              "Foo"
+              (div ()
+                "Yes"))))
 
  -- Function: libxml-parse-xml-region start end &optional base-url
-     This is much the same as `libxml-parse-html-region' above, but
-     operates on XML instead of HTML, and is correspondingly stricter
-     about syntax.
+     This function is the same as `libxml-parse-html-region', except
+     that it parses the text as XML rather than HTML (so it is stricter
+     about syntax).
 
 
-File: elisp,  Node: Atomic Changes,  Next: Change Hooks,  Prev: Parsing HTML,  Up: Text
+File: elisp,  Node: Atomic Changes,  Next: Change Hooks,  Prev: Parsing HTML/XML,  Up: Text
 
 32.26 Atomic Change Groups
 ==========================
@@ -5824,7 +5883,7 @@ File: elisp,  Node: Change Hooks,  Prev: Atomic Changes,  Up: Text
 
 These hook variables let you arrange to take notice of all changes in
 all buffers (or in a particular buffer, if you make them buffer-local).
-See also *Note Special Properties::, for how to detect changes to
+See also *note Special Properties::, for how to detect changes to
 specific parts of the text.
 
    The functions you use in these hooks should save and restore the
@@ -6398,8 +6457,8 @@ properties that Emacs knows about:
 
    ---------- Footnotes ----------
 
-   (1) Note that the Unicode spec writes these tag names inside `<..>'
-brackets.  The tag names in Emacs do not include the brackets; e.g.,
+   (1) The Unicode specification writes these tag names inside `<..>'
+brackets, but the tag names in Emacs do not include the brackets; e.g.
 Unicode specifies `<small>' where Emacs uses `small'.
 
 
@@ -6628,34 +6687,6 @@ translation table to use for translating the result.
      returned table has a translation table for reverse mapping in the
      first extra slot, and the maximum length of all the FROM character
      sequences in the second extra slot.
-
-
-File: elisp,  Node: Coding Systems,  Next: Input Methods,  Prev: Translation of Characters,  Up: Non-ASCII Characters
-
-33.9 Coding Systems
-===================
-
-When Emacs reads or writes a file, and when Emacs sends text to a
-subprocess or receives text from a subprocess, it normally performs
-character code conversion and end-of-line conversion as specified by a
-particular "coding system".
-
-   How to define a coding system is an arcane matter, and is not
-documented here.
-
-* Menu:
-
-* Coding System Basics::        Basic concepts.
-* Encoding and I/O::            How file I/O functions handle coding systems.
-* Lisp and Coding Systems::     Functions to operate on coding system names.
-* User-Chosen Coding Systems::  Asking the user to choose a coding system.
-* Default Coding Systems::      Controlling the default choices.
-* Specifying Coding Systems::   Requesting a particular coding system
-                                    for a single file operation.
-* Explicit Encoding::           Encoding or decoding text without doing I/O.
-* Terminal I/O Encoding::       Use of encoding for terminal I/O.
-* MS-DOS File Types::           How DOS "text" and "binary" files
-                                    relate to coding systems.
 
 
 

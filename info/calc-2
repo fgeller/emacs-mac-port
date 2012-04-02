@@ -171,7 +171,7 @@ File: calc,  Node: Help Commands,  Next: Stack Basics,  Prev: Basic Commands,  U
 =================
 
 The `?' key (`calc-help') displays a series of brief help messages.
-Some keys (such as `b' and `d') are prefix keys, like Emacs' <ESC> and
+Some keys (such as `b' and `d') are prefix keys, like Emacs's <ESC> and
 `C-x' prefixes.  You can type `?' after a prefix to see a list of
 commands beginning with that prefix.  (If the message includes
 `[MORE]', press `?' again to see additional commands for that prefix.)

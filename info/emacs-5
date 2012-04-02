@@ -1,9 +1,8 @@
-This is /Volumes/Data/Midway/emacs-24.0.94/doc/emacs/../../info/emacs,
-produced by makeinfo version 4.8 from
-/Volumes/Data/Midway/emacs-24.0.94/doc/emacs/emacs.texi.
+This is /home/cyd/trunk/doc/emacs/../../info/emacs, produced by
+makeinfo version 4.13 from /home/cyd/trunk/doc/emacs/emacs.texi.
 
-   This is the Sixteenth edition of the `GNU Emacs Manual',
-updated for Emacs version 24.0.94.
+This is the Sixteenth edition of the `GNU Emacs Manual',
+updated for Emacs version 24.0.95.
 
    Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
 
@@ -34,8 +33,8 @@ File: emacs,  Node: Sexp Diary Entries,  Prev: Fancy Diary Display,  Up: Advance
 Sexp diary entries allow you to do more than just have complicated
 conditions under which a diary entry applies.  Sexp entries should be
 preceded by `diary-sexp-entry-symbol' (default `%%') in the diary file.
-With the fancy diary display, sexp entries can generate the text of
-the entry depending on the date itself.
+With the fancy diary display, sexp entries can generate the text of the
+entry depending on the date itself.
 
    For example, an anniversary diary entry can insert the number of
 years since the anniversary date into the text of the diary entry.
@@ -1134,7 +1133,7 @@ default inbox file depends on your operating system; often it is
 `/usr/spool/mail/USERNAME'.
 
    You can specify the inbox file(s) for any Rmail file for the current
-session with the command `set-rmail-inbox-list'; see *Note Rmail
+session with the command `set-rmail-inbox-list'; see *note Rmail
 Files::.
 
    There are two reasons for having separate Rmail files and inboxes.
@@ -1535,13 +1534,13 @@ the original message in its contents.
 use MIME (*note Rmail Display::) format.  This includes the original
 message as a separate part.  You can use a simpler format if you
 prefer, by setting the variable `rmail-enable-mime-composing' to `nil'.
-In this case, Rmail just includes the original message enclosed
-between two delimiter lines.  It also modifies every line that starts
-with a dash, by inserting `- ' at the start of the line.  When you
-receive a forwarded message in this format, if it contains something
-besides ordinary text--for example, program source code--you might find
-it useful to undo that transformation.  You can do this by selecting
-the forwarded message and typing `M-x unforward-rmail-message'.  This
+In this case, Rmail just includes the original message enclosed between
+two delimiter lines.  It also modifies every line that starts with a
+dash, by inserting `- ' at the start of the line.  When you receive a
+forwarded message in this format, if it contains something besides
+ordinary text--for example, program source code--you might find it
+useful to undo that transformation.  You can do this by selecting the
+forwarded message and typing `M-x unforward-rmail-message'.  This
 command extracts the original forwarded message, deleting the inserted
 `- ' strings, and inserts it into the Rmail file as a separate message
 immediately following the current one.
@@ -1954,8 +1953,8 @@ happened.
 
    You can correct the problem by decoding the message again using the
 right coding system, if you can figure out or guess which one is right.
-To do this, invoke the `M-x rmail-redecode-body' command.  It reads
-the name of a coding system, and then redecodes the message using the
+To do this, invoke the `M-x rmail-redecode-body' command.  It reads the
+name of a coding system, and then redecodes the message using the
 coding system you specified.  If you specified the right coding system,
 the result should be readable.
 
@@ -2054,7 +2053,7 @@ formats, such as plain Unix mailboxes, `maildir' and `MH' mailboxes,
 etc.  It is able to access remote mailboxes using the POP3 or IMAP4
 protocol, and can retrieve mail from them using a TLS encrypted
 channel.  It also accepts mailbox arguments in URL form.  The detailed
-description of mailbox URLs can be found in *Note URL: (mailutils)URL.
+description of mailbox URLs can be found in *note URL: (mailutils)URL.
 In short, a URL is:
 
      PROTO://[USER[:PASSWORD]@]HOST-OR-FILE-NAME
@@ -2220,7 +2219,7 @@ Gnus is an Emacs package primarily designed for reading and posting
 Usenet news.  It can also be used to read and respond to messages from
 a number of other sources--email, remote directories, digests, and so
 on.  Here we introduce Gnus and describe several basic features.  For
-full details, see *Note Gnus: (gnus)Top.
+full details, see *note Gnus: (gnus)Top.
 
 * Menu:
 
@@ -2830,8 +2829,8 @@ must type `C-c' first.  Here is a list of Shell mode commands:
 
 `M-x send-invisible <RET> TEXT <RET>'
      Send TEXT as input to the shell, after reading it without echoing.
-     This is useful when a shell command runs a program that asks for
-     a password.
+     This is useful when a shell command runs a program that asks for a
+     password.
 
      Please note that Emacs will not echo passwords by default.  If you
      really want them to be echoed, evaluate the following Lisp
@@ -3324,9 +3323,9 @@ There are two ways to start an Emacs server:
      server dies with the Emacs process.
 
    * Run Emacs as a "daemon", using the `--daemon' command-line option.
-     *Note Initial Options::.  When Emacs is started this way, it
-     calls `server-start' after initialization, and returns control to
-     the calling terminal instead of opening an initial frame; it then
+     *Note Initial Options::.  When Emacs is started this way, it calls
+     `server-start' after initialization, and returns control to the
+     calling terminal instead of opening an initial frame; it then
      waits in the background, listening for edit requests.
 
    Either way, once an Emacs server is started, you can use a shell
@@ -3457,10 +3456,13 @@ below:
      Create a new graphical frame, instead of using an existing Emacs
      frame.  Emacs can create a graphical frame even if it was started
      in a text-only terminal, provided it is able to connect to a
-     graphical display.  If no graphical display is available, Emacs
-     creates a new text-only terminal frame (*note Frames::).  If you
-     omit a filename argument while supplying the `-c' option, the new
-     frame displays the `*scratch*' buffer (*note Buffers::).
+     graphical display.  If Emacs is unable to connect to a graphical
+     display, and on systems, such as MS-Windows, where it cannot
+     create graphical frames when started from a text-only terminal, it
+     creates a new text-only terminal frame (*note Frames::) on the
+     same terminal where it was started.  If you omit a filename
+     argument while supplying the `-c' option, the new frame displays
+     the `*scratch*' buffer (*note Buffers::).
 
 `-F ALIST'
 `--frame-parameters=ALIST'
@@ -3539,9 +3541,12 @@ below:
      Create a new Emacs frame on the current text-only terminal,
      instead of using an existing Emacs frame.  Emacs can open a
      text-only terminal even if it was started in another text-only
-     terminal, or on a graphical display.  If you omit a filename
-     argument while supplying this option, the new frame displays the
-     `*scratch*' buffer.  *Note Buffers::.
+     terminal, or on a graphical display.  On systems, such as
+     MS-Windows, where this is impossible, Emacs will create a new
+     frame, either GUI or text-only, on the same terminal where it was
+     started.  If you omit a filename argument while supplying this
+     option, the new frame displays the `*scratch*' buffer.  *Note
+     Buffers::.
 
    If you type `C-x C-c' (`save-buffers-kill-terminal') in an Emacs
 frame created with `emacsclient', via the `-c' or `-t' options, Emacs
@@ -4530,8 +4535,8 @@ in a simple monoalphabetic substitution cipher.
 buffer, word by word or character by character, writing its output to a
 buffer named `*Dissociation*'.  A positive argument tells it to operate
 character by character, and specifies the number of overlap characters.
-A negative argument tells it to operate word by word, and specifies
-the number of overlap words.  Dissociated Press produces results fairly
+A negative argument tells it to operate word by word, and specifies the
+number of overlap words.  Dissociated Press produces results fairly
 like those of a Markov chain, but is however, an independent,
 ignoriginal invention; it techniquitously copies several consecutive
 characters from the sample text between random jumps, unlike a Markov
@@ -4711,21 +4716,35 @@ directory name of the package archive.  You can alter this list if you
 wish to use third party package archives--but do so at your own risk,
 and use only third parties that you think you can trust!
 
-   Once a package is downloaded and installed, it takes effect in the
-current Emacs session.  What "taking effect" means depends on the
-package; most packages just make some new commands available, while
-others have more wide-ranging effects on the Emacs session.  For such
-information, consult the package's help buffer.
+   Once a package is downloaded and installed, it is "loaded" into the
+current Emacs session.  Loading a package is not quite the same as
+loading a Lisp library (*note Lisp Libraries::); its effect varies from
+package to package.  Most packages just make some new commands
+available, while others have more wide-ranging effects on the Emacs
+session.  For such information, consult the package's help buffer.
 
-   By default, Emacs also automatically loads all installed packages
-(causing them to "take effect") in subsequent Emacs sessions.  This
-happens at startup, after processing the init file (*note Init File::).
-As an exception, Emacs does not load packages at startup if invoked
-with the `-q' or `--no-init-file' options (*note Initial Options::).
+   By default, Emacs also automatically loads all installed packages in
+subsequent Emacs sessions.  This happens at startup, after processing
+the init file (*note Init File::).  As an exception, Emacs does not
+load packages at startup if invoked with the `-q' or `--no-init-file'
+options (*note Initial Options::).
 
    To disable automatic package loading, change the variable
-`package-enable-at-startup' to `nil'.  If you do this, you can use the
-command `M-x package-initialize' to load your packages.
+`package-enable-at-startup' to `nil'.
+
+   The reason automatic package loading occurs after loading the init
+file is that user options only receive their customized values after
+loading the init file, including user options which affect the
+packaging system.  In some circumstances, you may want to load packages
+explicitly in your init file (usually because some other code in your
+init file depends on a package).  In that case, your init file should
+call the function `package-initialize'.  It is up to you to ensure that
+relevant user options, such as `package-load-list' (see below), are set
+up prior to the `package-initialize' call.  You should also set
+`package-enable-at-startup' to `nil', to avoid loading the packages
+again after processing the init file.  Alternatively, you may choose to
+completely inhibit package loading at startup, and invoke the command
+`M-x package-initialize' to load your packages manually.
 
    For finer control over package loading, you can use the variable
 `package-load-list'.  Its value should be a list.  A list element of
@@ -4786,11 +4805,11 @@ File: emacs,  Node: Customization,  Next: Quitting,  Prev: Packages,  Up: Top
 This chapter describes some simple methods to customize the behavior of
 Emacs.
 
-   Apart from the methods described here, see *Note X Resources:: for
-information about using X resources to customize Emacs, and see *Note
+   Apart from the methods described here, see *note X Resources:: for
+information about using X resources to customize Emacs, and see *note
 Keyboard Macros:: for information about recording and replaying
 keyboard macros.  Making more far-reaching and open-ended changes
-involves writing Emacs Lisp code; see *Note Emacs Lisp: (elisp)Top.
+involves writing Emacs Lisp code; see *note Emacs Lisp: (elisp)Top.
 
 * Menu:
 
@@ -4813,7 +4832,7 @@ Emacs has many "settings" which you can change.  Most settings are
 "customizable variables" (*note Variables::), which are also called
 "user options".  There is a huge number of customizable variables,
 controlling numerous aspects of Emacs behavior; the variables
-documented in this manual are listed in *Note Variable Index::.  A
+documented in this manual are listed in *note Variable Index::.  A
 separate class of settings are the "faces", which determine the fonts,
 colors, and other attributes of text (*note Faces::).
 
@@ -5060,7 +5079,7 @@ create a field for entering the comment.
    Near the top of the customization buffer are two lines of buttons:
 
       [Set for Current Session] [Save for Future Sessions]
-      [Undo Edits] [Reset to Saved] [Erase Customization]   [Finish]
+      [Undo Edits] [Reset to Saved] [Erase Customization]   [Exit]
 
 Each of the first five buttons performs the stated operation--set,
 save, reset, etc.--on all the settings in the buffer that could
@@ -5071,7 +5090,7 @@ hidden, nor on subgroups that are hidden or not visible in the buffer.
 `[Set for Current Session]' button.  The command `C-x C-s'
 (`Custom-save') is like using the `[Save for Future Sessions]' button.
 
-   The `[Finish]' button switches out of the customization buffer, and
+   The `[Exit]' button switches out of the customization buffer, and
 buries the buffer at the bottom of the buffer list.  To make it kill
 the customization buffer instead, change the variable
 `custom-buffer-done-kill' to `t'.
@@ -5278,9 +5297,9 @@ specified by the variable `custom-theme-directory' (which defaults to
 `~/.emacs.d/'), and a directory named `etc/themes' in your Emacs
 installation (see the variable `data-directory').  The latter contains
 several Custom themes which are distributed with Emacs, which customize
-Emacs' faces to fit various color schemes.  (Note, however, that Custom
-themes need not be restricted to this purpose; they can be used to
-customize variables too).
+Emacs's faces to fit various color schemes.  (Note, however, that
+Custom themes need not be restricted to this purpose; they can be used
+to customize variables too).
 
    If you want Emacs to look for Custom themes in some other directory,
 add the directory name to the list variable `custom-theme-load-path'.
@@ -5994,7 +6013,7 @@ File: emacs,  Node: Keymaps,  Next: Prefix Keymaps,  Up: Key Bindings
 48.3.1 Keymaps
 --------------
 
-As described in *Note Commands::, each Emacs command is a Lisp function
+As described in *note Commands::, each Emacs command is a Lisp function
 whose definition provides for interactive use.  Like every Lisp
 function, a command has a function name, which usually consists of
 lower-case letters and hyphens.
@@ -6062,9 +6081,9 @@ and <ESC> as prefix keys appear in the global map, so these prefix keys
 are always available.
 
    Aside from ordinary prefix keys, there is a fictitious "prefix key"
-which represents the menu bar; see *Note Menu Bar: (elisp)Menu Bar, for
+which represents the menu bar; see *note Menu Bar: (elisp)Menu Bar, for
 special information about menu bar key bindings.  Mouse button events
-that invoke pop-up menus are also prefix keys; see *Note Menu Keymaps:
+that invoke pop-up menus are also prefix keys; see *note Menu Keymaps:
 (elisp)Menu Keymaps, for more details.
 
    Some prefix keymaps are stored in variables with names:
@@ -6284,7 +6303,7 @@ You can use a vector for the simple cases too:
    Language and coding systems may cause problems with key bindings for
 non-ASCII characters.  *Note Init Non-ASCII::.
 
-   As described in *Note Local Keymaps::, major modes and minor modes
+   As described in *note Local Keymaps::, major modes and minor modes
 can define local keymaps.  These keymaps are constructed when the mode
 is used for the first time in a session.  If you wish to change one of
 these keymaps, you must use the "mode hook" (*note Hooks::).

@@ -1,6 +1,6 @@
 This is ../../info/org, produced by makeinfo version 4.13 from org.texi.
 
-This manual is for Org version 7.8.03.
+This manual is for Org version 7.8.07.
 
    Copyright (C) 2004-2012  Free Software Foundation, Inc.
 
@@ -3172,12 +3172,14 @@ LibreOffice 3.4.
 * Menu:
 
 * Pre-requisites for ODT export::  What packages ODT exporter relies on
-* ODT export commands::  How to invoke ODT export
+* ODT export commands::         How to invoke ODT export
+* Extending ODT export::        How to produce `doc', `pdf' files
 * Applying custom styles::      How to apply custom styles to the output
-* Links in ODT export::  How links will be interpreted and formatted
-* Tables in ODT export::  How Tables are exported
-* Images in ODT export::  How to insert images
+* Links in ODT export::         How links will be interpreted and formatted
+* Tables in ODT export::        How Tables are exported
+* Images in ODT export::        How to insert images
 * Math formatting in ODT export::  How LaTeX fragments are formatted
+* Labels and captions in ODT export::  How captions are rendered
 * Literal examples in ODT export::  How source and example blocks are formatted
 * Advanced topics in ODT export::  Read this if you are a power user
 
@@ -3200,7 +3202,7 @@ output.  Check the availability of this program before proceeding
 further.
 
 
-File: org,  Node: ODT export commands,  Next: Applying custom styles,  Prev: Pre-requisites for ODT export,  Up: OpenDocument Text export
+File: org,  Node: ODT export commands,  Next: Extending ODT export,  Prev: Pre-requisites for ODT export,  Up: OpenDocument Text export
 
 12.8.2 ODT export commands
 --------------------------
@@ -3209,8 +3211,9 @@ Exporting to ODT
 ................
 
 `C-c C-e o     (`org-export-as-odt')'
-     Export as OpenDocument Text file.  If
-     `org-export-odt-preferred-output-format' is specified,
+     Export as OpenDocument Text file.
+
+     If `org-export-odt-preferred-output-format' is specified,
      automatically convert the exported file to that format.  *Note
      Automatically exporting to other formats:
      x-export-to-other-formats.
@@ -3223,22 +3226,11 @@ Exporting to ODT
      `EXPORT_FILE_NAME' property, that name will be used for the export.
 
 `C-c C-e O     (`org-export-as-odt-and-open')'
-     Export as OpenDocument Text file and open the resulting file.  If
-     `org-export-odt-preferred-output-format' is specified, open the
+     Export as OpenDocument Text file and open the resulting file.
+
+     If `org-export-odt-preferred-output-format' is specified, open the
      converted file instead.  *Note Automatically exporting to other
      formats: x-export-to-other-formats.
-
-Automatically exporting to other formats
-........................................
-
-Very often, you will find yourself exporting to ODT format, only to
-immediately save the exported document to a different format like `pdf'.
-In such cases, you will find it convenient to configure a converter
-(*note Exporting and converting to other formats::) and specify your
-preferred output format by customizing the variable
-`org-export-odt-preferred-output-format'.  This way, the export commands
-(*note Exporting to ODT: x-export-to-odt.) can be extended to also
-export to the preferred format.
 
    ---------- Footnotes ----------
 
@@ -3247,9 +3239,52 @@ export to the preferred format.
    (2) To select the current subtree, use `C-c @'
 
 
-File: org,  Node: Applying custom styles,  Next: Links in ODT export,  Prev: ODT export commands,  Up: OpenDocument Text export
+File: org,  Node: Extending ODT export,  Next: Applying custom styles,  Prev: ODT export commands,  Up: OpenDocument Text export
 
-12.8.3 Applying custom styles
+12.8.3 Extending ODT export
+---------------------------
+
+The ODT exporter can interface with a variety of document converters
+and supports popular converters out of the box.  As a result, you can
+use it to export to formats like `doc' or convert a document from one
+format (say `csv') to another format (say `ods' or `xls').
+
+   If you have a working installation of LibreOffice, a document
+converter is pre-configured for you and you can use it right away.  If
+you would like to use `unoconv' as your preferred converter, customize
+the variable `org-export-odt-convert-process' to point to `unoconv'.
+If you would like to use a converter of your own choosing or tweak the
+default settings of the default `LibreOffice' and `unoconv' converters
+*Note Configuring a document converter::.
+
+12.8.3.1 Automatically exporting to other formats
+.................................................
+
+Very often, you will find yourself exporting to ODT format, only to
+immediately save the exported document to other formats like `doc',
+`docx', `rtf', `pdf' etc.  In such cases, you can specify your
+preferred output format by customizing the variable
+`org-export-odt-preferred-output-format'.  This way, the export commands
+(*note Exporting to ODT: x-export-to-odt.) can be extended to export to
+a format that is of immediate interest to you.
+
+12.8.3.2 Converting between document formats
+............................................
+
+There are many document converters in the wild which support conversion
+to and from various file formats, including, but not limited to the ODT
+format.  LibreOffice converter, mentioned above, is one such converter.
+Once a converter is configured, you can interact with it using the
+following command.
+
+`M-x org-export-odt-convert'
+     Convert an existing document from one format to another.  With a
+     prefix argument, also open the newly produced file.
+
+
+File: org,  Node: Applying custom styles,  Next: Links in ODT export,  Prev: Extending ODT export,  Up: OpenDocument Text export
+
+12.8.4 Applying custom styles
 -----------------------------
 
 The ODT exporter ships with a set of OpenDocument styles (*note Working
@@ -3260,7 +3295,7 @@ directly, or generate the required styles using an application like
 LibreOffice.  The latter method is suitable for expert and non-expert
 users alike, and is described here.
 
-12.8.3.1 Applying custom styles - the easy way
+12.8.4.1 Applying custom styles - the easy way
 ..............................................
 
   1. Create a sample `example.org' file with the below settings and
@@ -3289,7 +3324,7 @@ users alike, and is described here.
           #+ODT_STYLES_FILE: ("/path/to/file.ott" ("styles.xml" "image/hdr.png"))
 
 
-12.8.3.2 Using third-party styles and templates
+12.8.4.2 Using third-party styles and templates
 ...............................................
 
 You can use third-party styles and templates for customizing your
@@ -3302,16 +3337,24 @@ templates that are directly derived from the factory settings.
 
 File: org,  Node: Links in ODT export,  Next: Tables in ODT export,  Prev: Applying custom styles,  Up: OpenDocument Text export
 
-12.8.4 Links in ODT export
+12.8.5 Links in ODT export
 --------------------------
 
-The ODT exporter creates cross-references (aka bookmarks) for internal
-links.  It creates Internet-style links for all other links.
+ODT exporter creates native cross-references for internal links.  It
+creates Internet-style links for all other links.
+
+   A link with no description and destined to a regular (un-itemized)
+outline heading is replaced with a cross-reference and section number
+of the heading.
+
+   A `\ref{label}'-style reference to an image, table etc. is replaced
+with a cross-reference and sequence number of the labeled entity.
+*Note Labels and captions in ODT export::.
 
 
 File: org,  Node: Tables in ODT export,  Next: Images in ODT export,  Prev: Links in ODT export,  Up: OpenDocument Text export
 
-12.8.5 Tables in ODT export
+12.8.6 Tables in ODT export
 ---------------------------
 
 Export of native Org mode tables (*note Tables::) and simple `table.el'
@@ -3320,13 +3363,38 @@ tables that have column or row spans - is not supported.  Such tables
 are stripped from the exported document.
 
    By default, a table is exported with top and bottom frames and with
-rules separating row and column groups (*note Column groups::).  If the
+rules separating row and column groups (*note Column groups::).
+Furthermore, all tables are typeset to occupy the same width.  If the
 table specifies alignment and relative width for its columns (*note
 Column width and alignment::) then these are honored on export.(1)
 
-   If you are not satisfied with the default formatting of tables, you
-can create custom table styles and associate them with a table using
-the `#+ATTR_ODT' line.  *Note Customizing tables in ODT export::.
+   You can control the width of the table by specifying `:rel-width'
+property using an `#+ATTR_ODT' line.
+
+   For example, consider the following table which makes use of all the
+rules mentioned above.
+
+     #+ATTR_ODT: :rel-width 50
+     | Area/Month    |   Jan |   Feb |   Mar |   Sum |
+     |---------------+-------+-------+-------+-------|
+     | /             |     < |       |       |     < |
+     | <l13>         |  <r5> |  <r5> |  <r5> |  <r6> |
+     | North America |     1 |    21 |   926 |   948 |
+     | Middle East   |     6 |    75 |   844 |   925 |
+     | Asia Pacific  |     9 |    27 |   790 |   826 |
+     |---------------+-------+-------+-------+-------|
+     | Sum           |    16 |   123 |  2560 |  2699 |
+
+   On export, the table will occupy 50% of text area.  The columns will
+be sized (roughly) in the ratio of 13:5:5:5:6.  The first column will
+be left-aligned and rest of the columns will be right-aligned.  There
+will be vertical rules after separating the header and last columns
+from other columns.  There will be horizontal rules separating the
+header and last rows from other rows.
+
+   If you are not satisfied with the above formatting options, you can
+create custom table styles and associate them with a table using the
+`#+ATTR_ODT' line.  *Note Customizing tables in ODT export::.
 
    ---------- Footnotes ----------
 
@@ -3336,7 +3404,7 @@ default weight being 1
 
 File: org,  Node: Images in ODT export,  Next: Math formatting in ODT export,  Prev: Tables in ODT export,  Up: OpenDocument Text export
 
-12.8.6 Images in ODT export
+12.8.7 Images in ODT export
 ---------------------------
 
 Embedding images
@@ -3366,13 +3434,15 @@ Sizing and scaling of embedded images
 You can control the size and scale of the embedded images using the
 `#+ATTR_ODT' attribute.
 
-   Note that the exporter specifies the desired size of the image in
-the final document in units of centimeters.  In order to scale the
-embedded images, the exporter needs to compute the size of the image.
-This is done by retrieving the image size in pixels and converting the
-pixel units to centimeters using `org-export-odt-pixels-per-inch'.  The
-default value of this variable is set to `display-pixels-per-inch'.
-You can tweak this variable to achieve the best results.
+   The exporter specifies the desired size of the image in the final
+document in units of centimeters.  In order to scale the embedded
+images, the exporter queries for pixel dimensions of the images using
+one of a) ImageMagick's `identify' program or b) Emacs `create-image'
+and `image-size' APIs.(1) The pixel dimensions are subsequently
+converted in to units of centimeters using
+`org-export-odt-pixels-per-inch'.  The default value of this variable is
+set to `display-pixels-per-inch'.  You can tweak this variable to
+achieve the best results.
 
    The examples below illustrate the various possibilities.
 
@@ -3402,10 +3472,29 @@ Scale the image to a specific height
           #+ATTR_ODT: :height 10
           [[./img.png]]
 
-
-File: org,  Node: Math formatting in ODT export,  Next: Literal examples in ODT export,  Prev: Images in ODT export,  Up: OpenDocument Text export
+Anchoring of images
+...................
 
-12.8.7 Math formatting in ODT export
+You can control the manner in which an image is anchored by setting the
+`:anchor' property of it's `#+ATTR_ODT' line.  You can specify one of
+the the following three values for the `:anchor' property -
+`"as-char"', `"paragraph"' and `"page"'.
+
+   To create an image that is anchored to a page, do the following:
+     #+ATTR_ODT: :anchor "page"
+     [[./img.png]]
+
+   ---------- Footnotes ----------
+
+   (1) Use of `ImageMagick' is only desirable.  However, if you
+routinely produce documents that have large images or you export your
+Org files that has images using a Emacs batch script, then the use of
+`ImageMagick' is mandatory.
+
+
+File: org,  Node: Math formatting in ODT export,  Next: Labels and captions in ODT export,  Prev: Images in ODT export,  Up: OpenDocument Text export
+
+12.8.8 Math formatting in ODT export
 ------------------------------------
 
 The ODT exporter has special support for handling math.
@@ -3418,7 +3507,7 @@ The ODT exporter has special support for handling math.
 
 File: org,  Node: Working with LaTeX math snippets,  Next: Working with MathML or OpenDocument formula files,  Prev: Math formatting in ODT export,  Up: Math formatting in ODT export
 
-12.8.7.1 Working with LaTeX math snippets
+12.8.8.1 Working with LaTeX math snippets
 .........................................
 
 LaTeX math snippets (*note LaTeX fragments::) can be embedded in the ODT
@@ -3478,7 +3567,7 @@ document in one of the following ways:
 
 File: org,  Node: Working with MathML or OpenDocument formula files,  Prev: Working with LaTeX math snippets,  Up: Math formatting in ODT export
 
-12.8.7.2 Working with MathML or OpenDocument formula files
+12.8.8.2 Working with MathML or OpenDocument formula files
 ..........................................................
 
 For various reasons, you may find embedding LaTeX math snippets in an
@@ -3493,41 +3582,73 @@ formula (`.odf') file as shown below:
      [[./equation.odf]]
 
 
-File: org,  Node: Literal examples in ODT export,  Next: Advanced topics in ODT export,  Prev: Math formatting in ODT export,  Up: OpenDocument Text export
+File: org,  Node: Labels and captions in ODT export,  Next: Literal examples in ODT export,  Prev: Math formatting in ODT export,  Up: OpenDocument Text export
 
-12.8.8 Literal examples in ODT export
--------------------------------------
+12.8.9 Labels and captions in ODT export
+----------------------------------------
+
+You can label and caption various category of objects - an inline
+image, a table, a LaTeX fragment or a Math formula - using `#+LABEL' and
+`#+CAPTION' lines.  *Note Images and tables::.  ODT exporter enumerates
+each labeled or captioned object of a given category separately.  As a
+result, each such object is assigned a sequence number based on order
+of it's appearance in the Org file.
+
+   In the exported document, a user-provided caption is augmented with
+the category and sequence number.  Consider the following inline image
+in an Org file.
+
+     #+CAPTION: Bell curve
+     #+LABEL:   fig:SED-HR4049
+     [[./img/a.png]]
+
+   It could be rendered as shown below in the exported document.
+
+     Figure 2: Bell curve
+
+   You can modify the category component of the caption by customizing
+the variable `org-export-odt-category-strings'.  For example, to tag all
+embedded images with the string `Illustration' (instead of the default
+`Figure') use the following setting.
+
+     (setq org-export-odt-category-strings
+           '(("en" "Table" "Illustration" "Equation" "Equation")))
+
+   With this, previous image will be captioned as below in the exported
+document.
+
+     Illustration 2: Bell curve
+
+
+File: org,  Node: Literal examples in ODT export,  Next: Advanced topics in ODT export,  Prev: Labels and captions in ODT export,  Up: OpenDocument Text export
+
+12.8.10 Literal examples in ODT export
+--------------------------------------
 
 Export of literal examples (*note Literal examples::) with full
-fontification is supported.  This feature is enabled by default and is
-activated automatically if an enhanced version of `htmlfontify.el' is
-available in the `load-path'.(1)
+fontification is supported.  Internally, the exporter relies on
+`htmlfontify.el' to generate all style definitions needed for a fancy
+listing.(1)  The auto-generated styles have `OrgSrc' as prefix and
+inherit their color from the faces used by Emacs `font-lock' library
+for the source language.
 
-   The character styles used for fontification of the literal blocks are
-auto-generated by the exporter in conjunction with `htmlfontify.el'
-library and need not be included in the default `styles.xml' file.
-These auto-generated styles have the `OrgSrc' prefix and inherit their
-color based on the face used by Emacs `font-lock' library.
+   If you prefer to use your own custom styles for fontification, you
+can do so by customizing the variable
+`org-export-odt-create-custom-styles-for-srcblocks'.
 
-   If you prefer to use your own custom styles for fontification and
-disable their auto-generation altogether, you can do so by customizing
-the variable `org-export-odt-create-custom-styles-for-srcblocks'.
-
-   You can turn off fontification support for literal examples by
-customizing the variable `org-export-odt-fontify-srcblocks'.
+   You can turn off fontification of literal examples by customizing the
+variable `org-export-odt-fontify-srcblocks'.
 
    ---------- Footnotes ----------
 
-   (1) The `htmlfontify.el' that ships with standard Emacs <= 24.1 has
-no support for ODT fontification.  A copy of the proposed version is
-available as an attachment to Emacs Bug #9914
-(http://debbugs.gnu.org/cgi/bugreport.cgi?msg=5;filename=htmlfontify.el;att=9;bug=9914).
+   (1) Your `htmlfontify.el' library must atleast be at Emacs 24.1
+levels for fontification to be turned on.
 
 
 File: org,  Node: Advanced topics in ODT export,  Prev: Literal examples in ODT export,  Up: OpenDocument Text export
 
-12.8.9 Advanced topics in ODT export
-------------------------------------
+12.8.11 Advanced topics in ODT export
+-------------------------------------
 
 If you rely heavily on ODT export, you may want to exploit the full set
 of features that the exporter offers.  This section describes features
@@ -3535,58 +3656,22 @@ that would be of interest to power users.
 
 * Menu:
 
-* Exporting and converting to other formats::  How to produce `pdf' and other formats
+* Configuring a document converter::  How to register a document converter
 * Working with OpenDocument style files::  Explore the internals
 * Creating one-off styles::     How to produce custom highlighting etc
 * Customizing tables in ODT export::  How to define and use Table templates
 * Validating OpenDocument XML::  How to debug corrupt OpenDocument files
 
 
-File: org,  Node: Exporting and converting to other formats,  Next: Working with OpenDocument style files,  Prev: Advanced topics in ODT export,  Up: Advanced topics in ODT export
+File: org,  Node: Configuring a document converter,  Next: Working with OpenDocument style files,  Prev: Advanced topics in ODT export,  Up: Advanced topics in ODT export
 
-12.8.9.1 Exporting and converting to other formats
-..................................................
+12.8.11.1 Configuring a document converter
+..........................................
 
-The ODT exporter adds support for exporting Org outlines to formats
-that are not supported natively by Org.  It also adds support to convert
-document from one format to another.  To use these features, you need to
-configure a command-line converter.  Once a command-line converter is
-configured you can use it to extend the list of formats to which Org can
-export.  *Note Automatically exporting to other formats:
-x-export-to-other-formats.  You can also use it to perform one-off
-document conversion as detailed below.
-
-`M-x org-export-odt-convert'
-     Convert an existing document from one format to another as
-     determined by the variable `org-export-odt-convert-capabilities'
-     (*note Configure converter capabilities:
-     x-odt-converter-capabilities.).  *Please note* that you can use
-     this command to even convert documents that are produced outside
-     of Org and in other formats than ODT format.
-
-Pre-configured converters
-.........................
-
-The ODT exporter supports two converters out of the box:
-
-  1. `unoconv'
-
-     This converter is available as an installable package in your
-     favorite distribution.
-
-  2. `BasicODConverter'
-
-     This converter is distributed as a LibreOffice extension and can
-     be found in your Org distribution.  See the subdirectory pointed
-     to by the variable `org-odt-data-dir'.
-
-
-Installing a new converter
-..........................
-
-If you prefer to use a converter other than the two mentioned above,
-then you may have to do additional configuration.  You can proceed as
-follows:
+The ODT exporter can work with popular converters with little or no
+extra configuration from your side. *Note Extending ODT export::.  If
+you are using a converter that is not supported by default or if you
+would like to tweak the default converter settings, proceed as below.
 
   1. Register the converter
 
@@ -3611,10 +3696,10 @@ follows:
      customizing the variable `org-export-odt-convert-process'.
 
 
-File: org,  Node: Working with OpenDocument style files,  Next: Creating one-off styles,  Prev: Exporting and converting to other formats,  Up: Advanced topics in ODT export
+File: org,  Node: Working with OpenDocument style files,  Next: Creating one-off styles,  Prev: Configuring a document converter,  Up: Advanced topics in ODT export
 
-12.8.9.2 Working with OpenDocument style files
-..............................................
+12.8.11.2 Working with OpenDocument style files
+...............................................
 
 This section explores the internals of the ODT exporter and the means
 by which it produces styled documents.  Read this section if you are
@@ -3696,8 +3781,8 @@ exporter.
 
 File: org,  Node: Creating one-off styles,  Next: Customizing tables in ODT export,  Prev: Working with OpenDocument style files,  Up: Advanced topics in ODT export
 
-12.8.9.3 Creating one-off styles
-................................
+12.8.11.3 Creating one-off styles
+.................................
 
 There are times when you would want one-off formatting in the exported
 document.  You can achieve this by embedding raw OpenDocument XML in
@@ -3755,8 +3840,8 @@ couple of examples.
 
 File: org,  Node: Customizing tables in ODT export,  Next: Validating OpenDocument XML,  Prev: Creating one-off styles,  Up: Advanced topics in ODT export
 
-12.8.9.4 Customizing tables in ODT export
-.........................................
+12.8.11.4 Customizing tables in ODT export
+..........................................
 
 You can override the default formatting of the table by specifying a
 custom table style with the `#+ATTR_ODT' line.  For a discussion on
@@ -3780,7 +3865,7 @@ export the table that follows.
      		 ((use-first-row-styles . t)
      		  (use-last-row-styles . t))))))
 
-     #+ATTR_ODT: TableWithHeaderRowAndColumn
+     #+ATTR_ODT: :style "TableWithHeaderRowAndColumn"
      | Name  | Phone | Age |
      | Peter |  1234 |  17 |
      | Anna  |  4321 |  25 |
@@ -3859,10 +3944,10 @@ To use this feature proceed as follows:
           activated
 
      For example, the entry below defines two different table styles
-     `TableWithHeaderRowsAndColumns' and `TableWithHeaderColumns' based
-     on the same template `Custom'.  The styles achieve their intended
-     effect by selectively activating the individual cell styles in
-     that template.
+     `TableWithHeaderRowAndColumn' and `TableWithFirstRowandLastRow'
+     based on the same template `Custom'.  The styles achieve their
+     intended effect by selectively activating the individual cell
+     styles in that template.
 
           (setq org-export-odt-table-styles
                 (append org-export-odt-table-styles
@@ -3878,7 +3963,7 @@ To use this feature proceed as follows:
      To do this, specify the table style created in step (2) as part of
      the `ATTR_ODT' line as shown below.
 
-          #+ATTR_ODT: TableWithHeaderRowAndColumn
+          #+ATTR_ODT: :style "TableWithHeaderRowAndColumn"
           | Name  | Phone | Age |
           | Peter |  1234 |  17 |
           | Anna  |  4321 |  25 |
@@ -3900,8 +3985,8 @@ of the `<table:table>' element in the OpenDocument-v1.2 specification
 
 File: org,  Node: Validating OpenDocument XML,  Prev: Customizing tables in ODT export,  Up: Advanced topics in ODT export
 
-12.8.9.5 Validating OpenDocument XML
-....................................
+12.8.11.5 Validating OpenDocument XML
+.....................................
 
 Occasionally, you will discover that the document created by the ODT
 exporter cannot be opened by your favorite application.  One of the
@@ -4863,11 +4948,16 @@ File: org,  Node: Evaluating code blocks,  Next: Library of Babel,  Prev: Extrac
 ===========================
 
 Code blocks can be evaluated(1) and the results of evaluation
-optionally placed in the Org mode buffer.  By default, the evaluation
-facility is only enabled for Lisp code blocks specified as
-`emacs-lisp'. However, source code blocks in many languages can be
-evaluated within Org mode (see *note Languages:: for a list of
-supported languages and *note Structure of code blocks:: for
+optionally placed in the Org mode buffer.  The results of evaluation
+are placed following a line that begins by default with `#+RESULTS' and
+optionally a cache identifier and/or the name of the evaluated code
+block.  The default value of `#+RESULTS' can be changed with the
+customizable variable `org-babel-results-keyword'.
+
+   By default, the evaluation facility is only enabled for Lisp code
+blocks specified as `emacs-lisp'. However, source code blocks in many
+languages can be evaluated within Org mode (see *note Languages:: for a
+list of supported languages and *note Structure of code blocks:: for
 information on the syntax used to define a code block).
 
    There are a number of ways to evaluate code blocks.  The simplest is
@@ -5224,6 +5314,7 @@ defined:
 * session::                     Preserve the state of code evaluation
 * noweb::                       Toggle expansion of noweb references
 * noweb-ref::                   Specify block's noweb reference resolution target
+* noweb-sep::                   String used to separate noweb references
 * cache::                       Avoid re-evaluating unchanged code blocks
 * sep::                         Delimiter for writing tabular results outside Org
 * hlines::                      Handle horizontal lines in tables
@@ -5559,10 +5650,10 @@ as either a table or scalar depending on their value.
      enclosed in a code block.  This option currently supports Emacs
      Lisp, Python, and Ruby.  E.g., `:results value pp'.
 
-   * `wrap' The result is wrapped in a `begin_result' block.  This can
-     be useful for inserting `raw' or `org' syntax results in such a
-     way that their extend is known and they can be automatically
-     removed or replaced.
+   * `wrap' The result is wrapped in a RESULTS drawer.  This can be
+     useful for inserting `raw' or `org' syntax results in such a way
+     that their extent is known and they can be automatically removed
+     or replaced.
 
 Handling
 ........
@@ -5817,9 +5908,8 @@ argument can have one of three values: `yes', `no', or `tangle'.
      will be expanded before the block is evaluated, tangled or
      exported.
 
-   * `no' The default.  No "noweb" syntax specific action is taken on
-     evaluating code blocks, However, noweb references will still be
-     expanded during tangling.
+   * `no' The default.  No "noweb" syntax specific action is taken when
+     the code block is evaluated, tangled or exported.
 
    * `tangle' All "noweb" syntax references in the body of the code
      block will be expanded before the block is tangled, however
@@ -5849,7 +5939,7 @@ will not be affected by this change, so it is still possible to use
 inline noweb references.
 
 
-File: org,  Node: noweb-ref,  Next: cache,  Prev: noweb,  Up: Specific header arguments
+File: org,  Node: noweb-ref,  Next: noweb-sep,  Prev: noweb,  Up: Specific header arguments
 
 14.8.2.13 `:noweb-ref'
 ......................
@@ -5892,21 +5982,38 @@ concatenated into the resulting pure code file(1).
         |awk '{print $2}'
       #+END_SRC
 
+   The `:noweb-sep' (see *note noweb-sep::) header argument holds the
+string used to separate accumulate noweb references like those above.
+By default a newline is used.
+
    ---------- Footnotes ----------
 
    (1) (The example needs property inheritance to be turned on for the
 `noweb-ref' property, see *note Property inheritance::).
 
 
-File: org,  Node: cache,  Next: sep,  Prev: noweb-ref,  Up: Specific header arguments
+File: org,  Node: noweb-sep,  Next: cache,  Prev: noweb-ref,  Up: Specific header arguments
 
-14.8.2.14 `:cache'
+14.8.2.14 `:noweb-sep'
+......................
+
+The `:noweb-sep' header argument holds the string used to separate
+accumulate noweb references (see *note noweb-ref::).  By default a
+newline is used.
+
+
+File: org,  Node: cache,  Next: sep,  Prev: noweb-sep,  Up: Specific header arguments
+
+14.8.2.15 `:cache'
 ..................
 
 The `:cache' header argument controls the use of in-buffer caching of
 the results of evaluating code blocks.  It can be used to avoid
-re-evaluating unchanged code blocks.  This header argument can have one
-of two values: `yes' or `no'.
+re-evaluating unchanged code blocks.  Note that the `:cache' header
+argument will not attempt to cache results when the `:session' header
+argument is used, because the results of the code block execution may
+be stored in the session outside of the Org-mode buffer.  The `:cache'
+header argument can have one of two values: `yes' or `no'.
 
    * `no' The default.  No caching takes place, and the code block will
      be evaluated every time it is called.
@@ -5942,7 +6049,7 @@ last run.
 
 File: org,  Node: sep,  Next: hlines,  Prev: cache,  Up: Specific header arguments
 
-14.8.2.15 `:sep'
+14.8.2.16 `:sep'
 ................
 
 The `:sep' header argument can be used to control the delimiter used
@@ -5958,7 +6065,7 @@ delimited.
 
 File: org,  Node: hlines,  Next: colnames,  Prev: sep,  Up: Specific header arguments
 
-14.8.2.16 `:hlines'
+14.8.2.17 `:hlines'
 ...................
 
 Tables are frequently represented with one or more horizontal lines, or
@@ -6013,7 +6120,7 @@ hlines.  The `:hlines' argument to a code block accepts the values
 
 File: org,  Node: colnames,  Next: rownames,  Prev: hlines,  Up: Specific header arguments
 
-14.8.2.17 `:colnames'
+14.8.2.18 `:colnames'
 .....................
 
 The `:colnames' header argument accepts the values `yes', `no', or
@@ -6057,7 +6164,7 @@ names may be handled directly in Emacs Lisp.
 
 File: org,  Node: rownames,  Next: shebang,  Prev: colnames,  Up: Specific header arguments
 
-14.8.2.18 `:rownames'
+14.8.2.19 `:rownames'
 .....................
 
 The `:rownames' header argument can take on the values `yes' or `no',
@@ -6089,7 +6196,7 @@ with a default value of `no'.
 
 File: org,  Node: shebang,  Next: eval,  Prev: rownames,  Up: Specific header arguments
 
-14.8.2.19 `:shebang'
+14.8.2.20 `:shebang'
 ....................
 
 Setting the `:shebang' header argument to a string value (e.g.
@@ -6100,7 +6207,7 @@ permissions of the tangled file are set to make it executable.
 
 File: org,  Node: eval,  Prev: shebang,  Up: Specific header arguments
 
-14.8.2.20 `:eval'
+14.8.2.21 `:eval'
 .................
 
 The `:eval' header argument can be used to limit the evaluation of
@@ -6248,6 +6355,12 @@ evaluation.  If `:noweb no', the default, then the reference is not
 expanded before evaluation.  See the *note noweb-ref:: header argument
 for a more flexible way to resolve noweb references.
 
+   It is possible to include the _results_ of a code block rather than
+the body.  This is done by appending parenthesis to the code block name
+which may optionally contain arguments to the code block as shown below.
+
+     <<code-block-name(optional arguments)>>
+
    Note: the default value, `:noweb no', was chosen to ensure that
 correct code is not broken in a language, such as Ruby, where `<<arg>>'
 is a syntactically valid construct.  If `<<arg>>' is not syntactically
@@ -6278,24 +6391,50 @@ context.
 
    In an Org mode buffer, the following key bindings are active:
 
-`C-c C-v a'   or   `C-c C-v      `org-babel-sha1-hash'
-C-a'                             
+`C-c C-v p'   or   `C-c C-v      `org-babel-previous-src-block'
+C-p'                             
+`C-c C-v n'   or   `C-c C-v      `org-babel-next-src-block'
+C-n'                             
+`C-c C-v e'   or   `C-c C-v      `org-babel-execute-maybe'
+C-e'                             
+`C-c C-v o'   or   `C-c C-v      `org-babel-open-src-block-result'
+C-o'                             
+`C-c C-v v'   or   `C-c C-v      `org-babel-expand-src-block'
+C-v'                             
+`C-c C-v u'   or   `C-c C-v      `org-babel-goto-src-block-head'
+C-u'                             
+`C-c C-v g'   or   `C-c C-v      `org-babel-goto-named-src-block'
+C-g'                             
+`C-c C-v r'   or   `C-c C-v      `org-babel-goto-named-result'
+C-r'                             
 `C-c C-v b'   or   `C-c C-v      `org-babel-execute-buffer'
 C-b'                             
-`C-c C-v f'   or   `C-c C-v      `org-babel-tangle-file'
-C-f'                             
-`C-c C-v g'                      `org-babel-goto-named-source-block'
-`C-c C-v h'                      `org-babel-describe-bindings'
-`C-c C-v l'   or   `C-c C-v      `org-babel-lob-ingest'
-C-l'                             
-`C-c C-v p'   or   `C-c C-v      `org-babel-expand-src-block'
-C-p'                             
 `C-c C-v s'   or   `C-c C-v      `org-babel-execute-subtree'
 C-s'                             
+`C-c C-v d'   or   `C-c C-v      `org-babel-demarcate-block'
+C-d'                             
 `C-c C-v t'   or   `C-c C-v      `org-babel-tangle'
 C-t'                             
-`C-c C-v z'   or   `C-c C-v      `org-babel-switch-to-session'
+`C-c C-v f'   or   `C-c C-v      `org-babel-tangle-file'
+C-f'                             
+`C-c C-v c'   or   `C-c C-v      `org-babel-check-src-block'
+C-c'                             
+`C-c C-v j'   or   `C-c C-v      `org-babel-insert-header-arg'
+C-j'                             
+`C-c C-v l'   or   `C-c C-v      `org-babel-load-in-session'
+C-l'                             
+`C-c C-v i'   or   `C-c C-v      `org-babel-lob-ingest'
+C-i'                             
+`C-c C-v I'   or   `C-c C-v      `org-babel-view-src-block-info'
+C-I'                             
+`C-c C-v z'   or   `C-c C-v      `org-babel-switch-to-session-with-code'
 C-z'                             
+`C-c C-v a'   or   `C-c C-v      `org-babel-sha1-hash'
+C-a'                             
+`C-c C-v h'   or   `C-c C-v      `org-babel-describe-bindings'
+C-h'                             
+`C-c C-v x'   or   `C-c C-v      `org-babel-do-key-sequence-in-edit-buffer'
+C-x'                             
 
 
 File: org,  Node: Batch execution,  Prev: Key bindings and useful functions,  Up: Working With Source Code
@@ -6954,7 +7093,7 @@ File: org,  Node: Cooperation,  Next: Conflicts,  Prev: Interaction,  Up: Intera
      has been installed properly.  As of Emacs 22, Calc is part of the
      Emacs distribution.  Another possibility for interaction between
      the two packages is using Calc for embedded calculations.  *Note
-     Embedded Mode: (Calc)Embedded Mode.
+     Embedded Mode: (calc)Embedded Mode.
 
 `constants.el' by Carsten Dominik
      In a table formula (*note The spreadsheet::), it is possible to use
@@ -7103,89 +7242,4 @@ File: org,  Node: Conflicts,  Prev: Cooperation,  Up: Interaction
 
           (define-key viper-vi-global-user-map "C-c /" 'org-sparse-tree)
 
-
-
-File: org,  Node: org-crypt.el,  Prev: Interaction,  Up: Miscellaneous
-
-15.11 org-crypt.el
-==================
-
-Org-crypt will encrypt the text of an entry, but not the headline, or
-properties.  Org-crypt uses the Emacs EasyPG library to encrypt and
-decrypt files.
-
-   Any text below a headline that has a `:crypt:' tag will be
-automatically be encrypted when the file is saved.  If you want to use
-a different tag just customize the `org-crypt-tag-matcher' setting.
-
-   To use org-crypt it is suggested that you have the following in your
-`.emacs':
-
-     (require 'org-crypt)
-     (org-crypt-use-before-save-magic)
-     (setq org-tags-exclude-from-inheritance (quote ("crypt")))
-
-     (setq org-crypt-key nil)
-       ;; GPG key to use for encryption
-       ;; Either the Key ID or set to nil to use symmetric encryption.
-
-     (setq auto-save-default nil)
-       ;; Auto-saving does not cooperate with org-crypt.el: so you need
-       ;; to turn it off if you plan to use org-crypt.el quite often.
-       ;; Otherwise, you'll get an (annoying) message each time you
-       ;; start Org.
-
-       ;; To turn it off only locally, you can insert this:
-       ;;
-       ;; # -*- buffer-auto-save-file-name: nil; -*-
-
-   Excluding the crypt tag from inheritance prevents already encrypted
-text being encrypted again.
-
-
-File: org,  Node: Hacking,  Next: MobileOrg,  Prev: Miscellaneous,  Up: Top
-
-Appendix A Hacking
-******************
-
-This appendix covers some aspects where users can extend the
-functionality of Org.
-
-* Menu:
-
-* Hooks::                       Who to reach into Org's internals
-* Add-on packages::             Available extensions
-* Adding hyperlink types::      New custom link types
-* Context-sensitive commands::  How to add functionality to such commands
-* Tables in arbitrary syntax::  Orgtbl for LaTeX and other programs
-* Dynamic blocks::              Automatically filled blocks
-* Special agenda views::        Customized views
-* Extracting agenda information::  Postprocessing of agenda information
-* Using the property API::      Writing programs that use entry properties
-* Using the mapping API::       Mapping over all or selected entries
-
-
-File: org,  Node: Hooks,  Next: Add-on packages,  Prev: Hacking,  Up: Hacking
-
-A.1 Hooks
-=========
-
-Org has a large number of hook variables that can be used to add
-functionality.  This appendix about hacking is going to illustrate the
-use of some of them.  A complete list of all hooks with documentation is
-maintained by the Worg project and can be found at
-`http://orgmode.org/worg/org-configs/org-hooks.php'.
-
-
-File: org,  Node: Add-on packages,  Next: Adding hyperlink types,  Prev: Hooks,  Up: Hacking
-
-A.2 Add-on packages
-===================
-
-A large number of add-on packages have been written by various authors.
-These packages are not part of Emacs, but they are distributed as
-contributed packages with the separate release available at the Org
-mode home page at `http://orgmode.org'.  The list of contributed
-packages, along with documentation about each package, is maintained by
-the Worg project at `http://orgmode.org/worg/org-contrib/'.
 

@@ -558,7 +558,7 @@ Insert state.  For instance, Emacs has a "yank" command, `C-y', which
 is similar to Vi's `p'.  However, unlike `p', `C-y' can be used in
 Insert state of Viper.  Emacs also has a kill ring where it keeps
 pieces of text you deleted while editing buffers.  The command `M-y' is
-used to delete the text previously put back by Emacs' `C-y' or by Vi's
+used to delete the text previously put back by Emacs's `C-y' or by Vi's
 `p' command and reinsert text that was placed on the kill-ring earlier.
 
    This works both in Vi and Insert states.  In Vi state, `M-y' is a
@@ -1090,7 +1090,7 @@ the following example:
    The above discussion of the meaning of Viper's words concerns only
 Viper's movement commands.  In regular expressions, words remain the
 same as in Emacs.  That is, the expressions `\w', `\>', `\<', etc., use
-Emacs' idea of what is a word, and they don't look into the value of
+Emacs's idea of what is a word, and they don't look into the value of
 variable `viper-syntax-preference'.  This is because Viper doesn't
 change syntax tables in fear of upsetting the various major modes that
 set these tables.
@@ -2166,7 +2166,7 @@ explained here.
 `viper-minibuffer-emacs-face  'viper-minibuffer-emacs-face'
      These faces control the appearance of the minibuffer text in the
      corresponding Viper states.  You can change the appearance of
-     these faces through Emacs' customization widget, which is
+     these faces through Emacs's customization widget, which is
      accessible through the menubar.
 
      Viper is located in this widget under the _Emulations_
@@ -2775,7 +2775,7 @@ different major modes, you should execute, for example,
 
    The above discussion concerns only the movement commands.  In regular
 expressions, words remain the same as in Emacs.  That is, the
-expressions `\w', `\>', `\<', etc., use Emacs' idea of what is a word,
+expressions `\w', `\>', `\<', etc., use Emacs's idea of what is a word,
 and they don't look into the value of variable
 `viper-syntax-preference'.  This is because Viper avoids changing
 syntax tables in order to not thwart the various major modes that set
@@ -5255,52 +5255,52 @@ Node: States in Viper13409
 Node: Emacs State18473
 Node: Vi State19954
 Node: Insert State26833
-Node: Replace State29711
-Node: The Minibuffer31375
-Node: Multiple Files in Viper33278
-Node: Unimplemented Features36720
-Node: Improvements over Vi37443
-Node: Basics38529
-Node: Undo and Backups40980
-Node: History42153
-Node: Macros and Registers43759
-Node: Completion45443
-Node: Improved Search45877
-Node: Abbreviation Facilities48237
-Node: Movement and Markers49217
-Node: New Commands52268
-Node: Useful Packages58356
-Node: Customization60418
-Node: Rudimentary Changes62225
-Node: Key Bindings77042
-Node: Packages that Change Keymaps86887
-Node: Viper Specials92761
-Node: Vi Macros110475
-Node: Commands123879
-Node: Groundwork124718
-Node: Text Handling131186
-Node: Move Commands131858
-Node: Marking135611
-Node: Appending Text136853
-Node: Editing in Insert State139191
-Node: Deleting Text139781
-Node: Changing Text141125
-Node: Search and Replace144127
-Node: Yanking146685
-Node: Undoing147606
-Node: Display147949
-Node: File and Buffer Handling149261
-Node: Mapping153787
-Node: Shell Commands155485
-Node: Options157325
-Node: Emacs Related Commands159528
-Node: Mouse-bound Commands161104
-Node: Acknowledgments161971
-Node: GNU Free Documentation License165112
-Node: Key Index190243
-Node: Function Index207853
-Node: Variable Index219530
-Node: Package Index225196
-Node: Concept Index225850
+Node: Replace State29712
+Node: The Minibuffer31376
+Node: Multiple Files in Viper33279
+Node: Unimplemented Features36721
+Node: Improvements over Vi37444
+Node: Basics38530
+Node: Undo and Backups40981
+Node: History42154
+Node: Macros and Registers43760
+Node: Completion45444
+Node: Improved Search45878
+Node: Abbreviation Facilities48238
+Node: Movement and Markers49218
+Node: New Commands52270
+Node: Useful Packages58358
+Node: Customization60420
+Node: Rudimentary Changes62227
+Node: Key Bindings77044
+Node: Packages that Change Keymaps86889
+Node: Viper Specials92763
+Node: Vi Macros110478
+Node: Commands123882
+Node: Groundwork124721
+Node: Text Handling131190
+Node: Move Commands131862
+Node: Marking135615
+Node: Appending Text136857
+Node: Editing in Insert State139195
+Node: Deleting Text139785
+Node: Changing Text141129
+Node: Search and Replace144131
+Node: Yanking146689
+Node: Undoing147610
+Node: Display147953
+Node: File and Buffer Handling149265
+Node: Mapping153791
+Node: Shell Commands155489
+Node: Options157329
+Node: Emacs Related Commands159532
+Node: Mouse-bound Commands161108
+Node: Acknowledgments161975
+Node: GNU Free Documentation License165116
+Node: Key Index190247
+Node: Function Index207857
+Node: Variable Index219534
+Node: Package Index225200
+Node: Concept Index225854
 
 End Tag Table

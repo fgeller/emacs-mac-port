@@ -1,9 +1,8 @@
-This is /Volumes/Data/Midway/emacs-24.0.94/doc/emacs/../../info/emacs,
-produced by makeinfo version 4.8 from
-/Volumes/Data/Midway/emacs-24.0.94/doc/emacs/emacs.texi.
+This is /home/cyd/trunk/doc/emacs/../../info/emacs, produced by
+makeinfo version 4.13 from /home/cyd/trunk/doc/emacs/emacs.texi.
 
-   This is the Sixteenth edition of the `GNU Emacs Manual',
-updated for Emacs version 24.0.94.
+This is the Sixteenth edition of the `GNU Emacs Manual',
+updated for Emacs version 24.0.95.
 
    Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
 
@@ -1045,7 +1044,7 @@ Change Log::), type `C-c C-a' (`log-edit-insert-changelog') to pull the
 relevant entries into the `*vc-log*' buffer.  If the topmost item in
 each `ChangeLog' was made under your user name on the current date,
 this command searches that item for entries matching the file(s) to be
-committed, and inserts them.  If you are using CVS or RCS, see *Note
+committed, and inserts them.  If you are using CVS or RCS, see *note
 Change Logs and VC::, for the opposite way of working--generating
 ChangeLog entries from the Log Edit buffer.
 
@@ -1399,7 +1398,7 @@ it is used to specify multi-file VC filesets for commands like
    To use the VC Directory buffer, type `C-x v d' (`vc-dir').  This
 reads a directory name using the minibuffer, and switches to a VC
 Directory buffer for that directory.  By default, the buffer is named
-`*vc-dir*'.  Its contents are described in *Note VC Directory Buffer::.
+`*vc-dir*'.  Its contents are described in *note VC Directory Buffer::.
 
    The `vc-dir' command automatically detects the version control
 system to be used in the specified directory.  In the event that more
@@ -2416,7 +2415,7 @@ File: emacs,  Node: Create Tags Table,  Next: Etags Regexps,  Prev: Tag Syntax, 
 ---------------------------
 
 The `etags' program is used to create a tags table file.  It knows the
-syntax of several languages, as described in *Note Tag Syntax::.  Here
+syntax of several languages, as described in *note Tag Syntax::.  Here
 is how to run `etags':
 
      etags INPUTFILES...
@@ -2861,7 +2860,7 @@ It provides some of the features of an IDE, or "Integrated Development
 Environment", in Emacs.
 
    This section provides a brief description of EDE usage.  For full
-details, see *Note EDE: (ede)Top.
+details, see *note EDE: (ede)Top.
 
    EDE is implemented as a global minor mode (*note Minor Modes::).  To
 enable it, type `M-x global-ede-mode' or click on the `Project Support
@@ -2907,8 +2906,8 @@ File: emacs,  Node: Emerge,  Prev: EDE,  Up: Maintaining
 It's not unusual for programmers to get their signals crossed and
 modify the same program in two different directions.  To recover from
 this confusion, you need to merge the two versions.  Emerge makes this
-easier.  For other ways to compare files, see *Note Comparing Files::,
-and *Note Ediff: (ediff)Top.
+easier.  For other ways to compare files, see *note Comparing Files::,
+and *note Ediff: (ediff)Top.
 
 * Menu:
 
@@ -3249,9 +3248,9 @@ this:
 While this example shows C preprocessor conditionals delimiting the two
 alternative versions, you can specify the strings to use by setting the
 variable `emerge-combine-versions-template' to a string of your choice.
-In the string, `%a' says where to put version A, and `%b' says where
-to put version B.  The default setting, which produces the results
-shown above, looks like this:
+In the string, `%a' says where to put version A, and `%b' says where to
+put version B.  The default setting, which produces the results shown
+above, looks like this:
 
      "#ifdef NEW\n%b#else /* not NEW */\n%a#endif /* not NEW */\n"
 
@@ -3336,10 +3335,10 @@ various mode-specific definitions for different major modes.  A
 mode-specific definition for the current major mode overrides a global
 definition.
 
-   You can define abbrevs interactively during the editing session.  You
-can also save lists of abbrev definitions in files for use in later
-sessions.  Some users keep extensive lists of abbrevs that they load in
-every session.
+   You can define abbrevs interactively during the editing session,
+irrespective of whether Abbrev mode is enabled.  You can also save
+lists of abbrev definitions in files for use in later sessions.  Some
+users keep extensive lists of abbrevs that they load in every session.
 
 
 File: emacs,  Node: Defining Abbrevs,  Next: Expanding Abbrevs,  Prev: Abbrev Concepts,  Up: Abbrevs
@@ -3476,8 +3475,8 @@ replacements at once.  This command is effective even if Abbrev mode is
 not enabled.
 
    Expanding any abbrev runs `abbrev-expand-functions', a special hook.
-Functions in this special hook can make arbitrary changes to the
-abbrev expansion.  *Note Abbrev Expansion: (elisp)Abbrev Expansion.
+Functions in this special hook can make arbitrary changes to the abbrev
+expansion.  *Note Abbrev Expansion: (elisp)Abbrev Expansion.
 
 
 File: emacs,  Node: Editing Abbrevs,  Next: Saving Abbrevs,  Prev: Expanding Abbrevs,  Up: Abbrevs
@@ -3817,8 +3816,8 @@ that file.
    `M-s f C-s' (`dired-isearch-filenames') performs a forward
 incremental search in the Dired buffer, looking for matches only
 amongst the file names and ignoring the rest of the text in the buffer.
-`M-s f M-C-s' (`dired-isearch-filenames-regexp') does the same, using
-a regular expression search.  If you change the variable
+`M-s f M-C-s' (`dired-isearch-filenames-regexp') does the same, using a
+regular expression search.  If you change the variable
 `dired-isearch-filenames' to `t', then the usual search commands also
 limit themselves to the file names; for instance, `C-s' behaves like
 `M-s f C-s'.  If the value is `dwim', then search commands match the
@@ -4170,8 +4169,8 @@ window, that other buffer's directory is suggested instead.
      copy, like `cp -p'.
 
      The variable `dired-recursive-copies' controls whether to copy
-     directories recursively (like `cp -r').  The default is `nil',
-     which means that directories cannot be copied.
+     directories recursively (like `cp -r').  The default is `top',
+     which means to ask before recursively copying a directory.
 
 `D'
      Delete the specified files (`dired-do-delete').  This is like the
@@ -4323,9 +4322,8 @@ command:
      each occurrence.
 
    * If the command string contains neither `*' nor `?', Emacs runs the
-     shell command once for each file, adding the file name is added at
-     the end.  For example, `! uudecode <RET>' runs `uudecode' on each
-     file.
+     shell command once for each file, adding the file name at the end.
+     For example, `! uudecode <RET>' runs `uudecode' on each file.
 
    To iterate over the file names in a more complicated fashion, use an
 explicit shell loop.  For example, here is how to uuencode each file,
@@ -4354,7 +4352,7 @@ files, using a new name made by transforming the existing name.
    Like the basic Dired file-manipulation commands (*note Operating on
 Files::), the commands described here operate either on the next N
 files, or on all files marked with `*', or on the current file.  (To
-mark files, use the commands described in *Note Marks vs Flags::.)
+mark files, use the commands described in *note Marks vs Flags::.)
 
    All of the commands described in this section work _interactively_:
 they ask you to confirm the operation for each candidate file.  Thus,
@@ -4683,9 +4681,9 @@ use `M-x find-grep-dired'.  This command reads two minibuffer
 arguments, DIRECTORY and REGEXP; it chooses all the files in DIRECTORY
 or its subdirectories that contain a match for REGEXP.  It works by
 running the programs `find' and `grep'.  See also `M-x grep-find', in
-*Note Grep Searching::.  Remember to write the regular expression for
+*note Grep Searching::.  Remember to write the regular expression for
 `grep', not for Emacs.  (An alternative method of showing files whose
-contents match a given regexp is the `% g REGEXP' command, see *Note
+contents match a given regexp is the `% g REGEXP' command, see *note
 Marks vs Flags::.)
 
    The most general command in this series is `M-x find-dired', which
@@ -6203,7 +6201,7 @@ automatically just after midnight.  You can force an update at any time
 by re-enabling appointment notification.  Both these actions also
 display the day's diary buffer, unless you set `appt-display-diary' to
 `nil'.  The appointments list is also updated whenever the diary file
-(or a file it includes; see *Note Fancy Diary Display::) is saved.
+(or a file it includes; see *note Fancy Diary Display::) is saved.
 
    You can also use the appointment notification facility like an alarm
 clock.  The command `M-x appt-add' adds entries to the appointment list

@@ -113,7 +113,7 @@ well as XEmacs (http://www.xemacs.org).  It requires an XML-parser
 (`xml.el') which is part of GNU Emacs.  If you are using XEmacs you
 want to get the `net-utils' package which contains `xml.el' for XEmacs.
 
-   Newsticker retrieves headlines either via Emacs' built-in retrieval
+   Newsticker retrieves headlines either via Emacs's built-in retrieval
 functions, by an arbitrary external program that retrieves files via
 http and prints them to stdout (like wget
 (http://www.gnu.org/software/wget/wget.html), or - on a per feed basis
@@ -190,8 +190,8 @@ and some of the most important options.
           retrieved.
 
         * `newsticker-retrieval-method' defines how headlines are
-          retrieved. This is either done using Emacs' built-in download
-          capabilities or using an external tool.
+          retrieved.  This is either done using Emacs's built-in
+          download capabilities or using an external tool.
 
         * `newsticker-retrieval-interval' defines how often headlines
           are retrieved.
@@ -767,11 +767,11 @@ Tag Table:
 Node: Top992
 Node: Overview2302
 Node: Requirements3908
-Node: Installation4633
-Node: Usage5104
-Node: Configuration6408
-Node: Remarks9206
-Node: GNU Free Documentation License9380
-Node: Index34546
+Node: Installation4634
+Node: Usage5105
+Node: Configuration6409
+Node: Remarks9209
+Node: GNU Free Documentation License9383
+Node: Index34549
 
 End Tag Table

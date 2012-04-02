@@ -4653,7 +4653,7 @@ will work.  It has four lines of documentation, but no interactive
 specification.  Since people worry that a computer is broken if they
 don't see anything going on, the first line of the body is a message.
 
-   The next line contains a `save-excursion' that returns Emacs'
+   The next line contains a `save-excursion' that returns Emacs's
 attention to the current buffer when the function completes.  This is
 useful in case you embed this function in another function that
 presumes point is restored to the original buffer.
@@ -5933,7 +5933,7 @@ File: eintr,  Node: Printed Axes,  Next: Line Graph Exercise,  Prev: recursive-g
 ==========================
 
 A graph needs printed axes, so you can orient yourself.  For a do-once
-project, it may be reasonable to draw the axes by hand using Emacs'
+project, it may be reasonable to draw the axes by hand using Emacs's
 Picture mode; but a graph drawing function may be used more than once.
 
    For this reason, I have written enhancements to the basic
@@ -5985,10 +5985,10 @@ expressions in Emacs Lisp you can change or extend Emacs.
 
 File: eintr,  Node: Default Configuration,  Next: Site-wide Init,  Prev: Emacs Initialization,  Up: Emacs Initialization
 
-Emacs' Default Configuration
-============================
+Emacs's Default Configuration
+=============================
 
-   There are those who appreciate Emacs' default configuration.  After
+   There are those who appreciate Emacs's default configuration.  After
 all, Emacs starts you in C mode when you edit a C file, starts you in
 Fortran mode when you edit a Fortran file, and starts you in
 Fundamental mode when you edit an unadorned file.  This all makes
@@ -6011,7 +6011,7 @@ so it suits me.
 contents, written in Emacs Lisp, tell Emacs what to do.(1)
 
    A `~/.emacs' file contains Emacs Lisp code.  You can write this code
-yourself; or you can use Emacs' `customize' feature to write the code
+yourself; or you can use Emacs's `customize' feature to write the code
 for you.  You can combine your own expressions and auto-written
 Customize expressions in your `.emacs' file.
 
@@ -6079,7 +6079,7 @@ File: eintr,  Node: defcustom,  Next: Beginning a .emacs File,  Prev: Site-wide 
 ===========================================
 
 You can specify variables using `defcustom' so that you and others can
-then use Emacs' `customize' feature to set their values.  (You cannot
+then use Emacs's `customize' feature to set their values.  (You cannot
 use `customize' to write function definitions; but you can write
 `defuns' in your `.emacs' file.  Indeed, you can write any Lisp
 expression in your `.emacs' file.)
@@ -6587,8 +6587,8 @@ keys to `split-window-quietly', like this:
 
    If you load many extensions, as I do, then instead of specifying the
 exact location of the extension file, as shown above, you can specify
-that directory as part of Emacs' `load-path'.  Then, when Emacs loads a
-file, it will search that directory as well as its default list of
+that directory as part of Emacs's `load-path'.  Then, when Emacs loads
+a file, it will search that directory as well as its default list of
 directories.  (The default list is specified in `paths.h' when Emacs is
 built.)
 

@@ -3055,7 +3055,7 @@ cases the last character of the prefix can simply be typed twice.
 
    Calc is controlled by many variables, most of which can be reset
 from within Calc.  Some variables are less involved with actual
-calculation and can be set outside of Calc using Emacs's customization
+calculation and can be set outside of Calc using Emacs'ss customization
 facilities.  These variables are listed below.  Typing `M-x
 customize-variable RET VARIABLE-NAME RET' will bring up a buffer in
 which the variable's value can be redefined.  Typing `M-x

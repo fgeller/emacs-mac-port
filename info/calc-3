@@ -863,7 +863,7 @@ numbers it produces are highly random.  Knuth's _Art of Computer
 Programming_, Volume II, contains a thorough description of the theory
 of random number generators and their measurement and characterization.
 
-   If `RandSeed' has no stored value, Calc calls Emacs' built-in
+   If `RandSeed' has no stored value, Calc calls Emacs's built-in
 `random' function to get a stream of random numbers, which it then
 treats in various ways to avoid problems inherent in the simple random
 number generators that many systems use to implement `random'.

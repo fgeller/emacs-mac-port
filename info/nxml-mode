@@ -325,7 +325,7 @@ File: nxml-mode,  Node: Outlining,  Next: Locating a schema,  Prev: Paragraphs, 
 ***********
 
 nXML mode allows you to display all or part of a buffer as an outline,
-in a similar way to Emacs' outline mode.  An outline in nXML mode is
+in a similar way to Emacs's outline mode.  An outline in nXML mode is
 based on recognizing two kinds of element: sections and headings.
 There is one heading for every section and one section for every
 heading.  A section contains its heading as or within its first child
@@ -822,15 +822,15 @@ Node: Completion4910
 Node: Inserting end-tags9248
 Node: Paragraphs10563
 Node: Outlining12818
-Node: Locating a schema18428
-Node: Commands for locating a schema19870
-Node: Schema locating files22489
-Node: Schema locating file syntax basics23377
-Node: Using the document's URI to locate a schema25264
-Node: Using the document element to locate a schema27784
-Node: Using type identifiers in schema locating files28845
-Node: Using multiple schema locating files31256
-Node: DTDs33079
-Node: Limitations34538
+Node: Locating a schema18429
+Node: Commands for locating a schema19871
+Node: Schema locating files22490
+Node: Schema locating file syntax basics23378
+Node: Using the document's URI to locate a schema25265
+Node: Using the document element to locate a schema27785
+Node: Using type identifiers in schema locating files28846
+Node: Using multiple schema locating files31257
+Node: DTDs33080
+Node: Limitations34539
 
 End Tag Table

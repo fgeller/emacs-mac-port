@@ -1,12 +1,10 @@
-This is
-/Volumes/Data/Midway/emacs-24.0.94/doc/lispref/../../info/elisp,
-produced by makeinfo version 4.8 from
-/Volumes/Data/Midway/emacs-24.0.94/doc/lispref/elisp.texi.
+This is /home/cyd/trunk/doc/lispref/../../info/elisp, produced by
+makeinfo version 4.13 from /home/cyd/trunk/doc/lispref/elisp.texi.
 
-   This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 24.0.94.
+This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
+corresponding to Emacs version 24.0.95.
 
-   Copyright (C) 1990-1996, 1998-2012  Free Software Foundation, Inc.
+   Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -25,6 +23,34 @@ INFO-DIR-SECTION GNU Emacs Lisp
 START-INFO-DIR-ENTRY
 * Elisp: (elisp).       The Emacs Lisp Reference Manual.
 END-INFO-DIR-ENTRY
+
+
+File: elisp,  Node: Coding Systems,  Next: Input Methods,  Prev: Translation of Characters,  Up: Non-ASCII Characters
+
+33.9 Coding Systems
+===================
+
+When Emacs reads or writes a file, and when Emacs sends text to a
+subprocess or receives text from a subprocess, it normally performs
+character code conversion and end-of-line conversion as specified by a
+particular "coding system".
+
+   How to define a coding system is an arcane matter, and is not
+documented here.
+
+* Menu:
+
+* Coding System Basics::        Basic concepts.
+* Encoding and I/O::            How file I/O functions handle coding systems.
+* Lisp and Coding Systems::     Functions to operate on coding system names.
+* User-Chosen Coding Systems::  Asking the user to choose a coding system.
+* Default Coding Systems::      Controlling the default choices.
+* Specifying Coding Systems::   Requesting a particular coding system
+                                    for a single file operation.
+* Explicit Encoding::           Encoding or decoding text without doing I/O.
+* Terminal I/O Encoding::       Use of encoding for terminal I/O.
+* MS-DOS File Types::           How DOS "text" and "binary" files
+                                    relate to coding systems.
 
 
 File: elisp,  Node: Coding System Basics,  Next: Encoding and I/O,  Up: Coding Systems
@@ -206,9 +232,9 @@ Here are the Lisp facilities for working with coding systems:
 
  -- Function: coding-system-list &optional base-only
      This function returns a list of all coding system names (symbols).
-     If BASE-ONLY is non-`nil', the value includes only the base
-     coding systems.  Otherwise, it includes alias and variant coding
-     systems as well.
+     If BASE-ONLY is non-`nil', the value includes only the base coding
+     systems.  Otherwise, it includes alias and variant coding systems
+     as well.
 
  -- Function: coding-system-p object
      This function returns `t' if OBJECT is a coding system name or
@@ -235,13 +261,13 @@ Here are the Lisp facilities for working with coding systems:
 
      If this function returns a vector, Emacs will decide, as part of
      the text encoding or decoding process, what eol conversion to use.
-     For decoding, the end-of-line format of the text is
-     auto-detected, and the eol conversion is set to match it (e.g.,
-     DOS-style CRLF format will imply `dos' eol conversion).  For
-     encoding, the eol conversion is taken from the appropriate default
-     coding system (e.g., default value of `buffer-file-coding-system'
-     for `buffer-file-coding-system'), or from the default eol
-     conversion appropriate for the underlying platform.
+     For decoding, the end-of-line format of the text is auto-detected,
+     and the eol conversion is set to match it (e.g., DOS-style CRLF
+     format will imply `dos' eol conversion).  For encoding, the eol
+     conversion is taken from the appropriate default coding system
+     (e.g., default value of `buffer-file-coding-system' for
+     `buffer-file-coding-system'), or from the default eol conversion
+     appropriate for the underlying platform.
 
  -- Function: coding-system-change-eol-conversion coding-system eol-type
      This function returns a coding system which is like CODING-SYSTEM
@@ -288,7 +314,7 @@ Here are the Lisp facilities for working with coding systems:
      some coding systems cannot encode some of the characters, the
      value is an alist, each element of which has the form
      `(CODING-SYSTEM1 POS1 POS2 ...)', meaning that CODING-SYSTEM1
-     cannot encode characters at buffer positions POS1, POS2, .....
+     cannot encode characters at buffer positions POS1, POS2, ....
 
      START may be a string, in which case END is ignored and the
      returned value references string indices instead of buffer
@@ -968,7 +994,7 @@ future, symbols may also be usable as input method names.
      it is good for.
 
    The fundamental interface to input methods is through the variable
-`input-method-function'.  *Note Reading One Event::, and *Note Invoking
+`input-method-function'.  *Note Reading One Event::, and *note Invoking
 the Input Method::.
 
 
@@ -1053,7 +1079,7 @@ portions of it.
 
    The `skip-chars...' functions also perform a kind of searching.
 *Note Skipping Characters::.  To search for changes in character
-properties, see *Note Property Search::.
+properties, see *note Property Search::.
 
 
 File: elisp,  Node: String Search,  Next: Searching and Case,  Up: Searching and Matching
@@ -1064,7 +1090,9 @@ File: elisp,  Node: String Search,  Next: Searching and Case,  Up: Searching and
 These are the primitive functions for searching through the text in a
 buffer.  They are meant for use in programs, but you may call them
 interactively.  If you do so, they prompt for the search string; the
-arguments LIMIT and NOERROR are `nil', and REPEAT is 1.
+arguments LIMIT and NOERROR are `nil', and REPEAT is 1.  For more
+details on interactive searching, *note Searching and Replacement:
+(emacs)Search.
 
    These search functions convert the search string to multibyte if the
 buffer is multibyte; they convert the search string to unibyte if the
@@ -1091,9 +1119,9 @@ buffer is unibyte.  *Note Text Representations::.
           The quick brown fox-!- jumped over the lazy dog.
           ---------- Buffer: foo ----------
 
-     The argument LIMIT specifies the upper bound to the search.  (It
-     must be a position in the current buffer.)  No match extending
-     after that position is accepted.  If LIMIT is omitted or `nil', it
+     The argument LIMIT specifies the bound to the search, and should
+     be a position in the current buffer.  No match extending after
+     that position is accepted.  If LIMIT is omitted or `nil', it
      defaults to the end of the accessible portion of the buffer.
 
      What happens when the search fails depends on the value of
@@ -1101,9 +1129,6 @@ buffer is unibyte.  *Note Text Representations::.
      signaled.  If NOERROR is `t', `search-forward' returns `nil' and
      does nothing.  If NOERROR is neither `nil' nor `t', then
      `search-forward' moves point to the upper bound and returns `nil'.
-     (It would be more consistent now to return the new position of
-     point in that case, but some existing programs may depend on a
-     value of `nil'.)
 
      The argument NOERROR only affects valid searches which fail to
      find a match.  Invalid arguments cause errors regardless of
@@ -1145,7 +1170,7 @@ buffer is unibyte.  *Note Text Representations::.
           ---------- Buffer: foo ----------
 
           (word-search-forward "Please find the ball, boy.")
-               => 35
+               => 36
 
           ---------- Buffer: foo ----------
           He said "Please!  Find
@@ -1165,11 +1190,15 @@ buffer is unibyte.  *Note Text Representations::.
      If REPEAT is non-`nil', then the search is repeated that many
      times.  Point is positioned at the end of the last match.
 
+     Internal, `word-search-forward' and related functions use the
+     function `word-search-regexp' to convert STRING to a regular
+     expression that ignores punctuation.
+
  -- Command: word-search-forward-lax string &optional limit noerror
           repeat
      This command is identical to `word-search-forward', except that
-     the end of `string' need not match a word boundary unless it ends
-     in whitespace.  For instance, searching for `ball boy' matches
+     the end of STRING need not match a word boundary, unless STRING
+     ends in whitespace.  For instance, searching for `ball boy' matches
      `ball boyee', but does not match `aball boy'.
 
  -- Command: word-search-backward string &optional limit noerror repeat
@@ -1181,8 +1210,8 @@ buffer is unibyte.  *Note Text Representations::.
  -- Command: word-search-backward-lax string &optional limit noerror
           repeat
      This command is identical to `word-search-backward', except that
-     the end of `string' need not match a word boundary unless it ends
-     in whitespace.
+     the end of STRING need not match a word boundary, unless STRING
+     ends in whitespace.
 
 
 File: elisp,  Node: Searching and Case,  Next: Regular Expressions,  Prev: String Search,  Up: Searching and Matching
@@ -1199,22 +1228,24 @@ too; thus, `[aB]' would match `a' or `A' or `b' or `B'.
 to `nil'.  Then all letters must match exactly, including case.  This
 is a buffer-local variable; altering the variable affects only the
 current buffer.  (*Note Intro to Buffer-Local::.)  Alternatively, you
-may change the default value of `case-fold-search'.
+may change the default value.  In Lisp code, you will more typically
+use `let' to bind `case-fold-search' to the desired value.
 
    Note that the user-level incremental search feature handles case
 distinctions differently.  When the search string contains only lower
 case letters, the search ignores case, but when the search string
 contains one or more upper case letters, the search becomes
 case-sensitive.  But this has nothing to do with the searching
-functions used in Lisp code.
+functions used in Lisp code.  *Note Incremental Search:
+(emacs)Incremental Search.
 
  -- User Option: case-fold-search
      This buffer-local variable determines whether searches should
      ignore case.  If the variable is `nil' they do not ignore case;
-     otherwise they do ignore case.
+     otherwise (and by default) they do ignore case.
 
  -- User Option: case-replace
-     This variable determines whether the higher level replacement
+     This variable determines whether the higher-level replacement
      functions should preserve case.  If the variable is `nil', that
      means to use the replacement text verbatim.  A non-`nil' value
      means to convert the case of the replacement text according to the
@@ -1234,13 +1265,13 @@ denotes a (possibly infinite) set of strings.  Searching for matches for
 a regexp is a very powerful operation.  This section explains how to
 write regexps; the following section says how to search for them.
 
-   For convenient interactive development of regular expressions, you
-can use the `M-x re-builder' command.  It provides a convenient
-interface for creating regular expressions, by giving immediate visual
-feedback in a separate buffer.  As you edit the regexp, all its matches
-in the target buffer are highlighted.  Each parenthesized
-sub-expression of the regexp is shown in a distinct face, which makes
-it easier to verify even very complex regexps.
+   For interactive development of regular expressions, you can use the
+`M-x re-builder' command.  It provides a convenient interface for
+creating regular expressions, by giving immediate visual feedback in a
+separate buffer.  As you edit the regexp, all its matches in the target
+buffer are highlighted.  Each parenthesized sub-expression of the
+regexp is shown in a distinct face, which makes it easier to verify
+even very complex regexps.
 
 * Menu:
 
@@ -1374,7 +1405,12 @@ expression.
      `[a-z$%.]', which matches any lower case ASCII letter or `$', `%'
      or period.
 
-     Note that the usual regexp special characters are not special
+     If `case-fold-search' is non-`nil', `[a-z]' also matches
+     upper-case letters.  Note that a range like `[a-z]' is not
+     affected by the locale's collation sequence, it always represents
+     a sequence in ASCII order.
+
+     Note also that the usual regexp special characters are not special
      inside a character alternative.  A completely different set of
      characters is special inside character alternatives: `]', `-' and
      `^'.
@@ -1383,22 +1419,25 @@ expression.
      first character.  For example, `[]a]' matches `]' or `a'.  To
      include a `-', write `-' as the first or last character of the
      character alternative, or put it after a range.  Thus, `[]-]'
-     matches both `]' and `-'.
+     matches both `]' and `-'.  (As explained below, you cannot use
+     `\]' to include a `]' inside a character alternative, since `\' is
+     not special there.)
 
      To include `^' in a character alternative, put it anywhere but at
      the beginning.
 
      If a range starts with a unibyte character C and ends with a
      multibyte character C2, the range is divided into two parts: one
-     is `C..?\377', the other is `C1..C2', where C1 is the first
-     character of the charset to which C2 belongs.
+     spans the unibyte characters `C..?\377', the other the multibyte
+     characters `C1..C2', where C1 is the first character of the
+     charset to which C2 belongs.
 
      A character alternative can also specify named character classes
-     (*note Char Classes::).  This is a POSIX feature whose syntax is
-     `[:CLASS:]'.  Using a character class is equivalent to mentioning
-     each of the characters in that class; but the latter is not
-     feasible in practice, since some classes include thousands of
-     different characters.
+     (*note Char Classes::).  This is a POSIX feature.  For example,
+     `[[:ascii:]]' matches any ASCII character.  Using a character
+     class is equivalent to mentioning each of the characters in that
+     class; but the latter is not feasible in practice, since some
+     classes include thousands of different characters.
 
 `[^ ... ]'
      `[^' begins a "complemented character alternative".  This matches
@@ -1772,8 +1811,8 @@ beginning and end of the buffer.
      end with a symbol-constituent character.
 
    Not every string is a valid regular expression.  For example, a
-string that ends inside a character alternative without terminating `]'
-is invalid, and so is a string that ends with a single `\'.  If an
+string that ends inside a character alternative without a terminating
+`]' is invalid, and so is a string that ends with a single `\'.  If an
 invalid regular expression is passed to any of the search functions, an
 `invalid-regexp' error is signaled.
 
@@ -1789,21 +1828,18 @@ follows.  (Nowadays Emacs uses a similar but more complex default
 regexp constructed by the function `sentence-end'.  *Note Standard
 Regexps::.)
 
-   First, we show the regexp as a string in Lisp syntax to distinguish
-spaces from tab characters.  The string constant begins and ends with a
+   Below, we show first the regexp as a string in Lisp syntax (to
+distinguish spaces from tab characters), and then the result of
+evaluating it.  The string constant begins and ends with a
 double-quote.  `\"' stands for a double-quote as part of the string,
 `\\' for a backslash as part of the string, `\t' for a tab and `\n' for
 a newline.
 
      "[.?!][]\"')}]*\\($\\| $\\|\t\\|  \\)[ \t\n]*"
-
-In contrast, if you evaluate this string, you will see the following:
-
-     "[.?!][]\"')}]*\\($\\| $\\|\t\\|  \\)[ \t\n]*"
           => "[.?!][]\"')}]*\\($\\| $\\|  \\|  \\)[
      ]*"
 
-In this output, tab and newline appear as themselves.
+In the output, tab and newline appear as themselves.
 
    This regular expression contains four parts in succession and can be
 deciphered as follows:
@@ -1850,7 +1886,7 @@ These functions operate on regular expressions.
      is STRING.  Using this regular expression in `looking-at' will
      succeed only if the next characters in the buffer are STRING;
      using it in a search function will succeed if the text being
-     searched contains STRING.
+     searched contains STRING.  *Note Regexp Search::.
 
      This allows you to request an exact string match or search when
      calling a function that wants a regular expression.
@@ -1870,7 +1906,7 @@ These functions operate on regular expressions.
      This function returns an efficient regular expression that will
      match any of the strings in the list STRINGS.  This is useful when
      you need to make matching or searching as fast as possible--for
-     example, for Font Lock mode.
+     example, for Font Lock mode(1).
 
      If the optional argument PAREN is non-`nil', then the returned
      regular expression is always enclosed by at least one
@@ -1885,7 +1921,7 @@ These functions operate on regular expressions.
      expression which is equivalent to the actual value (but not as
      efficient):
 
-          (defun regexp-opt (strings paren)
+          (defun regexp-opt (strings &optional paren)
             (let ((open-paren (if paren "\\(" ""))
                   (close-paren (if paren "\\)" "")))
               (concat open-paren
@@ -1897,6 +1933,20 @@ These functions operate on regular expressions.
      (parenthesized expressions) in REGEXP.  This does not include shy
      groups (*note Regexp Backslash::).
 
+ -- Function: regexp-opt-charset chars
+     This function returns a regular expression matching a character in
+     the list of characters CHARS.
+
+          (regexp-opt-charset '(?a ?b ?c ?d ?e))
+               => "[a-e]"
+
+   ---------- Footnotes ----------
+
+   (1) Note that `regexp-opt' does not guarantee that its result is
+absolutely the most efficient form possible.  A hand-tuned regular
+expression can sometimes be slightly more efficient, but is almost
+never worth the effort.
+
 
 File: elisp,  Node: Regexp Search,  Next: POSIX Regexps,  Prev: Regular Expressions,  Up: Searching and Matching
 
@@ -1905,7 +1955,7 @@ File: elisp,  Node: Regexp Search,  Next: POSIX Regexps,  Prev: Regular Expressi
 
 In GNU Emacs, you can search for the next match for a regular
 expression either incrementally or not.  For incremental search
-commands, see *Note Regular Expression Search: (emacs)Regexp Search.
+commands, see *note Regular Expression Search: (emacs)Regexp Search.
 Here we describe only the search functions useful in programs.  The
 principal one is `re-search-forward'.
 
@@ -2018,10 +2068,10 @@ if the buffer is unibyte.  *Note Text Representations::.
      character following point.  The result is `t' if so, `nil'
      otherwise.
 
-     This function does not move point, but it updates the match data,
-     which you can access using `match-beginning' and `match-end'.
-     *Note Match Data::.  If you need to test for a match without
-     modifying the match data, use `looking-at-p', described below.
+     This function does not move point, but it does update the match
+     data.  *Note Match Data::.  If you need to test for a match
+     without modifying the match data, use `looking-at-p', described
+     below.
 
      In this example, point is located directly before the `T'.  If it
      were anywhere else, the result would be `nil'.
@@ -2035,8 +2085,8 @@ if the buffer is unibyte.  *Note Text Representations::.
                => t
 
  -- Function: looking-back regexp &optional limit greedy
-     This function returns `t' if REGEXP matches text before point,
-     ending at point, and `nil' otherwise.
+     This function returns `t' if REGEXP matches the text immediately
+     before point (i.e., ending at point), and `nil' otherwise.
 
      Because regular expression matching works only going forward, this
      is implemented by searching backwards from point for a match that
@@ -2059,6 +2109,10 @@ if the buffer is unibyte.  *Note Text Representations::.
                => t
           (looking-back "read \"" 4)
                => nil
+
+     As a general recommendation, try to avoid using `looking-back'
+     wherever possible, since it is slow.  For this reason, there are no
+     plans to add a `looking-back-p' function.
 
  -- Function: looking-at-p regexp
      This predicate function works like `looking-at', but without
@@ -2140,7 +2194,7 @@ match data around it, to prevent it from being overwritten.
    Notice that all functions are allowed to overwrite the match data
 unless they're explicitly documented not to do so.  A consequence is
 that functions that are run implicitly in the background (*note
-Timers::, and *Note Idle Timers::) should likely save and restore the
+Timers::, and *note Idle Timers::) should likely save and restore the
 match data explicitly.
 
 * Menu:
@@ -2250,11 +2304,13 @@ available is about the entire match.
 query the match data immediately after searching, before calling any
 other function that might perform another search.  Alternatively, you
 may save and restore the match data (*note Saving Match Data::) around
-the call to functions that could perform another search.
+the call to functions that could perform another search.  Or use the
+functions that explicitly do not modify the match data; e.g.
+`string-match-p'.
 
    A search which fails may or may not alter the match data.  In the
-past, a failing search did not do this, but we may change it in the
-future.  So don't try to rely on the value of the match data after a
+current implementation, it does not, but we may change it in the
+future.  Don't try to rely on the value of the match data after a
 failing search.
 
  -- Function: match-string count &optional in-string
@@ -2268,7 +2324,8 @@ failing search.
      argument IN-STRING.  After a buffer search or match, you should
      omit IN-STRING or pass `nil' for it; but you should make sure that
      the current buffer when you call `match-string' is the one in
-     which you did the searching or matching.
+     which you did the searching or matching.  Failure to follow this
+     advice will lead to incorrect results.
 
      The value is `nil' if COUNT is out of range, or for a
      subexpression inside a `\|' alternative that wasn't used or a
@@ -2279,8 +2336,9 @@ failing search.
      text properties.
 
  -- Function: match-beginning count
-     This function returns the position of the start of text matched by
-     the last regular expression searched for, or a subexpression of it.
+     This function returns the position of the start of the text
+     matched by the last regular expression searched for, or a
+     subexpression of it.
 
      If COUNT is zero, then the value is the position of the start of
      the entire match.  Otherwise, COUNT specifies a subexpression in
@@ -2354,7 +2412,7 @@ entire match data, all at once.
 
  -- Function: match-data &optional integers reuse reseat
      This function returns a list of positions (markers or integers)
-     that record all the information on what text the last search
+     that record all the information on the text that the last search
      matched.  Element zero is the position of the beginning of the
      match for the whole expression; element one is the position of the
      end of the match for the expression.  The next two elements are
@@ -2413,15 +2471,14 @@ File: elisp,  Node: Saving Match Data,  Prev: Entire Match Data,  Up: Match Data
 34.6.4 Saving and Restoring the Match Data
 ------------------------------------------
 
-When you call a function that may do a search, you may need to save and
+When you call a function that may search, you may need to save and
 restore the match data around that call, if you want to preserve the
 match data from an earlier search for later use.  Here is an example
 that shows the problem that arises if you fail to save the match data:
 
      (re-search-forward "The \\(cat \\)")
           => 48
-     (foo)                   ; Perhaps `foo' does
-                             ;   more searching.
+     (foo)                   ; `foo' does more searching.
      (match-end 0)
           => 61              ; Unexpected result--not 48!
 
@@ -2467,9 +2524,8 @@ this.
           fixedcase literal subexp start
      This function copies STRING and searches it for matches for
      REGEXP, and replaces them with REP.  It returns the modified copy.
-     If START is non-`nil', the search for matches starts at that
-     index in STRING, so matches starting before that index are not
-     changed.
+     If START is non-`nil', the search for matches starts at that index
+     in STRING, so matches starting before that index are not changed.
 
      This function uses `replace-match' to do the replacement, and it
      passes the optional arguments FIXEDCASE, LITERAL and SUBEXP along
@@ -2479,7 +2535,7 @@ this.
      `replace-regexp-in-string' calls REP for each match, passing the
      text of the match as its sole argument.  It collects the value REP
      returns and passes that to `replace-match' as the replacement
-     string.  The match-data at this point are the result of matching
+     string.  The match data at this point are the result of matching
      REGEXP against a substring of STRING.
 
    If you want to write a command along the lines of `query-replace',
@@ -2516,8 +2572,8 @@ you can use `perform-replace' to do the work.
      REPLACEMENTS list before advancing cyclically to the next one.
 
      If FROM-STRING contains upper-case letters, then `perform-replace'
-     binds `case-fold-search' to `nil', and it uses the `replacements'
-     without altering the case of them.
+     binds `case-fold-search' to `nil', and it uses the REPLACEMENTS
+     without altering their case.
 
      Normally, the keymap `query-replace-map' defines the possible user
      responses for queries.  The argument MAP, if non-`nil', specifies
@@ -2541,32 +2597,36 @@ you can use `perform-replace' to do the work.
         * Prefix keys are not supported; each key binding must be for a
           single-event key sequence.  This is because the functions
           don't use `read-key-sequence' to get the input; instead, they
-          read a single event and look it up "by hand."
+          read a single event and look it up "by hand".
 
    Here are the meaningful "bindings" for `query-replace-map'.  Several
 of them are meaningful only for `query-replace' and friends.
 
 `act'
-     Do take the action being considered--in other words, "yes."
+     Do take the action being considered--in other words, "yes".
 
 `skip'
-     Do not take action for this question--in other words, "no."
+     Do not take action for this question--in other words, "no".
 
 `exit'
-     Answer this question "no," and give up on the entire series of
-     questions, assuming that the answers will be "no."
+     Answer this question "no", and give up on the entire series of
+     questions, assuming that the answers will be "no".
+
+`exit-prefix'
+     Like `exit', but add the key that was pressed to
+     `unread-comment-events'.
 
 `act-and-exit'
-     Answer this question "yes," and give up on the entire series of
-     questions, assuming that subsequent answers will be "no."
+     Answer this question "yes", and give up on the entire series of
+     questions, assuming that subsequent answers will be "no".
 
 `act-and-show'
-     Answer this question "yes," but show the results--don't advance yet
+     Answer this question "yes", but show the results--don't advance yet
      to the next question.
 
 `automatic'
      Answer this question and all subsequent questions in the series
-     with "yes," without further user interaction.
+     with "yes", without further user interaction.
 
 `backup'
      Move back to the previous place that a question was asked about.
@@ -2574,6 +2634,9 @@ of them are meaningful only for `query-replace' and friends.
 `edit'
      Enter a recursive edit to deal with this question--instead of any
      other action that would normally be taken.
+
+`edit-replacement'
+     Edit the replacement for this question in the minibuffer.
 
 `delete-and-edit'
      Delete the text being considered, then enter a recursive edit to
@@ -2592,7 +2655,17 @@ of them are meaningful only for `query-replace' and friends.
  -- Variable: multi-query-replace-map
      This variable holds a keymap that extends `query-replace-map' by
      providing additional keybindings that are useful in multi-buffer
-     replacements.
+     replacements.  The additional "bindings" are:
+
+    `automatic-all'
+          Answer this question and all subsequent questions in the
+          series with "yes", without further user interaction, for all
+          remaining buffers.
+
+    `exit-current'
+          Answer this question "no", and give up on the entire series of
+          questions for the current buffer.  Continue to the next
+          buffer in the sequence.
 
  -- Variable: replace-search-function
      This variable specifies a function that `perform-replace' calls to
@@ -2651,17 +2724,17 @@ never used.
      sentence.  (All paragraph boundaries also end sentences,
      regardless.)
 
-     If the value is `nil', the default, then the function
-     `sentence-end' has to construct the regexp.  That is why you
-     should always call the function `sentence-end' to obtain the
-     regexp to be used to recognize the end of a sentence.
+     If the value is `nil', as it is by default, then the function
+     `sentence-end' constructs the regexp.  That is why you should
+     always call the function `sentence-end' to obtain the regexp to be
+     used to recognize the end of a sentence.
 
  -- Function: sentence-end
      This function returns the value of the variable `sentence-end', if
      non-`nil'.  Otherwise it returns a default value based on the
      values of the variables `sentence-end-double-space' (*note
      Definition of sentence-end-double-space::),
-     `sentence-end-without-period' and `sentence-end-without-space'.
+     `sentence-end-without-period', and `sentence-end-without-space'.
 
 
 File: elisp,  Node: Syntax Tables,  Next: Abbrevs,  Prev: Searching and Matching,  Up: Top
@@ -3759,15 +3832,16 @@ Files::.
    Because the symbols used for abbrevs are not interned in the usual
 obarray, they will never appear as the result of reading a Lisp
 expression; in fact, normally they are never used except by the code
-that handles abbrevs.  Therefore, it is safe to use them in an
-extremely nonstandard way.
+that handles abbrevs.  Therefore, it is safe to use them in a
+nonstandard way.
 
-   For the user-level commands for abbrevs, see *Note Abbrev Mode:
-(emacs)Abbrevs.
+   If the minor mode Abbrev mode is enabled, the buffer-local variable
+`abbrev-mode' is non-`nil', and abbrevs are automatically expanded in
+the buffer.  For the user-level commands for abbrevs, see *note Abbrev
+Mode: (emacs)Abbrevs.
 
 * Menu:
 
-* Abbrev Mode::                 Setting up Emacs for abbreviation.
 * Tables: Abbrev Tables.        Creating and working with abbrev tables.
 * Defining Abbrevs::            Specifying abbreviations and their expansions.
 * Files: Abbrev Files.          Saving abbrevs in files.
@@ -3779,25 +3853,9 @@ extremely nonstandard way.
                                 Which properties have which effect.
 
 
-File: elisp,  Node: Abbrev Mode,  Next: Abbrev Tables,  Prev: Abbrevs,  Up: Abbrevs
+File: elisp,  Node: Abbrev Tables,  Next: Defining Abbrevs,  Prev: Abbrevs,  Up: Abbrevs
 
-36.1 Setting Up Abbrev Mode
-===========================
-
-Abbrev mode is a minor mode controlled by the variable `abbrev-mode'.
-
- -- User Option: abbrev-mode
-     If this variable is non-`nil', abbrevs are automatically expanded
-     in the buffer.  If the value is `nil', abbrevs may be defined, but
-     they are not expanded automatically.
-
-     This variable automatically becomes buffer-local when set in any
-     fashion.
-
-
-File: elisp,  Node: Abbrev Tables,  Next: Defining Abbrevs,  Prev: Abbrev Mode,  Up: Abbrevs
-
-36.2 Abbrev Tables
+36.1 Abbrev Tables
 ==================
 
 This section describes how to create and manipulate abbrev tables.
@@ -3814,13 +3872,12 @@ This section describes how to create and manipulate abbrev tables.
 
  -- Function: clear-abbrev-table abbrev-table
      This function undefines all the abbrevs in ABBREV-TABLE, leaving
-     it empty.  It always returns `nil'.
+     it empty.
 
  -- Function: copy-abbrev-table abbrev-table
      This function returns a copy of ABBREV-TABLE--a new abbrev table
-     containing the same abbrev definitions.  There is one difference
-     between the contents of ABBREV-TABLE and the returned copy: all
-     abbrevs in the latter have their property lists set to `nil'.
+     containing the same abbrev definitions.  It does _not_ copy any
+     property lists; only the names, values, and functions.
 
  -- Function: define-abbrev-table tabname definitions &optional
           docstring &rest props
@@ -3828,16 +3885,14 @@ This section describes how to create and manipulate abbrev tables.
      i.e., as a variable whose value is an abbrev table.  It defines
      abbrevs in the table according to DEFINITIONS, a list of elements
      of the form `(ABBREVNAME EXPANSION [HOOK] [PROPS...])'.  These
-     elements are passed as arguments to `define-abbrev'.  The return
-     value is always `nil'.
-
-     The optional string DOCSTRING is the documentation string of the
+     elements are passed as arguments to `define-abbrev'.   The
+     optional string DOCSTRING is the documentation string of the
      variable TABNAME.  The property list PROPS is applied to the
      abbrev table (*note Abbrev Table Properties::).
 
      If this function is called more than once for the same TABNAME,
      subsequent calls add the definitions in DEFINITIONS to TABNAME,
-     rather than overriding the entire original contents.  (A
+     rather than overwriting the entire original contents.  (A
      subsequent call only overrides abbrevs explicitly redefined or
      undefined in DEFINITIONS.)
 
@@ -3848,26 +3903,24 @@ This section describes how to create and manipulate abbrev tables.
  -- Function: insert-abbrev-table-description name &optional human
      This function inserts before point a description of the abbrev
      table named NAME.  The argument NAME is a symbol whose value is an
-     abbrev table.  The return value is always `nil'.
-
-     If HUMAN is non-`nil', the description is human-oriented.  System
-     abbrevs are listed and identified as such.  Otherwise the
-     description is a Lisp expression--a call to `define-abbrev-table'
-     that would define NAME as it is currently defined, but without the
-     system abbrevs.  (The mode or package using NAME is supposed to
-     add these to NAME separately.)
+     abbrev table.   If HUMAN is non-`nil', the description is
+     human-oriented.  System abbrevs are listed and identified as such.
+     Otherwise the description is a Lisp expression--a call to
+     `define-abbrev-table' that would define NAME as it is currently
+     defined, but without the system abbrevs.  (The mode or package
+     using NAME is supposed to add these to NAME separately.)
 
 
 File: elisp,  Node: Defining Abbrevs,  Next: Abbrev Files,  Prev: Abbrev Tables,  Up: Abbrevs
 
-36.3 Defining Abbrevs
+36.2 Defining Abbrevs
 =====================
 
 `define-abbrev' is the low-level basic function for defining an abbrev
 in an abbrev table.
 
    When a major mode defines a system abbrev, it should call
-`define-abbrev' and specify a `t' for the `:system' property.  Be aware
+`define-abbrev' and specify `t' for the `:system' property.  Be aware
 that any saved non-"system" abbrevs are restored at startup, i.e.
 before some major modes are loaded.  Therefore, major modes should not
 assume that their abbrev tables are empty when they are first loaded.
@@ -3896,12 +3949,12 @@ assume that their abbrev tables are empty when they are first loaded.
      self-inserting input character that triggered the expansion.  If
      HOOK returns non-`nil' in this case, that inhibits insertion of
      the character.  By contrast, if HOOK returns `nil',
-     `expand-abbrev' also returns `nil', as if expansion had not really
-     occurred.
+     `expand-abbrev' (or `abbrev-insert') also returns `nil', as if
+     expansion had not really occurred.
 
      Normally, `define-abbrev' sets the variable `abbrevs-changed' to
-     `t', if it actually changes the abbrev.  (This is so that some
-     commands will offer to save the abbrevs.)  It does not do this for
+     `t', if it actually changes the abbrev.  This is so that some
+     commands will offer to save the abbrevs.  It does not do this for
      a system abbrev, since those aren't saved anyway.
 
  -- User Option: only-global-abbrevs
@@ -3914,7 +3967,7 @@ assume that their abbrev tables are empty when they are first loaded.
 
 File: elisp,  Node: Abbrev Files,  Next: Abbrev Expansion,  Prev: Defining Abbrevs,  Up: Abbrevs
 
-36.4 Saving Abbrevs in Files
+36.3 Saving Abbrevs in Files
 ============================
 
 A file of saved abbrev definitions is actually a file of Lisp code.
@@ -3922,6 +3975,7 @@ The abbrevs are saved in the form of a Lisp program to define the same
 abbrev tables with the same contents.  Therefore, you can load the file
 with `load' (*note How Programs Do Loading::).  However, the function
 `quietly-read-abbrev-file' is provided as a more convenient interface.
+Emacs automatically calls this function at startup.
 
    User-level facilities such as `save-some-buffers' can save abbrevs
 in a file automatically, under the control of variables described here.
@@ -3932,16 +3986,16 @@ in a file automatically, under the control of variables described here.
  -- Function: quietly-read-abbrev-file &optional filename
      This function reads abbrev definitions from a file named FILENAME,
      previously written with `write-abbrev-file'.  If FILENAME is
-     omitted or `nil', the file specified in `abbrev-file-name' is
-     used.  `save-abbrevs' is set to `t' so that changes will be saved.
+     omitted or `nil', the file specified in `abbrev-file-name' is used.
 
-     This function does not display any messages.  It returns `nil'.
+     As the name implies, this function does not display any messages.
 
  -- User Option: save-abbrevs
      A non-`nil' value for `save-abbrevs' means that Emacs should offer
-     the user to save abbrevs when files are saved.  If the value is
-     `silently', Emacs saves the abbrevs without asking the user.
-     `abbrev-file-name' specifies the file to save the abbrevs in.
+     to save abbrevs (if any have changed) when files are saved.  If
+     the value is `silently', Emacs saves the abbrevs without asking
+     the user.  `abbrev-file-name' specifies the file to save the
+     abbrevs in.
 
  -- Variable: abbrevs-changed
      This variable is set non-`nil' by defining or altering any abbrevs
@@ -3958,7 +4012,7 @@ in a file automatically, under the control of variables described here.
 
 File: elisp,  Node: Abbrev Expansion,  Next: Standard Abbrev Tables,  Prev: Abbrev Files,  Up: Abbrevs
 
-36.5 Looking Up and Expanding Abbreviations
+36.4 Looking Up and Expanding Abbreviations
 ===========================================
 
 Abbrevs are usually expanded by certain interactive commands, including
@@ -3968,17 +4022,17 @@ communication.
 
  -- Function: abbrev-symbol abbrev &optional table
      This function returns the symbol representing the abbrev named
-     ABBREV.  The value returned is `nil' if that abbrev is not
-     defined.  The optional second argument TABLE is the abbrev table
-     in which to look it up.  If TABLE is `nil', this function tries
-     first the current buffer's local abbrev table, and second the
-     global abbrev table.
+     ABBREV.  It returns `nil' if that abbrev is not defined.  The
+     optional second argument TABLE is the abbrev table in which to
+     look it up.  If TABLE is `nil', this function tries first the
+     current buffer's local abbrev table, and second the global abbrev
+     table.
 
  -- Function: abbrev-expansion abbrev &optional table
      This function returns the string that ABBREV would expand into (as
-     defined by the abbrev tables used for the current buffer).  If
-     ABBREV is not a valid abbrev, the function returns `nil'.  The
-     optional argument TABLE specifies the abbrev table to use, as in
+     defined by the abbrev tables used for the current buffer).  It
+     returns `nil' if ABBREV is not a valid abbrev.  The optional
+     argument TABLE specifies the abbrev table to use, as in
      `abbrev-symbol'.
 
  -- Command: expand-abbrev
@@ -3986,7 +4040,7 @@ communication.
      does not follow an abbrev, this command does nothing.  The command
      returns the abbrev symbol if it did expansion, `nil' otherwise.
 
-     If the abbrev symbol has a hook function which is a symbol whose
+     If the abbrev symbol has a hook function that is a symbol whose
      `no-self-insert' property is non-`nil', and if the hook function
      returns `nil' as its value, then `expand-abbrev' returns `nil'
      even though expansion did occur.
@@ -4049,12 +4103,12 @@ communication.
      command.
 
  -- Variable: abbrev-expand-functions
-     This is a special hook run _around_ the `expand-abbrev' function.
-     Each function on this hook is called with a single argument: a
-     function that performs the normal abbrev expansion.  The hook
-     function can hence do anything it wants before and after
-     performing the expansion.  It can also choose not to call its
-     argument, thus overriding the default behavior; or it may even
+     This is a wrapper hook (*note Running Hooks::) run around the
+     `expand-abbrev' function.  Each function on this hook is called
+     with a single argument: a function that performs the normal abbrev
+     expansion.  The hook function can hence do anything it wants before
+     and after performing the expansion.  It can also choose not to call
+     its argument, thus overriding the default behavior; or it may even
      call it several times.  The function should return the abbrev
      symbol if expansion took place.
 
@@ -4063,8 +4117,7 @@ communication.
 editing certain files in which lines that start with `#' are comments.
 You want to use Text mode abbrevs for those lines.  The regular local
 abbrev table, `foo-mode-abbrev-table' is appropriate for all other
-lines.  Then you can put the following code in your `.emacs' file.
-*Note Standard Abbrev Tables::, for the definitions of
+lines.  *Note Standard Abbrev Tables::, for the definitions of
 `local-abbrev-table' and `text-mode-abbrev-table'.
 
      (defun foo-mode-abbrev-expand-function (expand)
@@ -4084,7 +4137,7 @@ lines.  Then you can put the following code in your `.emacs' file.
 
 File: elisp,  Node: Standard Abbrev Tables,  Next: Abbrev Properties,  Prev: Abbrev Expansion,  Up: Abbrevs
 
-36.6 Standard Abbrev Tables
+36.5 Standard Abbrev Tables
 ===========================
 
 Here we list the variables that hold the abbrev tables for the
@@ -4117,18 +4170,19 @@ preloaded major modes of Emacs.
      This is the local abbrev table used in Text mode.
 
  -- Variable: lisp-mode-abbrev-table
-     This is the local abbrev table used in Lisp mode and Emacs Lisp
-     mode.
+     This is the local abbrev table used in Lisp mode.  It is the parent
+     of the local abbrev table used in Emacs Lisp mode.  *Note Abbrev
+     Table Properties::.
 
 
 File: elisp,  Node: Abbrev Properties,  Next: Abbrev Table Properties,  Prev: Standard Abbrev Tables,  Up: Abbrevs
 
-36.7 Abbrev Properties
+36.6 Abbrev Properties
 ======================
 
 Abbrevs have properties, some of which influence the way they work.
-You can provide them as arguments to `define-abbrev' and you can
-manipulate them with the following functions:
+You can provide them as arguments to `define-abbrev', and manipulate
+them with the following functions:
 
  -- Function: abbrev-put abbrev prop val
      Set the property PROP of ABBREV to value VAL.
@@ -4162,12 +4216,12 @@ manipulate them with the following functions:
 
 File: elisp,  Node: Abbrev Table Properties,  Prev: Abbrev Properties,  Up: Abbrevs
 
-36.8 Abbrev Table Properties
+36.7 Abbrev Table Properties
 ============================
 
 Like abbrevs, abbrev tables have properties, some of which influence
 the way they work.  You can provide them as arguments to
-`define-abbrev-table' and you can manipulate them with the functions:
+`define-abbrev-table', and manipulate them with the functions:
 
  -- Function: abbrev-table-put table prop val
      Set the property PROP of abbrev table TABLE to value VAL.
@@ -4180,8 +4234,8 @@ the way they work.  You can provide them as arguments to
 
 `:enable-function'
      This is like the `:enable-function' abbrev property except that it
-     applies to all abbrevs in the table and is used even before trying
-     to find the abbrev before point so it can dynamically modify the
+     applies to all abbrevs in the table.  It is used before even trying
+     to find the abbrev before point, so it can dynamically modify the
      abbrev table.
 
 `:case-fixed'
@@ -4190,15 +4244,15 @@ the way they work.  You can provide them as arguments to
 
 `:regexp'
      If non-`nil', this property is a regular expression that indicates
-     how to extract the name of the abbrev before point before looking
+     how to extract the name of the abbrev before point, before looking
      it up in the table.  When the regular expression matches before
      point, the abbrev name is expected to be in submatch 1.  If this
-     property is `nil', `expand-function' defaults to
-     `"\\<\\(\\w+\\)\\W"'.  This property allows the use of abbrevs
-     whose name contains characters of non-word syntax.
+     property is `nil', the default is to use `backward-word' and
+     `forward-word' to find the name.  This property allows the use of
+     abbrevs whose name contains characters of non-word syntax.
 
 `:parents'
-     This property holds the list of tables from which to inherit other
+     This property holds a list of tables from which to inherit other
      abbrevs.
 
 `:abbrev-table-modiff'
@@ -4308,7 +4362,7 @@ argument which specifies where the standard output from the program will
 go.  It should be a buffer or a buffer name; if it is a buffer name,
 that will create the buffer if it does not already exist.  It can also
 be `nil', which says to discard the output unless a filter function
-handles it.  (*Note Filter Functions::, and *Note Read and Print::.)
+handles it.  (*Note Filter Functions::, and *note Read and Print::.)
 Normally, you should avoid having multiple processes send output to the
 same buffer because their output would be intermixed randomly.
 
@@ -4506,7 +4560,7 @@ much like text written into a file.  *Note Coding Systems::.
      decoding output is `undecided', meaning deduce the encoding from
      the actual data, then redisplay sometimes cannot continue once
      non-ASCII characters are encountered.  There are fundamental
-     reasons why it is hard to fix this; see *Note Output from
+     reasons why it is hard to fix this; see *note Output from
      Processes::.)
 
      Otherwise the function `call-process' does no redisplay, and the
@@ -4550,9 +4604,9 @@ much like text written into a file.  *Note Coding Systems::.
  -- Function: process-file program &optional infile buffer display
           &rest args
      This function processes files synchronously in a separate process.
-     It is similar to `call-process' but may invoke a file handler
-     based on the value of the variable `default-directory'.  The
-     current working directory of the subprocess is `default-directory'.
+     It is similar to `call-process' but may invoke a file handler based
+     on the value of the variable `default-directory'.  The current
+     working directory of the subprocess is `default-directory'.
 
      The arguments are handled in almost the same way as for
      `call-process', with the following differences:
@@ -4684,7 +4738,7 @@ much like text written into a file.  *Note Coding Systems::.
 
    ---------- Footnotes ----------
 
-   (1) On other systems, Emacs uses a Lisp emulation of `ls'; see *Note
+   (1) On other systems, Emacs uses a Lisp emulation of `ls'; see *note
 Contents of Directories::.
 
 
@@ -5018,7 +5072,7 @@ is provided for interactive use.
  -- Function: process-tty-name process
      This function returns the terminal name that PROCESS is using for
      its communication with Emacs--or `nil' if it is using pipes
-     instead of a terminal (see `process-connection-type' in *Note
+     instead of a terminal (see `process-connection-type' in *note
      Asynchronous Processes::).  If PROCESS represents a program
      running on a remote host, the terminal name used by that program on
      the remote host is provided as process property `remote-tty'.
@@ -5176,7 +5230,7 @@ shell, this is the shell itself.
 communicate with the subprocess, because the operating system does not
 support the distinction in the case of pipes.  For the same reason,
 job-control shells won't work when a pipe is used.  See
-`process-connection-type' in *Note Asynchronous Processes::.
+`process-connection-type' in *note Asynchronous Processes::.
 
  -- Function: interrupt-process &optional process current-group
      This function interrupts the process PROCESS by sending the signal
@@ -5471,7 +5525,7 @@ system to use (*note Process Information::).  Otherwise, the coding
 system comes from `coding-system-for-read', if that is non-`nil'; or
 else from the defaulting mechanism (*note Default Coding Systems::).
 If the text output by a process contains null bytes, Emacs by default
-uses `no-conversion' for it; see *Note inhibit-null-byte-detection:
+uses `no-conversion' for it; see *note inhibit-null-byte-detection:
 Lisp and Coding Systems, for how to control this behavior.
 
    *Warning:* Coding systems such as `undecided' which determine the
@@ -6068,7 +6122,7 @@ accepts a client connection request, that creates a new network
 connection, itself a process object, with the following parameters:
 
    * The connection's process name is constructed by concatenating the
-     server process' NAME with a client identification string.  The
+     server process's NAME with a client identification string.  The
      client identification string for an IPv4 connection looks like
      `<A.B.C.D:P>'.  Otherwise, it is a unique number in brackets, as
      in `<NNN>'.  The number is unique for each connection in the Emacs
@@ -6097,7 +6151,7 @@ connection, itself a process object, with the following parameters:
    * The connection's local address is set up according to the port
      number used for the connection.
 
-   * The client process' plist is initialized from the server's plist.
+   * The client process's plist is initialized from the server's plist.
 
 
 File: elisp,  Node: Datagrams,  Next: Low-Level Network,  Prev: Network Servers,  Up: Processes
@@ -6504,7 +6558,7 @@ process object representing a serial port connection.
      `COM1', or `\\.\COM10' (double the backslashes in Lisp strings).
 
      SPEED is the speed of the serial port in bits per second.  9600 is
-     a common value.  The buffer is in Term mode; see *Note Term Mode:
+     a common value.  The buffer is in Term mode; see *note Term Mode:
      (emacs)Term Mode, for the commands to use in that buffer.  You can
      change the speed and the configuration in the mode line menu.
 

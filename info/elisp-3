@@ -1,12 +1,10 @@
-This is
-/Volumes/Data/Midway/emacs-24.0.94/doc/lispref/../../info/elisp,
-produced by makeinfo version 4.8 from
-/Volumes/Data/Midway/emacs-24.0.94/doc/lispref/elisp.texi.
+This is /home/cyd/trunk/doc/lispref/../../info/elisp, produced by
+makeinfo version 4.13 from /home/cyd/trunk/doc/lispref/elisp.texi.
 
-   This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 24.0.94.
+This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
+corresponding to Emacs version 24.0.95.
 
-   Copyright (C) 1990-1996, 1998-2012  Free Software Foundation, Inc.
+   Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -173,7 +171,7 @@ composite types:
 
      The user can add any key matching the specified key type, but you
      can give some keys a preferential treatment by specifying them
-     with the `:options' (see *Note Variable Definitions::).  The
+     with the `:options' (see *note Variable Definitions::).  The
      specified keys will always be shown in the customize buffer
      (together with a suitable value), with a checkbox to include or
      exclude or disable the key/value pair from the alist.  The user
@@ -586,7 +584,7 @@ for a datatype to refer to itself, it needs to have a name.
 
    Since custom types are implemented as widgets, the way to define a
 new customize type is to define a new widget.  We are not going to
-describe the widget interface here in details, see *Note Introduction:
+describe the widget interface here in details, see *note Introduction:
 (widget)Top, for that.  Instead we are going to demonstrate the minimal
 functionality needed for defining new customize types by a simple
 example.
@@ -799,7 +797,7 @@ facilities call the `load' function to do the work.
      `eval-region'.  *Note Eval: Definition of eval-region.
 
    For information about how `load' is used in building Emacs, see
-*Note Building Emacs::.
+*note Building Emacs::.
 
 
 File: elisp,  Node: Load Suffixes,  Next: Library Search,  Prev: How Programs Do Loading,  Up: Loading
@@ -1088,13 +1086,26 @@ update-directory-autoloads' is even more powerful; it updates autoloads
 for all files in the current directory.
 
    The same magic comment can copy any kind of form into `loaddefs.el'.
-If the form following the magic comment is not a function-defining
-form or a `defcustom' form, it is copied verbatim.  "Function-defining
-forms" include `define-skeleton', `define-derived-mode',
-`define-generic-mode' and `define-minor-mode' as well as `defun' and
-`defmacro'.  To save space, a `defcustom' form is converted to a
-`defvar' in `loaddefs.el', with some additional information if it uses
-`:require'.
+The form following the magic comment is copied verbatim, _except_ if it
+is one of the forms which the autoload facility handles specially (e.g.
+by conversion into an `autoload' call).  The forms which are not copied
+verbatim are the following:
+
+Definitions for function or function-like objects:
+     `defun' and `defmacro'; also `defun*' and `defmacro*' (*note
+     Argument Lists: (cl)Argument Lists.), and
+     `define-overloadable-function' (see the commentary in
+     `mode-local.el').
+
+Definitions for major or minor modes:
+     `define-derived-mode', `define-minor-mode',
+     `define-compilation-mode', `define-generic-mode',
+     `easy-mmode-define-global-mode', `define-global-minor-mode',
+     `define-globalized-minor-mode', and `easy-mmode-define-minor-mode'.
+
+Other definition types:
+     `defcustom', `defgroup', `defclass' (*note EIEIO: (eieio)Top.),
+     and `define-skeleton' (see the commentary in `skeleton.el').
 
    You can also use a magic comment to execute a form at build time
 _without_ executing it when the file itself is loaded.  To do this,
@@ -2198,7 +2209,7 @@ who debug calls to the original function may not notice that it has
 been modified with advice.  Therefore, if you have the possibility to
 change the code of that function to run a hook, please solve the
 problem that way.  Advice should be reserved for the cases where you
-cannot get the function changed.  In particular, Emacs' own source
+cannot get the function changed.  In particular, Emacs's own source
 files should not put advice on functions in Emacs.  There are currently
 a few exceptions to this convention, but we aim to correct them.
 
@@ -2522,7 +2533,7 @@ function before that function is actually defined.
    When a function's advice is first activated, the function's original
 definition is saved, and all enabled pieces of advice for that function
 are combined with the original definition to make a new definition.
-(Pieces of advice that are currently disabled are not used; see *Note
+(Pieces of advice that are currently disabled are not used; see *note
 Enabling Advice::.)  This definition is installed, and optionally
 byte-compiled as well, depending on conditions described below.
 
@@ -3522,7 +3533,7 @@ File: elisp,  Node: Using Edebug,  Next: Instrumenting,  Up: Edebug
 To debug a Lisp program with Edebug, you must first "instrument" the
 Lisp code that you want to debug.  A simple way to do this is to first
 move point into the definition of a function or macro and then do `C-u
-C-M-x' (`eval-defun' with a prefix argument).  See *Note
+C-M-x' (`eval-defun' with a prefix argument).  See *note
 Instrumenting::, for alternative ways to instrument code.
 
    Once a function is instrumented, any call to the function activates
@@ -3668,7 +3679,7 @@ for a certain distance.
 
 `n'
      Next: stop at the next stop point encountered after an expression
-     (`edebug-next-mode').  Also see `edebug-forward-sexp' in *Note
+     (`edebug-next-mode').  Also see `edebug-forward-sexp' in *note
      Jumping::.
 
 `t'
@@ -3714,7 +3725,7 @@ completely work: exiting from Edebug, to resume the program, loses track
 of the keyboard macro.  This is not easy to fix.  Also, defining or
 executing a keyboard macro outside of Edebug does not affect commands
 inside Edebug.  This is usually an advantage.  See also the
-`edebug-continue-kbd-macro' option in *Note Edebug Options::.
+`edebug-continue-kbd-macro' option in *note Edebug Options::.
 
    When you enter a new Edebug level, the initial execution mode comes
 from the value of the variable `edebug-initial-mode' (*note Edebug
@@ -3753,7 +3764,8 @@ program to stop.
      (`edebug-step-out').
 
 `i'
-     Step into the function or macro called by the form after point.
+     Step into the function or macro called by the form after point
+     (`edebug-step-in').
 
    The `h' command proceeds to the stop point at or after the current
 location of point, using a temporary breakpoint.
@@ -3863,7 +3875,7 @@ File: elisp,  Node: Breakpoints,  Next: Global Break Condition,  Up: Breaks
 
 While using Edebug, you can specify "breakpoints" in the program you
 are testing: these are places where execution should stop.  You can set
-a breakpoint at any stop point, as defined in *Note Using Edebug::.  For
+a breakpoint at any stop point, as defined in *note Using Edebug::.  For
 setting and unsetting breakpoints, the stop point that is affected is
 the first one at or after point in the source code buffer.  Here are the
 Edebug commands for breakpoints:
@@ -3978,7 +3990,7 @@ Emacs normally displays an error message when an error is signaled and
 not handled with `condition-case'.  While Edebug is active and
 executing instrumented code, it normally responds to all unhandled
 errors.  You can customize this with the options `edebug-on-error' and
-`edebug-on-quit'; see *Note Edebug Options::.
+`edebug-on-quit'; see *note Edebug Options::.
 
    When Edebug responds to an error, it shows the last stop point
 encountered before the error.  This may be the location of a call to a
@@ -4052,12 +4064,12 @@ File: elisp,  Node: Edebug Eval,  Next: Eval List,  Prev: Edebug Views,  Up: Ede
 18.2.9 Evaluation
 -----------------
 
-While within Edebug, you can evaluate expressions "as if" Edebug were
-not running.  Edebug tries to be invisible to the expression's
-evaluation and printing.  Evaluation of expressions that cause side
-effects will work as expected, except for changes to data that Edebug
-explicitly saves and restores.  *Note The Outside Context::, for details
-on this process.
+While within Edebug, you can evaluate expressions as if Edebug were not
+running.  Edebug tries to be invisible to the expression's evaluation
+and printing.  Evaluation of expressions that cause side effects will
+work as expected, except for changes to data that Edebug explicitly
+saves and restores.  *Note The Outside Context::, for details on this
+process.
 
 `e EXP <RET>'
      Evaluate expression EXP in the context outside of Edebug
@@ -4504,6 +4516,11 @@ looks very similar to the formal argument list of the macro definition,
 but specifications are much more general than macro arguments.  *Note
 Defining Macros::, for more explanation of the `declare' form.
 
+   Take care to ensure that the specifications are known to Edebug when
+you instrument code.  If you are instrumenting a function from a file
+that uses `eval-when-compile' to require another file containing macro
+definitions, you may need to explicitly load that file.
+
    You can also define an edebug specification for a macro separately
 from the macro definition with `def-edebug-spec'.  Adding `debug'
 declarations is preferred, and more convenient, for macro definitions
@@ -4561,8 +4578,8 @@ modify the processing of all following elements.  The latter, called
 "specification keywords", are symbols beginning with `&' (such as
 `&optional').
 
-   A specification list may contain sublists which match arguments that
-are themselves lists, or it may contain vectors used for grouping.
+   A specification list may contain sublists, which match arguments
+that are themselves lists, or it may contain vectors used for grouping.
 Sublists and groups thus subdivide the specification list into a
 hierarchy of levels.  Specification keywords apply only to the
 remainder of the sublist or group they are contained in.
@@ -4577,7 +4594,7 @@ sublists with balanced parentheses, recursive processing of forms, and
 recursion via indirect specifications.
 
    Here's a table of the possible elements of a specification list, with
-their meanings (see *Note Specification Examples::, for the referenced
+their meanings (see *note Specification Examples::, for the referenced
 examples):
 
 `sexp'
@@ -4607,7 +4624,7 @@ examples):
      All following elements in the specification list are optional; as
      soon as one does not match, Edebug stops matching at this level.
 
-     To make just a few elements optional followed by non-optional
+     To make just a few elements optional, followed by non-optional
      elements, use `[&optional SPECS...]'.  To specify that several
      elements must all match or none, use `&optional [SPECS...]'.  See
      the `defun' example.
@@ -4653,7 +4670,7 @@ examples):
      No argument is matched but backtracking through the gate is
      disabled while matching the remainder of the specifications at
      this level.  This is primarily used to generate more specific
-     syntax error messages.  See *Note Backtracking::, for more
+     syntax error messages.  See *note Backtracking::, for more
      details.  Also see the `let' example.
 
 `OTHER-SYMBOL'
@@ -4667,8 +4684,8 @@ examples):
      just as for macros.  See the `defun' example.
 
      Otherwise, the symbol should be a predicate.  The predicate is
-     called with the argument and the specification fails if the
-     predicate returns `nil', and the argument is not instrumented.
+     called with the argument, and if the predicate returns `nil', the
+     specification fails and the argument is not instrumented.
 
      Some suitable predicates include `symbolp', `integerp', `stringp',
      `vectorp', and `atom'.
@@ -4849,10 +4866,10 @@ These options affect the behavior of Edebug:
 
  -- User Option: edebug-setup-hook
      Functions to call before Edebug is used.  Each time it is set to a
-     new value, Edebug will call those functions once and then
-     `edebug-setup-hook' is reset to `nil'.  You could use this to load
-     up Edebug specifications associated with a package you are using
-     but only when you also use Edebug.  *Note Instrumenting::.
+     new value, Edebug will call those functions once and then reset
+     `edebug-setup-hook' to `nil'.  You could use this to load up
+     Edebug specifications associated with a package you are using, but
+     only when you also use Edebug.  *Note Instrumenting::.
 
  -- User Option: edebug-all-defs
      If this is non-`nil', normal evaluation of defining forms such as
@@ -4911,7 +4928,7 @@ These options affect the behavior of Edebug:
      output is displayed in a buffer named `*edebug-trace*', one
      function entry or exit per line, indented by the recursion level.
 
-     Also see `edebug-tracing', in *Note Trace Buffer::.
+     Also see `edebug-tracing', in *note Trace Buffer::.
 
  -- User Option: edebug-test-coverage
      If non-`nil', Edebug tests coverage of all expressions debugged.
@@ -4921,6 +4938,24 @@ These options affect the behavior of Edebug:
      If non-`nil', continue defining or executing any keyboard macro
      that is executing outside of Edebug.   Use this with caution since
      it is not debugged.  *Note Edebug Execution Modes::.
+
+ -- User Option: edebug-unwrap-results
+     If non-`nil', Edebug tries to remove any of its own
+     instrumentation when showing the results of expressions.  This is
+     relevant when debugging macros where the results of expressions are
+     themselves instrumented expressions.  As a very artificial example,
+     suppose that the example function `fac' has been instrumented, and
+     consider a macro of the form:
+
+          (defmacro test () "Edebug example."
+            (if (symbol-function 'fac)
+                ...))
+
+     If you instrument the `test' macro and step through it, then by
+     default the result of the `symbol-function' call has numerous
+     `edebug-after' and `edebug-before' forms, which can make it
+     difficult to see the "actual" result.  If `edebug-unwrap-results'
+     is non-`nil', Edebug tries to remove these forms from the result.
 
  -- User Option: edebug-on-error
      Edebug binds `debug-on-error' to this value, if `debug-on-error'
@@ -5078,7 +5113,7 @@ File: elisp,  Node: Read and Print,  Next: Minibuffers,  Prev: Debugging,  Up: T
 
 "Printing" and "reading" are the operations of converting Lisp objects
 to textual form and vice versa.  They use the printed representations
-and read syntax described in *Note Lisp Data Types::.
+and read syntax described in *note Lisp Data Types::.
 
    This chapter describes the Lisp functions for reading and printing.
 It also describes "streams", which specify where to get the text (if
@@ -5568,7 +5603,7 @@ is `nil' or omitted, it defaults to the value of `standard-output'.
           (prin1-to-string "foo" t)
                => "foo"
 
-     See `format', in *Note Formatting Strings::, for other ways to
+     See `format', in *note Formatting Strings::, for other ways to
      obtain the printed representation of a Lisp object as a string.
 
  -- Macro: with-output-to-string body...
@@ -5757,7 +5792,7 @@ to minibuffers.  The name of a minibuffer always has the form
 displayed only in special windows used only for minibuffers; these
 windows always appear at the bottom of a frame.  (Sometimes frames have
 no minibuffer window, and sometimes a special kind of frame contains
-nothing but a minibuffer window; see *Note Minibuffers and Frames::.)
+nothing but a minibuffer window; see *note Minibuffers and Frames::.)
 
    The text in the minibuffer always starts with the "prompt string",
 the text that was specified by the program that is using the minibuffer
@@ -5946,10 +5981,8 @@ specification.  *Note Defining Commands::.
      unconditionally, regardless of the value of this variable.
 
  -- Variable: minibuffer-local-map
-     This
-
-     is the default local keymap for reading from the minibuffer.  By
-     default, it makes the following bindings:
+     This is the default local keymap for reading from the minibuffer.
+     By default, it makes the following bindings:
 
     `C-j'
           `exit-minibuffer'
@@ -6880,7 +6913,7 @@ specification.  *Note Defining Commands::.
      values.  In addition to names of standard colors, completion
      candidates include the foreground and background colors at point.
 
-     Valid RGB values are described in *Note Color Names::.
+     Valid RGB values are described in *note Color Names::.
 
      The function's return value is the string typed by the user in the
      minibuffer.  However, when called interactively or if the optional
@@ -6894,8 +6927,8 @@ specification.  *Note Defining Commands::.
      also displayed in the echo area.
 
    See also the functions `read-coding-system' and
-`read-non-nil-coding-system', in *Note User-Chosen Coding Systems::,
-and `read-input-method-name', in *Note Input Methods::.
+`read-non-nil-coding-system', in *note User-Chosen Coding Systems::,
+and `read-input-method-name', in *note Input Methods::.
 
 
 

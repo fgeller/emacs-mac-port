@@ -1,12 +1,10 @@
-This is
-/Volumes/Data/Midway/emacs-24.0.94/doc/lispref/../../info/elisp,
-produced by makeinfo version 4.8 from
-/Volumes/Data/Midway/emacs-24.0.94/doc/lispref/elisp.texi.
+This is /home/cyd/trunk/doc/lispref/../../info/elisp, produced by
+makeinfo version 4.13 from /home/cyd/trunk/doc/lispref/elisp.texi.
 
-   This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 24.0.94.
+This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
+corresponding to Emacs version 24.0.95.
 
-   Copyright (C) 1990-1996, 1998-2012  Free Software Foundation, Inc.
+   Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -33,9 +31,9 @@ Emacs Lisp
 **********
 
 This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 24.0.94.
+corresponding to Emacs version 24.0.95.
 
-   Copyright (C) 1990-1996, 1998-2012  Free Software Foundation, Inc.
+   Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -116,11 +114,9 @@ Appendices
 * Tips::                    Advice and coding conventions for Emacs Lisp.
 * GNU Emacs Internals::     Building and dumping Emacs;
                               internal data structures.
-* Standard Errors::         List of main error symbols.
-* Standard Buffer-Local Variables::
-                            List of variables buffer-local in all buffers.
-* Standard Keymaps::        List of standard keymaps.
-* Standard Hooks::          List of standard hook variables.
+* Standard Errors::         List of some standard error symbols.
+* Standard Keymaps::        List of some standard keymaps.
+* Standard Hooks::          List of some standard hook variables.
 
 * Index::                   Index including concepts, functions, variables,
                               and other terms.
@@ -845,7 +841,7 @@ Buffers
                               is visited.
 * Buffer Modification::     A buffer is "modified" if it needs to be saved.
 * Modification Time::       Determining whether the visited file was changed
-                              ``behind Emacs's back''.
+                              "behind Emacs's back".
 * Read Only Buffers::       Modifying text is not allowed in a
                               read-only buffer.
 * The Buffer List::         How to look at all the existing buffers.
@@ -912,7 +908,7 @@ Frames
 * Window System Selections::Transferring text to and from other X clients.
 * Drag and Drop::               Internals of Drag-and-Drop implementation.
 * Color Names::             Getting the definitions of color names.
-* Text Terminal Colors::    Defining colors for text-only terminals.
+* Text Terminal Colors::    Defining colors for text terminals.
 * Resources::               Getting resource values from the server.
 * Display Feature Testing:: Determining the features of a terminal.
 
@@ -994,7 +990,8 @@ Text
 * Registers::               How registers are implemented.  Accessing
                               the text or position stored in a register.
 * Base 64::                 Conversion to or from base 64 encoding.
-* Checksum/Hash::           Computing "message digests"/"checksums"/"hashes".
+* Checksum/Hash::           Computing cryptographic hashes.
+* Parsing HTML/XML::        Parsing HTML and XML.
 * Atomic Changes::          Installing several buffer changes "atomically".
 * Change Hooks::            Supplying functions to be run when text is changed.
 
@@ -1126,7 +1123,6 @@ Parsing Expressions
 
 Abbrevs and Abbrev Expansion
 
-* Abbrev Mode::             Setting up Emacs for abbreviation.
 * Abbrev Tables::           Creating and working with abbrev tables.
 * Defining Abbrevs::        Specifying abbreviations and their expansions.
 * Abbrev Files::            Saving abbrevs in files.
@@ -1203,16 +1199,13 @@ Emacs Display
 * Display Property::        Enabling special display features.
 * Images::                  Displaying images in Emacs buffers.
 * Buttons::                 Adding clickable buttons to Emacs buffers.
-* Abstract Display::        Emacs' Widget for Object Collections.
+* Abstract Display::        Emacs's Widget for Object Collections.
 * Blinking::                How Emacs shows the matching open parenthesis.
-* Usual Display::           The usual conventions for displaying
-                              nonprinting chars.
-* Display Tables::          How to specify other conventions.
+* Character Display::   How Emacs displays individual characters.
 * Beeping::                 Audible signal to the user.
 * Window Systems::          Which window system is being used.
 * Bidirectional Display::   Display of bidirectional scripts, such as
                               Arabic and Farsi.
-* Glyphless Chars::         How glyphless characters are drawn.
 
 The Echo Area
 
@@ -1301,11 +1294,13 @@ Abstract Display
 * Abstract Display Functions::  Functions in the Ewoc package.
 * Abstract Display Example::    Example of using Ewoc.
 
-Display Tables
+Character Display
 
-* Display Table Format::    What a display table consists of.
-* Active Display Table::    How Emacs selects a display table to use.
-* Glyphs::                  How to define a glyph, and what glyphs mean.
+* Usual Display::       The usual conventions for displaying characters.
+* Display Tables::      What a display table consists of.
+* Active Display Table::  How Emacs selects a display table to use.
+* Glyphs::              How to define a glyph, and what glyphs mean.
+* Glyphless Chars::     How glyphless characters are drawn.
 
 Operating System Interface
 
@@ -1416,7 +1411,7 @@ chapters describe features that are peculiar to Emacs Lisp or relate
 specifically to editing.
 
    This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 24.0.94.
+corresponding to Emacs version 24.0.95.
 
 * Menu:
 
@@ -3608,7 +3603,7 @@ describing the data type.
      If OBJECT1 and OBJECT2 are integers with the same value, they are
      considered to be the same object (i.e. `eq' returns `t').  If
      OBJECT1 and OBJECT2 are symbols with the same name, they are
-     normally the same object--but see *Note Creating Symbols:: for
+     normally the same object--but see *note Creating Symbols:: for
      exceptions.  For other types (e.g. lists, vectors, strings), two
      arguments with the same contents or elements are not necessarily
      `eq' to each other: they are `eq' only if they are the same
@@ -3929,7 +3924,7 @@ The functions in this section test for numbers, or for a specific type
 of number.  The functions `integerp' and `floatp' can take any type of
 Lisp object as argument (they would not be of much use otherwise), but
 the `zerop' predicate requires a number as its argument.  See also
-`integer-or-marker-p' and `number-or-marker-p', in *Note Predicates on
+`integer-or-marker-p' and `number-or-marker-p', in *note Predicates on
 Markers::.
 
  -- Function: floatp object
@@ -4309,7 +4304,7 @@ not check for overflow.  Thus `(1+ 536870911)' may evaluate to
              (* (floor DIVIDEND DIVISOR) DIVISOR))
 
      always equals DIVIDEND, subject to rounding error if either
-     argument is floating point.  For `floor', see *Note Numeric
+     argument is floating point.  For `floor', see *note Numeric
      Conversions::.
 
 
@@ -4706,7 +4701,9 @@ terminated by a character with ASCII code 0.)
 operate on them with the general array and sequence functions.  (*Note
 Sequences Arrays Vectors::.)  For example, you can access or change
 individual characters in a string using the functions `aref' and `aset'
-(*note Array Functions::).
+(*note Array Functions::).  However, note that `length' should _not_ be
+used for computing the width of a string on display; use `string-width'
+(*note Width::) instead.
 
    There are two text representations for non-ASCII characters in Emacs
 strings (and in buffers): unibyte and multibyte (*note Text
@@ -4738,7 +4735,7 @@ buffers or other strings also copy the properties of the characters
 being copied.
 
    *Note Text::, for information about functions that display strings or
-copy them into buffers.  *Note Character Type::, and *Note String
+copy them into buffers.  *Note Character Type::, and *note String
 Type::, for information about the syntax of characters and strings.
 *Note Non-ASCII Characters::, for functions to convert between text
 representations and to encode and decode character codes.
@@ -4750,7 +4747,7 @@ File: elisp,  Node: Predicates for Strings,  Next: Creating Strings,  Prev: Stri
 ==============================
 
 For more information about general sequence and array predicates, see
-*Note Sequences Arrays Vectors::, and *Note Arrays::.
+*note Sequences Arrays Vectors::, and *note Arrays::.
 
  -- Function: stringp object
      This function returns `t' if OBJECT is a string, `nil' otherwise.
@@ -4883,10 +4880,10 @@ putting strings together, or by taking them apart.
      save space, Emacs makes only one empty multibyte string).
 
      For information about other concatenation functions, see the
-     description of `mapconcat' in *Note Mapping Functions::, `vconcat'
-     in *Note Vector Functions::, and `append' in *Note Building
+     description of `mapconcat' in *note Mapping Functions::, `vconcat'
+     in *note Vector Functions::, and `append' in *note Building
      Lists::.  For concatenating individual command-line arguments into
-     a string to be used as a shell command, see *Note
+     a string to be used as a shell command, see *note
      combine-and-quote-strings: Shell Arguments.
 
  -- Function: split-string string &optional separators omit-nulls
@@ -4960,7 +4957,7 @@ putting strings together, or by taking them apart.
 
      If you need to split a string into a list of individual
      command-line arguments suitable for `call-process' or
-     `start-process', see *Note split-string-and-unquote: Shell
+     `start-process', see *note split-string-and-unquote: Shell
      Arguments.
 
  -- Variable: split-string-default-separators
@@ -5098,6 +5095,11 @@ File: elisp,  Node: Text Comparison,  Next: String Conversion,  Prev: Modifying 
  -- Function: string-lessp string1 string2
      `string-lessp' is another name for `string<'.
 
+ -- Function: string-prefix-p string1 string2 &optional ignore-case
+     This function returns non-`nil' if STRING1 is a prefix of STRING2;
+     i.e., if STRING2 starts with STRING1.  If the optional argument
+     IGNORE-CASE is non-`nil', the comparison ignores case differences.
+
  -- Function: compare-strings string1 start1 end1 string2 start2 end2
           &optional ignore-case
      This function compares the specified part of STRING1 with the
@@ -5129,10 +5131,10 @@ File: elisp,  Node: Text Comparison,  Next: String Conversion,  Prev: Modifying 
      strings or symbols rather than an actual alist.  *Note Association
      Lists::.
 
-   See also the function `compare-buffer-substrings' in *Note Comparing
+   See also the function `compare-buffer-substrings' in *note Comparing
 Text::, for a way to compare text in buffers.  The function
 `string-match', which matches a regular expression against a string,
-can be used for a kind of string comparison; see *Note Regexp Search::.
+can be used for a kind of string comparison; see *note Regexp Search::.
 
 
 File: elisp,  Node: String Conversion,  Next: Formatting Strings,  Prev: Text Comparison,  Up: Strings and Characters
@@ -5168,7 +5170,7 @@ primarily for making help messages.
 
      `int-to-string' is a semi-obsolete alias for this function.
 
-     See also the function `format' in *Note Formatting Strings::.
+     See also the function `format' in *note Formatting Strings::.
 
  -- Function: string-to-number string &optional base
      This function returns the numeric value of the characters in
@@ -5395,9 +5397,9 @@ takes precedence.
 
    The flag `#' specifies an "alternate form" which depends on the
 format in use.  For `%o', it ensures that the result begins with a `0'.
-For `%x' and `%X', it prefixes the result with `0x' or `0X'.  For
-`%e', `%f', and `%g', the `#' flag means include a decimal point even
-if the precision is zero.
+For `%x' and `%X', it prefixes the result with `0x' or `0X'.  For `%e',
+`%f', and `%g', the `#' flag means include a decimal point even if the
+precision is zero.
 
    The flag `0' ensures that the padding consists of `0' characters
 instead of spaces.  This flag is ignored for non-numerical
@@ -5676,7 +5678,7 @@ Lists in Lisp are not a primitive data type; they are built up from
 that represents an ordered pair.  That is, it has two slots, and each
 slot "holds", or "refers to", some Lisp object.  One slot is known as
 the CAR, and the other is known as the CDR.  (These names are
-traditional; see *Note Cons Cell Type::.)  CDR is pronounced "could-er."
+traditional; see *note Cons Cell Type::.)  CDR is pronounced "could-er."
 
    We say that "the CAR of this cons cell is" whatever object its CAR
 slot currently holds, and likewise for the CDR.
@@ -5758,7 +5760,7 @@ others, but they are used so often that it is worth having all of them.)
      This function returns `t' if OBJECT is `nil', and returns `nil'
      otherwise.  This function is identical to `not', but as a matter
      of clarity we use `null' when OBJECT is considered a list and
-     `not' when it is considered a truth value (see `not' in *Note
+     `not' when it is considered a truth value (see `not' in *note
      Combining Conditions::).
 
           (null '(1))
@@ -5988,7 +5990,7 @@ for Emacs than `cons'.
      SEQUENCES.  The SEQUENCES may be lists, vectors, bool-vectors, or
      strings, but the last one should usually be a list.  All arguments
      except the last one are copied, so none of the arguments is
-     altered.  (See `nconc' in *Note Rearrangement::, for a way to join
+     altered.  (See `nconc' in *note Rearrangement::, for a way to join
      lists with no copying.)
 
      More generally, the final argument to `append' may be any Lisp
@@ -6450,7 +6452,7 @@ functions "destructive" because they chew up the original lists passed
 to them as arguments, relinking their cons cells to form a new list that
 is the returned value.
 
-   See `delq', in *Note Sets And Lists::, for another function that
+   See `delq', in *note Sets And Lists::, for another function that
 modifies cons cells.
 
  -- Function: nconc &rest lists
@@ -6587,7 +6589,7 @@ modifies cons cells.
           (setq nums (sort nums '<))
 
      *Note Sorting::, for more functions that perform sorting.  See
-     `documentation' in *Note Accessing Documentation::, for a useful
+     `documentation' in *note Accessing Documentation::, for a useful
      example of `sort'.
 
 
@@ -6768,7 +6770,7 @@ Predicates::.
      `equal' occurrences of an element in LIST, `delete-dups' keeps the
      first one.
 
-   See also the function `add-to-list', in *Note List Variables::, for
+   See also the function `add-to-list', in *note List Variables::, for
 a way to add an element to a list stored in a variable and used as a
 set.
 
@@ -7096,7 +7098,12 @@ This section describes functions that accept any kind of sequence.
           (length (make-bool-vector 5 nil))
               => 5
 
-See also `string-bytes', in *Note Text Representations::.
+See also `string-bytes', in *note Text Representations::.
+
+   If you need to compute the width of a string on display, you should
+use `string-width' (*note Width::), not `length', since `length' only
+counts the number of characters, but does not account for the display
+width of each character.
 
  -- Function: elt sequence index
      This function returns the element of SEQUENCE indexed by INDEX.
@@ -7141,8 +7148,8 @@ See also `string-bytes', in *Note Text Representations::.
      This function does not work for dotted lists.  Trying to copy a
      circular list may cause an infinite loop.
 
-     See also `append' in *Note Building Lists::, `concat' in *Note
-     Creating Strings::, and `vconcat' in *Note Vector Functions::, for
+     See also `append' in *note Building Lists::, `concat' in *note
+     Creating Strings::, and `vconcat' in *note Vector Functions::, for
      other ways to copy sequences.
 
           (setq bar '(1 2))

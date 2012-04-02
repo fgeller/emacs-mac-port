@@ -1039,7 +1039,7 @@ New features in No Gnus:
           isn't safe in general.
 
         * Incompatibility when switching from Emacs 23 to Emacs 22 In
-          Emacs 23, Gnus uses Emacs' new internal coding system
+          Emacs 23, Gnus uses Emacs's new internal coding system
           `utf-8-emacs' for saving articles drafts and `~/.newsrc.eld'.
           These files may not be read correctly in Emacs 22 and below.
           If you want to use Gnus across different Emacs versions, you
@@ -1287,7 +1287,7 @@ New features in No Gnus:
           group buffer, see the variable `gnus-group-update-tool-bar'.
           Its default value depends on your Emacs version.
 
-        * You can change the location of XEmacs' toolbars in Gnus
+        * You can change the location of XEmacs's toolbars in Gnus
           buffers.  See `gnus-use-toolbar' and `message-use-toolbar'.
 
 
@@ -3359,7 +3359,7 @@ Answer
 ......
 
 Gnus is released independent from releases of Emacs and XEmacs.
-Therefore, the version bundled with Emacs or the version in XEmacs'
+Therefore, the version bundled with Emacs or the version in XEmacs's
 package system might not be up to date (e.g. Gnus 5.9 bundled with Emacs
 21 is outdated).  You can get the latest released version of Gnus from
 `http://www.gnus.org/dist/gnus.tar.gz' or via anonymous FTP from

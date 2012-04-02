@@ -1447,10 +1447,10 @@ received by all objects which have registered for such a signal.
 
      SERVICE is the D-Bus service name used by the sending D-Bus
      object.  It can be either a known name or the unique name of the
-     D-Bus object sending the signal.  In case of a unique name,
-     signals won't be received any longer once the object owning this
-     unique name has disappeared, and a new queued object has replaced
-     it.
+     D-Bus object sending the signal.  A known name will be mapped onto
+     the unique name of the object, owning SERVICE at registration time.
+     When the corresponding D-Bus object disappears, signals won't be
+     received any longer.
 
      When SERVICE is `nil', related signals from all D-Bus objects
      shall be accepted.
@@ -2267,9 +2267,9 @@ Node: Synchronous Methods39671
 Node: Asynchronous Methods44483
 Node: Receiving Method Calls46280
 Node: Signals57827
-Node: Alternative Buses61593
-Node: Errors and Events63107
-Node: Index67668
-Node: GNU Free Documentation License74626
+Node: Alternative Buses61619
+Node: Errors and Events63133
+Node: Index67694
+Node: GNU Free Documentation License74652
 
 End Tag Table

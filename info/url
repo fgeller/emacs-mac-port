@@ -81,7 +81,7 @@ URLs all have the form
 the form USERNAME:PASSWORD but you should beware of the security risks
 of sending cleartext passwords.  HOSTNAME may be a domain name or a
 dotted decimal address.  If the `:PORT' is omitted then the library will
-use the `well known' port for that service when accessing URLs.  With
+use the "well known" port for that service when accessing URLs.  With
 the possible exception of `telnet', it is rare for ports to be
 specified, and it is possible using a non-standard port may have
 undesired consequences if a different service is listening on that port
@@ -133,7 +133,7 @@ PORT
      is the port number associated with it, or `nil';
 
 FILE
-     is the `file' part of it, or `nil'.  This doesn't necessarily
+     is the "file" part of it, or `nil'.  This doesn't necessarily
      actually refer to a file;
 
 TARGET
@@ -200,7 +200,7 @@ File: url,  Node: Supported URL Types,  Next: Defining New URLs,  Prev: Retrievi
 
 * http/https::                  Hypertext Transfer Protocol.
 * file/ftp::                    Local files and FTP archives.
-* info::                        Emacs `Info' pages.
+* info::                        Emacs "Info" pages.
 * mailto::                      Sending email.
 * news/nntp/snews::             Usenet news.
 * rlogin/telnet/tn3270::        Remote host connectivity.
@@ -411,7 +411,7 @@ form of a mailto URL is
    where an arbitrary number of HEADERs can be added.  If the HEADER is
 `body', then CONTENTS is put in the body otherwise a HEADER header
 field is created with CONTENTS as its contents.  Note that the URL
-library does not consider any headers `dangerous' so you should check
+library does not consider any headers "dangerous" so you should check
 them before sending the message.
 
    Email messages are defined in RFC822.
@@ -873,7 +873,7 @@ File: url,  Node: Suppressing network connections,  Up: Gateways in general
 In some circumstances it is desirable to suppress making network
 connections.  A typical case is when rendering HTML in a mail user
 agent, when external URLs should not be activated, particularly to
-avoid `bugs' which `call home' by fetch single-pixel images and the
+avoid "bugs" which "call home" by fetch single-pixel images and the
 like.  To arrange this, bind the following variable for the duration of
 such processing.
 
@@ -892,7 +892,7 @@ URL completion can be done from it.  The history mechanism is set up
 automatically via `url-do-setup' when it is configured to be on.  Note
 that the size of the history list is currently not limited.
 
-   The history `list' is actually a hash table,
+   The history "list" is actually a hash table,
 `url-history-hash-table'.  It contains access times keyed by URL
 strings.  The times are in the format returned by `current-time'.
 

@@ -1,12 +1,10 @@
-This is
-/Volumes/Data/Midway/emacs-24.0.94/doc/lispref/../../info/elisp,
-produced by makeinfo version 4.8 from
-/Volumes/Data/Midway/emacs-24.0.94/doc/lispref/elisp.texi.
+This is /home/cyd/trunk/doc/lispref/../../info/elisp, produced by
+makeinfo version 4.13 from /home/cyd/trunk/doc/lispref/elisp.texi.
 
-   This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 24.0.94.
+This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
+corresponding to Emacs version 24.0.95.
 
-   Copyright (C) 1990-1996, 1998-2012  Free Software Foundation, Inc.
+   Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -38,13 +36,13 @@ system, the user's UID, and so on.
 
  -- Variable: system-configuration
      This variable holds the standard GNU configuration name for the
-     hardware/software configuration of your system, as a string.  The
-     convenient way to test parts of this string is with `string-match'.
+     hardware/software configuration of your system, as a string.  For
+     example, a typical value for a 64-bit GNU/Linux system is
+     `"x86_64-unknown-linux-gnu"'.
 
  -- Variable: system-type
      The value of this variable is a symbol indicating the type of
-     operating system Emacs is operating on.  Here is a table of the
-     possible values:
+     operating system Emacs is running on.  The possible values are:
 
     `aix'
           IBM's AIX.
@@ -65,7 +63,7 @@ system, the user's UID, and so on.
     `gnu/linux'
           A GNU/Linux system--that is, a variant GNU system, using the
           Linux kernel.  (These systems are the ones people often call
-          "Linux," but actually Linux is just the kernel, not the whole
+          "Linux", but actually Linux is just the kernel, not the whole
           system.)
 
     `gnu/kfreebsd'
@@ -78,29 +76,26 @@ system, the user's UID, and so on.
           Silicon Graphics Irix system.
 
     `ms-dos'
-          Microsoft MS-DOS "operating system."  Emacs compiled with
-          DJGPP for MS-DOS binds `system-type' to `ms-dos' even when
-          you run it on MS-Windows.
+          Microsoft's DOS.  Emacs compiled with DJGPP for MS-DOS binds
+          `system-type' to `ms-dos' even when you run it on MS-Windows.
 
     `usg-unix-v'
           AT&T Unix System V.
 
     `windows-nt'
-          Microsoft Windows NT and later.  The same executable supports
-          Windows 9X, but the value of `system-type' is `windows-nt' in
-          either case.
+          Microsoft Windows NT, 9X and later.  The value of
+          `system-type' is always `windows-nt', e.g. even on Windows 7.
 
 
      We do not wish to add new symbols to make finer distinctions
      unless it is absolutely necessary!  In fact, we hope to eliminate
-     some of these alternatives in the future.  We recommend using
-     `system-configuration' to distinguish between different operating
-     systems.
+     some of these alternatives in the future.  If you need to make a
+     finer distinction than `system-type' allows for, you can test
+     `system-configuration', e.g. against a regexp.
 
  -- Function: system-name
-     This function returns the name of the machine you are running on.
-          (system-name)
-               => "www.gnu.org"
+     This function returns the name of the machine you are running on,
+     as a string.
 
    The symbol `system-name' is a variable as well as a function.  In
 fact, the function returns whatever value the variable `system-name'
@@ -119,30 +114,38 @@ useful for constructing frame titles (*note Frame Titles::).
  -- Command: getenv var &optional frame
      This function returns the value of the environment variable VAR,
      as a string.  VAR should be a string.  If VAR is undefined in the
-     environment, `getenv' returns `nil'.  If returns `""' if VAR is
-     set but null.  Within Emacs, the environment variable values are
-     kept in the Lisp variable `process-environment'.
+     environment, `getenv' returns `nil'.  It returns `""' if VAR is
+     set but null.  Within Emacs, a list of environment variables and
+     their values is kept in the variable `process-environment'.
 
           (getenv "USER")
                => "lewis"
 
-          lewis@slug[10] % printenv
-          PATH=.:/user/lewis/bin:/usr/bin:/usr/local/bin
-          USER=lewis
-          TERM=ibmapa16
-          SHELL=/bin/csh
-          HOME=/user/lewis
+     The shell command `printenv' prints all or part of the environment:
 
- -- Command: setenv variable &optional value
+          bash$ printenv
+          PATH=/usr/local/bin:/usr/bin:/bin
+          USER=lewis
+          TERM=xterm
+          SHELL=/bin/bash
+          HOME=/home/lewis
+          ...
+
+ -- Command: setenv variable &optional value substitute
      This command sets the value of the environment variable named
      VARIABLE to VALUE.  VARIABLE should be a string.  Internally,
      Emacs Lisp can handle any string.  However, normally VARIABLE
      should be a valid shell identifier, that is, a sequence of
      letters, digits and underscores, starting with a letter or
      underscore.  Otherwise, errors may occur if subprocesses of Emacs
-     try to access the value of VARIABLE.  If VALUE is omitted or
-     `nil', `setenv' removes VARIABLE from the environment.  Otherwise,
-     VALUE should be a string.
+     try to access the value of VARIABLE.  If VALUE is omitted or `nil'
+     (or, interactively, with a prefix argument), `setenv' removes
+     VARIABLE from the environment.  Otherwise, VALUE should be a
+     string.
+
+     If the optional argument SUBSTITUTE is non-`nil', Emacs calls the
+     function `substitute-env-vars' to expand any environment variables
+     in VALUE.
 
      `setenv' works by modifying `process-environment'; binding that
      variable with `let' is also reasonable practice.
@@ -156,12 +159,12 @@ useful for constructing frame titles (*note Frame Titles::).
      this variable.
 
           process-environment
-          => ("l=/usr/stanford/lib/gnuemacs/lisp"
-              "PATH=.:/user/lewis/bin:/usr/class:/nfsusr/local/bin"
+          => ("PATH=/usr/local/bin:/usr/bin:/bin"
               "USER=lewis"
-              "TERM=ibmapa16"
-              "SHELL=/bin/csh"
-              "HOME=/user/lewis")
+              "TERM=xterm"
+              "SHELL=/bin/bash"
+              "HOME=/home/lewis"
+              ...)
 
      If `process-environment' contains "duplicate" elements that
      specify the same environment variable, the first of these elements
@@ -169,22 +172,20 @@ useful for constructing frame titles (*note Frame Titles::).
 
  -- Variable: initial-environment
      This variable holds the list of environment variables Emacs
-     inherited from its parent process.  It is computed during startup,
-     see *Note Startup Summary::.
+     inherited from its parent process when Emacs started.
 
  -- Variable: path-separator
-     This variable holds a string which says which character separates
+     This variable holds a string that says which character separates
      directories in a search path (as found in an environment
      variable).  Its value is `":"' for Unix and GNU systems, and `";"'
-     for MS-DOS and MS-Windows.
+     for MS systems.
 
  -- Function: parse-colon-path path
-     This function takes a search path string such as would be the
-     value of the `PATH' environment variable, and splits it at the
-     separators, returning a list of directory names.  `nil' in this
-     list stands for "use the current directory."  Although the
-     function's name says "colon," it actually uses the value of
-     `path-separator'.
+     This function takes a search path string such as the value of the
+     `PATH' environment variable, and splits it at the separators,
+     returning a list of directory names.  `nil' in this list means the
+     current directory.  Although the function's name says "colon", it
+     actually uses the value of `path-separator'.
 
           (parse-colon-path ":/foo:/bar")
                => (nil "/foo/" "/bar/")
@@ -196,24 +197,24 @@ useful for constructing frame titles (*note Frame Titles::).
 
  -- Variable: invocation-directory
      This variable holds the directory from which the Emacs executable
-     was invoked, or perhaps `nil' if that directory cannot be
-     determined.
+     was invoked, or `nil' if that directory cannot be determined.
 
  -- Variable: installation-directory
      If non-`nil', this is a directory within which to look for the
-     `lib-src' and `etc' subdirectories.  This is non-`nil' when Emacs
-     can't find those directories in their standard installed
-     locations, but can find them in a directory related somehow to the
-     one containing the Emacs executable.
+     `lib-src' and `etc' subdirectories.  In an installed Emacs, it is
+     normally `nil'.  It is non-`nil' when Emacs can't find those
+     directories in their standard installed locations, but can find
+     them in a directory related somehow to the one containing the
+     Emacs executable (i.e., `invocation-directory').
 
  -- Function: load-average &optional use-float
-     This function returns the current 1-minute, 5-minute, and
-     15-minute load averages, in a list.
+     This function returns the current 1-minute, 5-minute, and 15-minute
+     system load averages, in a list.  The load average indicates the
+     number of processes trying to run on the system.
 
      By default, the values are integers that are 100 times the system
-     load averages, which indicate the average number of processes
-     trying to run.  If USE-FLOAT is non-`nil', then they are returned
-     as floating point numbers and without multiplying by 100.
+     load averages, but if USE-FLOAT is non-`nil', then they are
+     returned as floating point numbers without multiplying by 100.
 
      If it is impossible to obtain the load average, this function
      signals an error.  On some platforms, access to load averages
@@ -229,9 +230,7 @@ useful for constructing frame titles (*note Frame Titles::).
           (load-average t)
                => (1.69 0.48 0.36)
 
-          lewis@rocky[5] % uptime
-           11:55am  up 1 day, 19:37,  3 users,
-           load average: 1.69, 0.48, 0.36
+     The shell command `uptime' returns similar information.
 
  -- Function: emacs-pid
      This function returns the process ID of the Emacs process, as an
@@ -239,8 +238,7 @@ useful for constructing frame titles (*note Frame Titles::).
 
  -- Variable: tty-erase-char
      This variable holds the erase character that was selected in the
-     system's terminal driver, before Emacs was started.  The value is
-     `nil' if Emacs is running under a window system.
+     system's terminal driver, before Emacs was started.
 
 
 File: elisp,  Node: User Identification,  Next: Time of Day,  Prev: System Environment,  Up: System Interface
@@ -269,33 +267,25 @@ File: elisp,  Node: User Identification,  Next: Time of Day,  Prev: System Envir
      you do not want to use the default value.
 
  -- Function: user-login-name &optional uid
-     If you don't specify UID, this function returns the name under
-     which the user is logged in.  If the environment variable `LOGNAME'
-     is set, that value is used.  Otherwise, if the environment variable
-     `USER' is set, that value is used.  Otherwise, the value is based
-     on the effective UID, not the real UID.
+     This function returns the name under which the user is logged in.
+     It uses the environment variables `LOGNAME' or `USER' if either is
+     set.  Otherwise, the value is based on the effective UID, not the
+     real UID.
 
-     If you specify UID, the value is the user name that corresponds to
-     UID (which should be an integer), or `nil' if there is no such
-     user.
-
-          (user-login-name)
-               => "lewis"
+     If you specify UID (a number), the result is the user name that
+     corresponds to UID, or `nil' if there is no such user.
 
  -- Function: user-real-login-name
      This function returns the user name corresponding to Emacs's real
-     UID.  This ignores the effective UID and ignores the environment
+     UID.  This ignores the effective UID, and the environment
      variables `LOGNAME' and `USER'.
 
  -- Function: user-full-name &optional uid
      This function returns the full name of the logged-in user--or the
      value of the environment variable `NAME', if that is set.
 
-          (user-full-name)
-               => "Bil Lewis"
-
-     If the Emacs job's user-id does not correspond to any known user
-     (and provided `NAME' is not set), the value is `"unknown"'.
+     If the Emacs process's user-id does not correspond to any known
+     user (and provided `NAME' is not set), the result is `"unknown"'.
 
      If UID is non-`nil', then it should be a number (a user-id) or a
      string (a login name).  Then `user-full-name' returns the full
@@ -311,10 +301,8 @@ Titles::).
 
  -- Function: user-real-uid
      This function returns the real UID of the user.  The value may be
-     a floating point number.
-
-          (user-real-uid)
-               => 19
+     a floating point number, in the (unlikely) event that the UID is
+     too large to fit in a Lisp integer.
 
  -- Function: user-uid
      This function returns the effective UID of the user.  The value
@@ -326,50 +314,50 @@ File: elisp,  Node: Time of Day,  Next: Time Conversion,  Prev: User Identificat
 39.5 Time of Day
 ================
 
-This section explains how to determine the current time and the time
-zone.
+This section explains how to determine the current time and time zone.
+
+   Most of these functions represent time as a list of either three
+integers, `(SEC-HIGH SEC-LOW MICROSEC)', or of two integers, `(SEC-HIGH
+SEC-LOW)'.  The integers SEC-HIGH and SEC-LOW give the high and low
+bits of an integer number of seconds.  This integer number, HIGH *
+2**16 + LOW, is the number of seconds from the "epoch" (0:00 January 1,
+1970 UTC) to the specified time.  The third list element MICROSEC, if
+present, gives the number of microseconds from the start of that second
+to the specified time.
+
+   The return value of `current-time' represents time using three
+integers, while the timestamps in the return value of `file-attributes'
+use two integers (*note Definition of file-attributes::).  In function
+arguments, e.g. the TIME-VALUE argument to `current-time-string', both
+two- and three-integer lists are accepted.  You can convert times from
+the list representation into standard human-readable strings using
+`current-time', or to other forms using the `decode-time' and
+`format-time-string' functions documented in the following sections.
 
  -- Function: current-time-string &optional time-value
      This function returns the current time and date as a human-readable
      string.  The format of the string is unvarying; the number of
      characters used for each part is always the same, so you can
-     reliably use `substring' to extract pieces of it.  It is wise to
-     count the characters from the beginning of the string rather than
-     from the end, as additional information may some day be added at
-     the end.
+     reliably use `substring' to extract pieces of it.  You should count
+     characters from the beginning of the string rather than from the
+     end, as additional information may some day be added at the end.
 
      The argument TIME-VALUE, if given, specifies a time to format
-     instead of the current time.  This argument should have the same
-     form as the times obtained from `current-time' (see below) and from
-     `file-attributes' (*note Definition of file-attributes::).  It
-     should be a list whose first two elements are integers; a third
-     (microsecond) element, if present, is ignored.  TIME-VALUE can
-     also be a cons of two integers, but this usage is obsolete.
+     (represented as a list of integers), instead of the current time.
 
           (current-time-string)
                => "Wed Oct 14 22:21:05 1987"
 
  -- Function: current-time
-     This function returns the system's time value as a list of three
-     integers: `(HIGH LOW MICROSEC)'.  The integers HIGH and LOW
-     combine to give the number of seconds since 0:00 January 1, 1970
-     UTC (Coordinated Universal Time), which is HIGH * 2**16 + LOW.
-
-     The third element, MICROSEC, gives the microseconds since the
-     start of the current second (or 0 for systems that return time with
-     the resolution of only one second).
-
-     The first two elements can be compared with file time values such
-     as you get with the function `file-attributes'.  *Note Definition
-     of file-attributes::.
+     This function returns the current time, represented as a list of
+     three integers `(SEC-HIGH SEC-LOW MICROSEC)'.  On systems with
+     only one-second time resolutions, MICROSEC is 0.
 
  -- Function: float-time &optional time-value
      This function returns the current time as a floating-point number
-     of seconds since the epoch.  The argument TIME-VALUE, if given,
-     specifies a time to convert instead of the current time.  The
-     argument should have the same form as for `current-time-string'
-     (see above).  Thus, it accepts the output of `current-time' and
-     `file-attributes' (*note Definition of file-attributes::).
+     of seconds since the epoch.  The optional argument TIME-VALUE, if
+     given, specifies a time (represented as a list of integers) to
+     convert instead of the current time.
 
      _Warning_: Since the result is floating point, it may not be
      exact.  Do not use this function if precise time stamps are
@@ -391,11 +379,8 @@ zone.
      necessary to compute the value, the unknown elements of the list
      are `nil'.
 
-     The argument TIME-VALUE, if given, specifies a time to analyze
-     instead of the current time.  The argument should have the same
-     form as for `current-time-string' (see above).  Thus, you can use
-     times obtained from `current-time' (see above) and from
-     `file-attributes'.  *Note Definition of file-attributes::.
+     The argument TIME-VALUE, if given, specifies a time (represented
+     as a list of integers) to analyze instead of the current time.
 
    The current time zone is determined by the `TZ' environment
 variable.  *Note System Environment::.  For example, you can tell Emacs
@@ -408,16 +393,15 @@ File: elisp,  Node: Time Conversion,  Next: Time Parsing,  Prev: Time of Day,  U
 39.6 Time Conversion
 ====================
 
-These functions convert time values (lists of two or three integers) to
-calendrical information and vice versa.  You can get time values from
-the functions `current-time' (*note Time of Day::) and
-`file-attributes' (*note Definition of file-attributes::).
+These functions convert time values (lists of two or three integers, as
+explained in the previous section) into calendrical information and
+vice versa.
 
-   Many 32-bit operating systems are limited to time values that
-contain 32 bits of information; these systems typically handle only the
-times from 1901-12-13 20:45:52 UTC through 2038-01-19 03:14:07 UTC.
-However, 64-bit and some 32-bit operating systems have larger time
-values, and can represent times far in the past or future.
+   Many 32-bit operating systems are limited to time values containing
+32 bits of information; these systems typically handle only the times
+from 1901-12-13 20:45:52 UTC through 2038-01-19 03:14:07 UTC.  However,
+64-bit and some 32-bit operating systems have larger time values, and
+can represent times far in the past or future.
 
    Time conversion functions always use the Gregorian calendar, even
 for dates before the Gregorian calendar was introduced.  Year numbers
@@ -741,7 +725,7 @@ elapsed and processor time, used by the Emacs process.
      "uptime"--the elapsed wall-clock time this instance of Emacs is
      running.  The string is formatted by `format-seconds' according to
      the optional argument FORMAT.  For the available format
-     descriptors, see *Note format-seconds: Time Parsing.  If FORMAT is
+     descriptors, see *note format-seconds: Time Parsing.  If FORMAT is
      `nil' or omitted, it defaults to `"%Y, %D, %H, %M, %z%S"'.
 
      When called interactively, it prints the uptime in the echo area.
@@ -948,7 +932,7 @@ certain length of time.  Aside from how to set them up, idle timers
 work just like ordinary timers.
 
  -- Command: run-with-idle-timer secs repeat function &rest args
-     Set up a timer which runs when Emacs has been idle for SECS
+     Set up a timer which runs the next time Emacs is idle for SECS
      seconds.  The value of SECS may be an integer or a floating point
      number; a value of the type returned by `current-idle-time' is
      also allowed.
@@ -963,9 +947,9 @@ work just like ordinary timers.
 
    Emacs becomes "idle" when it starts waiting for user input, and it
 remains idle until the user provides some input.  If a timer is set for
-five seconds of idleness, it runs approximately five seconds after Emacs
-first becomes idle.  Even if REPEAT is non-`nil', this timer will not
-run again as long as Emacs remains idle, because the duration of
+five seconds of idleness, it runs approximately five seconds after
+Emacs first becomes idle.  Even if REPEAT is non-`nil', this timer will
+not run again as long as Emacs remains idle, because the duration of
 idleness will continue to increase and will not go down to five seconds
 again.
 
@@ -983,13 +967,10 @@ set up to repeat will subsequently run another time, one by one.
 
  -- Function: current-idle-time
      If Emacs is idle, this function returns the length of time Emacs
-     has been idle, as a list of three integers: `(HIGH LOW MICROSEC)'.
-     The integers HIGH and LOW combine to give the number of seconds
-     of idleness, which is HIGH * 2**16 + LOW.
-
-     The third element, MICROSEC, gives the microseconds since the
-     start of the current second (or 0 for systems that return time with
-     the resolution of only one second).
+     has been idle, as a list of three integers: `(SEC-HIGH SEC-LOW
+     MICROSEC)', where HIGH and LOW are the high and low bits for the
+     number of seconds and MICROSEC is the additional number of
+     microseconds (*note Time of Day::).
 
      When Emacs is not idle, `current-idle-time' returns `nil'.  This
      is a convenient way to test whether Emacs is idle.
@@ -1019,9 +1000,9 @@ set up to repeat will subsequently run another time, one by one.
                       nil
                       'timer-function))))
 
-   Some idle timer functions in user Lisp packages have a loop that
-does a certain amount of processing each time around, and exits when
-`(input-pending-p)' is non-`nil'.  That approach seems very natural but
+   Do not write an idle timer function containing a loop which does a
+certain amount of processing each time around, and exits when
+`(input-pending-p)' is non-`nil'.  This approach seems very natural but
 has two problems:
 
    * It blocks out all process output (since Emacs accepts process
@@ -1029,9 +1010,8 @@ has two problems:
 
    * It blocks out any idle timers that ought to run during that time.
 
-To avoid these problems, don't use that technique.  Instead, write such
-idle timers to reschedule themselves after a brief pause, using the
-method in the `timer-function' example above.
+The correct approach is for the idle timer to reschedule itself after a
+brief pause, using the method in the `timer-function' example above.
 
 
 File: elisp,  Node: Terminal Input,  Next: Terminal Output,  Prev: Idle Timers,  Up: System Interface
@@ -1040,7 +1020,7 @@ File: elisp,  Node: Terminal Input,  Next: Terminal Output,  Prev: Idle Timers, 
 ====================
 
 This section describes functions and variables for recording or
-manipulating terminal input.  See *Note Display::, for related
+manipulating terminal input.  See *note Display::, for related
 functions.
 
 * Menu:
@@ -1203,7 +1183,7 @@ than optimal.  To fix the problem, set `baud-rate'.
      You close the termscript file by calling this function with an
      argument of `nil'.
 
-     See also `open-dribble-file' in *Note Recording Input::.
+     See also `open-dribble-file' in *note Recording Input::.
 
           (open-termscript "../junk/termscript")
                => nil
@@ -1216,8 +1196,7 @@ File: elisp,  Node: Sound Output,  Next: X11 Keysyms,  Prev: Terminal Output,  U
 
 To play sound using Emacs, use the function `play-sound'.  Only certain
 systems are supported; if you call `play-sound' on a system which
-cannot really do the job, it gives an error.  Emacs version 20 and
-earlier did not support sound at all.
+cannot really do the job, it gives an error.
 
    The sound must be stored as a file in RIFF-WAVE format (`.wav') or
 Sun Audio format (`.au').
@@ -1439,7 +1418,9 @@ in such a way that users can easily download, install, uninstall, and
 upgrade it.
 
    The following sections describe how to create a package, and how to
-put it in a "package archive" for others to download.
+put it in a "package archive" for others to download.  *Note Packages:
+(emacs)Packages, for a description of user-level features of the
+packaging system.
 
 * Menu:
 
@@ -1505,19 +1486,34 @@ the files extracted from a multi-file package).
    Emacs then searches every Lisp file in the content directory for
 autoload magic comments (*note Autoload::).  These autoload definitions
 are saved to a file named `NAME-autoloads.el' in the content directory.
-They are typically used to autoload the principal user commands
-defined in the package, but they can also perform other tasks, such as
-adding an element to `auto-mode-alist' (*note Auto Major Mode::).
-During this time, Emacs will also byte-compile the Lisp files.
+They are typically used to autoload the principal user commands defined
+in the package, but they can also perform other tasks, such as adding
+an element to `auto-mode-alist' (*note Auto Major Mode::).  Note that a
+package typically does _not_ autoload every function and variable
+defined within it--only the handful of commands typically called to
+begin using the package.  Emacs then byte-compiles every Lisp file in
+the package.
 
-   After installation, and (by default) each time Emacs is started, the
-installed package is "activated".  During activation, Emacs adds the
-package's content directory to `load-path', and evaluates the autoload
-definitions in `NAME-autoloads.el'.
+   After installation, the installed package is "loaded": Emacs adds
+the package's content directory to `load-path', and evaluates the
+autoload definitions in `NAME-autoloads.el'.
 
-   Note that a package typically does _not_ autoload every function and
-variable defined within it--only the handful of commands typically
-called to begin using the package.
+   Whenever Emacs starts up, it automatically calls the function
+`package-initialize' to load installed packages.  This is done after
+loading the init file and abbrev file (if any) and before running
+`after-init-hook' (*note Startup Summary::).  Automatic package loading
+is disabled if the user option `package-enable-at-startup' is `nil'.
+
+ -- Command: package-initialize &optional no-activate
+     This function initializes Emacs' internal record of which packages
+     are installed, and loads them.  The user option `package-load-list'
+     specifies which packages to load; by default, all installed
+     packages are loaded.  *Note Package Installation: (emacs)Package
+     Installation.
+
+     The optional argument NO-ACTIVATE, if non-`nil', causes Emacs to
+     update its record of installed packages without actually loading
+     them; it is for internal use only.
 
 
 File: elisp,  Node: Simple Packages,  Next: Multi-file Packages,  Prev: Packaging Basics,  Up: Packaging
@@ -1573,7 +1569,7 @@ a description of the `Package-Requires' header.  If the header is
 omitted, the package has no dependencies.
 
    The file ought to also contain one or more autoload magic comments,
-as explained in *Note Packaging Basics::.  In the above example, a magic
+as explained in *note Packaging Basics::.  In the above example, a magic
 comment autoloads `superfrobnicator-mode'.
 
    *Note Package Archives::, for a explanation of how to add a
@@ -1729,7 +1725,7 @@ Appendix A Emacs 22 Antinews
 
 For those users who live backwards in time, here is information about
 downgrading to Emacs version 22.3.  We hope you will enjoy the greater
-simplicity that results from the absence of many Emacs 24.0.94 features.
+simplicity that results from the absence of many Emacs 24.0.95 features.
 
 A.1 Old Lisp Features in Emacs 22
 =================================
@@ -1744,7 +1740,7 @@ A.1 Old Lisp Features in Emacs 22
      `handle-shift-selection', and the variable
      `this-command-keys-shift-translated' have all been removed.
      Shift-translated keys are no longer treated specially, making
-     Emacs' handling of keybindings much more consistent.
+     Emacs's handling of keybindings much more consistent.
 
    * Temporarily-active regions are not created by giving the variable
      `transient-mark-mode' values of the form `(only . OLDVAR)'.  We
@@ -1794,9 +1790,9 @@ A.1 Old Lisp Features in Emacs 22
 
    * Display terminals are no longer represented using a "terminal" data
      type; this is not necessary, because we have removed the ability to
-     display on graphical and text-only terminals simultaneously.  For
-     the same reason, the `window-system' variable is no longer
-     frame-local, and the `window-system' function has been removed.
+     display on graphical and text terminals simultaneously.  For the
+     same reason, the `window-system' variable is no longer frame-local,
+     and the `window-system' function has been removed.
 
    * The functions `list-system-processes' and `process-attributes'
      have been removed.  To get information about system processes,
@@ -3102,7 +3098,7 @@ code intended for widespread use:
      chosen prefix.  Separate the prefix from the rest of the name with
      a hyphen, `-'.  This practice helps avoid name conflicts, since
      all global variables in Emacs Lisp share the same name space, and
-     all functions share another name space(1)
+     all functions share another name space(1).
 
      Occasionally, for a command name intended for users to use, it is
      more convenient if some words come before the package's name
@@ -3146,6 +3142,17 @@ code intended for widespread use:
      `eval-when-compile' avoids loading BAR when the compiled version
      of FOO is _used_.  It should be called before the first use of the
      macro in the file.  *Note Compiling Macros::.
+
+   * Avoid loading additional libraries at run time unless they are
+     really needed.  If your file simply cannot work without some other
+     library, then just `require' that library at the top-level and be
+     done with it.  But if your file contains several independent
+     features, and only one or two require the extra library, then
+     consider putting `require' statements inside the relevant
+     functions rather than at the top-level.  Or use `autoload'
+     statements to load the extra library when needed.  This way people
+     who don't use those aspects of your file do not need to load the
+     extra library.
 
    * Please don't require the `cl' package of Common Lisp extensions at
      run time.  Use of this package is optional, and it is not part of
@@ -3217,18 +3224,16 @@ code intended for widespread use:
      the replacements differs from that of the originals.
 
    * Constructs that define a function or variable should be macros,
-     not functions, and their names should start with `def'.
-
-   * A macro that defines a function or variable should have a name that
-     starts with `define-'.  The macro should receive the name to be
-     defined as the first argument.  That will help various tools find
-     the definition automatically.  Avoid constructing the names in the
-     macro itself, since that would confuse these tools.
+     not functions, and their names should start with `define-'.  The
+     macro should receive the name to be defined as the first argument.
+     That will help various tools find the definition automatically.
+     Avoid constructing the names in the macro itself, since that would
+     confuse these tools.
 
    * In some other systems there is a convention of choosing variable
      names that begin and end with `*'.  We don't use that convention
      in Emacs Lisp, so please don't use it in your programs.  (Emacs
-     uses such names only for special-purpose buffers.)  The users will
+     uses such names only for special-purpose buffers.)  People will
      find Emacs more coherent if all libraries use the same conventions.
 
    * If your program contains non-ASCII characters in string or
@@ -3237,38 +3242,18 @@ code intended for widespread use:
      The easiest way to do this is to use the coding system
      `utf-8-emacs' (*note Coding System Basics::), and specify that
      coding in the `-*-' line or the local variables list.  *Note Local
-     Variables in Files: (emacs)File variables.
+     Variables in Files: (emacs)File Variables.
 
           ;; XXX.el  -*- coding: utf-8-emacs; -*-
 
-   * Indent each function with `C-M-q' (`indent-sexp') using the
-     default indentation parameters.
+   * Indent the file using the default indentation parameters.
 
    * Don't make a habit of putting close-parentheses on lines by
      themselves; Lisp programmers find this disconcerting.
 
    * Please put a copyright notice and copying permission notice on the
-     file if you distribute copies.  Use a notice like this one:
+     file if you distribute copies.  *Note Library Headers::.
 
-          ;; Copyright (C) YEAR NAME
-
-          ;; This program is free software: you can redistribute it and/or
-          ;; modify it under the terms of the GNU General Public License as
-          ;; published by the Free Software Foundation, either version 3 of
-          ;; the License, or (at your option) any later version.
-
-          ;; This program is distributed in the hope that it will be useful,
-          ;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-          ;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-          ;; GNU General Public License for more details.
-
-          ;; You should have received a copy of the GNU General Public License
-          ;; along with this program.  If not, see
-          ;; <http://www.gnu.org/licenses/>.
-
-     If you have signed papers to assign the copyright to the
-     Foundation, then use `Free Software Foundation, Inc.' as NAME.
-     Otherwise, use your name.  *Note Library Headers::.
 
    ---------- Footnotes ----------
 
@@ -3327,11 +3312,11 @@ D.2 Key Binding Conventions
    * Similarly, don't bind a key sequence ending in <C-g>, since that
      is commonly used to cancel a key sequence.
 
-   * Anything which acts like a temporary mode or state which the user
-     can enter and leave should define `<ESC> <ESC>' or `<ESC> <ESC>
-     <ESC>' as a way to escape.
+   * Anything that acts like a temporary mode or state that the user can
+     enter and leave should define `<ESC> <ESC>' or `<ESC> <ESC> <ESC>'
+     as a way to escape.
 
-     For a state which accepts ordinary Emacs commands, or more
+     For a state that accepts ordinary Emacs commands, or more
      generally any kind of state in which <ESC> followed by a function
      key or arrow key is potentially meaningful, then you must not
      define `<ESC> <ESC>', since that would preclude recognizing an
@@ -3393,8 +3378,8 @@ Emacs when it runs.
    * An error message should start with a capital letter but should not
      end with a period.
 
-   * A question asked in the minibuffer with `y-or-n-p' or
-     `yes-or-no-p' should start with a capital letter and end with `? '.
+   * A question asked in the minibuffer with `yes-or-no-p' or
+     `y-or-n-p' should start with a capital letter and end with `? '.
 
    * When you mention a default value in a minibuffer prompt, put it
      and the word `default' inside parentheses.  It should look like
@@ -3438,10 +3423,10 @@ Emacs when it runs.
      to generate such messages.
 
    * Try to avoid using recursive edits.  Instead, do what the Rmail `e'
-     command does: use a new local keymap that contains one command
-     defined to switch back to the old local keymap.  Or do what the
-     `edit-options' command does: switch to another buffer and let the
-     user switch back at will.  *Note Recursive Editing::.
+     command does: use a new local keymap that contains a command
+     defined to switch back to the old local keymap.  Or simply switch
+     to another buffer and let the user switch back at will.  *Note
+     Recursive Editing::.
 
 
 File: elisp,  Node: Compilation Tips,  Next: Warning Tips,  Prev: Programming Tips,  Up: Tips
@@ -3481,6 +3466,9 @@ programs.
           (get 'aref 'byte-compile)
                => byte-compile-two-args
 
+     Note that in this case (and many others), you must first load the
+     `bytecomp' library, which defines the `byte-compile' property.
+
    * If calling a small function accounts for a substantial part of your
      program's running time, make the function inline.  This eliminates
      the function call overhead.  Since making a function inline reduces
@@ -3502,6 +3490,10 @@ D.5 Tips for Avoiding Compiler Warnings
      Such a definition has no effect except to tell the compiler not to
      warn about uses of the variable `foo' in this file.
 
+   * Similarly, to avoid a compiler warning about an undefined function
+     that you know _will_ be defined, use a `declare-function'
+     statement (*note Declaring Functions::).
+
    * If you use many functions and variables from a certain file, you
      can add a `require' for that package to avoid compilation warnings
      for them.  For instance,
@@ -3518,8 +3510,9 @@ D.5 Tips for Avoiding Compiler Warnings
      used for the other functions and variables in your package.
 
    * The last resort for avoiding a warning, when you want to do
-     something that usually is a mistake but it's not a mistake in this
-     one case, is to put a call to `with-no-warnings' around it.
+     something that is usually a mistake but you know is not a mistake
+     in your usage, is to put it inside `with-no-warnings'.  *Note
+     Compiler Errors::.
 
 
 File: elisp,  Node: Documentation Tips,  Next: Comment Tips,  Prev: Warning Tips,  Up: Tips
@@ -3535,10 +3528,8 @@ strings.  You can check many of these conventions by running the command
      about should have a documentation string.
 
    * An internal variable or subroutine of a Lisp program might as well
-     have a documentation string.  In earlier Emacs versions, you could
-     save space by using a comment instead of a documentation string,
-     but that is no longer the case--documentation strings now take up
-     very little space in a running Emacs.
+     have a documentation string.  Documentation strings take up very
+     little space in a running Emacs.
 
    * Format the documentation string so that it fits in an Emacs window
      on an 80-column screen.  It is a good idea for most lines to be no
@@ -3548,14 +3539,14 @@ strings.  You can check many of these conventions by running the command
      You can fill the text if that looks good.  However, rather than
      blindly filling the entire documentation string, you can often
      make it much more readable by choosing certain line breaks with
-     care.  Use blank lines between topics if the documentation string
-     is long.
+     care.  Use blank lines between sections if the documentation
+     string is long.
 
    * The first line of the documentation string should consist of one
      or two complete sentences that stand on their own as a summary.
      `M-x apropos' displays just the first line, and if that line's
      contents don't stand on their own, the result looks bad.  In
-     particular, start the first line with a capital letter and end
+     particular, start the first line with a capital letter and end it
      with a period.
 
      For a function, the first line should briefly answer the question,
@@ -3583,7 +3574,7 @@ strings.  You can check many of these conventions by running the command
    * When a function's documentation string mentions the value of an
      argument of the function, use the argument name in capital letters
      as if it were a name for that value.  Thus, the documentation
-     string of the function `eval' refers to its second argument as
+     string of the function `eval' refers to its first argument as
      `FORM', because the actual argument name is `form':
 
           Evaluate FORM and return its value.
@@ -3602,7 +3593,7 @@ strings.  You can check many of these conventions by running the command
 
      This might appear to contradict the policy of writing function
      argument values, but there is no real contradiction; the argument
-     _value_ is not the same thing as the _symbol_ which the function
+     _value_ is not the same thing as the _symbol_ that the function
      uses to hold the value.
 
      If this puts a lower-case letter at the beginning of a sentence
@@ -3740,8 +3731,8 @@ strings.  You can check many of these conventions by running the command
 
           In Dired, visit the file or directory named on this line.
 
-   * When you define a variable that users ought to set interactively,
-     you should use `defcustom'.  *Note Defining Variables::.
+   * When you define a variable that represents an option users might
+     want to set, use `defcustom'.  *Note Defining Variables::.
 
    * The documentation string for a variable that is a yes-or-no flag
      should start with words such as "Non-nil means," to make it clear
@@ -3754,18 +3745,13 @@ File: elisp,  Node: Comment Tips,  Next: Library Headers,  Prev: Documentation T
 D.7 Tips on Writing Comments
 ============================
 
-We recommend these conventions for where to put comments and how to
-indent them:
+We recommend these conventions for comments:
 
 `;'
      Comments that start with a single semicolon, `;', should all be
      aligned to the same column on the right of the source code.  Such
-     comments usually explain how the code on the same line does its
-     job.  In Lisp mode and related modes, the `M-;'
-     (`indent-for-comment') command automatically inserts such a `;' in
-     the right place, or aligns such a comment if it is already present.
-
-     This and following examples are taken from the Emacs sources.
+     comments usually explain how the code on that line does its job.
+     For example:
 
           (setq base-version-list                 ; there was a base
                 (assoc (substring fn 0 start-vn)  ; version to which
@@ -3781,21 +3767,20 @@ indent them:
           (prog1 (setq auto-fill-function
                        ...
                        ...
-            ;; update mode line
+            ;; Update mode line.
             (force-mode-line-update)))
 
      We also normally use two semicolons for comments outside functions.
 
-          ;; This Lisp code is run in Emacs
-          ;; when it is to operate as a server
-          ;; for other processes.
+          ;; This Lisp code is run in Emacs when it is to operate as
+          ;; a server for other processes.
 
-     Every function that has no documentation string (presumably one
-     that is used only internally within the package it belongs to),
-     should instead have a two-semicolon comment right before the
-     function, explaining what the function does and how to call it
-     properly.  Explain precisely what each argument means and how the
-     function interprets its possible values.
+     If a function has no documentation string, it should instead have a
+     two-semicolon comment right before the function, explaining what
+     the function does and how to call it properly.  Explain precisely
+     what each argument means and how the function interprets its
+     possible values.  It is much better to convert such comments to
+     documentation strings, though.
 
 `;;;'
      Comments that start with three semicolons, `;;;', should start at
@@ -3806,7 +3791,7 @@ indent them:
      considered a "heading" by Outline minor mode.  By default,
      comments starting with at least three semicolons (followed by a
      single space and a non-whitespace character) are considered
-     headings, comments starting with two or less are not.
+     headings, comments starting with two or fewer are not.
 
      Another use for triple-semicolon comments is for commenting out
      lines within a function.  We use three semicolons for this
@@ -3831,10 +3816,10 @@ indent them:
 
           ;;;; The kill ring
 
-The indentation commands of the Lisp modes in Emacs, such as `M-;'
-(`indent-for-comment') and <TAB> (`lisp-indent-line'), automatically
-indent comments according to these conventions, depending on the number
-of semicolons.  *Note Manipulating Comments: (emacs)Comments.
+Generally speaking, the `M-;' (`comment-dwim') command automatically
+starts a comment of the appropriate type; or indents an existing
+comment to the right place, depending on the number of semicolons.
+*Note Manipulating Comments: (emacs)Comments.
 
 
 File: elisp,  Node: Library Headers,  Prev: Comment Tips,  Up: Tips
@@ -3844,93 +3829,92 @@ D.8 Conventional Headers for Emacs Libraries
 
 Emacs has conventions for using special comments in Lisp libraries to
 divide them into sections and give information such as who wrote them.
-This section explains these conventions.
+Using a standard format for these items makes it easier for tools (and
+people) to extract the relevant information.  This section explains
+these conventions, starting with an example:
 
-   We'll start with an example, a package that is included in the Emacs
-distribution.
+     ;;; foo.el --- Support for the Foo programming language
 
-   Parts of this example reflect its status as part of Emacs; for
-example, the copyright notice lists the Free Software Foundation as the
-copyright holder, and the copying permission says the file is part of
-Emacs.  When you write a package and post it, the copyright holder would
-be you (unless your employer claims to own it instead), and you should
-get the suggested copying permission from the end of the GNU General
-Public License itself.  Don't say your file is part of Emacs if we
-haven't installed it in Emacs yet!
+     ;; Copyright (C) 2010-2012 Your Name
 
-   With that warning out of the way, on to the example:
+     ;; Author: Your Name <yourname@example.com>
+     ;; Maintainer: Someone Else <someone@example.com>
+     ;; Created: 14 Jul 2010
+     ;; Keywords: languages
 
-     ;;; lisp-mnt.el --- minor mode for Emacs Lisp maintainers
+     ;; This file is not part of GNU Emacs.
 
-     ;; Copyright (C) 1992 Free Software Foundation, Inc.
-
-     ;; Author: Eric S. Raymond <esr@snark.thyrsus.com>
-     ;; Maintainer: Eric S. Raymond <esr@snark.thyrsus.com>
-     ;; Created: 14 Jul 1992
-     ;; Version: 1.2
-     ;; Keywords: docs
-
-     ;; This file is part of GNU Emacs.
+     ;; This file is free software...
      ...
-     ;; along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
+     ;; along with this file.  If not, see <http://www.gnu.org/licenses/>.
 
    The very first line should have this format:
 
      ;;; FILENAME --- DESCRIPTION
 
-The description should be complete in one line.  If the file needs a
-`-*-' specification, put it after DESCRIPTION.
+The description should be contained in one line.  If the file needs a
+`-*-' specification, put it after DESCRIPTION.  If this would make the
+first line too long, use a Local Variables section at the end of the
+file.
+
+   The copyright notice usually lists your name (if you wrote the
+file).  If you have an employer who claims copyright on your work, you
+might need to list them instead.  Do not say that the copyright holder
+is the Free Software Foundation (or that the file is part of GNU Emacs)
+unless your file has been accepted into the Emacs distribution.  For
+more information on the form of copyright and license notices, see the
+guide on the GNU website (http://www.gnu.org/licenses/gpl-howto.html).
 
    After the copyright notice come several "header comment" lines, each
 beginning with `;; HEADER-NAME:'.  Here is a table of the conventional
 possibilities for HEADER-NAME:
 
 `Author'
-     This line states the name and net address of at least the principal
-     author of the library.
+     This line states the name and email address of at least the
+     principal author of the library.  If there are multiple authors,
+     list them on continuation lines led by `;;' and whitespace (this
+     is easier for tools to parse than having more than one author on
+     one line).  We recommend including a contact email address, of the
+     form `<...>'.  For example:
 
-     If there are multiple authors, you can list them on continuation
-     lines led by `;;' and a tab character, like this:
-
-          ;; Author: Ashwin Ram <Ram-Ashwin@cs.yale.edu>
-          ;;      Dave Sill <de5@ornl.gov>
-          ;;      Dave Brennan <brennan@hal.com>
-          ;;      Eric Raymond <esr@snark.thyrsus.com>
+          ;; Author: Your Name <yourname@example.com>
+          ;;      Someone Else <someone@example.com>
+          ;;      Another Person <another@example.com>
 
 `Maintainer'
-     This line should contain a single name/address as in the Author
-     line, or an address only, or the string `FSF'.  If there is no
-     maintainer line, the person(s) in the Author field are presumed to
-     be the maintainers.  The example above is mildly bogus because the
-     maintainer line is redundant.
+     This header has the same format as the Author header.  It lists the
+     person(s) who currently maintain(s) the file (respond to bug
+     reports, etc.).
 
-     The idea behind the `Author' and `Maintainer' lines is to make
-     possible a Lisp function to "send mail to the maintainer" without
-     having to mine the name out by hand.
-
-     Be sure to surround the network address with `<...>' if you
-     include the person's full name as well as the network address.
+     If there is no maintainer line, the person(s) in the Author field
+     is/are presumed to be the maintainers.  Some files in Emacs use
+     `FSF' for the maintainer.  This means that the original author is
+     no longer responsible for the file, and that it is maintained as
+     part of Emacs.
 
 `Created'
-     This optional line gives the original creation date of the file.
-     For historical interest only.
+     This optional line gives the original creation date of the file,
+     and is for historical interest only.
 
 `Version'
      If you wish to record version numbers for the individual Lisp
-     program, put them in this line.
-
-`Adapted-By'
-     In this header line, place the name of the person who adapted the
-     library for installation (to make it fit the style conventions, for
-     example).
+     program, put them in this line.  Lisp files distributed with Emacs
+     generally do not have a `Version' header, since the version number
+     of Emacs itself serves the same purpose.  If you are distributing
+     a collection of multiple files, we recommend not writing the
+     version in every file, but only the main one.
 
 `Keywords'
      This line lists keywords for the `finder-by-keyword' help command.
      Please use that command to see a list of the meaningful keywords.
 
-     This field is important; it's how people will find your package
-     when they're looking for things by topic area.  To separate the
-     keywords, you can use spaces, commas, or both.
+     This field is how people will find your package when they're
+     looking for things by topic.  To separate the keywords, you can
+     use spaces, commas, or both.
+
+     The name of this field is unfortunate, since people often assume
+     it is the place to write arbitrary keywords that describe their
+     package, rather than just the relevant Finder keywords.
 
 `Package-Version'
      If `Version' is not suitable for use by the package manager, then
@@ -3943,7 +3927,7 @@ possibilities for HEADER-NAME:
      depends for proper operation.  *Note Packaging Basics::.  This is
      used by the package manager both at download time (to ensure that
      a complete set of packages is downloaded) and at activation time
-     (to ensure that a package is activated if and only if all its
+     (to ensure that a package is only activated if all its
      dependencies have been).
 
      Its format is a list of lists.  The `car' of each sub-list is the
@@ -3962,8 +3946,8 @@ appropriate.  You can also put in header lines with other header
 names--they have no standard meanings, so they can't do any harm.
 
    We use additional stylized comments to subdivide the contents of the
-library file.  These should be separated by blank lines from anything
-else.  Here is a table of them:
+library file.  These should be separated from anything else by blank
+lines.  Here is a table of them:
 
 `;;; Commentary:'
      This begins introductory comments that explain how the library
@@ -3972,17 +3956,12 @@ else.  Here is a table of them:
      This text is used by the Finder package, so it should make sense
      in that context.
 
-`;;; Documentation:'
-     This was used in some files in place of `;;; Commentary:', but it
-     is deprecated.
-
 `;;; Change Log:'
-     This begins change log information stored in the library file (if
-     you store the change history there).  For Lisp files distributed
-     with Emacs, the change history is kept in the file `ChangeLog' and
-     not in the source file at all; these files generally do not have a
-     `;;; Change Log:' line.  `History' is an alternative to `Change
-     Log'.
+     This begins an optional log of changes to the file over time.
+     Don't put too much information in this section--it is better to
+     keep the detailed logs in a separate `ChangeLog' file (as Emacs
+     does), and/or to use a version control system.  `History' is an
+     alternative to `Change Log'.
 
 `;;; Code:'
      This begins the actual code of the program.
@@ -4020,49 +3999,44 @@ E.1 Building Emacs
 This section explains the steps involved in building the Emacs
 executable.  You don't have to know this material to build and install
 Emacs, since the makefiles do all these things automatically.  This
-information is pertinent to Emacs maintenance.
+information is pertinent to Emacs developers.
 
    Compilation of the C source files in the `src' directory produces an
 executable file called `temacs', also called a "bare impure Emacs".  It
 contains the Emacs Lisp interpreter and I/O routines, but not the
 editing commands.
 
-   The command `temacs -l loadup' uses `temacs' to create the real
-runnable Emacs executable.  These arguments direct `temacs' to evaluate
-the Lisp files specified in the file `loadup.el'.  These files set up
-the normal Emacs editing environment, resulting in an Emacs that is
-still impure but no longer bare.
+   The command `temacs -l loadup' would run `temacs' and direct it to
+load `loadup.el'.  The `loadup' library loads additional Lisp
+libraries, which set up the normal Emacs editing environment.  After
+this step, the Emacs executable is no longer "bare".
 
-   It takes a substantial time to load the standard Lisp files.
-Luckily, you don't have to do this each time you run Emacs; `temacs' can
-dump out an executable program called `emacs' that has these files
-preloaded.  `emacs' starts more quickly because it does not need to
-load the files.  This is the Emacs executable that is normally
-installed.
+   Because it takes some time to load the standard Lisp files, the
+`temacs' executable usually isn't run directly by users.  Instead, as
+one of the last steps of building Emacs, the command `temacs -batch -l
+loadup dump' is run.  The special `dump' argument causes `temacs' to
+dump out an executable program, called `emacs', which has all the
+standard Lisp files preloaded.  (The `-batch' argument prevents
+`temacs' from trying to initialize any of its data on the terminal, so
+that the tables of terminal information are empty in the dumped Emacs.)
 
-   To create `emacs', use the command `temacs -batch -l loadup dump'.
-The purpose of `-batch' here is to prevent `temacs' from trying to
-initialize any of its data on the terminal; this ensures that the
-tables of terminal information are empty in the dumped Emacs.  The
-argument `dump' tells `loadup.el' to dump a new executable named
-`emacs'.  The variable `preloaded-file-list' stores a list of the Lisp
-files that were dumped with the `emacs' executable.
-
-   Some operating systems don't support dumping.  On those systems, you
-must start Emacs with the `temacs -l loadup' command each time you use
-it.  This takes a substantial time, but since you need to start Emacs
-once a day at most--or once a week if you never log out--the extra time
-is not too severe a problem.
+   The dumped `emacs' executable (also called a "pure" Emacs) is the
+one which is installed.  The variable `preloaded-file-list' stores a
+list of the Lisp files preloaded into the dumped Emacs.  If you port
+Emacs to a new operating system, and are not able to implement dumping,
+then Emacs must load `loadup.el' each time it starts.
 
    You can specify additional files to preload by writing a library
-named `site-load.el' that loads them.  You may need to add a definition
+named `site-load.el' that loads them.  You may need to rebuild Emacs
+with an added definition
 
      #define SITELOAD_PURESIZE_EXTRA N
 
-to make N added bytes of pure space to hold the additional files.  (Try
-adding increments of 20000 until it is big enough.)  However, the
-advantage of preloading additional files decreases as machines get
-faster.  On modern machines, it is usually not advisable.
+to make N added bytes of pure space to hold the additional files; see
+`src/puresize.h'.  (Try adding increments of 20000 until it is big
+enough.)  However, the advantage of preloading additional files
+decreases as machines get faster.  On modern machines, it is usually
+not advisable.
 
    After `loadup.el' reads `site-load.el', it finds the documentation
 strings for primitive and preloaded functions (and variables) in the
@@ -4083,8 +4057,8 @@ accessible when you subsequently run Emacs:
    * Load the files with `site-init.el', then copy the files into the
      installation directory for Lisp files when you install Emacs.
 
-   * Specify a non-`nil' value for `byte-compile-dynamic-docstrings' as
-     a local variable in each of these files, and load them with either
+   * Specify a `nil' value for `byte-compile-dynamic-docstrings' as a
+     local variable in each of these files, and load them with either
      `site-load.el' or `site-init.el'.  (This method has the drawback
      that the documentation strings take up space in Emacs all the
      time.)
@@ -4095,16 +4069,26 @@ in an ordinary unmodified Emacs.  If you feel you must override normal
 features for your site, do it with `default.el', so that users can
 override your changes if they wish.  *Note Startup Summary::.
 
-   In a package that can be preloaded, it is sometimes useful to
-specify a computation to be done when Emacs subsequently starts up.
-For this, use `eval-at-startup':
+   In a package that can be preloaded, it is sometimes necessary (or
+useful) to delay certain evaluations until Emacs subsequently starts
+up.  The vast majority of such cases relate to the values of
+customizable variables.  For example, `tutorial-directory' is a
+variable defined in `startup.el', which is preloaded.  The default
+value is set based on `data-directory'.  The variable needs to access
+the value of `data-directory' when Emacs starts, not when it is dumped,
+because the Emacs executable has probably been installed in a different
+location since it was dumped.
 
- -- Macro: eval-at-startup body...
-     This evaluates the BODY forms, either immediately if running in an
-     Emacs that has already started up, or later when Emacs does start
-     up.  Since the value of the BODY forms is not necessarily
-     available when the `eval-at-startup' form is run, that form always
-     returns `nil'.
+ -- Function: custom-initialize-delay symbol value
+     This function delays the initialization of SYMBOL to the next
+     Emacs start.  You normally use this function by specifying it as
+     the `:initialize' property of a customizable variable.  (The
+     argument VALUE is unused, and is provided only for compatibility
+     with the form Custom expects.)
+
+   In the unlikely event that you need a more general functionality than
+`custom-initialize-delay' provides, you can use `before-init-hook'
+(*note Startup Summary::).
 
  -- Function: dump-emacs to-file from-file
      This function dumps the current state of Emacs into an executable
@@ -4122,10 +4106,10 @@ E.2 Pure Storage
 
 Emacs Lisp uses two kinds of storage for user-created Lisp objects:
 "normal storage" and "pure storage".  Normal storage is where all the
-new data created during an Emacs session are kept; see the following
-section for information on normal storage.  Pure storage is used for
-certain data in the preloaded standard Lisp files--data that should
-never change during actual use of Emacs.
+new data created during an Emacs session are kept (*note Garbage
+Collection::).  Pure storage is used for certain data in the preloaded
+standard Lisp files--data that should never change during actual use of
+Emacs.
 
    Pure storage is allocated only while `temacs' is loading the
 standard preloaded Lisp libraries.  In the file `emacs', it is marked
@@ -4134,13 +4118,13 @@ memory space can be shared by all the Emacs jobs running on the machine
 at once.  Pure storage is not expandable; a fixed amount is allocated
 when Emacs is compiled, and if that is not sufficient for the preloaded
 libraries, `temacs' allocates dynamic memory for the part that didn't
-fit.  If that happens, you should increase the compilation parameter
-`PURESIZE' in the file `src/puresize.h' and rebuild Emacs, even though
-the resulting image will work: garbage collection is disabled in this
-situation, causing a memory leak.  Such an overflow normally won't
-happen unless you try to preload additional libraries or add features
-to the standard ones.  Emacs will display a warning about the overflow
-when it starts.
+fit.  The resulting image will work, but garbage collection (*note
+Garbage Collection::) is disabled in this situation, causing a memory
+leak.  Such an overflow normally won't happen unless you try to preload
+additional libraries or add features to the standard ones.  Emacs will
+display a warning about the overflow when it starts.  If this happens,
+you should increase the compilation parameter `SYSTEM_PURESIZE_EXTRA'
+in the file `src/puresize.h' and rebuild Emacs.
 
  -- Function: purecopy object
      This function makes a copy in pure storage of OBJECT, and returns
@@ -4151,9 +4135,7 @@ when it starts.
      them unchanged.  It signals an error if asked to copy markers.
 
      This function is a no-op except while Emacs is being built and
-     dumped; it is usually called only in the file
-     `emacs/lisp/loaddefs.el', but a few packages call it just in case
-     you decide to preload them.
+     dumped; it is usually called only in preloaded Lisp files.
 
  -- Variable: pure-bytes-used
      The value of this variable is the number of bytes of pure storage
@@ -4183,22 +4165,18 @@ E.3 Garbage Collection
 When a program creates a list or the user defines a new function (such
 as by loading a library), that data is placed in normal storage.  If
 normal storage runs low, then Emacs asks the operating system to
-allocate more memory in blocks of 1k bytes.  Each block is used for one
-type of Lisp object, so symbols, cons cells, markers, etc., are
-segregated in distinct blocks in memory.  (Vectors, long strings,
-buffers and certain other editing types, which are fairly large, are
-allocated in individual blocks, one per object, while small strings are
-packed into blocks of 8k bytes.)
+allocate more memory.  Different types of Lisp objects, such as
+symbols, cons cells, markers, etc., are segregated in distinct blocks
+in memory.  (Vectors, long strings, buffers and certain other editing
+types, which are fairly large, are allocated in individual blocks, one
+per object, while small strings are packed into blocks of 8k bytes.)
 
    It is quite common to use some storage for a while, then release it
 by (for example) killing a buffer or deleting the last pointer to an
 object.  Emacs provides a "garbage collector" to reclaim this abandoned
-storage.  (This name is traditional, but "garbage recycler" might be a
-more intuitive metaphor for this facility.)
-
-   The garbage collector operates by finding and marking all Lisp
-objects that are still accessible to Lisp programs.  To begin with, it
-assumes all the symbols, their values and associated function
+storage.  The garbage collector operates by finding and marking all
+Lisp objects that are still accessible to Lisp programs.  To begin
+with, it assumes all the symbols, their values and associated function
 definitions, and any data presently on the stack, are accessible.  Any
 objects that can be reached indirectly through other accessible objects
 are also accessible.
@@ -4312,14 +4290,14 @@ individually allocated and freed using `malloc' and `free'.
           for the string text itself; the latter is only allocated when
           the string is created.)
 
-     If there was overflow in pure space (see the previous section),
+     If there was overflow in pure space (*note Pure Storage::),
      `garbage-collect' returns `nil', because a real garbage collection
      can not be done in this situation.
 
  -- User Option: garbage-collection-messages
      If this variable is non-`nil', Emacs displays a message at the
      beginning and end of garbage collection.  The default value is
-     `nil', meaning there are no such messages.
+     `nil'.
 
  -- Variable: post-gc-hook
      This is a normal hook that is run at the end of garbage collection.
@@ -4336,7 +4314,7 @@ individually allocated and freed using `malloc' and `free'.
      collection does not happen immediately when the threshold is
      exhausted, but only the next time the Lisp evaluator is called.
 
-     The initial threshold value is 400,000.  If you specify a larger
+     The initial threshold value is 800,000.  If you specify a larger
      value, garbage collection will happen less often.  This reduces the
      amount of time spent garbage collecting, but increases total
      memory use.  You may want to do this when running a program that
@@ -4371,7 +4349,7 @@ memory Emacs is currently using.
      the memory usage.
 
  -- Variable: memory-full
-     This variable is `t' if Emacs is close to out of memory for Lisp
+     This variable is `t' if Emacs is nearly out of memory for Lisp
      objects, and `nil' otherwise.
 
  -- Function: memory-use-counts
@@ -4398,8 +4376,8 @@ E.4 Memory Usage
 These functions and variables give information about the total amount
 of memory allocation that Emacs has done, broken down by data type.
 Note the difference between these and the values returned by
-`(garbage-collect)'; those count objects that currently exist, but
-these count the number or size of all allocations, including those for
+`garbage-collect'; those count objects that currently exist, but these
+count the number or size of all allocations, including those for
 objects that have since been freed.
 
  -- Variable: cons-cells-consed
@@ -4451,8 +4429,9 @@ to read the source, but we can explain some things here.
 appearance.)
 
      DEFUN ("or", For, Sor, 0, UNEVALLED, 0,
-       doc: /* Eval args until one of them yields non-nil, then return that
-     value. The remaining args are not evalled at all.
+       doc: /* Eval args until one of them yields non-nil, then return
+     that value.
+     The remaining args are not evalled at all.
      If all args return nil, return nil.
      usage: (or CONDITIONS ...)  */)
        (Lisp_Object args)
@@ -4464,7 +4443,7 @@ appearance.)
 
        while (CONSP (args))
          {
-           val = Feval (XCAR (args));
+           val = eval_sub (XCAR (args));
            if (!NILP (val))
              break;
            args = XCDR (args);
@@ -4488,9 +4467,7 @@ FNAME
      that is used in C code for calling the function.  The name is, by
      convention, `F' prepended to the Lisp name, with all dashes (`-')
      in the Lisp name changed to underscores.  Thus, to call this
-     function from C code, call `For'.  Remember that the arguments must
-     be of type `Lisp_Object'; various macros and functions for creating
-     values of type `Lisp_Object' are declared in the file `lisp.h'.
+     function from C code, call `For'.
 
 SNAME
      This is a C variable name to use for a structure that holds the
@@ -4520,7 +4497,8 @@ INTERACTIVE
      cannot be called interactively.  A value of `""' indicates a
      function that should receive no arguments when called
      interactively.  If the value begins with a `(', the string is
-     evaluated as a Lisp form.
+     evaluated as a Lisp form.  For examples of the last two forms, see
+     `widen' and `narrow-to-region' in `editfns.c'.
 
 DOC
      This is the documentation string.  It uses C comment syntax rather
@@ -4541,29 +4519,30 @@ DOC
      Documentation Tips::) apply to C code documentation strings too.
 
    After the call to the `DEFUN' macro, you must write the argument
-list that every C function must have, including the types for the
-arguments.  For a function with a fixed maximum number of arguments,
-declare a C argument for each Lisp argument, and give them all type
-`Lisp_Object'.  When a Lisp function has no upper limit on the number
-of arguments, its implementation in C actually receives exactly two
-arguments: the first is the number of Lisp arguments, and the second is
-the address of a block containing their values.  They have types `int'
-and `Lisp_Object *'.
+list for the C function, including the types for the arguments.  If the
+primitive accepts a fixed maximum number of Lisp arguments, there must
+be one C argument for each Lisp argument, and each argument must be of
+type `Lisp_Object'.  (Various macros and functions for creating values
+of type `Lisp_Object' are declared in the file `lisp.h'.)  If the
+primitive has no upper limit on the number of Lisp arguments, it must
+have exactly two C arguments: the first is the number of Lisp
+arguments, and the second is the address of a block containing their
+values.  These have types `int' and `Lisp_Object *' respectively.
 
    Within the function `For' itself, note the use of the macros
-`GCPRO1' and `UNGCPRO'.  `GCPRO1' is used to "protect" a variable from
-garbage collection--to inform the garbage collector that it must look
-in that variable and regard its contents as an accessible object.  GC
-protection is necessary whenever you call `Feval' or anything that can
-directly or indirectly call `Feval'.  At such a time, any Lisp object
-that this function may refer to again must be protected somehow.
+`GCPRO1' and `UNGCPRO'.  These macros are defined for the sake of the
+few platforms which do not use Emacs' default stack-marking garbage
+collector.  The `GCPRO1' macro "protects" a variable from garbage
+collection, explicitly informing the garbage collector that that
+variable and all its contents must be as accessible.  GC protection is
+necessary in any function which can perform Lisp evaluation by calling
+`eval_sub' or `Feval' as a subroutine, either directly or indirectly.
 
    It suffices to ensure that at least one pointer to each object is
-GC-protected; that way, the object cannot be recycled, so all pointers
-to it remain valid.  Thus, a particular local variable can do without
+GC-protected.  Thus, a particular local variable can do without
 protection if it is certain that the object it points to will be
-preserved by some other pointer (such as another local variable which
-has a `GCPRO')(1).  Otherwise, the local variable needs a `GCPRO'.
+preserved by some other pointer (such as another local variable that
+has a `GCPRO').  Otherwise, the local variable needs a `GCPRO'.
 
    The macro `GCPRO1' protects just one local variable.  If you want to
 protect two variables, use `GCPRO2' instead; repeating `GCPRO1' will
@@ -4571,18 +4550,9 @@ not work.  Macros `GCPRO3', `GCPRO4', `GCPRO5', and `GCPRO6' also
 exist.  All these macros implicitly use local variables such as
 `gcpro1'; you must declare these explicitly, with type `struct gcpro'.
 Thus, if you use `GCPRO2', you must declare `gcpro1' and `gcpro2'.
-Alas, we can't explain all the tricky details here.
 
    `UNGCPRO' cancels the protection of the variables that are protected
 in the current function.  It is necessary to do this explicitly.
-
-   Built-in functions that take a variable number of arguments actually
-accept two arguments at the C level: the number of Lisp arguments, and
-a `Lisp_Object *' pointer to a C vector containing those Lisp
-arguments.  This C vector may be part of a Lisp vector, but it need not
-be.  The responsibility for using `GCPRO' to protect the Lisp arguments
-from GC if necessary rests with the caller in this case, since the
-caller allocated or found the storage for them.
 
    You must not use C initializers for static or global variables unless
 the variables are never written once Emacs is dumped.  These variables
@@ -4590,22 +4560,14 @@ with initializers are allocated in an area of memory that becomes
 read-only (on certain operating systems) as a result of dumping Emacs.
 *Note Pure Storage::.
 
-   Do not use static variables within functions--place all static
-variables at top level in the file.  This is necessary because Emacs on
-some operating systems defines the keyword `static' as a null macro.
-(This definition is used because those systems put all variables
-declared static in a place that becomes read-only after dumping, whether
-they have initializers or not.)
-
    Defining the C function is not enough to make a Lisp primitive
 available; you must also create the Lisp symbol for the primitive and
 store a suitable subr object in its function cell.  The code looks like
 this:
 
-     defsubr (&SUBR-STRUCTURE-NAME);
+     defsubr (&SNAME);
 
-Here SUBR-STRUCTURE-NAME is the name you used as the third argument to
-`DEFUN'.
+Here SNAME is the name you used as the third argument to `DEFUN'.
 
    If you add a new primitive to a file that already has Lisp primitives
 defined in it, find the function (near the end of the file) named
@@ -4624,6 +4586,10 @@ visible in Lisp with a value that is either `t' or `nil'.  Note that
 variables defined with `DEFVAR_BOOL' are automatically added to the list
 `byte-boolean-vars' used by the byte compiler.
 
+   If you want to make a Lisp variables that is defined in C behave
+like one declared with `defcustom', add an appropriate entry to
+`cus-start.el'.
+
    If you define a file-scope C variable of type `Lisp_Object', you
 must protect it from garbage-collection by calling `staticpro' in
 `syms_of_FILENAME', like this:
@@ -4635,36 +4601,43 @@ This comes from the code in `window.c', and it demonstrates the use of
 macros and functions to manipulate Lisp objects.
 
      DEFUN ("coordinates-in-window-p", Fcoordinates_in_window_p,
-       Scoordinates_in_window_p, 2, 2,
-       "xSpecify coordinate pair: \nXExpression which evals to window: ",
-       "Return non-nil if COORDINATES is in WINDOW.\n\
-     COORDINATES is a cons of the form (X . Y), X and Y being distances\n\
-     ...
-     If they are on the border between WINDOW and its right sibling,\n\
-        `vertical-line' is returned.")
-       (coordinates, window)
-          register Lisp_Object coordinates, window;
+       Scoordinates_in_window_p, 2, 2, 0,
+       doc: /* Return non-nil if COORDINATES are in WINDOW.
+       ...
+       or `right-margin' is returned.  */)
+       (register Lisp_Object coordinates, Lisp_Object window)
      {
+       struct window *w;
+       struct frame *f;
        int x, y;
+       Lisp_Object lx, ly;
 
-       CHECK_LIVE_WINDOW (window, 0);
-       CHECK_CONS (coordinates, 1);
-       x = XINT (Fcar (coordinates));
-       y = XINT (Fcdr (coordinates));
+       CHECK_LIVE_WINDOW (window);
+       w = XWINDOW (window);
+       f = XFRAME (w->frame);
+       CHECK_CONS (coordinates);
+       lx = Fcar (coordinates);
+       ly = Fcdr (coordinates);
+       CHECK_NUMBER_OR_FLOAT (lx);
+       CHECK_NUMBER_OR_FLOAT (ly);
+       x = FRAME_PIXEL_X_FROM_CANON_X (f, lx) + FRAME_INTERNAL_BORDER_WIDTH(f);
+       y = FRAME_PIXEL_Y_FROM_CANON_Y (f, ly) + FRAME_INTERNAL_BORDER_WIDTH(f);
 
-       switch (coordinates_in_window (XWINDOW (window), &x, &y))
+       switch (coordinates_in_window (w, x, y))
          {
-         case 0:                     /* NOT in window at all. */
+         case ON_NOTHING:            /* NOT in window at all. */
            return Qnil;
 
-         case 1:                     /* In text part of window. */
-           return Fcons (make_number (x), make_number (y));
+         ...
 
-         case 2:                     /* In mode line of window. */
+         case ON_MODE_LINE:          /* In mode line of window. */
            return Qmode_line;
 
-         case 3:                     /* On right border of window.  */
-           return Qvertical_line;
+         ...
+
+         case ON_SCROLL_BAR:         /* On scroll-bar of window.  */
+           /* Historically we are supposed to return nil in this case.  */
+           return Qnil;
 
          default:
            abort ();
@@ -4689,15 +4662,9 @@ arguments.  They work by calling `Ffuncall'.
 contains the definitions for some important macros and functions.
 
    If you define a function which is side-effect free, update the code
-in `byte-opt.el' which binds `side-effect-free-fns' and
+in `byte-opt.el' that binds `side-effect-free-fns' and
 `side-effect-and-error-free-fns' so that the compiler optimizer knows
 about it.
-
-   ---------- Footnotes ----------
-
-   (1) Formerly, strings were a special exception; in older Emacs
-versions, every local variable that might point to a string needed a
-`GCPRO'.
 
 
 File: elisp,  Node: Object Internals,  Prev: Writing Emacs Primitives,  Up: GNU Emacs Internals
@@ -4733,10 +4700,11 @@ File: elisp,  Node: Buffer Internals,  Next: Window Internals,  Up: Object Inter
 E.6.1 Buffer Internals
 ----------------------
 
-Two structures are used to represent buffers in C.  The `buffer_text'
-structure contains fields describing the text of a buffer; the `buffer'
-structure holds other fields.  In the case of indirect buffers, two or
-more `buffer' structures reference the same `buffer_text' structure.
+Two structures (see `buffer.h') are used to represent buffers in C.
+The `buffer_text' structure contains fields describing the text of a
+buffer; the `buffer' structure holds other fields.  In the case of
+indirect buffers, two or more `buffer' structures reference the same
+`buffer_text' structure.
 
    Here are some of the fields in `struct buffer_text':
 
@@ -4790,12 +4758,13 @@ more `buffer' structures reference the same `buffer_text' structure.
 
    Some of the fields of `struct buffer' are:
 
-`next'
-     Points to the next buffer, in the chain of all buffers (including
-     killed buffers).  This chain is used only for garbage collection,
-     in order to collect killed buffers properly.  Note that vectors,
-     and most kinds of objects allocated as vectors, are all on one
-     chain, but buffers are on a separate chain of their own.
+`header'
+     A `struct vectorlike_header' structure where `header.next' points
+     to the next buffer, in the chain of all buffers (including killed
+     buffers).  This chain is used only for garbage collection, in
+     order to collect killed buffers properly.  Note that vectors, and
+     most kinds of objects allocated as vectors, are all on one chain,
+     but buffers are on a separate chain of their own.
 
 `own_text'
      A `struct buffer_text' structure that ordinarily holds the buffer
@@ -4888,6 +4857,7 @@ more `buffer' structures reference the same `buffer_text' structure.
 `undo_list'
 `backed_up'
 `auto_save_file_name'
+`auto_save_file_format'
 `read_only'
 `file_format'
 `file_truename'
@@ -4898,8 +4868,7 @@ more `buffer' structures reference the same `buffer_text' structure.
      automatically buffer-local (*note Buffer-Local Variables::), whose
      corresponding variable names have the additional prefix `buffer-'
      and have underscores replaced with dashes.  For instance,
-     `undo_list' stores the value of `buffer-undo-list'.  *Note
-     Standard Buffer-Local Variables::.
+     `undo_list' stores the value of `buffer-undo-list'.
 
 `mark'
      The mark for the buffer.  The mark is a marker, hence it is also
@@ -4955,15 +4924,15 @@ more `buffer' structures reference the same `buffer_text' structure.
 `truncate_lines'
 `word_wrap'
 `ctl_arrow'
+`bidi_display_reordering'
+`bidi_paragraph_direction'
 `selective_display'
 `selective_display_ellipses'
 `overwrite_mode'
 `abbrev_mode'
-`display_table'
 `mark_active'
 `enable_multibyte_characters'
 `buffer_file_coding_system'
-`auto_save_file_format'
 `cache_long_line_scans'
 `point_before_scroll'
 `left_fringe_width'
@@ -4982,7 +4951,7 @@ more `buffer' structures reference the same `buffer_text' structure.
      automatically buffer-local (*note Buffer-Local Variables::), whose
      corresponding variable names have underscores replaced with
      dashes.  For instance, `mode_line_format' stores the value of
-     `mode-line-format'.  *Note Standard Buffer-Local Variables::.
+     `mode-line-format'.
 
 `last_selected_window'
      This is the last window that was selected with this buffer in it,
@@ -4994,7 +4963,8 @@ File: elisp,  Node: Window Internals,  Next: Process Internals,  Prev: Buffer In
 E.6.2 Window Internals
 ----------------------
 
-Windows have the following accessible fields:
+The fields of a window (for a complete list, see the definition of
+`struct window' in `window.h') include:
 
 `frame'
      The frame that this window is on.
@@ -5017,13 +4987,14 @@ Windows have the following accessible fields:
      These fields contain the window's leftmost child and its topmost
      child respectively.  `hchild' is used if the window is subdivided
      horizontally by child windows, and `vchild' if it is subdivided
-     vertically.
+     vertically.  In a live window, only one of `hchild', `vchild', and
+     `buffer' (q.v.) is non-`nil'.
 
 `next'
 `prev'
      The next sibling and previous sibling of this window.  `next' is
-     `nil' if the window is the rightmost or bottommost in its group;
-     `prev' is `nil' if it is the leftmost or topmost in its group.
+     `nil' if the window is the right-most or bottom-most in its group;
+     `prev' is `nil' if it is the left-most or top-most in its group.
 
 `left_col'
      The left-hand edge of the window, measured in columns, relative to
@@ -5093,11 +5064,19 @@ Windows have the following accessible fields:
 `vertical_scroll_bar'
      This window's vertical scroll bar.
 
-`left_margin_width'
-`right_margin_width'
+`left_margin_cols'
+`right_margin_cols'
      The widths of the left and right margins in this window.  A value
-     of `nil' means to use the buffer's value of `left-margin-width' or
-     `right-margin-width'.
+     of `nil' means no margin.
+
+`left_fringe_width'
+`right_fringe_width'
+     The widths of the left and right fringes in this window.  A value
+     of `nil' or `t' means use the values of the frame.
+
+`fringes_outside_margins'
+     A non-`nil' value means the fringes outside the display margins;
+     othersize they are between the margin and the text.
 
 `window_end_pos'
      This is computed as `z' minus the buffer position of the last glyph
@@ -5113,7 +5092,7 @@ Windows have the following accessible fields:
 
 `window_end_valid'
      This field is set to a non-`nil' value if `window_end_pos' is truly
-     valid.  This is `nil' if nontrivial redisplay is preempted since
+     valid.  This is `nil' if nontrivial redisplay is pre-empted, since
      in that case the display that `window_end_pos' was computed for
      did not get onto the screen.
 
@@ -5128,13 +5107,17 @@ Windows have the following accessible fields:
      is.
 
 `phys_cursor_type'
-     The type of cursor that was last displayed on this window.
+`phys_cursor_height'
+`phys_cursor_width'
+     The type, height, and width of the cursor that was last displayed
+     on this window.
 
 `phys_cursor_on_p'
      This field is non-zero if the cursor is physically on.
 
 `cursor_off_p'
-     Non-zero means the cursor in this window is logically on.
+     Non-zero means the cursor in this window is logically off.  This is
+     used for blinking the cursor.
 
 `last_cursor_off_p'
      This field contains the value of `cursor_off_p' as of the time of
@@ -5166,7 +5149,8 @@ Windows have the following accessible fields:
 
 `base_line_pos'
      The position in the buffer for which the line number is known, or
-     `nil' meaning none is known.
+     `nil' meaning none is known.  If it is a buffer, don't display the
+     line number as long as the window shows that buffer.
 
 `region_showing'
      If the region (or part of it) is highlighted in this window, this
@@ -5178,10 +5162,9 @@ Windows have the following accessible fields:
      or `nil' if column numbers are not being displayed.
 
 `current_matrix'
-     A glyph matrix describing the current display of this window.
-
 `desired_matrix'
-     A glyph matrix describing the desired display of this window.
+     Glyph matrices describing the current and desired display of this
+     window.
 
 
 File: elisp,  Node: Process Internals,  Prev: Window Internals,  Up: Object Internals
@@ -5189,7 +5172,8 @@ File: elisp,  Node: Process Internals,  Prev: Window Internals,  Up: Object Inte
 E.6.3 Process Internals
 -----------------------
 
-The fields of a process are:
+The fields of a process (for a complete list, see the definition of
+`struct Lisp_Process' in `process.h') include:
 
 `name'
      A string, the name of the process.
@@ -5200,21 +5184,24 @@ The fields of a process are:
      process is running or `t' if the process is stopped.
 
 `filter'
-     A function used to accept output from the process instead of a
-     buffer, or `nil'.
+     If non-`nil', a function used to accept output from the process
+     instead of a buffer.
 
 `sentinel'
-     A function called whenever the process receives a signal, or `nil'.
+     If non-`nil', a function called whenever the state of the process
+     changes.
 
 `buffer'
      The associated buffer of the process.
 
 `pid'
-     An integer, the operating system's process ID.
+     An integer, the operating system's process ID.  Pseudo-processes
+     such as network or serial connections use a value of 0.
 
 `childp'
-     A flag, non-`nil' if this is really a child process.  It is `nil'
-     for a network or serial connection.
+     A flag, `t' if this is really a child process.  For a network or
+     serial connection, it is a plist based on the arguments to
+     `make-network-process' or `make-serial-process'.
 
 `mark'
      A marker indicating the position of the end of the last output
@@ -5225,10 +5212,8 @@ The fields of a process are:
      If this is non-zero, killing Emacs while this process is still
      running does not ask for confirmation about killing the process.
 
-`raw_status_low'
-`raw_status_high'
-     These two fields record 16 bits each of the process status
-     returned by the `wait' system call.
+`raw_status'
+     The raw process status, as returned by the `wait' system call.
 
 `status'
      The process status, as `process-status' should return it.
@@ -5249,11 +5234,6 @@ The fields of a process are:
 `outfd'
      The file descriptor for output to the process.
 
-`subtty'
-     The file descriptor for the terminal that the subprocess is using.
-     (On some systems, there is no need to record this, so the value is
-     `nil'.)
-
 `tty_name'
      The name of the terminal that the subprocess is using, or `nil' if
      it is using pipes.
@@ -5273,19 +5253,16 @@ The fields of a process are:
 `encoding_buf'
      A working buffer for encoding.
 
-`encoding_carryover'
-     Size of carryover in encoding.
-
 `inherit_coding_system_flag'
      Flag to set `coding-system' of the process buffer from the coding
      system used to decode process output.
 
 `type'
-     Symbol indicating the type of process: `real', `network', `serial'
+     Symbol indicating the type of process: `real', `network', `serial'.
 
 
 
-File: elisp,  Node: Standard Errors,  Next: Standard Buffer-Local Variables,  Prev: GNU Emacs Internals,  Up: Top
+File: elisp,  Node: Standard Errors,  Next: Standard Keymaps,  Prev: GNU Emacs Internals,  Up: Top
 
 Appendix F Standard Errors
 **************************
@@ -5441,7 +5418,7 @@ handled.
      `"Scan error"'
      This happens when certain syntax-parsing functions find invalid
      syntax or mismatched parentheses.
-     *Note List Motion::, and *Note Parsing Expressions::.
+     *Note List Motion::, and *note Parsing Expressions::.
 
 `search-failed'
      `"Search failed"'
@@ -5501,244 +5478,34 @@ mathematical functions.  *Note Math Functions::.
      This is a subcategory of `domain-error'.
 
 
-File: elisp,  Node: Standard Buffer-Local Variables,  Next: Standard Keymaps,  Prev: Standard Errors,  Up: Top
+File: elisp,  Node: Standard Keymaps,  Next: Standard Hooks,  Prev: Standard Errors,  Up: Top
 
-Appendix G Buffer-Local Variables
-*********************************
-
-The table below lists the general-purpose Emacs variables that
-automatically become buffer-local in each buffer.  Most become
-buffer-local only when set; a few of them are always local in every
-buffer.  Many Lisp packages define such variables for their internal
-use, but we don't try to list them all here.
-
-   Every buffer-specific minor mode defines a buffer-local variable
-named `MODENAME-mode'.  *Note Minor Mode Conventions::.  Minor mode
-variables will not be listed here.
-
-`auto-fill-function'
-     *Note Auto Filling::.
-
-`buffer-auto-save-file-format'
-     *Note Format Conversion::.
-
-`buffer-auto-save-file-name'
-     *Note Auto-Saving::.
-
-`buffer-backed-up'
-     *Note Making Backups::.
-
-`buffer-display-count'
-     *Note Buffers and Windows::.
-
-`buffer-display-table'
-     *Note Active Display Table::.
-
-`buffer-display-time'
-     *Note Buffers and Windows::.
-
-`buffer-file-coding-system'
-     *Note Encoding and I/O::.
-
-`buffer-file-format'
-     *Note Format Conversion::.
-
-`buffer-file-name'
-     *Note Buffer File Name::.
-
-`buffer-file-number'
-     *Note Buffer File Name::.
-
-`buffer-file-truename'
-     *Note Buffer File Name::.
-
-`buffer-file-type'
-     *Note MS-DOS File Types::.
-
-`buffer-invisibility-spec'
-     *Note Invisible Text::.
-
-`buffer-offer-save'
-     *Note Killing Buffers::.
-
-`buffer-save-without-query'
-     *Note Killing Buffers::.
-
-`buffer-read-only'
-     *Note Read Only Buffers::.
-
-`buffer-saved-size'
-     *Note Auto-Saving::.
-
-`buffer-undo-list'
-     *Note Undo::.
-
-`cache-long-line-scans'
-     *Note Truncation::.
-
-`case-fold-search'
-     *Note Searching and Case::.
-
-`comment-column'
-     *Note Comments: (emacs)Comments.
-
-`ctl-arrow'
-     *Note Usual Display::.
-
-`cursor-in-non-selected-windows'
-     *Note Basic Windows::.
-
-`cursor-type'
-     *Note Cursor Parameters::.
-
-`default-directory'
-     *Note File Name Expansion::.
-
-`defun-prompt-regexp'
-     *Note List Motion::.
-
-`desktop-save-buffer'
-     *Note Desktop Save Mode::.
-
-`enable-multibyte-characters'
-     *Note Text Representations::.
-
-`fill-column'
-     *Note Margins::.
-
-`fill-prefix'
-     *Note Margins::.
-
-`font-lock-defaults'
-     *Note Font Lock Basics::.
-
-`fringe-cursor-alist'
-     *Note Fringe Cursors::.
-
-`fringe-indicator-alist'
-     *Note Fringe Indicators::.
-
-`fringes-outside-margins'
-     *Note Fringes::.
-
-`goal-column'
-     *Note Moving Point: (emacs)Moving Point.
-
-`header-line-format'
-     *Note Header Lines::.
-
-`indicate-buffer-boundaries'
-     *Note Usual Display::.
-
-`indicate-empty-lines'
-     *Note Usual Display::.
-
-`left-fringe-width'
-     *Note Fringe Size/Pos::.
-
-`left-margin'
-     *Note Margins::.
-
-`left-margin-width'
-     *Note Display Margins::.
-
-`line-spacing'
-     *Note Line Height::.
-
-`local-abbrev-table'
-     *Note Standard Abbrev Tables::.
-
-`major-mode'
-     *Note Mode Help::.
-
-`mark-active'
-     *Note The Mark::.
-
-`mark-ring'
-     *Note The Mark::.
-
-`mode-line-buffer-identification'
-     *Note Mode Line Variables::.
-
-`mode-line-format'
-     *Note Mode Line Data::.
-
-`mode-line-modified'
-     *Note Mode Line Variables::.
-
-`mode-line-process'
-     *Note Mode Line Variables::.
-
-`mode-name'
-     *Note Mode Line Variables::.
-
-`point-before-scroll'
-     Used for communication between mouse commands and scroll-bar
-     commands.
-
-`right-fringe-width'
-     *Note Fringe Size/Pos::.
-
-`right-margin-width'
-     *Note Display Margins::.
-
-`save-buffer-coding-system'
-     *Note Encoding and I/O::.
-
-`scroll-bar-width'
-     *Note Scroll Bars::.
-
-`scroll-down-aggressively'
-`scroll-up-aggressively'
-     *Note Textual Scrolling::.
-
-`selective-display'
-`selective-display-ellipses'
-     *Note Selective Display::.
-
-`tab-width'
-     *Note Usual Display::.
-
-`truncate-lines'
-     *Note Truncation::.
-
-`vertical-scroll-bar'
-     *Note Scroll Bars::.
-
-`window-size-fixed'
-     *Note Resizing Windows::.
-
-`write-contents-functions'
-     *Note Saving Buffers::.
-
-
-File: elisp,  Node: Standard Keymaps,  Next: Standard Hooks,  Prev: Standard Buffer-Local Variables,  Up: Top
-
-Appendix H Standard Keymaps
+Appendix G Standard Keymaps
 ***************************
 
-The following symbols are used as the names for various keymaps.  Some
-of these exist when Emacs is first started, others are loaded only when
-their respective mode is used.  This is not an exhaustive list.
+In this section we list some of the more general keymaps.  Many of
+these exist when Emacs is first started, but some are loaded only when
+the respective feature is accessed.
 
-   Several keymaps are used in the minibuffer.  *Note Completion
-Commands::.
+   There are many other, more specialized, maps than these; in
+particular those associated with major and minor modes.  The minibuffer
+uses several keymaps (*note Completion Commands::).  For more details on
+keymaps, *note Keymaps::.
 
-   Almost all of these maps are used as local maps.  Indeed, of the
-modes that presently exist, only Vip mode and Terminal mode ever change
-the global keymap.
+`2C-mode-map'
+     A sparse keymap for subcommands of the prefix `C-x 6'.
+     *Note Two-Column Editing: (emacs)Two-Column.
 
-`apropos-mode-map'
-     A sparse keymap for `apropos' buffers.
+`abbrev-map'
+     A sparse keymap for subcommands of the prefix `C-x a'.
+     *Note Defining Abbrevs: (emacs)Defining Abbrevs.
 
-`Buffer-menu-mode-map'
-     A full keymap used by Buffer Menu mode.
+`button-buffer-map'
+     A sparse keymap useful for buffers containing buffers.
+     You may want to use this as a parent keymap.  *Note Buttons::.
 
-`c-mode-map'
-     A sparse keymap used by C mode.
-
-`command-history-map'
-     A full keymap used by Command History mode.
+`button-map'
+     A sparse keymap used by buttons.
 
 `ctl-x-4-map'
      A sparse keymap for subcommands of the prefix `C-x 4'.
@@ -5749,174 +5516,132 @@ the global keymap.
 `ctl-x-map'
      A full keymap for `C-x' commands.
 
-`custom-mode-map'
-     A full keymap for Custom mode.
-
-`debugger-mode-map'
-     A full keymap used by Debugger mode.
-
-`dired-mode-map'
-     A full keymap for `dired-mode' buffers.
-
-`edit-abbrevs-map'
-     A sparse keymap used in `edit-abbrevs'.
-
-`edit-tab-stops-map'
-     A sparse keymap used in `edit-tab-stops'.
-
-`electric-buffer-menu-mode-map'
-     A full keymap used by Electric Buffer Menu mode.
-
-`electric-history-map'
-     A full keymap used by Electric Command History mode.
-
-`emacs-lisp-mode-map'
-     A sparse keymap used by Emacs Lisp mode.
+`ctl-x-r-map'
+     A sparse keymap for subcommands of the prefix `C-x r'.
+     *Note Registers: (emacs)Registers.
 
 `esc-map'
      A full keymap for `ESC' (or `Meta') commands.
 
-`facemenu-menu'
-     The sparse keymap that displays the Text Properties menu.
+`facemenu-keymap'
+     A sparse keymap used for the `M-o' prefix key.
 
-`facemenu-background-menu'
-     The sparse keymap that displays the Background Color submenu of
-     the Text Properties menu.
-
-`facemenu-face-menu'
-     The sparse keymap that displays the Face submenu of the Text
-     Properties menu.
-
-`facemenu-foreground-menu'
-     The sparse keymap that displays the Foreground Color submenu of
-     the Text Properties menu.
-
-`facemenu-indentation-menu'
-     The sparse keymap that displays the Indentation submenu of the Text
-     Properties menu.
-
-`facemenu-justification-menu'
-     The sparse keymap that displays the Justification submenu of the
-     Text Properties menu.
-
-`facemenu-special-menu'
-     The sparse keymap that displays the Special Props submenu of the
-     Text Properties menu.
-
-`local-function-key-map'
-     The keymap for translating key sequences to preferred alternatives.
-     If there are none, then it contains an empty sparse keymap.  *Note
-     Translation Keymaps::.
-
-`fundamental-mode-map'
-     The sparse keymap for Fundamental mode.
-     It is empty and should not be changed.
+`function-key-map'
+     The parent keymap of all `local-function-key-map' (q.v.) instances.
 
 `global-map'
      The full keymap containing default global key bindings.
      Modes should not modify the Global map.
 
-`grep-mode-map'
-     The keymap for `grep-mode' buffers.
+`goto-map'
+     A sparse keymap used for the `M-g' prefix key.
 
 `help-map'
-     The sparse keymap for the keys that follow the help character
-     `C-h'.
-
-`help-mode-map'
-     The sparse keymap for Help mode.
+     A sparse keymap for the keys following the help character `C-h'.
+     *Note Help Functions::.
 
 `Helper-help-map'
      A full keymap used by the help utility package.
      It has the same keymap in its value cell and in its function cell.
-
-`Info-edit-map'
-     A sparse keymap used by the `Info-edit' command.
-
-`Info-mode-map'
-     A sparse keymap containing Info commands.
 
 `input-decode-map'
      The keymap for translating keypad and function keys.
      If there are none, then it contains an empty sparse keymap.  *Note
      Translation Keymaps::.
 
-`isearch-mode-map'
-     A keymap that defines the characters you can type within
-     incremental search.
-
 `key-translation-map'
      A keymap for translating keys.  This one overrides ordinary key
      bindings, unlike `local-function-key-map'.  *Note Translation
      Keymaps::.
 
-`kmacro-map'
+`kmacro-keymap'
      A sparse keymap for keys that follows the `C-x C-k' prefix search.
+     *Note Keyboard Macros: (emacs)Keyboard Macros.
 
-`lisp-interaction-mode-map'
-     A sparse keymap used by Lisp Interaction mode.
-
-`lisp-mode-map'
-     A sparse keymap used by Lisp mode.
-
-`menu-bar-edit-menu'
-     The keymap which displays the Edit menu in the menu bar.
+`local-function-key-map'
+     The keymap for translating key sequences to preferred alternatives.
+     If there are none, then it contains an empty sparse keymap.  *Note
+     Translation Keymaps::.
 
 `menu-bar-file-menu'
-     The keymap which displays the File menu in the menu bar.
-
-`menu-bar-help-menu'
-     The keymap which displays the Help menu in the menu bar.
-
-`menu-bar-mule-menu'
-     The keymap which displays the Mule menu in the menu bar.
-
-`menu-bar-search-menu'
-     The keymap which displays the Search menu in the menu bar.
-
+`menu-bar-edit-menu'
+`menu-bar-options-menu'
+`global-buffers-menu-map'
 `menu-bar-tools-menu'
-     The keymap which displays the Tools menu in the menu bar.
+`menu-bar-help-menu'
+     These keymaps display the main, top-level menus in the menu bar.
+     Some of them contain sub-menus.  For example, the Edit menu
+     contains `menu-bar-search-menu', etc.  *Note Menu Bar::.
+
+`minibuffer-inactive-mode-map'
+     A full keymap used in the minibuffer when it is not active.
+     *Note Editing in the Minibuffer: (emacs)Minibuffer Edit.
+
+`mode-line-coding-system-map'
+`mode-line-input-method-map'
+`mode-line-column-line-number-mode-map'
+     These keymaps control various areas of the mode line.
+     *Note Mode Line Format::.
 
 `mode-specific-map'
      The keymap for characters following `C-c'.  Note, this is in the
-     global map.  This map is not actually mode specific: its name was
-     chosen to be informative for the user in `C-h b'
-     (`display-bindings'), where it describes the main use of the `C-c'
-     prefix key.
+     global map.  This map is not actually mode-specific: its name was
+     chosen to be informative in `C-h b' (`display-bindings'), where it
+     describes the main use of the `C-c' prefix key.
 
-`multi-query-replace-map'
-     A sparse keymap that extends `query-replace-map' for multi-buffer
-     replacements.  *Note query-replace-map: Search and Replace.
+`mouse-appearance-menu-map'
+     A sparse keymap used for the `S-mouse-1' key.
 
-`occur-mode-map'
-     A sparse keymap used by Occur mode.
+`mule-keymap'
+     The global keymap used for the `C-x <RET>' prefix key.
+
+`narrow-map'
+     A sparse keymap for subcommands of the prefix `C-x n'.
+
+`prog-mode-map'
+     The keymap used by Prog mode.
+     *Note Basic Major Modes::.
 
 `query-replace-map'
+`multi-query-replace-map'
      A sparse keymap used for responses in `query-replace' and related
      commands; also for `y-or-n-p' and `map-y-or-n-p'.  The functions
      that use this map do not support prefix keys; they look up one
-     event at a time.
+     event at a time.  `multi-query-replace-map' extends
+     `query-replace-map' for multi-buffer replacements.  *Note
+     query-replace-map: Search and Replace.
 
 `search-map'
      A sparse keymap that provides global bindings for search-related
      commands.
 
-`text-mode-map'
-     A sparse keymap used by Text mode.
+`special-mode-map'
+     The keymap used by Special mode.
+     *Note Basic Major Modes::.
 
 `tool-bar-map'
      The keymap defining the contents of the tool bar.
+     *Note Tool Bar::.
 
-`view-mode-map'
-     A full keymap used by View mode.
+`universal-argument-map'
+     A sparse keymap used while processing `C-u'.
+     *Note Prefix Command Arguments::.
+
+`vc-prefix-map'
+     The global keymap used for the `C-x v' prefix key.
+
+`x-alternatives-map'
+     A sparse keymap used to map certain keys under graphical frames.
+     The function `x-setup-function-keys' uses this.
+
 
 
 File: elisp,  Node: Standard Hooks,  Next: Index,  Prev: Standard Keymaps,  Up: Top
 
-Appendix I Standard Hooks
+Appendix H Standard Hooks
 *************************
 
-The following is a list of hook variables that let you provide
+The following is a list of some hook variables that let you provide
 functions to be called from within Emacs on suitable occasions.
 
    Most of these variables have names ending with `-hook'.  They are
@@ -5926,92 +5651,73 @@ their values are completely ignored.  The recommended way to put a new
 function on such a hook is to call `add-hook'.  *Note Hooks::, for more
 information about using hooks.
 
-   Every major mode defines a mode hook named `MODENAME-mode-hook'.
-The major mode command runs this normal hook with `run-mode-hooks' as
-the very last thing it does.  *Note Mode Hooks::.  Most minor modes
-have mode hooks too.  Mode hooks are omitted in the list below.
-
    The variables whose names end in `-hooks' or `-functions' are
 usually "abnormal hooks"; their values are lists of functions, but
 these functions are called in a special way (they are passed arguments,
 or their values are used). The variables whose names end in `-function'
 have single functions as their values.
 
+   This is not an exhaustive list, it only covers the more general
+hooks.  For example, every major mode defines a hook named
+`MODENAME-mode-hook'.  The major mode command runs this normal hook
+with `run-mode-hooks' as the very last thing it does.  *Note Mode
+Hooks::.  Most minor modes have mode hooks too.
+
    A special feature allows you to specify expressions to evaluate if
 and when a file is loaded (*note Hooks for Loading::).  That feature is
 not exactly a hook, but does a similar job.
 
-`abbrev-expand-functions'
-     *Note Abbrev Expansion::.
-
 `activate-mark-hook'
+`deactivate-mark-hook'
      *Note The Mark::.
 
 `after-change-functions'
+`before-change-functions'
+`first-change-hook'
      *Note Change Hooks::.
 
 `after-change-major-mode-hook'
+`change-major-mode-after-body-hook'
      *Note Mode Hooks::.
 
 `after-init-hook'
+`before-init-hook'
+`emacs-startup-hook'
      *Note Init File::.
 
 `after-insert-file-functions'
+`write-region-annotate-functions'
+`write-region-post-annotation-function'
      *Note Format Conversion::.
 
 `after-make-frame-functions'
+`before-make-frame-hook'
      *Note Creating Frames::.
 
-`after-revert-hook'
-     *Note Reverting::.
-
 `after-save-hook'
+`before-save-hook'
+`write-contents-functions'
+`write-file-functions'
      *Note Saving Buffers::.
 
-`auto-fill-function'
-     *Note Auto Filling::.
+`after-setting-font-hook'
+     Hook run after a frame's font changes.
 
 `auto-save-hook'
      *Note Auto-Saving::.
 
-`before-change-functions'
-     *Note Change Hooks::.
-
 `before-hack-local-variables-hook'
+`hack-local-variables-hook'
      *Note File Local Variables::.
-
-`before-init-hook'
-     *Note Init File::.
-
-`before-make-frame-hook'
-     *Note Creating Frames::.
-
-`before-revert-hook'
-     *Note Reverting::.
-
-`before-save-hook'
-     *Note Saving Buffers::.
-
-`blink-paren-function'
-     *Note Blinking::.
 
 `buffer-access-fontify-functions'
      *Note Lazy Properties::.
 
-`calendar-initial-window-hook'
-     *Note Calendar Customizing: (emacs)Calendar Customizing.
+`buffer-list-update-hook'
+     Hook run when the buffer list changes.
 
-`calendar-load-hook'
-     *Note Calendar Customizing: (emacs)Calendar Customizing.
-
-`calendar-today-invisible-hook'
-     *Note Calendar Customizing: (emacs)Calendar Customizing.
-
-`calendar-today-visible-hook'
-     *Note Calendar Customizing: (emacs)Calendar Customizing.
-
-`change-major-mode-after-body-hook'
-     *Note Mode Hooks::.
+`buffer-quit-function'
+     Function to call to "quit" the current buffer.
 
 `change-major-mode-hook'
      *Note Creating Buffer-Local::.
@@ -6019,168 +5725,92 @@ not exactly a hook, but does a similar job.
 `command-line-functions'
      *Note Command-Line Arguments::.
 
-`comment-indent-function'
-     *Note Options Controlling Comments: (emacs)Options for Comments.
-
-`compilation-finish-functions'
-     Functions to call when a compilation process finishes.
-
-`custom-define-hook'
-     Hook called after defining each customize option.
-
-`deactivate-mark-hook'
-     *Note The Mark::.
+`delayed-warnings-hook'
+     The command loop runs this soon after `post-command-hook' (q.v.).
 
 `delete-frame-functions'
-     Functions to call when Emacs deletes a frame.  *Note Deleting
-     Frames::.
+     *Note Deleting Frames::.
 
 `delete-terminal-functions'
-     Functions to call when Emacs deletes a terminal.  *Note Multiple
-     Terminals::.
+     *Note Multiple Terminals::.
 
-`desktop-after-read-hook'
-     Normal hook run after a successful `desktop-read'.  May be used to
-     show a buffer list.  *Note Saving Emacs Sessions: (emacs)Saving
-     Emacs Sessions.
-
-`desktop-no-desktop-file-hook'
-     Normal hook run when `desktop-read' can't find a desktop file.
-     May be used to show a dired buffer.  *Note Saving Emacs Sessions:
-     (emacs)Saving Emacs Sessions.
-
-`desktop-save-hook'
-     Normal hook run before the desktop is saved in a desktop file.
-     This is useful for truncating history lists, for example.  *Note
-     Saving Emacs Sessions: (emacs)Saving Emacs Sessions.
-
-`diary-hook'
-     List of functions called after the display of the diary.  Can be
-     used for appointment notification.
-
-`diary-list-entries-hook'
-     *Note Fancy Diary Display: (emacs)Fancy Diary Display.
-
-`diary-mark-entries-hook'
-     *Note Fancy Diary Display: (emacs)Fancy Diary Display.
-
-`diary-nongregorian-listing-hook'
-     *Note Non-Gregorian Diary: (emacs)Non-Gregorian Diary.
-
-`diary-nongregorian-marking-hook'
-     *Note Non-Gregorian Diary: (emacs)Non-Gregorian Diary.
-
-`diary-print-entries-hook'
-     *Note Diary Display: (emacs)Diary Display.
-
-`disabled-command-function'
-     *Note Disabling Commands::.
+`display-buffer-function'
+`pop-up-frame-function'
+`special-display-function'
+`split-window-preferred-function'
+     *Note Choosing Window Options::.
 
 `echo-area-clear-hook'
      *Note Echo Area Customization::.
 
-`emacs-startup-hook'
-     *Note Init File::.
-
 `find-file-hook'
-     *Note Visiting Functions::.
-
 `find-file-not-found-functions'
      *Note Visiting Functions::.
 
-`first-change-hook'
-     *Note Change Hooks::.
+`font-lock-extend-after-change-region-function'
+     *Note Region to Refontify::.
 
-`font-lock-beginning-of-syntax-function'
-     *Note Syntactic Font Lock::.
+`font-lock-extend-region-functions'
+     *Note Multiline Font Lock::.
 
 `font-lock-fontify-buffer-function'
-     *Note Other Font Lock Variables::.
-
 `font-lock-fontify-region-function'
-     *Note Other Font Lock Variables::.
-
 `font-lock-mark-block-function'
-     *Note Other Font Lock Variables::.
-
-`font-lock-syntactic-face-function'
-     *Note Syntactic Font Lock::.
-
 `font-lock-unfontify-buffer-function'
-     *Note Other Font Lock Variables::.
-
-`hack-local-variables-hook'
-     *Note File Local Variables::.
-
 `font-lock-unfontify-region-function'
      *Note Other Font Lock Variables::.
 
-`kbd-macro-termination-hook'
-     *Note Keyboard Macros::.
+`fontification-functions'
+     *Note Automatic Face Assignment: Auto Faces.
+
+`frame-auto-hide-function'
+     *Note Quitting Windows::.
 
 `kill-buffer-hook'
-     *Note Killing Buffers::.
-
 `kill-buffer-query-functions'
      *Note Killing Buffers::.
 
 `kill-emacs-hook'
-     *Note Killing Emacs::.
-
 `kill-emacs-query-functions'
      *Note Killing Emacs::.
-
-`lisp-indent-function'
-
-`mail-setup-hook'
-     *Note Mail Miscellany: (emacs)Mail Misc.
 
 `menu-bar-update-hook'
      *Note Menu Bar::.
 
 `minibuffer-setup-hook'
-     *Note Minibuffer Misc::.
-
 `minibuffer-exit-hook'
      *Note Minibuffer Misc::.
+
+`mouse-leave-buffer-hook'
+     Hook run when about to switch windows with a mouse command.
 
 `mouse-position-function'
      *Note Mouse Position::.
 
-`occur-hook'
-
 `post-command-hook'
+`pre-command-hook'
      *Note Command Overview::.
+
+`post-gc-hook'
+     *Note Garbage Collection::.
 
 `post-self-insert-hook'
      *Note Keymaps and Minor Modes::.
 
-`pre-command-hook'
-     *Note Command Overview::.
-
-`prog-mode-hook'
-     *Note Basic Major Modes::.
-
+`suspend-hook'
+`suspend-resume-hook'
+`suspend-tty-functions'
 `resume-tty-functions'
      *Note Suspending Emacs::.
 
-`scheme-indent-function'
-
-`suspend-hook'
-     *Note Suspending Emacs::.
-
-`suspend-resume-hook'
-     *Note Suspending Emacs::.
-
-`suspend-tty-functions'
-     *Note Suspending Emacs::.
+`syntax-begin-function'
+`syntax-propertize-extend-region-functions'
+`syntax-propertize-function'
+`font-lock-syntactic-face-function'
+     *Note Syntactic Font Lock::.  *Note Syntax Properties::.
 
 `temp-buffer-setup-hook'
-     *Note Temporary Displays::.
-
 `temp-buffer-show-function'
-     *Note Temporary Displays::.
-
 `temp-buffer-show-hook'
      *Note Temporary Displays::.
 
@@ -6188,25 +5818,17 @@ not exactly a hook, but does a similar job.
      *Note Terminal-Specific::.
 
 `window-configuration-change-hook'
-     *Note Window Hooks::.
-
 `window-scroll-functions'
+`window-size-change-functions'
      *Note Window Hooks::.
 
 `window-setup-hook'
      *Note Window Systems::.
 
-`window-size-change-functions'
-     *Note Window Hooks::.
+`window-text-change-functions'
+     Functions to call in redisplay when text in the window might
+     change.
 
-`write-contents-functions'
-     *Note Saving Buffers::.
-
-`write-file-functions'
-     *Note Saving Buffers::.
-
-`write-region-annotate-functions'
-     *Note Format Conversion::.
 
 
 

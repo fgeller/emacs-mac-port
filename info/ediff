@@ -1592,7 +1592,7 @@ faces, you can modify them when Ediff is being loaded using
                    ediff-current-diff-face-B)))
 
    *Please note:* to set Ediff's faces, use only `copy-face' or
-`set/make-face-...' as shown above. Emacs' low-level face-manipulation
+`set/make-face-...' as shown above. Emacs's low-level face-manipulation
 functions should be avoided.
 
 
@@ -3165,16 +3165,16 @@ Node: Quick Help Customization53659
 Node: Window and Frame Configuration54670
 Node: Selective Browsing60635
 Node: Highlighting Difference Regions65731
-Node: Narrowing70473
-Node: Refinement of Difference Regions71751
-Node: Patch and Diff Programs74686
-Node: Merging and diff379253
-Node: Support for Version Control89056
-Node: Customizing the Mode Line90681
-Node: Miscellaneous91535
-Node: Notes on Heavy-duty Customization96784
-Node: Credits99369
-Node: GNU Free Documentation License104772
-Node: Index129933
+Node: Narrowing70474
+Node: Refinement of Difference Regions71752
+Node: Patch and Diff Programs74687
+Node: Merging and diff379254
+Node: Support for Version Control89057
+Node: Customizing the Mode Line90682
+Node: Miscellaneous91536
+Node: Notes on Heavy-duty Customization96785
+Node: Credits99370
+Node: GNU Free Documentation License104773
+Node: Index129934
 
 End Tag Table

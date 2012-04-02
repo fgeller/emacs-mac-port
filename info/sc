@@ -181,7 +181,7 @@ display the minor mode string `SC'.
 (optionally) be filled by Supercite.  However, if you manually edit the
 cited text and want to re-fill it, you must use an add-on package such
 as `filladapt' or `gin-mode'.  These packages can recognize Supercited
-text and will fill them appropriately.  Emacs' built-in filling
+text and will fill them appropriately.  Emacs's built-in filling
 routines, e.g. `fill-paragraph', do not recognize cited text and will
 not re-fill them properly because it cannot guess the `fill-prefix'
 being used.  *Note Post-yank Formatting Commands::, for details.
@@ -630,7 +630,7 @@ pertaining to the MUAs you are using.
    One final note.  After Supercite is loaded into your Emacs session,
 it runs the hook `sc-load-hook'.  You can put any customizations into
 this hook since it is only run once.  This will not work, however, if
-your Emacs maintainer has put Supercite into your dumped Emacs' image.
+your Emacs maintainer has put Supercite into your dumped Emacs image.
 In that case, you can use the `sc-pre-hook' variable, but this will get
 executed every time `sc-cite-original' is called.  *Note Reply Buffer
 Initialization::.
@@ -814,7 +814,7 @@ cited paragraph in the reply buffer.
 
    I usually run with both these variables containing their default
 values.  When Supercite's automatic filling breaks on a particular
-message, I will use Emacs' undo feature to undo back before the
+message, I will use Emacs's undo feature to undo back before the
 citation was applied to the original message.  Then I'll toggle the
 variables and manually cite those paragraphs that I don't want to fill
 or collapse whitespace on.  *Note Variable Toggling Shortcuts::.
@@ -1397,7 +1397,7 @@ variables which take only a binary value:
      Toggles the variable `sc-fixup-whitespace-p'.
 
    The following commands let you set the value of multi-value
-variables, in the same way that Emacs' `set-variable' does:
+variables, in the same way that Emacs's `set-variable' does:
 
 `C-c C-p C-t a'
      Sets the value of the variable `sc-preferred-attribution-list'.
@@ -1476,7 +1476,7 @@ File: sc,  Node: Miscellaneous Commands,  Next: Information Keys and the Info Al
 ==========================
 
 `sc-open-line' (`C-c C-p o')
-     Similar to Emacs' standard `open-line' commands, but inserts the
+     Similar to Emacs's standard `open-line' commands, but inserts the
      citation string in front of the new line.  As with `open-line', an
      optional numeric argument inserts that many new lines.
 
@@ -2535,36 +2535,36 @@ Node: Introduction2514
 Node: Usage Overview3541
 Node: What Supercite Does Not Do4703
 Node: What Supercite Does5835
-Node: Citations8667
-Node: Citation Elements10957
-Node: Recognizing Citations12840
-Node: Information Keys and the Info Alist14599
-Node: Reference Headers17186
-Node: The Built-in Header Rewrite Functions18752
-Node: Electric References21202
-Node: Getting Connected24082
+Node: Citations8668
+Node: Citation Elements10958
+Node: Recognizing Citations12841
+Node: Information Keys and the Info Alist14600
+Node: Reference Headers17187
+Node: The Built-in Header Rewrite Functions18753
+Node: Electric References21203
+Node: Getting Connected24083
 Node: Replying and Yanking27215
 Node: Reply Buffer Initialization27533
 Node: Filling Cited Text34421
-Node: Selecting an Attribution37894
-Node: Attribution Preferences38752
-Node: Anonymous Attributions42668
-Node: Author Names45708
-Node: Configuring the Citation Engine48188
-Node: Using Regi49913
-Node: Frames You Can Customize53788
-Node: Post-yank Formatting Commands56316
-Node: Citing Commands57462
-Node: Insertion Commands59673
-Node: Variable Toggling Shortcuts60613
-Node: Mail Field Commands62972
-Node: Miscellaneous Commands65309
-Node: Hints to MUA Authors65747
-Node: Thanks and History69412
-Node: GNU Free Documentation License71468
-Node: Concept Index96645
-Node: Command Index104499
-Node: Key Index111624
-Node: Variable Index113997
+Node: Selecting an Attribution37895
+Node: Attribution Preferences38753
+Node: Anonymous Attributions42669
+Node: Author Names45709
+Node: Configuring the Citation Engine48189
+Node: Using Regi49914
+Node: Frames You Can Customize53789
+Node: Post-yank Formatting Commands56317
+Node: Citing Commands57463
+Node: Insertion Commands59674
+Node: Variable Toggling Shortcuts60614
+Node: Mail Field Commands62974
+Node: Miscellaneous Commands65311
+Node: Hints to MUA Authors65750
+Node: Thanks and History69415
+Node: GNU Free Documentation License71471
+Node: Concept Index96648
+Node: Command Index104502
+Node: Key Index111627
+Node: Variable Index114000
 
 End Tag Table

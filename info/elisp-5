@@ -1,12 +1,10 @@
-This is
-/Volumes/Data/Midway/emacs-24.0.94/doc/lispref/../../info/elisp,
-produced by makeinfo version 4.8 from
-/Volumes/Data/Midway/emacs-24.0.94/doc/lispref/elisp.texi.
+This is /home/cyd/trunk/doc/lispref/../../info/elisp, produced by
+makeinfo version 4.13 from /home/cyd/trunk/doc/lispref/elisp.texi.
 
-   This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 24.0.94.
+This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
+corresponding to Emacs version 24.0.95.
 
-   Copyright (C) 1990-1996, 1998-2012  Free Software Foundation, Inc.
+   Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -885,8 +883,8 @@ mode in one self-contained definition.
  -- Macro: define-minor-mode mode doc [init-value [lighter [keymap]]]
           keyword-args... body...
      This macro defines a new minor mode whose name is MODE (a symbol).
-     It defines a command named MODE to toggle the minor mode, with
-     DOC as its documentation string.
+     It defines a command named MODE to toggle the minor mode, with DOC
+     as its documentation string.
 
      The toggle command takes one optional (prefix) argument.  If
      called interactively with no argument it toggles the mode on or
@@ -1148,7 +1146,7 @@ defined to have mode line constructs as their values.
 `STRING'
      A string as a mode line construct appears verbatim except for
      "`%'-constructs" in it.  These stand for substitution of other
-     data; see *Note %-Constructs::.
+     data; see *note %-Constructs::.
 
      If parts of the string have `face' properties, they control
      display of the text just as they would text in the buffer.  Any
@@ -1457,7 +1455,7 @@ right.
 
 `%n'
      `Narrow' when narrowing is in effect; nothing otherwise (see
-     `narrow-to-region' in *Note Narrowing::).
+     `narrow-to-region' in *note Narrowing::).
 
 `%p'
      The percentage of the buffer text above the *top* of window, or
@@ -2015,8 +2013,8 @@ behavior using the OVERRIDE element of a SUBEXP-HIGHLIGHTER.
      If LAXMATCH is non-`nil', it means there should be no error if
      there is no subexpression numbered SUBEXP in MATCHER.  Obviously,
      fontification of the subexpression numbered SUBEXP will not occur.
-     However, fontification of other subexpressions (and other
-     regexps) will continue.  If LAXMATCH is `nil', and the specified
+     However, fontification of other subexpressions (and other regexps)
+     will continue.  If LAXMATCH is `nil', and the specified
      subexpression is missing, then an error is signaled which
      terminates search-based fontification.
 
@@ -3236,7 +3234,7 @@ of documentation strings is not sufficient as a manual because a good
 manual is not organized in that fashion; it is organized in terms of
 topics of discussion.
 
-   For commands to display documentation strings, see *Note Help:
+   For commands to display documentation strings, see *note Help:
 (emacs)Help.
 
 * Menu:
@@ -3270,7 +3268,7 @@ you should not indent the second line of a documentation string, if it
 has one, because that looks odd when you use `C-h f'
 (`describe-function') or `C-h v' (`describe-variable') to view the
 documentation string.  There are many other conventions for
-documentation strings; see *Note Documentation Tips::.
+documentation strings; see *note Documentation Tips::.
 
    Documentation strings can contain several special substrings, which
 stand for key bindings to be looked up in the current keymaps when the
@@ -3625,7 +3623,7 @@ File: elisp,  Node: Help Functions,  Prev: Describing Characters,  Up: Documenta
 
 Emacs provides a variety of on-line help functions, all accessible to
 the user as subcommands of the prefix `C-h'.  For more information
-about them, see *Note Help: (emacs)Help.  Here we describe some
+about them, see *note Help: (emacs)Help.  Here we describe some
 program-level interfaces to the same information.
 
  -- Command: apropos pattern &optional do-all
@@ -3718,8 +3716,8 @@ program-level interfaces to the same information.
  -- Function: describe-prefix-bindings
      This function calls `describe-bindings' to display a list of all
      the subcommands of the prefix key of the most recent key sequence.
-     The prefix described consists of all but the last event of that
-     key sequence.  (The last event is, presumably, the help character.)
+     The prefix described consists of all but the last event of that key
+     sequence.  (The last event is, presumably, the help character.)
 
    The following two functions are meant for modes that want to provide
 help without relinquishing control, such as the "electric" modes.
@@ -3809,8 +3807,8 @@ File: elisp,  Node: Files,  Next: Backups and Auto-Saving,  Prev: Documentation,
 
 This chapter describes the Emacs Lisp functions and variables to find,
 create, view, save, and otherwise work with files and file directories.
-A few other file-related functions are described in *Note Buffers::,
-and those related to backups and auto-saving are described in *Note
+A few other file-related functions are described in *note Buffers::,
+and those related to backups and auto-saving are described in *note
 Backups and Auto-Saving::.
 
    Many of the file functions take one or more arguments that are file
@@ -3909,7 +3907,7 @@ temporary buffer.  Visiting the file is not necessary and takes longer.
 
           (switch-to-buffer (find-file-noselect filename nil nil wildcards))
 
-     (See `switch-to-buffer' in *Note Switching Buffers::.)
+     (See `switch-to-buffer' in *note Switching Buffers::.)
 
      If WILDCARDS is non-`nil', which is always true in an interactive
      call, then `find-file' expands wildcard characters in FILENAME and
@@ -3988,7 +3986,7 @@ temporary buffer.  Visiting the file is not necessary and takes longer.
  -- Command: find-file-other-window filename &optional wildcards
      This command selects a buffer visiting the file FILENAME, but does
      so in a window other than the selected window.  It may use another
-     existing window or split a window; see *Note Switching Buffers::.
+     existing window or split a window; see *note Switching Buffers::.
 
      When this command is called interactively, it prompts for FILENAME.
 
@@ -4051,7 +4049,7 @@ are sometimes useful in user Lisp code: `create-file-buffer' and
      This function creates a suitably named buffer for visiting
      FILENAME, and returns it.  It uses FILENAME (sans directory) as
      the name if that name is free; otherwise, it appends a string such
-     as `<2>' to get an unused name.  See also *Note Creating Buffers::.
+     as `<2>' to get an unused name.  See also *note Creating Buffers::.
 
      *Please note:* `create-file-buffer' does _not_ associate the new
      buffer with a file and does not select the buffer.  It also does
@@ -4327,7 +4325,7 @@ You can copy a file from the disk and insert it into a buffer using the
 
    If you want to pass a file name to another process so that another
 program can read the file, use the function `file-local-copy'; see
-*Note Magic File Names::.
+*note Magic File Names::.
 
 
 File: elisp,  Node: Writing to Files,  Next: File Locks,  Prev: Reading from Files,  Up: Files
@@ -4423,7 +4421,7 @@ visited; that could cause confusion in the mechanisms for visiting.
      The current buffer is restored even in case of an abnormal exit via
      `throw' or error (*note Nonlocal Exits::).
 
-     See also `with-temp-buffer' in *Note The Current Buffer:
+     See also `with-temp-buffer' in *note The Current Buffer:
      Definition of with-temp-buffer.
 
 
@@ -4446,7 +4444,7 @@ that you and another user will both lock the same file "simultaneously."
 If this happens, it is possible for the two users to make changes
 simultaneously, but Emacs will still warn the user who saves second.
 Also, the detection of modification of a buffer visiting a file changed
-on disk catches some cases of simultaneous editing; see *Note
+on disk catches some cases of simultaneous editing; see *note
 Modification Time::.
 
  -- Function: file-locked-p filename
@@ -4692,18 +4690,17 @@ levels for FILENAME.
      regular file (not a directory, named pipe, terminal, or other I/O
      device).
 
- -- Function: files-equal-p file1 file2
+ -- Function: file-equal-p file1 file2
      This function returns `t' if the files FILE1 and FILE2 name the
-     same file.  Two ordinary files are considered to be the same if
-     the function `file-attributes' (*note File Attributes::) returns
-     `equal' values for them.
+     same file.  If FILE1 or FILE2 does not exist, the return value is
+     unspecified.
 
- -- Function: file-subdir-of-p dir1 dir2
-     This function returns `t' if directory DIR1 is a subdirectory of
-     DIR2, or if DIR1 and DIR2 are the same directory.  It compares the
-     `file-truename' values of the two directories (*note Truenames::).
-     If either DIR1 or DIR2 do not name existing directories, the
-     return value is `nil'.
+ -- Function: file-in-directory-p file dir
+     This function returns `t' if FILE is a file in directory DIR, or
+     in a subdirectory of DIR.  It also returns `t' if FILE and DIR are
+     the same directory.  It compares the `file-truename' values of the
+     two directories (*note Truenames::).  If DIR does not name an
+     existing directory, the return value is `nil'.
 
 
 File: elisp,  Node: Truenames,  Next: File Attributes,  Prev: Kinds of Files,  Up: Information about Files
@@ -4860,7 +4857,7 @@ parent directories.
        4. The time of last access, as a list of two integers.  The
           first integer has the high-order 16 bits of time, the second
           has the low 16 bits.  (This is similar to the value of
-          `current-time'; see *Note Time of Day::.)  Note that on some
+          `current-time'; see *note Time of Day::.)  Note that on some
           FAT-based filesystems, only the date of last access is
           recorded, so this time will always hold the midnight of the
           day of last access.
@@ -4959,7 +4956,7 @@ file access controls than ordinary "Unix-style" file permissions.  If
 Emacs has been compiled with SELinux support on a system with SELinux
 enabled, you can use the function `file-selinux-context' to retrieve a
 file's SELinux security context.  For the function
-`set-file-selinux-context', see *Note Changing Files::.
+`set-file-selinux-context', see *note Changing Files::.
 
  -- Function: file-selinux-context filename
      This function returns the SELinux security context of the file
@@ -4980,8 +4977,10 @@ File: elisp,  Node: Locating Files,  Prev: File Attributes,  Up: Information abo
 
 This section explains how to search for a file in a list of directories
 (a "path"), or for an executable file in the standard list of
-executable file directories, or for an Emacs-specific user
-configuration file.
+executable file directories.
+
+   To search for a user-specific configuration file, *Note Standard
+File Names::, for the `locate-user-emacs-file' function.
 
  -- Function: locate-file filename path &optional suffixes predicate
      This function searches for a file whose name is FILENAME in a list
@@ -5023,28 +5022,6 @@ configuration file.
      the file is not found.  The functions searches in all the
      directories in `exec-path', and tries all the file-name extensions
      in `exec-suffixes' (*note Subprocess Creation::).
-
- -- Function: locate-user-emacs-file base-name &optional old-name
-     This function returns an absolute file name for an Emacs-specific
-     configuration or data file.  The argument `base-name' should be a
-     relative file name.  The return value is the absolute name of a
-     file in the directory specified by `user-emacs-directory'; if that
-     directory does not exist, this function creates it.
-
-     If the optional argument OLD-NAME is non-`nil', it specifies a
-     file in the user's home directory, `~/OLD-NAME'.  If such a file
-     exists, the return value is the absolute name of that file,
-     instead of the file specified by BASE-NAME.  This argument is
-     intended to be used by Emacs packages to provide backward
-     compatibility.  For instance, prior to the introduction of
-     `user-emacs-directory', the abbrev file was located in
-     `~/.abbrev_defs', so the definition of `abbrev-file-name' is
-
-          (defcustom abbrev-file-name
-            (locate-user-emacs-file "abbrev_defs" ".abbrev_defs")
-            "Default name of file from which to read abbrevs."
-            ...
-            :type 'file)
 
 
 File: elisp,  Node: Changing Files,  Next: File Names,  Prev: Information about Files,  Up: Files
@@ -5116,7 +5093,7 @@ with its (recursive) target.
      names for one file are not allowed.  Some systems implement
      multiple names by copying the file instead.
 
-     See also `file-nlinks' in *Note File Attributes::.
+     See also `file-nlinks' in *note File Attributes::.
 
  -- Command: rename-file filename newname &optional ok-if-already-exists
      This command renames the file FILENAME as NEWNAME.
@@ -5177,7 +5154,7 @@ with its (recursive) target.
      interactively, TRASH is `t' if no prefix argument is given, and
      `nil' otherwise.
 
-     See also `delete-directory' in *Note Create/Delete Dirs::.
+     See also `delete-directory' in *note Create/Delete Dirs::.
 
  -- Command: set-file-modes filename mode
      This function sets the "file mode" (or "file permissions") of
@@ -5412,10 +5389,10 @@ directory.  A file name can specify all the directory names starting
 from the root of the tree; then it is called an "absolute" file name.
 Or it can specify the position of the file in the tree relative to a
 default directory; then it is called a "relative" file name.  On Unix
-and GNU/Linux, an absolute file name starts with a slash or a tilde
-(`~'), and a relative one does not.  On MS-DOS and MS-Windows, an
-absolute file name starts with a slash or a backslash, or with a drive
-specification `X:/', where X is the "drive letter".
+and GNU/Linux, an absolute file name starts with a `/' or a `~' (*note
+abbreviate-file-name::), and a relative one does not.  On MS-DOS and
+MS-Windows, an absolute file name starts with a slash or a backslash,
+or with a drive specification `X:/', where X is the "drive letter".
 
  -- Function: file-name-absolute-p filename
      This function returns `t' if file FILENAME is an absolute file
@@ -5535,11 +5512,12 @@ File: elisp,  Node: File Name Expansion,  Next: Unique File Names,  Prev: Direct
 25.8.4 Functions that Expand Filenames
 --------------------------------------
 
-"Expansion" of a file name means converting a relative file name to an
+"Expanding" a file name means converting a relative file name to an
 absolute one.  Since this is done relative to a default directory, you
 must specify the default directory name as well as the file name to be
-expanded.  Expansion also simplifies file names by eliminating
-redundancies such as `./' and `NAME/../'.
+expanded.  It also involves expanding abbreviations like `~/' (*note
+abbreviate-file-name::), and eliminating redundancies like `./' and
+`NAME/../'.
 
  -- Function: expand-file-name filename &optional directory
      This function converts FILENAME to an absolute file name.  If
@@ -5750,7 +5728,7 @@ File: elisp,  Node: File Name Completion,  Next: Standard File Names,  Prev: Uni
 ---------------------------
 
 This section describes low-level subroutines for completing a file
-name.  For higher level functions, see *Note Reading File Names::.
+name.  For higher level functions, see *note Reading File Names::.
 
  -- Function: file-name-all-completions partial-filename directory
      This function returns a list of all possible completions for a file
@@ -5826,45 +5804,55 @@ File: elisp,  Node: Standard File Names,  Prev: File Name Completion,  Up: File 
 25.8.7 Standard File Names
 --------------------------
 
-Most of the file names used in Lisp programs are entered by the user.
-But occasionally a Lisp program needs to specify a standard file name
-for a particular use--typically, to hold customization information
-about each user.  For example, abbrev definitions are stored (by
-default) in the file `~/.abbrev_defs'; the `completion' package stores
-completions in the file `~/.completions'.  These are two of the many
-standard file names used by parts of Emacs for certain purposes.
+Sometimes, an Emacs Lisp program needs to specify a standard file name
+for a particular use--typically, to hold configuration data specified
+by the current user.  Usually, such files should be located in the
+directory specified by `user-emacs-directory', which is `~/.emacs.d' by
+default (*note Init File::).  For example, abbrev definitions are
+stored by default in `~/.emacs.d/abbrev_defs'.  The easiest way to
+specify such a file name is to use the function
+`locate-user-emacs-file'.
 
-   Various operating systems have their own conventions for valid file
-names and for which file names to use for user profile data.  A Lisp
-program which reads a file using a standard file name ought to use, on
-each type of system, a file name suitable for that system.  The function
-`convert-standard-filename' makes this easy to do.
+ -- Function: locate-user-emacs-file base-name &optional old-name
+     This function returns an absolute file name for an Emacs-specific
+     configuration or data file.  The argument `base-name' should be a
+     relative file name.  The return value is the absolute name of a
+     file in the directory specified by `user-emacs-directory'; if that
+     directory does not exist, this function creates it.
+
+     If the optional argument OLD-NAME is non-`nil', it specifies a
+     file in the user's home directory, `~/OLD-NAME'.  If such a file
+     exists, the return value is the absolute name of that file,
+     instead of the file specified by BASE-NAME.  This argument is
+     intended to be used by Emacs packages to provide backward
+     compatibility.  For instance, prior to the introduction of
+     `user-emacs-directory', the abbrev file was located in
+     `~/.abbrev_defs'.  Here is the definition of `abbrev-file-name':
+
+          (defcustom abbrev-file-name
+            (locate-user-emacs-file "abbrev_defs" ".abbrev_defs")
+            "Default name of file from which to read abbrevs."
+            ...
+            :type 'file)
+
+   A lower-level function for standardizing file names, which
+`locate-user-emacs-file' uses as a subroutine, is
+`convert-standard-filename'.
 
  -- Function: convert-standard-filename filename
-     This function alters the file name FILENAME to fit the conventions
-     of the operating system in use, and returns the result as a new
-     string.
+     This function returns a file name based on FILENAME, which fits
+     the conventions of the current operating system.
 
-   The recommended way to specify a standard file name in a Lisp program
-is to choose a name which fits the conventions of GNU and Unix systems,
-usually with a nondirectory part that starts with a period, and pass it
-to `convert-standard-filename' instead of using it directly.  Here is
-an example from the `completion' package:
+     On GNU and Unix systems, this simply returns FILENAME.  On other
+     operating systems, it may enforce system-specific file name
+     conventions; for example, on MS-DOS this function performs a
+     variety of changes to enforce MS-DOS file name limitations,
+     including converting any leading `.' to `_' and truncating to three
+     characters after the `.'.
 
-     (defvar save-completions-file-name
-             (convert-standard-filename "~/.completions")
-       "*The file name to save completions to.")
-
-   On GNU and Unix systems, and on some other systems as well,
-`convert-standard-filename' returns its argument unchanged.  On some
-other systems, it alters the name to fit the system's conventions.
-
-   For example, on MS-DOS the alterations made by this function include
-converting a leading `.'  to `_', converting a `_' in the middle of the
-name to `.' if there is no other `.', inserting a `.' after eight
-characters if there is none, and truncating to three characters after
-the `.'.  (It makes other changes as well.)  Thus, `.abbrev_defs'
-becomes `_abbrev.def', and `.completions' becomes `_complet.ion'.
+     The recommended way to use this function is to specify a name which
+     fits the conventions of GNU and Unix systems, and pass it to
+     `convert-standard-filename'.
 
 
 File: elisp,  Node: Contents of Directories,  Next: Create/Delete Dirs,  Prev: File Names,  Up: Files
@@ -6100,8 +6088,8 @@ handle:
 `file-name-completion', `file-name-directory', `file-name-nondirectory',
 `file-name-sans-versions', `file-newer-than-file-p',
 `file-ownership-preserved-p', `file-readable-p', `file-regular-p',
-`file-subdir-of-p', `file-symlink-p', `file-truename',
-`file-writable-p', `files-equal-p', `find-backup-file-name',
+`file-in-directory-p', `file-symlink-p', `file-truename',
+`file-writable-p', `file-equal-p', `find-backup-file-name',
 `get-file-buffer', `insert-directory', `insert-file-contents',
 `load', `make-auto-save-file-name', `make-directory',
 `make-directory-internal', `make-symbolic-link',
@@ -6307,7 +6295,7 @@ The function `write-region':
    This shows the symmetry of the lowest-level operations; reading and
 writing handle things in opposite order.  The rest of this section
 describes the two facilities surrounding the three variables named
-above, as well as some related functions.  *Note Coding Systems::, for
+above, as well as some related functions.  *note Coding Systems::, for
 details on character encoding and decoding.
 
 

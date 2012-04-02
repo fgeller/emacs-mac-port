@@ -3606,7 +3606,7 @@ common problems and their solutions are documented below.
      copy of IDLWAVE (e.g. v4.7 for Emacs 21.x), which is likely what's
      being used instead.  You need to make sure your Emacs _load-path_
      contains the directory where IDLWAVE is installed
-     (`/usr/local/share/emacs/site-lisp', by default), _before_ Emacs'
+     (`/usr/local/share/emacs/site-lisp', by default), _before_ Emacs's
      default search directories.  You can accomplish this by putting
      the following in your `.emacs':
 
@@ -4758,7 +4758,7 @@ Node: HTML Help Browser Tips146270
 Node: Configuration Examples149417
 Node: Windows and MacOS156506
 Node: Troubleshooting158702
-Node: GNU Free Documentation License168427
-Node: Index193598
+Node: GNU Free Documentation License168428
+Node: Index193599
 
 End Tag Table
