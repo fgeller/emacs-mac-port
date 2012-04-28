@@ -1,8 +1,8 @@
-This is /home/cyd/trunk/doc/lispref/../../info/elisp, produced by
-makeinfo version 4.13 from /home/cyd/trunk/doc/lispref/elisp.texi.
+This is /home/cyd/emacs/doc/lispref/../../info/elisp, produced by
+makeinfo version 4.13 from /home/cyd/emacs/doc/lispref/elisp.texi.
 
-This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 24.0.95.
+This is edition 3.1 of the GNU Emacs Lisp Reference Manual,
+corresponding to Emacs version 24.0.96.
 
    Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
@@ -301,7 +301,7 @@ composite types:
                   (const :tag "Ask" foo))
 
      describes a variable for which `t' means yes, `nil' means no, and
-     `foo' means "ask."
+     `foo' means "ask".
 
 `(other VALUE)'
      This alternative can match any Lisp value, but if the user chooses
@@ -315,7 +315,7 @@ composite types:
                   (other :tag "Ask" foo))
 
      describes a variable for which `t' means yes, `nil' means no, and
-     anything else means "ask."  If the user chooses `Ask' from the
+     anything else means "ask".  If the user chooses `Ask' from the
      menu of alternatives, that specifies the value `foo'; but any
      other value (not `t', `nil' or `foo') displays as `Ask', just like
      `foo'.
@@ -635,6 +635,151 @@ inferior widgets will convert _their_ inferior widgets.  If the data
 structure is itself recursive, this conversion is an infinite
 recursion.  The `lazy' widget prevents the recursion: it convert its
 `:type' argument only when needed.
+
+
+File: elisp,  Node: Applying Customizations,  Next: Custom Themes,  Prev: Customization Types,  Up: Customization
+
+14.5 Applying Customizations
+============================
+
+The following functions are responsible for installing the user's
+customization settings for variables and faces, respectively.  When the
+user invokes `Save for future sessions' in the Customize interface,
+that takes effect by writing a `custom-set-variables' and/or a
+`custom-set-faces' form into the custom file, to be evaluated the next
+time Emacs starts up.
+
+ -- Function: custom-set-variables &rest args
+     This function installs the variable customizations specified by
+     ARGS.  Each argument in ARGS should have the form
+
+          (VAR EXPRESSION [NOW [REQUEST [COMMENT]]])
+
+     VAR is a variable name (a symbol), and EXPRESSION is an expression
+     which evaluates to the desired customized value.
+
+     If the `defcustom' form for VAR has been evaluated prior to this
+     `custom-set-variables' call, EXPRESSION is immediately evaluated,
+     and the variable's value is set to the result.  Otherwise,
+     EXPRESSION is stored into the variable's `saved-value' property,
+     to be evaluated when the relevant `defcustom' is called (usually
+     when the library defining that variable is loaded into Emacs).
+
+     The NOW, REQUEST, and COMMENT entries are for internal use only,
+     and may be omitted.  NOW, if non-`nil', means to set the
+     variable's value now, even if the variable's `defcustom' form has
+     not been evaluated.  REQUEST is a list of features to be loaded
+     immediately (*note Named Features::).  COMMENT is a string
+     describing the customization.
+
+ -- Function: custom-set-faces &rest args
+     This function installs the face customizations specified by ARGS.
+     Each argument in ARGS should have the form
+
+          (FACE SPEC [NOW [COMMENT]])
+
+     FACE is a face name (a symbol), and SPEC is the customized face
+     specification for that face (*note Defining Faces::).
+
+     The NOW and COMMENT entries are for internal use only, and may be
+     omitted.  NOW, if non-`nil', means to install the face
+     specification now, even if the `defface' form has not been
+     evaluated.  COMMENT is a string describing the customization.
+
+
+File: elisp,  Node: Custom Themes,  Prev: Applying Customizations,  Up: Customization
+
+14.6 Custom Themes
+==================
+
+"Custom themes" are collections of settings that can be enabled or
+disabled as a unit.  *Note Custom Themes: (emacs)Custom Themes.  Each
+Custom theme is defined by an Emacs Lisp source file, which should
+follow the conventions described in this section.  (Instead of writing
+a Custom theme by hand, you can also create one using a Customize-like
+interface; *note Creating Custom Themes: (emacs)Creating Custom Themes.)
+
+   A Custom theme file should be named `FOO-theme.el', where FOO is the
+theme name.  The first Lisp form in the file should be a call to
+`deftheme', and the last form should be a call to `provide-theme'.
+
+ -- Macro: deftheme theme &optional doc
+     This macro declares THEME (a symbol) as the name of a Custom
+     theme.  The optional argument DOC should be a string describing
+     the theme; this is the description shown when the user invokes the
+     `describe-theme' command or types `?' in the `*Custom Themes*'
+     buffer.
+
+     Two special theme names are disallowed: `user' is a "dummy" theme
+     which stores the user's direct customization settings, and
+     `changed' is a "dummy" theme which stores changes made outside of
+     the Customize system.  If you specify either of these as the THEME
+     argument, `deftheme' signals an error.
+
+ -- Macro: provide-theme theme
+     This macro declares that the theme named THEME has been fully
+     specified.
+
+   In between `deftheme' and `provide-theme' are Lisp forms specifying
+the theme settings: usually a call to `custom-theme-set-variables'
+and/or a call to `custom-theme-set-faces'.
+
+ -- Function: custom-theme-set-variables theme &rest args
+     This function specifies the Custom theme THEME's variable
+     settings.  THEME should be a symbol.  Each argument in ARGS should
+     be a list of the form
+
+          (VAR EXPRESSION [NOW [REQUEST [COMMENT]]])
+
+     where the list entries have the same meanings as in
+     `custom-set-variables'.  *Note Applying Customizations::.
+
+ -- Function: custom-theme-set-faces theme &rest args
+     This function specifies the Custom theme THEME's face settings.
+     THEME should be a symbol.  Each argument in ARGS should be a list
+     of the form
+
+          (FACE SPEC [NOW [COMMENT]])
+
+     where the list entries have the same meanings as in
+     `custom-set-faces'.  *Note Applying Customizations::.
+
+   In theory, a theme file can also contain other Lisp forms, which
+would be evaluated when loading the theme, but that is "bad form".  To
+protect against loading themes containing malicious code, Emacs
+displays the source file and asks for confirmation from the user before
+loading any non-built-in theme for the first time.
+
+   The following functions are useful for programmatically enabling and
+disabling Custom themes:
+
+ -- Function: custom-theme-p theme
+     This function return a non-`nil' value if THEME (a symbol) is the
+     name of a Custom theme (i.e. a Custom theme which has been loaded
+     into Emacs, whether or not the theme is enabled).  Otherwise, it
+     returns `nil'.
+
+ -- Command: load-theme theme &optional no-confirm no-enable
+     This function loads the Custom theme named THEME from its source
+     file, looking for the source file in the directories specified by
+     the variable `custom-theme-load-path'.  *Note Custom Themes:
+     (emacs)Custom Themes.  It also "enables" the theme, causing its
+     variable and face settings to take effect.
+
+     If the optional argument NO-CONFIRM is non-`nil', this skips
+     prompting the user for confirmation before loading the theme.
+
+     If the optional argument NO-ENABLE is non-`nil', the theme is
+     loaded but not enabled.
+
+ -- Command: enable-theme theme
+     This function enables the Custom theme named THEME.  It signals an
+     error if no such theme has been loaded.
+
+ -- Command: disable-theme theme
+     This function disables the Custom theme named THEME.  The theme
+     remains loaded, so that a subsequent call to `enable-theme' will
+     re-enable it.
 
 
 File: elisp,  Node: Loading,  Next: Byte Compilation,  Prev: Customization,  Up: Top
@@ -975,11 +1120,11 @@ Coding Systems::.
 multibyte strings should not be noticeable, since inserting them in
 unibyte buffers converts them to unibyte automatically.  However, if
 this does make a difference, you can force a particular Lisp file to be
-interpreted as unibyte by writing `-*-unibyte: t;-*-' in a comment on
-the file's first line.  With that designator, the file will
-unconditionally be interpreted as unibyte, even in an ordinary
-multibyte Emacs session.  This can matter when making keybindings to
-non-ASCII characters written as `?vLITERAL'.
+interpreted as unibyte by writing `unibyte: t' in a local variables
+section.  With that designator, the file will unconditionally be
+interpreted as unibyte, even in an ordinary multibyte Emacs session.
+This can matter when making keybindings to non-ASCII characters written
+as `?vLITERAL'.
 
 
 File: elisp,  Node: Autoload,  Next: Repeated Loading,  Prev: Loading Non-ASCII,  Up: Loading
@@ -1769,7 +1914,7 @@ each file after recompiling it.
    The dynamic documentation string feature writes compiled files that
 use a special Lisp reader construct, `#@COUNT'.  This construct skips
 the next COUNT characters.  It also uses the `#$' construct, which
-stands for "the name of this file, as a string."  It is usually best
+stands for "the name of this file, as a string".  It is usually best
 not to use these constructs in Lisp source files, since they are not
 designed to be clear to humans reading the file.
 
@@ -1928,7 +2073,7 @@ operating on compiler diagnostics work properly on these messages.
 
    When an error is due to invalid syntax in the program, the byte
 compiler might get confused about the errors' exact location.  One way
-to investigate is to switch to the buffer `*Compiler Input*'.  (This
+to investigate is to switch to the buffer ` *Compiler Input*'.  (This
 buffer name starts with a space, so it does not show up in `M-x
 list-buffers'.)  This buffer contains the program being compiled, and
 point shows how far the byte compiler was able to read; the cause of
@@ -5207,7 +5352,7 @@ FUNCTION
           FUNCTION should save the argument and arrange to return it on
           the next call.  This is called "unreading" the character; it
           happens when the Lisp reader reads one character too many and
-          wants to "put it back where it came from."  In this case, it
+          wants to "put it back where it came from".  In this case, it
           makes no difference what value FUNCTION returns.
 
 `t'
@@ -5580,7 +5725,7 @@ is `nil' or omitted, it defaults to the value of `standard-output'.
 
  -- Function: terpri &optional stream
      This function outputs a newline to STREAM.  The name stands for
-     "terminate print."
+     "terminate print".
 
  -- Function: write-char character &optional stream
      This function outputs CHARACTER to STREAM.  It returns CHARACTER.
@@ -5773,8 +5918,8 @@ only while it is in use for reading an argument.
 * Multiple Queries::          Asking a series of similar questions.
 * Reading a Password::        Reading a password from the terminal.
 * Minibuffer Commands::       Commands used as key bindings in minibuffers.
-* Minibuffer Contents::       How such commands access the minibuffer text.
 * Minibuffer Windows::        Operating on the special minibuffer windows.
+* Minibuffer Contents::       How such commands access the minibuffer text.
 * Recursive Mini::            Whether recursive entry to minibuffer is allowed.
 * Minibuffer Misc::           Various customization hooks and variables.
 
@@ -5804,13 +5949,15 @@ including `beginning-of-line', `forward-word', `forward-sentence', and
 actual text.
 
    The minibuffer's window is normally a single line; it grows
-automatically if the contents require more space.  You can explicitly
-resize it temporarily with the window sizing commands; it reverts to
-its normal size when the minibuffer is exited.  You can resize it
-permanently by using the window sizing commands in the frame's other
-window, when the minibuffer is not active.  If the frame contains just
-a minibuffer, you can change the minibuffer's size by changing the
-frame's size.
+automatically if the contents require more space.  Whilst it is active,
+you can explicitly resize it temporarily with the window sizing
+commands; it reverts to its normal size when the minibuffer is exited.
+When the minibuffer is not active, you can resize it permanently by
+using the window sizing commands in the frame's other window, or
+dragging the mode line with the mouse.  (Due to details of the current
+implementation, for this to work `resize-mini-windows' must be `nil'.)
+If the frame contains just a minibuffer, you can change the
+minibuffer's size by changing the frame's size.
 
    Use of the minibuffer reads input events, and that alters the values
 of variables such as `this-command' and `last-command' (*note Command
@@ -5818,8 +5965,8 @@ Loop Info::).  Your program should bind them around the code that uses
 the minibuffer, if you do not want that to change them.
 
    Under some circumstances, a command can use a minibuffer even if
-there is an active minibuffer; such minibuffers are called a "recursive
-minibuffer".  The first minibuffer is named ` *Minibuf-0*'.  Recursive
+there is an active minibuffer; such a minibuffer is called a "recursive
+minibuffer".  The first minibuffer is named ` *Minibuf-1*'.  Recursive
 minibuffers are named by incrementing the number at the end of the
 name.  (The names begin with a space so that they won't show up in
 normal buffer lists.)  Of several recursive minibuffers, the innermost
@@ -5834,6 +5981,11 @@ the minibuffer also sets up its local map according to the job to be
 done.  *Note Text from Minibuffer::, for the non-completion minibuffer
 local maps.  *Note Completion Commands::, for the minibuffer local maps
 for completion.
+
+   When a minibuffer is inactive, its major mode is
+`minibuffer-inactive-mode', with keymap `minibuffer-inactive-mode-map'.
+This is only really useful if the minibuffer is in a separate frame.
+*Note Minibuffers and Frames::.
 
    When Emacs is running in batch mode, any request to read from the
 minibuffer actually reads a line from the standard input descriptor that
@@ -5857,16 +6009,16 @@ middle of a Lisp function.  Instead, do all minibuffer input as part of
 reading the arguments for a command, in the `interactive'
 specification.  *Note Defining Commands::.
 
- -- Function: read-from-minibuffer prompt-string &optional
-          initial-contents keymap read hist default inherit-input-method
+ -- Function: read-from-minibuffer prompt &optional initial keymap read
+          history default inherit-input-method
      This function is the most general way to get input from the
      minibuffer.  By default, it accepts arbitrary text and returns it
      as a string; however, if READ is non-`nil', then it uses `read' to
      convert the text into a Lisp object (*note Input Functions::).
 
      The first thing this function does is to activate a minibuffer and
-     display it with PROMPT-STRING as the prompt.  This value must be a
-     string.  Then the user can edit text in the minibuffer.
+     display it with PROMPT (which must be a string) as the prompt.
+     Then the user can edit text in the minibuffer.
 
      When the user types a command to exit the minibuffer,
      `read-from-minibuffer' constructs the return value from the text in
@@ -5878,7 +6030,7 @@ specification.  *Note Defining Commands::.
      The argument DEFAULT specifies default values to make available
      through the history commands.  It should be a string, a list of
      strings, or `nil'.  The string or strings become the minibuffer's
-     "future history," available to the user with `M-n'.
+     "future history", available to the user with `M-n'.
 
      If READ is non-`nil', then DEFAULT is also used as the input to
      `read', if the user enters empty input.  If DEFAULT is a list of
@@ -5895,14 +6047,16 @@ specification.  *Note Defining Commands::.
      is the most important way to customize the minibuffer for various
      applications such as completion.
 
-     The argument HIST specifies which history list variable to use for
+     The argument HISTORY specifies a history list variable to use for
      saving the input and for history commands used in the minibuffer.
-     It defaults to `minibuffer-history'.  *Note Minibuffer History::.
+     It defaults to `minibuffer-history'.  You can optionally specify a
+     starting position in the history list as well.  *Note Minibuffer
+     History::.
 
      If the variable `minibuffer-allow-text-properties' is non-`nil',
-     then the string which is returned includes whatever text
-     properties were present in the minibuffer.  Otherwise all the text
-     properties are stripped when the value is returned.
+     then the string that is returned includes whatever text properties
+     were present in the minibuffer.  Otherwise all the text properties
+     are stripped when the value is returned.
 
      If the argument INHERIT-INPUT-METHOD is non-`nil', then the
      minibuffer inherits the current input method (*note Input
@@ -5910,9 +6064,9 @@ specification.  *Note Defining Commands::.
      Text Representations::) from whichever buffer was current before
      entering the minibuffer.
 
-     Use of INITIAL-CONTENTS is mostly deprecated; we recommend using a
+     Use of INITIAL is mostly deprecated; we recommend using a
      non-`nil' value only in conjunction with specifying a cons cell
-     for HIST.  *Note Initial Input::.
+     for HISTORY.  *Note Initial Input::.
 
  -- Function: read-string prompt &optional initial history default
           inherit-input-method
@@ -5925,11 +6079,11 @@ specification.  *Note Defining Commands::.
      `read-from-minibuffer', except that, if non-`nil', it also
      specifies a default value to return if the user enters null input.
      As in `read-from-minibuffer' it should be a string, a list of
-     strings, or `nil' which is equivalent to an empty string.  When
+     strings, or `nil', which is equivalent to an empty string.  When
      DEFAULT is a string, that string is the default value.  When it is
      a list of strings, the first string is the default value.  (All
      these strings are available to the user in the "future minibuffer
-     history.")
+     history".)
 
      This function works by calling the `read-from-minibuffer' function:
 
@@ -5942,16 +6096,16 @@ specification.  *Note Defining Commands::.
                 (if (consp DEFAULT) (car DEFAULT) DEFAULT)
               value))
 
- -- Function: read-regexp prompt &optional default-value
+ -- Function: read-regexp prompt &optional default
      This function reads a regular expression as a string from the
      minibuffer and returns it.  The argument PROMPT is used as in
      `read-from-minibuffer'.  The keymap used is
      `minibuffer-local-map', and `regexp-history' is used as the
      history list (*note regexp-history: Minibuffer History.).
 
-     The optional argument DEFAULT-VALUE specifies a default value to
-     return if the user enters null input; it should be a string, or
-     `nil' which is equivalent to an empty string.
+     The optional argument DEFAULT specifies a default value to return
+     if the user enters null input; it should be a string, or `nil',
+     which is equivalent to an empty string.
 
      In addition, `read-regexp' collects a few useful candidates for
      input and passes them to `read-from-minibuffer', to make them
@@ -5971,14 +6125,14 @@ specification.  *Note Defining Commands::.
      function, after computing the list of defaults as described above.
 
  -- Variable: minibuffer-allow-text-properties
-     If this variable is `nil', then `read-from-minibuffer' strips all
-     text properties from the minibuffer input before returning it.
-     This variable also affects `read-string'.  However,
-     `read-no-blanks-input' (see below), as well as `read-minibuffer'
-     and related functions (*note Reading Lisp Objects With the
-     Minibuffer: Object from Minibuffer.), and all functions that do
-     minibuffer input with completion, discard text properties
-     unconditionally, regardless of the value of this variable.
+     If this variable is `nil', then `read-from-minibuffer' and
+     `read-string' strip all text properties from the minibuffer input
+     before returning it.  However, `read-no-blanks-input' (see below),
+     as well as `read-minibuffer' and related functions (*note Reading
+     Lisp Objects With the Minibuffer: Object from Minibuffer.), and all
+     functions that do minibuffer input with completion, discard text
+     properties unconditionally, regardless of the value of this
+     variable.
 
  -- Variable: minibuffer-local-map
      This is the default local keymap for reading from the minibuffer.
@@ -6006,6 +6160,7 @@ specification.  *Note Defining Commands::.
 
     `M-r'
           `previous-matching-history-element'
+
 
  -- Function: read-no-blanks-input prompt &optional initial
           inherit-input-method
@@ -6093,23 +6248,17 @@ minibuffer.
           (eval (read-minibuffer PROMPT INITIAL))
 
  -- Function: edit-and-eval-command prompt form
-     This function reads a Lisp expression in the minibuffer, and then
-     evaluates it.  The difference between this command and
-     `eval-minibuffer' is that here the initial FORM is not optional
-     and it is treated as a Lisp object to be converted to printed
-     representation rather than as a string of text.  It is printed with
-     `prin1', so if it is a string, double-quote characters (`"')
-     appear in the initial text.  *Note Output Functions::.
-
-     The first thing `edit-and-eval-command' does is to activate the
-     minibuffer with PROMPT as the prompt.  Then it inserts the printed
-     representation of FORM in the minibuffer, and lets the user edit
-     it.  When the user exits the minibuffer, the edited text is read
-     with `read' and then evaluated.  The resulting value becomes the
-     value of `edit-and-eval-command'.
+     This function reads a Lisp expression in the minibuffer, evaluates
+     it, then returns the result.  The difference between this command
+     and `eval-minibuffer' is that here the initial FORM is not
+     optional and it is treated as a Lisp object to be converted to
+     printed representation rather than as a string of text.  It is
+     printed with `prin1', so if it is a string, double-quote
+     characters (`"') appear in the initial text.  *Note Output
+     Functions::.
 
      In the following example, we offer the user an expression with
-     initial text which is a valid form already:
+     initial text that is already a valid form:
 
           (edit-and-eval-command "Please edit: " '(forward-word 1))
 
@@ -6122,7 +6271,6 @@ minibuffer.
 
      Typing <RET> right away would exit the minibuffer and evaluate the
      expression, thus moving point forward one word.
-     `edit-and-eval-command' returns `nil' in this example.
 
 
 File: elisp,  Node: Minibuffer History,  Next: Initial Input,  Prev: Object from Minibuffer,  Up: Minibuffers
@@ -6138,7 +6286,7 @@ list of strings (previous inputs), most recent first.
 kinds of inputs.  It's the Lisp programmer's job to specify the right
 history list for each use of the minibuffer.
 
-   You specify a minibuffer history list with the optional HIST
+   You specify a minibuffer history list with the optional HISTORY
 argument to `read-from-minibuffer' or `completing-read'.  Here are the
 possible values for it:
 
@@ -6160,7 +6308,7 @@ VARIABLE
      history as the initial minibuffer contents, using the INITIAL
      argument to the minibuffer input function (*note Initial Input::).
 
-   If you don't specify HIST, then the default history list
+   If you don't specify HISTORY, then the default history list
 `minibuffer-history' is used.  For other standard history lists, see
 below.  You can also create your own history list variable; just
 initialize it to `nil' before the first use.
@@ -6199,14 +6347,14 @@ delete duplicates in history.
      read from the minibuffer don't add new elements to the history
      list.  This lets Lisp programs explicitly manage input history by
      using `add-to-history'.  By default, `history-add-new-input' is
-     set to a non-`nil' value.
+     non-`nil'.
 
  -- User Option: history-length
      The value of this variable specifies the maximum length for all
      history lists that don't specify their own maximum lengths.  If the
      value is `t', that means there is no maximum (don't delete old
-     elements).  The value of `history-length' property of the history
-     list variable's symbol, if set, overrides this variable for that
+     elements).  If a history list variable's symbol has a non-`nil'
+     `history-length' property, it overrides this variable for that
      particular history list.
 
  -- User Option: history-delete-duplicates
@@ -6240,6 +6388,9 @@ delete duplicates in history.
  -- Variable: read-expression-history
      A history list for arguments that are Lisp expressions to evaluate.
 
+ -- Variable: face-name-history
+     A history list for arguments that are faces.
+
 
 File: elisp,  Node: Initial Input,  Next: Completion,  Prev: Minibuffer History,  Up: Minibuffers
 
@@ -6247,9 +6398,9 @@ File: elisp,  Node: Initial Input,  Next: Completion,  Prev: Minibuffer History,
 ==================
 
 Several of the functions for minibuffer input have an argument called
-INITIAL or INITIAL-CONTENTS.  This is a mostly-deprecated feature for
-specifying that the minibuffer should start out with certain text,
-instead of empty as usual.
+INITIAL.  This is a mostly-deprecated feature for specifying that the
+minibuffer should start out with certain text, instead of empty as
+usual.
 
    If INITIAL is a string, the minibuffer starts out containing the
 text of the string, with point at the end, when the user starts to edit
@@ -6262,8 +6413,8 @@ values provide a much more convenient method to offer useful default
 inputs to the user.
 
    There is just one situation where you should specify a string for an
-INITIAL argument.  This is when you specify a cons cell for the HIST or
-HISTORY argument.  *Note Minibuffer History::.
+INITIAL argument.  This is when you specify a cons cell for the HISTORY
+argument.  *Note Minibuffer History::.
 
    INITIAL can also be a cons cell of the form `(STRING . POSITION)'.
 This means to insert STRING in the minibuffer but put point at POSITION
@@ -6275,10 +6426,9 @@ interpreted as origin-zero; that is, a value of 0 means the beginning
 of the string, 1 means after the first character, etc.  In
 `read-minibuffer', and the other non-completion minibuffer input
 functions that support this argument, 1 means the beginning of the
-string 2 means after the first character, etc.
+string, 2 means after the first character, etc.
 
-   Use of a cons cell as the value for INITIAL arguments is deprecated
-in user code.
+   Use of a cons cell as the value for INITIAL arguments is deprecated.
 
 
 File: elisp,  Node: Completion,  Next: Yes-or-No Queries,  Prev: Initial Input,  Up: Minibuffers
@@ -6316,11 +6466,11 @@ certain kinds of names with completion.
 * Minibuffer Completion::  Invoking the minibuffer with completion.
 * Completion Commands::    Minibuffer commands that do completion.
 * High-Level Completion::  Convenient special cases of completion
-                             (reading buffer name, file name, etc.).
+                             (reading buffer names, variable names, etc.).
 * Reading File Names::     Using completion to read file names and
                              shell commands.
-* Completion Styles::      Specifying rules for performing completion.
-* Programmed Completion::  Writing your own completion-function.
+* Completion Variables::   Variables controlling completion behavior.
+* Programmed Completion::  Writing your own completion function.
 * Completion in Buffers::  Completing text in ordinary buffers.
 
 
@@ -6352,19 +6502,14 @@ higher-level completion features that do use the minibuffer.
      permissible completions are the elements of the alist that are
      either strings, or conses whose CAR is a string or symbol.
      Symbols are converted to strings using `symbol-name'.  Other
-     elements of the alist are ignored. (Remember that in Emacs Lisp,
+     elements of the alist are ignored.  (Remember that in Emacs Lisp,
      the elements of alists do not _have_ to be conses.)  In
      particular, a list of strings is allowed, even though we usually
      do not think of such lists as alists.
 
      If COLLECTION is an obarray (*note Creating Symbols::), the names
      of all symbols in the obarray form the set of permissible
-     completions.  The global variable `obarray' holds an obarray
-     containing the names of all interned Lisp symbols.
-
-     Note that the only valid way to make a new obarray is to create it
-     empty and then add symbols to it one by one using `intern'.  Also,
-     you cannot intern a given symbol in more than one obarray.
+     completions.
 
      If COLLECTION is a hash table, then the keys that are strings are
      the possible completions.  Other keys are ignored.
@@ -6428,16 +6573,10 @@ higher-level completion features that do use the minibuffer.
                => "foobar"
 
  -- Function: all-completions string collection &optional predicate
-          nospace
      This function returns a list of all possible completions of
-     STRING.  The arguments to this function (aside from NOSPACE) are
-     the same as those of `try-completion'.  Also, this function uses
-     `completion-regexp-list' in the same way that `try-completion'
-     does.
-
-     The optional argument NOSPACE is obsolete.  If it is non-`nil',
-     completions that start with a space are ignored unless STRING
-     starts with a space.
+     STRING.  The arguments to this function are the same as those of
+     `try-completion', and it uses `completion-regexp-list' in the same
+     way that `try-completion' does.
 
      If COLLECTION is a function, it is called with three arguments:
      STRING, PREDICATE and `t'; then `all-completions' returns whatever
@@ -6458,7 +6597,7 @@ higher-level completion features that do use the minibuffer.
 
  -- Function: test-completion string collection &optional predicate
      This function returns non-`nil' if STRING is a valid completion
-     possibility specified by COLLECTION and PREDICATE.  The arguments
+     alternative specified by COLLECTION and PREDICATE.  The arguments
      are the same as in `try-completion'.  For instance, if COLLECTION
      is a list of strings, this is true if STRING appears in the list
      and PREDICATE is satisfied.
@@ -6494,8 +6633,8 @@ higher-level completion features that do use the minibuffer.
      pertains to the area after `"/usr/"' and before `"/doc"'.
 
    If you store a completion alist in a variable, you should mark the
-variable as "risky" with a non-`nil' `risky-local-variable' property.
-*Note File Local Variables::.
+variable as "risky" by giving it a non-`nil' `risky-local-variable'
+property.  *Note File Local Variables::.
 
  -- Variable: completion-ignore-case
      If the value of this variable is non-`nil', case is not considered
@@ -6520,7 +6659,7 @@ variable as "risky" with a non-`nil' `risky-local-variable' property.
      VAR.  It is done by calling FUN with no arguments.  The value FUN
      returns becomes the permanent value of VAR.
 
-     Here is a usage example:
+     Here is an example:
 
           (defvar foo (lazy-completion-table foo make-my-alist))
 
@@ -6534,7 +6673,7 @@ This section describes the basic interface for reading from the
 minibuffer with completion.
 
  -- Function: completing-read prompt collection &optional predicate
-          require-match initial hist default inherit-input-method
+          require-match initial history default inherit-input-method
      This function reads a string in the minibuffer, assisting the user
      by providing completion.  It activates the minibuffer with prompt
      PROMPT, which must be a string.
@@ -6580,14 +6719,14 @@ minibuffer with completion.
      is `nil', and uses `minibuffer-local-must-match-map' if
      REQUIRE-MATCH is non-`nil'.  *Note Completion Commands::.
 
-     The argument HIST specifies which history list variable to use for
-     saving the input and for minibuffer history commands.  It defaults
-     to `minibuffer-history'.  *Note Minibuffer History::.
+     The argument HISTORY specifies which history list variable to use
+     for saving the input and for minibuffer history commands.  It
+     defaults to `minibuffer-history'.  *Note Minibuffer History::.
 
      The argument INITIAL is mostly deprecated; we recommend using a
      non-`nil' value only in conjunction with specifying a cons cell
-     for HIST.  *Note Initial Input::.  For default input, use DEFAULT
-     instead.
+     for HISTORY.  *Note Initial Input::.  For default input, use
+     DEFAULT instead.
 
      If the argument INHERIT-INPUT-METHOD is non-`nil', then the
      minibuffer inherits the current input method (*note Input
@@ -6595,11 +6734,11 @@ minibuffer with completion.
      Text Representations::) from whichever buffer was current before
      entering the minibuffer.
 
-     If the built-in variable `completion-ignore-case' is non-`nil',
-     completion ignores case when comparing the input against the
-     possible matches.  *Note Basic Completion::.  In this mode of
-     operation, PREDICATE must also ignore case, or you will get
-     surprising results.
+     If the variable `completion-ignore-case' is non-`nil', completion
+     ignores case when comparing the input against the possible
+     matches.  *Note Basic Completion::.  In this mode of operation,
+     PREDICATE must also ignore case, or you will get surprising
+     results.
 
      Here's an example of using `completing-read':
 
@@ -6621,6 +6760,13 @@ minibuffer with completion.
      The `completing-read' function binds variables to pass information
      to the commands that actually do completion.  They are described
      in the following section.
+
+ -- Variable: completing-read-function
+     The value of this variable must be a function, which is called by
+     `completing-read' to actually do its work.  It should accept the
+     same arguments as `completing-read'.  This can be bound to a
+     different function to completely override the normal behavior of
+     `completing-read'.
 
 
 File: elisp,  Node: Completion Commands,  Next: High-Level Completion,  Prev: Minibuffer Completion,  Up: Completion
@@ -6709,9 +6855,9 @@ the minibuffer to do completion.
      visual feedback.  This is not needed in the minibuffer; for
      minibuffer completion, you can pass `nil'.
 
-     This function is called by `minibuffer-completion-help'.  The most
-     common way to use it is together with
-     `with-output-to-temp-buffer', like this:
+     This function is called by `minibuffer-completion-help'.  A common
+     way to use it is together with `with-output-to-temp-buffer', like
+     this:
 
           (with-output-to-temp-buffer "*Completions*"
             (display-completion-list
@@ -6738,7 +6884,7 @@ the minibuffer to do completion.
     <TAB>
           `minibuffer-complete'
 
-     with other characters bound as in `minibuffer-local-map' (*note
+     and uses `minibuffer-local-map' as its parent keymap (*note
      Definition of minibuffer-local-map::).
 
  -- Variable: minibuffer-local-must-match-map
@@ -6748,32 +6894,19 @@ the minibuffer to do completion.
      minibuffer unconditionally.  By default, this keymap makes the
      following bindings:
 
-    `?'
-          `minibuffer-completion-help'
-
-    <SPC>
-          `minibuffer-complete-word'
-
-    <TAB>
-          `minibuffer-complete'
-
     `C-j'
           `minibuffer-complete-and-exit'
 
     <RET>
           `minibuffer-complete-and-exit'
 
-     with other characters bound as in `minibuffer-local-map'.
+     and uses `minibuffer-local-completion-map' as its parent keymap.
 
  -- Variable: minibuffer-local-filename-completion-map
-     This is like `minibuffer-local-completion-map' except that it does
-     not bind <SPC>.  This keymap is used by the function
-     `read-file-name'.
-
- -- Variable: minibuffer-local-filename-must-match-map
-     This is like `minibuffer-local-must-match-map' except that it does
-     not bind <SPC>.  This keymap is used by the function
-     `read-file-name'.
+     This is a sparse keymap that simply unbinds <SPC>; because
+     filenames can contain spaces.  The function `read-file-name'
+     combines this keymap with either `minibuffer-local-completion-map'
+     or `minibuffer-local-must-match-map'.
 
 
 File: elisp,  Node: High-Level Completion,  Next: Reading File Names,  Prev: Completion Commands,  Up: Completion
@@ -6781,7 +6914,7 @@ File: elisp,  Node: High-Level Completion,  Next: Reading File Names,  Prev: Com
 20.6.4 High-Level Completion Functions
 --------------------------------------
 
-This section describes the higher-level convenient functions for
+This section describes the higher-level convenience functions for
 reading certain sorts of names with completion.
 
    In most cases, you should not call these functions in the middle of a
@@ -6844,7 +6977,7 @@ specification.  *Note Defining Commands::.
      The argument DEFAULT specifies what to return if the user enters
      null input.  It can be a symbol, a string or a list of strings.
      If it is a string, `read-command' interns it before returning it.
-     If it is a list, `read-command' returns the first element of this
+     If it is a list, `read-command' interns the first element of this
      list.  If DEFAULT is `nil', that means no default has been
      specified; then if the user enters null input, the return value is
      `(intern "")', that is, a symbol whose name is an empty string.
@@ -6873,37 +7006,10 @@ specification.  *Note Defining Commands::.
 
  -- Function: read-variable prompt &optional default
      This function reads the name of a user variable and returns it as a
-     symbol.
-
-     The argument DEFAULT specifies the default value to return if the
-     user enters null input.  It can be a symbol, a string, or a list
-     of strings.  If it is a string, `read-variable' interns it to make
-     the default value.  If it is a list, `read-variable' interns the
-     first element.  If DEFAULT is `nil', that means no default has
-     been specified; then if the user enters null input, the return
-     value is `(intern "")'.
-
-          (read-variable "Variable name? ")
-
-          ;; After evaluation of the preceding expression,
-          ;;   the following prompt appears,
-          ;;   with an empty minibuffer:
-
-          ---------- Buffer: Minibuffer ----------
-          Variable name? -!-
-          ---------- Buffer: Minibuffer ----------
-
-     If the user then types `fill-p <RET>', `read-variable' returns
-     `fill-prefix'.
-
-     In general, `read-variable' is similar to `read-command', but uses
-     the predicate `user-variable-p' instead of `commandp':
-
-          (read-variable PROMPT)
-          ==
-          (intern
-           (completing-read PROMPT obarray
-                            'user-variable-p t nil))
+     symbol.  Its arguments have the same form as those of
+     `read-command'.  In general, this function is similar to
+     `read-command', but uses the predicate `user-variable-p' instead
+     of `commandp'.
 
  -- Command: read-color &optional prompt convert allow-empty display
      This function reads a string that is a color specification, either
@@ -6920,7 +7026,7 @@ specification.  *Note Defining Commands::.
      argument CONVERT is non-`nil', it converts any input color name
      into the corresponding RGB value string and instead returns that.
      This function requires a valid color specification to be input.
-     Empty color names are allowed when `allow-empty' is non-`nil' and
+     Empty color names are allowed when ALLOW-EMPTY is non-`nil' and
      the user enters null input.
 
      Interactively, or when DISPLAY is non-`nil', the return value is

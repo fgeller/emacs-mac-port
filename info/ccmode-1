@@ -4217,7 +4217,7 @@ File: ccmode,  Node: c-offsets-alist,  Next: Interactive Customization,  Prev: C
 ====================
 
 This section explains the structure and semantics of the style variable
-`c-offset-alist', the principal variable for configuring indentation.
+`c-offsets-alist', the principal variable for configuring indentation.
 Details of how to set it up, and its relationship to CC Mode's style
 system are given in *note Style Variables::.
 

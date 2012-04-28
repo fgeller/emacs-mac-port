@@ -1,6 +1,6 @@
 This is ../../info/org, produced by makeinfo version 4.13 from org.texi.
 
-This manual is for Org version 7.8.07.
+This manual is for Org version 7.8.09.
 
    Copyright (C) 2004-2012  Free Software Foundation, Inc.
 
@@ -416,10 +416,10 @@ Motion
 ......
 
 `n     (`org-agenda-next-line')'
-     Next line (same as <up> and `C-p').  
+     Next line (same as <down> and `C-n').  
 
 `p     (`org-agenda-previous-line')'
-     Previous line (same as <down> and `C-n').
+     Previous line (same as <up> and `C-p').
 
 View/Go to Org file
 ...................
@@ -2005,12 +2005,12 @@ notes file on the web, while the XOXO format provides a solid base for
 exchange with a broad range of other applications.  LaTeX export lets
 you use Org mode and its structured editing functions to easily create
 LaTeX files.  DocBook export makes it possible to convert Org files to
-many other formats using DocBook tools.  OpenDocument Text(ODT) export
+many other formats using DocBook tools.  OpenDocument Text (ODT) export
 allows seamless collaboration across organizational boundaries.  For
 project management you can create gantt and resource charts by using
 TaskJuggler export.  To incorporate entries with associated times like
 deadlines or appointments into a desktop calendar program like iCal,
-Org mode can also produce extracts in the iCalendar format.  Currently
+Org mode can also produce extracts in the iCalendar format.  Currently,
 Org mode only supports export, not import of these different formats.
 
    Org supports export of selected regions when `transient-mark-mode' is
@@ -3253,9 +3253,9 @@ format (say `csv') to another format (say `ods' or `xls').
 converter is pre-configured for you and you can use it right away.  If
 you would like to use `unoconv' as your preferred converter, customize
 the variable `org-export-odt-convert-process' to point to `unoconv'.
-If you would like to use a converter of your own choosing or tweak the
-default settings of the default `LibreOffice' and `unoconv' converters
-*Note Configuring a document converter::.
+You can also use your own favorite converter or tweak the default
+settings of the `LibreOffice' and `unoconv' converters.  *Note
+Configuring a document converter::.
 
 12.8.3.1 Automatically exporting to other formats
 .................................................
@@ -3572,7 +3572,7 @@ File: org,  Node: Working with MathML or OpenDocument formula files,  Prev: Work
 
 For various reasons, you may find embedding LaTeX math snippets in an
 ODT document less than reliable.  In that case, you can embed a math
-equation by linking to its MathML(`.mml') source or its OpenDocument
+equation by linking to its MathML (`.mml') source or its OpenDocument
 formula (`.odf') file as shown below:
 
      [[./equation.mml]]
@@ -3641,7 +3641,7 @@ variable `org-export-odt-fontify-srcblocks'.
 
    ---------- Footnotes ----------
 
-   (1) Your `htmlfontify.el' library must atleast be at Emacs 24.1
+   (1) Your `htmlfontify.el' library must at least be at Emacs 24.1
 levels for fontification to be turned on.
 
 
@@ -3680,7 +3680,7 @@ would like to tweak the default converter settings, proceed as below.
      specify how the converter can be invoked via command-line to
      effect the conversion.
 
-  2. Configure its capabilities 
+  2. Configure its capabilities
 
      Specify the set of formats the converter can handle by customizing
      the variable `org-export-odt-convert-capabilities'.  Use the
@@ -3798,9 +3798,9 @@ couple of examples.
           highlighted text@</text:span>.  But this is a
           regular text.
 
-     *Hint:* To see the above example in action, edit your
-     `styles.xml'(*note Factory styles: x-orgodtstyles-xml.) and add a
-     custom `Highlight' style as shown below.
+     *Hint:* To see the above example in action, edit your `styles.xml'
+     (*note Factory styles: x-orgodtstyles-xml.) and add a custom
+     `Highlight' style as shown below.
 
           <style:style style:name="Highlight" style:family="text">
             <style:text-properties fo:background-color="#ff0000"/>
@@ -3813,9 +3813,9 @@ couple of examples.
 
           #+ODT: <text:p text:style-name="PageBreak"/>
 
-     *Hint:* To see the above example in action, edit your
-     `styles.xml'(*note Factory styles: x-orgodtstyles-xml.) and add a
-     custom `PageBreak' style as shown below.
+     *Hint:* To see the above example in action, edit your `styles.xml'
+     (*note Factory styles: x-orgodtstyles-xml.) and add a custom
+     `PageBreak' style as shown below.
 
           <style:style style:name="PageBreak" style:family="paragraph"
           	     style:parent-style-name="Text_20_body">

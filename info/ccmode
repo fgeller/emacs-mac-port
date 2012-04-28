@@ -26,7 +26,7 @@ END-INFO-DIR-ENTRY
 
 Indirect:
 ccmode-1: 1054
-ccmode-2: 292826
+ccmode-2: 292827
 
 Tag Table:
 (Indirect)
@@ -126,39 +126,39 @@ Ref: K&R Symbols-Footnote-1164164
 Node: Indentation Calculation164211
 Node: Customizing Indentation167440
 Node: c-offsets-alist169032
-Ref: c-offsets-alist-Footnote-1175538
-Ref: c-offsets-alist-Footnote-2175653
-Node: Interactive Customization175976
-Ref: Interactive Customization-Footnote-1178926
-Node: Line-Up Functions179065
-Node: Brace/Paren Line-Up180862
-Ref: c-lineup-arglist-close-under-paren181927
-Ref: Brace/Paren Line-Up-Footnote-1187296
-Node: List Line-Up187436
-Node: Operator Line-Up192265
-Node: Comment Line-Up196313
-Node: Misc Line-Up199135
-Ref: Misc Line-Up-Footnote-1203694
-Node: Custom Line-Up204005
-Ref: Custom Line-Up-Footnote-1208257
-Node: Other Indentation208414
-Ref: Other Indentation-Footnote-1210415
-Node: Custom Macros210609
-Node: Macro Backslashes212059
-Node: Macros with ;213994
-Node: Odds and Ends215868
-Node: Sample .emacs File217516
-Node: Performance Issues219855
-Ref: Performance Issues-Footnote-1225339
-Ref: Performance Issues-Footnote-2225415
-Node: Limitations and Known Bugs225479
-Node: FAQ227931
-Ref: FAQ-Footnote-1230686
-Node: Updating CC Mode230754
-Node: Mailing Lists and Bug Reports231349
-Node: GNU Free Documentation License233223
-Node: Command and Function Index258428
-Node: Variable Index279068
-Node: Concept and Key Index292826
+Ref: c-offsets-alist-Footnote-1175539
+Ref: c-offsets-alist-Footnote-2175654
+Node: Interactive Customization175977
+Ref: Interactive Customization-Footnote-1178927
+Node: Line-Up Functions179066
+Node: Brace/Paren Line-Up180863
+Ref: c-lineup-arglist-close-under-paren181928
+Ref: Brace/Paren Line-Up-Footnote-1187297
+Node: List Line-Up187437
+Node: Operator Line-Up192266
+Node: Comment Line-Up196314
+Node: Misc Line-Up199136
+Ref: Misc Line-Up-Footnote-1203695
+Node: Custom Line-Up204006
+Ref: Custom Line-Up-Footnote-1208258
+Node: Other Indentation208415
+Ref: Other Indentation-Footnote-1210416
+Node: Custom Macros210610
+Node: Macro Backslashes212060
+Node: Macros with ;213995
+Node: Odds and Ends215869
+Node: Sample .emacs File217517
+Node: Performance Issues219856
+Ref: Performance Issues-Footnote-1225340
+Ref: Performance Issues-Footnote-2225416
+Node: Limitations and Known Bugs225480
+Node: FAQ227932
+Ref: FAQ-Footnote-1230687
+Node: Updating CC Mode230755
+Node: Mailing Lists and Bug Reports231350
+Node: GNU Free Documentation License233224
+Node: Command and Function Index258429
+Node: Variable Index279069
+Node: Concept and Key Index292827
 
 End Tag Table

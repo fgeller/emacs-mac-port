@@ -1,6 +1,6 @@
 This is ../../info/org, produced by makeinfo version 4.13 from org.texi.
 
-This manual is for Org version 7.8.07.
+This manual is for Org version 7.8.09.
 
    Copyright (C) 2004-2012  Free Software Foundation, Inc.
 
@@ -3850,7 +3850,7 @@ org-customize <RET>' and then click yourself through the tree.
 * org-export-odt-convert:                Extending ODT export.
                                                               (line  39)
 * org-export-odt-convert-capabilities:   Configuring a document converter.
-                                                              (line  18)
+                                                              (line  20)
 * org-export-odt-convert-process:        Configuring a document converter.
                                                               (line  30)
 * org-export-odt-convert-processes:      Configuring a document converter.

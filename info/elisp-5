@@ -1,8 +1,8 @@
-This is /home/cyd/trunk/doc/lispref/../../info/elisp, produced by
-makeinfo version 4.13 from /home/cyd/trunk/doc/lispref/elisp.texi.
+This is /home/cyd/emacs/doc/lispref/../../info/elisp, produced by
+makeinfo version 4.13 from /home/cyd/emacs/doc/lispref/elisp.texi.
 
-This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 24.0.95.
+This is edition 3.1 of the GNU Emacs Lisp Reference Manual,
+corresponding to Emacs version 24.0.96.
 
    Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
@@ -23,6 +23,232 @@ INFO-DIR-SECTION GNU Emacs Lisp
 START-INFO-DIR-ENTRY
 * Elisp: (elisp).       The Emacs Lisp Reference Manual.
 END-INFO-DIR-ENTRY
+
+
+File: elisp,  Node: Major Mode Conventions,  Next: Auto Major Mode,  Up: Major Modes
+
+23.2.1 Major Mode Conventions
+-----------------------------
+
+The code for every major mode should follow various coding conventions,
+including conventions for local keymap and syntax table initialization,
+function and variable names, and hooks.
+
+   If you use the `define-derived-mode' macro, it will take care of
+many of these conventions automatically.  *Note Derived Modes::.  Note
+also that Fundamental mode is an exception to many of these conventions,
+because it represents the default state of Emacs.
+
+   The following list of conventions is only partial.  Each major mode
+should aim for consistency in general with other Emacs major modes, as
+this makes Emacs as a whole more coherent.  It is impossible to list
+here all the possible points where this issue might come up; if the
+Emacs developers point out an area where your major mode deviates from
+the usual conventions, please make it compatible.
+
+   * Define a major mode command whose name ends in `-mode'.  When
+     called with no arguments, this command should switch to the new
+     mode in the current buffer by setting up the keymap, syntax table,
+     and buffer-local variables in an existing buffer.  It should not
+     change the buffer's contents.
+
+   * Write a documentation string for this command that describes the
+     special commands available in this mode.  *Note Mode Help::.
+
+     The documentation string may include the special documentation
+     substrings, `\[COMMAND]', `\{KEYMAP}', and `\<KEYMAP>', which
+     allow the help display to adapt automatically to the user's own
+     key bindings.  *Note Keys in Documentation::.
+
+   * The major mode command should start by calling
+     `kill-all-local-variables'.  This runs the normal hook
+     `change-major-mode-hook', then gets rid of the buffer-local
+     variables of the major mode previously in effect.  *Note Creating
+     Buffer-Local::.
+
+   * The major mode command should set the variable `major-mode' to the
+     major mode command symbol.  This is how `describe-mode' discovers
+     which documentation to print.
+
+   * The major mode command should set the variable `mode-name' to the
+     "pretty" name of the mode, usually a string (but see *note Mode
+     Line Data::, for other possible forms).  The name of the mode
+     appears in the mode line.
+
+   * Since all global names are in the same name space, all the global
+     variables, constants, and functions that are part of the mode
+     should have names that start with the major mode name (or with an
+     abbreviation of it if the name is long).  *Note Coding
+     Conventions::.
+
+   * In a major mode for editing some kind of structured text, such as a
+     programming language, indentation of text according to structure is
+     probably useful.  So the mode should set `indent-line-function' to
+     a suitable function, and probably customize other variables for
+     indentation.  *Note Auto-Indentation::.
+
+   * The major mode should usually have its own keymap, which is used
+     as the local keymap in all buffers in that mode.  The major mode
+     command should call `use-local-map' to install this local map.
+     *Note Active Keymaps::, for more information.
+
+     This keymap should be stored permanently in a global variable named
+     `MODENAME-mode-map'.  Normally the library that defines the mode
+     sets this variable.
+
+     *Note Tips for Defining::, for advice about how to write the code
+     to set up the mode's keymap variable.
+
+   * The key sequences bound in a major mode keymap should usually
+     start with `C-c', followed by a control character, a digit, or `{',
+     `}', `<', `>', `:' or `;'.  The other punctuation characters are
+     reserved for minor modes, and ordinary letters are reserved for
+     users.
+
+     A major mode can also rebind the keys `M-n', `M-p' and `M-s'.  The
+     bindings for `M-n' and `M-p' should normally be some kind of
+     "moving forward and backward", but this does not necessarily mean
+     cursor motion.
+
+     It is legitimate for a major mode to rebind a standard key
+     sequence if it provides a command that does "the same job" in a
+     way better suited to the text this mode is used for.  For example,
+     a major mode for editing a programming language might redefine
+     `C-M-a' to "move to the beginning of a function" in a way that
+     works better for that language.
+
+     It is also legitimate for a major mode to rebind a standard key
+     sequence whose standard meaning is rarely useful in that mode.  For
+     instance, minibuffer modes rebind `M-r', whose standard meaning is
+     rarely of any use in the minibuffer.  Major modes such as Dired or
+     Rmail that do not allow self-insertion of text can reasonably
+     redefine letters and other printing characters as special commands.
+
+   * Major modes for editing text should not define <RET> to do
+     anything other than insert a newline.  However, it is ok for
+     specialized modes for text that users don't directly edit, such as
+     Dired and Info modes, to redefine <RET> to do something entirely
+     different.
+
+   * Major modes should not alter options that are primarily a matter
+     of user preference, such as whether Auto-Fill mode is enabled.
+     Leave this to each user to decide.  However, a major mode should
+     customize other variables so that Auto-Fill mode will work
+     usefully _if_ the user decides to use it.
+
+   * The mode may have its own syntax table or may share one with other
+     related modes.  If it has its own syntax table, it should store
+     this in a variable named `MODENAME-mode-syntax-table'.  *Note
+     Syntax Tables::.
+
+   * If the mode handles a language that has a syntax for comments, it
+     should set the variables that define the comment syntax.  *Note
+     Options Controlling Comments: (emacs)Options for Comments.
+
+   * The mode may have its own abbrev table or may share one with other
+     related modes.  If it has its own abbrev table, it should store
+     this in a variable named `MODENAME-mode-abbrev-table'.  If the
+     major mode command defines any abbrevs itself, it should pass `t'
+     for the SYSTEM-FLAG argument to `define-abbrev'.  *Note Defining
+     Abbrevs::.
+
+   * The mode should specify how to do highlighting for Font Lock mode,
+     by setting up a buffer-local value for the variable
+     `font-lock-defaults' (*note Font Lock Mode::).
+
+   * Each face that the mode defines should, if possible, inherit from
+     an existing Emacs face.  *Note Basic Faces::, and *note Faces for
+     Font Lock::.
+
+   * The mode should specify how Imenu should find the definitions or
+     sections of a buffer, by setting up a buffer-local value for the
+     variable `imenu-generic-expression', for the two variables
+     `imenu-prev-index-position-function' and
+     `imenu-extract-index-name-function', or for the variable
+     `imenu-create-index-function' (*note Imenu::).
+
+   * The mode can specify a local value for
+     `eldoc-documentation-function' to tell ElDoc mode how to handle
+     this mode.
+
+   * The mode can specify how to complete various keywords by adding
+     one or more buffer-local entries to the special hook
+     `completion-at-point-functions'.  *Note Completion in Buffers::.
+
+   * To make a buffer-local binding for an Emacs customization
+     variable, use `make-local-variable' in the major mode command, not
+     `make-variable-buffer-local'.  The latter function would make the
+     variable local to every buffer in which it is subsequently set,
+     which would affect buffers that do not use this mode.  It is
+     undesirable for a mode to have such global effects.  *Note
+     Buffer-Local Variables::.
+
+     With rare exceptions, the only reasonable way to use
+     `make-variable-buffer-local' in a Lisp package is for a variable
+     which is used only within that package.  Using it on a variable
+     used by other packages would interfere with them.
+
+   * Each major mode should have a normal "mode hook" named
+     `MODENAME-mode-hook'.  The very last thing the major mode command
+     should do is to call `run-mode-hooks'.  This runs the normal hook
+     `change-major-mode-after-body-hook', the mode hook, and then the
+     normal hook `after-change-major-mode-hook'.  *Note Mode Hooks::.
+
+   * The major mode command may start by calling some other major mode
+     command (called the "parent mode") and then alter some of its
+     settings.  A mode that does this is called a "derived mode".  The
+     recommended way to define one is to use the `define-derived-mode'
+     macro, but this is not required.  Such a mode should call the
+     parent mode command inside a `delay-mode-hooks' form.  (Using
+     `define-derived-mode' does this automatically.)  *Note Derived
+     Modes::, and *note Mode Hooks::.
+
+   * If something special should be done if the user switches a buffer
+     from this mode to any other major mode, this mode can set up a
+     buffer-local value for `change-major-mode-hook' (*note Creating
+     Buffer-Local::).
+
+   * If this mode is appropriate only for specially-prepared text
+     produced by the mode itself (rather than by the user typing at the
+     keyboard or by an external file), then the major mode command
+     symbol should have a property named `mode-class' with value
+     `special', put on as follows:
+
+          (put 'funny-mode 'mode-class 'special)
+
+     This tells Emacs that new buffers created while the current buffer
+     is in Funny mode should not be put in Funny mode, even though the
+     default value of `major-mode' is `nil'.  By default, the value of
+     `nil' for `major-mode' means to use the current buffer's major
+     mode when creating new buffers (*note Auto Major Mode::), but with
+     such `special' modes, Fundamental mode is used instead.  Modes
+     such as Dired, Rmail, and Buffer List use this feature.
+
+     The function `view-buffer' does not enable View mode in buffers
+     whose mode-class is special, because such modes usually provide
+     their own View-like bindings.
+
+     The `define-derived-mode' macro automatically marks the derived
+     mode as special if the parent mode is special.  Special mode is a
+     convenient parent for such modes to inherit from; *Note Basic
+     Major Modes::.
+
+   * If you want to make the new mode the default for files with certain
+     recognizable names, add an element to `auto-mode-alist' to select
+     the mode for those file names (*note Auto Major Mode::).  If you
+     define the mode command to autoload, you should add this element in
+     the same file that calls `autoload'.  If you use an autoload
+     cookie for the mode command, you can also use an autoload cookie
+     for the form that adds the element (*note autoload cookie::).  If
+     you do not autoload the mode command, it is sufficient to add the
+     element in the file that contains the mode definition.
+
+   * The top-level forms in the file defining the mode should be
+     written so that they may be evaluated more than once without
+     adverse consequences.  For instance, use `defvar' or `defcustom'
+     to set mode-related variables, so that they are not reinitialized
+     if they already have a value (*note Defining Variables::).
+
 
 
 File: elisp,  Node: Auto Major Mode,  Next: Mode Help,  Prev: Major Mode Conventions,  Up: Major Modes
@@ -379,7 +605,7 @@ major mode, please correct it to follow these conventions.
 
    When you defined a major mode using `define-derived-mode', it
 automatically makes sure these conventions are followed.  If you define
-a major mode "by hand," not using `define-derived-mode', use the
+a major mode "by hand", not using `define-derived-mode', use the
 following functions to handle these conventions automatically.
 
  -- Function: run-mode-hooks &rest hookvars
@@ -549,9 +775,9 @@ of the use of `define-generic-mode'.
      The argument COMMENT-LIST is a list in which each element is
      either a character, a string of one or two characters, or a cons
      cell.  A character or a string is set up in the mode's syntax
-     table as a "comment starter."  If the entry is a cons cell, the
+     table as a "comment starter".  If the entry is a cons cell, the
      CAR is set up as a "comment starter" and the CDR as a "comment
-     ender."  (Use `nil' for the latter if you want comments to end at
+     ender".  (Use `nil' for the latter if you want comments to end at
      the end of the line.)  Note that the syntax table mechanism has
      limitations about what comment starters and enders are actually
      possible.  *Note Syntax Tables::.
@@ -933,8 +1159,8 @@ mode in one self-contained definition.
 
           One of the effects of making a minor mode global is that the
           MODE variable becomes a customization variable.  Toggling it
-          through the Custom interface turns the mode on and off, and
-          its value can be saved for future Emacs sessions (*note
+          through the Customize interface turns the mode on and off,
+          and its value can be saved for future Emacs sessions (*note
           Saving Customizations: (emacs)Saving Customizations.  For the
           saved variable to work, you should ensure that the
           `define-minor-mode' form is evaluated each time Emacs starts;
@@ -1002,7 +1228,7 @@ unusual circumstances.  Normally, the initial value must be `nil'.
       '(([C-backspace] . hungry-electric-delete))
       :group 'hunger)
 
-This defines a minor mode named "Hungry mode," a command named
+This defines a minor mode named "Hungry mode", a command named
 `hungry-mode' to toggle it, a variable named `hungry-mode' which
 indicates whether the mode is enabled, and a variable named
 `hungry-mode-map' which holds the keymap that is active when the mode
@@ -1042,9 +1268,9 @@ is enabled.  It initializes the keymap with a key binding for
      new buffer in Fundamental mode.
 
      This defines the customization option GLOBAL-MODE (*note
-     Customization::), which can be toggled in the Custom interface to
-     turn the minor mode on and off.  As with `define-minor-mode', you
-     should ensure that the `define-globalized-minor-mode' form is
+     Customization::), which can be toggled in the Customize interface
+     to turn the minor mode on and off.  As with `define-minor-mode',
+     you should ensure that the `define-globalized-minor-mode' form is
      evaluated each time Emacs starts, for example by providing a
      `:require' keyword.
 
@@ -2623,7 +2849,7 @@ the spirit of Lisp sexps and adapts it to non-Lisp languages.
 
 * Menu:
 
-* SMIE::                        A simple minded indentation engine
+* SMIE::                        A simple minded indentation engine.
 
 
 File: elisp,  Node: SMIE,  Up: Auto-Indentation
@@ -2652,14 +2878,14 @@ resorting to some special tricks (*note SMIE Tricks::).
 
 * Menu:
 
-* SMIE setup::                  SMIE setup and features
-* Operator Precedence Grammars::  A very simple parsing technique
-* SMIE Grammar::                Defining the grammar of a language
-* SMIE Lexer::                  Defining tokens
-* SMIE Tricks::                 Working around the parser's limitations
-* SMIE Indentation::            Specifying indentation rules
-* SMIE Indentation Helpers::    Helper functions for indentation rules
-* SMIE Indentation Example::    Sample indentation rules
+* SMIE setup::                  SMIE setup and features.
+* Operator Precedence Grammars::  A very simple parsing technique.
+* SMIE Grammar::                Defining the grammar of a language.
+* SMIE Lexer::                  Defining tokens.
+* SMIE Tricks::                 Working around the parser's limitations.
+* SMIE Indentation::            Specifying indentation rules.
+* SMIE Indentation Helpers::    Helper functions for indentation rules.
+* SMIE Indentation Example::    Sample indentation rules.
 
 
 File: elisp,  Node: SMIE setup,  Next: Operator Precedence Grammars,  Up: SMIE
@@ -3503,6 +3729,17 @@ Emacs Lisp.
      string.  This permits display of documentation that refers
      accurately to the user's own customized key bindings.
 
+     If a command has multiple bindings, this function normally uses the
+     first one it finds.  You can specify one particular key binding by
+     assigning an `:advertised-binding' symbol property to the command,
+     like this:
+
+          (put 'undo :advertised-binding [?\C-/])
+
+     The `:advertised-binding' property also affects the binding shown
+     in menu items (*note Menu Bar::).  The property is ignored if it
+     specifies a key binding that the command does not actually have.
+
    Here are examples of the special sequences:
 
      (substitute-command-keys
@@ -3687,7 +3924,7 @@ program-level interfaces to the same information.
 
  -- User Option: help-event-list
      The value of this variable is a list of event types that serve as
-     alternative "help characters."  These events are handled just like
+     alternative "help characters".  These events are handled just like
      the event specified by `help-char'.
 
  -- Variable: help-form
@@ -3870,8 +4107,8 @@ into the file.
 
    In spite of the distinction between files and buffers, people often
 refer to a file when they mean a buffer and vice-versa.  Indeed, we say,
-"I am editing a file," rather than, "I am editing a buffer that I will
-soon save as a file of the same name."  Humans do not usually need to
+"I am editing a file", rather than, "I am editing a buffer that I will
+soon save as a file of the same name".  Humans do not usually need to
 make the distinction explicit.  When dealing with a computer program,
 however, it is good to keep the distinction in mind.
 
@@ -4252,9 +4489,11 @@ conversion (*note Format Conversion::).
  -- User Option: require-final-newline
      This variable determines whether files may be written out that do
      _not_ end with a newline.  If the value of the variable is `t',
-     then `save-buffer' silently adds a newline at the end of the file
-     whenever the buffer being saved does not already end in one.  If
-     the value of the variable is non-`nil', but not `t', then
+     then `save-buffer' silently adds a newline at the end of the
+     buffer whenever it does not already end in one.  If the value is
+     `visit', Emacs adds a missing newline just after it visits the
+     file.  If the value is `visit-save', Emacs adds a missing newline
+     both on visiting and on saving.  For any other non-`nil' value,
      `save-buffer' asks the user whether to add a newline each time the
      case arises.
 
@@ -4440,7 +4679,7 @@ lock is really a file, a symbolic link with a special name, stored in
 the same directory as the file you are editing.
 
    When you access files using NFS, there may be a small probability
-that you and another user will both lock the same file "simultaneously."
+that you and another user will both lock the same file "simultaneously".
 If this happens, it is possible for the two users to make changes
 simultaneously, but Emacs will still warn the user who saves second.
 Also, the detection of modification of a buffer visiting a file changed
@@ -5341,7 +5580,7 @@ files have version numbers in their names.
                => "~rms/foo"
 
  -- Function: file-name-extension filename &optional period
-     This function returns FILENAME's final "extension," if any, after
+     This function returns FILENAME's final "extension", if any, after
      applying `file-name-sans-versions' to remove any version/backup
      part.  The extension, in a file name, is the part that follows the
      last `.' in the last name component (minus any version/backup
@@ -6109,7 +6348,7 @@ buffer if it is locked.
 possibly others to be added in the future.  It need not implement all
 these operations itself--when it has nothing special to do for a
 certain operation, it can reinvoke the primitive, to handle the
-operation "in the usual way."  It should always reinvoke the primitive
+operation "in the usual way".  It should always reinvoke the primitive
 for an operation it does not recognize.  Here's one way to do this:
 
      (defun my-file-handler (operation &rest args)
@@ -6297,307 +6536,6 @@ writing handle things in opposite order.  The rest of this section
 describes the two facilities surrounding the three variables named
 above, as well as some related functions.  *note Coding Systems::, for
 details on character encoding and decoding.
-
-
-File: elisp,  Node: Format Conversion Round-Trip,  Next: Format Conversion Piecemeal,  Prev: Format Conversion Overview,  Up: Format Conversion
-
-25.12.2 Round-Trip Specification
---------------------------------
-
-The most general of the two facilities is controlled by the variable
-`format-alist', a list of "file format" specifications, which describe
-textual representations used in files for the data in an Emacs buffer.
-The descriptions for reading and writing are paired, which is why we
-call this "round-trip" specification (*note Format Conversion
-Piecemeal::, for non-paired specification).
-
- -- Variable: format-alist
-     This list contains one format definition for each defined file
-     format.  Each format definition is a list of this form:
-
-          (NAME DOC-STRING REGEXP FROM-FN TO-FN MODIFY MODE-FN PRESERVE)
-
-Here is what the elements in a format definition mean:
-
-NAME
-     The name of this format.
-
-DOC-STRING
-     A documentation string for the format.
-
-REGEXP
-     A regular expression which is used to recognize files represented
-     in this format.  If `nil', the format is never applied
-     automatically.
-
-FROM-FN
-     A shell command or function to decode data in this format (to
-     convert file data into the usual Emacs data representation).
-
-     A shell command is represented as a string; Emacs runs the command
-     as a filter to perform the conversion.
-
-     If FROM-FN is a function, it is called with two arguments, BEGIN
-     and END, which specify the part of the buffer it should convert.
-     It should convert the text by editing it in place.  Since this can
-     change the length of the text, FROM-FN should return the modified
-     end position.
-
-     One responsibility of FROM-FN is to make sure that the beginning
-     of the file no longer matches REGEXP.  Otherwise it is likely to
-     get called again.
-
-TO-FN
-     A shell command or function to encode data in this format--that
-     is, to convert the usual Emacs data representation into this
-     format.
-
-     If TO-FN is a string, it is a shell command; Emacs runs the
-     command as a filter to perform the conversion.
-
-     If TO-FN is a function, it is called with three arguments: BEGIN
-     and END, which specify the part of the buffer it should convert,
-     and BUFFER, which specifies which buffer.  There are two ways it
-     can do the conversion:
-
-        * By editing the buffer in place.  In this case, TO-FN should
-          return the end-position of the range of text, as modified.
-
-        * By returning a list of annotations.  This is a list of
-          elements of the form `(POSITION . STRING)', where POSITION is
-          an integer specifying the relative position in the text to be
-          written, and STRING is the annotation to add there.  The list
-          must be sorted in order of position when TO-FN returns it.
-
-          When `write-region' actually writes the text from the buffer
-          to the file, it intermixes the specified annotations at the
-          corresponding positions.  All this takes place without
-          modifying the buffer.
-
-MODIFY
-     A flag, `t' if the encoding function modifies the buffer, and
-     `nil' if it works by returning a list of annotations.
-
-MODE-FN
-     A minor-mode function to call after visiting a file converted from
-     this format.  The function is called with one argument, the
-     integer 1; that tells a minor-mode function to enable the mode.
-
-PRESERVE
-     A flag, `t' if `format-write-file' should not remove this format
-     from `buffer-file-format'.
-
-   The function `insert-file-contents' automatically recognizes file
-formats when it reads the specified file.  It checks the text of the
-beginning of the file against the regular expressions of the format
-definitions, and if it finds a match, it calls the decoding function for
-that format.  Then it checks all the known formats over again.  It
-keeps checking them until none of them is applicable.
-
-   Visiting a file, with `find-file-noselect' or the commands that use
-it, performs conversion likewise (because it calls
-`insert-file-contents'); it also calls the mode function for each
-format that it decodes.  It stores a list of the format names in the
-buffer-local variable `buffer-file-format'.
-
- -- Variable: buffer-file-format
-     This variable states the format of the visited file.  More
-     precisely, this is a list of the file format names that were
-     decoded in the course of visiting the current buffer's file.  It
-     is always buffer-local in all buffers.
-
-   When `write-region' writes data into a file, it first calls the
-encoding functions for the formats listed in `buffer-file-format', in
-the order of appearance in the list.
-
- -- Command: format-write-file file format &optional confirm
-     This command writes the current buffer contents into the file FILE
-     in a format based on FORMAT, which is a list of format names.  It
-     constructs the actual format starting from FORMAT, then appending
-     any elements from the value of `buffer-file-format' with a non-nil
-     PRESERVE flag (see above), if they are not already present in
-     FORMAT.  It then updates `buffer-file-format' with this format,
-     making it the default for future saves.  Except for the FORMAT
-     argument, this command is similar to `write-file'.  In particular,
-     CONFIRM has the same meaning and interactive treatment as the
-     corresponding argument to `write-file'.  *Note Definition of
-     write-file::.
-
- -- Command: format-find-file file format
-     This command finds the file FILE, converting it according to
-     format FORMAT.  It also makes FORMAT the default if the buffer is
-     saved later.
-
-     The argument FORMAT is a list of format names.  If FORMAT is
-     `nil', no conversion takes place.  Interactively, typing just
-     <RET> for FORMAT specifies `nil'.
-
- -- Command: format-insert-file file format &optional beg end
-     This command inserts the contents of file FILE, converting it
-     according to format FORMAT.  If BEG and END are non-`nil', they
-     specify which part of the file to read, as in
-     `insert-file-contents' (*note Reading from Files::).
-
-     The return value is like what `insert-file-contents' returns: a
-     list of the absolute file name and the length of the data inserted
-     (after conversion).
-
-     The argument FORMAT is a list of format names.  If FORMAT is
-     `nil', no conversion takes place.  Interactively, typing just
-     <RET> for FORMAT specifies `nil'.
-
- -- Variable: buffer-auto-save-file-format
-     This variable specifies the format to use for auto-saving.  Its
-     value is a list of format names, just like the value of
-     `buffer-file-format'; however, it is used instead of
-     `buffer-file-format' for writing auto-save files.  If the value is
-     `t', the default, auto-saving uses the same format as a regular
-     save in the same buffer.  This variable is always buffer-local in
-     all buffers.
-
-
-File: elisp,  Node: Format Conversion Piecemeal,  Prev: Format Conversion Round-Trip,  Up: Format Conversion
-
-25.12.3 Piecemeal Specification
--------------------------------
-
-In contrast to the round-trip specification described in the previous
-subsection (*note Format Conversion Round-Trip::), you can use the
-variables `after-insert-file-functions' and
-`write-region-annotate-functions' to separately control the respective
-reading and writing conversions.
-
-   Conversion starts with one representation and produces another
-representation.  When there is only one conversion to do, there is no
-conflict about what to start with.  However, when there are multiple
-conversions involved, conflict may arise when two conversions need to
-start with the same data.
-
-   This situation is best understood in the context of converting text
-properties during `write-region'.  For example, the character at
-position 42 in a buffer is `X' with a text property `foo'.  If the
-conversion for `foo' is done by inserting into the buffer, say, `FOO:',
-then that changes the character at position 42 from `X' to `F'.  The
-next conversion will start with the wrong data straight away.
-
-   To avoid conflict, cooperative conversions do not modify the buffer,
-but instead specify "annotations", a list of elements of the form
-`(POSITION . STRING)', sorted in order of increasing POSITION.
-
-   If there is more than one conversion, `write-region' merges their
-annotations destructively into one sorted list.  Later, when the text
-from the buffer is actually written to the file, it intermixes the
-specified annotations at the corresponding positions.  All this takes
-place without modifying the buffer.
-
-   In contrast, when reading, the annotations intermixed with the text
-are handled immediately.  `insert-file-contents' sets point to the
-beginning of some text to be converted, then calls the conversion
-functions with the length of that text.  These functions should always
-return with point at the beginning of the inserted text.  This approach
-makes sense for reading because annotations removed by the first
-converter can't be mistakenly processed by a later converter.  Each
-conversion function should scan for the annotations it recognizes,
-remove the annotation, modify the buffer text (to set a text property,
-for example), and return the updated length of the text, as it stands
-after those changes.  The value returned by one function becomes the
-argument to the next function.
-
- -- Variable: write-region-annotate-functions
-     A list of functions for `write-region' to call.  Each function in
-     the list is called with two arguments: the start and end of the
-     region to be written.  These functions should not alter the
-     contents of the buffer.  Instead, they should return annotations.
-
-     As a special case, a function may return with a different buffer
-     current.  Emacs takes this to mean that the current buffer contains
-     altered text to be output.  It therefore changes the START and END
-     arguments of the `write-region' call, giving them the values of
-     `point-min' and `point-max' in the new buffer, respectively.  It
-     also discards all previous annotations, because they should have
-     been dealt with by this function.
-
- -- Variable: write-region-post-annotation-function
-     The value of this variable, if non-`nil', should be a function.
-     This function is called, with no arguments, after `write-region'
-     has completed.
-
-     If any function in `write-region-annotate-functions' returns with
-     a different buffer current, Emacs calls
-     `write-region-post-annotation-function' more than once.  Emacs
-     calls it with the last buffer that was current, and again with the
-     buffer before that, and so on back to the original buffer.
-
-     Thus, a function in `write-region-annotate-functions' can create a
-     buffer, give this variable the local value of `kill-buffer' in
-     that buffer, set up the buffer with altered text, and make the
-     buffer current.  The buffer will be killed after `write-region' is
-     done.
-
- -- Variable: after-insert-file-functions
-     Each function in this list is called by `insert-file-contents'
-     with one argument, the number of characters inserted, and with
-     point at the beginning of the inserted text.  Each function should
-     leave point unchanged, and return the new character count
-     describing the inserted text as modified by the function.
-
-   We invite users to write Lisp programs to store and retrieve text
-properties in files, using these hooks, and thus to experiment with
-various data formats and find good ones.  Eventually we hope users will
-produce good, general extensions we can install in Emacs.
-
-   We suggest not trying to handle arbitrary Lisp objects as text
-property names or values--because a program that general is probably
-difficult to write, and slow.  Instead, choose a set of possible data
-types that are reasonably flexible, and not too hard to encode.
-
-
-File: elisp,  Node: Backups and Auto-Saving,  Next: Buffers,  Prev: Files,  Up: Top
-
-26 Backups and Auto-Saving
-**************************
-
-Backup files and auto-save files are two methods by which Emacs tries
-to protect the user from the consequences of crashes or of the user's
-own errors.  Auto-saving preserves the text from earlier in the current
-editing session; backup files preserve file contents prior to the
-current session.
-
-* Menu:
-
-* Backup Files::   How backup files are made; how their names are chosen.
-* Auto-Saving::    How auto-save files are made; how their names are chosen.
-* Reverting::      `revert-buffer', and how to customize what it does.
-
-
-File: elisp,  Node: Backup Files,  Next: Auto-Saving,  Up: Backups and Auto-Saving
-
-26.1 Backup Files
-=================
-
-A "backup file" is a copy of the old contents of a file you are
-editing.  Emacs makes a backup file the first time you save a buffer
-into its visited file.  Thus, normally, the backup file contains the
-contents of the file as it was before the current editing session.  The
-contents of the backup file normally remain unchanged once it exists.
-
-   Backups are usually made by renaming the visited file to a new name.
-Optionally, you can specify that backup files should be made by copying
-the visited file.  This choice makes a difference for files with
-multiple names; it also can affect whether the edited file remains owned
-by the original owner or becomes owned by the user editing it.
-
-   By default, Emacs makes a single backup file for each file edited.
-You can alternatively request numbered backups; then each new backup
-file gets a new name.  You can delete old numbered backups when you
-don't want them any more, or Emacs can delete them automatically.
-
-* Menu:
-
-* Making Backups::     How Emacs makes backup files, and when.
-* Rename or Copy::     Two alternatives: renaming the old file or copying it.
-* Numbered Backups::   Keeping multiple backups for each source file.
-* Backup Names::       How backup file names are computed; customization.
 
 
 

@@ -1,8 +1,8 @@
-This is /home/cyd/trunk/doc/lispref/../../info/elisp, produced by
-makeinfo version 4.13 from /home/cyd/trunk/doc/lispref/elisp.texi.
+This is /home/cyd/emacs/doc/lispref/../../info/elisp, produced by
+makeinfo version 4.13 from /home/cyd/emacs/doc/lispref/elisp.texi.
 
-This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 24.0.95.
+This is edition 3.1 of the GNU Emacs Lisp Reference Manual,
+corresponding to Emacs version 24.0.96.
 
    Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
@@ -30,8 +30,8 @@ File: elisp,  Node: Top,  Next: Introduction,  Prev: (dir),  Up: (dir)
 Emacs Lisp
 **********
 
-This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 24.0.95.
+This is edition 3.1 of the GNU Emacs Lisp Reference Manual,
+corresponding to Emacs version 24.0.96.
 
    Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
@@ -68,7 +68,7 @@ corresponding to Emacs version 24.0.95.
 * Functions::               A function is a Lisp program
                               that can be invoked from other functions.
 * Macros::                  Macros are a way to extend the Lisp language.
-* Customization::           Writing customization declarations.
+* Customization::           Making variables and faces customizable.
 
 * Loading::                 Reading files of Lisp code into Lisp.
 * Byte Compilation::        Compilation makes programs run faster.
@@ -108,7 +108,7 @@ corresponding to Emacs version 24.0.95.
 
 Appendices
 
-* Antinews::                Info for users downgrading to Emacs 22.
+* Antinews::                Info for users downgrading to Emacs 23.
 * GNU Free Documentation License:: The license for this documentation.
 * GPL::                     Conditions for copying and changing GNU Emacs.
 * Tips::                    Advice and coding conventions for Emacs Lisp.
@@ -396,7 +396,7 @@ Functions
 * Closures::                Functions that enclose a lexical environment.
 * Obsolete Functions::      Declaring functions obsolete.
 * Inline Functions::        Defining functions that the compiler
-                              will open code.
+                              will expand inline.
 * Declaring Functions::     Telling the compiler that a function is defined.
 * Function Safety::         Determining whether a function is safe to call.
 * Related Topics::          Cross-references to specific Lisp primitives
@@ -429,13 +429,15 @@ Common Problems Using Macros
 * Eval During Expansion::  Don't evaluate them; put them in the expansion.
 * Repeated Expansion::     Avoid depending on how many times expansion is done.
 
-Writing Customization Definitions
+Customization Settings
 
 * Common Keywords::         Common keyword arguments for all kinds of
                               customization declarations.
 * Group Definitions::       Writing customization group definitions.
 * Variable Definitions::    Declaring user options.
 * Customization Types::     Specifying the type of a user option.
+* Applying Customizations:: Functions to apply customization settings.
+* Custom Themes::           Writing Custom themes.
 
 Customization Types
 
@@ -571,8 +573,8 @@ Minibuffers
 * Multiple Queries::        Asking a series of similar questions.
 * Reading a Password::      Reading a password from the terminal.
 * Minibuffer Commands::     Commands used as key bindings in minibuffers.
-* Minibuffer Contents::     How such commands access the minibuffer text.
 * Minibuffer Windows::      Operating on the special minibuffer windows.
+* Minibuffer Contents::     How such commands access the minibuffer text.
 * Recursive Mini::          Whether recursive entry to minibuffer is allowed.
 * Minibuffer Misc::         Various customization hooks and variables.
 
@@ -582,11 +584,11 @@ Completion
 * Minibuffer Completion::   Invoking the minibuffer with completion.
 * Completion Commands::     Minibuffer commands that do completion.
 * High-Level Completion::   Convenient special cases of completion
-                              (reading buffer name, file name, etc.).
+                              (reading buffer names, variable names, etc.).
 * Reading File Names::      Using completion to read file names and
                               shell commands.
-* Completion Styles::       Specifying rules for performing completion.
-* Programmed Completion::   Writing your own completion-function.
+* Completion Variables::    Variables controlling completion behavior.
+* Programmed Completion::   Writing your own completion function.
 * Completion in Buffers::   Completing text in ordinary buffers.
 
 Command Loop
@@ -688,6 +690,7 @@ Defining Menus
                               various features.
 * Menu Separators::         Drawing a horizontal line through a menu.
 * Alias Menu Items::        Using command aliases in menu items.
+* Toolkit Differences::     Not all toolkits provide the same features.
 
 Major and Minor Modes
 
@@ -757,6 +760,21 @@ Multiline Font Lock Constructs
 * Font Lock Multiline::     Marking multiline chunks with a text property.
 * Region to Refontify::     Controlling which region gets refontified
                               after a buffer change.
+
+Automatic Indentation of code
+
+* SMIE::                    A simple minded indentation engine.
+
+Simple Minded Indentation Engine
+
+* SMIE setup::              SMIE setup and features.
+* Operator Precedence Grammars:: A very simple parsing technique.
+* SMIE Grammar::            Defining the grammar of a language.
+* SMIE Lexer::              Defining tokens.
+* SMIE Tricks::             Working around the parser's limitations.
+* SMIE Indentation::        Specifying indentation rules.
+* SMIE Indentation Helpers:: Helper functions for indentation rules.
+* SMIE Indentation Example:: Sample indentation rules.
 
 Documentation
 
@@ -1154,8 +1172,7 @@ Processes
 * Datagrams::               UDP network connections.
 * Low-Level Network::       Lower-level but more general function
                               to create connections and servers.
-* Misc Network::            Additional relevant functions for
-                              network connections.
+* Misc Network::            Additional relevant functions for net connections.
 * Serial Ports::            Communicating with serial ports.
 * Byte Packing::            Using bindat to pack and unpack binary data.
 
@@ -1220,6 +1237,7 @@ Reporting Warnings
 * Warning Variables::       Variables programs bind to customize
                               their warnings.
 * Warning Options::         Variables users set to control display of warnings.
+* Delayed Warnings::        Deferring a warning until the end of a command.
 
 Overlays
 
@@ -1230,7 +1248,7 @@ Overlays
 
 Faces
 
-* Defining Faces::          How to define a face with `defface'.
+* Defining Faces::          How to define a face.
 * Face Attributes::         What is in a face?
 * Attribute Functions::     Functions to examine and set face attributes.
 * Displaying Faces::        How Emacs combines the faces specified for
@@ -1274,6 +1292,7 @@ Images
 * GIF Images::              Special features for GIF format.
 * TIFF Images::             Special features for TIFF format.
 * PostScript Images::       Special features for PostScript format.
+* ImageMagick Images::      Special features available through ImageMagick.
 * Other Image Types::       Various other formats are supported.
 * Defining Images::         Convenient ways to define an image for later use.
 * Showing Images::          Convenient ways to display an image once
@@ -1326,13 +1345,8 @@ Operating System Interface
 * Batch Mode::              Running Emacs without terminal interaction.
 * Session Management::      Saving and restoring state with
                               X Session Management.
-
-Preparing Lisp code for distribution
-
-* Packaging Basics::        The basic concepts of Emacs Lisp packages.
-* Simple Packages::         How to package a single .el file.
-* Multi-file Packages::     How to package multiple files.
-* Package Archives::        Maintaining package archives.
+* Notifications::           Desktop notifications.
+* Dynamic Libraries::       On-demand loading of support libraries.
 
 Starting Up Emacs
 
@@ -1351,6 +1365,13 @@ Terminal Input
 
 * Input Modes::             Options for how input is processed.
 * Recording Input::         Saving histories of recent or all input events.
+
+Preparing Lisp code for distribution
+
+* Packaging Basics::        The basic concepts of Emacs Lisp packages.
+* Simple Packages::         How to package a single .el file.
+* Multi-file Packages::     How to package multiple files.
+* Package Archives::        Maintaining package archives.
 
 Tips and Conventions
 
@@ -1410,8 +1431,8 @@ Lisp that have counterparts in many programming languages, and later
 chapters describe features that are peculiar to Emacs Lisp or relate
 specifically to editing.
 
-   This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 24.0.95.
+   This is edition 3.1 of the GNU Emacs Lisp Reference Manual,
+corresponding to Emacs version 24.0.96.
 
 * Menu:
 
@@ -1515,7 +1536,7 @@ printer" refer to those routines in Lisp that convert textual
 representations of Lisp objects into actual Lisp objects, and vice
 versa.  *Note Printed Representation::, for more details.  You, the
 person reading this manual, are thought of as "the programmer" and are
-addressed as "you."  "The user" is the person who uses Lisp programs,
+addressed as "you".  "The user" is the person who uses Lisp programs,
 including those you write.
 
    Examples of Lisp code are formatted like this: `(list 1 2 3)'.
@@ -1577,7 +1598,7 @@ examples in this manual, this is indicated with `=>':
      (car '(1 2))
           => 1
 
-You can read this as "`(car '(1 2))' evaluates to 1."
+You can read this as "`(car '(1 2))' evaluates to 1".
 
    When a form is a macro call, it expands into a new form for Lisp to
 evaluate.  We show the result of the expansion with `==>'.  We may or
@@ -2424,7 +2445,7 @@ to any structure made out of cons cells as a "list structure".
      versus "pointing to" the value.
 
    Because cons cells are so central to Lisp, we also have a word for
-"an object which is not a cons cell."  These objects are called "atoms".
+"an object which is not a cons cell".  These objects are called "atoms".
 
    The read syntax and printed representation for lists are identical,
 and consist of a left parenthesis, an arbitrary number of elements, and
@@ -2984,7 +3005,7 @@ File: elisp,  Node: Primitive Function Type,  Next: Byte-Code Type,  Prev: Macro
 A "primitive function" is a function callable from Lisp but written in
 the C programming language.  Primitive functions are also called
 "subrs" or "built-in functions".  (The word "subr" is derived from
-"subroutine.")  Most primitive functions evaluate all their arguments
+"subroutine".)  Most primitive functions evaluate all their arguments
 when they are called.  A primitive function that does not evaluate all
 its arguments is called a "special form" (*note Special Forms::).
 
@@ -4345,7 +4366,7 @@ In a computer, an integer is represented as a binary number, a sequence
 of "bits" (digits which are either zero or one).  A bitwise operation
 acts on the individual bits of such a sequence.  For example,
 "shifting" moves the whole sequence left or right one or more places,
-reproducing the same pattern "moved over."
+reproducing the same pattern "moved over".
 
    The bitwise operations in Emacs Lisp apply only to integers.
 
@@ -5678,12 +5699,12 @@ Lists in Lisp are not a primitive data type; they are built up from
 that represents an ordered pair.  That is, it has two slots, and each
 slot "holds", or "refers to", some Lisp object.  One slot is known as
 the CAR, and the other is known as the CDR.  (These names are
-traditional; see *note Cons Cell Type::.)  CDR is pronounced "could-er."
+traditional; see *note Cons Cell Type::.)  CDR is pronounced "could-er".
 
    We say that "the CAR of this cons cell is" whatever object its CAR
 slot currently holds, and likewise for the CDR.
 
-   A list is a series of cons cells "chained together," so that each
+   A list is a series of cons cells "chained together", so that each
 cell refers to the next one.  There is one cons cell for each element
 of the list.  By convention, the CARs of the cons cells hold the
 elements of the list, and the CDRs are used to chain the list (this
@@ -6871,7 +6892,7 @@ ignores certain differences between strings.  *Note Text Comparison::.
 
      `rassoc' is like `assoc' except that it compares the CDR of each
      ALIST association instead of the CAR.  You can think of this as
-     "reverse `assoc'," finding the key for a given value.
+     "reverse `assoc'", finding the key for a given value.
 
  -- Function: assq key alist
      This function is like `assoc' in that it returns the first
@@ -6905,7 +6926,7 @@ ignores certain differences between strings.  *Note Text Comparison::.
 
      `rassq' is like `assq' except that it compares the CDR of each
      ALIST association instead of the CAR.  You can think of this as
-     "reverse `assq'," finding the key for a given value.
+     "reverse `assq'", finding the key for a given value.
 
      For example:
 

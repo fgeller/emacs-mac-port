@@ -1,8 +1,8 @@
-This is /home/cyd/trunk/doc/emacs/../../info/emacs, produced by
-makeinfo version 4.13 from /home/cyd/trunk/doc/emacs/emacs.texi.
+This is /home/cyd/emacs/doc/emacs/../../info/emacs, produced by
+makeinfo version 4.13 from /home/cyd/emacs/doc/emacs/emacs.texi.
 
 This is the Sixteenth edition of the `GNU Emacs Manual',
-updated for Emacs version 24.0.95.
+updated for Emacs version 24.0.96.
 
    Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
 
@@ -102,7 +102,7 @@ this feature, you can disable it by setting `isearch-lazy-highlight' to
 
    After exiting a search, you can search for the same string again by
 typing just `C-s C-s'.  The first `C-s' is the key that invokes
-incremental search, and the second `C-s' means "search again."
+incremental search, and the second `C-s' means "search again".
 Similarly, `C-r C-r' searches backward for the last search string.  In
 determining the last search string, it doesn't matter whether the
 string was searched for with `C-s' or `C-r'.
@@ -470,7 +470,7 @@ therefore `f' is a regular expression that matches the string `f' and
 no other string.  (It does _not_ match the string `ff'.)  Likewise, `o'
 is a regular expression that matches only `o'.  (When case distinctions
 are being ignored, these regexps also match `F' and `O', but we
-consider this a generalization of "the same string," rather than an
+consider this a generalization of "the same string", rather than an
 exception.)
 
    Any two regular expressions A and B can be concatenated.  The result
@@ -705,7 +705,7 @@ its own.  Here is a table of `\' constructs.
      the beginning and end of the text matched by that construct.  Then,
      later on in the regular expression, you can use `\' followed by the
      digit D to mean "match the same text matched the Dth time by the
-     `\( ... \)' construct."
+     `\( ... \)' construct".
 
      The strings matching the first nine `\( ... \)' constructs
      appearing in a regular expression are assigned numbers 1 through 9
@@ -923,7 +923,7 @@ for a specified pattern.
 refer to all or part of what is matched by the REGEXP.  `\&' in
 NEWSTRING stands for the entire match being replaced.  `\D' in
 NEWSTRING, where D is a digit, stands for whatever matched the Dth
-parenthesized grouping in REGEXP.  (This is called a "back reference.")
+parenthesized grouping in REGEXP.  (This is called a "back reference".)
 `\#' refers to the count of replacements already made in this command,
 as a decimal number.  In the first replacement, `\#' stands for `0'; in
 the second, for `1'; and so on.  For example,
@@ -1329,7 +1329,7 @@ Bugs: Bugs.
    (1) Aside from `C-/', the `undo' command is also bound to `C-x u'
 because that is more straightforward for beginners to remember: `u'
 stands for "undo".  It is also bound to `C-_' because typing `C-/' on
-some text-only terminals actually enters `C-_'.
+some text terminals actually enters `C-_'.
 
 
 File: emacs,  Node: Transpose,  Next: Fixing Case,  Prev: Undo,  Up: Fixit
@@ -1788,7 +1788,7 @@ can continue to rotate the macro ring immediately by repeating just
 execute the new macro ring head immediately, just type `C-k'.
 
    Note that Emacs treats the head of the macro ring as the "last
-defined keyboard macro."  For instance, <F4> will execute that macro,
+defined keyboard macro".  For instance, <F4> will execute that macro,
 and `C-x C-k n' will give it a name.
 
    The maximum number of macros stored in the keyboard macro ring is
@@ -2196,7 +2196,7 @@ directory omitted, specifies the file `/u/rms/gnu/foo'; entering
 
    When typing a file name into the minibuffer, you can make use of a
 couple of shortcuts: a double slash is interpreted as "ignore
-everything before the second slash in the pair," and `~/' is
+everything before the second slash in the pair", and `~/' is
 interpreted as your home directory.  *Note Minibuffer File::.
 
    The character `$' is used to substitute an environment variable into
@@ -3492,7 +3492,7 @@ the line numbers in the hunk headers, to ensure that the diff remains
 "correct".  To disable automatic line number correction, change the
 variable `diff-update-on-the-fly' to `nil'.
 
-   Diff mode treats each hunk as an "error message," similar to
+   Diff mode treats each hunk as an "error message", similar to
 Compilation mode.  Thus, you can use commands such as `C-x '' to visit
 the corresponding source locations.  *Note Compilation Mode::.
 
@@ -3898,7 +3898,7 @@ typing a file name in the minibuffer, `C-<tab>'
 (`file-cache-minibuffer-complete') completes it using the file name
 cache.  If you repeat `C-<tab>', that cycles through the possible
 completions of what you had originally typed.  (However, note that the
-`C-<tab>' character cannot be typed on most text-only terminals.)
+`C-<tab>' character cannot be typed on most text terminals.)
 
    The file name cache does not fill up automatically.  Instead, you
 load file names into the cache using these commands:
@@ -4176,7 +4176,7 @@ that were current most recently come first.
 
    `.' in the first field of a line indicates that the buffer is
 current.  `%' indicates a read-only buffer.  `*' indicates that the
-buffer is "modified."  If several buffers are modified, it may be time
+buffer is "modified".  If several buffers are modified, it may be time
 to save some with `C-x s' (*note Save Commands::).  Here is an example
 of a buffer list:
 
@@ -4375,7 +4375,7 @@ count.
 current line:
 
 `~'
-     Mark the buffer "unmodified."  The command `~' does this
+     Mark the buffer "unmodified".  The command `~' does this
      immediately when you type it.
 
 `%'
@@ -4567,7 +4567,7 @@ File: emacs,  Node: Iswitchb,  Next: Buffer Menus,  Prev: Uniquify,  Up: Buffer 
 Iswitchb global minor mode provides convenient switching between
 buffers using substrings of their names.  It replaces the normal
 definitions of `C-x b', `C-x 4 b', `C-x 5 b', and `C-x 4 C-o' with
-alternative commands that are somewhat "smarter."
+alternative commands that are somewhat "smarter".
 
    When one of these commands prompts you for a buffer name, you can
 type in just a substring of the name you want to choose.  As you enter
@@ -4645,9 +4645,9 @@ its own value of point.
    At any time, one Emacs window is the "selected window"; the buffer
 this window is displaying is the current buffer.  On graphical
 displays, the point is indicated by a solid blinking cursor in the
-selected window, and by a hollow box in non-selected windows.  On
-text-only terminals, the cursor is drawn only in the selected window.
-*Note Cursor Display::.
+selected window, and by a hollow box in non-selected windows.  On text
+terminals, the cursor is drawn only in the selected window.  *Note
+Cursor Display::.
 
    Commands to move point affect the value of point for the selected
 Emacs window only.  They do not change the value of point in other
@@ -4752,7 +4752,7 @@ File: emacs,  Node: Other Window,  Next: Pop Up Window,  Prev: Split Window,  Up
      selects the window without moving point in it.
 
    With the keyboard, you can switch windows by typing `C-x o'
-(`other-window').  That is an `o', for "other," not a zero.  When there
+(`other-window').  That is an `o', for "other", not a zero.  When there
 are more than two windows, this command moves through all the windows
 in a cyclic order, generally top to bottom and left to right.  After
 the rightmost and bottommost window, it goes back to the one at the
@@ -5012,7 +5012,7 @@ buffer.  *Note Follow Mode::.
    The Windmove package defines commands for moving directionally
 between neighboring windows in a frame.  `M-x windmove-right' selects
 the window immediately to the right of the currently selected one, and
-similarly for the "left," "up," and "down" counterparts.  `M-x
+similarly for the "left", "up", and "down" counterparts.  `M-x
 windmove-default-keybindings' binds these commands to `S-right' etc.;
 doing so disables shift selection for those keys (*note Shift
 Selection::).
@@ -5051,13 +5051,13 @@ ends the Emacs session if it has no frames open on any other displays
 
    This chapter describes Emacs features specific to graphical displays
 (particularly mouse commands), and features for managing multiple
-frames.  On text-only terminals, many of these features are
-unavailable.  However, it is still possible to create multiple "frames"
-on text-only terminals; such frames are displayed one at a time,
-filling the entire terminal screen (*note Non-Window Terminals::).  It
-is also possible to use the mouse on some text-only terminals (*note
-Text-Only Mouse::, for doing so on GNU and Unix systems; and *note
-MS-DOS Mouse::, for doing so on MS-DOS).
+frames.  On text terminals, many of these features are unavailable.
+However, it is still possible to create multiple "frames" on text
+terminals; such frames are displayed one at a time, filling the entire
+terminal screen (*note Non-Window Terminals::).  It is also possible to
+use the mouse on some text terminals (*note Text-Only Mouse::, for
+doing so on GNU and Unix systems; and *note MS-DOS Mouse::, for doing
+so on MS-DOS).
 
 * Menu:
 
@@ -5080,7 +5080,7 @@ MS-DOS Mouse::, for doing so on MS-DOS).
 * Tooltips::            Displaying information at the current mouse position.
 * Mouse Avoidance::     Preventing the mouse pointer from obscuring text.
 * Non-Window Terminals::  Multiple frames on terminals that show only one.
-* Text-Only Mouse::     Using the mouse in text-only terminals.
+* Text-Only Mouse::     Using the mouse in text terminals.
 
 
 File: emacs,  Node: Mouse Commands,  Next: Word and Line Mouse,  Up: Frames
@@ -5431,9 +5431,9 @@ reconnect to the Emacs session.
 
    The `C-x 5 1' (`delete-other-frames') command deletes all other
 frames on the current terminal (this terminal refers to either a
-graphical display, or a text-only terminal; *note Non-Window
-Terminals::).  If the Emacs session has frames open on other graphical
-displays or text terminals, those are not deleted.
+graphical display, or a text terminal; *note Non-Window Terminals::).
+If the Emacs session has frames open on other graphical displays or
+text terminals, those are not deleted.
 
    The `C-x 5 o' (`other-frame') command selects the next frame on the
 current terminal.  If you are using Emacs on the X Window System with a
@@ -5809,7 +5809,7 @@ on the right side of windows), `left' (put them on the left), or `nil'
 (disable scroll bars).  By default, Emacs puts scroll bars on the right
 if it was compiled with GTK+ support on the X Window System, and on
 MS-Windows or Mac OS; Emacs puts scroll bars on the left if compiled on
-the X Window system without GTK+ support (following the old convention
+the X Window System without GTK+ support (following the old convention
 for X applications).
 
    You can also use the X resource `verticalScrollBars' to enable or
@@ -5850,7 +5850,7 @@ With an argument, the command turns Menu Bar mode on if the argument is
 positive, off if the argument is not positive.  To control the use of
 menu bars at startup, customize the variable `menu-bar-mode'.
 
-   Expert users often turn off the menu bar, especially on text-only
+   Expert users often turn off the menu bar, especially on text
 terminals, where this makes one additional line available for text.  If
 the menu bar is off, you can still pop up a menu of its contents with
 `C-Mouse-3' on a display which supports pop-up menus.  *Note Menu Mouse
@@ -6002,10 +6002,10 @@ File: emacs,  Node: Non-Window Terminals,  Next: Text-Only Mouse,  Prev: Mouse A
 21.19 Non-Window Terminals
 ==========================
 
-On a text-only terminal, Emacs can display only one Emacs frame at a
-time.  However, you can still create multiple Emacs frames, and switch
-between them.  Switching frames on these terminals is much like
-switching between different window configurations.
+On a text terminal, Emacs can display only one Emacs frame at a time.
+However, you can still create multiple Emacs frames, and switch between
+them.  Switching frames on these terminals is much like switching
+between different window configurations.
 
    Use `C-x 5 2' to create a new frame and switch to it; use `C-x 5 o'
 to cycle through the existing frames; use `C-x 5 0' to delete the
@@ -6025,10 +6025,10 @@ specify appears in the mode line when the frame is selected.
 
 File: emacs,  Node: Text-Only Mouse,  Prev: Non-Window Terminals,  Up: Frames
 
-21.20 Using a Mouse in Text-only Terminals
-==========================================
+21.20 Using a Mouse in Text Terminals
+=====================================
 
-Some text-only terminals support mouse clicks in the terminal window.
+Some text terminals support mouse clicks in the terminal window.
 
    In a terminal emulator which is compatible with `xterm', you can use
 `M-x xterm-mouse-mode' to give Emacs control over simple uses of the
@@ -6055,8 +6055,9 @@ including European and Vietnamese variants of the Latin alphabet, as
 well as Cyrillic, Devanagari (for Hindi and Marathi), Ethiopic, Greek,
 Han (for Chinese and Japanese), Hangul (for Korean), Hebrew, IPA,
 Kannada, Lao, Malayalam, Tamil, Thai, Tibetan, and Vietnamese scripts.
-Emacs also supports various encodings of these characters used by other
-internationalized software, such as word processors and mailers.
+Emacs also supports various encodings of these characters that are used
+by other internationalized software, such as word processors and
+mailers.
 
    Emacs allows editing text with international characters by supporting
 all the related activities:
@@ -6073,8 +6074,8 @@ all the related activities:
    * You can display non-ASCII characters encoded by the various
      scripts.  This works by using appropriate fonts on graphics
      displays (*note Defining Fontsets::), and by sending special codes
-     to text-only displays (*note Terminal Coding::).  If some
-     characters are displayed incorrectly, refer to *note Undisplayable
+     to text displays (*note Terminal Coding::).  If some characters
+     are displayed incorrectly, refer to *note Undisplayable
      Characters::, which describes possible problems and explains how
      to solve them.
 
@@ -6086,22 +6087,22 @@ all the related activities:
    * You can insert non-ASCII characters or search for them.  To do
      that, you can specify an input method (*note Select Input
      Method::) suitable for your language, or use the default input
-     method set up when you set your language environment.  If your
+     method set up when you chose your language environment.  If your
      keyboard can produce non-ASCII characters, you can select an
      appropriate keyboard coding system (*note Terminal Coding::), and
      Emacs will accept those characters.  Latin-1 characters can also
      be input by using the `C-x 8' prefix, see *note Unibyte Mode::.
 
-     On the X Window System, your locale should be set to an appropriate
-     value to make sure Emacs interprets keyboard input correctly; see
-     *note locales: Language Environments.
+     With the X Window System, your locale should be set to an
+     appropriate value to make sure Emacs interprets keyboard input
+     correctly; see *note locales: Language Environments.
 
    The rest of this chapter describes these issues in detail.
 
 * Menu:
 
 * International Chars::     Basic concepts of multibyte characters.
-* Enabling Multibyte::      Controlling whether to use multibyte characters.
+* Disabling Multibyte::     Controlling whether to use multibyte characters.
 * Language Environments::   Setting things up for the language you use.
 * Input Methods::           Entering text characters not on your keyboard.
 * Select Input Method::     Specifying your choice of input methods.
@@ -6126,7 +6127,7 @@ all the related activities:
 * Bidirectional Editing::   Support for right-to-left scripts.
 
 
-File: emacs,  Node: International Chars,  Next: Enabling Multibyte,  Up: International
+File: emacs,  Node: International Chars,  Next: Disabling Multibyte,  Up: International
 
 22.1 Introduction to International Character Sets
 =================================================
@@ -6199,8 +6200,8 @@ detailed description of the character in a window:
      method (if it supports the character).
 
    * If you are running Emacs on a graphical display, the font name and
-     glyph code for the character.  If you are running Emacs on a
-     text-only terminal, the code(s) sent to the terminal.
+     glyph code for the character.  If you are running Emacs on a text
+     terminal, the code(s) sent to the terminal.
 
    * The character's text properties (*note Text Properties:
      (elisp)Text Properties.), including any non-default faces used to
@@ -6210,31 +6211,30 @@ detailed description of the character in a window:
    Here's an example showing the Latin-1 character A with grave accent,
 in a buffer whose coding system is `utf-8-unix':
 
-             character: À (192, #o300, #xc0)
-     preferred charset: unicode (Unicode (ISO10646))
-            code point: 0xC0
-                syntax: w    which means: word
-              category: j:Japanese l:Latin v:Vietnamese
-           buffer code: #xC3 #x80
-             file code: not encodable by coding system undecided-unix
-               display: by this font (glyph code)
+                  position: 1 of 1 (0%), column: 0
+                 character: À (displayed as À) (codepoint 192, #o300, #xc0)
+         preferred charset: unicode (Unicode (ISO10646))
+     code point in charset: 0xC0
+                    syntax: w       which means: word
+                  category: .:Base, L:Left-to-right (strong),
+                            j:Japanese, l:Latin, v:Viet
+               buffer code: #xC3 #x80
+                 file code: not encodable by coding system undecided-unix
+                   display: by this font (glyph code)
          xft:-unknown-DejaVu Sans Mono-normal-normal-
              normal-*-13-*-*-*-m-0-iso10646-1 (#x82)
 
      Character code properties: customize what to show
        name: LATIN CAPITAL LETTER A WITH GRAVE
+       old-name: LATIN CAPITAL LETTER A GRAVE
        general-category: Lu (Letter, Uppercase)
        decomposition: (65 768) ('A' '`')
-       old-name: LATIN CAPITAL LETTER A GRAVE
-
-     There are text properties here:
-       auto-composed        t
 
 
-File: emacs,  Node: Enabling Multibyte,  Next: Language Environments,  Prev: International Chars,  Up: International
+File: emacs,  Node: Disabling Multibyte,  Next: Language Environments,  Prev: International Chars,  Up: International
 
-22.2 Enabling Multibyte Characters
-==================================
+22.2 Disabling Multibyte Characters
+===================================
 
 By default, Emacs starts in multibyte mode: it stores the contents of
 buffers and strings using an internal encoding that represents
@@ -6261,39 +6261,43 @@ mode selection.
 
    Emacs normally loads Lisp files as multibyte.  This includes the
 Emacs initialization file, `.emacs', and the initialization files of
-Emacs packages such as Gnus.  However, you can specify unibyte loading
-for a particular Lisp file, by putting `-*-unibyte: t;-*-' in a comment
-on the first line (*note File Variables::).  Then that file is always
-loaded as unibyte text.  The motivation for these conventions is that
-it is more reliable to always load any particular Lisp file in the same
-way.  However, you can load a Lisp file as unibyte, on any one
-occasion, by typing `C-x <RET> c raw-text <RET>' immediately before
-loading it.
+packages such as Gnus.  However, you can specify unibyte loading for a
+particular Lisp file, by adding an entry `unibyte: t' in a file local
+variables section (*note File Variables::).  Then that file is always
+loaded as unibyte text.  Note that this does not represent a real
+`unibyte' variable, rather it just acts as an indicator to Emacs in the
+same way as `coding' does (*note Specify Coding::).  Note also that
+this feature only applies to _loading_ Lisp files for evaluation, not
+to visiting them for editing.  You can also load a Lisp file as
+unibyte, on any one occasion, by typing `C-x <RET> c raw-text <RET>'
+immediately before loading it.
 
-   The mode line indicates whether multibyte character support is
-enabled in the current buffer.  If it is, there are two or more
-characters (most often two dashes) near the beginning of the mode line,
-before the indication of the visited file's end-of-line convention
-(colon, backslash, etc.).  When multibyte characters are not enabled,
-nothing precedes the colon except a single dash.  *Note Mode Line::,
-for more details about this.
+   The buffer-local variable `enable-multibyte-characters' is non-`nil'
+in multibyte buffers, and `nil' in unibyte ones.  The mode line also
+indicates whether a buffer is multibyte or not.  *Note Mode Line::.
+With a graphical display, in a multibyte buffer, the portion of the
+mode line that indicates the character set has a tooltip that (amongst
+other things) says that the buffer is multibyte.  In a unibyte buffer,
+the character set indicator is absent.  Thus, in a unibyte buffer (when
+using a graphical display) there is normally nothing before the
+indication of the visited file's end-of-line convention (colon,
+backslash, etc.), unless you are using an input method.
 
-   You can turn on multibyte support in a specific buffer by invoking
+   You can turn off multibyte support in a specific buffer by invoking
 the command `toggle-enable-multibyte-characters' in that buffer.
 
 
-File: emacs,  Node: Language Environments,  Next: Input Methods,  Prev: Enabling Multibyte,  Up: International
+File: emacs,  Node: Language Environments,  Next: Input Methods,  Prev: Disabling Multibyte,  Up: International
 
 22.3 Language Environments
 ==========================
 
 All supported character sets are supported in Emacs buffers whenever
 multibyte characters are enabled; there is no need to select a
-particular language in order to display its characters in an Emacs
-buffer.  However, it is important to select a "language environment" in
-order to set various defaults.  Roughly speaking, the language
-environment represents a choice of preferred script rather than a
-choice of language.
+particular language in order to display its characters.  However, it is
+important to select a "language environment" in order to set various
+defaults.  Roughly speaking, the language environment represents a
+choice of preferred script rather than a choice of language.
 
    The language environment controls which coding systems to recognize
 when reading text (*note Recognize Coding::).  This applies to files,
@@ -6305,7 +6309,8 @@ language environment also specifies a default input method.
 `current-language-environment' or use the command `M-x
 set-language-environment'.  It makes no difference which buffer is
 current when you use this command, because the effects apply globally
-to the Emacs session.  The supported language environments include:
+to the Emacs session.  The supported language environments (see the
+variable `language-info-alist') include:
 
      ASCII, Belarusian, Bengali, Brazilian Portuguese, Bulgarian,
      Chinese-BIG5, Chinese-CNS, Chinese-EUC-TW, Chinese-GB, Chinese-GBK,
@@ -6323,28 +6328,27 @@ to the Emacs session.  The supported language environments include:
      Cyrillic characters and files encoded in Windows-1255).
 
    To display the script(s) used by your language environment on a
-graphical display, you need to have a suitable font.  If some of the
-characters appear as empty boxes or hex codes, you should install the
-GNU Intlfonts package, which includes fonts for most supported
-scripts.(1) *Note Fontsets::, for more details about setting up your
-fonts.
+graphical display, you need to have suitable fonts.  *Note Fontsets::,
+for more details about setting up your fonts.
 
    Some operating systems let you specify the character-set locale you
 are using by setting the locale environment variables `LC_ALL',
-`LC_CTYPE', or `LANG'.(2)  During startup, Emacs looks up your
-character-set locale's name in the system locale alias table, matches
-its canonical name against entries in the value of the variables
-`locale-charset-language-names' and `locale-language-names', and
-selects the corresponding language environment if a match is found.
-(The former variable overrides the latter.)  It also adjusts the display
-table and terminal coding system, the locale coding system, the
-preferred coding system as needed for the locale, and--last but not
-least--the way Emacs decodes non-ASCII characters sent by your keyboard.
+`LC_CTYPE', or `LANG'.  (If more than one of these is set, the first
+one that is nonempty specifies your locale for this purpose.)  During
+startup, Emacs looks up your character-set locale's name in the system
+locale alias table, matches its canonical name against entries in the
+value of the variables `locale-charset-language-names' and
+`locale-language-names' (the former overrides the latter), and selects
+the corresponding language environment if a match is found.  It also
+adjusts the display table and terminal coding system, the locale coding
+system, the preferred coding system as needed for the locale, and--last
+but not least--the way Emacs decodes non-ASCII characters sent by your
+keyboard.
 
    If you modify the `LC_ALL', `LC_CTYPE', or `LANG' environment
-variables while running Emacs, you may want to invoke the
-`set-locale-environment' function afterwards to readjust the language
-environment from the new locale.
+variables while running Emacs (by using `M-x setenv'), you may want to
+invoke the `set-locale-environment' function afterwards to readjust the
+language environment from the new locale.
 
    The `set-locale-environment' function normally uses the preferred
 coding system established by the language environment to decode system
@@ -6371,7 +6375,7 @@ command `set-language-environment' runs that hook after setting up the
 new language environment.  The hook functions can test for a specific
 language environment by checking the variable
 `current-language-environment'.  This hook is where you should put
-non-default settings for specific language environment, such as coding
+non-default settings for specific language environments, such as coding
 systems for keyboard input and terminal output, the default input
 method, etc.
 
@@ -6384,17 +6388,6 @@ environment using `set-language-environment-hook', you should set up
 `exit-language-environment-hook' to restore the normal binding for that
 key.
 
-   ---------- Footnotes ----------
-
-   (1) If you run Emacs on X, you need to inform the X server about the
-location of the newly installed fonts with the following commands:
-
-      xset fp+ /usr/local/share/emacs/fonts
-      xset fp rehash
-
-   (2) If more than one of these is set, the first one that is nonempty
-specifies your locale for this purpose.
-
 
 File: emacs,  Node: Input Methods,  Next: Select Input Method,  Prev: Language Environments,  Up: International
 
@@ -6403,7 +6396,7 @@ File: emacs,  Node: Input Methods,  Next: Select Input Method,  Prev: Language E
 
 An "input method" is a kind of character conversion designed
 specifically for interactive input.  In Emacs, typically each language
-has its own input method; sometimes several languages which use the same
+has its own input method; sometimes several languages that use the same
 characters can share one input method.  A few languages support several
 input methods.
 
@@ -6415,14 +6408,14 @@ instead of ASCII.  The Greek and Russian input methods work this way.
 characters into one letter.  Many European input methods use composition
 to produce a single non-ASCII letter from a sequence that consists of a
 letter followed by accent characters (or vice versa).  For example, some
-methods convert the sequence `a'' into a single accented letter.  These
-input methods have no special commands of their own; all they do is
-compose sequences of printing characters.
+methods convert the sequence `o ^' into a single accented letter.
+These input methods have no special commands of their own; all they do
+is compose sequences of printing characters.
 
    The input methods for syllabic scripts typically use mapping followed
 by composition.  The input methods for Thai and Korean work this way.
 First, letters are mapped into symbols for particular sounds or tone
-marks; then, sequences of these which make up a whole syllable are
+marks; then, sequences of these that make up a whole syllable are
 mapped into one syllable sign.
 
    Chinese and Japanese require more complex methods.  In Chinese input
@@ -6431,8 +6424,8 @@ input method `chinese-py', among others), or a sequence of portions of
 the character (input methods `chinese-4corner' and `chinese-sw', and
 others).  One input sequence typically corresponds to many possible
 Chinese characters.  You select the one you mean using keys such as
-`C-f', `C-b', `C-n', `C-p', and digits, which have special meanings in
-this situation.
+`C-f', `C-b', `C-n', `C-p' (or the arrow keys), and digits, which have
+special meanings in this situation.
 
    The possible characters are conceptually arranged in several rows,
 with each row holding up to 10 alternatives.  Normally, Emacs displays
@@ -6445,8 +6438,8 @@ alternatives in the current row.  As you do this, Emacs highlights the
 current alternative with a special color; type `C-<SPC>' to select the
 current alternative and use it as input.  The alternatives in the row
 are also numbered; the number appears before the alternative.  Typing a
-digit N selects the Nth alternative of the current row and uses it as
-input.
+number selects the associated alternative of the current row and uses
+it as input.
 
    <TAB> in these Chinese input methods displays a buffer showing all
 the possible characters at once; then clicking `Mouse-2' on one of them
@@ -6464,15 +6457,15 @@ alternatives.
    Sometimes it is useful to cut off input method processing so that the
 characters you have just entered will not combine with subsequent
 characters.  For example, in input method `latin-1-postfix', the
-sequence `e '' combines to form an `e' with an accent.  What if you
+sequence `o ^' combines to form an `o' with an accent.  What if you
 want to enter them as separate characters?
 
    One way is to type the accent twice; this is a special feature for
-entering the separate letter and accent.  For example, `e ' '' gives
-you the two characters `e''.  Another way is to type another letter
-after the `e'--something that won't combine with that--and immediately
-delete it.  For example, you could type `e e <DEL> '' to get separate
-`e' and `''.
+entering the separate letter and accent.  For example, `o ^ ^' gives
+you the two characters `o^'.  Another way is to type another letter
+after the `o'--something that won't combine with that--and immediately
+delete it.  For example, you could type `o o <DEL> ^' to get separate
+`o' and `^'.
 
    Another method, more general but not quite as easy to type, is to use
 `C-\ C-\' between two characters to stop them from combining.  This is
@@ -6495,8 +6488,8 @@ the list of possible characters to type next is displayed in the echo
 area (but not when you are in the minibuffer).
 
    Another facility for typing characters not on your keyboard is by
-using the `C-x 8 <RET>' (`ucs-insert') to insert a single character
-based on its Unicode name or code-point; see *note Inserting Text::.
+using `C-x 8 <RET>' (`ucs-insert') to insert a single character based
+on its Unicode name or code-point; see *note Inserting Text::.
 
 
 File: emacs,  Node: Select Input Method,  Next: Coding Systems,  Prev: Input Methods,  Up: International
@@ -6505,10 +6498,12 @@ File: emacs,  Node: Select Input Method,  Next: Coding Systems,  Prev: Input Met
 ==============================
 
 `C-\'
-     Enable or disable use of the selected input method.
+     Enable or disable use of the selected input method
+     (`toggle-input-method').
 
 `C-x <RET> C-\ METHOD <RET>'
-     Select a new input method for the current buffer.
+     Select a new input method for the current buffer
+     (`set-input-method').
 
 `C-h I METHOD <RET>'
 `C-h C-\ METHOD <RET>'
@@ -6532,7 +6527,7 @@ method temporarily.  To do this, type `C-\' (`toggle-input-method').
 To reenable the input method, type `C-\' again.
 
    If you type `C-\' and you have not yet selected an input method, it
-prompts for you to specify one.  This has the same effect as using `C-x
+prompts you to specify one.  This has the same effect as using `C-x
 <RET> C-\' to specify an input method.
 
    When invoked with a numeric argument, as in `C-u C-\',
@@ -6568,8 +6563,8 @@ automatically.  For example:
      (add-hook 'text-mode-hook
        (lambda () (set-input-method "german-prefix")))
 
-This activates the input method "german-prefix" automatically in the
-Text mode.
+This automatically activates the input method "german-prefix" in Text
+mode.
 
    Some input methods for alphabetic scripts work by (in effect)
 remapping the keyboard to emulate various keyboard layouts commonly used
@@ -6580,8 +6575,7 @@ the command `M-x quail-set-keyboard-layout'.
    You can use the command `M-x quail-show-key' to show what key (or
 key sequence) to type in order to input the character following point,
 using the selected keyboard layout.  The command `C-u C-x =' also shows
-that information in addition to the other information about the
-character.
+that information, in addition to other information about the character.
 
    `M-x list-input-methods' displays a list of all the supported input
 methods.  The list gives information about each input method, including

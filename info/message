@@ -909,9 +909,10 @@ File: message,  Node: Using PGP/MIME,  Next: PGP Compatibility,  Prev: Using S/M
 
 PGP/MIME requires an external OpenPGP implementation, such as GNU
 Privacy Guard (http://www.gnupg.org/). Pre-OpenPGP implementations such
-as PGP 2.x and PGP 5.x are also supported. One Emacs interface to the
-PGP implementations, PGG (*note PGG: (pgg)Top.), is included, but
-Mailcrypt is also supported.  *Note PGP Compatibility::.
+as PGP 2.x and PGP 5.x are also supported.  The default Emacs interface
+to the PGP implementation is EasyPG (*note EasyPG Assistant User's
+Manual: (epa)Top.), but PGG (*note PGG: (pgg)Top.) and Mailcrypt are
+also supported.  *Note PGP Compatibility::.
 
    Message internally calls GnuPG (the `gpg' command) to perform data
 encryption, and in certain cases (decrypting or signing for example),
@@ -938,10 +939,6 @@ beforehand.  The following command does the trick.
 
      gpg --use-agent --sign < /dev/null > /dev/null
 
-   The Lisp variable `pgg-gpg-use-agent' controls whether to use
-`gpg-agent'.  See also *Note Caching passphrase: (pgg)Caching
-passphrase.
-
 
 File: message,  Node: PGP Compatibility,  Prev: Using PGP/MIME,  Up: Security
 
@@ -957,7 +954,7 @@ your PGP implementation, so we refer to it.
    If you have imported your old PGP 2.x key into GnuPG, and want to
 send signed and encrypted messages to your fellow PGP 2.x users, you'll
 discover that the receiver cannot understand what you send. One
-solution is to use PGP 2.x instead (i.e., if you use `pgg', set
+solution is to use PGP 2.x instead (e.g. if you use `pgg', set
 `pgg-default-scheme' to `pgp'). You could also convince your fellow PGP
 2.x users to convert to GnuPG.  As a final workaround, you can make the
 sign and encryption work in two steps; separately sign, then encrypt a
@@ -2600,7 +2597,7 @@ File: message,  Node: Index,  Next: Key Index,  Prev: GNU Free Documentation Lic
 * Expires:                               News Headers.        (line  52)
 * feedmail-send-it:                      Mail Variables.      (line   7)
 * From:                                  News Headers.        (line  11)
-* gpg-agent:                             Using PGP/MIME.      (line  12)
+* gpg-agent:                             Using PGP/MIME.      (line  13)
 * gpg-temp-directory:                    PGP Compatibility.   (line   6)
 * i-did-not-set-mail-host-address-so-tickle-me: News Headers. (line  35)
 * IDNA:                                  IDNA.                (line   6)
@@ -2991,27 +2988,27 @@ Node: Security28884
 Node: Signing and encryption29436
 Node: Using S/MIME32249
 Node: Using PGP/MIME35468
-Node: PGP Compatibility37272
-Node: Various Commands38769
-Node: Sending40542
-Node: Mail Aliases40952
-Node: Spelling42257
-Node: Variables43563
-Node: Message Headers44282
-Node: Mail Headers50548
-Node: Mail Variables51500
-Node: News Headers54575
-Node: News Variables61571
-Node: Insertion Variables61976
-Node: Various Message Variables67268
-Node: Sending Variables72839
-Node: Message Buffers74146
-Node: Message Actions76279
-Node: Compatibility77751
-Node: Appendices78194
-Node: Responses78412
-Node: GNU Free Documentation License79765
-Node: Index104913
-Node: Key Index127326
+Node: PGP Compatibility37191
+Node: Various Commands38687
+Node: Sending40460
+Node: Mail Aliases40870
+Node: Spelling42175
+Node: Variables43481
+Node: Message Headers44200
+Node: Mail Headers50466
+Node: Mail Variables51418
+Node: News Headers54493
+Node: News Variables61489
+Node: Insertion Variables61894
+Node: Various Message Variables67186
+Node: Sending Variables72757
+Node: Message Buffers74064
+Node: Message Actions76197
+Node: Compatibility77669
+Node: Appendices78112
+Node: Responses78330
+Node: GNU Free Documentation License79683
+Node: Index104831
+Node: Key Index127244
 
 End Tag Table

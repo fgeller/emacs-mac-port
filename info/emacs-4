@@ -1,8 +1,8 @@
-This is /home/cyd/trunk/doc/emacs/../../info/emacs, produced by
-makeinfo version 4.13 from /home/cyd/trunk/doc/emacs/emacs.texi.
+This is /home/cyd/emacs/doc/emacs/../../info/emacs, produced by
+makeinfo version 4.13 from /home/cyd/emacs/doc/emacs/emacs.texi.
 
 This is the Sixteenth edition of the `GNU Emacs Manual',
-updated for Emacs version 24.0.95.
+updated for Emacs version 24.0.96.
 
    Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
 
@@ -25,6 +25,65 @@ START-INFO-DIR-ENTRY
 END-INFO-DIR-ENTRY
 
 
+File: emacs,  Node: Threads Buffer,  Next: Stack Buffer,  Prev: Breakpoints Buffer,  Up: GDB Graphical Interface
+
+27.6.5.4 Threads Buffer
+.......................
+
+The GDB Threads buffer displays a summary of the threads in the
+debugged program.  *Note Threads: (gdb)Threads.  To select a thread,
+move point there and type <RET> (`gdb-select-thread'), or click on it
+with `Mouse-2'.  This also displays the associated source buffer, and
+updates the contents of the other GDB buffers.
+
+   You can customize variables under `gdb-buffers' group to select
+fields included in GDB Threads buffer.
+
+`gdb-thread-buffer-verbose-names'
+     Show long thread names like `Thread 0x4e2ab70 (LWP 1983)'.
+
+`gdb-thread-buffer-arguments'
+     Show arguments of thread top frames.
+
+`gdb-thread-buffer-locations'
+     Show file information or library names.
+
+`gdb-thread-buffer-addresses'
+     Show addresses for thread frames in threads buffer.
+
+   To view information for several threads simultaneously, use the
+following commands from the GDB Threads buffer.
+
+`d'
+     Display disassembly buffer for the thread at current line
+     (`gdb-display-disassembly-for-thread').
+
+`f'
+     Display the GDB Stack buffer for the thread at current line
+     (`gdb-display-stack-for-thread').
+
+`l'
+     Display the GDB Locals buffer for the thread at current line
+     (`gdb-display-locals-for-thread').
+
+`r'
+     Display the GDB Registers buffer for the thread at current line
+     (`gdb-display-registers-for-thread').
+
+Their upper-case counterparts, `D', `F' ,`L' and `R', display the
+corresponding buffer in a new frame.
+
+   When you create a buffer showing information about some specific
+thread, it becomes bound to that thread and keeps showing actual
+information while you debug your program.  The mode indicator for each
+GDB buffer shows the number of thread it is showing information about.
+The thread number is also included in the buffer name of bound buffers.
+
+   Further commands are available in the GDB Threads buffer which
+depend on the mode of GDB that is used for controlling execution of
+your program.  *Note Multithreaded Debugging::.
+
+
 File: emacs,  Node: Stack Buffer,  Next: Other GDB Buffers,  Prev: Threads Buffer,  Up: GDB Graphical Interface
 
 27.6.5.5 Stack Buffer
@@ -35,9 +94,9 @@ the nested subroutine calls ("stack frames") in the debugger session.
 *Note Backtraces: (gdb)Backtrace.
 
    On graphical displays, the selected stack frame is indicated by an
-arrow in the fringe.  On text-only terminals, or when fringes are
-disabled, the selected stack frame is displayed in reverse contrast.
-To select a stack frame, move point in its line and type <RET>
+arrow in the fringe.  On text terminals, or when fringes are disabled,
+the selected stack frame is displayed in reverse contrast.  To select a
+stack frame, move point in its line and type <RET>
 (`gdb-frames-select'), or click `Mouse-2' on it.  Doing so also updates
 the Locals buffer (*note Other GDB Buffers::).
 
@@ -3027,7 +3086,7 @@ mode line indicates Auto Advance mode with `A'.
    If Skip Prefers mode is in effect, the `n' and `p' commands skip
 over differences in states "prefer-A" and "prefer-B" (*note State of
 Difference::).  Thus you see only differences for which neither version
-is presumed "correct."  The mode line indicates Skip Prefers mode with
+is presumed "correct".  The mode line indicates Skip Prefers mode with
 `S'.  This mode is only relevant when there is an ancestor.
 
    Use the command `s a' (`emerge-auto-advance') to set or clear Auto
@@ -3706,7 +3765,7 @@ optionally some of its subdirectories as well.  You can use the normal
 Emacs commands to move around in this buffer, and special Dired
 commands to operate on the listed files.
 
-   The Dired buffer is "read-only," and inserting text in it is not
+   The Dired buffer is "read-only", and inserting text in it is not
 allowed.  Ordinary printing characters such as `d' and `x' are
 redefined for special Dired commands.  Some Dired commands "mark" or
 "flag" the "current file" (that is, the file on the current line);
@@ -4714,7 +4773,7 @@ File: emacs,  Node: Wdired,  Next: Image-Dired,  Prev: Dired and Find,  Up: Dire
 
 Wdired is a special mode that allows you to perform file operations by
 editing the Dired buffer directly (the "W" in "Wdired" stands for
-"writable.")  To enter Wdired mode, type `C-x C-q'
+"writable".)  To enter Wdired mode, type `C-x C-q'
 (`dired-toggle-read-only') while in a Dired buffer.  Alternatively, use
 the `Immediate / Edit File Names' menu item.
 
@@ -4756,7 +4815,7 @@ containing image-dired, corresponding to the marked files.
    You can also enter Image-Dired directly by typing `M-x image-dired'.
 This prompts for a directory; specify one that has image files.  This
 creates thumbnails for all the images in that directory, and displays
-them all in the "thumbnail buffer."  This takes a long time if the
+them all in the "thumbnail buffer".  This takes a long time if the
 directory contains many image files, and it asks for confirmation if
 the number of image files exceeds
 `image-dired-show-all-from-dir-max-files'.
@@ -4854,14 +4913,14 @@ includes the current buffer.
 
    The default comparison method (used if you type <RET> at the prompt)
 is to compare just the file names--each file name that does not appear
-in the other directory is "different."  You can specify more stringent
+in the other directory is "different".  You can specify more stringent
 comparisons by entering a Lisp expression, which can refer to the
 variables `size1' and `size2', the respective file sizes; `mtime1' and
 `mtime2', the last modification times in seconds, as floating point
 numbers; and `fa1' and `fa2', the respective file attribute lists (as
 returned by the function `file-attributes').  This expression is
 evaluated for each pair of like-named files, and if the expression's
-value is non-`nil', those files are considered "different."
+value is non-`nil', those files are considered "different".
 
    For instance, the sequence `M-x dired-compare-directories <RET> (>
 mtime1 mtime2) <RET>' marks files newer in this directory than in the
@@ -5430,7 +5489,7 @@ File: emacs,  Node: Lunar Phases,  Next: Other Calendars,  Prev: Sunrise/Sunset,
 These calendar commands display the dates and times of the phases of
 the moon (new moon, first quarter, full moon, last quarter).  This
 feature is useful for debugging problems that "depend on the phase of
-the moon."
+the moon".
 
 `M'
      Display the dates and times for all the quarters of the moon for
@@ -5612,7 +5671,7 @@ in various other calendar systems:
 
    Otherwise, move point to the date you want to convert, then type the
 appropriate command starting with `p' from the table above.  The prefix
-`p' is a mnemonic for "print," since Emacs "prints" the equivalent date
+`p' is a mnemonic for "print", since Emacs "prints" the equivalent date
 in the echo area. `p o' displays the date in all forms known to Emacs.
 You can also use `Mouse-3' and then choose `Other calendars' from the
 menu that appears.  This displays the equivalent forms of the date in
@@ -5686,7 +5745,7 @@ you don't have to worry about the spelling of Hebrew, Islamic, or
 French names.
 
    One common issue concerning the Hebrew calendar is the computation
-of the anniversary of a date of death, called a "yahrzeit."  The Emacs
+of the anniversary of a date of death, called a "yahrzeit".  The Emacs
 calendar includes a facility for such calculations.  If you are in the
 calendar, the command `M-x calendar-hebrew-list-yahrzeits' asks you for
 a range of years and then displays a list of the yahrzeit dates for
@@ -6135,8 +6194,8 @@ applies to the fourth Thursday in November:
 
 The 11 specifies November (the eleventh month), the 4 specifies Thursday
 (the fourth day of the week, where Sunday is numbered zero), and the
-second 4 specifies the fourth Thursday (1 would mean "first," 2 would
-mean "second," -2 would mean "second-to-last," and so on).  The month
+second 4 specifies the fourth Thursday (1 would mean "first", 2 would
+mean "second", -2 would mean "second-to-last", and so on).  The month
 can be a single month or a list of months.  Thus you could change the
 11 above to `'(1 2 3)' and have the entry apply to the last Thursday of
 January, February, and March.  If the month is `t', the entry applies
@@ -6326,7 +6385,7 @@ timeclock-change'.
    Once you've collected data from a number of time intervals, you can
 use `M-x timeclock-workday-remaining' to see how much time is left to
 work today (assuming a typical average of 8 hours a day), and `M-x
-timeclock-when-to-leave' which will calculate when you're "done."
+timeclock-when-to-leave' which will calculate when you're "done".
 
    If you want Emacs to display the amount of time "left" of your
 workday in the mode line, either customize the

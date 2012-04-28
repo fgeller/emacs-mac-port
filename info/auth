@@ -212,8 +212,133 @@ File: auth,  Node: Secret Service API,  Next: Help for developers,  Prev: Help f
 3 Secret Service API
 ********************
 
-TODO: how does it work generally, how does secrets.el work, some
-examples.
+The "Secret Service API" is a standard from freedesktop.org to securely
+store passwords and other confidential information.  This API is
+implemented by system daemons such as the GNOME Keyring and the KDE
+Wallet (these are GNOME and KDE packages respectively and should be
+available on most modern GNU/Linux systems).
+
+   The auth-source library uses the `secrets.el' library to connect
+through the Secret Service API.  You can also use that library in other
+packages, it's not exclusive to auth-source.
+
+ -- Variable: secrets-enabled
+     After loading `secrets.el', a non-`nil' value of this variable
+     indicates the existence of a daemon providing the Secret Service
+     API.
+
+ -- Command: secrets-show-secrets
+     This command shows all collections, items, and their attributes.
+
+   The atomic objects managed by the Secret Service API are "secret
+items", which contain things an application wishes to store securely,
+like a password.  Secret items have a label (a name), the "secret"
+(which is the string we want, like a password), and a set of lookup
+attributes.  The attributes can be used to search and retrieve a secret
+item at a later date.
+
+   Secret items are grouped in "collections".  A collection is
+sometimes called a `keyring' or `wallet' in GNOME Keyring and KDE
+Wallet but it's the same thing, a group of secrets.  Collections are
+personal and protected so only the owner can open them.
+
+   The most common collection is called `"login"'.
+
+   A collection can have an alias.  The alias `"default"' is commonly
+used so the clients don't have to know the specific name of the
+collection they open.  Other aliases are not supported yet.  Since
+aliases are globally accessible, set the `"default"' alias only when
+you're sure it's appropriate.
+
+ -- Function: secrets-list-collections
+     This function returns all the collection names as a list.
+
+ -- Function: secrets-set-alias collection alias
+     Set ALIAS as alias of collection labeled COLLECTION.  Currently
+     only the alias `"default"' is supported.
+
+ -- Function: secrets-get-alias alias
+     Return the collection name ALIAS is referencing to.  Currently
+     only the alias `"default"' is supported.
+
+   Collections can be created and deleted by the functions
+`secrets-create-collection' and `secrets-delete-collection'.  Usually,
+this is not done from within Emacs.  Do not delete standard collections
+such as `"login"'.
+
+   The special collection `"session"' exists for the lifetime of the
+corresponding client session (in our case, Emacs's lifetime).  It is
+created automatically when Emacs uses the Secret Service interface and
+it is deleted when Emacs is killed.  Therefore, it can be used to store
+and retrieve secret items temporarily.  The `"session"' collection is
+better than a persistent collection when the secret items should not
+live longer than Emacs.  The session collection can be specified either
+by the string `"session"', or by `nil', whenever a collection parameter
+is needed in the following functions.
+
+ -- Function: secrets-list-items collection
+     Returns all the item labels of COLLECTION as a list.
+
+ -- Function: secrets-create-item collection item password &rest
+          attributes
+     This function creates a new item in COLLECTION with label ITEM and
+     password PASSWORD.  ATTRIBUTES are key-value pairs set for the
+     created item.  The keys are keyword symbols, starting with a
+     colon.  Example:
+
+          ;;; The session "session", the label is "my item"
+          ;;; and the secret (password) is "geheim"
+          (secrets-create-item "session" "my item" "geheim"
+           :method "sudo" :user "joe" :host "remote-host")
+
+ -- Function: secrets-get-secret collection item
+     Return the secret of item labeled ITEM in COLLECTION.  If there is
+     no such item, return `nil'.
+
+ -- Function: secrets-delete-item collection item
+     This function deletes item ITEM in COLLECTION.
+
+   The lookup attributes, which are specified during creation of a
+secret item, must be a key-value pair.  Keys are keyword symbols,
+starting with a colon; values are strings.  They can be retrieved from
+a given secret item and they can be used for searching of items.
+
+ -- Function: secrets-get-attribute collection item attribute
+     Returns the value of key ATTRIBUTE of item labeled ITEM in
+     COLLECTION.  If there is no such item, or the item doesn't own
+     this key, the function returns `nil'.
+
+ -- Function: secrets-get-attributes collection item
+     Return the lookup attributes of item labeled ITEM in COLLECTION.
+     If there is no such item, or the item has no attributes, it
+     returns `nil'.  Example:
+
+          (secrets-get-attributes "session" "my item")
+               => ((:user . "joe") (:host ."remote-host"))
+
+ -- Function: secrets-search-items collection &rest attributes
+     Search for the items in COLLECTION with matching ATTRIBUTES.  The
+     ATTRIBUTES are key-value pairs, as used in `secrets-create-item'.
+     Example:
+
+          (secrets-search-items "session" :user "joe")
+               => ("my item" "another item")
+
+   The auth-source library uses the `secrets.el' library and thus the
+Secret Service API when you specify a source matching
+`"secrets:COLLECTION"'.  For instance, you could use
+`"secrets:session"' to use the `"session"' collection, open only for
+the lifetime of Emacs.  Or you could use `"secrets:Login"' to open the
+`"Login"' collection.  As a special case, you can use the symbol
+`default' in `auth-sources' (not a string, but a symbol) to specify the
+`"default"' alias.  Here is a contrived example that sets
+`auth-sources' to search three collections and then fall back to
+`~/.authinfo.gpg'.
+
+     (setq auth-sources '(default
+                          "secrets:session"
+                          "secrets:Login"
+                          "~/.authinfo.gpg"))
 
 
 File: auth,  Node: Help for developers,  Next: GnuPG and EasyPG Assistant Configuration,  Prev: Secret Service API,  Up: Top
@@ -224,18 +349,19 @@ File: auth,  Node: Help for developers,  Next: GnuPG and EasyPG Assistant Config
 The auth-source library lets you control logging output easily.
 
  -- Variable: auth-source-debug
-     Set this variable to 'trivia to see lots of output in *Messages*,
-     or set it to a function that behaves like `message' to do your own
-     logging.
+     Set this variable to `'trivia' to see lots of output in
+     `*Messages*', or set it to a function that behaves like `message'
+     to do your own logging.
 
    The auth-source library only has a few functions for external use.
 
- -- Function: auth-source-search SPEC
-     TODO: how to include docstring?
-
+ -- Function: auth-source-search &rest spec &key type max host user
+          port secret require create delete &allow-other-keys
+     This function searches (or modifies) authentication backends
+     according to SPEC.  See the function's doc-string for details.
 
    Let's take a look at an example of using `auth-source-search' from
-Gnus' `nnimap.el'.
+Gnus's `nnimap.el'.
 
      (defun nnimap-credentials (address ports)
        (let* ((auth-source-creation-prompts
@@ -286,17 +412,20 @@ annoying.
    So the responsibility of the API user that specified `:create t' is
 to call the `:save-function' if it's provided.
 
- -- Function: auth-source-delete SPEC
-     TODO: how to include docstring?
+ -- Function: auth-source-delete &rest spec &key delete
+          &allow-other-keys
+     This function deletes entries matching SPEC from the
+     authentication backends.  It returns the entries that were deleted.
+     The backend may not actually delete the entries.
 
+ -- Function: auth-source-forget spec
+     This function forgets any cached data that exactly matches SPEC.
+     It returns `t' if it forget some data, and `nil' if no matching
+     data was found.
 
- -- Function: auth-source-forget SPEC
-     TODO: how to include docstring?
-
-
- -- Function: auth-source-forget+ SPEC
-     TODO: how to include docstring?
-
+ -- Function: auth-source-forget+ &rest spec &allow-other-keys
+     This function forgets any cached data matching SPEC.  It returns
+     the number of items forgotten.
 
 
 File: auth,  Node: GnuPG and EasyPG Assistant Configuration,  Next: Index,  Prev: Help for developers,  Up: Top
@@ -361,10 +490,21 @@ File: auth,  Node: Function Index,  Next: Variable Index,  Prev: Index,  Up: Top
  [index ]
 * Menu:
 
-* auth-source-delete:                    Help for developers.  (line 72)
-* auth-source-forget:                    Help for developers.  (line 76)
-* auth-source-forget+:                   Help for developers.  (line 80)
-* auth-source-search:                    Help for developers.  (line 16)
+* auth-source-delete:                    Help for developers. (line  74)
+* auth-source-forget:                    Help for developers. (line  79)
+* auth-source-forget+:                   Help for developers. (line  84)
+* auth-source-search:                    Help for developers. (line  17)
+* secrets-create-item:                   Secret Service API.  (line  75)
+* secrets-delete-item:                   Secret Service API.  (line  90)
+* secrets-get-alias:                     Secret Service API.  (line  52)
+* secrets-get-attribute:                 Secret Service API.  (line  98)
+* secrets-get-attributes:                Secret Service API.  (line 103)
+* secrets-get-secret:                    Secret Service API.  (line  86)
+* secrets-list-collections:              Secret Service API.  (line  45)
+* secrets-list-items:                    Secret Service API.  (line  71)
+* secrets-search-items:                  Secret Service API.  (line 111)
+* secrets-set-alias:                     Secret Service API.  (line  48)
+* secrets-show-secrets:                  Secret Service API.  (line  22)
 
 
 File: auth,  Node: Variable Index,  Prev: Function Index,  Up: Top
@@ -377,6 +517,7 @@ File: auth,  Node: Variable Index,  Prev: Function Index,  Up: Top
 
 * auth-source-debug:                     Help for developers.  (line  9)
 * auth-sources:                          Help for users.       (line 49)
+* secrets-enabled:                       Secret Service API.   (line 17)
 
 
 
@@ -385,10 +526,10 @@ Node: Top1298
 Node: Overview2885
 Node: Help for users3621
 Node: Secret Service API8406
-Node: Help for developers8627
-Node: GnuPG and EasyPG Assistant Configuration11745
-Node: Index13437
-Node: Function Index13584
-Node: Variable Index14017
+Node: Help for developers14397
+Node: GnuPG and EasyPG Assistant Configuration18115
+Node: Index19807
+Node: Function Index19954
+Node: Variable Index21190
 
 End Tag Table

@@ -5179,10 +5179,10 @@ Answer
 ......
 
 There's not only the Gnus manual but also the manuals for message,
-emacs-mime, sieve and pgg. Those packages are distributed with Gnus and
-used by Gnus but aren't really part of core Gnus, so they are
-documented in different info files, you should have a look in those
-manuals, too.
+emacs-mime, sieve, EasyPG Assistant, and pgg. Those packages are
+distributed with Gnus and used by Gnus but aren't really part of core
+Gnus, so they are documented in different info files, you should have a
+look in those manuals, too.
 
 
 File: gnus,  Node: FAQ 8-3,  Next: FAQ 8-4,  Prev: FAQ 8-2,  Up: FAQ 8 - Getting help

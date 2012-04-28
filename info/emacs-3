@@ -1,8 +1,8 @@
-This is /home/cyd/trunk/doc/emacs/../../info/emacs, produced by
-makeinfo version 4.13 from /home/cyd/trunk/doc/emacs/emacs.texi.
+This is /home/cyd/emacs/doc/emacs/../../info/emacs, produced by
+makeinfo version 4.13 from /home/cyd/emacs/doc/emacs/emacs.texi.
 
 This is the Sixteenth edition of the `GNU Emacs Manual',
-updated for Emacs version 24.0.95.
+updated for Emacs version 24.0.96.
 
    Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
 
@@ -55,10 +55,11 @@ FILENAME <RET>'.
    In addition to converting various representations of non-ASCII
 characters, a coding system can perform end-of-line conversion.  Emacs
 handles three different conventions for how to separate lines in a file:
-newline, carriage-return linefeed, and just carriage-return.
+newline ("unix"), carriage-return linefeed ("dos"), and just
+carriage-return ("mac").
 
 `C-h C CODING <RET>'
-     Describe coding system CODING.
+     Describe coding system CODING (`describe-coding-system').
 
 `C-h C <RET>'
      Describe the coding systems currently in use.
@@ -86,13 +87,13 @@ end-of-line conversion to be decided based on the contents of each file.
 For example, if the file appears to use the sequence carriage-return
 linefeed to separate lines, DOS end-of-line conversion will be used.
 
-   Each of the listed coding systems has three variants which specify
+   Each of the listed coding systems has three variants, which specify
 exactly what to do for end-of-line conversion:
 
 `...-unix'
      Don't do any end-of-line conversion; assume the file uses newline
      to separate lines.  (This is the convention normally used on Unix
-     and GNU systems.)
+     and GNU systems, and Mac OS X.)
 
 `...-dos'
      Assume the file uses carriage-return linefeed to separate lines,
@@ -101,8 +102,8 @@ exactly what to do for end-of-line conversion:
 
 `...-mac'
      Assume the file uses carriage-return to separate lines, and do the
-     appropriate conversion.  (This is the convention normally used on
-     the Macintosh system.)
+     appropriate conversion.  (This was the convention used on the
+     Macintosh system prior to OS X.)
 
    These variant coding systems are omitted from the
 `list-coding-systems' display for brevity, since they are entirely
@@ -115,10 +116,10 @@ These coding systems specify only the end-of-line conversion, and leave
 the character code conversion to be deduced from the text itself.
 
    The coding system `raw-text' is good for a file which is mainly
-ASCII text, but may contain byte values above 127 which are not meant
-to encode non-ASCII characters.  With `raw-text', Emacs copies those
-byte values unchanged, and sets `enable-multibyte-characters' to `nil'
-in the current buffer so that they will be interpreted properly.
+ASCII text, but may contain byte values above 127 that are not meant to
+encode non-ASCII characters.  With `raw-text', Emacs copies those byte
+values unchanged, and sets `enable-multibyte-characters' to `nil' in
+the current buffer so that they will be interpreted properly.
 `raw-text' handles end-of-line conversion in the usual way, based on
 the data encountered, and has the usual three variants to specify the
 kind of end-of-line conversion to use.
@@ -144,7 +145,7 @@ three variants to specify the kind of end-of-line conversion.
 
    (1) It is also specified for MIME `text/*' bodies and in other
 network transport contexts.  It is different from the SGML reference
-syntax record-start/record-end format which Emacs doesn't support
+syntax record-start/record-end format, which Emacs doesn't support
 directly.
 
 
@@ -227,32 +228,34 @@ result is that all escape sequences become visible in the buffer.
 
    The default value of `inhibit-iso-escape-detection' is `nil'.  We
 recommend that you not change it permanently, only for one specific
-operation.  That's because many Emacs Lisp source files in the Emacs
+operation.  That's because some Emacs Lisp source files in the Emacs
 distribution contain non-ASCII characters encoded in the coding system
 `iso-2022-7bit', and they won't be decoded correctly when you visit
 those files if you suppress the escape sequence detection.
 
-   The variables `auto-coding-alist', `auto-coding-regexp-alist' and
-`auto-coding-functions' are the strongest way to specify the coding
-system for certain patterns of file names, or for files containing
-certain patterns; these variables even override `-*-coding:-*-' tags in
-the file itself.  Emacs uses `auto-coding-alist' for tar and archive
-files, to prevent it from being confused by a `-*-coding:-*-' tag in a
-member of the archive and thinking it applies to the archive file as a
-whole.  Likewise, Emacs uses `auto-coding-regexp-alist' to ensure that
-RMAIL files, whose names in general don't match any particular pattern,
-are decoded correctly.  One of the builtin `auto-coding-functions'
-detects the encoding for XML files.
+   The variables `auto-coding-alist' and `auto-coding-regexp-alist' are
+the strongest way to specify the coding system for certain patterns of
+file names, or for files containing certain patterns, respectively.
+These variables even override `-*-coding:-*-' tags in the file itself
+(*note Specify Coding::).  For example, Emacs uses `auto-coding-alist'
+for tar and archive files, to prevent it from being confused by a
+`-*-coding:-*-' tag in a member of the archive and thinking it applies
+to the archive file as a whole.
+
+   Another way to specify a coding system is with the variable
+`auto-coding-functions'.  For example, one of the builtin
+`auto-coding-functions' detects the encoding for XML files.  Unlike the
+previous two, this variable does not override any `-*-coding:-*-' tag.
 
    When you get new mail in Rmail, each message is translated
 automatically from the coding system it is written in, as if it were a
 separate file.  This uses the priority list of coding systems that you
 have specified.  If a MIME message specifies a character set, Rmail
-obeys that specification, unless `rmail-decode-mime-charset' is `nil'.
-For reading and saving Rmail files themselves, Emacs uses the coding
-system specified by the variable `rmail-file-coding-system'.  The
-default value is `nil', which means that Rmail files are not translated
-(they are read and written in the Emacs internal character code).
+obeys that specification.  For reading and saving Rmail files
+themselves, Emacs uses the coding system specified by the variable
+`rmail-file-coding-system'.  The default value is `nil', which means
+that Rmail files are not translated (they are read and written in the
+Emacs internal character code).
 
 
 File: emacs,  Node: Specify Coding,  Next: Output Coding,  Prev: Recognize Coding,  Up: International
@@ -319,9 +322,9 @@ recipient's mail software will have difficulty decoding.  (You can
 still use an unsuitable coding system if you type its name in response
 to the question.)
 
-   When you send a message with Message mode (*note Sending Mail::),
-Emacs has four different ways to determine the coding system to use for
-encoding the message text.  It tries the buffer's own value of
+   When you send a mail message (*note Sending Mail::), Emacs has four
+different ways to determine the coding system to use for encoding the
+message text.  It tries the buffer's own value of
 `buffer-file-coding-system', if that is non-`nil'.  Otherwise, it uses
 the value of `sendmail-coding-system', if that is non-`nil'.  The third
 way is to use the default coding system for new files, which is
@@ -339,8 +342,8 @@ In cases where Emacs does not automatically choose the right coding
 system for a file's contents, you can use these commands to specify one:
 
 `C-x <RET> f CODING <RET>'
-     Use coding system CODING to save or revisit the visited file in
-     the current buffer (`set-buffer-file-coding-system')
+     Use coding system CODING to save or revisit the file in the
+     current buffer (`set-buffer-file-coding-system').
 
 `C-x <RET> c CODING <RET>'
      Specify coding system CODING for the immediately following command
@@ -365,7 +368,8 @@ the buffer.
    You can also use this command to specify the end-of-line conversion
 (*note end-of-line conversion: Coding Systems.) for encoding the
 current buffer.  For example, `C-x <RET> f dos <RET>' will cause Emacs
-to save the current buffer's text with DOS-style CRLF line endings.
+to save the current buffer's text with DOS-style carriage-return
+linefeed line endings.
 
    Another way to specify the coding system for a file is when you visit
 the file.  First use the command `C-x <RET> c'
@@ -443,7 +447,7 @@ the next selection made in Emacs or read by Emacs.
    The variable `x-select-request-type' specifies the data type to
 request from the X Window System for receiving text selections from
 other applications.  If the value is `nil' (the default), Emacs tries
-`COMPOUND_TEXT' and `UTF8_STRING', in this order, and uses various
+`UTF8_STRING' and `COMPOUND_TEXT', in this order, and uses various
 heuristics to choose the more appropriate of the two results; if none
 of these succeed, Emacs falls back on `STRING'.  If the value of
 `x-select-request-type' is one of the symbols `COMPOUND_TEXT',
@@ -470,8 +474,8 @@ the current language environment.
    The variable `locale-coding-system' specifies a coding system to use
 when encoding and decoding system strings such as system error messages
 and `format-time-string' formats and time stamps.  That coding system
-is also used for decoding non-ASCII keyboard input on X Window systems.
-You should choose a coding system that is compatible with the
+is also used for decoding non-ASCII keyboard input on the X Window
+System.  You should choose a coding system that is compatible with the
 underlying system's text representation, which is normally specified by
 one of the environment variables `LC_ALL', `LC_CTYPE', and `LANG'.
 (The first one, in the order specified above, whose value is nonempty
@@ -484,22 +488,23 @@ File: emacs,  Node: File Name Coding,  Next: Terminal Coding,  Prev: Communicati
 ===================================
 
 `C-x <RET> F CODING <RET>'
-     Use coding system CODING for encoding and decoding file _names_
+     Use coding system CODING for encoding and decoding file names
      (`set-file-name-coding-system').
 
-   The variable `file-name-coding-system' specifies a coding system to
-use for encoding file names.  It has no effect on reading and writing
-the _contents_ of files.
+   The command `C-x <RET> F' (`set-file-name-coding-system') specifies
+a coding system to use for encoding file _names_.  It has no effect on
+reading and writing the _contents_ of files.
 
-   If you set the variable to a coding system name (as a Lisp symbol or
-a string), Emacs encodes file names using that coding system for all
-file operations.  This makes it possible to use non-ASCII characters in
-file names--or, at least, those non-ASCII characters which the
-specified coding system can encode.  Use `C-x <RET> F'
-(`set-file-name-coding-system') to specify this interactively.
+   In fact, all this command does is set the value of the variable
+`file-name-coding-system'.  If you set the variable to a coding system
+name (as a Lisp symbol or a string), Emacs encodes file names using
+that coding system for all file operations.  This makes it possible to
+use non-ASCII characters in file names--or, at least, those non-ASCII
+characters that the specified coding system can encode.
 
    If `file-name-coding-system' is `nil', Emacs uses a default coding
-system determined by the selected language environment.  In the default
+system determined by the selected language environment, and stored in
+the `default-file-name-coding-system' variable.  In the default
 language environment, non-ASCII characters in file names are not
 encoded specially; they appear in the file system using the internal
 Emacs representation.
@@ -510,8 +515,8 @@ you have already visited files whose names were encoded using the
 earlier coding system and cannot be encoded (or are encoded
 differently) under the new coding system.  If you try to save one of
 these buffers under the visited file name, saving may use the wrong file
-name, or it may get an error.  If such a problem happens, use `C-x C-w'
-to specify a new file name for that buffer.
+name, or it may encounter an error.  If such a problem happens, use `C-x
+C-w' to specify a new file name for that buffer.
 
    If a mistake occurs when encoding a file name, use the command `M-x
 recode-file-name' to change the file name's coding system.  This
@@ -524,13 +529,13 @@ File: emacs,  Node: Terminal Coding,  Next: Fontsets,  Prev: File Name Coding,  
 22.13 Coding Systems for Terminal I/O
 =====================================
 
-`C-x <RET> k CODING <RET>'
-     Use coding system CODING for keyboard input
-     (`set-keyboard-coding-system').
-
 `C-x <RET> t CODING <RET>'
      Use coding system CODING for terminal output
      (`set-terminal-coding-system').
+
+`C-x <RET> k CODING <RET>'
+     Use coding system CODING for keyboard input
+     (`set-keyboard-coding-system').
 
    The command `C-x <RET> t' (`set-terminal-coding-system') specifies
 the coding system for terminal output.  If you specify a character code
@@ -547,8 +552,8 @@ Emacs knows which characters the terminal can actually handle.
 Emacs can deduce the proper coding system from your terminal type or
 your locale specification (*note Language Environments::).
 
-   The command `C-x <RET> k' (`set-keyboard-coding-system') or the
-variable `keyboard-coding-system' specifies the coding system for
+   The command `C-x <RET> k' (`set-keyboard-coding-system'), or the
+variable `keyboard-coding-system', specifies the coding system for
 keyboard input.  Character-code translation of keyboard input is useful
 for terminals with keys that send non-ASCII graphic characters--for
 example, some terminals designed for ISO Latin-1 or subsets of it.
@@ -581,28 +586,32 @@ File: emacs,  Node: Fontsets,  Next: Defining Fontsets,  Prev: Terminal Coding, 
 A font typically defines shapes for a single alphabet or script.
 Therefore, displaying the entire range of scripts that Emacs supports
 requires a collection of many fonts.  In Emacs, such a collection is
-called a "fontset".  A fontset is defined by a list of font specs, each
-assigned to handle a range of character codes, and may fall back on
-another fontset for characters which are not covered by the fonts it
-specifies.
+called a "fontset".  A fontset is defined by a list of font
+specifications, each assigned to handle a range of character codes, and
+may fall back on another fontset for characters that are not covered by
+the fonts it specifies.
 
    Each fontset has a name, like a font.  However, while fonts are
 stored in the system and the available font names are defined by the
 system, fontsets are defined within Emacs itself.  Once you have
 defined a fontset, you can use it within Emacs by specifying its name,
 anywhere that you could use a single font.  Of course, Emacs fontsets
-can use only the fonts that the system supports; if certain characters
-appear on the screen as hollow boxes, this means that the fontset in
-use for them has no font for those characters.(1)
+can use only the fonts that the system supports.  If some characters
+appear on the screen as empty boxes or hex codes, this means that the
+fontset in use for them has no font for those characters.  In this
+case, or if the characters are shown, but not as well as you would
+like, you may need to install extra fonts.  Your operating system may
+have optional fonts that you can install; or you can install the GNU
+Intlfonts package, which includes fonts for most supported scripts.(1)
 
    Emacs creates three fontsets automatically: the "standard fontset",
 the "startup fontset" and the "default fontset".  The default fontset
-is most likely to have fonts for a wide variety of non-ASCII characters
-and is the default fallback for the other two fontsets, and if you set
-a default font rather than fontset.  However it does not specify font
-family names, so results can be somewhat random if you use it directly.
-You can specify use of a specific fontset with the `-fn' option.  For
-example,
+is most likely to have fonts for a wide variety of non-ASCII
+characters, and is the default fallback for the other two fontsets, and
+if you set a default font rather than fontset.  However, it does not
+specify font family names, so results can be somewhat random if you use
+it directly.  You can specify use of a particular fontset by starting
+Emacs with the `-fn' option.  For example,
 
      emacs -fn fontset-standard
 
@@ -623,8 +632,11 @@ characters: Text Display, for details.)
 
    ---------- Footnotes ----------
 
-   (1) The Emacs installation instructions have information on
-additional font support.
+   (1) If you run Emacs on X, you may need to inform the X server about
+the location of the newly installed fonts with commands such as:
+
+      xset fp+ /usr/local/share/emacs/fonts
+      xset fp rehash
 
 
 File: emacs,  Node: Defining Fontsets,  Next: Modifying Fontsets,  Prev: Fontsets,  Up: International
@@ -640,9 +652,9 @@ is
 
 or just `fontset-standard' for short.
 
-   On GNUstep and Mac, fontset-standard is created using the value of
-`ns-standard-fontset-spec', and on Windows it is created using the
-value of `w32-standard-fontset-spec'.
+   On GNUstep and Mac OS X, the standard fontset is created using the
+value of `ns-standard-fontset-spec', and on MS Windows it is created
+using the value of `w32-standard-fontset-spec'.
 
    Bold, italic, and bold-italic variants of the standard fontset are
 created automatically.  Their names have `bold' instead of `medium', or
@@ -656,7 +668,7 @@ replacing the CHARSET_REGISTRY field with `fontset', and replacing
 CHARSET_ENCODING field with `startup', then using the resulting string
 to specify a fontset.
 
-   For instance, if you start Emacs this way,
+   For instance, if you start Emacs with a font of this form,
 
      emacs -fn "*courier-medium-r-normal--14-140-*-iso8859-1"
 
@@ -665,8 +677,8 @@ window frame:
 
      -*-courier-medium-r-normal-*-14-140-*-*-*-*-fontset-startup
 
-   The startup fontset will use the font that you specify or a variant
-with a different registry and encoding for all the characters which are
+   The startup fontset will use the font that you specify, or a variant
+with a different registry and encoding, for all the characters that are
 supported by that font, and fallback on `fontset-default' for other
 characters.
 
@@ -674,7 +686,7 @@ characters.
 just like an actual font name.  But be careful not to specify a fontset
 name in a wildcard resource like `Emacs*Font'--that wildcard
 specification matches various other resources, such as for menus, and
-menus cannot handle fontsets.
+menus cannot handle fontsets.  *Note X Resources::.
 
    You can specify additional fontsets using X resources named
 `Fontset-N', where N is an integer starting from 0.  The resource value
@@ -682,8 +694,9 @@ should have this form:
 
      FONTPATTERN, [CHARSET:FONT]...
 
-FONTPATTERN should have the form of a standard X font name, except for
-the last two fields.  They should have the form `fontset-ALIAS'.
+FONTPATTERN should have the form of a standard X font name (see the
+previous fontset-startup example), except for the last two fields.
+They should have the form `fontset-ALIAS'.
 
    The fontset has two names, one long and one short.  The long name is
 FONTPATTERN.  The short name is `fontset-ALIAS'.  You can refer to the
@@ -702,8 +715,8 @@ replaced with `ISO8859-1'.
    In addition, when several consecutive fields are wildcards, Emacs
 collapses them into a single wildcard.  This is to prevent use of
 auto-scaled fonts.  Fonts made by scaling larger fonts are not usable
-for editing, and scaling a smaller font is not useful because it is
-better to use the smaller font in its own size, which is what Emacs
+for editing, and scaling a smaller font is not also useful, because it
+is better to use the smaller font in its own size, which is what Emacs
 does.
 
    Thus if FONTPATTERN is this,
@@ -720,8 +733,8 @@ and the font specification for Chinese GB2312 characters would be this:
 
    You may not have any Chinese font matching the above font
 specification.  Most X distributions include only Chinese fonts that
-have `song ti' or `fangsong ti' in FAMILY field.  In such a case,
-`Fontset-N' can be specified as below:
+have `song ti' or `fangsong ti' in the FAMILY field.  In such a case,
+`Fontset-N' can be specified as:
 
      Emacs.Fontset-0: -*-fixed-medium-r-normal-*-24-*-*-*-*-*-fontset-24,\
              chinese-gb2312:-*-*-medium-r-normal-*-24-*-gb2312*-*
@@ -750,8 +763,8 @@ fonts that Emacs chooses for a particular script.
 
    Fontsets can be modified using the function `set-fontset-font',
 specifying a character, a charset, a script, or a range of characters
-to modify the font for, and a font-spec for the font to be used. Some
-examples are:
+to modify the font for, and a font specification for the font to be
+used.  Some examples are:
 
      ;; Use Liberation Mono for latin-3 charset.
      (set-fontset-font "fontset-default" 'iso-8859-3
@@ -777,11 +790,11 @@ File: emacs,  Node: Undisplayable Characters,  Next: Unibyte Mode,  Prev: Modify
 22.17 Undisplayable Characters
 ==============================
 
-There may be a some non-ASCII characters that your terminal cannot
-display.  Most text-only terminals support just a single character set
-(use the variable `default-terminal-coding-system' (*note Terminal
-Coding::) to tell Emacs which one); characters which can't be encoded
-in that coding system are displayed as `?' by default.
+There may be some non-ASCII characters that your terminal cannot
+display.  Most text terminals support just a single character set (use
+the variable `default-terminal-coding-system' to tell Emacs which one,
+*note Terminal Coding::); characters that can't be encoded in that
+coding system are displayed as `?' by default.
 
    Graphical displays can display a broader range of characters, but
 you may not have fonts installed for all of them; characters that have
@@ -807,17 +820,15 @@ The ISO 8859 Latin-N character sets define character codes in the range
 0240 to 0377 octal (160 to 255 decimal) to handle the accented letters
 and punctuation needed by various European languages (and some
 non-European ones).  Note that Emacs considers bytes with codes in this
-range as raw bytes, not as characters, even in a unibyte session, i.e.
+range as raw bytes, not as characters, even in a unibyte buffer, i.e.
 if you disable multibyte characters.  However, Emacs can still handle
 these character codes as if they belonged to _one_ of the single-byte
 character sets at a time.  To specify _which_ of these codes to use,
 invoke `M-x set-language-environment' and specify a suitable language
 environment such as `Latin-N'.
 
-   For more information about unibyte operation, see *note Enabling
-Multibyte::.  Note particularly that you probably want to ensure that
-your initialization files are read as unibyte if they contain non-ASCII
-characters.
+   For more information about unibyte operation, see *note Disabling
+Multibyte::.
 
    Emacs can also display bytes in the range 160 to 255 as readable
 characters, provided the terminal or font in use supports them.  This
@@ -834,7 +845,7 @@ not as characters.
 set, Emacs can display these characters as ASCII sequences which at
 least give you a clear idea of what the characters are.  To do this,
 load the library `iso-ascii'.  Similar libraries for other Latin-N
-character sets could be implemented, but we don't have them yet.
+character sets could be implemented, but have not been so far.
 
    Normally non-ISO-8859 characters (decimal codes between 128 and 159
 inclusive) are displayed as octal escapes.  You can change this for
@@ -853,16 +864,15 @@ function `standard-display-8bit' in the `disp-table' library.
      codes directly.
 
      On a graphical display, you should not need to do anything special
-     to use these keys; they should simply work.  On a text-only
-     terminal, you should use the command `M-x
-     set-keyboard-coding-system' or the variable
-     `keyboard-coding-system' to specify which coding system your
-     keyboard uses (*note Terminal Coding::).  Enabling this feature
-     will probably require you to use `ESC' to type Meta characters;
-     however, on a console terminal or in `xterm', you can arrange for
-     Meta to be converted to `ESC' and still be able type 8-bit
-     characters present directly on the keyboard or using `Compose' or
-     `AltGr' keys.  *Note User Input::.
+     to use these keys; they should simply work.  On a text terminal,
+     you should use the command `M-x set-keyboard-coding-system' or
+     customize the variable `keyboard-coding-system' to specify which
+     coding system your keyboard uses (*note Terminal Coding::).
+     Enabling this feature will probably require you to use `ESC' to
+     type Meta characters; however, on a console terminal or in
+     `xterm', you can arrange for Meta to be converted to `ESC' and
+     still be able type 8-bit characters present directly on the
+     keyboard or using `Compose' or `AltGr' keys.  *Note User Input::.
 
    * For Latin-1 only, you can use the key `C-x 8' as a "compose
      character" prefix for entry of non-ASCII Latin-1 printing
@@ -874,7 +884,7 @@ function `standard-display-8bit' in the `disp-table' library.
      library is loaded, the <ALT> modifier key, if the keyboard has
      one, serves the same purpose as `C-x 8': use <ALT> together with
      an accent character to modify the following letter.  In addition,
-     if the keyboard has keys for the Latin-1 "dead accent characters,"
+     if the keyboard has keys for the Latin-1 "dead accent characters",
      they too are defined to compose with the following character, once
      `iso-transl' is loaded.
 
@@ -913,12 +923,13 @@ representation within Emacs.
 
    `M-x list-character-sets' displays a list of all supported charsets.
 The list gives the names of charsets and additional information to
-identity each charset (see `http://www.itscj.ipsj.or.jp/ISO-IR/' for
-details).  In this list, charsets are divided into two categories:
-"normal charsets" are listed first, followed by "supplementary
-charsets".  A supplementary charset is one that is used to define
-another charset (as a parent or a subset), or to provide
-backward-compatibility for older Emacs versions.
+identity each charset; see the International Register of Coded
+Character Sets (http://www.itscj.ipsj.or.jp/ISO-IR/) for more details.
+In this list, charsets are divided into two categories: "normal
+charsets" are listed first, followed by "supplementary charsets".  A
+supplementary charset is one that is used to define another charset (as
+a parent or a subset), or to provide backward-compatibility for older
+Emacs versions.
 
    To find out which charset a character in the buffer belongs to, put
 point before it and type `C-u C-x =' (*note International Chars::).
@@ -933,8 +944,8 @@ Emacs supports editing text written in scripts, such as Arabic and
 Hebrew, whose natural ordering of horizontal text for display is from
 right to left.  However, digits and Latin text embedded in these
 scripts are still displayed left to right.  It is also not uncommon to
-have small portions of text in Arabic or Hebrew embedded in otherwise
-Latin document, e.g., as comments and strings in a program source file.
+have small portions of text in Arabic or Hebrew embedded in an otherwise
+Latin document; e.g., as comments and strings in a program source file.
 For these reasons, text that uses these scripts is actually
 "bidirectional": a mixture of runs of left-to-right and right-to-left
 characters.
@@ -959,10 +970,11 @@ directionality when they are displayed.  The default value is `t'.
    Each paragraph of bidirectional text can have its own "base
 direction", either right-to-left or left-to-right.  (Paragraph
 boundaries are empty lines, i.e. lines consisting entirely of
-whitespace characters.)  Text in left-to-right paragraphs begins at the
-left margin of the window and is truncated or continued when it reaches
-the right margin.  By contrast, text in right-to-left paragraphs begins
-at the right margin and is continued or truncated at the left margin.
+whitespace characters.)  Text in left-to-right paragraphs begins on the
+screen at the left margin of the window and is truncated or continued
+when it reaches the right margin.  By contrast, text in right-to-left
+paragraphs is displayed starting at the right margin and is continued
+or truncated at the left margin.
 
    Emacs determines the base direction of each paragraph dynamically,
 based on the text at the beginning of the paragraph.  However,
@@ -989,7 +1001,8 @@ point in the logical order, so the cursor will sometimes jump when
 point traverses reordered bidirectional text.  Similarly, a highlighted
 region covering a contiguous range of character positions may look
 discontinuous if the region spans reordered text.  This is normal and
-similar to behavior of other programs that support bidirectional text.
+similar to the behavior of other programs that support bidirectional
+text.
 
 
 File: emacs,  Node: Modes,  Next: Indentation,  Prev: International,  Up: Top
@@ -4867,7 +4880,7 @@ can also use `M-x info-lookup-file' to look for documentation for a
 file name.
 
    If you use `C-h S' in a major mode that does not support it, it asks
-you to specify the "symbol help mode."  You should enter a command such
+you to specify the "symbol help mode".  You should enter a command such
 as `c-mode' that would select a major mode which `C-h S' does support.
 
 
@@ -5146,7 +5159,7 @@ File: emacs,  Node: C Modes,  Next: Asm Mode,  Prev: Misc for Programs,  Up: Pro
 
 This section gives a brief description of the special features
 available in C, C++, Objective-C, Java, CORBA IDL, Pike and AWK modes.
-(These are called "C mode and related modes.")  *Note CC Mode:
+(These are called "C mode and related modes".)  *Note CC Mode:
 (ccmode)Top, for more details.
 
 * Menu:
@@ -5589,7 +5602,7 @@ Fortran standard counts from 1.)  The variable
 `fortran-continuation-string' specifies what character to put in column
 5.  A line that starts with a tab character followed by any digit
 except `0' is also a continuation line.  We call this style of
-continuation "tab format".  (Fortran 90 introduced "free form," with
+continuation "tab format".  (Fortran 90 introduced "free form", with
 another style of continuation lines).
 
    Fortran mode can use either style of continuation line.  When you
@@ -6118,11 +6131,11 @@ determined by the variable `next-error-highlight'.
    If the `*compilation*' buffer is shown in a window with a left
 fringe (*note Fringes::), the locus-visiting commands put an arrow in
 the fringe, pointing to the current error message.  If the window has
-no left fringe, such as on a text-only terminal, these commands scroll
-the window so that the current message is at the top of the window.  If
-you change the variable `compilation-context-lines' to an integer value
-N, these commands scroll the window so that the current error message
-is N lines from the top, whether or not there is a fringe; the default
+no left fringe, such as on a text terminal, these commands scroll the
+window so that the current message is at the top of the window.  If you
+change the variable `compilation-context-lines' to an integer value N,
+these commands scroll the window so that the current error message is N
+lines from the top, whether or not there is a fringe; the default
 value, `nil', gives the behavior described above.
 
    To parse messages from the compiler, Compilation mode uses the
@@ -6205,7 +6218,7 @@ File: emacs,  Node: Grep Searching,  Next: Flymake,  Prev: Compilation Shell,  U
 Just as you can run a compiler from Emacs and then visit the lines with
 compilation errors, you can also run `grep' and then visit the lines on
 which matches were found.  This works by treating the matches reported
-by `grep' as if they were "errors."  The output buffer uses Grep mode,
+by `grep' as if they were "errors".  The output buffer uses Grep mode,
 which is a variant of Compilation mode (*note Compilation Mode::).
 
 `M-x grep'
@@ -6404,13 +6417,13 @@ used in the GUD interaction buffer.
 
    As you debug a program, Emacs displays the relevant source files by
 visiting them in Emacs buffers, with an arrow in the left fringe
-indicating the current execution line.  (On a text-only terminal, the
-arrow appears as `=>', overlaid on the first two text columns.)  Moving
-point in such a buffer does not move the arrow.  You are free to edit
-these source files, but note that inserting or deleting lines will
-throw off the arrow's positioning, as Emacs has no way to figure out
-which edited source line corresponds to the line reported by the
-debugger subprocess.  To update this information, you typically have to
+indicating the current execution line.  (On a text terminal, the arrow
+appears as `=>', overlaid on the first two text columns.)  Moving point
+in such a buffer does not move the arrow.  You are free to edit these
+source files, but note that inserting or deleting lines will throw off
+the arrow's positioning, as Emacs has no way to figure out which edited
+source line corresponds to the line reported by the debugger
+subprocess.  To update this information, you typically have to
 recompile and restart the program.
 
    GUD Tooltip mode is a global minor mode that adds tooltip support to
@@ -6710,7 +6723,7 @@ already exists there, the click removes it.  A `C-Mouse-1' click
 enables or disables an existing breakpoint; a breakpoint that is
 disabled, but not unset, is indicated by a gray dot.
 
-   On a text-only terminal, or when fringes are disabled, enabled
+   On a text terminal, or when fringes are disabled, enabled
 breakpoints are indicated with a `B' character in the left margin of
 the window.  Disabled breakpoints are indicated with `b'.  (The margin
 is only displayed if a breakpoint is present.)
@@ -6758,65 +6771,6 @@ shares its window with the GDB Threads buffer.  To switch from one to
 the other click with `Mouse-1' on the relevant button in the header
 line.  If `gdb-show-threads-by-default' is non-`nil', the GDB Threads
 buffer is the one shown by default.
-
-
-File: emacs,  Node: Threads Buffer,  Next: Stack Buffer,  Prev: Breakpoints Buffer,  Up: GDB Graphical Interface
-
-27.6.5.4 Threads Buffer
-.......................
-
-The GDB Threads buffer displays a summary of the threads in the
-debugged program.  *Note Threads: (gdb)Threads.  To select a thread,
-move point there and type <RET> (`gdb-select-thread'), or click on it
-with `Mouse-2'.  This also displays the associated source buffer, and
-updates the contents of the other GDB buffers.
-
-   You can customize variables under `gdb-buffers' group to select
-fields included in GDB Threads buffer.
-
-`gdb-thread-buffer-verbose-names'
-     Show long thread names like `Thread 0x4e2ab70 (LWP 1983)'.
-
-`gdb-thread-buffer-arguments'
-     Show arguments of thread top frames.
-
-`gdb-thread-buffer-locations'
-     Show file information or library names.
-
-`gdb-thread-buffer-addresses'
-     Show addresses for thread frames in threads buffer.
-
-   To view information for several threads simultaneously, use the
-following commands from the GDB Threads buffer.
-
-`d'
-     Display disassembly buffer for the thread at current line
-     (`gdb-display-disassembly-for-thread').
-
-`f'
-     Display the GDB Stack buffer for the thread at current line
-     (`gdb-display-stack-for-thread').
-
-`l'
-     Display the GDB Locals buffer for the thread at current line
-     (`gdb-display-locals-for-thread').
-
-`r'
-     Display the GDB Registers buffer for the thread at current line
-     (`gdb-display-registers-for-thread').
-
-Their upper-case counterparts, `D', `F' ,`L' and `R', display the
-corresponding buffer in a new frame.
-
-   When you create a buffer showing information about some specific
-thread, it becomes bound to that thread and keeps showing actual
-information while you debug your program.  The mode indicator for each
-GDB buffer shows the number of thread it is showing information about.
-The thread number is also included in the buffer name of bound buffers.
-
-   Further commands are available in the GDB Threads buffer which
-depend on the mode of GDB that is used for controlling execution of
-your program.  *Note Multithreaded Debugging::.
 
 
 

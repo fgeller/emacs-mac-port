@@ -1,6 +1,6 @@
 This is ../../info/org, produced by makeinfo version 4.13 from org.texi.
 
-This manual is for Org version 7.8.07.
+This manual is for Org version 7.8.09.
 
    Copyright (C) 2004-2012  Free Software Foundation, Inc.
 
@@ -33,7 +33,7 @@ File: org,  Node: Top,  Next: Introduction,  Prev: (dir),  Up: (dir)
 Org Mode Manual
 ***************
 
-This manual is for Org version 7.8.07.
+This manual is for Org version 7.8.09.
 
    Copyright (C) 2004-2012  Free Software Foundation, Inc.
 
@@ -5188,8 +5188,8 @@ DEADLINE
      until the entry is marked DONE.  An example:
 
           *** TODO write article about the Earth for the Guide
-              The editor in charge is [[bbdb:Ford Prefect]]
               DEADLINE: <2004-02-29 Sun>
+              The editor in charge is [[bbdb:Ford Prefect]]
 
      You can specify a different lead time for warnings for a specific
      deadlines using the following syntax.  Here is an example with a

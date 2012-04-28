@@ -1,8 +1,8 @@
-This is /home/cyd/trunk/doc/lispref/../../info/elisp, produced by
-makeinfo version 4.13 from /home/cyd/trunk/doc/lispref/elisp.texi.
+This is /home/cyd/emacs/doc/lispref/../../info/elisp, produced by
+makeinfo version 4.13 from /home/cyd/emacs/doc/lispref/elisp.texi.
 
-This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 24.0.95.
+This is edition 3.1 of the GNU Emacs Lisp Reference Manual,
+corresponding to Emacs version 24.0.96.
 
    Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
@@ -599,13 +599,13 @@ The principal function for creating a hash table is `make-hash-table'.
                Keys which are numbers are "the same" if they are
                `equal', that is, if they are equal in value and either
                both are integers or both are floating point numbers;
-               otherwise, two distinct objects are never "the same."
+               otherwise, two distinct objects are never "the same".
 
          `eq'
                Any two distinct Lisp objects are "different" as keys.
 
          `equal'
-               Two Lisp objects are "the same," as keys, if they are
+               Two Lisp objects are "the same", as keys, if they are
                equal according to `equal'.
 
           You can use `define-hash-table-test' (*note Defining Hash::)
@@ -658,7 +658,7 @@ The principal function for creating a hash table is `make-hash-table'.
 
     `:rehash-size REHASH-SIZE'
           When you add an association to a hash table and the table is
-          "full," it grows automatically.  This value specifies how to
+          "full", it grows automatically.  This value specifies how to
           make the hash table larger, at that time.
 
           If REHASH-SIZE is an integer, it should be positive, and the
@@ -780,7 +780,7 @@ compare two keys directly.
      "hash code" from a key value.
 
      The function TEST-FN should accept two arguments, two keys, and
-     return non-`nil' if they are considered "the same."
+     return non-`nil' if they are considered "the same".
 
      The function HASH-FN should accept one argument, a key, and return
      an integer that is the "hash code" of that key.  For good results,
@@ -990,7 +990,7 @@ it is evaluated with lexical scoping enabled (*note Variable Scoping::).
    `defun' defines a symbol as a function, creating a lambda expression
 and storing it in the function cell of the symbol.  This lambda
 expression thus becomes the function definition of the symbol.  (The
-term "function definition," meaning the contents of the function cell,
+term "function definition", meaning the contents of the function cell,
 is derived from the idea that `defun' gives the symbol its definition
 as a function.)  `defsubst' and `defalias' are two other ways of
 defining a function.  *Note Functions::.
@@ -1460,7 +1460,7 @@ File: elisp,  Node: Forms,  Next: Quoting,  Prev: Intro Eval,  Up: Evaluation
 A Lisp object that is intended to be evaluated is called a "form" (or
 an "expression").  How Emacs evaluates a form depends on its data type.
 Emacs has three different kinds of form that are evaluated differently:
-symbols, lists, and "all other types."  This section describes all
+symbols, lists, and "all other types".  This section describes all
 three kinds, one by one, starting with the "all other types" which are
 self-evaluating forms.
 
@@ -1617,6 +1617,14 @@ Lisp function, not a symbol.
 
 Executing the function itself evaluates its body; this does involve
 symbol function indirection when calling `erste'.
+
+   This form is rarely used and is now deprecated.  Instead, you should
+write it as:
+
+     (funcall (lambda (arg) (erste arg))
+              '(1 2 3))
+or just
+     (let ((arg '(1 2 3))) (erste arg))
 
    The built-in function `indirect-function' provides an easy way to
 perform symbol function indirection explicitly.
@@ -2244,7 +2252,7 @@ which is a generalized case statement.
      the value of the last of BODY-FORMS becomes the value of the
      `cond'.  The remaining clauses are ignored.
 
-     If the value of CONDITION is `nil', the clause "fails," so the
+     If the value of CONDITION is `nil', the clause "fails", so the
      `cond' moves on to the following clause, trying its CONDITION.
 
      If every CONDITION evaluates to `nil', so that every clause fails,
@@ -2577,7 +2585,7 @@ File: elisp,  Node: Examples of Catch,  Next: Errors,  Prev: Catch and Throw,  U
 --------------------------------------
 
 One way to use `catch' and `throw' is to exit from a doubly nested
-loop.  (In most languages, this would be done with a "goto.")  Here we
+loop.  (In most languages, this would be done with a "goto".)  Here we
 compute `(foo I J)' for I and J varying from 0 to 9:
 
      (defun search-foo ()
@@ -3736,7 +3744,7 @@ time, use the function `set'.
 
      `setq' does not evaluate SYMBOL; it sets the symbol that you
      write.  We say that this argument is "automatically quoted".  The
-     `q' in `setq' stands for "quoted."
+     `q' in `setq' stands for "quoted".
 
      The value of the `setq' form is the value of the last FORM.
 
@@ -5076,11 +5084,10 @@ Consider the following example:
 
      (lambda (a b c) (+ a b c))
 
-We can call this function by writing it as the CAR of an expression,
-like this:
+We can call this function by passing it to `funcall', like this:
 
-     ((lambda (a b c) (+ a b c))
-      1 2 3)
+     (funcall (lambda (a b c) (+ a b c))
+              1 2 3)
 
 This call evaluates the body of the lambda expression  with the variable
 `a' bound to 1, `b' bound to 2, and `c' bound to 3.  Evaluation of the
@@ -5090,8 +5097,8 @@ call to the function returns the value 6.
    Note that the arguments can be the results of other function calls,
 as in this example:
 
-     ((lambda (a b c) (+ a b c))
-      1 (* 2 3) (- 5 4))
+     (funcall (lambda (a b c) (+ a b c))
+              1 (* 2 3) (- 5 4))
 
 This evaluates the arguments `1', `(* 2 3)', and `(- 5 4)' from left to
 right.  Then it applies the lambda expression to the argument values 1,
@@ -5179,16 +5186,16 @@ arguments (either required or optional) after a `&rest' argument.
 
    Here are some examples of argument lists and proper calls:
 
-     ((lambda (n) (1+ n))                ; One required:
-      1)                                 ; requires exactly one argument.
+     (funcall (lambda (n) (1+ n))        ; One required:
+              1)                         ; requires exactly one argument.
           => 2
-     ((lambda (n &optional n1)           ; One required and one optional:
-              (if n1 (+ n n1) (1+ n)))   ; 1 or 2 arguments.
-      1 2)
+     (funcall (lambda (n &optional n1)   ; One required and one optional:
+                (if n1 (+ n n1) (1+ n))) ; 1 or 2 arguments.
+              1 2)
           => 3
-     ((lambda (n &rest ns)               ; One required and one rest:
-              (+ n (apply '+ ns)))       ; 1 or more arguments.
-      1 2 3 4 5)
+     (funcall (lambda (n &rest ns)       ; One required and one rest:
+                (+ n (apply '+ ns)))     ; 1 or more arguments.
+              1 2 3 4 5)
           => 15
 
 
@@ -6582,7 +6589,7 @@ File: elisp,  Node: Indenting Macros,  Prev: Problems with Macros,  Up: Macros
 =====================
 
 Within a macro definition, you can use the `declare' form (*note
-Defining Macros::) to specify how to <TAB> should indent calls to the
+Defining Macros::) to specify how <TAB> should indent calls to the
 macro.  An indentation specification is written like this:
 
      (declare (indent INDENT-SPEC))
@@ -6635,21 +6642,26 @@ a symbol, SYMBOL
 
 File: elisp,  Node: Customization,  Next: Loading,  Prev: Macros,  Up: Top
 
-14 Writing Customization Definitions
-************************************
+14 Customization Settings
+*************************
 
-This chapter describes how to declare user options for customization,
-and also customization groups for classifying them.  We use the term
-"customization item" to include both kinds of customization
-definitions--as well as face definitions (*note Defining Faces::).
+This chapter describes how to declare customizable variables and
+customization groups for classifying them.  We use the term
+"customization item" to include customizable variables, customization
+groups, as well as faces.
+
+   *Note Defining Faces::, for the `defface' macro, which is used for
+declaring customizable faces.
 
 * Menu:
 
-* Common Keywords::      Common keyword arguments for all kinds of
-                           customization declarations.
-* Group Definitions::    Writing customization group definitions.
-* Variable Definitions:: Declaring user options.
-* Customization Types::  Specifying the type of a user option.
+* Common Keywords::         Common keyword arguments for all kinds of
+                             customization declarations.
+* Group Definitions::       Writing customization group definitions.
+* Variable Definitions::    Declaring user options.
+* Customization Types::     Specifying the type of a user option.
+* Applying Customizations:: Functions to apply customization settings.
+* Custom Themes::           Writing Custom themes.
 
 
 File: elisp,  Node: Common Keywords,  Next: Group Definitions,  Up: Customization
@@ -6916,7 +6928,7 @@ File: elisp,  Node: Variable Definitions,  Next: Customization Types,  Prev: Gro
 
 `:set SETFUNCTION'
      Specify SETFUNCTION as the way to change the value of this option
-     when using the Customize user interface.  The function SETFUNCTION
+     when using the Customize interface.  The function SETFUNCTION
      should take two arguments, a symbol (the option name) and the new
      value, and should do whatever is necessary to update the value
      properly for this option (which may not mean simply setting the
@@ -7066,7 +7078,7 @@ to the value.
      `user-variable-p' as equivalent to `custom-variable-p'.
 
 
-File: elisp,  Node: Customization Types,  Prev: Variable Definitions,  Up: Customization
+File: elisp,  Node: Customization Types,  Next: Applying Customizations,  Prev: Variable Definitions,  Up: Customization
 
 14.4 Customization Types
 ========================

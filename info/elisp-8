@@ -1,8 +1,8 @@
-This is /home/cyd/trunk/doc/lispref/../../info/elisp, produced by
-makeinfo version 4.13 from /home/cyd/trunk/doc/lispref/elisp.texi.
+This is /home/cyd/emacs/doc/lispref/../../info/elisp, produced by
+makeinfo version 4.13 from /home/cyd/emacs/doc/lispref/elisp.texi.
 
-This is edition 3.0 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 24.0.95.
+This is edition 3.1 of the GNU Emacs Lisp Reference Manual,
+corresponding to Emacs version 24.0.96.
 
    Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
@@ -23,6 +23,438 @@ INFO-DIR-SECTION GNU Emacs Lisp
 START-INFO-DIR-ENTRY
 * Elisp: (elisp).       The Emacs Lisp Reference Manual.
 END-INFO-DIR-ENTRY
+
+
+File: elisp,  Node: Character Properties,  Next: Character Sets,  Prev: Character Codes,  Up: Non-ASCII Characters
+
+33.5 Character Properties
+=========================
+
+A "character property" is a named attribute of a character that
+specifies how the character behaves and how it should be handled during
+text processing and display.  Thus, character properties are an
+important part of specifying the character's semantics.
+
+   On the whole, Emacs follows the Unicode Standard in its
+implementation of character properties.  In particular, Emacs supports
+the Unicode Character Property Model
+(http://www.unicode.org/reports/tr23/), and the Emacs character
+property database is derived from the Unicode Character Database (UCD).
+See the Character Properties chapter of the Unicode Standard
+(http://www.unicode.org/versions/Unicode5.0.0/ch04.pdf), for a detailed
+description of Unicode character properties and their meaning.  This
+section assumes you are already familiar with that chapter of the
+Unicode Standard, and want to apply that knowledge to Emacs Lisp
+programs.
+
+   In Emacs, each property has a name, which is a symbol, and a set of
+possible values, whose types depend on the property; if a character
+does not have a certain property, the value is `nil'.  As a general
+rule, the names of character properties in Emacs are produced from the
+corresponding Unicode properties by downcasing them and replacing each
+`_' character with a dash `-'.  For example,
+`Canonical_Combining_Class' becomes `canonical-combining-class'.
+However, sometimes we shorten the names to make their use easier.
+
+   Some codepoints are left "unassigned" by the UCD--they don't
+correspond to any character.  The Unicode Standard defines default
+values of properties for such codepoints; they are mentioned below for
+each property.
+
+   Here is the full list of value types for all the character
+properties that Emacs knows about:
+
+`name'
+     Corresponds to the `Name' Unicode property.  The value is a string
+     consisting of upper-case Latin letters A to Z, digits, spaces, and
+     hyphen `-' characters.  For unassigned codepoints, the value is an
+     empty string.
+
+`general-category'
+     Corresponds to the `General_Category' Unicode property.  The value
+     is a symbol whose name is a 2-letter abbreviation of the
+     character's classification.  For unassigned codepoints, the value
+     is `Cn'.
+
+`canonical-combining-class'
+     Corresponds to the `Canonical_Combining_Class' Unicode property.
+     The value is an integer number.  For unassigned codepoints, the
+     value is zero.
+
+`bidi-class'
+     Corresponds to the Unicode `Bidi_Class' property.  The value is a
+     symbol whose name is the Unicode "directional type" of the
+     character.  Emacs uses this property when it reorders bidirectional
+     text for display (*note Bidirectional Display::).  For unassigned
+     codepoints, the value depends on the code blocks to which the
+     codepoint belongs: most unassigned codepoints get the value of `L'
+     (strong L), but some get values of `AL' (Arabic letter) or `R'
+     (strong R).
+
+`decomposition'
+     Corresponds to the Unicode `Decomposition_Type' and
+     `Decomposition_Value' properties.  The value is a list, whose
+     first element may be a symbol representing a compatibility
+     formatting tag, such as `small'(1); the other elements are
+     characters that give the compatibility decomposition sequence of
+     this character.  For unassigned codepoints, the value is the
+     character itself.
+
+`decimal-digit-value'
+     Corresponds to the Unicode `Numeric_Value' property for characters
+     whose `Numeric_Type' is `Digit'.  The value is an integer number.
+     For unassigned codepoints, the value is `nil', which means NaN, or
+     "not-a-number".
+
+`digit-value'
+     Corresponds to the Unicode `Numeric_Value' property for characters
+     whose `Numeric_Type' is `Decimal'.  The value is an integer
+     number.  Examples of such characters include compatibility
+     subscript and superscript digits, for which the value is the
+     corresponding number.  For unassigned codepoints, the value is
+     `nil', which means NaN.
+
+`numeric-value'
+     Corresponds to the Unicode `Numeric_Value' property for characters
+     whose `Numeric_Type' is `Numeric'.  The value of this property is
+     an integer or a floating-point number.  Examples of characters
+     that have this property include fractions, subscripts,
+     superscripts, Roman numerals, currency numerators, and encircled
+     numbers.  For example, the value of this property for the character
+     `U+2155' (VULGAR FRACTION ONE FIFTH) is `0.2'.  For unassigned
+     codepoints, the value is `nil', which means NaN.
+
+`mirrored'
+     Corresponds to the Unicode `Bidi_Mirrored' property.  The value of
+     this property is a symbol, either `Y' or `N'.  For unassigned
+     codepoints, the value is `N'.
+
+`mirroring'
+     Corresponds to the Unicode `Bidi_Mirroring_Glyph' property.  The
+     value of this property is a character whose glyph represents the
+     mirror image of the character's glyph, or `nil' if there's no
+     defined mirroring glyph.  All the characters whose `mirrored'
+     property is `N' have `nil' as their `mirroring' property; however,
+     some characters whose `mirrored' property is `Y' also have `nil'
+     for `mirroring', because no appropriate characters exist with
+     mirrored glyphs.  Emacs uses this property to display mirror
+     images of characters when appropriate (*note Bidirectional
+     Display::).  For unassigned codepoints, the value is `nil'.
+
+`old-name'
+     Corresponds to the Unicode `Unicode_1_Name' property.  The value
+     is a string.  For unassigned codepoints, the value is an empty
+     string.
+
+`iso-10646-comment'
+     Corresponds to the Unicode `ISO_Comment' property.  The value is a
+     string.  For unassigned codepoints, the value is an empty string.
+
+`uppercase'
+     Corresponds to the Unicode `Simple_Uppercase_Mapping' property.
+     The value of this property is a single character.  For unassigned
+     codepoints, the value is `nil', which means the character itself.
+
+`lowercase'
+     Corresponds to the Unicode `Simple_Lowercase_Mapping' property.
+     The value of this property is a single character.  For unassigned
+     codepoints, the value is `nil', which means the character itself.
+
+`titlecase'
+     Corresponds to the Unicode `Simple_Titlecase_Mapping' property.
+     "Title case" is a special form of a character used when the first
+     character of a word needs to be capitalized.  The value of this
+     property is a single character.  For unassigned codepoints, the
+     value is `nil', which means the character itself.
+
+ -- Function: get-char-code-property char propname
+     This function returns the value of CHAR's PROPNAME property.
+
+          (get-char-code-property ?  'general-category)
+               => Zs
+          (get-char-code-property ?1  'general-category)
+               => Nd
+          ;; subscript 4
+          (get-char-code-property ?\u2084 'digit-value)
+               => 4
+          ;; one fifth
+          (get-char-code-property ?\u2155 'numeric-value)
+               => 0.2
+          ;; Roman IV
+          (get-char-code-property ?\u2163 'numeric-value)
+               => 4
+
+ -- Function: char-code-property-description prop value
+     This function returns the description string of property PROP's
+     VALUE, or `nil' if VALUE has no description.
+
+          (char-code-property-description 'general-category 'Zs)
+               => "Separator, Space"
+          (char-code-property-description 'general-category 'Nd)
+               => "Number, Decimal Digit"
+          (char-code-property-description 'numeric-value '1/5)
+               => nil
+
+ -- Function: put-char-code-property char propname value
+     This function stores VALUE as the value of the property PROPNAME
+     for the character CHAR.
+
+ -- Variable: unicode-category-table
+     The value of this variable is a char-table (*note Char-Tables::)
+     that specifies, for each character, its Unicode `General_Category'
+     property as a symbol.
+
+ -- Variable: char-script-table
+     The value of this variable is a char-table that specifies, for each
+     character, a symbol whose name is the script to which the character
+     belongs, according to the Unicode Standard classification of the
+     Unicode code space into script-specific blocks.  This char-table
+     has a single extra slot whose value is the list of all script
+     symbols.
+
+ -- Variable: char-width-table
+     The value of this variable is a char-table that specifies the
+     width of each character in columns that it will occupy on the
+     screen.
+
+ -- Variable: printable-chars
+     The value of this variable is a char-table that specifies, for each
+     character, whether it is printable or not.  That is, if evaluating
+     `(aref printable-chars char)' results in `t', the character is
+     printable, and if it results in `nil', it is not.
+
+   ---------- Footnotes ----------
+
+   (1) The Unicode specification writes these tag names inside `<..>'
+brackets, but the tag names in Emacs do not include the brackets; e.g.
+Unicode specifies `<small>' where Emacs uses `small'.
+
+
+File: elisp,  Node: Character Sets,  Next: Scanning Charsets,  Prev: Character Properties,  Up: Non-ASCII Characters
+
+33.6 Character Sets
+===================
+
+An Emacs "character set", or "charset", is a set of characters in which
+each character is assigned a numeric code point.  (The Unicode Standard
+calls this a "coded character set".)  Each Emacs charset has a name
+which is a symbol.  A single character can belong to any number of
+different character sets, but it will generally have a different code
+point in each charset.  Examples of character sets include `ascii',
+`iso-8859-1', `greek-iso8859-7', and `windows-1255'.  The code point
+assigned to a character in a charset is usually different from its code
+point used in Emacs buffers and strings.
+
+   Emacs defines several special character sets.  The character set
+`unicode' includes all the characters whose Emacs code points are in
+the range `0..#x10FFFF'.  The character set `emacs' includes all ASCII
+and non-ASCII characters.  Finally, the `eight-bit' charset includes
+the 8-bit raw bytes; Emacs uses it to represent raw bytes encountered
+in text.
+
+ -- Function: charsetp object
+     Returns `t' if OBJECT is a symbol that names a character set,
+     `nil' otherwise.
+
+ -- Variable: charset-list
+     The value is a list of all defined character set names.
+
+ -- Function: charset-priority-list &optional highestp
+     This functions returns a list of all defined character sets
+     ordered by their priority.  If HIGHESTP is non-`nil', the function
+     returns a single character set of the highest priority.
+
+ -- Function: set-charset-priority &rest charsets
+     This function makes CHARSETS the highest priority character sets.
+
+ -- Function: char-charset character &optional restriction
+     This function returns the name of the character set of highest
+     priority that CHARACTER belongs to.  ASCII characters are an
+     exception: for them, this function always returns `ascii'.
+
+     If RESTRICTION is non-`nil', it should be a list of charsets to
+     search.  Alternatively, it can be a coding system, in which case
+     the returned charset must be supported by that coding system
+     (*note Coding Systems::).
+
+ -- Function: charset-plist charset
+     This function returns the property list of the character set
+     CHARSET.  Although CHARSET is a symbol, this is not the same as
+     the property list of that symbol.  Charset properties include
+     important information about the charset, such as its documentation
+     string, short name, etc.
+
+ -- Function: put-charset-property charset propname value
+     This function sets the PROPNAME property of CHARSET to the given
+     VALUE.
+
+ -- Function: get-charset-property charset propname
+     This function returns the value of CHARSETs property PROPNAME.
+
+ -- Command: list-charset-chars charset
+     This command displays a list of characters in the character set
+     CHARSET.
+
+   Emacs can convert between its internal representation of a character
+and the character's codepoint in a specific charset.  The following two
+functions support these conversions.
+
+ -- Function: decode-char charset code-point
+     This function decodes a character that is assigned a CODE-POINT in
+     CHARSET, to the corresponding Emacs character, and returns it.  If
+     CHARSET doesn't contain a character of that code point, the value
+     is `nil'.  If CODE-POINT doesn't fit in a Lisp integer (*note
+     most-positive-fixnum: Integer Basics.), it can be specified as a
+     cons cell `(HIGH . LOW)', where LOW are the lower 16 bits of the
+     value and HIGH are the high 16 bits.
+
+ -- Function: encode-char char charset
+     This function returns the code point assigned to the character
+     CHAR in CHARSET.  If the result does not fit in a Lisp integer, it
+     is returned as a cons cell `(HIGH . LOW)' that fits the second
+     argument of `decode-char' above.  If CHARSET doesn't have a
+     codepoint for CHAR, the value is `nil'.
+
+   The following function comes in handy for applying a certain
+function to all or part of the characters in a charset:
+
+ -- Function: map-charset-chars function charset &optional arg
+          from-code to-code
+     Call FUNCTION for characters in CHARSET.  FUNCTION is called with
+     two arguments.  The first one is a cons cell `(FROM .  TO)', where
+     FROM and TO indicate a range of characters contained in charset.
+     The second argument passed to FUNCTION is ARG.
+
+     By default, the range of codepoints passed to FUNCTION includes
+     all the characters in CHARSET, but optional arguments FROM-CODE
+     and TO-CODE limit that to the range of characters between these
+     two codepoints of CHARSET.  If either of them is `nil', it
+     defaults to the first or last codepoint of CHARSET, respectively.
+
+
+File: elisp,  Node: Scanning Charsets,  Next: Translation of Characters,  Prev: Character Sets,  Up: Non-ASCII Characters
+
+33.7 Scanning for Character Sets
+================================
+
+Sometimes it is useful to find out which character set a particular
+character belongs to.  One use for this is in determining which coding
+systems (*note Coding Systems::) are capable of representing all of the
+text in question; another is to determine the font(s) for displaying
+that text.
+
+ -- Function: charset-after &optional pos
+     This function returns the charset of highest priority containing
+     the character at position POS in the current buffer.  If POS is
+     omitted or `nil', it defaults to the current value of point.  If
+     POS is out of range, the value is `nil'.
+
+ -- Function: find-charset-region beg end &optional translation
+     This function returns a list of the character sets of highest
+     priority that contain characters in the current buffer between
+     positions BEG and END.
+
+     The optional argument TRANSLATION specifies a translation table to
+     use for scanning the text (*note Translation of Characters::).  If
+     it is non-`nil', then each character in the region is translated
+     through this table, and the value returned describes the translated
+     characters instead of the characters actually in the buffer.
+
+ -- Function: find-charset-string string &optional translation
+     This function returns a list of character sets of highest priority
+     that contain characters in STRING.  It is just like
+     `find-charset-region', except that it applies to the contents of
+     STRING instead of part of the current buffer.
+
+
+File: elisp,  Node: Translation of Characters,  Next: Coding Systems,  Prev: Scanning Charsets,  Up: Non-ASCII Characters
+
+33.8 Translation of Characters
+==============================
+
+A "translation table" is a char-table (*note Char-Tables::) that
+specifies a mapping of characters into characters.  These tables are
+used in encoding and decoding, and for other purposes.  Some coding
+systems specify their own particular translation tables; there are also
+default translation tables which apply to all other coding systems.
+
+   A translation table has two extra slots.  The first is either `nil'
+or a translation table that performs the reverse translation; the
+second is the maximum number of characters to look up for translating
+sequences of characters (see the description of
+`make-translation-table-from-alist' below).
+
+ -- Function: make-translation-table &rest translations
+     This function returns a translation table based on the argument
+     TRANSLATIONS.  Each element of TRANSLATIONS should be a list of
+     elements of the form `(FROM . TO)'; this says to translate the
+     character FROM into TO.
+
+     The arguments and the forms in each argument are processed in
+     order, and if a previous form already translates TO to some other
+     character, say TO-ALT, FROM is also translated to TO-ALT.
+
+   During decoding, the translation table's translations are applied to
+the characters that result from ordinary decoding.  If a coding system
+has the property `:decode-translation-table', that specifies the
+translation table to use, or a list of translation tables to apply in
+sequence.  (This is a property of the coding system, as returned by
+`coding-system-get', not a property of the symbol that is the coding
+system's name.  *Note Basic Concepts of Coding Systems: Coding System
+Basics.)  Finally, if `standard-translation-table-for-decode' is
+non-`nil', the resulting characters are translated by that table.
+
+   During encoding, the translation table's translations are applied to
+the characters in the buffer, and the result of translation is actually
+encoded.  If a coding system has property `:encode-translation-table',
+that specifies the translation table to use, or a list of translation
+tables to apply in sequence.  In addition, if the variable
+`standard-translation-table-for-encode' is non-`nil', it specifies the
+translation table to use for translating the result.
+
+ -- Variable: standard-translation-table-for-decode
+     This is the default translation table for decoding.  If a coding
+     systems specifies its own translation tables, the table that is the
+     value of this variable, if non-`nil', is applied after them.
+
+ -- Variable: standard-translation-table-for-encode
+     This is the default translation table for encoding.  If a coding
+     systems specifies its own translation tables, the table that is the
+     value of this variable, if non-`nil', is applied after them.
+
+ -- Variable: translation-table-for-input
+     Self-inserting characters are translated through this translation
+     table before they are inserted.  Search commands also translate
+     their input through this table, so they can compare more reliably
+     with what's in the buffer.
+
+     This variable automatically becomes buffer-local when set.
+
+ -- Function: make-translation-table-from-vector vec
+     This function returns a translation table made from VEC that is an
+     array of 256 elements to map bytes (values 0 through #xFF) to
+     characters.  Elements may be `nil' for untranslated bytes.  The
+     returned table has a translation table for reverse mapping in the
+     first extra slot, and the value `1' in the second extra slot.
+
+     This function provides an easy way to make a private coding system
+     that maps each byte to a specific character.  You can specify the
+     returned table and the reverse translation table using the
+     properties `:decode-translation-table' and
+     `:encode-translation-table' respectively in the PROPS argument to
+     `define-coding-system'.
+
+ -- Function: make-translation-table-from-alist alist
+     This function is similar to `make-translation-table' but returns a
+     complex translation table rather than a simple one-to-one mapping.
+     Each element of ALIST is of the form `(FROM . TO)', where FROM and
+     TO are either characters or vectors specifying a sequence of
+     characters.  If FROM is a character, that character is translated
+     to TO (i.e. to a character or a character sequence).  If FROM is a
+     vector of characters, that sequence is translated to TO.  The
+     returned table has a translation table for reverse mapping in the
+     first extra slot, and the maximum length of all the FROM character
+     sequences in the second extra slot.
 
 
 File: elisp,  Node: Coding Systems,  Next: Input Methods,  Prev: Translation of Characters,  Up: Non-ASCII Characters
@@ -2791,7 +3223,7 @@ Modes::, for an example of how to set up a syntax table.
    A syntax table can inherit the data for some characters from the
 standard syntax table, while specifying other characters itself.  The
 "inherit" syntax class means "inherit this character's syntax from the
-standard syntax table."  Just changing the standard syntax for a
+standard syntax table".  Just changing the standard syntax for a
 character affects all syntax tables that inherit from it.
 
  -- Function: syntax-table-p object
@@ -3318,7 +3750,7 @@ higher-level functions for moving over balanced expressions.
    A character's syntax controls how it changes the state of the
 parser, rather than describing the state itself.  For example, a string
 delimiter character toggles the parser state between "in-string" and
-"in-code," but the syntax of characters does not directly say whether
+"in-code", but the syntax of characters does not directly say whether
 they are inside a string.  For example (note that 15 is the syntax code
 for generic string delimiters),
 
@@ -4278,7 +4710,7 @@ subprocess, the Lisp program waits for the subprocess to terminate
 before continuing execution.  When you create an asynchronous
 subprocess, it can run in parallel with the Lisp program.  This kind of
 subprocess is represented within Emacs by a Lisp object which is also
-called a "process."  Lisp programs can use this object to communicate
+called a "process".  Lisp programs can use this object to communicate
 with the subprocess or to control it.  For example, you can send
 signals, obtain status information, receive output from the process, or
 send input to it.
@@ -4327,7 +4759,8 @@ a program.  One of them, `start-process', creates an asynchronous
 process and returns a process object (*note Asynchronous Processes::).
 The other two, `call-process' and `call-process-region', create a
 synchronous process and do not return a process object (*note
-Synchronous Processes::).
+Synchronous Processes::).  There are various higher-level functions
+that make use of these primitives to run particular types of process.
 
    Synchronous and asynchronous processes are explained in the following
 sections.  Since the three functions are all called in a similar
@@ -4354,17 +4787,19 @@ name:
      is system-dependent.
 
    *Please note:* The argument PROGRAM contains only the name of the
-program; it may not contain any command-line arguments.  You must use
-ARGS to provide those.
+program; it may not contain any command-line arguments.  You must use a
+separate argument, ARGS, to provide those, as described below.
 
    Each of the subprocess-creating functions has a BUFFER-OR-NAME
-argument which specifies where the standard output from the program will
+argument that specifies where the standard output from the program will
 go.  It should be a buffer or a buffer name; if it is a buffer name,
 that will create the buffer if it does not already exist.  It can also
 be `nil', which says to discard the output unless a filter function
 handles it.  (*Note Filter Functions::, and *note Read and Print::.)
 Normally, you should avoid having multiple processes send output to the
-same buffer because their output would be intermixed randomly.
+same buffer because their output would be intermixed randomly.  For
+synchronous processes, you can send the output to a file instead of a
+buffer.
 
    All three of the subprocess-creating functions have a `&rest'
 argument, ARGS.  The ARGS must all be strings, and they are supplied to
@@ -4372,16 +4807,14 @@ PROGRAM as separate command line arguments.  Wildcard characters and
 other shell constructs have no special meanings in these strings, since
 the strings are passed directly to the specified program.
 
-   The subprocess gets its current directory from the value of
-`default-directory' (*note File Name Expansion::).
-
    The subprocess inherits its environment from Emacs, but you can
 specify overrides for it with `process-environment'.  *Note System
-Environment::.
+Environment::.  The subprocess gets its current directory from the
+value of `default-directory'.
 
  -- Variable: exec-directory
      The value of this variable is a string, the name of a directory
-     that contains programs that come with GNU Emacs, programs intended
+     that contains programs that come with GNU Emacs and are intended
      for Emacs to invoke.  The program `movemail' is an example of such
      a program; Rmail uses it to fetch new mail from an inbox.
 
@@ -4394,6 +4827,11 @@ Environment::.
      The value of `exec-path' is used by `call-process' and
      `start-process' when the PROGRAM argument is not an absolute file
      name.
+
+     Generally, you should not modify `exec-path' directly.  Instead,
+     ensure that your `PATH' environment variable is set appropriately
+     before starting Emacs.  Trying to modify `exec-path' independently
+     of `PATH' can lead to confusing results.
 
 
 File: elisp,  Node: Shell Arguments,  Next: Synchronous Processes,  Prev: Subprocess Creation,  Up: Processes
@@ -4409,7 +4847,7 @@ in the file name, they will confuse the shell.  To handle these
 characters, use the function `shell-quote-argument':
 
  -- Function: shell-quote-argument argument
-     This function returns a string which represents, in shell syntax,
+     This function returns a string that represents, in shell syntax,
      an argument whose actual contents are ARGUMENT.  It should work
      reliably to concatenate the return value into a shell command and
      then pass it to a shell for execution.
@@ -4438,11 +4876,11 @@ characters, use the function `shell-quote-argument':
    The following two functions are useful for combining a list of
 individual command-line argument strings into a single string, and
 taking a string apart into a list of individual command-line arguments.
-These functions are mainly intended to be used for converting user
-input in the minibuffer, a Lisp string, into a list of string arguments
-to be passed to `call-process' or `start-process', or for the
-converting such lists of arguments in a single Lisp string to be
-presented in the minibuffer or echo area.
+These functions are mainly intended for converting user input in the
+minibuffer, a Lisp string, into a list of string arguments to be passed
+to `call-process' or `start-process', or for converting such lists of
+arguments into a single Lisp string to be presented in the minibuffer
+or echo area.
 
  -- Function: split-string-and-unquote string &optional separators
      This function splits STRING into substrings at matches for the
@@ -4582,21 +5020,21 @@ much like text written into a file.  *Note Coding Systems::.
                => 0
 
           ---------- Buffer: foo ----------
-          /usr/user/lewis/manual
+          /home/lewis/manual
           ---------- Buffer: foo ----------
 
           (call-process "grep" nil "bar" nil "lewis" "/etc/passwd")
                => 0
 
           ---------- Buffer: bar ----------
-          lewis:5LTsHm66CSWKg:398:21:Bil Lewis:/user/lewis:/bin/csh
+          lewis:x:1001:1001:Bil Lewis,,,,:/home/lewis:/bin/bash
 
           ---------- Buffer: bar ----------
 
-     Here is a good example of the use of `call-process', which used to
-     be found in the definition of `insert-directory':
+     Here is an example of the use of `call-process', as used to be
+     found in the definition of the `insert-directory' function:
 
-          (call-process insert-directory-program nil t nil SWITCHES
+          (call-process insert-directory-program nil t nil switches
                         (if full-directory-p
                             (concat (file-name-as-directory file) ".")
                           file))
@@ -4604,9 +5042,9 @@ much like text written into a file.  *Note Coding Systems::.
  -- Function: process-file program &optional infile buffer display
           &rest args
      This function processes files synchronously in a separate process.
-     It is similar to `call-process' but may invoke a file handler based
-     on the value of the variable `default-directory'.  The current
-     working directory of the subprocess is `default-directory'.
+     It is similar to `call-process', but may invoke a file handler
+     based on the value of the variable `default-directory', which
+     specifies the current working directory of the subprocess.
 
      The arguments are handled in almost the same way as for
      `call-process', with the following differences:
@@ -4619,14 +5057,14 @@ much like text written into a file.  *Note Coding Systems::.
      way of the BUFFER argument.
 
      If a file handler is invoked, it determines the program to run
-     based on the first argument PROGRAM.  For instance, consider that a
+     based on the first argument PROGRAM.  For instance, suppose that a
      handler for remote files is invoked.  Then the path that is used
-     for searching the program might be different than `exec-path'.
+     for searching for the program might be different from `exec-path'.
 
      The second argument INFILE may invoke a file handler.  The file
      handler could be different from the handler chosen for the
      `process-file' function itself.  (For example, `default-directory'
-     could be on a remote host, whereas INFILE is on another remote
+     could be on one remote host, and INFILE on a different remote
      host.  Or `default-directory' could be non-special, whereas INFILE
      is on a remote host.)
 
@@ -4643,16 +5081,16 @@ much like text written into a file.  *Note Coding Systems::.
      names.
 
  -- Variable: process-file-side-effects
-     This variable indicates, whether a call of `process-file' changes
+     This variable indicates whether a call of `process-file' changes
      remote files.
 
-     Per default, this variable is always set to `t', meaning that a
+     By default, this variable is always set to `t', meaning that a
      call of `process-file' could potentially change any file on a
      remote host.  When set to `nil', a file handler could optimize its
-     behavior with respect to remote file attributes caching.
+     behavior with respect to remote file attribute caching.
 
-     This variable should never be changed by `setq'.  Instead of, it
-     shall be set only by let-binding.
+     You should only ever change this variable with a let-binding; never
+     with `setq'.
 
  -- Function: call-process-region start end program &optional delete
           destination display &rest args
@@ -4667,7 +5105,7 @@ much like text written into a file.  *Note Coding Systems::.
      above.  If DESTINATION is the integer 0, `call-process-region'
      discards the output and returns `nil' immediately, without waiting
      for the subprocess to finish (this only works if asynchronous
-     subprocesses are supported).
+     subprocesses are supported; i.e. not on MS-DOS).
 
      The remaining arguments, ARGS, are strings that specify command
      line arguments for the program.
@@ -4694,16 +5132,16 @@ much like text written into a file.  *Note Coding Systems::.
           inputinput-!-
           ---------- Buffer: foo ----------
 
-     The `shell-command-on-region' command uses `call-process-region'
-     like this:
+     For example, the `shell-command-on-region' command uses
+     `call-process-region' in a manner similar to this:
 
           (call-process-region
            start end
-           shell-file-name      ; Name of program.
-           nil                  ; Do not delete region.
-           buffer               ; Send output to `buffer'.
-           nil                  ; No redisplay during output.
-           "-c" command)        ; Arguments for the shell.
+           shell-file-name      ; name of program
+           nil                  ; do not delete region
+           buffer               ; send output to `buffer'
+           nil                  ; no redisplay during output
+           "-c" command)        ; arguments for the shell
 
  -- Function: call-process-shell-command command &optional infile
           destination display &rest args
@@ -4767,28 +5205,36 @@ delay.
      etc.) to be unique.  The buffer BUFFER-OR-NAME is the buffer to
      associate with the process.
 
+     If PROGRAM is `nil', Emacs opens a new pseudoterminal (pty) and
+     associates its input and output with BUFFER-OR-NAME, without
+     creating a subprocess.  In that case, the remaining arguments ARGS
+     are ignored.
+
      The remaining arguments, ARGS, are strings that specify command
-     line arguments for the program.
+     line arguments for the subprocess.
 
      In the example below, the first process is started and runs
-     (rather, sleeps) for 100 seconds.  Meanwhile, the second process
-     is started, and given the name `my-process<1>' for the sake of
-     uniqueness.  It inserts the directory listing at the end of the
-     buffer `foo', before the first process finishes.  Then it
-     finishes, and a message to that effect is inserted in the buffer.
-     Much later, the first process finishes, and another message is
-     inserted in the buffer for it.
+     (rather, sleeps) for 100 seconds (the output buffer `foo' is
+     created immediately).  Meanwhile, the second process is started,
+     and given the name `my-process<1>' for the sake of uniqueness.  It
+     inserts the directory listing at the end of the buffer `foo',
+     before the first process finishes.  Then it finishes, and a
+     message to that effect is inserted in the buffer.  Much later, the
+     first process finishes, and another message is inserted in the
+     buffer for it.
 
           (start-process "my-process" "foo" "sleep" "100")
                => #<process my-process>
 
-          (start-process "my-process" "foo" "ls" "-l" "/user/lewis/bin")
+          (start-process "my-process" "foo" "ls" "-l" "/bin")
                => #<process my-process<1>>
 
           ---------- Buffer: foo ----------
-          total 2
-          lrwxrwxrwx  1 lewis     14 Jul 22 10:12 gnuemacs --> /emacs
-          -rwxrwxrwx  1 lewis     19 Jul 30 21:02 lemon
+          total 8336
+          -rwxr-xr-x 1 root root 971384 Mar 30 10:14 bash
+          -rwxr-xr-x 1 root root 146920 Jul  5  2011 bsd-csh
+          ...
+          -rwxr-xr-x 1 root root 696880 Feb 28 15:55 zsh4
 
           Process my-process<1> finished
 
@@ -4797,29 +5243,29 @@ delay.
 
  -- Function: start-file-process name buffer-or-name program &rest args
      Like `start-process', this function starts a new asynchronous
-     subprocess running PROGRAM in it, and returns its process
-     object--when `default-directory' is not a magic file name.
+     subprocess running PROGRAM in it, and returns its process object.
 
-     If `default-directory' is magic, the function invokes its file
-     handler instead.  This handler ought to run PROGRAM, perhaps on
-     the local host, perhaps on a remote host that corresponds to
-     `default-directory'.  In the latter case, the local part of
-     `default-directory' becomes the working directory of the process.
+     The difference from `start-process' is that this function may
+     invoked a file handler based on the value of `default-directory'.
+     This handler ought to run PROGRAM, perhaps on the local host,
+     perhaps on a remote host that corresponds to `default-directory'.
+     In the latter case, the local part of `default-directory' becomes
+     the working directory of the process.
 
      This function does not try to invoke file name handlers for
      PROGRAM or for the PROGRAM-ARGS.
 
      Depending on the implementation of the file handler, it might not
      be possible to apply `process-filter' or `process-sentinel' to the
-     resulting process object (*note Filter Functions::, *note
-     Sentinels::).
+     resulting process object.  *Note Filter Functions::, and *note
+     Sentinels::.
 
      Some file handlers may not support `start-file-process' (for
-     example `ange-ftp-hook-function').  In such cases, the function
-     does nothing and returns `nil'.
+     example the function `ange-ftp-hook-function').  In such cases,
+     this function does nothing and returns `nil'.
 
  -- Function: start-process-shell-command name buffer-or-name command
-     This function is like `start-process' except that it uses a shell
+     This function is like `start-process', except that it uses a shell
      to execute the specified command.  The argument COMMAND is a shell
      command name.  The variable `shell-file-name' specifies which
      shell to use.
@@ -4827,16 +5273,18 @@ delay.
      The point of running a program through the shell, rather than
      directly with `start-process', is so that you can employ shell
      features such as wildcards in the arguments.  It follows that if
-     you include an arbitrary user-specified arguments in the command,
-     you should quote it with `shell-quote-argument' first, so that any
-     special shell characters do _not_ have their special shell
-     meanings.  *Note Shell Arguments::.
+     you include any arbitrary user-specified arguments in the command,
+     you should quote them with `shell-quote-argument' first, so that
+     any special shell characters do _not_ have their special shell
+     meanings.  *Note Shell Arguments::.  Of course, when executing
+     commands based on user input you should also consider the security
+     implications.
 
  -- Function: start-file-process-shell-command name buffer-or-name
           command
      This function is like `start-process-shell-command', but uses
-     `start-file-process' internally.  By this, COMMAND can be executed
-     also on remote hosts, depending on `default-directory'.
+     `start-file-process' internally.  Because of this, COMMAND can
+     also be executed on remote hosts, depending on `default-directory'.
 
  -- Variable: process-connection-type
      This variable controls the type of device used to communicate with
@@ -4856,7 +5304,7 @@ delay.
      with one subprocess by binding the variable around the call to
      `start-process'.
 
-          (let ((process-connection-type nil))  ; Use a pipe.
+          (let ((process-connection-type nil))  ; use a pipe
             (start-process ...))
 
      To determine whether a given subprocess actually got a pipe or a
@@ -4872,9 +5320,9 @@ File: elisp,  Node: Deleting Processes,  Next: Process Information,  Prev: Async
 "Deleting a process" disconnects Emacs immediately from the subprocess.
 Processes are deleted automatically after they terminate, but not
 necessarily right away.  You can delete a process explicitly at any
-time.  If you delete a terminated process explicitly before it is
+time.  If you explicitly delete a terminated process before it is
 deleted automatically, no harm results.  Deleting a running process
-sends a signal to terminate it (and its child processes if any), and
+sends a signal to terminate it (and its child processes, if any), and
 calls the process sentinel if it has one.  *Note Sentinels::.
 
    When a process is deleted, the process object itself continues to
@@ -4911,19 +5359,19 @@ File: elisp,  Node: Process Information,  Next: Input to Processes,  Prev: Delet
 37.6 Process Information
 ========================
 
-Several functions return information about processes.  `list-processes'
-is provided for interactive use.
+Several functions return information about processes.
 
- -- Command: list-processes &optional query-only
+ -- Command: list-processes &optional query-only buffer
      This command displays a listing of all living processes.  In
      addition, it finally deletes any process whose status was `Exited'
      or `Signaled'.  It returns `nil'.
 
-     The processes are shown in a buffer named `*Process List*', whose
-     major mode is named Process Menu mode.
+     The processes are shown in a buffer named `*Process List*' (unless
+     you specify otherwise using the optional argument BUFFER), whose
+     major mode is Process Menu mode.
 
-     If QUERY-ONLY is non-`nil' then it lists only processes whose
-     query flag is non-`nil'.  *Note Query Before Exit::.
+     If QUERY-ONLY is non-`nil', it only lists processes whose query
+     flag is non-`nil'.  *Note Query Before Exit::.
 
  -- Function: process-list
      This function returns a list of all processes that have not been
@@ -4933,8 +5381,8 @@ is provided for interactive use.
                => (#<process display-time> #<process shell>)
 
  -- Function: get-process name
-     This function returns the process named NAME, or `nil' if there is
-     none.  An error is signaled if NAME is not a string.
+     This function returns the process named NAME (a string), or `nil'
+     if there is none.
 
           (get-process "shell")
                => #<process shell>
@@ -4946,14 +5394,13 @@ is provided for interactive use.
      that were given to the program.
 
           (process-command (get-process "shell"))
-               => ("/bin/csh" "-i")
+               => ("bash" "-i")
 
  -- Function: process-contact process &optional key
      This function returns information about how a network or serial
-     process was set up.  For a network process, when KEY is `nil', it
-     returns `(HOSTNAME SERVICE)' which specifies what you connected
-     to.  For a serial process, when KEY is `nil', it returns `(PORT
-     SPEED)'.  For an ordinary child process, this function always
+     process was set up.  When KEY is `nil', it returns `(HOSTNAME
+     SERVICE)' for a network process, and `(PORT SPEED)' for a serial
+     process.  For an ordinary child process, this function always
      returns `t'.
 
      If KEY is `t', the value is the complete status information for
@@ -4962,7 +5409,8 @@ is provided for interactive use.
      `make-serial-process', except that some of the values represent
      the current status instead of what you specified.
 
-     For a network process:
+     For a network process, the values include (see
+     `make-network-process' for a complete list):
 
     `:buffer'
           The associated value is the process buffer.
@@ -5001,7 +5449,7 @@ is provided for interactive use.
      and remains constant as long as the process exists.
 
  -- Function: process-name process
-     This function returns the name of PROCESS.
+     This function returns the name of PROCESS, as a string.
 
  -- Function: process-status process-name
      This function returns the status of PROCESS-NAME as a symbol.  The
@@ -5044,17 +5492,13 @@ is provided for interactive use.
 
           (process-status (get-buffer "*shell*"))
                => run
-          x
-               => #<process xx<1>>
-          (process-status x)
-               => exit
 
      For a network connection, `process-status' returns one of the
      symbols `open' or `closed'.  The latter means that the other side
      closed the connection, or Emacs did `delete-process'.
 
  -- Function: process-live-p process
-     This function returns nin-`nil' if PROCESS is alive.  A process is
+     This function returns non-`nil' if PROCESS is alive.  A process is
      considered alive if its status is `run', `open', `listen',
      `connect' or `stop'.
 
@@ -5078,11 +5522,9 @@ is provided for interactive use.
      the remote host is provided as process property `remote-tty'.
 
  -- Function: process-coding-system process
-     This function returns a cons cell describing the coding systems in
-     use for decoding output from PROCESS and for encoding input to
-     PROCESS (*note Coding Systems::).  The value has this form:
-
-          (CODING-SYSTEM-FOR-DECODING . CODING-SYSTEM-FOR-ENCODING)
+     This function returns a cons cell `(DECODE . ENCODE)', describing
+     the coding systems in use for decoding output from, and encoding
+     input to, PROCESS (*note Coding Systems::).
 
  -- Function: set-process-coding-system process &optional
           decoding-system encoding-system
@@ -5145,21 +5587,11 @@ process.
 
  -- Function: process-send-string process string
      This function sends PROCESS the contents of STRING as standard
-     input.  If it is `nil', the current buffer's process is used.
-
-     The function returns `nil'.
+     input.  It returns `nil'.  For example, to make a Shell buffer
+     list files:
 
           (process-send-string "shell<1>" "ls\n")
                => nil
-
-
-          ---------- Buffer: *shell* ----------
-          ...
-          introduction.texi               syntax-tables.texi~
-          introduction.texi~              text.texi
-          introduction.txt                text.texi~
-          ...
-          ---------- Buffer: *shell* ----------
 
  -- Function: process-send-region process start end
      This function sends the text in the region defined by START and
@@ -5171,9 +5603,8 @@ process.
 
  -- Function: process-send-eof &optional process
      This function makes PROCESS see an end-of-file in its input.  The
-     EOF comes after any text already sent to it.
-
-     The function returns PROCESS.
+     EOF comes after any text already sent to it.  The function returns
+     PROCESS.
 
           (process-send-eof "shell")
                => "shell"
@@ -5197,7 +5628,7 @@ system.  For example, the signal `SIGINT' means that the user has typed
 `C-c', or that some analogous thing has happened.
 
    Each signal has a standard effect on the subprocess.  Most signals
-kill the subprocess, but some stop or resume execution instead.  Most
+kill the subprocess, but some stop (or resume) execution instead.  Most
 signals can optionally be handled by programs; if the program handles
 the signal, then we can say nothing in general about its effects.
 
@@ -5206,7 +5637,7 @@ section.  Emacs also sends signals automatically at certain times:
 killing a buffer sends a `SIGHUP' signal to all its associated
 processes; killing Emacs sends a `SIGHUP' signal to all remaining
 processes.  (`SIGHUP' is a signal that usually indicates that the user
-hung up the phone.)
+"hung up the phone", i.e., disconnected.)
 
    Each of the signal-sending functions takes two optional arguments:
 PROCESS and CURRENT-GROUP.
@@ -5266,11 +5697,12 @@ job-control shells won't work when a pipe is used.  See
 
  -- Function: signal-process process signal
      This function sends a signal to process PROCESS.  The argument
-     SIGNAL specifies which signal to send; it should be an integer.
+     SIGNAL specifies which signal to send; it should be an integer, or
+     a symbol whose name is a signal.
 
-     The PROCESS argument can be a system process ID; that allows you
-     to send signals to processes that are not children of Emacs.
-     *Note System Processes::.
+     The PROCESS argument can be a system process ID (an integer); that
+     allows you to send signals to processes that are not children of
+     Emacs.  *Note System Processes::.
 
 
 File: elisp,  Node: Output from Processes,  Next: Sentinels,  Prev: Signals to Processes,  Up: Processes
@@ -5280,10 +5712,10 @@ File: elisp,  Node: Output from Processes,  Next: Sentinels,  Prev: Signals to P
 
 There are two ways to receive the output that a subprocess writes to
 its standard output stream.  The output can be inserted in a buffer,
-which is called the associated buffer of the process, or a function
-called the "filter function" can be called to act on the output.  If
-the process has no buffer and no filter function, its output is
-discarded.
+which is called the associated buffer of the process (*note Process
+Buffers::), or a function called the "filter function" can be called to
+act on the output.  If the process has no buffer and no filter
+function, its output is discarded.
 
    When a subprocess terminates, Emacs reads any pending output, then
 stops reading output from that subprocess.  Therefore, if the
@@ -5291,20 +5723,20 @@ subprocess has children that are still live and still producing output,
 Emacs won't receive that output.
 
    Output from a subprocess can arrive only while Emacs is waiting: when
-reading terminal input, in `sit-for' and `sleep-for' (*note Waiting::),
-and in `accept-process-output' (*note Accepting Output::).  This
-minimizes the problem of timing errors that usually plague parallel
-programming.  For example, you can safely create a process and only
-then specify its buffer or filter function; no output can arrive before
-you finish, if the code in between does not call any primitive that
-waits.
+reading terminal input (see the function `waiting-for-user-input-p'),
+in `sit-for' and `sleep-for' (*note Waiting::), and in
+`accept-process-output' (*note Accepting Output::).  This minimizes the
+problem of timing errors that usually plague parallel programming.  For
+example, you can safely create a process and only then specify its
+buffer or filter function; no output can arrive before you finish, if
+the code in between does not call any primitive that waits.
 
  -- Variable: process-adaptive-read-buffering
      On some systems, when Emacs reads the output from a subprocess, the
      output data is read in very small blocks, potentially resulting in
      very poor performance.  This behavior can be remedied to some
-     extent by setting the variable PROCESS-ADAPTIVE-READ-BUFFERING to a
-     non-`nil' value (the default), as it will automatically delay
+     extent by setting the variable `process-adaptive-read-buffering'
+     to a non-`nil' value (the default), as it will automatically delay
      reading from such processes, thus allowing them to produce more
      output before Emacs tries to read it.
 
@@ -5368,9 +5800,9 @@ This confirmation is done by the function
      consecutively.
 
      Filter functions normally should use this marker in the same
-     fashion as is done by direct insertion of output in the buffer.  A
-     good example of a filter function that uses `process-mark' is
-     found at the end of the following section.
+     fashion as is done by direct insertion of output in the buffer.
+     For an example of a filter function that uses `process-mark',
+     *note Process Filter Example::.
 
      When the user is expected to enter input in the process buffer for
      transmission to the process, the process marker separates the new
@@ -5411,7 +5843,8 @@ no filter.
 
    The filter function can only be called when Emacs is waiting for
 something, because process output arrives only at such times.  Emacs
-waits when reading terminal input, in `sit-for' and `sleep-for' (*note
+waits when reading terminal input (see the function
+`waiting-for-user-input-p'), in `sit-for' and `sleep-for' (*note
 Waiting::), and in `accept-process-output' (*note Accepting Output::).
 
    A filter function must accept two arguments: the associated process
@@ -5427,37 +5860,33 @@ to do this is with the macro `with-local-quit'.  *Note Quitting::.
    If an error happens during execution of a filter function, it is
 caught automatically, so that it doesn't stop the execution of whatever
 program was running when the filter function was started.  However, if
-`debug-on-error' is non-`nil', the error-catching is turned off.  This
-makes it possible to use the Lisp debugger to debug the filter
-function.  *Note Debugger::.
+`debug-on-error' is non-`nil', errors are not caught.  This makes it
+possible to use the Lisp debugger to debug the filter function.  *Note
+Debugger::.
 
-   Many filter functions sometimes or always insert the text in the
+   Many filter functions sometimes (or always) insert the output in the
 process's buffer, mimicking the actions of Emacs when there is no
-filter.  Such filter functions need to use `set-buffer' in order to be
-sure to insert in that buffer.  To avoid setting the current buffer
-semipermanently, these filter functions must save and restore the
-current buffer.  They should also check whether the buffer is still
-alive, update the process marker, and in some cases update the value of
-point.  Here is how to do these things:
+filter.  Such filter functions need to make sure that they save the
+current buffer, select the correct buffer (if different) before
+inserting output, and then restore the original buffer.  They should
+also check whether the buffer is still alive, update the process
+marker, and in some cases update the value of point.  Here is how to do
+these things:
 
      (defun ordinary-insertion-filter (proc string)
        (when (buffer-live-p (process-buffer proc))
          (with-current-buffer (process-buffer proc)
            (let ((moving (= (point) (process-mark proc))))
              (save-excursion
-               ;;  Insert the text, advancing the process marker.
+               ;; Insert the text, advancing the process marker.
                (goto-char (process-mark proc))
                (insert string)
                (set-marker (process-mark proc) (point)))
              (if moving (goto-char (process-mark proc)))))))
 
-The reason to use `with-current-buffer', rather than using
-`save-excursion' to save and restore the current buffer, is so as to
-preserve the change in point made by the second call to `goto-char'.
-
    To make the filter force the process buffer to be visible whenever
-new text arrives, insert the following line just before the
-`with-current-buffer' construct:
+new text arrives, you could insert a line like the following just
+before the `with-current-buffer' construct:
 
      (display-buffer (process-buffer proc))
 
@@ -5465,12 +5894,10 @@ new text arrives, insert the following line just before the
 previously, eliminate the variable `moving' and call `goto-char'
 unconditionally.
 
-   In earlier Emacs versions, every filter function that did regular
-expression searching or matching had to explicitly save and restore the
-match data.  Now Emacs does this automatically for filter functions;
-they never need to do it explicitly.  *Note Match Data::.
+   Note that Emacs automatically saves and restores the match data
+while executing filter functions.  *Note Match Data::.
 
-   The output to the function may come in chunks of any size.  A program
+   The output to the filter may come in chunks of any size.  A program
 that produces the same output twice in a row may send it as one batch of
 200 characters one time, and five batches of 40 characters the next.  If
 the filter looks for certain text strings in the subprocess output, make
@@ -5486,7 +5913,7 @@ text into a temporary buffer, which can then be searched.
      This function returns the filter function of PROCESS, or `nil' if
      it has none.
 
-   Here is an example of use of a filter function:
+   Here is an example of the use of a filter function:
 
      (defun keep-output (process output)
         (setq kept (cons output kept)))
@@ -5498,7 +5925,7 @@ text into a temporary buffer, which can then be searched.
      (process-send-string "shell" "ls ~/other\n")
           => nil
      kept
-          => ("lewis@slug[8] % "
+          => ("lewis@slug:$ "
      "FINAL-W87-SHORT.MSS    backup.otl              kolstad.mss~
      address.txt             backup.psf              kolstad.psf
      backup.bib~             david.mss               resume-Dec-86.mss~
@@ -5528,8 +5955,8 @@ If the text output by a process contains null bytes, Emacs by default
 uses `no-conversion' for it; see *note inhibit-null-byte-detection:
 Lisp and Coding Systems, for how to control this behavior.
 
-   *Warning:* Coding systems such as `undecided' which determine the
-coding system from the data do not work entirely reliably with
+   *Warning:* Coding systems such as `undecided', which determine the
+coding system from the data, do not work entirely reliably with
 asynchronous subprocess output.  This is because Emacs has to process
 asynchronous subprocess output in batches, as it arrives.  Emacs must
 try to detect the proper coding system from one batch at a time, and
@@ -5542,7 +5969,7 @@ than `undecided' or `latin-1'.
 output as a multibyte string or as a unibyte string according to the
 process's filter coding system.  Emacs decodes the output according to
 the process output coding system, which usually produces a multibyte
-string, except for coding systems such as `binary' and `raw-text'
+string, except for coding systems such as `binary' and `raw-text'.
 
 
 File: elisp,  Node: Accepting Output,  Prev: Decoding Output,  Up: Output from Processes
@@ -5570,10 +5997,10 @@ until output arrives from a process.
      `accept-process-output' returns after that much time, whether or
      not there has been any subprocess output.
 
-     The argument MILLISEC is semi-obsolete nowadays because SECONDS
-     can be a floating point number to specify waiting a fractional
-     number of seconds.  If SECONDS is 0, the function accepts whatever
-     output is pending but does not wait.
+     The argument MILLISEC is obsolete (and should not be used),
+     because SECONDS can be a floating point number to specify waiting
+     a fractional number of seconds.  If SECONDS is 0, the function
+     accepts whatever output is pending but does not wait.
 
      If PROCESS is a process, and the argument JUST-THIS-ONE is
      non-`nil', only output from that process is handled, suspending
@@ -5613,8 +6040,8 @@ of event.
 
    A sentinel runs only while Emacs is waiting (e.g., for terminal
 input, or for time to elapse, or for process output).  This avoids the
-timing errors that could result from running them at random places in
-the middle of other Lisp programs.  A program can wait, so that
+timing errors that could result from running sentinels at random places
+in the middle of other Lisp programs.  A program can wait, so that
 sentinels will run, by calling `sit-for' or `sleep-for' (*note
 Waiting::), or `accept-process-output' (*note Accepting Output::).
 Emacs also allows sentinels to run when the command loop is reading
@@ -5646,18 +6073,16 @@ is with the macro `with-local-quit'.  *Note Quitting::.
    If an error happens during execution of a sentinel, it is caught
 automatically, so that it doesn't stop the execution of whatever
 programs was running when the sentinel was started.  However, if
-`debug-on-error' is non-`nil', the error-catching is turned off.  This
-makes it possible to use the Lisp debugger to debug the sentinel.
-*Note Debugger::.
+`debug-on-error' is non-`nil',  errors are not caught.  This makes it
+possible to use the Lisp debugger to debug the sentinel.  *Note
+Debugger::.
 
    While a sentinel is running, the process sentinel is temporarily set
 to `nil' so that the sentinel won't run recursively.  For this reason
 it is not possible for a sentinel to specify a new sentinel.
 
-   In earlier Emacs versions, every sentinel that did regular expression
-searching or matching had to explicitly save and restore the match data.
-Now Emacs does this automatically for sentinels; they never need to do
-it explicitly.  *Note Match Data::.
+   Note that Emacs automatically saves and restores the match data
+while executing sentinels.  *Note Match Data::.
 
  -- Function: set-process-sentinel process sentinel
      This function associates SENTINEL with PROCESS.  If SENTINEL is
@@ -5665,7 +6090,7 @@ it explicitly.  *Note Match Data::.
      behavior when there is no sentinel is to insert a message in the
      process's buffer when the process status changes.
 
-     Changes in process sentinel take effect immediately--if the
+     Changes in process sentinels take effect immediately--if the
      sentinel is slated to be run but has not been called yet, and you
      specify a new sentinel, the eventual call to the sentinel will use
      the new one.
@@ -5686,8 +6111,8 @@ it explicitly.  *Note Match Data::.
  -- Function: waiting-for-user-input-p
      While a sentinel or filter function is running, this function
      returns non-`nil' if Emacs was waiting for keyboard input from the
-     user at the time the sentinel or filter function was called, `nil'
-     if it was not.
+     user at the time the sentinel or filter function was called, or
+     `nil' if it was not.
 
 
 File: elisp,  Node: Query Before Exit,  Next: System Processes,  Prev: Sentinels,  Up: Processes
@@ -5698,7 +6123,7 @@ File: elisp,  Node: Query Before Exit,  Next: System Processes,  Prev: Sentinels
 When Emacs exits, it terminates all its subprocesses by sending them
 the `SIGHUP' signal.  Because subprocesses may be doing valuable work,
 Emacs normally asks the user to confirm that it is ok to terminate
-them.  Each process has a query flag which, if non-`nil', says that
+them.  Each process has a query flag, which, if non-`nil', says that
 Emacs should ask for confirmation before exiting and thus killing that
 process.  The default for the query flag is `t', meaning _do_ query.
 
@@ -5709,24 +6134,11 @@ process.  The default for the query flag is `t', meaning _do_ query.
      This function sets the query flag of PROCESS to FLAG.  It returns
      FLAG.
 
-          ;; Don't query about the shell process
+     Here is an example of using `set-process-query-on-exit-flag' on a
+     shell process to avoid querying:
+
           (set-process-query-on-exit-flag (get-process "shell") nil)
-               => t
-
- -- Function: process-kill-without-query process &optional do-query
-     This function clears the query flag of PROCESS, so that Emacs will
-     not query the user on account of that process.
-
-     Actually, the function does more than that: it returns the old
-     value of the process's query flag, and sets the query flag to
-     DO-QUERY.  Please don't use this function to do those things any
-     more--please use the newer, cleaner functions
-     `process-query-on-exit-flag' and `set-process-query-on-exit-flag'
-     in all but the simplest cases.  The only way you should use
-     `process-kill-without-query' nowadays is like this:
-
-          ;; Don't query about the shell process
-          (process-kill-without-query (get-process "shell"))
+               => nil
 
 
 File: elisp,  Node: System Processes,  Next: Transaction Queues,  Prev: Query Before Exit,  Up: Processes
@@ -5737,7 +6149,7 @@ File: elisp,  Node: System Processes,  Next: Transaction Queues,  Prev: Query Be
 In addition to accessing and manipulating processes that are
 subprocesses of the current Emacs session, Emacs Lisp programs can also
 access other processes running on the same machine.  We call these
-"system processes", to distinguish between them and Emacs subprocesses.
+"system processes", to distinguish them from Emacs subprocesses.
 
    Emacs provides several primitives for accessing system processes.
 Not all platforms support these primitives; on those which don't, these
@@ -5755,7 +6167,7 @@ primitives return `nil'.
      specified by its process ID PID.  Each association in the alist is
      of the form `(KEY . VALUE)', where KEY designates the attribute
      and VALUE is the value of that attribute.  The various attribute
-     KEY's that this function can return are listed below.  Not all
+     KEYs that this function can return are listed below.  Not all
      platforms support all of these attributes; if an attribute is not
      supported, its association will not appear in the returned alist.
      Values that are numbers can be either integer or floating-point,
@@ -5952,8 +6364,6 @@ queue communicating with a specified process.  Then you can call
      questions.  This produces more reliable results with some
      processes.
 
-     The return value of `tq-enqueue' itself is not meaningful.
-
  -- Function: tq-close queue
      Shut down transaction queue QUEUE, waiting for all pending
      transactions to complete, and then terminate the connection or
@@ -5969,14 +6379,14 @@ File: elisp,  Node: Network,  Next: Network Servers,  Prev: Transaction Queues, 
 =========================
 
 Emacs Lisp programs can open stream (TCP) and datagram (UDP) network
-connections to other processes on the same machine or other machines.
-A network connection is handled by Lisp much like a subprocess, and is
-represented by a process object.  However, the process you are
-communicating with is not a child of the Emacs process, so it has no
-process ID, and you can't kill it or send it signals.  All you can do
-is send and receive data.  `delete-process' closes the connection, but
-does not kill the program at the other end; that program must decide
-what to do about closure of the connection.
+connections (*note Datagrams::) to other processes on the same machine
+or other machines.  A network connection is handled by Lisp much like a
+subprocess, and is represented by a process object.  However, the
+process you are communicating with is not a child of the Emacs process,
+has no process ID, and you can't kill it or send it signals.  All you
+can do is send and receive data.  `delete-process' closes the
+connection, but does not kill the program at the other end; that
+program must decide what to do about closure of the connection.
 
    Lisp programs can listen for connections by creating network
 servers.  A network server is also represented by a kind of process
@@ -6000,7 +6410,7 @@ server, `serial' for a serial port connection, or `real' for a real
 subprocess.
 
    The `process-status' function returns `open', `closed', `connect',
-and `failed' for network connections.  For a network server, the status
+or `failed' for network connections.  For a network server, the status
 is always `listen'.  None of those values is possible for a real
 subprocess.  *Note Process Information::.
 
@@ -6008,27 +6418,40 @@ subprocess.  *Note Process Information::.
 `stop-process' and `continue-process'.  For a server process, being
 stopped means not accepting new connections.  (Up to 5 connection
 requests will be queued for when you resume the server; you can
-increase this limit, unless it is imposed by the operating system.)
-For a network stream connection, being stopped means not processing
-input (any arriving input waits until you resume the connection).  For
-a datagram connection, some number of packets may be queued but input
-may be lost.  You can use the function `process-command' to determine
-whether a network connection or server is stopped; a non-`nil' value
-means yes.
+increase this limit, unless it is imposed by the operating system--see
+the `:server' keyword of `make-network-process', *note Network
+Processes::.)  For a network stream connection, being stopped means not
+processing input (any arriving input waits until you resume the
+connection).  For a datagram connection, some number of packets may be
+queued but input may be lost.  You can use the function
+`process-command' to determine whether a network connection or server
+is stopped; a non-`nil' value means yes.
 
- -- Function: open-network-stream name buffer-or-name host service
-          &rest parameters
+   Emacs can create encrypted network connections, using either built-in
+or external support.  The built-in support uses the GnuTLS ("Transport
+Layer Security") library; see the GnuTLS project page
+(http://www.gnu.org/software/gnutls/).  If your Emacs was compiled with
+GnuTLS support, the function `gnutls-available-p' is defined and
+returns non-`nil'.  For more details, *note Overview: (emacs-gnutls)Top.
+The external support uses the `starttls.el' library, which requires a
+helper utility such as `gnutls-cli' to be installed on the system.  The
+`open-network-stream' function can transparently handle the details of
+creating encrypted connections for you, using whatever support is
+available.
+
+ -- Function: open-network-stream name buffer host service &rest
+          parameters
      This function opens a TCP connection, with optional encryption, and
      returns a process object that represents the connection.
 
      The NAME argument specifies the name for the process object.  It
      is modified as necessary to make it unique.
 
-     The BUFFER-OR-NAME argument is the buffer to associate with the
+     The BUFFER argument is the buffer to associate with the
      connection.  Output from the connection is inserted in the buffer,
      unless you specify a filter function to handle the output.  If
-     BUFFER-OR-NAME is `nil', it means that the connection is not
-     associated with any buffer.
+     BUFFER is `nil', it means that the connection is not associated
+     with any buffer.
 
      The arguments HOST and SERVICE specify where to connect to; HOST
      is the host name (a string), and SERVICE is the name of a defined
@@ -6092,7 +6515,7 @@ means yes.
           Either a list of the form `(KEY-FILE CERT-FILE)', naming the
           certificate key file and certificate file itself, or `t',
           meaning to query `auth-source' for this information (*note
-          auth-source: (auth)Top.).  Only used for TLS or STARTTLS.
+          Overview: (auth)Top.).  Only used for TLS or STARTTLS.
 
     `:return-list CONS-OR-NIL'
           The return value of this function.  If omitted or `nil',
@@ -6116,17 +6539,18 @@ File: elisp,  Node: Network Servers,  Next: Datagrams,  Prev: Network,  Up: Proc
 37.15 Network Servers
 =====================
 
-You create a server by calling `make-network-process' with `:server t'.
-The server will listen for connection requests from clients.  When it
-accepts a client connection request, that creates a new network
-connection, itself a process object, with the following parameters:
+You create a server by calling `make-network-process' (*note Network
+Processes::) with `:server t'.  The server will listen for connection
+requests from clients.  When it accepts a client connection request,
+that creates a new network connection, itself a process object, with
+the following parameters:
 
    * The connection's process name is constructed by concatenating the
      server process's NAME with a client identification string.  The
      client identification string for an IPv4 connection looks like
-     `<A.B.C.D:P>'.  Otherwise, it is a unique number in brackets, as
-     in `<NNN>'.  The number is unique for each connection in the Emacs
-     session.
+     `<A.B.C.D:P>', which represents an address and port number.
+     Otherwise, it is a unique number in brackets, as in `<NNN>'.  The
+     number is unique for each connection in the Emacs session.
 
    * If the server's filter is non-`nil', the connection process does
      not get a separate process buffer; otherwise, Emacs creates a new
@@ -6143,8 +6567,8 @@ connection, itself a process object, with the following parameters:
      uses its filter and sentinel; their sole purpose is to initialize
      connections made to the server.
 
-   * The connection's process contact info is set according to the
-     client's addressing information (typically an IP address and a
+   * The connection's process contact information is set according to
+     the client's addressing information (typically an IP address and a
      port number).  This information is associated with the
      `process-contact' keywords `:host', `:service', `:remote'.
 
@@ -6159,10 +6583,10 @@ File: elisp,  Node: Datagrams,  Next: Low-Level Network,  Prev: Network Servers,
 37.16 Datagrams
 ===============
 
-A datagram connection communicates with individual packets rather than
-streams of data.  Each call to `process-send' sends one datagram packet
-(*note Input to Processes::), and each datagram received results in one
-call to the filter function.
+A "datagram" connection communicates with individual packets rather
+than streams of data.  Each call to `process-send' sends one datagram
+packet (*note Input to Processes::), and each datagram received results
+in one call to the filter function.
 
    The datagram connection doesn't have to talk with the same remote
 peer all the time.  It has a "remote peer address" which specifies
@@ -6197,513 +6621,6 @@ than that of `open-network-stream', using `make-network-process'.
 * Features: Network Feature Testing.
                              Determining which network features work on
                                the machine you are using.
-
-
-File: elisp,  Node: Network Processes,  Next: Network Options,  Up: Low-Level Network
-
-37.17.1 `make-network-process'
-------------------------------
-
-The basic function for creating network connections and network servers
-is `make-network-process'.  It can do either of those jobs, depending
-on the arguments you give it.
-
- -- Function: make-network-process &rest args
-     This function creates a network connection or server and returns
-     the process object that represents it.  The arguments ARGS are a
-     list of keyword/argument pairs.  Omitting a keyword is always
-     equivalent to specifying it with value `nil', except for
-     `:coding', `:filter-multibyte', and `:reuseaddr'.  Here are the
-     meaningful keywords:
-
-    :name NAME
-          Use the string NAME as the process name.  It is modified if
-          necessary to make it unique.
-
-    :type TYPE
-          Specify the communication type.  A value of `nil' specifies a
-          stream connection (the default); `datagram' specifies a
-          datagram connection; `seqpacket' specifies a "sequenced
-          packet stream" connection.  Both connections and servers can
-          be of these types.
-
-    :server SERVER-FLAG
-          If SERVER-FLAG is non-`nil', create a server.  Otherwise,
-          create a connection.  For a stream type server, SERVER-FLAG
-          may be an integer which then specifies the length of the
-          queue of pending connections to the server.  The default
-          queue length is 5.
-
-    :host HOST
-          Specify the host to connect to.  HOST should be a host name or
-          Internet address, as a string, or the symbol `local' to
-          specify the local host.  If you specify HOST for a server, it
-          must specify a valid address for the local host, and only
-          clients connecting to that address will be accepted.
-
-    :service SERVICE
-          SERVICE specifies a port number to connect to, or, for a
-          server, the port number to listen on.  It should be a service
-          name that translates to a port number, or an integer
-          specifying the port number directly.  For a server, it can
-          also be `t', which means to let the system select an unused
-          port number.
-
-    :family FAMILY
-          FAMILY specifies the address (and protocol) family for
-          communication.  `nil' means determine the proper address
-          family automatically for the given HOST and SERVICE.  `local'
-          specifies a Unix socket, in which case HOST is ignored.
-          `ipv4' and `ipv6' specify to use IPv4 and IPv6 respectively.
-
-    :local LOCAL-ADDRESS
-          For a server process, LOCAL-ADDRESS is the address to listen
-          on.  It overrides FAMILY, HOST and SERVICE, and you may as
-          well not specify them.
-
-    :remote REMOTE-ADDRESS
-          For a connection, REMOTE-ADDRESS is the address to connect to.
-          It overrides FAMILY, HOST and SERVICE, and you may as well
-          not specify them.
-
-          For a datagram server, REMOTE-ADDRESS specifies the initial
-          setting of the remote datagram address.
-
-          The format of LOCAL-ADDRESS or REMOTE-ADDRESS depends on the
-          address family:
-
-             - An IPv4 address is represented as a five-element vector
-               of four 8-bit integers and one 16-bit integer `[A B C D
-               P]' corresponding to numeric IPv4 address A.B.C.D and
-               port number P.
-
-             - An IPv6 address is represented as a nine-element vector
-               of 16-bit integers `[A B C D E F G H P]' corresponding
-               to numeric IPv6 address A:B:C:D:E:F:G:H and port number
-               P.
-
-             - A local address is represented as a string which
-               specifies the address in the local address space.
-
-             - An "unsupported family" address is represented by a cons
-               `(F . AV)', where F is the family number and AV is a
-               vector specifying the socket address using one element
-               per address data byte.  Do not rely on this format in
-               portable code, as it may depend on implementation
-               defined constants, data sizes, and data structure
-               alignment.
-
-    :nowait BOOL
-          If BOOL is non-`nil' for a stream connection, return without
-          waiting for the connection to complete.  When the connection
-          succeeds or fails, Emacs will call the sentinel function,
-          with a second argument matching `"open"' (if successful) or
-          `"failed"'.  The default is to block, so that
-          `make-network-process' does not return until the connection
-          has succeeded or failed.
-
-    :stop STOPPED
-          Start the network connection or server in the `stopped' state
-          if STOPPED is non-`nil'.
-
-    :buffer BUFFER
-          Use BUFFER as the process buffer.
-
-    :coding CODING
-          Use CODING as the coding system for this process.  To specify
-          different coding systems for decoding data from the
-          connection and for encoding data sent to it, specify
-          `(DECODING .  ENCODING)' for CODING.
-
-          If you don't specify this keyword at all, the default is to
-          determine the coding systems from the data.
-
-    :noquery QUERY-FLAG
-          Initialize the process query flag to QUERY-FLAG.  *Note Query
-          Before Exit::.
-
-    :filter FILTER
-          Initialize the process filter to FILTER.
-
-    :sentinel SENTINEL
-          Initialize the process sentinel to SENTINEL.
-
-    :log LOG
-          Initialize the log function of a server process to LOG.  The
-          log function is called each time the server accepts a network
-          connection from a client.  The arguments passed to the log
-          function are SERVER, CONNECTION, and MESSAGE, where SERVER is
-          the server process, CONNECTION is the new process for the
-          connection, and MESSAGE is a string describing what has
-          happened.
-
-    :plist PLIST
-          Initialize the process plist to PLIST.
-
-     The original argument list, modified with the actual connection
-     information, is available via the `process-contact' function.
-
-
-File: elisp,  Node: Network Options,  Next: Network Feature Testing,  Prev: Network Processes,  Up: Low-Level Network
-
-37.17.2 Network Options
------------------------
-
-The following network options can be specified when you create a
-network process.  Except for `:reuseaddr', you can also set or modify
-these options later, using `set-network-process-option'.
-
-   For a server process, the options specified with
-`make-network-process' are not inherited by the client connections, so
-you will need to set the necessary options for each child connection as
-it is created.
-
-:bindtodevice DEVICE-NAME
-     If DEVICE-NAME is a non-empty string identifying a network
-     interface name (see `network-interface-list'), only handle packets
-     received on that interface.  If DEVICE-NAME is `nil' (the
-     default), handle packets received on any interface.
-
-     Using this option may require special privileges on some systems.
-
-:broadcast BROADCAST-FLAG
-     If BROADCAST-FLAG is non-`nil' for a datagram process, the process
-     will receive datagram packet sent to a broadcast address, and be
-     able to send packets to a broadcast address.  Ignored for a stream
-     connection.
-
-:dontroute DONTROUTE-FLAG
-     If DONTROUTE-FLAG is non-`nil', the process can only send to hosts
-     on the same network as the local host.
-
-:keepalive KEEPALIVE-FLAG
-     If KEEPALIVE-FLAG is non-`nil' for a stream connection, enable
-     exchange of low-level keep-alive messages.
-
-:linger LINGER-ARG
-     If LINGER-ARG is non-`nil', wait for successful transmission of
-     all queued packets on the connection before it is deleted (see
-     `delete-process').  If LINGER-ARG is an integer, it specifies the
-     maximum time in seconds to wait for queued packets to be sent
-     before closing the connection.  Default is `nil' which means to
-     discard unsent queued packets when the process is deleted.
-
-:oobinline OOBINLINE-FLAG
-     If OOBINLINE-FLAG is non-`nil' for a stream connection, receive
-     out-of-band data in the normal data stream.  Otherwise, ignore
-     out-of-band data.
-
-:priority PRIORITY
-     Set the priority for packets sent on this connection to the integer
-     PRIORITY.  The interpretation of this number is protocol specific,
-     such as setting the TOS (type of service) field on IP packets sent
-     on this connection.  It may also have system dependent effects,
-     such as selecting a specific output queue on the network interface.
-
-:reuseaddr REUSEADDR-FLAG
-     If REUSEADDR-FLAG is non-`nil' (the default) for a stream server
-     process, allow this server to reuse a specific port number (see
-     `:service') unless another process on this host is already
-     listening on that port.  If REUSEADDR-FLAG is `nil', there may be
-     a period of time after the last use of that port (by any process
-     on the host), where it is not possible to make a new server on
-     that port.
-
- -- Function: set-network-process-option process option value &optional
-          no-error
-     This function sets or modifies a network option for network process
-     PROCESS.  See `make-network-process' for details of options OPTION
-     and their corresponding values VALUE.  If NO-ERROR is non-`nil',
-     this function returns `nil' instead of signaling an error if
-     OPTION is not a supported option.  If the function successfully
-     completes, it returns `t'.
-
-     The current setting of an option is available via the
-     `process-contact' function.
-
-
-File: elisp,  Node: Network Feature Testing,  Prev: Network Options,  Up: Low-Level Network
-
-37.17.3 Testing Availability of Network Features
-------------------------------------------------
-
-To test for the availability of a given network feature, use `featurep'
-like this:
-
-     (featurep 'make-network-process '(KEYWORD VALUE))
-
-The result of the first form is `t' if it works to specify KEYWORD with
-value VALUE in `make-network-process'.  The result of the second form
-is `t' if KEYWORD is supported by `make-network-process'.  Here are
-some of the KEYWORD--VALUE pairs you can test in this way.
-
-`(:nowait t)'
-     Non-`nil' if non-blocking connect is supported.
-
-`(:type datagram)'
-     Non-`nil' if datagrams are supported.
-
-`(:family local)'
-     Non-`nil' if local (a.k.a. "UNIX domain") sockets are supported.
-
-`(:family ipv6)'
-     Non-`nil' if IPv6 is supported.
-
-`(:service t)'
-     Non-`nil' if the system can select the port for a server.
-
-   To test for the availability of a given network option, use
-`featurep' like this:
-
-     (featurep 'make-network-process 'KEYWORD)
-
-Here are some of the options you can test in this way.
-
-`:bindtodevice'
-`:broadcast'
-`:dontroute'
-`:keepalive'
-`:linger'
-`:oobinline'
-`:priority'
-`:reuseaddr'
-     That particular network option is supported by
-     `make-network-process' and `set-network-process-option'.
-
-
-File: elisp,  Node: Misc Network,  Next: Serial Ports,  Prev: Low-Level Network,  Up: Processes
-
-37.18 Misc Network Facilities
-=============================
-
-These additional functions are useful for creating and operating on
-network connections.  Note that they are supported only on some systems.
-
- -- Function: network-interface-list
-     This function returns a list describing the network interfaces of
-     the machine you are using.  The value is an alist whose elements
-     have the form `(NAME . ADDRESS)'.  ADDRESS has the same form as
-     the LOCAL-ADDRESS and REMOTE-ADDRESS arguments to
-     `make-network-process'.
-
- -- Function: network-interface-info ifname
-     This function returns information about the network interface named
-     IFNAME.  The value is a list of the form `(ADDR BCAST NETMASK
-     HWADDR FLAGS)'.
-
-    ADDR
-          The Internet protocol address.
-
-    BCAST
-          The broadcast address.
-
-    NETMASK
-          The network mask.
-
-    HWADDR
-          The layer 2 address (Ethernet MAC address, for instance).
-
-    FLAGS
-          The current flags of the interface.
-
- -- Function: format-network-address address &optional omit-port
-     This function converts the Lisp representation of a network
-     address to a string.
-
-     A five-element vector `[A B C D P]' represents an IPv4 address
-     A.B.C.D and port number P.  `format-network-address' converts that
-     to the string `"A.B.C.D:P"'.
-
-     A nine-element vector `[A B C D E F G H P]' represents an IPv6
-     address along with a port number.  `format-network-address'
-     converts that to the string `"[A:B:C:D:E:F:G:H]:P"'.
-
-     If the vector does not include the port number, P, or if OMIT-PORT
-     is non-`nil', the result does not include the `:P' suffix.
-
-
-File: elisp,  Node: Serial Ports,  Next: Byte Packing,  Prev: Misc Network,  Up: Processes
-
-37.19 Communicating with Serial Ports
-=====================================
-
-Emacs can communicate with serial ports.  For interactive use, `M-x
-serial-term' opens a terminal window.  In a Lisp program,
-`make-serial-process' creates a process object.
-
-   The serial port can be configured at run-time, without having to
-close and re-open it.  The function `serial-process-configure' lets you
-change the speed, bytesize, and other parameters.  In a terminal window
-created by `serial-term', you can click on the mode line for
-configuration.
-
-   A serial connection is represented by a process object which can be
-used similar to a subprocess or network process.  You can send and
-receive data and configure the serial port.  A serial process object
-has no process ID, you can't send signals to it, and the status codes
-are different from other types of processes.  `delete-process' on the
-process object or `kill-buffer' on the process buffer close the
-connection, but this does not affect the device connected to the serial
-port.
-
-   The function `process-type' returns the symbol `serial' for a
-process object representing a serial port connection.
-
-   Serial ports are available on GNU/Linux, Unix, and Windows systems.
-
- -- Command: serial-term port speed
-     Start a terminal-emulator for a serial port in a new buffer.  PORT
-     is the name of the serial port to which to connect.  For example,
-     this could be `/dev/ttyS0' on Unix.  On Windows, this could be
-     `COM1', or `\\.\COM10' (double the backslashes in Lisp strings).
-
-     SPEED is the speed of the serial port in bits per second.  9600 is
-     a common value.  The buffer is in Term mode; see *note Term Mode:
-     (emacs)Term Mode, for the commands to use in that buffer.  You can
-     change the speed and the configuration in the mode line menu.
-
- -- Function: make-serial-process &rest args
-     This function creates a process and a buffer.  Arguments are
-     specified as keyword/argument pairs.  Here's the list of the
-     meaningful keywords:
-
-    `:port PORT (mandatory)'
-          This is the name of the serial port.  On Unix and GNU
-          systems, this is a file name such as `/dev/ttyS0'.  On
-          Windows, this could be `COM1', or `\\.\COM10' for ports
-          higher than `COM9' (double the backslashes in Lisp strings).
-
-    `:speed SPEED (mandatory)'
-          The speed of the serial port in bits per second.  This
-          function calls `serial-process-configure' to handle the speed.
-
-    `:name NAME'
-          The name of the process.  If NAME is not given, PORT will
-          serve as the process name as well.
-
-    `:buffer BUFFER'
-          The buffer to associate with the process.  The value could be
-          either a buffer or a string that names a buffer.  Process
-          output goes at the end of that buffer, unless you specify an
-          output stream or filter function to handle the output.  If
-          BUFFER is not given, the process buffer's name is taken from
-          the value of the `:name' keyword.
-
-    `:coding CODING'
-          If CODING is a symbol, it specifies the coding system used for
-          both reading and writing for this process.  If CODING is a
-          cons `(decoding . encoding)', DECODING is used for reading,
-          and ENCODING is used for writing.  If not specified, the
-          default is to determine the coding systems from data itself.
-
-    `:noquery QUERY-FLAG'
-          Initialize the process query flag to QUERY-FLAG.  *Note Query
-          Before Exit::.  The flags defaults to `nil' if unspecified.
-
-    `:stop BOOL'
-          Start process in the `stopped' state if BOOL is non-`nil'.
-          In the stopped state, a serial process does not accept
-          incoming data, but you can send outgoing data.  The stopped
-          state is cleared by `continue-process' and set by
-          `stop-process'.
-
-    `:filter FILTER'
-          Install FILTER as the process filter.
-
-    `:sentinel SENTINEL'
-          Install SENTINEL as the process sentinel.
-
-    `:plist PLIST'
-          Install PLIST as the initial plist of the process.
-
-    `:speed'
-    `:bytesize'
-    `:parity'
-    `:stopbits'
-    `:flowcontrol'
-          These are handled by `serial-process-configure', which is
-          called by `make-serial-process'.
-
-     The original argument list, possibly modified by later
-     configuration, is available via the function `process-contact'.
-
-     Here is an example:
-
-          (make-serial-process :port "/dev/ttyS0" :speed 9600)
-
- -- Function: serial-process-configure &rest args
-     This functions configures a serial port connection.  Arguments are
-     specified as keyword/argument pairs.  Attributes that are not given
-     are re-initialized from the process's current configuration
-     (available via the function `process-contact') or set to
-     reasonable default values.  The following arguments are defined:
-
-    `:process PROCESS'
-    `:name NAME'
-    `:buffer BUFFER'
-    `:port PORT'
-          Any of these arguments can be given to identify the process
-          that is to be configured.  If none of these arguments is
-          given, the current buffer's process is used.
-
-    `:speed SPEED'
-          The speed of the serial port in bits per second, a.k.a. "baud
-          rate".  The value can be any number, but most serial ports
-          work only at a few defined values between 1200 and 115200,
-          with 9600 being the most common value.  If SPEED is `nil',
-          the function ignores all other arguments and does not
-          configure the port.  This may be useful for special serial
-          ports such as Bluetooth-to-serial converters which can only
-          be configured through AT commands sent through the
-          connection.  The value of `nil' for SPEED is valid only for
-          connections that were already opened by a previous call to
-          `make-serial-process' or `serial-term'.
-
-    `:bytesize BYTESIZE'
-          The number of bits per byte, which can be 7 or 8.  If BYTESIZE
-          is not given or `nil', it defaults to 8.
-
-    `:parity PARITY'
-          The value can be `nil' (don't use parity), the symbol `odd'
-          (use odd parity), or the symbol `even' (use even parity).  If
-          PARITY is not given, it defaults to no parity.
-
-    `:stopbits STOPBITS'
-          The number of stopbits used to terminate a transmission of
-          each byte.  STOPBITS can be 1 or 2.  If STOPBITS is not given
-          or `nil', it defaults to 1.
-
-    `:flowcontrol FLOWCONTROL'
-          The type of flow control to use for this connection, which is
-          either `nil' (don't use flow control), the symbol `hw' (use
-          RTS/CTS hardware flow control), or the symbol `sw' (use
-          XON/XOFF software flow control).  If FLOWCONTROL is not
-          given, it defaults to no flow control.
-
-     `serial-process-configure' is called by `make-serial-process' for
-     the initial configuration of the serial port.
-
-
-File: elisp,  Node: Byte Packing,  Prev: Serial Ports,  Up: Processes
-
-37.20 Packing and Unpacking Byte Arrays
-=======================================
-
-This section describes how to pack and unpack arrays of bytes, usually
-for binary network protocols.  These functions convert byte arrays to
-alists, and vice versa.  The byte array can be represented as a unibyte
-string or as a vector of integers, while the alist associates symbols
-either with fixed-size objects or with recursive sub-alists.
-
-   Conversion from byte arrays to nested alists is also known as
-"deserializing" or "unpacking", while going in the opposite direction
-is also known as "serializing" or "packing".
-
-* Menu:
-
-* Bindat Spec::         Describing data layout.
-* Bindat Functions::    Doing the unpacking and packing.
-* Bindat Examples::     Samples of what bindat.el can do for you!
 
 
 

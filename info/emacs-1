@@ -1,8 +1,8 @@
-This is /home/cyd/trunk/doc/emacs/../../info/emacs, produced by
-makeinfo version 4.13 from /home/cyd/trunk/doc/emacs/emacs.texi.
+This is /home/cyd/emacs/doc/emacs/../../info/emacs, produced by
+makeinfo version 4.13 from /home/cyd/emacs/doc/emacs/emacs.texi.
 
 This is the Sixteenth edition of the `GNU Emacs Manual',
-updated for Emacs version 24.0.95.
+updated for Emacs version 24.0.96.
 
    Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
 
@@ -33,7 +33,7 @@ The Emacs Editor
 Emacs is the extensible, customizable, self-documenting real-time
 display editor.  This Info file describes how to edit with Emacs and
 some of the ways to customize it; it corresponds to GNU Emacs version
-24.0.95.
+24.0.96.
 
    If you are reading this in Emacs, type `h' to read a basic
 introduction to the Info documentation system.
@@ -41,7 +41,7 @@ introduction to the Info documentation system.
    For information on extending Emacs, see *note Emacs Lisp: (elisp)Top.
 
    This is the Sixteenth edition of the `GNU Emacs Manual',
-updated for Emacs version 24.0.95.
+updated for Emacs version 24.0.96.
 
    Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
 
@@ -225,11 +225,11 @@ The Mark and the Region
 Killing and Moving Text
 
 * Deletion and Killing:: Commands that remove text.
-* Yanking::             Recovering killed text.  Moving text. (Pasting.)
+* Yanking::             Commands that insert text.
 * Cut and Paste::       Clipboard and selections on graphical displays.
-* Accumulating Text::   Other ways of copying text.
+* Accumulating Text::   Other methods to add text to the buffer.
 * Rectangles::          Operating on text in rectangular areas.
-* CUA Bindings::        Using C-x, C-c, C-v to kill and yank.
+* CUA Bindings::        Using C-x/C-c/C-v to kill and yank.
 
 Deletion and Killing
 
@@ -246,9 +246,9 @@ Yanking
 * Earlier Kills::       Yanking something killed some time ago.
 * Appending Kills::     Several kills in a row all yank together.
 
-Killing and Yanking on Graphical Displays
+"Cut and Paste" Operations on Graphical Displays
 
-* Clipboard::           How Emacs interacts with the system clipboard.
+* Clipboard::           How Emacs uses the system clipboard.
 * Primary Selection::   The temporarily selected text selection.
 * Secondary Selection:: Cutting without altering point and mark.
 
@@ -265,7 +265,7 @@ Registers
 Controlling the Display
 
 * Scrolling::              Commands to move text up and down in a window.
-* Recentering::            A scrolling command that centers the current line.
+* Recentering::            A scroll command that centers the current line.
 * Auto Scrolling::         Redisplay scrolls text automatically when needed.
 * Horizontal Scrolling::   Moving text left and right in a window.
 * Narrowing::              Restricting display and editing to a portion
@@ -421,7 +421,7 @@ Multiple Windows
 * Displaying Buffers::  How Emacs picks a window for displaying a buffer.
 * Window Convenience::  Convenience functions for window handling.
 
-Displaying Buffers
+Displaying a Buffer in a Window
 
 * Window Choice::       How `display-buffer' works.
 
@@ -444,14 +444,14 @@ Frames and Graphical Displays
 * Tool Bars::           Enabling and disabling the tool bar.
 * Dialog Boxes::        Controlling use of dialog boxes.
 * Tooltips::            Displaying information at the current mouse position.
-* Mouse Avoidance::     Moving the mouse pointer out of the way.
+* Mouse Avoidance::     Preventing the mouse pointer from obscuring text.
 * Non-Window Terminals::  Multiple frames on terminals that show only one.
-* Text-Only Mouse::     Using the mouse in text-only terminals.
+* Text-Only Mouse::     Using the mouse in text terminals.
 
 International Character Set Support
 
 * International Chars::     Basic concepts of multibyte characters.
-* Enabling Multibyte::      Controlling whether to use multibyte characters.
+* Disabling Multibyte::     Controlling whether to use multibyte characters.
 * Language Environments::   Setting things up for the language you use.
 * Input Methods::           Entering text characters not on your keyboard.
 * Select Input Method::     Specifying your choice of input methods.
@@ -475,7 +475,7 @@ International Character Set Support
 * Charsets::                How Emacs groups its internal character codes.
 * Bidirectional Editing::   Support for right-to-left scripts.
 
-Modes
+Major and Minor Modes
 
 * Major Modes::         Text mode vs. Lisp mode vs. C mode...
 * Minor Modes::         Each minor mode is a feature you can turn on
@@ -535,7 +535,7 @@ TeX Mode
 * TeX Print::           Commands for printing part of a file with TeX.
 * TeX Misc::            Customization of TeX mode, and related features.
 
-Editing Enriched Text
+Enriched Text
 
 * Enriched Mode::           Entering and exiting Enriched mode.
 * Hard and Soft Newlines::  There are two different kinds of newlines.
@@ -710,7 +710,7 @@ Introduction to Version Control
 * Version Control Systems:: Supported version control back-end systems.
 * VCS Concepts::            Words and concepts related to version control.
 * VCS Merging::             How file conflicts are handled.
-* VCS Changesets::          Changesets in version control.
+* VCS Changesets::          How changes are grouped.
 * VCS Repositories::        Where version control repositories are stored.
 * Types of Log File::       The VCS log in contrast to the ChangeLog.
 
@@ -725,10 +725,10 @@ VC Directory Mode
 * VC Directory Buffer::   What the buffer looks like and means.
 * VC Directory Commands:: Commands to use in a VC directory buffer.
 
-Multiple Branches of a File
+Version Control Branches
 
 * Switching Branches::    How to get to another existing branch.
-* VC Pull::               Updating a branch from another branch.
+* VC Pull::               Updating the contents of a branch.
 * Merging::               Transferring changes between branches.
 * Creating Branches::     How to start a new branch.
 
@@ -759,7 +759,7 @@ Tags Tables
 * Select Tags Table::   How to visit a tags table.
 * Find Tag::            Commands to find the definition of a specific tag.
 * Tags Search::         Using a tags table for searching and replacing.
-* List Tags::           Listing and finding tags defined in a file.
+* List Tags::           Using tags for completion, and listing them.
 
 
 Merging Files with Emerge
@@ -873,16 +873,9 @@ Customizing the Calendar and Diary
 * Fancy Diary Display::    Sorting diary entries, using included diary files.
 * Sexp Diary Entries::     More flexible diary entries.
 
-Document Viewing
-
-* DocView Navigation::  Navigating DocView buffers.
-* DocView Searching::   Searching inside documents.
-* DocView Slicing::     Specifying which part of a page is displayed.
-* DocView Conversion::  Influencing and triggering conversion.
-
 Sending Mail
 
-* Mail Format::         Format of the mail being composed.
+* Mail Format::         Format of a mail message.
 * Mail Headers::        Details of some standard mail header fields.
 * Mail Aliases::        Abbreviating and grouping mail addresses.
 * Mail Commands::       Special commands for editing mail being composed.
@@ -933,6 +926,13 @@ Gnus
 * Gnus Group Buffer::   A short description of Gnus group commands.
 * Gnus Summary Buffer:: A short description of Gnus summary commands.
 
+Document Viewing
+
+* DocView Navigation::  Navigating DocView buffers.
+* DocView Searching::   Searching inside documents.
+* DocView Slicing::     Specifying which part of a page is displayed.
+* DocView Conversion::  Influencing and triggering conversion.
+
 Running Shell Commands from Emacs
 
 * Single Shell::        How to run one shell command and return.
@@ -982,10 +982,10 @@ Customization
 * Variables::           Many Emacs commands examine Emacs variables
                           to decide what to do; by setting variables,
                           you can control their functioning.
-* Key Bindings::        Keymaps say what command each key runs.
+* Key Bindings::        The keymaps say what command each key runs.
                           By changing them, you can "redefine" keys.
 * Init File::           How to write common customizations in the
-                          `.emacs' file.
+                          initialization file.
 
 Easy Customization Interface
 
@@ -1019,7 +1019,7 @@ Customizing Key Bindings
 * Local Keymaps::       Major and minor modes have their own keymaps.
 * Minibuffer Maps::     The minibuffer uses its own local keymaps.
 * Rebinding::           How to redefine one key's meaning conveniently.
-* Init Rebinding::      Rebinding keys with your init file, `.emacs'.
+* Init Rebinding::      Rebinding keys with your initialization file.
 * Modifier Keys::       Using modifier keys in key bindings.
 * Function Keys::       Rebinding terminal function keys.
 * Named ASCII Chars::   Distinguishing <TAB> from C-i, and so on.
@@ -1028,7 +1028,7 @@ Customizing Key Bindings
                           before it can be executed.  This is done to protect
                           beginners from surprises.
 
-The Init File, `~/.emacs'
+The Emacs Initialization File
 
 * Init Syntax::         Syntax of constants in Emacs Lisp.
 * Init Examples::       How to do some things with an init file.
@@ -1088,7 +1088,7 @@ GTK resources
 
 * GTK Resource Basics::   Basic usage of GTK+ resources.
 * GTK Widget Names::      How GTK+ widgets are named.
-* GTK Names in Emacs::    GTK+ widgets used by Emacs.
+* GTK Names in Emacs::    GTK widgets used by Emacs.
 * GTK styles::            What can be customized in a GTK widget.
 
 Emacs and Mac OS / GNUstep
@@ -1104,7 +1104,8 @@ Emacs and Microsoft Windows/MS-DOS
 * Text and Binary::     Text files use CRLF to terminate lines.
 * Windows Files::       File-name conventions on Windows.
 * ls in Lisp::          Emulation of `ls' for Dired.
-* Windows HOME::        Where Emacs looks for your `.emacs'.
+* Windows HOME::        Where Emacs looks for your `.emacs' and
+                          where it starts up.
 * Windows Keyboard::    Windows-specific keyboard features.
 * Windows Mouse::       Windows-specific mouse features.
 * Windows Processes::   Running subprocesses on Windows.
@@ -1229,7 +1230,7 @@ File: emacs,  Node: Screen,  Next: User Input,  Prev: Acknowledgments,  Up: Top
 ********************************
 
 On a graphical display, such as on GNU/Linux using the X Window System,
-Emacs occupies a "graphical window".  On a text-only terminal, Emacs
+Emacs occupies a "graphical window".  On a text terminal, Emacs
 occupies the entire terminal screen.  We will use the term "frame" to
 mean a graphical window or terminal screen occupied by Emacs.  Emacs
 behaves very similarly on both kinds of frames.  It normally starts out
@@ -1391,7 +1392,7 @@ in order to make it stand out.
 
       CS:CH-FR  BUF      POS LINE   (MAJOR MINOR)
 
-On a text-only terminal, this text is followed by a series of dashes
+On a text terminal, this text is followed by a series of dashes
 extending to the right edge of the window.  These dashes are omitted on
 a graphical display.
 
@@ -1408,10 +1409,10 @@ whatsoever, and is usually used for files containing non-textual data.
 Other characters represent various "coding systems"--for example, `1'
 represents ISO Latin-1.
 
-   On a text-only terminal, CS is preceded by two additional characters
-that describe the coding systems for keyboard input and terminal
-output.  Furthermore, if you are using an input method, CS is preceded
-by a string that identifies the input method (*note Input Methods::).
+   On a text terminal, CS is preceded by two additional characters that
+describe the coding systems for keyboard input and terminal output.
+Furthermore, if you are using an input method, CS is preceded by a
+string that identifies the input method (*note Input Methods::).
 
    The character after CS is usually a colon.  If a different string is
 displayed, that indicates a nontrivial end-of-line convention for
@@ -1438,7 +1439,7 @@ default-directory for the current buffer is on a remote machine, `@' is
 displayed instead (*note File Names::).
 
    FR gives the selected frame name (*note Frames::).  It appears only
-on text-only terminals.  The initial frame's name is `F1'.
+on text terminals.  The initial frame's name is `F1'.
 
    BUF is the name of the buffer displayed in the window.  Usually,
 this is the same as the name of a file you are editing.  *Note
@@ -1512,7 +1513,7 @@ item by pressing <F10> (to run the command `menu-bar-open').  You can
 then navigate the menus with the arrow keys.  To activate a selected
 menu item, press <RET>; to cancel menu navigation, press <ESC>.
 
-   On a text-only terminal, you can use the menu bar by typing `M-`' or
+   On a text terminal, you can use the menu bar by typing `M-`' or
 <F10> (these run the command `tmm-menubar').  This lets you select a
 menu item with the keyboard.  A provisional choice appears in the echo
 area.  You can use the up and down arrow keys to move through the menu
@@ -1554,7 +1555,7 @@ starting with <ESC>.  Thus, you can enter `M-a' by typing `<ESC> a'.
 You can enter `C-M-a' by typing `<ESC> C-a'.  Unlike <Meta>, <ESC> is
 entered as a separate character.  You don't hold down <ESC> while
 typing the next character; instead, press <ESC> and release it, then
-enter the next character.  This feature is useful on certain text-only
+enter the next character.  This feature is useful on certain text
 terminals where the <Meta> key does not function reliably.
 
    On graphical displays, the window manager might block some keyboard
@@ -1652,7 +1653,7 @@ even though strictly speaking the key is bound to a command.  Usually
 we state the name of the command which really does the work in
 parentheses after mentioning the key that runs it.  For example, we
 will say that "The command `C-n' (`next-line') moves point vertically
-down," meaning that the command `next-line' moves vertically down, and
+down", meaning that the command `next-line' moves vertically down, and
 the key `C-n' is normally bound to it.
 
    Since we are discussing customization, we should tell you about
@@ -1724,8 +1725,8 @@ initialization file (*note Init File::).(1)
 by setting the variable `initial-buffer-choice' to a non-`nil' value.
 (In that case, even if you specify one or more files on the command
 line, Emacs opens but does not display them.)  The value of
-`initial-buffer-choice' can be either the name of the desired file or
-directory, or `t', which means to display the `*scratch*' buffer.
+`initial-buffer-choice' should be the name of the desired file or
+directory.
 
    ---------- Footnotes ----------
 
@@ -1784,8 +1785,8 @@ returning control to the parent process (usually a shell); in most
 shells, you can resume Emacs after suspending it with the shell command
 `%emacs'.
 
-   Text-only terminals usually listen for certain special characters
-whose meaning is to kill or suspend the program you are running.  This
+   Text terminals usually listen for certain special characters whose
+meaning is to kill or suspend the program you are running.  This
 terminal feature is turned off while you are in Emacs.  The meanings of
 `C-z' and `C-x C-c' as keys in Emacs were inspired by the use of `C-z'
 and `C-c' on several operating systems as the characters for stopping
@@ -2088,9 +2089,9 @@ in the region.  *Note Mark::, for a description of the region.
 
    On most keyboards, <DEL> is labeled <Backspace>, but we refer to it
 as <DEL> in this manual.  (Do not confuse <DEL> with the <Delete> key;
-we will discuss <Delete> momentarily.)  On some text-only terminals,
-Emacs may not recognize the <DEL> key properly.  *Note DEL Does Not
-Delete::, if you encounter this problem.
+we will discuss <Delete> momentarily.)  On some text terminals, Emacs
+may not recognize the <DEL> key properly.  *Note DEL Does Not Delete::,
+if you encounter this problem.
 
    The <delete> (`delete-forward-char') command deletes in the
 "opposite direction": it deletes the character after point, i.e. the
@@ -2241,7 +2242,7 @@ to fit in the window, and Emacs displays it as two or more "screen
 lines".  This is called "line wrapping" or "continuation", and the long
 logical line is called a "continued line".  On a graphical display,
 Emacs indicates line wrapping with small bent arrows in the left and
-right window fringes.  On a text-only terminal, Emacs indicates line
+right window fringes.  On a text terminal, Emacs indicates line
 wrapping by displaying a `\' character at the right margin.
 
    Most commands that act on lines act on logical lines, not screen
@@ -2254,7 +2255,7 @@ line (*note Moving Point::).
 continuing them.  This means that every logical line occupies a single
 screen line; if it is longer than the width of the window, the rest of
 the line is not displayed.  On a graphical display, a truncated line is
-indicated by a small straight arrow in the right fringe; on a text-only
+indicated by a small straight arrow in the right fringe; on a text
 terminal, it is indicated by a `$' character in the right margin.
 *Note Line Truncation::.
 
@@ -2362,7 +2363,7 @@ File: emacs,  Node: Arguments,  Next: Repeating,  Prev: Position Info,  Up: Basi
 ======================
 
 In the terminology of mathematics and computing, "argument" means "data
-provided to a function or operation."  You can give any Emacs command a
+provided to a function or operation".  You can give any Emacs command a
 "numeric argument" (also called a "prefix argument").  Some commands
 interpret the argument as a repetition count.  For example, giving
 `C-f' an argument of ten causes it to move point forward by ten
@@ -2438,7 +2439,7 @@ when they come up; they exist to make an individual command more
 convenient, and they are documented in that command's documentation
 string.
 
-   We use the term "prefix argument" as well as "numeric argument," to
+   We use the term "prefix argument" as well as "numeric argument", to
 emphasize that you type these argument before the command, and to
 distinguish them from minibuffer arguments that come after the command.
 
@@ -2546,7 +2547,7 @@ example, you can specify `/etc/termcap' as follows:
      Find file: /u2/emacs/src//etc/termcap
 
 Emacs interprets a double slash as "ignore everything before the second
-slash in the pair."  In the example above, `/u2/emacs/src/' is ignored,
+slash in the pair".  In the example above, `/u2/emacs/src/' is ignored,
 so the argument you supplied is `/etc/termcap'.  The ignored part of
 the file name is dimmed if the terminal allows it.  (To disable this
 dimming, turn off File Name Shadow mode with the command `M-x
@@ -3255,7 +3256,7 @@ following sections.
 
 `C-h c KEY'
      Show the name of the command that the key sequence KEY is bound to
-     (`describe-key-briefly').  Here `c' stands for "character."  For
+     (`describe-key-briefly').  Here `c' stands for "character".  For
      more extensive information on KEY, use `C-h k'.
 
 `C-h d TOPICS <RET>'
@@ -5528,8 +5529,8 @@ whenever point moves off the left or right edge of the screen.  To
 disable automatic horizontal scrolling, set the variable
 `auto-hscroll-mode' to `nil'.  Note that when the automatic horizontal
 scrolling is turned off, if point moves off the edge of the screen, the
-cursor disappears to indicate that.  (On text-only terminals, the
-cursor is left at the edge instead.)
+cursor disappears to indicate that.  (On text terminals, the cursor is
+left at the edge instead.)
 
    The variable `hscroll-margin' controls how close point can get to
 the window's edges before automatic scrolling occurs.  It is measured
@@ -5663,7 +5664,7 @@ File: emacs,  Node: Follow Mode,  Next: Faces,  Prev: View Mode,  Up: Display
 ================
 
 "Follow mode" is a minor mode that makes two windows, both showing the
-same buffer, scroll as a single tall "virtual window."  To use Follow
+same buffer, scroll as a single tall "virtual window".  To use Follow
 mode, go to a frame with just one window, split it into two
 side-by-side windows using `C-x 3', and then type `M-x follow-mode'.
 From then on, you can edit the buffer in either of the two windows, or
@@ -5695,7 +5696,7 @@ for a regular expression, and displays only faces with names matching
 that regular expression (*note Regexps::).
 
    It's possible for a given face to look different in different
-frames.  For instance, some text-only terminals do not support all face
+frames.  For instance, some text terminals do not support all face
 attributes, particularly font, height, and width, and some support a
 limited range of colors.
 
@@ -5742,11 +5743,11 @@ list-colors-display'.  To control the order in which colors are shown,
 customize `list-colors-sort'.  If you run this command on a graphical
 display, it shows the full range of color names known to Emacs (these
 are the standard X11 color names, defined in X's `rgb.txt' file).  If
-you run the command on a text-only terminal, it shows only a small
-subset of colors that can be safely displayed on such terminals.
-However, Emacs understands X11 color names even on text-only terminals;
-if a face is given a color specified by an X11 color name, it is
-displayed using the closest-matching terminal color.
+you run the command on a text terminal, it shows only a small subset of
+colors that can be safely displayed on such terminals.  However, Emacs
+understands X11 color names even on text terminals; if a face is given
+a color specified by an X11 color name, it is displayed using the
+closest-matching terminal color.
 
    An RGB triplet is a string of the form `#RRGGBB'.  Each of the R, G,
 and B components is a hexadecimal number specifying the component's
@@ -5877,8 +5878,8 @@ frame:
      such Info mode, create one.
 
 `vertical-border'
-     This face is used for the vertical divider between windows on
-     text-only terminals.
+     This face is used for the vertical divider between windows on text
+     terminals.
 
 `minibuffer-prompt'
      This face is used for the prompt strings displayed in the
@@ -5906,8 +5907,8 @@ frame:
      This face determines the color of the mouse pointer.
 
    The following faces likewise control the appearance of parts of the
-Emacs frame, but only on text-only terminals, or when Emacs is built on
-X with no toolkit support.  (For all other cases, the appearance of the
+Emacs frame, but only on text terminals, or when Emacs is built on X
+with no toolkit support.  (For all other cases, the appearance of the
 respective frame elements is determined by system-wide settings.)
 
 `scroll-bar'
@@ -6152,14 +6153,14 @@ selected frame only, use `M-x set-fringe-style'.
 line (*note Continuation Lines::).  When one line of text is split into
 multiple screen lines, the left fringe shows a curving arrow for each
 screen line except the first, indicating that "this is not the real
-beginning."  The right fringe shows a curving arrow for each screen
-line except the last, indicating that "this is not the real end."  If
+beginning".  The right fringe shows a curving arrow for each screen
+line except the last, indicating that "this is not the real end".  If
 the line's direction is right-to-left (*note Bidirectional Editing::),
 the meanings of the curving arrows in the fringes are swapped.
 
    The fringes indicate line truncation with short horizontal arrows
 meaning "there's more text on this line which is scrolled horizontally
-out of view."  Clicking the mouse on one of the arrows scrolls the
+out of view".  Clicking the mouse on one of the arrows scrolls the
 display horizontally in the direction of the arrow.
 
    The fringes can also indicate other things, such as buffer
@@ -6537,7 +6538,7 @@ As an alternative to continuation (*note Continuation Lines::), Emacs
 can display long lines by "truncation".  This means that all the
 characters that do not fit in the width of the screen or window do not
 appear at all.  On graphical displays, a small straight arrow in the
-fringe indicates truncation at either end of the line.  On text-only
+fringe indicates truncation at either end of the line.  On text
 terminals, this is indicated with `$' signs in the leftmost and/or
 rightmost columns.
 
@@ -6643,8 +6644,8 @@ the underline at the same height as the font's descent line.
 overline above the text, including the height of the overline itself,
 in pixels; the default is 2.
 
-   On some text-only terminals, bold face and inverse video together
-result in text that is hard to read.  Call the function
+   On some text terminals, bold face and inverse video together result
+in text that is hard to read.  Call the function
 `tty-suppress-bold-inverse-default-colors' with a non-`nil' argument to
 suppress the effect of bold-face in this case.
 
