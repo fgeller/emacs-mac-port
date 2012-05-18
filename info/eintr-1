@@ -18,11 +18,11 @@ Inc.
 
    Published by the:
 
-     GNU Press,                          Website: http://www.gnupress.org
-     a division of the                   General: press@gnu.org
-     Free Software Foundation, Inc.      Orders:  sales@gnu.org
-     51 Franklin Street, Fifth Floor     Tel: +1 (617) 542-5942
-     Boston, MA 02110-1301 USA           Fax: +1 (617) 542-2652
+     GNU Press,                        http://www.fsf.org/campaigns/gnu-press/
+     a division of the                 email: sales@fsf.org
+     Free Software Foundation, Inc.    Tel: +1 (617) 542-5942
+     51 Franklin Street, Fifth Floor   Fax: +1 (617) 542-2652
+     Boston, MA 02110-1301 USA
 
 
    ISBN 1-882114-43-4
@@ -55,11 +55,11 @@ Inc.
 
    Published by the:
 
-     GNU Press,                          Website: http://www.gnupress.org
-     a division of the                   General: press@gnu.org
-     Free Software Foundation, Inc.      Orders:  sales@gnu.org
-     51 Franklin Street, Fifth Floor     Tel: +1 (617) 542-5942
-     Boston, MA 02110-1301 USA           Fax: +1 (617) 542-2652
+     GNU Press,                        http://www.fsf.org/campaigns/gnu-press/
+     a division of the                 email: sales@fsf.org
+     Free Software Foundation, Inc.    Tel: +1 (617) 542-5942
+     51 Franklin Street, Fifth Floor   Fax: +1 (617) 542-2652
+     Boston, MA 02110-1301 USA
 
 
    ISBN 1-882114-43-4
@@ -1081,13 +1081,8 @@ in front of it.  Position the cursor right after it and type `C-x C-e':
 
      (this is an unquoted list)
 
-What you see depends on which version of Emacs you are running.  GNU
-Emacs version 22 provides more information than version 20 and before.
-First, the more recent result of generating an error; then the earlier,
-version 20 result.
-
-In GNU Emacs version 22, a `*Backtrace*' window will open up and you
-will see the following in it:
+   A `*Backtrace*' window will open up and you should see the following
+in it:
 
      ---------- Buffer: *Backtrace* ----------
      Debugger entered--Lisp error: (void-function this)
@@ -1149,15 +1144,17 @@ by evaluating `(+ 2 2)', we can infer that the symbol `+' must have a
 set of instructions for the computer to obey and those instructions
 must be to add the numbers that follow the `+'.
 
-   In GNU Emacs version 20, and in earlier versions, you will see only
-one line of error message; it will appear in the echo area and look
-like this:
+   It is possible to prevent Emacs entering the debugger in cases like
+this.  We do not explain how to do that here, but we will mention what
+the result looks like, because you may encounter a similar situation if
+there is a bug in some Emacs code that you are using.  In such cases,
+you will see only one line of error message; it will appear in the echo
+area and look like this:
 
      Symbol's function definition is void: this
 
-(Also, your terminal may beep at you--some do, some don't; and others
-blink.  This is just a device to get your attention.)  The message goes
-away as soon as you type another key, even just to move the cursor.
+The message goes away as soon as you type a key, even just to move the
+cursor.
 
    We know the meaning of the word `Symbol'.  It refers to the first
 atom of the list, the word `this'.  The word `function' refers to the
@@ -1471,8 +1468,7 @@ it.  But `fill-column' has no function definition.  Try evaluating this:
 
      (fill-column)
 
-In GNU Emacs version 22, you will create a `*Backtrace*' buffer that
-says:
+You will create a `*Backtrace*' buffer that says:
 
      ---------- Buffer: *Backtrace* ----------
      Debugger entered--Lisp error: (void-function fill-column)
@@ -1510,8 +1506,8 @@ In GNU Emacs 22, you will create a `*Backtrace*' buffer that says:
        call-interactively(eval-last-sexp)
      ---------- Buffer: *Backtrace* ----------
 
-(As with the other times we entered the debugger, you can quit by
-typing `q' in the `*Backtrace*' buffer.)
+(Again, you can quit the debugger by typing `q' in the `*Backtrace*'
+buffer.)
 
    This backtrace is different from the very first error message we saw,
 which said, `Debugger entered--Lisp error: (void-function this)'.  In
@@ -1524,7 +1520,7 @@ interpreter to evaluate the `+' and look for the value of the variable
 instead of the function definition.  We did this by placing the cursor
 right after the symbol rather than after the parenthesis of the
 enclosing list as we did before.  As a consequence, the Lisp interpreter
-evaluated the preceding s-expression, which in this case was the `+' by
+evaluated the preceding s-expression, which in this case was `+' by
 itself.
 
    Since `+' does not have a value bound to it, just the function
@@ -1714,8 +1710,7 @@ is that `+' has tried to add the 2 to the value returned by `'hello',
 but the value returned by `'hello' is the symbol `hello', not a number.
 Only numbers can be added.  So `+' could not carry out its addition.
 
-   In GNU Emacs version 22, you will create and enter a `*Backtrace*'
-buffer that says:
+   You will create and enter a `*Backtrace*' buffer that says:
 
 
      ---------- Buffer: *Backtrace* ----------
@@ -2342,9 +2337,7 @@ different keystrokes call or run different functions.  For example,
 `C-f' calls `forward-char', `M-e' calls `forward-sentence', and so on.
 
    By writing `switch-to-buffer' in an expression, and giving it a
-buffer to switch to, we can switch buffers just the way `C-x b' does.
-
-   Here is the Lisp expression:
+buffer to switch to, we can switch buffers just the way `C-x b' does:
 
      (switch-to-buffer (other-buffer))
 
@@ -2389,7 +2382,7 @@ or her.
    (1) Or rather, to save typing, you probably only typed `RET' if the
 default buffer was `*scratch*', or if it was different, then you typed
 just part of the name, such as `*sc', pressed your `TAB' key to cause
-it to expand to the full name, and then typed your `RET' key.
+it to expand to the full name, and then typed `RET'.
 
    (2) Remember, this expression will move you to your most recent
 other buffer that you cannot see.  If you really want to go to your

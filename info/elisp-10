@@ -1,10 +1,10 @@
 This is /home/cyd/emacs/doc/lispref/../../info/elisp, produced by
 makeinfo version 4.13 from /home/cyd/emacs/doc/lispref/elisp.texi.
 
-This is edition 3.1 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 24.0.96.
+This is the `GNU Emacs Lisp Reference Manual' corresponding to Emacs
+version 24.0.97.
 
-   Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
+Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -1847,7 +1847,7 @@ Sun Audio format (`.au').
      functions in the list `play-sound-functions'.  Each function is
      called with one argument, SOUND.
 
- -- Function: play-sound-file file &optional volume device
+ -- Command: play-sound-file file &optional volume device
      This function is an alternative interface to playing a sound FILE
      specifying an optional VOLUME and DEVICE.
 
@@ -2230,13 +2230,13 @@ Dependencies
      dependencies; if any dependency cannot be found, the package
      cannot be installed.
 
-   Installing a package, either via the Package Menu, or via the
-command `package-install-file', creates a subdirectory of
-`package-user-dir' named `NAME-VERSION', where NAME is the package's
-name and VERSION its version (e.g. `~/.emacs.d/elpa/auctex-11.86/').
-We call this the package's "content directory".  It is where Emacs puts
-the package's contents (the single Lisp file for a simple package, or
-the files extracted from a multi-file package).
+   Installing a package, either via the command `package-install-file',
+or via the Package Menu, creates a subdirectory of `package-user-dir'
+named `NAME-VERSION', where NAME is the package's name and VERSION its
+version (e.g. `~/.emacs.d/elpa/auctex-11.86/').  We call this the
+package's "content directory".  It is where Emacs puts the package's
+contents (the single Lisp file for a simple package, or the files
+extracted from a multi-file package).
 
    Emacs then searches every Lisp file in the content directory for
 autoload magic comments (*note Autoload::).  These autoload definitions
@@ -2434,8 +2434,8 @@ How to accomplish this is beyond the scope of this manual.
 
    A convenient way to set up and update a package archive is via the
 `package-x' library.  This is included with Emacs, but not loaded by
-default; type `M-x load-library RET package-x RET' to load it, or add
-`(require 'package-x)' to your init file.  *Note Lisp Libraries:
+default; type `M-x load-library <RET> package-x <RET>' to load it, or
+add `(require 'package-x)' to your init file.  *Note Lisp Libraries:
 (emacs)Lisp Libraries.  Once loaded, you can make use of the following:
 
  -- User Option: package-archive-upload-base
@@ -2480,7 +2480,7 @@ Appendix A Emacs 23 Antinews
 
 For those users who live backwards in time, here is information about
 downgrading to Emacs version 23.4.  We hope you will enjoy the greater
-simplicity that results from the absence of many Emacs 24.0.96 features.
+simplicity that results from the absence of many Emacs 24.0.97 features.
 
 A.1 Old Lisp Features in Emacs 23
 =================================
@@ -5039,7 +5039,7 @@ individually allocated and freed using `malloc' and `free'.
 
      If there was overflow in pure space (*note Pure Storage::),
      `garbage-collect' returns `nil', because a real garbage collection
-     can not be done in this situation.
+     cannot be done.
 
  -- User Option: garbage-collection-messages
      If this variable is non-`nil', Emacs displays a message at the
@@ -5145,12 +5145,12 @@ objects that have since been freed.
 
  -- Variable: string-chars-consed
      The total number of string characters that have been allocated so
-     far in this Emacs session.
+     far in this session.
 
  -- Variable: misc-objects-consed
      The total number of miscellaneous objects that have been allocated
-     so far in this Emacs session.  These include markers and overlays,
-     plus certain objects not visible to users.
+     so far in this session.  These include markers and overlays, plus
+     certain objects not visible to users.
 
  -- Variable: intervals-consed
      The total number of intervals that have been allocated so far in
@@ -5234,8 +5234,7 @@ MAX
      indicating a special form that receives unevaluated arguments, or
      `MANY', indicating an unlimited number of evaluated arguments (the
      equivalent of `&rest').  Both `UNEVALLED' and `MANY' are macros.
-     If MAX is a number, it may not be less than MIN and it may not be
-     greater than eight.
+     If MAX is a number, it must be more than MIN but less than 8.
 
 INTERACTIVE
      This is an interactive specification, a string such as might be

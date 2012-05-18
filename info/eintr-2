@@ -18,11 +18,11 @@ Inc.
 
    Published by the:
 
-     GNU Press,                          Website: http://www.gnupress.org
-     a division of the                   General: press@gnu.org
-     Free Software Foundation, Inc.      Orders:  sales@gnu.org
-     51 Franklin Street, Fifth Floor     Tel: +1 (617) 542-5942
-     Boston, MA 02110-1301 USA           Fax: +1 (617) 542-2652
+     GNU Press,                        http://www.fsf.org/campaigns/gnu-press/
+     a division of the                 email: sales@fsf.org
+     Free Software Foundation, Inc.    Tel: +1 (617) 542-5942
+     51 Franklin Street, Fifth Floor   Fax: +1 (617) 542-2652
+     Boston, MA 02110-1301 USA
 
 
    ISBN 1-882114-43-4
@@ -1758,20 +1758,18 @@ The example of a `while' loop that printed the elements of a list of
 numbers can be written recursively.  Here is the code, including an
 expression to set the value of the variable `animals' to a list.
 
-   If you are using GNU Emacs 20 or before, this example must be copied
-to the `*scratch*' buffer and each expression must be evaluated there.
-Use `C-u C-x C-e' to evaluate the `(print-elements-recursively
-animals)' expression so that the results are printed in the buffer;
-otherwise the Lisp interpreter will try to squeeze the results into the
-one line of the echo area.
+   If you are reading this in Info in Emacs, you can evaluate this
+expression directly in Info.  Otherwise, you must copy the example to
+the `*scratch*' buffer and evaluate each expression there.  Use `C-u
+C-x C-e' to evaluate the `(print-elements-recursively animals)'
+expression so that the results are printed in the buffer; otherwise the
+Lisp interpreter will try to squeeze the results into the one line of
+the echo area.
 
    Also, place your cursor immediately after the last closing
 parenthesis of the `print-elements-recursively' function, before the
 comment.  Otherwise, the Lisp interpreter will try to evaluate the
 comment.
-
-   If you are using a more recent version of Emacs, you can evaluate
-this expression directly in Info.
 
      (setq animals '(gazelle giraffe lion tiger))
 
@@ -4314,7 +4312,7 @@ would serve our purpose, except that a hyphen is merely the most common
 character within symbols that is not typically a word constituent
 character; there are others, too.
 
-   Alternatively, we can redefine the regular expression used in the
+   Alternatively, we can redefine the regexp used in the
 `count-words-example' definition so as to include symbols.  This
 procedure has the merit of clarity, but the task is a little tricky.
 
@@ -6730,9 +6728,9 @@ following conditional:
        ;; evaluate version 23 code
        ( ... )))
 
-   For example, in contrast to version 20, more recent versions blink
-their cursors by default.  I hate such blinking, as well as other
-features, so I placed the following in my `.emacs' file(1):
+   For example, recent versions blink their cursors by default.  I hate
+such blinking, as well as other features, so I placed the following in
+my `.emacs' file(1):
 
      (when (>= emacs-major-version 21)
        (blink-cursor-mode 0)

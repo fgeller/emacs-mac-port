@@ -1,10 +1,9 @@
 This is /home/cyd/emacs/doc/emacs/../../info/emacs, produced by
 makeinfo version 4.13 from /home/cyd/emacs/doc/emacs/emacs.texi.
 
-This is the Sixteenth edition of the `GNU Emacs Manual',
-updated for Emacs version 24.0.96.
+This is the `GNU Emacs Manual', updated for Emacs version 24.0.97.
 
-   Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
+Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -4538,8 +4537,8 @@ File: emacs,  Node: Amusements,  Next: Packages,  Prev: Hyperlinking,  Up: Top
 46 Other Amusements
 *******************
 
-The `animate' package makes text dance.  For an example, try `M-x
-animate-birthday-present'.
+The `animate' package makes text dance (e.g. try `M-x
+animate-birthday-present').
 
    `M-x blackbox', `M-x mpuz' and `M-x 5x5' are puzzles.  `blackbox'
 challenges you to determine the location of objects inside a box by
@@ -5368,14 +5367,14 @@ if a setting has been changed from its default by a Custom theme, its
 
    You can enable a specific Custom theme in the current Emacs session
 by typing `M-x load-theme'.  This prompts for a theme name, loads the
-theme from the theme file, and enables the theme.  If a theme file has
-been loaded before, you can enable the theme without loading its file
-by typing `M-x enable-theme'.  To disable a Custom theme, type `M-x
+theme from the theme file, and enables it.  If a theme file has been
+loaded before, you can enable the theme without loading its file by
+typing `M-x enable-theme'.  To disable a Custom theme, type `M-x
 disable-theme'.
 
    To see a description of a Custom theme, type `?' on its line in the
 `*Custom Themes*' buffer; or type `M-x describe-theme' anywhere in
-Emacs and enter the theme name in the minibuffer.
+Emacs and enter the theme name.
 
 
 File: emacs,  Node: Creating Custom Themes,  Prev: Custom Themes,  Up: Easy Customization
@@ -5744,11 +5743,11 @@ pair with a colon and semicolon.  The special variable/value pair
 `mode: MODENAME;', if present, specifies a major mode.  The VALUEs are
 used literally, and not evaluated.
 
-   Instead of adding variable/value pairs by hand, you can use the
-command `M-x add-file-local-variable-prop-line'.  This prompts for a
-variable and value, and adds them to the first line in the appropriate
-way.  `M-x delete-file-local-variable-prop-line' prompts for a
-variable, and deletes its entry from the line.  `M-x
+   You can use the command `M-x add-file-local-variable-prop-line'
+instead of adding entries by hand.  It prompts for a variable and
+value, and adds them to the first line in the appropriate way.  `M-x
+delete-file-local-variable-prop-line' prompts for a variable, and
+deletes its entry from the line.  `M-x
 copy-dir-locals-to-file-locals-prop-line' copies directory-local
 variables to the first line (*note Directory Variables::).
 
@@ -6177,7 +6176,7 @@ completion and exit commands.
      cautious completion.
 
    * `minibuffer-local-filename-completion-map' and
-     `minibuffer-local-must-match-filename-map' are like the two
+     `minibuffer-local-filename-must-match-map' are like the two
      previous ones, but they are specifically for file name completion.
      They do not bind <SPC>.
 

@@ -1,6 +1,6 @@
 This is ../../info/org, produced by makeinfo version 4.13 from org.texi.
 
-This manual is for Org version 7.8.09.
+This manual is for Org version 7.8.10.
 
    Copyright (C) 2004-2012  Free Software Foundation, Inc.
 
@@ -22,7 +22,7 @@ This manual is for Org version 7.8.09.
      copy of the license to the document, as described in section 6 of
      the license.
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs editing modes
 START-INFO-DIR-ENTRY
 * Org Mode: (org).      Outline-based notes management and organizer
 END-INFO-DIR-ENTRY
@@ -3221,7 +3221,6 @@ Command and function index
 * org-agenda-log-mode:                   Agenda commands.     (line 109)
 * org-agenda-manipulate-query-add:       Agenda commands.     (line 120)
 * org-agenda-month-view:                 Agenda commands.     (line  73)
-* org-agenda-month-year:                 Agenda commands.     (line  74)
 * org-agenda-next-line:                  Agenda commands.     (line  19)
 * org-agenda-open-link:                  Agenda commands.     (line  56)
 * org-agenda-phases-of-moon:             Agenda commands.     (line 488)
@@ -3251,6 +3250,8 @@ Command and function index
 * org-agenda-toggle-time-grid:           Agenda commands.     (line 158)
 * org-agenda-tree-to-indirect-buffer:    Agenda commands.     (line  47)
 * org-agenda-undo:                       Agenda commands.     (line 280)
+* org-agenda-week-view:                  Agenda commands.     (line  72)
+* org-agenda-year-view:                  Agenda commands.     (line  74)
 * org-archive-subtree:                   Moving subtrees.     (line   9)
 * org-archive-subtree-default:           Archiving.           (line  11)
 * org-archive-to-archive-sibling:        Internal archiving.  (line  49)

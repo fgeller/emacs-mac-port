@@ -1,10 +1,9 @@
 This is /home/cyd/emacs/doc/emacs/../../info/emacs, produced by
 makeinfo version 4.13 from /home/cyd/emacs/doc/emacs/emacs.texi.
 
-This is the Sixteenth edition of the `GNU Emacs Manual',
-updated for Emacs version 24.0.96.
+This is the `GNU Emacs Manual', updated for Emacs version 24.0.97.
 
-   Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
+Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -33,15 +32,14 @@ The Emacs Editor
 Emacs is the extensible, customizable, self-documenting real-time
 display editor.  This Info file describes how to edit with Emacs and
 some of the ways to customize it; it corresponds to GNU Emacs version
-24.0.96.
+24.0.97.
 
    If you are reading this in Emacs, type `h' to read a basic
 introduction to the Info documentation system.
 
    For information on extending Emacs, see *note Emacs Lisp: (elisp)Top.
 
-   This is the Sixteenth edition of the `GNU Emacs Manual',
-updated for Emacs version 24.0.96.
+   This is the `GNU Emacs Manual', updated for Emacs version 24.0.97.
 
    Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
 
@@ -5503,16 +5501,12 @@ larger value is more aggressive.
    These two variables are ignored if either `scroll-step' or
 `scroll-conservatively' are set to a non-zero value.
 
-   Note that `scroll-margin', described below, limits the amount of
-scrolling so as to put point outside of the top or bottom margin, even
-if aggressive scrolling specifies a fraction F that is larger than the
-window portion between the top and the bottom margins.
-
    The variable `scroll-margin' restricts how close point can come to
-the top or bottom of a window.  Its value is a number of screen lines;
-if point comes within that many lines of the top or bottom of the
-window, Emacs performs automatic scrolling.  By default,
-`scroll-margin' is 0.
+the top or bottom of a window (even if aggressive scrolling specifies a
+fraction F that is larger than the window portion between the top and
+the bottom margins).  Its value is a number of screen lines; if point
+comes within that many lines of the top or bottom of the window, Emacs
+performs automatic scrolling.  By default, `scroll-margin' is 0.
 
 
 File: emacs,  Node: Horizontal Scrolling,  Next: Narrowing,  Prev: Auto Scrolling,  Up: Display

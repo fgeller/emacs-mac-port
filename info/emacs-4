@@ -1,10 +1,9 @@
 This is /home/cyd/emacs/doc/emacs/../../info/emacs, produced by
 makeinfo version 4.13 from /home/cyd/emacs/doc/emacs/emacs.texi.
 
-This is the Sixteenth edition of the `GNU Emacs Manual',
-updated for Emacs version 24.0.96.
+This is the `GNU Emacs Manual', updated for Emacs version 24.0.97.
 
-   Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
+Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -23,65 +22,6 @@ INFO-DIR-SECTION Emacs
 START-INFO-DIR-ENTRY
 * Emacs: (emacs).       The extensible self-documenting text editor.
 END-INFO-DIR-ENTRY
-
-
-File: emacs,  Node: Threads Buffer,  Next: Stack Buffer,  Prev: Breakpoints Buffer,  Up: GDB Graphical Interface
-
-27.6.5.4 Threads Buffer
-.......................
-
-The GDB Threads buffer displays a summary of the threads in the
-debugged program.  *Note Threads: (gdb)Threads.  To select a thread,
-move point there and type <RET> (`gdb-select-thread'), or click on it
-with `Mouse-2'.  This also displays the associated source buffer, and
-updates the contents of the other GDB buffers.
-
-   You can customize variables under `gdb-buffers' group to select
-fields included in GDB Threads buffer.
-
-`gdb-thread-buffer-verbose-names'
-     Show long thread names like `Thread 0x4e2ab70 (LWP 1983)'.
-
-`gdb-thread-buffer-arguments'
-     Show arguments of thread top frames.
-
-`gdb-thread-buffer-locations'
-     Show file information or library names.
-
-`gdb-thread-buffer-addresses'
-     Show addresses for thread frames in threads buffer.
-
-   To view information for several threads simultaneously, use the
-following commands from the GDB Threads buffer.
-
-`d'
-     Display disassembly buffer for the thread at current line
-     (`gdb-display-disassembly-for-thread').
-
-`f'
-     Display the GDB Stack buffer for the thread at current line
-     (`gdb-display-stack-for-thread').
-
-`l'
-     Display the GDB Locals buffer for the thread at current line
-     (`gdb-display-locals-for-thread').
-
-`r'
-     Display the GDB Registers buffer for the thread at current line
-     (`gdb-display-registers-for-thread').
-
-Their upper-case counterparts, `D', `F' ,`L' and `R', display the
-corresponding buffer in a new frame.
-
-   When you create a buffer showing information about some specific
-thread, it becomes bound to that thread and keeps showing actual
-information while you debug your program.  The mode indicator for each
-GDB buffer shows the number of thread it is showing information about.
-The thread number is also included in the buffer name of bound buffers.
-
-   Further commands are available in the GDB Threads buffer which
-depend on the mode of GDB that is used for controlling execution of
-your program.  *Note Multithreaded Debugging::.
 
 
 File: emacs,  Node: Stack Buffer,  Next: Other GDB Buffers,  Prev: Threads Buffer,  Up: GDB Graphical Interface
@@ -1158,8 +1098,8 @@ Editing::).  Note that a single commit can include both file additions
 and edits to existing files.
 
    On a locking-based version control system (*note VCS Merging::),
-registering a file leaves it unlocked and read-only.  Type `C-x v v' if
-you wish to start editing it.
+registering a file leaves it unlocked and read-only.  Type `C-x v v' to
+start editing it.
 
 
 File: emacs,  Node: Old Revisions,  Next: VC Change Log,  Prev: Registering,  Up: Version Control
@@ -1319,7 +1259,7 @@ File: emacs,  Node: VC Change Log,  Next: VC Undo,  Prev: Old Revisions,  Up: Ve
      (`vc-print-root-log').
 
 `C-x v I'
-     Display the changes that will be received with a pull operation
+     Display the changes that a pull operation will retrieve
      (`vc-log-incoming').
 
 `C-x v O'
@@ -2415,7 +2355,7 @@ Here is how tag syntax is defined for the most popular languages:
      body of the package `bidule', while `M-x find-tag <RET> bidule
      <RET>' will just search for any tag `bidule'.
 
-   * In assembler code, labels appearing at the beginning of a line,
+   * In assembler code, labels appearing at the start of a line,
      followed by a colon, are tags.
 
    * In Bison or Yacc input files, each rule defines as a tag the
@@ -3373,12 +3313,12 @@ File: emacs,  Node: Abbrev Concepts,  Next: Defining Abbrevs,  Up: Abbrevs
 29.1 Abbrev Concepts
 ====================
 
-An "abbrev" is a word which has been defined to "expand" into a
+An "abbrev" is a word that has been defined to "expand" into a
 specified "expansion".  When you insert a word-separator character
 following the abbrev, that expands the abbrev--replacing the abbrev
 with its expansion.  For example, if `foo' is defined as an abbrev
-expanding to `find outer otter', then you can insert `find outer
-otter.' into the buffer by typing `f o o .'.
+expanding to `find outer otter', then typing `f o o .' will insert
+`find outer otter.'.
 
    Abbrevs expand only when Abbrev mode, a buffer-local minor mode, is
 enabled.  Disabling Abbrev mode does not cause abbrev definitions to be
@@ -3396,8 +3336,8 @@ definition.
 
    You can define abbrevs interactively during the editing session,
 irrespective of whether Abbrev mode is enabled.  You can also save
-lists of abbrev definitions in files for use in later sessions.  Some
-users keep extensive lists of abbrevs that they load in every session.
+lists of abbrev definitions in files, which you can the reload for use
+in later sessions.
 
 
 File: emacs,  Node: Defining Abbrevs,  Next: Expanding Abbrevs,  Prev: Abbrev Concepts,  Up: Abbrevs
@@ -3846,8 +3786,8 @@ means not to use the `--dired' option.
 Lisp::, for options and peculiarities of this emulation.
 
    To display the Dired buffer in another window, use `C-x 4 d'
-(`dired-other-window') instead of `C-x d'.  `C-x 5 d'
-(`dired-other-frame') displays the Dired buffer in a separate frame.
+(`dired-other-window').  `C-x 5 d' (`dired-other-frame') displays the
+Dired buffer in a separate frame.
 
    Typing `q' (`quit-window') buries the Dired buffer, and deletes its
 window if the window was created just for that buffer.

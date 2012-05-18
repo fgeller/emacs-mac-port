@@ -187,7 +187,7 @@ Prefix argument ARG makes the entry nonmarking.
 ;;;***
 
 ;;;### (autoloads (cal-html-cursor-year cal-html-cursor-month) "cal-html"
-;;;;;;  "cal-html.el" (20352 65510))
+;;;;;;  "cal-html.el" (20400 62402))
 ;;; Generated autoloads from cal-html.el
 
 (autoload 'cal-html-cursor-month "cal-html" "\
@@ -602,7 +602,7 @@ Echo Persian date unless NOECHO is non-nil.
 ;;;;;;  cal-tex-cursor-week-monday cal-tex-cursor-week-iso cal-tex-cursor-week2
 ;;;;;;  cal-tex-cursor-week cal-tex-cursor-month cal-tex-cursor-month-landscape
 ;;;;;;  cal-tex-cursor-filofax-year cal-tex-cursor-year-landscape
-;;;;;;  cal-tex-cursor-year) "cal-tex" "cal-tex.el" (20352 65510))
+;;;;;;  cal-tex-cursor-year) "cal-tex" "cal-tex.el" (20400 62402))
 ;;; Generated autoloads from cal-tex.el
 
 (autoload 'cal-tex-cursor-year "cal-tex" "\
@@ -902,7 +902,7 @@ Return a value for the variable `diary-font-lock-keywords'.
 ;;;***
 
 ;;;### (autoloads (calendar-mark-holidays calendar-cursor-holidays
-;;;;;;  calendar-list-holidays) "holidays" "holidays.el" (20354 57191))
+;;;;;;  calendar-list-holidays) "holidays" "holidays.el" (20400 62402))
 ;;; Generated autoloads from holidays.el
 
 (autoload 'calendar-list-holidays "holidays" "\
@@ -964,7 +964,7 @@ Local time of sunrise and sunset for month under cursor or at EVENT.
 
 ;;;### (autoloads nil nil ("appt.el" "cal-dst.el" "cal-menu.el" "calendar.el"
 ;;;;;;  "icalendar.el" "parse-time.el" "time-date.el" "timeclock.el"
-;;;;;;  "todo-mode.el") (20378 50998 856237))
+;;;;;;  "todo-mode.el") (20404 25045 170517))
 
 ;;;***
 

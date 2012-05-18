@@ -375,7 +375,7 @@ added; otherwise return nil.
 ;;;;;;  mh-prev-button mh-page-msg mh-next-unread-msg mh-next-undeleted-msg
 ;;;;;;  mh-next-button mh-modify mh-last-msg mh-inc-folder mh-goto-msg
 ;;;;;;  mh-first-msg mh-execute-commands mh-delete-msg-no-motion
-;;;;;;  mh-delete-msg) "mh-folder" "mh-folder.el" (20352 65510))
+;;;;;;  mh-delete-msg) "mh-folder" "mh-folder.el" (20400 62402))
 ;;; Generated autoloads from mh-folder.el
 
 (autoload 'mh-delete-msg "mh-folder" "\
@@ -2813,7 +2813,7 @@ Forget the message INDEX from the threading tables.
 ;;;;;;  mh-help mh-set-help mh-ephem-message mh-find-path mh-logo-display
 ;;;;;;  mh-replace-string mh-quote-pick-expr mh-mapc mh-make-local-vars
 ;;;;;;  mh-delete-line mh-colors-in-use-p mh-colors-available-p mh-beginning-of-word
-;;;;;;  mh-search-from-end) "mh-utils" "mh-utils.el" (20352 65510))
+;;;;;;  mh-search-from-end) "mh-utils" "mh-utils.el" (20400 62402))
 ;;; Generated autoloads from mh-utils.el
 
 (autoload 'mh-search-from-end "mh-utils" "\
@@ -3137,7 +3137,7 @@ This is only done if `mh-x-image-cache-directory' is nil.
 ;;;***
 
 ;;;### (autoloads nil nil ("mh-buffers.el" "mh-compat.el" "mh-e.el"
-;;;;;;  "mh-gnus.el" "mh-tool-bar.el") (20378 51002 829055))
+;;;;;;  "mh-gnus.el" "mh-tool-bar.el") (20404 25049 135617))
 
 ;;;***
 

@@ -1,10 +1,10 @@
 This is /home/cyd/emacs/doc/lispref/../../info/elisp, produced by
 makeinfo version 4.13 from /home/cyd/emacs/doc/lispref/elisp.texi.
 
-This is edition 3.1 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 24.0.96.
+This is the `GNU Emacs Lisp Reference Manual' corresponding to Emacs
+version 24.0.97.
 
-   Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
+Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -376,7 +376,7 @@ of the buffer contents), the mouse pointer usually uses the `arrow'
 style, but you can specify a different style (one of those above) by
 setting `void-text-area-pointer'.
 
- -- Variable: void-text-area-pointer
+ -- User Option: void-text-area-pointer
      This variable specifies the mouse pointer style for void text
      areas.  These include the areas after the end of a line or below
      the last line in the buffer.  The default is to use the `arrow'
@@ -1861,7 +1861,7 @@ marker.
           (point-max-marker)
                => #<marker at 200 in markers.texi>
 
- -- Function: copy-marker marker-or-integer &optional insertion-type
+ -- Function: copy-marker &optional marker-or-integer insertion-type
      If passed a marker as its argument, `copy-marker' returns a new
      marker that points to the same place and the same buffer as does
      MARKER-OR-INTEGER.  If passed an integer as its argument,
@@ -3914,11 +3914,6 @@ justification style to refill portions of the text.  *Note Margins::.
      mode is enabled.  That is a function whose sole purpose is to
      implement the usual strategy for breaking a line.
 
-          In older Emacs versions, this variable was named
-          `auto-fill-hook', but since it is not called with the
-          standard convention for hooks, it was renamed to
-          `auto-fill-function' in version 19.
-
  -- Variable: normal-auto-fill-function
      This variable specifies the function to use for
      `auto-fill-function', if and when Auto Fill is turned on.  Major
@@ -5502,7 +5497,7 @@ properties.  For simplicity, we will refer to the clickable text as a
 "link".
 
    Implementing a link involves three separate steps: (1) indicating
-clickability when the mouse moves over the link; (2) making `RET' or
+clickability when the mouse moves over the link; (2) making <RET> or
 `Mouse-2' on that link do something; and (3) setting up a `follow-link'
 condition so that the link obeys `mouse-1-click-follows-link'.
 
@@ -5992,7 +5987,7 @@ from this code.
      NO-LINE-BREAK is non-`nil', these newlines are not added, so the
      output is just one long line.
 
- -- Command: base64-encode-string string &optional no-line-break
+ -- Function: base64-encode-string string &optional no-line-break
      This function converts the string STRING into base 64 code.  It
      returns a string containing the encoded text.  As for
      `base64-encode-region', an error is signaled if a character in the
@@ -6003,7 +5998,7 @@ from this code.
      NO-LINE-BREAK is non-`nil', these newlines are not added, so the
      result string is just one long line.
 
- -- Function: base64-decode-region beg end
+ -- Command: base64-decode-region beg end
      This function converts the region from BEG to END from base 64
      code into the corresponding decoded text.  It returns the length of
      the decoded text.
@@ -6237,7 +6232,7 @@ operations that call them.
      modification.  Each function receives three arguments: the
      beginning and end of the region just changed, and the length of
      the text that existed before the change.  All three arguments are
-     integers.  The buffer that's about to change is always the current
+     integers.  The buffer has been changed is always the current
      buffer.
 
      The length of the old text is the difference between the buffer

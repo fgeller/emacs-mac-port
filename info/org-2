@@ -1,6 +1,6 @@
 This is ../../info/org, produced by makeinfo version 4.13 from org.texi.
 
-This manual is for Org version 7.8.09.
+This manual is for Org version 7.8.10.
 
    Copyright (C) 2004-2012  Free Software Foundation, Inc.
 
@@ -22,7 +22,7 @@ This manual is for Org version 7.8.09.
      copy of the license to the document, as described in section 6 of
      the license.
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs editing modes
 START-INFO-DIR-ENTRY
 * Org Mode: (org).      Outline-based notes management and organizer
 END-INFO-DIR-ENTRY
@@ -468,9 +468,9 @@ Change display
      Delete other windows.  
 
 `v d  or short  d     (`org-agenda-day-view')'
-`v w  or short  w     (`org-agenda-day-view')'
+`v w  or short  w     (`org-agenda-week-view')'
 `v m     (`org-agenda-month-view')'
-`v y     (`org-agenda-month-year')'
+`v y     (`org-agenda-year-view')'
 `v SPC     (`org-agenda-reset-view')'
      Switch to day/week/month/year view.  When switching to day or week
      view, this setting becomes the default for subsequent agenda

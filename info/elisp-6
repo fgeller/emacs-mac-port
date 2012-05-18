@@ -1,10 +1,10 @@
 This is /home/cyd/emacs/doc/lispref/../../info/elisp, produced by
 makeinfo version 4.13 from /home/cyd/emacs/doc/lispref/elisp.texi.
 
-This is edition 3.1 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 24.0.96.
+This is the `GNU Emacs Lisp Reference Manual' corresponding to Emacs
+version 24.0.97.
 
-   Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
+Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -140,14 +140,14 @@ the order of appearance in the list.
      This command writes the current buffer contents into the file FILE
      in a format based on FORMAT, which is a list of format names.  It
      constructs the actual format starting from FORMAT, then appending
-     any elements from the value of `buffer-file-format' with a non-nil
-     PRESERVE flag (see above), if they are not already present in
-     FORMAT.  It then updates `buffer-file-format' with this format,
-     making it the default for future saves.  Except for the FORMAT
-     argument, this command is similar to `write-file'.  In particular,
-     CONFIRM has the same meaning and interactive treatment as the
-     corresponding argument to `write-file'.  *Note Definition of
-     write-file::.
+     any elements from the value of `buffer-file-format' with a
+     non-`nil' PRESERVE flag (see above), if they are not already
+     present in FORMAT.  It then updates `buffer-file-format' with this
+     format, making it the default for future saves.  Except for the
+     FORMAT argument, this command is similar to `write-file'.  In
+     particular, CONFIRM has the same meaning and interactive treatment
+     as the corresponding argument to `write-file'.  *Note Definition
+     of write-file::.
 
  -- Command: format-find-file file format
      This command finds the file FILE, converting it according to
@@ -3388,7 +3388,7 @@ buffer.  Hence, all the variables affecting `display-buffer' will
 affect it as well.  *Note Choosing Window::, for the documentation of
 `display-buffer'.
 
- -- Function: pop-to-buffer buffer-or-name &optional action norecord
+ -- Command: pop-to-buffer buffer-or-name &optional action norecord
      This function makes BUFFER-OR-NAME the current buffer and displays
      it in some window, preferably not the window previously selected.
      It then selects the displaying window.  If that window is on a
@@ -5194,7 +5194,7 @@ File: elisp,  Node: Creating Frames,  Next: Multiple Terminals,  Up: Frames
 
 To create a new frame, call the function `make-frame'.
 
- -- Function: make-frame &optional alist
+ -- Command: make-frame &optional alist
      This function creates and returns a new frame, displaying the
      current buffer.
 
@@ -6364,7 +6364,7 @@ buffer name (*note Mode Line Variables::).
      NORECORD has the same meaning as for `select-frame' (see below).
      The return value of this function is not significant.
 
- -- Function: select-frame frame &optional norecord
+ -- Command: select-frame frame &optional norecord
      This function selects frame FRAME, temporarily disregarding the
      focus of the X server if any.  The selection of FRAME lasts until
      the next time the user does something to select a different frame,

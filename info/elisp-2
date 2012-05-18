@@ -1,10 +1,10 @@
 This is /home/cyd/emacs/doc/lispref/../../info/elisp, produced by
 makeinfo version 4.13 from /home/cyd/emacs/doc/lispref/elisp.texi.
 
-This is edition 3.1 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 24.0.96.
+This is the `GNU Emacs Lisp Reference Manual' corresponding to Emacs
+version 24.0.97.
 
-   Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
+Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -51,8 +51,8 @@ and `nil'.
    * The length of the array is fixed once you create it; you cannot
      change the length of an existing array.
 
-   * For purposes of evaluation, the array is a constant--in other
-     words, it evaluates to itself.
+   * For purposes of evaluation, the array is a constant--i.e., it
+     evaluates to itself.
 
    * The elements of an array may be referenced or changed with the
      functions `aref' and `aset', respectively (*note Array
@@ -942,7 +942,7 @@ symbol's function cell, use the function `symbol-function' (*note
 Function Cells::).
 
    The property list cell normally should hold a correctly formatted
-property list.  To get a symbol's function cell, use the function
+property list.  To get a symbol's property list, use the function
 `symbol-plist'.  *Note Property Lists::.
 
    The function cell or the value cell may be "void", which means that
@@ -1310,8 +1310,8 @@ File: elisp,  Node: Other Plists,  Prev: Symbol Plists,  Up: Property Lists
 8.4.3 Property Lists Outside Symbols
 ------------------------------------
 
-These functions are useful for manipulating property lists that are
-stored in places other than symbols:
+These functions are useful for manipulating property lists not stored
+in symbols:
 
  -- Function: plist-get plist property
      This returns the value of the PROPERTY property stored in the
@@ -1597,7 +1597,6 @@ Specifically, we store the symbol `car' into the function cell of
      ;;   -------------       -----        -------        -------
      ;;  | #<subr car> | <-- | car |  <-- | first |  <-- | erste |
      ;;   -------------       -----        -------        -------
-
      (symbol-function 'car)
           => #<subr car>
      (fset 'first 'car)
@@ -2155,8 +2154,8 @@ an `if'.
                -| "The third form"
           => "The third form"
 
-   Two other control constructs likewise evaluate a series of forms but
-return a different value:
+   Two other constructs likewise evaluate a series of forms but return
+different values:
 
  -- Special Form: prog1 form1 forms...
      This special form evaluates FORM1 and all of the FORMS, in textual
@@ -2210,8 +2209,8 @@ which is a generalized case statement.
      `if' returns `nil'.
 
      `if' is a special form because the branch that is not selected is
-     never evaluated--it is ignored.  Thus, in the example below,
-     `true' is not printed because `print' is never called.
+     never evaluated--it is ignored.  Thus, in this example, `true' is
+     not printed because `print' is never called:
 
           (if nil
               (print 'true)
@@ -2280,9 +2279,7 @@ which is a generalized case statement.
      previous clauses was successful.  To do this, we use `t' as the
      CONDITION of the last clause, like this: `(t BODY-FORMS)'.  The
      form `t' evaluates to `t', which is never `nil', so this clause
-     never fails, provided the `cond' gets to it at all.
-
-     For example,
+     never fails, provided the `cond' gets to it at all.  For example:
 
           (setq a 5)
           (cond ((eq a 'hack) 'foo)
@@ -2749,8 +2746,7 @@ not end with any sort of punctuation.
      a list of the form `(ERROR-SYMBOL .  DATA)' (*note Handling
      Errors::).
 
-     The function `signal' never returns (though in older Emacs versions
-     it could sometimes return).
+     The function `signal' never returns.
 
           (signal 'wrong-number-of-arguments '(x y))
                error--> Wrong number of arguments: x, y
@@ -2975,13 +2971,13 @@ message (but without a beep), then returns a very large number.
 
 The handler specifies condition name `arith-error' so that it will
 handle only division-by-zero errors.  Other kinds of errors will not be
-handled, at least not by this `condition-case'.  Thus,
+handled (by this `condition-case').  Thus:
 
      (safe-divide nil 3)
           error--> Wrong type argument: number-or-marker-p, nil
 
    Here is a `condition-case' that catches all kinds of errors,
-including those signaled with `error':
+including those from `error':
 
      (setq baz 34)
           => 34
@@ -4771,16 +4767,19 @@ variable with a new name.  `make-obsolete-variable' declares that the
 old name is obsolete and therefore that it may be removed at some stage
 in the future.
 
- -- Function: make-obsolete-variable obsolete-name current-name
-          &optional when
+ -- Function: make-obsolete-variable obsolete-name current-name when
+          &optional access-type
      This function makes the byte compiler warn that the variable
      OBSOLETE-NAME is obsolete.  If CURRENT-NAME is a symbol, it is the
      variable's new name; then the warning message says to use
      CURRENT-NAME instead of OBSOLETE-NAME.  If CURRENT-NAME is a
      string, this is the message and there is no replacement variable.
+     WHEN should be a string indicating when the variable was first
+     made obsolete (usually a version number string).
 
-     If provided, WHEN should be a string indicating when the variable
-     was first made obsolete--for example, a date or a release number.
+     The optional argument ACCESS-TYPE, if non-`nil', should should
+     specify the kind of access that will trigger obsolescence
+     warnings; it can be either `get' or `set'.
 
    You can make two variables synonyms and declare one obsolete at the
 same time using the macro `define-obsolete-variable-alias'.
@@ -5830,12 +5829,14 @@ same time using the macro `define-obsolete-function-alias':
    In addition, you can mark a certain a particular calling convention
 for a function as obsolete:
 
- -- Function: set-advertised-calling-convention function signature
+ -- Function: set-advertised-calling-convention function signature when
      This function specifies the argument list SIGNATURE as the correct
      way to call FUNCTION.  This causes the Emacs byte compiler to
      issue a warning whenever it comes across an Emacs Lisp program
      that calls FUNCTION any other way (however, it will still allow
-     the code to be byte compiled).
+     the code to be byte compiled).  WHEN should be a string indicating
+     when the variable was first made obsolete (usually a version
+     number string).
 
      For instance, in old versions of Emacs the `sit-for' function
      accepted three arguments, like this
@@ -5846,7 +5847,7 @@ for a function as obsolete:
      Waiting::).  The old calling convention is deprecated like this:
 
           (set-advertised-calling-convention
-            'sit-for '(seconds &optional nodisp))
+            'sit-for '(seconds &optional nodisp) "22.1")
 
 
 File: elisp,  Node: Inline Functions,  Next: Declaring Functions,  Prev: Obsolete Functions,  Up: Functions
@@ -6788,7 +6789,7 @@ one name.
  -- Variable: customize-package-emacs-version-alist
      This alist provides a mapping for the versions of Emacs that are
      associated with versions of a package listed in the
-     `:package-version' keyword.  Its elements look like this:
+     `:package-version' keyword.  Its elements are:
 
           (PACKAGE (PVERSION . EVERSION)...)
 
@@ -7006,11 +7007,10 @@ File: elisp,  Node: Variable Definitions,  Next: Customization Types,  Prev: Gro
 
 `:set-after VARIABLES'
      When setting variables according to saved customizations, make
-     sure to set the variables VARIABLES before this one; in other
-     words, delay setting this variable until after those others have
-     been handled.  Use `:set-after' if setting this variable won't
-     work properly unless those other variables already have their
-     intended values.
+     sure to set the variables VARIABLES before this one; i.e., delay
+     setting this variable until after those others have been handled.
+     Use `:set-after' if setting this variable won't work properly
+     unless those other variables already have their intended values.
 
    It is useful to specify the `:require' keyword for an option that
 "turns on" a certain feature.  This causes Emacs to load the feature,

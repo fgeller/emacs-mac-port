@@ -23,9 +23,9 @@ This file describes the Emacs GnuTLS integration.
      copy of the license to the document, as described in section 6 of
      the license.
 
-INFO-DIR-SECTION Emacs lisp libraries
+INFO-DIR-SECTION Emacs network features
 START-INFO-DIR-ENTRY
-* GnuTLS: (gnutls).          The Emacs GnuTLS Integration.
+* GnuTLS: (emacs-gnutls).       The Emacs GnuTLS integration.
 END-INFO-DIR-ENTRY
 
 
@@ -217,11 +217,11 @@ File: emacs-gnutls,  Node: Variable Index,  Prev: Function Index,  Up: Top
 
 
 Tag Table:
-Node: Top1304
-Node: Overview2863
-Node: Help For Users3578
-Node: Help For Developers6428
-Node: Function Index8118
-Node: Variable Index8500
+Node: Top1309
+Node: Overview2868
+Node: Help For Users3583
+Node: Help For Developers6433
+Node: Function Index8123
+Node: Variable Index8505
 
 End Tag Table

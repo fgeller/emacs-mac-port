@@ -1,10 +1,9 @@
 This is /home/cyd/emacs/doc/emacs/../../info/emacs, produced by
 makeinfo version 4.13 from /home/cyd/emacs/doc/emacs/emacs.texi.
 
-This is the Sixteenth edition of the `GNU Emacs Manual',
-updated for Emacs version 24.0.96.
+This is the `GNU Emacs Manual', updated for Emacs version 24.0.97.
 
-   Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
+Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -1548,9 +1547,9 @@ Key (Character) Index
 * C-M-q:                                 Multi-line Indent.   (line  27)
 * C-M-q (C mode):                        C Indent.            (line  13)
 * C-M-q (Fortran mode):                  ForIndent Commands.  (line  21)
-* C-M-r:                                 Regexp Search.       (line  19)
+* C-M-r:                                 Regexp Search.       (line  18)
 * C-M-r (Rmail):                         Rmail Make Summary.  (line  45)
-* C-M-s:                                 Regexp Search.       (line  19)
+* C-M-s:                                 Regexp Search.       (line  18)
 * C-M-s (Rmail):                         Rmail Make Summary.  (line  58)
 * C-M-t:                                 Expressions.         (line  51)
 * C-M-t (Rmail):                         Rmail Make Summary.  (line  52)
@@ -1595,7 +1594,7 @@ Key (Character) Index
 * C-t d (Image-Dired):                   Image-Dired.         (line  10)
 * C-TAB:                                 File Name Cache.     (line   6)
 * C-u:                                   Arguments.           (line  41)
-* C-u C-/:                               Undo.                (line  52)
+* C-u C-/:                               Undo.                (line  51)
 * C-u C-c C-w (Fortran mode):            Fortran Columns.     (line  57)
 * C-u C-SPC:                             Mark Ring.           (line  27)
 * C-u C-x C-x:                           Disabled Transient Mark.
@@ -2067,12 +2066,12 @@ Key (Character) Index
 * M-~:                                   Save Commands.       (line  76)
 * Mouse-1:                               Mouse Commands.      (line   6)
 * Mouse-1 (mode line):                   Mode Line Mouse.     (line  16)
+* Mouse-1 (on buttons):                  Mouse References.    (line   6)
 * Mouse-1 (scroll bar):                  Mode Line Mouse.     (line  34)
-* Mouse-1 (selection):                   Mouse References.    (line   6)
 * Mouse-2:                               Mouse Commands.      (line   6)
 * Mouse-2 (GDB Breakpoints buffer):      Breakpoints Buffer.  (line  25)
 * Mouse-2 (mode line):                   Mode Line Mouse.     (line  23)
-* Mouse-2 (selection):                   Mouse References.    (line   6)
+* Mouse-2 (on buttons):                  Mouse References.    (line   6)
 * Mouse-3:                               Mouse Commands.      (line   6)
 * Mouse-3 (mode line):                   Mode Line Mouse.     (line  26)
 * n (DocView mode):                      DocView Navigation.  (line  16)
@@ -3151,10 +3150,10 @@ Command and Function Index
 * inverse-add-global-abbrev:             Defining Abbrevs.    (line  47)
 * inverse-add-mode-abbrev:               Defining Abbrevs.    (line  47)
 * isearch-backward:                      Basic Isearch.       (line  48)
-* isearch-backward-regexp:               Regexp Search.       (line  19)
+* isearch-backward-regexp:               Regexp Search.       (line  18)
 * isearch-del-char:                      Isearch Yank.        (line  25)
 * isearch-forward:                       Basic Isearch.       (line  12)
-* isearch-forward-regexp:                Regexp Search.       (line  19)
+* isearch-forward-regexp:                Regexp Search.       (line  18)
 * isearch-forward-word:                  Word Search.         (line  26)
 * isearch-toggle-input-method:           Special Isearch.     (line  32)
 * isearch-toggle-specified-input-method: Special Isearch.     (line  32)
@@ -3472,8 +3471,8 @@ Command and Function Index
 * quit-window:                           VC Directory Commands.
                                                               (line  47)
 * quoted-insert:                         Inserting Text.      (line  25)
-* re-search-backward:                    Regexp Search.       (line  57)
-* re-search-forward:                     Regexp Search.       (line  57)
+* re-search-backward:                    Regexp Search.       (line  56)
+* re-search-forward:                     Regexp Search.       (line  56)
 * read-abbrev-file:                      Saving Abbrevs.      (line  27)
 * recenter:                              Recentering.         (line  53)
 * recenter-top-bottom:                   Recentering.         (line  20)
@@ -3711,7 +3710,7 @@ Command and Function Index
 * table-heighten-cell:                   Cell Commands.       (line  32)
 * table-insert:                          Table Creation.      (line   6)
 * table-insert-column:                   Table Rows and Columns.
-                                                              (line  12)
+                                                              (line  13)
 * table-insert-row:                      Table Rows and Columns.
                                                               (line   6)
 * table-insert-sequence:                 Table Misc.          (line  15)
@@ -3796,7 +3795,7 @@ Command and Function Index
 * uncomment-region:                      Comment Commands.    (line  71)
 * undigestify-rmail-message:             Rmail Digest.        (line  15)
 * undo:                                  Undo.                (line  21)
-* undo-only:                             Undo.                (line  29)
+* undo-only:                             Undo.                (line  28)
 * unexpand-abbrev:                       Expanding Abbrevs.   (line  50)
 * unforward-rmail-message:               Rmail Reply.         (line  82)
 * unhighlight-regexp:                    Highlight Interactively.

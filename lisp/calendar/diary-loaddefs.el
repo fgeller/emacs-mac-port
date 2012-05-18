@@ -303,7 +303,7 @@ Persian calendar equivalent of date diary entry.
 ;;;***
 
 ;;;### (autoloads (calendar-check-holidays calendar-holiday-list)
-;;;;;;  "holidays" "holidays.el" (20354 57191))
+;;;;;;  "holidays" "holidays.el" (20400 62402))
 ;;; Generated autoloads from holidays.el
 
 (autoload 'calendar-holiday-list "holidays" "\
@@ -352,7 +352,7 @@ Accurate to a few seconds.
 ;;;### (autoloads nil nil ("appt.el" "cal-dst.el" "cal-html.el" "cal-loaddefs.el"
 ;;;;;;  "cal-menu.el" "cal-move.el" "cal-tex.el" "cal-x.el" "calendar.el"
 ;;;;;;  "diary-lib.el" "icalendar.el" "parse-time.el" "time-date.el"
-;;;;;;  "timeclock.el" "todo-mode.el") (20378 51000 236408))
+;;;;;;  "timeclock.el" "todo-mode.el") (20404 25046 545291))
 
 ;;;***
 

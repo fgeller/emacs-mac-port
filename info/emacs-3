@@ -1,10 +1,9 @@
 This is /home/cyd/emacs/doc/emacs/../../info/emacs, produced by
 makeinfo version 4.13 from /home/cyd/emacs/doc/emacs/emacs.texi.
 
-This is the Sixteenth edition of the `GNU Emacs Manual',
-updated for Emacs version 24.0.96.
+This is the `GNU Emacs Manual', updated for Emacs version 24.0.97.
 
-   Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
+Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -315,12 +314,11 @@ you to choose one of those coding systems.
    If you insert the unsuitable characters in a mail message, Emacs
 behaves a bit differently.  It additionally checks whether the
 most-preferred coding system is recommended for use in MIME messages;
-if not, Emacs tells you that the most-preferred coding system is not
-recommended and prompts you for another coding system.  This is so you
-won't inadvertently send a message encoded in a way that your
-recipient's mail software will have difficulty decoding.  (You can
-still use an unsuitable coding system if you type its name in response
-to the question.)
+if not, it informs you of this fact and prompts you for another coding
+system.  This is so you won't inadvertently send a message encoded in a
+way that your recipient's mail software will have difficulty decoding.
+(You can still use an unsuitable coding system if you enter its name at
+the prompt.)
 
    When you send a mail message (*note Sending Mail::), Emacs has four
 different ways to determine the coding system to use for encoding the
@@ -1067,7 +1065,7 @@ Interactive Shell::).
 first visit a file or create a buffer (*note Choosing Modes::).  You
 can explicitly select a new major mode by using an `M-x' command.  Take
 the name of the mode and add `-mode' to get the name of the command to
-select that mode.  Thus, you can enter Lisp mode with `M-x lisp-mode'.
+select that mode (e.g., `M-x lisp-mode' enters Lisp mode).
 
    The value of the buffer-local variable `major-mode' is a symbol with
 the same name as the major mode command (e.g. `lisp-mode').  This
@@ -1189,7 +1187,7 @@ Customize automatically runs the mode command for you.
      disable it in individual buffers.  *Note Faces::.
 
    * Linum mode displays each line's line number in the window's left
-     margin.  Its mode command is `linum-mode'.
+     margin.
 
    * Outline minor mode provides similar facilities to the major mode
      called Outline mode.  *Note Outline Mode::.
@@ -1895,8 +1893,8 @@ again.  The reason `C-x C-p' includes only the following page delimiter
 in the region is to ensure that.
 
    A numeric argument to `C-x C-p' specifies which page to go to,
-relative to the current one.  Zero means the current page.  One means
-the next page, and -1 means the previous one.
+relative to the current one.  Zero means the current page, one the next
+page, and -1 the previous one.
 
    The `C-x l' command (`count-lines-page') is good for deciding where
 to break a page in two.  It displays in the echo area the total number
@@ -1923,8 +1921,7 @@ File: emacs,  Node: Filling,  Next: Case,  Prev: Pages,  Up: Text
 "Filling" text means breaking it up into lines that fit a specified
 width.  Emacs does filling in two ways.  In Auto Fill mode, inserting
 text with self-inserting characters also automatically fills it.  There
-are also explicit fill commands that you can use when editing text
-leaves it unfilled.
+are also explicit fill commands that you can use when editing text.
 
 * Menu:
 
@@ -2654,7 +2651,7 @@ effect.
 
    To use the Foldout package, you can type `M-x load-library <RET>
 foldout <RET>'; or you can arrange for to do that automatically by
-putting this in your init file (*note Init File::):
+putting the following in your init file:
 
      (eval-after-load "outline" '(require 'foldout))
 
@@ -2695,8 +2692,8 @@ promote or demote a heading line with `M-<left>' (`org-metaleft') and
 bindings if invoked on a body line.
 
    The following subsections give basic instructions for using Org mode
-as an organizer and as an authoring system.  *Note The Org Mode Manual:
-(org)Top, for details.
+as an organizer and as an authoring system.  For details, *note The Org
+Mode Manual: (org)Top.
 
 * Menu:
 
@@ -3159,8 +3156,8 @@ variant of SGML mode.
 
 `C-c /'
      Insert a close tag for the innermost unterminated tag
-     (`sgml-close-tag').  If called from within a tag or a comment,
-     close this element instead of inserting a close tag.
+     (`sgml-close-tag').  If called within a tag or a comment, close it
+     instead of inserting a close tag.
 
 `C-c 8'
      Toggle a minor mode in which Latin-1 characters insert the
@@ -3201,10 +3198,10 @@ File: emacs,  Node: Nroff Mode,  Next: Enriched Text,  Prev: HTML Mode,  Up: Tex
 25.12 Nroff Mode
 ================
 
-Nroff mode is a major mode derived from Text mode, which is specialized
-for editing nroff files (e.g. Unix man pages).  Type `M-x nroff-mode'
-to enter this mode.  Entering Nroff mode runs the hook
-`text-mode-hook', followed by `nroff-mode-hook' (*note Hooks::).
+Nroff mode, a major mode derived from Text mode, is specialized for
+editing nroff files (e.g. Unix man pages).  Type `M-x nroff-mode' to
+enter this mode.  Entering Nroff mode runs the hook `text-mode-hook',
+then `nroff-mode-hook' (*note Hooks::).
 
    In Nroff mode, nroff command lines are treated as paragraph
 separators, pages are separated by `.bp' commands, and comments start
@@ -3427,8 +3424,8 @@ In Enriched mode, you can specify different amounts of indentation for
 the right or left margin of a paragraph or a part of a paragraph.
 These margins also affect fill commands such as `M-q' (*note Filling::).
 
-   The Indentation submenu of Text Properties provides four commands
-for specifying indentation:
+   The Indentation submenu of Text Properties offers commands for
+specifying indentation:
 
 `Indent More'
      Indent the region by 4 columns (`increase-left-margin').  In
@@ -3492,11 +3489,10 @@ paragraphs overlapping the region.
      still indent the left margin.
 
    You can also specify justification styles using the Justification
-submenu in the Text Properties menu.
-
-   The default justification style is specified by the per-buffer
-variable `default-justification'.  Its value should be one of the
-symbols `left', `right', `full', `center', or `none'.
+submenu in the Text Properties menu.    The default justification style
+is specified by the per-buffer variable `default-justification'.  Its
+value should be one of the symbols `left', `right', `full', `center', or
+`none'.
 
 
 File: emacs,  Node: Enriched Properties,  Prev: Enriched Justification,  Up: Enriched Text
@@ -3742,9 +3738,10 @@ File: emacs,  Node: Table Rows and Columns,  Next: Table Conversion,  Prev: Cell
 
 `M-x table-insert-row' inserts a row of cells before the current table
 row.  The current row, together with point, is pushed down past the new
-row.  To insert rows after the last row at the bottom of a table,
+row.  To insert a row after the last row at the bottom of a table,
 invoke this command with point below the table, just below the bottom
-edge.  A numeric prefix argument specifies the number of rows to insert.
+edge.  You can insert more than one row at a time by using a numeric
+prefix argument.
 
    Similarly, `M-x table-insert-column' inserts a column of cells to
 the left of the current table column.  To insert a column to the right
@@ -3929,7 +3926,7 @@ File: emacs,  Node: Programs,  Next: Building,  Prev: Text,  Up: Top
 *******************
 
 This chapter describes Emacs features for facilitating editing
-programs.  Some of these features can:
+programs.  Some of the things these features can do are:
 
    * Find or move over top-level definitions (*note Defuns::).
 
@@ -4068,13 +4065,10 @@ highlights confusing opening delimiters (those that ought to be quoted)
 in bold red.
 
    If you need to override this convention, you can do so by setting
-this user option:
-
- -- Variable: open-paren-in-column-0-is-defun-start
-     If this user option is set to `t' (the default), opening
-     parentheses or braces at column zero always start defuns.  When
-     it's `nil', defuns are found by searching for parens or braces at
-     the outermost level.
+the variable `open-paren-in-column-0-is-defun-start'.  If this user
+option is set to `t' (the default), opening parentheses or braces at
+column zero always start defuns.  When it is `nil', defuns are found by
+searching for parens or braces at the outermost level.
 
    Usually, you should leave this option at its default value of `t'.
 If your buffer contains parentheses or braces in column zero which
@@ -5242,9 +5236,9 @@ C-l'; when it is enabled, `/l' appears in the mode line after the mode
 name:
 
 `C-c C-l'
-     Toggle electric action (`c-toggle-electric-state').  With a prefix
-     argument, this command enables electric action if the argument is
-     positive, disables it if it is negative.
+     Toggle electric action (`c-toggle-electric-state').  With a
+     positive prefix argument, this command enables electric action,
+     with a negative one it disables it.
 
    Electric characters insert newlines only when, in addition to the
 electric state, the "auto-newline" feature is enabled (indicated by
@@ -5274,14 +5268,14 @@ commands.
 
 `C-c C-<DEL>'
 `C-c <DEL>'
-     `c-hungry-delete-backwards'--Delete the entire block of whitespace
-     preceding point.
+     Delete the entire block of whitespace preceding point
+     (`c-hungry-delete-backwards').
 
 `C-c C-d'
 `C-c C-<DELETE>'
 `C-c <DELETE>'
-     `c-hungry-delete-forward'--Delete the entire block of whitespace
-     following point.
+     Delete the entire block of whitespace after point
+     (`c-hungry-delete-forward').
 
    As an alternative to the above commands, you can enable "hungry
 delete mode".  When this feature is enabled (indicated by `/h' in the
@@ -5290,17 +5284,12 @@ whitespace, not just one space, and a single `C-c C-d' (but _not_ plain
 <DELETE>) deletes all following whitespace.
 
 `M-x c-toggle-hungry-state'
-     Toggle the hungry-delete feature (`c-toggle-hungry-state')(1).
-     With a prefix argument, this command turns the hungry-delete
-     feature on if the argument is positive, and off if it is negative.
+     Toggle the hungry-delete feature (`c-toggle-hungry-state').  With
+     a prefix argument, this command turns the hungry-delete feature on
+     if the argument is positive, and off if it is negative.
 
    The variable `c-hungry-delete-key' controls whether the
 hungry-delete feature is enabled.
-
-   ---------- Footnotes ----------
-
-   (1) This command had the binding `C-c C-d' in earlier versions of
-Emacs.  `C-c C-d' is now bound to `c-hungry-delete-forward'.
 
 
 File: emacs,  Node: Other C Commands,  Prev: Hungry Delete,  Up: C Modes
@@ -6302,11 +6291,11 @@ used depends on the language; for example, for C/C++ files this is
 usually the C compiler.  Flymake can also use build tools such as
 `make' for checking complicated projects.
 
-   To enable Flymake mode, type `M-x flymake-mode'.  You can go to the
-errors found by Flymake mode with `M-x flymake-goto-next-error' and
-`M-x flymake-goto-prev-error'.  To display any error messages
-associated with the current line, use `M-x
-flymake-display-err-menu-for-current-line'.
+   To enable Flymake mode, type `M-x flymake-mode'.  You can jump to
+the errors that it finds by using `M-x flymake-goto-next-error' and
+`M-x flymake-goto-prev-error'.  Use the command `M-x
+flymake-display-err-menu-for-current-line' to display any error
+messages associated with the current line.
 
    For more details about using Flymake, see *note Flymake:
 (flymake)Top.
@@ -6771,6 +6760,65 @@ shares its window with the GDB Threads buffer.  To switch from one to
 the other click with `Mouse-1' on the relevant button in the header
 line.  If `gdb-show-threads-by-default' is non-`nil', the GDB Threads
 buffer is the one shown by default.
+
+
+File: emacs,  Node: Threads Buffer,  Next: Stack Buffer,  Prev: Breakpoints Buffer,  Up: GDB Graphical Interface
+
+27.6.5.4 Threads Buffer
+.......................
+
+The GDB Threads buffer displays a summary of the threads in the
+debugged program.  *Note Threads: (gdb)Threads.  To select a thread,
+move point there and type <RET> (`gdb-select-thread'), or click on it
+with `Mouse-2'.  This also displays the associated source buffer, and
+updates the contents of the other GDB buffers.
+
+   You can customize variables under `gdb-buffers' group to select
+fields included in GDB Threads buffer.
+
+`gdb-thread-buffer-verbose-names'
+     Show long thread names like `Thread 0x4e2ab70 (LWP 1983)'.
+
+`gdb-thread-buffer-arguments'
+     Show arguments of thread top frames.
+
+`gdb-thread-buffer-locations'
+     Show file information or library names.
+
+`gdb-thread-buffer-addresses'
+     Show addresses for thread frames in threads buffer.
+
+   To view information for several threads simultaneously, use the
+following commands from the GDB Threads buffer.
+
+`d'
+     Display disassembly buffer for the thread at current line
+     (`gdb-display-disassembly-for-thread').
+
+`f'
+     Display the GDB Stack buffer for the thread at current line
+     (`gdb-display-stack-for-thread').
+
+`l'
+     Display the GDB Locals buffer for the thread at current line
+     (`gdb-display-locals-for-thread').
+
+`r'
+     Display the GDB Registers buffer for the thread at current line
+     (`gdb-display-registers-for-thread').
+
+Their upper-case counterparts, `D', `F' ,`L' and `R', display the
+corresponding buffer in a new frame.
+
+   When you create a buffer showing information about some specific
+thread, it becomes bound to that thread and keeps showing actual
+information while you debug your program.  The mode indicator for each
+GDB buffer shows the number of thread it is showing information about.
+The thread number is also included in the buffer name of bound buffers.
+
+   Further commands are available in the GDB Threads buffer which
+depend on the mode of GDB that is used for controlling execution of
+your program.  *Note Multithreaded Debugging::.
 
 
 

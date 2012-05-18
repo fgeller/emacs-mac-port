@@ -1,10 +1,10 @@
 This is /home/cyd/emacs/doc/lispref/../../info/elisp, produced by
 makeinfo version 4.13 from /home/cyd/emacs/doc/lispref/elisp.texi.
 
-This is edition 3.1 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 24.0.96.
+This is the `GNU Emacs Lisp Reference Manual' corresponding to Emacs
+version 24.0.97.
 
-   Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
+Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -30,10 +30,10 @@ File: elisp,  Node: Top,  Next: Introduction,  Prev: (dir),  Up: (dir)
 Emacs Lisp
 **********
 
-This is edition 3.1 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 24.0.96.
+This is the `GNU Emacs Lisp Reference Manual' corresponding to Emacs
+version 24.0.97.
 
-   Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
+Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -1431,8 +1431,8 @@ Lisp that have counterparts in many programming languages, and later
 chapters describe features that are peculiar to Emacs Lisp or relate
 specifically to editing.
 
-   This is edition 3.1 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 24.0.96.
+   This is the `GNU Emacs Lisp Reference Manual', corresponding to
+Emacs version 24.0.97.
 
 * Menu:
 
@@ -1500,11 +1500,11 @@ from Common Lisp.  If you don't know Common Lisp, don't worry about it;
 this manual is self-contained.
 
    A certain amount of Common Lisp emulation is available via the `cl'
-library.  *note Overview: (cl)Top.
+library.  *Note Overview: (cl)Top.
 
    Emacs Lisp is not at all influenced by Scheme; but the GNU project
-has an implementation of Scheme, called Guile.  We use Guile in all new
-GNU software that calls for extensibility.
+has an implementation of Scheme, called Guile.  We use it in all new GNU
+software that calls for extensibility.
 
 
 File: elisp,  Node: Conventions,  Next: Version Info,  Prev: Lisp History,  Up: Introduction
@@ -1628,7 +1628,7 @@ function `eval-region'), the printed text is displayed in the echo area.
 
    Examples in this manual indicate printed text with `-|',
 irrespective of where that text goes.  The value returned by evaluating
-the form (here `bar') follows on a separate line with `=>'.
+the form follows on a separate line with `=>'.
 
      (progn (prin1 'foo) (princ "\n") (prin1 'bar))
           -| foo
@@ -1849,8 +1849,6 @@ use.
      incremented each time you build Emacs in any given directory.  A
      value with four numeric components, such as `"22.0.91.1"',
      indicates an unreleased test version.
-
-   The following two variables have existed since Emacs version 19.23:
 
  -- Variable: emacs-major-version
      The major version number of Emacs, as an integer.  For Emacs
@@ -3276,11 +3274,10 @@ The word "process" usually means a running program.  Emacs itself runs
 in a process of this sort.  However, in Emacs Lisp, a process is a Lisp
 object that designates a subprocess created by the Emacs process.
 Programs such as shells, GDB, ftp, and compilers, running in
-subprocesses of Emacs, extend the capabilities of Emacs.
-
-   An Emacs subprocess takes textual input from Emacs and returns
-textual output to Emacs for further manipulation.  Emacs can also send
-signals to the subprocess.
+subprocesses of Emacs, extend the capabilities of Emacs.    An Emacs
+subprocess takes textual input from Emacs and returns textual output to
+Emacs for further manipulation.  Emacs can also send signals to the
+subprocess.
 
    Process objects have no read syntax.  They print in hash notation,
 giving the name of the process:
@@ -3345,7 +3342,8 @@ temporarily in a different display style.  Overlays have no read
 syntax, and print in hash notation, giving the buffer name and range of
 positions.
 
-   *Note Overlays::, for how to create and use overlays.
+   *Note Overlays::, for information on how you can create and use
+overlays.
 
 
 File: elisp,  Node: Font Type,  Prev: Overlay Type,  Up: Editing Types
@@ -3951,8 +3949,6 @@ Markers::.
  -- Function: floatp object
      This predicate tests whether its argument is a floating point
      number and returns `t' if so, `nil' otherwise.
-
-     `floatp' does not exist in Emacs versions 18 and earlier.
 
  -- Function: integerp object
      This predicate tests whether its argument is an integer, and
@@ -5749,7 +5745,7 @@ File: elisp,  Node: List-related Predicates,  Next: List Elements,  Prev: Cons C
 The following predicates test whether a Lisp object is an atom, whether
 it is a cons cell or is a list, or whether it is the distinguished
 object `nil'.  (Many of these predicates can be defined in terms of the
-others, but they are used so often that it is worth having all of them.)
+others, but they are used so often that it is worth having them.)
 
  -- Function: consp object
      This function returns `t' if OBJECT is a cons cell, `nil'
@@ -6248,8 +6244,7 @@ list which is stored in a variable.
 
      The argument SYMBOL is not implicitly quoted;
      `add-to-ordered-list' is an ordinary function, like `set' and
-     unlike `setq'.  Quote the argument yourself if that is what you
-     want.
+     unlike `setq'.  Quote the argument yourself if necessary.
 
      The ordering information is stored in a hash table on SYMBOL's
      `list-order' property.
@@ -6630,7 +6625,7 @@ and `delete'.
      Common Lisp note: Common Lisp has functions `union' (which avoids
      duplicate elements) and `intersection' for set operations.
      Although standard GNU Emacs Lisp does not have them, the `cl'
-     library provides versions.  *note Overview: (cl)Top.
+     library provides versions.  *Note Overview: (cl)Top.
 
  -- Function: memq object list
      This function tests to see whether OBJECT is a member of LIST.  If

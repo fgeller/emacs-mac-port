@@ -1,10 +1,9 @@
 This is /home/cyd/emacs/doc/emacs/../../info/emacs, produced by
 makeinfo version 4.13 from /home/cyd/emacs/doc/emacs/emacs.texi.
 
-This is the Sixteenth edition of the `GNU Emacs Manual',
-updated for Emacs version 24.0.96.
+This is the `GNU Emacs Manual', updated for Emacs version 24.0.97.
 
-   Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
+Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -386,10 +385,9 @@ File: emacs,  Node: Regexp Search,  Next: Regexps,  Prev: Word Search,  Up: Sear
 ==============================
 
 A "regular expression" (or "regexp" for short) is a pattern that
-denotes a class of alternative strings to match.  GNU Emacs provides
-both incremental and nonincremental ways to search for a match for a
-regexp.  The syntax of regular expressions is explained in the next
-section.
+denotes a class of alternative strings to match.  Emacs provides both
+incremental and nonincremental ways to search for a match for a regexp.
+The syntax of regular expressions is explained in the next section.
 
 `C-M-s'
      Begin incremental regexp search (`isearch-forward-regexp').
@@ -1216,13 +1214,12 @@ File: emacs,  Node: Fixit,  Next: Keyboard Macros,  Prev: Search,  Up: Top
 ****************************
 
 In this chapter we describe commands that are useful when you catch a
-mistake while editing.  The most fundamental command for correcting
-erroneous editing is the undo command `C-/' (which is also bound to
-`C-x u' and `C-_').  This undoes a single command, or a part of a
-command (as in the case of `query-replace'), or several consecutive
-character insertions.  Consecutive repetitions of `C-/' undo earlier
-and earlier changes, back to the limit of the undo information
-available.
+mistake while editing.  The most fundamental of these commands is the
+undo command `C-/' (also bound to `C-x u' and `C-_').  This undoes a
+single command, or a part of a command (as in the case of
+`query-replace'), or several consecutive character insertions.
+Consecutive repetitions of `C-/' undo earlier and earlier changes, back
+to the limit of the undo information available.
 
    Aside from the commands described here, you can erase text using
 deletion commands such as <DEL> (`delete-backward-char').  These were
@@ -1258,11 +1255,10 @@ less tedious.
 
    To begin to undo, type `C-/' (or its aliases, `C-_' or `C-x u')(1).
 This undoes the most recent change in the buffer, and moves point back
-to where it was before that change.
-
-   Consecutive repetitions of `C-/' (or its aliases) undo earlier and
-earlier changes in the current buffer.  If all the recorded changes
-have already been undone, the undo command signals an error.
+to where it was before that change.    Consecutive repetitions of `C-/'
+(or its aliases) undo earlier and earlier changes in the current
+buffer.  If all the recorded changes have already been undone, the undo
+command signals an error.
 
    Any command other than an undo command breaks the sequence of undo
 commands.  Starting from that moment, the entire sequence of undo
@@ -1272,7 +1268,7 @@ changes you have undone, type `C-f' or any other command that
 harmlessly breaks the sequence of undoing; then type `C-/' to undo the
 undo command.
 
-   On the other hand, if you want to resume undoing, without redoing
+   Alternatively, if you want to resume undoing, without redoing
 previous undo commands, use `M-x undo-only'.  This is like `undo', but
 will not redo changes you have just undone.
 
@@ -4053,7 +4049,7 @@ is because Emacs tracks buffer positions using that data type.  For
 typical 64-bit machines, this maximum buffer size is 2^61 - 2 bytes, or
 about 2 EiB.  For typical 32-bit machines, the maximum is usually 2^29
 - 2 bytes, or about 512 MiB.  Buffer sizes are also limited by the
-amount of memory present in the system.
+amount of memory in the system.
 
 * Menu:
 
@@ -4309,12 +4305,12 @@ however, you can specify certain buffers that should never be killed
 automatically, and others that should be killed if they have been unused
 for a mere hour.
 
-   You can also have this buffer purging done for you, every day at
-midnight, by enabling Midnight mode.  Midnight mode operates each day
-at midnight; at that time, it runs `clean-buffer-list', or whichever
-functions you have placed in the normal hook `midnight-hook' (*note
-Hooks::).  To enable Midnight mode, use the Customization buffer to set
-the variable `midnight-mode' to `t'.  *Note Easy Customization::.
+   You can also have this buffer purging done for you, once a day, by
+enabling Midnight mode.  Midnight mode operates each day at midnight;
+at that time, it runs `clean-buffer-list', or whichever functions you
+have placed in the normal hook `midnight-hook' (*note Hooks::).  To
+enable Midnight mode, use the Customization buffer to set the variable
+`midnight-mode' to `t'.  *Note Easy Customization::.
 
 
 File: emacs,  Node: Several Buffers,  Next: Indirect Buffers,  Prev: Kill Buffer,  Up: Buffers
@@ -4342,7 +4338,7 @@ buffer menu in another window, and selects that window.
 
    The buffer menu is a read-only buffer, and can be changed only
 through the special commands described in this section.  The usual
-Emacs cursor motion commands can be used in this buffer.  The following
+cursor motion commands can be used in this buffer.  The following
 commands apply to the buffer described on the current line:
 
 `d'
@@ -4459,11 +4455,11 @@ File: emacs,  Node: Indirect Buffers,  Next: Buffer Convenience,  Prev: Several 
 =====================
 
 An "indirect buffer" shares the text of some other buffer, which is
-called the "base buffer" of the indirect buffer.  In some ways it is
-the analogue, for buffers, of a symbolic link between files.
+called the "base buffer" of the indirect buffer.  In some ways it is a
+buffer analogue of a symbolic link between files.
 
 `M-x make-indirect-buffer <RET> BASE-BUFFER <RET> INDIRECT-NAME <RET>'
-     Create an indirect buffer named INDIRECT-NAME whose base buffer is
+     Create an indirect buffer named INDIRECT-NAME with base buffer
      BASE-BUFFER.  
 
 `M-x clone-indirect-buffer <RET>'
@@ -4501,9 +4497,9 @@ window.  These functions run the hook `clone-indirect-buffer-hook'
 after creating the indirect buffer.
 
    The more general way to make an indirect buffer is with the command
-`M-x make-indirect-buffer'.  It creates an indirect buffer from buffer
-BASE-BUFFER, under the name INDIRECT-NAME.  It prompts for both
-BASE-BUFFER and INDIRECT-NAME using the minibuffer.
+`M-x make-indirect-buffer'.  It creates an indirect buffer named
+INDIRECT-NAME from a buffer BASE-BUFFER, prompting for both using the
+minibuffer.
 
 
 File: emacs,  Node: Buffer Convenience,  Prev: Indirect Buffers,  Up: Buffers
@@ -5456,9 +5452,9 @@ different font:
    * Click on `Set Default Font' in the `Options' menu.  To save this
      for future sessions, click on `Save Options' in the `Options' menu.
 
-   * Add a line to your init file (*note Init File::), modifying the
-     variable `default-frame-alist' to specify the `font' parameter
-     (*note Creating Frames::), like this:
+   * Add a line to your init file, modifying the variable
+     `default-frame-alist' to specify the `font' parameter (*note Frame
+     Parameters::), like this:
 
           (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-10"))
 
@@ -5468,8 +5464,8 @@ different font:
           emacs.font: DejaVu Sans Mono-12
 
      You must restart X, or use the `xrdb' command, for the X resources
-     file to take effect.  *Note Resources::.  When specifying a font
-     in your X resources file, you should not quote it.
+     file to take effect.  *Note Resources::.  Do not quote font names
+     in X resource files.
 
    * If you are running Emacs on the GNOME desktop, you can tell Emacs
      to use the default system font by setting the variable
@@ -5586,8 +5582,8 @@ SLANT
      other values.
 
 WIDTHTYPE
-     The font width--normally `normal', `condensed', `extended', or
-     `semicondensed' (some font names support other values).
+     The font width--normally `normal', `condensed', `semicondensed',
+     or `extended'.  Some font names support other values.
 
 STYLE
      An optional additional style name.  Usually it is empty--most XLFDs
@@ -6042,7 +6038,7 @@ command turns the mode off again.
 enable mouse support.  You must have the gpm server installed and
 running on your system in order for this to work.
 
-   *note MS-DOS Mouse::, for information about mouse support on MS-DOS.
+   *Note MS-DOS Mouse::, for information about mouse support on MS-DOS.
 
 
 File: emacs,  Node: International,  Next: Modes,  Prev: Frames,  Up: Top
@@ -6312,7 +6308,7 @@ current when you use this command, because the effects apply globally
 to the Emacs session.  The supported language environments (see the
 variable `language-info-alist') include:
 
-     ASCII, Belarusian, Bengali, Brazilian Portuguese, Bulgarian,
+     ASCII, Belarusian, Bengali, Brazilian Portuguese, Bulgarian, Cham,
      Chinese-BIG5, Chinese-CNS, Chinese-EUC-TW, Chinese-GB, Chinese-GBK,
      Chinese-GB18030, Croatian, Cyrillic-ALT, Cyrillic-ISO,
      Cyrillic-KOI8, Czech, Devanagari, Dutch, English, Esperanto,

@@ -1,10 +1,9 @@
 This is /home/cyd/emacs/doc/emacs/../../info/emacs, produced by
 makeinfo version 4.13 from /home/cyd/emacs/doc/emacs/emacs.texi.
 
-This is the Sixteenth edition of the `GNU Emacs Manual',
-updated for Emacs version 24.0.96.
+This is the `GNU Emacs Manual', updated for Emacs version 24.0.97.
 
-   Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
+Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -2778,10 +2777,10 @@ other files for them.
 
 `-Q'
 `--quick'
-     Start emacs with minimum customizations, similar to using `-q',
-     `--no-site-file', `--no-site-lisp', and `--no-splash' together.
-     This also stops Emacs from processing X resources by setting
-     `inhibit-x-resources' to `t' (*note Resources::).
+     Start emacs with minimum customizations.  This is similar to using
+     `-q', `--no-site-file', `--no-site-lisp', and `--no-splash'
+     together.  This also stops Emacs from processing X resources by
+     setting `inhibit-x-resources' to `t' (*note Resources::).
 
 `-daemon'
 `--daemon'
@@ -3561,7 +3560,7 @@ effect immediately, because the X server stores its own list of
 resources; to update it, use the command `xrdb'--for instance, `xrdb
 ~/.Xdefaults'.
 
-   (MS-Windows systems do not support X resource files; on Windows,
+   (MS-Windows systems do not support X resource files; on such systems,
 Emacs looks for X resources in the Windows Registry, first under the
 key `HKEY_CURRENT_USER\SOFTWARE\GNU\Emacs', which affects only the
 current user and override the system-wide settings, and then under the
@@ -4249,7 +4248,7 @@ Appendix E Emacs 23 Antinews
 
 For those users who live backwards in time, here is information about
 downgrading to Emacs version 23.4.  We hope you will enjoy the greater
-simplicity that results from the absence of many Emacs 24.0.96 features.
+simplicity that results from the absence of many Emacs 24.0.97 features.
 
    * Support for displaying and editing "bidirectional" text has been
      removed.  Text is now always displayed on the screen in a single

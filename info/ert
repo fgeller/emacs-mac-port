@@ -1,8 +1,8 @@
 This is ../../info/ert, produced by makeinfo version 4.13 from ert.texi.
 
-INFO-DIR-SECTION Emacs
+INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
-* ERT: (ert).        Emacs Lisp Regression Testing.
+* ERT: (ert).        Emacs Lisp regression testing tool.
 END-INFO-DIR-ENTRY
 
    Copyright (C) 2008, 2010-2012 Free Software Foundation, Inc.
@@ -845,25 +845,25 @@ less often.  This can be achieved with the `:tag' argument to
 
 
 Tag Table:
-Node: Top1224
-Node: Introduction3339
-Node: How to Run Tests6229
-Node: Running Tests Interactively6986
-Node: Running Tests in Batch Mode9746
-Node: Test Selectors10792
-Node: How to Write Tests12826
-Node: The `should' Macro13686
-Node: Expected Failures15726
-Node: Tests and Their Environment17936
-Node: Useful Techniques20980
-Node: How to Debug Tests24729
-Node: Understanding Explanations25121
-Node: Interactive Debugging27009
-Node: Extending ERT29111
-Node: Defining Explanation Functions29461
-Node: Low-Level Functions for Working with Tests30406
-Node: Other Testing Concepts31198
-Node: Mocks and Stubs31564
-Node: Fixtures and Test Suites32171
+Node: Top1243
+Node: Introduction3358
+Node: How to Run Tests6248
+Node: Running Tests Interactively7005
+Node: Running Tests in Batch Mode9765
+Node: Test Selectors10811
+Node: How to Write Tests12845
+Node: The `should' Macro13705
+Node: Expected Failures15745
+Node: Tests and Their Environment17955
+Node: Useful Techniques20999
+Node: How to Debug Tests24748
+Node: Understanding Explanations25140
+Node: Interactive Debugging27028
+Node: Extending ERT29130
+Node: Defining Explanation Functions29480
+Node: Low-Level Functions for Working with Tests30425
+Node: Other Testing Concepts31217
+Node: Mocks and Stubs31583
+Node: Fixtures and Test Suites32190
 
 End Tag Table

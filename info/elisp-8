@@ -1,10 +1,10 @@
 This is /home/cyd/emacs/doc/lispref/../../info/elisp, produced by
 makeinfo version 4.13 from /home/cyd/emacs/doc/lispref/elisp.texi.
 
-This is edition 3.1 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 24.0.96.
+This is the `GNU Emacs Lisp Reference Manual' corresponding to Emacs
+version 24.0.97.
 
-   Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
+Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -5666,7 +5666,7 @@ job-control shells won't work when a pipe is used.  See
  -- Function: interrupt-process &optional process current-group
      This function interrupts the process PROCESS by sending the signal
      `SIGINT'.  Outside of Emacs, typing the "interrupt character"
-     (normally `C-c' on some systems, and `DEL' on others) sends this
+     (normally `C-c' on some systems, and <DEL> on others) sends this
      signal.  When the argument CURRENT-GROUP is non-`nil', you can
      think of this function as "typing `C-c'" on the terminal by which
      Emacs talks to the subprocess.
@@ -5695,7 +5695,7 @@ job-control shells won't work when a pipe is used.  See
      it the signal `SIGCONT'.  This presumes that PROCESS was stopped
      previously.
 
- -- Function: signal-process process signal
+ -- Command: signal-process process signal
      This function sends a signal to process PROCESS.  The argument
      SIGNAL specifies which signal to send; it should be an integer, or
      a symbol whose name is a signal.

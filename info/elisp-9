@@ -1,10 +1,10 @@
 This is /home/cyd/emacs/doc/lispref/../../info/elisp, produced by
 makeinfo version 4.13 from /home/cyd/emacs/doc/lispref/elisp.texi.
 
-This is edition 3.1 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 24.0.96.
+This is the `GNU Emacs Lisp Reference Manual' corresponding to Emacs
+version 24.0.97.
 
-   Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
+Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -1316,7 +1316,7 @@ convenient way to do this is to use a "progress reporter".
      This function calls `progress-reporter-update', so the first
      message is printed immediately.
 
- -- Function: progress-reporter-update reporter value
+ -- Function: progress-reporter-update reporter &optional value
      This function does the main work of reporting progress of your
      operation.  It displays the message of REPORTER, followed by
      progress percentage determined by VALUE.  If percentage is zero,
@@ -1335,7 +1335,7 @@ convenient way to do this is to use a "progress reporter".
      try to reduce the number of calls to it: resulting overhead will
      most likely negate your effort.
 
- -- Function: progress-reporter-force-update reporter value &optional
+ -- Function: progress-reporter-force-update reporter &optional value
           new-message
      This function is similar to `progress-reporter-update' except that
      it prints a message in the echo area unconditionally.
@@ -3387,12 +3387,12 @@ makes `modeline' an alias for the `mode-line' face.
 
      (put 'modeline 'face-alias 'mode-line)
 
- -- Function: define-obsolete-face-alias obsolete-face current-face
-          &optional when
-     This function defines a face alias and marks it as obsolete,
-     indicating that it may be removed in future.  The optional string
-     WHEN indicates when the face was made obsolete (for example, a
-     release number).
+ -- Macro: define-obsolete-face-alias obsolete-face current-face when
+     This macro defines `obsolete-face' as an alias for CURRENT-FACE,
+     and also marks it as obsolete, indicating that it may be removed
+     in future.  WHEN should be a string indicating when
+     `obsolete-face' was made obsolete (usually a version number
+     string).
 
 
 File: elisp,  Node: Auto Faces,  Next: Basic Faces,  Prev: Face Functions,  Up: Faces
@@ -5428,7 +5428,7 @@ create animation.  Currently, Emacs only supports animated GIF files.
 The following functions related to animated images are available.
 
  -- Function: image-animated-p image
-     This function returns non-nil if IMAGE can be animated.  The
+     This function returns non-`nil' if IMAGE can be animated.  The
      actual return value is a cons `(NIMAGES . DELAY)', where NIMAGES
      is the number of frames and DELAY is the delay in seconds between
      them.

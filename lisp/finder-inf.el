@@ -263,7 +263,7 @@
   (ntlm . [(1 0) nil "NTLM (NT LanManager) authentication support"])
   (nxml . [nil nil "XML encoding auto-detection"])
   (octave-mod . [nil nil "editing Octave source files under Emacs"])
-  (org . [(7 8 9) nil "Outline-based notes management and organizer"])
+  (org . [(7 8 10) nil "Outline-based notes management and organizer"])
   (outline . [nil nil "outline mode commands for Emacs"])
   (package . [(1 0) nil "Simple package system for Emacs"])
   (page-ext . [nil nil "extended page handling commands"])

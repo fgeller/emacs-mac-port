@@ -1,10 +1,10 @@
 This is /home/cyd/emacs/doc/lispref/../../info/elisp, produced by
 makeinfo version 4.13 from /home/cyd/emacs/doc/lispref/elisp.texi.
 
-This is edition 3.1 of the GNU Emacs Lisp Reference Manual,
-corresponding to Emacs version 24.0.96.
+This is the `GNU Emacs Lisp Reference Manual' corresponding to Emacs
+version 24.0.97.
 
-   Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
+Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -647,7 +647,7 @@ customization settings for variables and faces, respectively.  When the
 user invokes `Save for future sessions' in the Customize interface,
 that takes effect by writing a `custom-set-variables' and/or a
 `custom-set-faces' form into the custom file, to be evaluated the next
-time Emacs starts up.
+time Emacs starts.
 
  -- Function: custom-set-variables &rest args
      This function installs the variable customizations specified by
@@ -710,11 +710,10 @@ theme name.  The first Lisp form in the file should be a call to
      `describe-theme' command or types `?' in the `*Custom Themes*'
      buffer.
 
-     Two special theme names are disallowed: `user' is a "dummy" theme
-     which stores the user's direct customization settings, and
-     `changed' is a "dummy" theme which stores changes made outside of
-     the Customize system.  If you specify either of these as the THEME
-     argument, `deftheme' signals an error.
+     Two special theme names are disallowed (using them causes an
+     error): `user' is a "dummy" theme that stores the user's direct
+     customization settings, and `changed' is a "dummy" theme that
+     stores changes made outside of the Customize system.
 
  -- Macro: provide-theme theme
      This macro declares that the theme named THEME has been fully
@@ -751,7 +750,7 @@ displays the source file and asks for confirmation from the user before
 loading any non-built-in theme for the first time.
 
    The following functions are useful for programmatically enabling and
-disabling Custom themes:
+disabling themes:
 
  -- Function: custom-theme-p theme
      This function return a non-`nil' value if THEME (a symbol) is the
@@ -763,14 +762,11 @@ disabling Custom themes:
      This function loads the Custom theme named THEME from its source
      file, looking for the source file in the directories specified by
      the variable `custom-theme-load-path'.  *Note Custom Themes:
-     (emacs)Custom Themes.  It also "enables" the theme, causing its
-     variable and face settings to take effect.
-
-     If the optional argument NO-CONFIRM is non-`nil', this skips
-     prompting the user for confirmation before loading the theme.
-
-     If the optional argument NO-ENABLE is non-`nil', the theme is
-     loaded but not enabled.
+     (emacs)Custom Themes.  It also "enables" the theme (unless the
+     optional argument NO-ENABLE is non-`nil'), causing its variable
+     and face settings to take effect.  It prompts the user for
+     confirmation before loading the theme, unless the optional argument
+     NO-CONFIRM is non-`nil'.
 
  -- Command: enable-theme theme
      This function enables the Custom theme named THEME.  It signals an
@@ -1243,10 +1239,10 @@ Definitions for function or function-like objects:
      `mode-local.el').
 
 Definitions for major or minor modes:
-     `define-derived-mode', `define-minor-mode',
-     `define-compilation-mode', `define-generic-mode',
-     `easy-mmode-define-global-mode', `define-global-minor-mode',
-     `define-globalized-minor-mode', and `easy-mmode-define-minor-mode'.
+     `define-minor-mode', `define-globalized-minor-mode',
+     `define-generic-mode', `easy-mmode-define-minor-mode',
+     `easy-mmode-define-global-mode', `define-compilation-mode',
+     `define-derived-mode', and `define-global-minor-mode'.
 
 Other definition types:
      `defcustom', `defgroup', `defclass' (*note EIEIO: (eieio)Top.),
@@ -1928,7 +1924,7 @@ is by adding this string to the file's first line:
 
      -*-byte-compile-dynamic-docstrings: nil;-*-
 
- -- Variable: byte-compile-dynamic-docstrings
+ -- User Option: byte-compile-dynamic-docstrings
      If this is non-`nil', the byte compiler generates compiled files
      that are set up for dynamic loading of documentation strings.
 
@@ -2235,33 +2231,26 @@ source; these do not appear in the output of `disassemble'.
       doc: Compute factorial of an integer.
       args: (integer)
 
-     0   varref   integer        ; Get the value of `integer'
-                                 ;   and push it onto the stack.
-     1   constant 1              ; Push 1 onto stack.
-
-     2   eqlsign                 ; Pop top two values off stack, compare
-                                 ;   them, and push result onto stack.
-
-     3   goto-if-nil 1           ; Pop and test top of stack;
-                                 ;   if `nil', go to 1,
-                                 ;   else continue.
-     6   constant 1              ; Push 1 onto top of stack.
-     7   return                  ; Return the top element
-                                 ;   of the stack.
-
-     8:1 varref   integer        ; Push value of `integer' onto stack.
-     9   constant factorial      ; Push `factorial' onto stack.
-     10  varref   integer        ; Push value of `integer' onto stack.
-     11  sub1                    ; Pop `integer', decrement value,
-                                 ;   push new value onto stack.
-     12  call     1              ; Call function `factorial' using
-                                 ;   the first (i.e., the top) element
-                                 ;   of the stack as the argument;
-                                 ;   push returned value onto stack.
-
-     13 mult                     ; Pop top two values off stack, multiply
-                                 ;   them, and push result onto stack.
-     14 return                   ; Return the top element of stack.
+     0   varref   integer      ; Get the value of `integer' and
+                               ;   push it onto the stack.
+     1   constant 1            ; Push 1 onto stack.
+     2   eqlsign               ; Pop top two values off stack, compare
+                               ;   them, and push result onto stack.
+     3   goto-if-nil 1         ; Pop and test top of stack;
+                               ;   if `nil', go to 1, else continue.
+     6   constant 1            ; Push 1 onto top of stack.
+     7   return                ; Return the top element of the stack.
+     8:1 varref   integer      ; Push value of `integer' onto stack.
+     9   constant factorial    ; Push `factorial' onto stack.
+     10  varref   integer      ; Push value of `integer' onto stack.
+     11  sub1                  ; Pop `integer', decrement value,
+                               ;   push new value onto stack.
+     12  call     1            ; Call function `factorial' using first
+                               ;   (i.e. top) stack element as argument;
+                               ;   push returned value onto stack.
+     13 mult                   ; Pop top two values off stack, multiply
+                               ;   them, and push result onto stack.
+     14 return                 ; Return the top element of the stack.
 
    The `silly-loop' function is somewhat more complex:
 
@@ -2278,53 +2267,37 @@ source; these do not appear in the output of `disassemble'.
       doc: Return time before and after N iterations of a loop.
       args: (n)
 
-     0   constant current-time-string  ; Push
-                                       ;   `current-time-string'
+     0   constant current-time-string  ; Push `current-time-string'
                                        ;   onto top of stack.
+     1   call     0            ; Call `current-time-string' with no
+                               ;   argument, push result onto stack.
+     2   varbind  t1           ; Pop stack and bind `t1' to popped value.
+     3:1 varref   n            ; Get value of `n' from the environment
+                               ;   and push the value on the stack.
+     4   sub1                  ; Subtract 1 from top of stack.
+     5   dup                   ; Duplicate top of stack; i.e. copy the top
+                               ;   of the stack and push copy onto stack.
+     6   varset   n            ; Pop the top of the stack,
+                               ;   and bind `n' to the value.
 
-     1   call     0              ; Call `current-time-string'
-                                 ;   with no argument,
-                                 ;   pushing result onto stack.
+     ;; (In effect, the sequence `dup varset' copies the top of the stack
+     ;; into the value of `n' without popping it.)
 
-     2   varbind  t1             ; Pop stack and bind `t1'
-                                 ;   to popped value.
-
-     3:1 varref   n              ; Get value of `n' from
-                                 ;   the environment and push
-                                 ;   the value onto the stack.
-     4   sub1                    ; Subtract 1 from top of stack.
-
-     5   dup                     ; Duplicate the top of the stack;
-                                 ;   i.e., copy the top of
-                                 ;   the stack and push the
-                                 ;   copy onto the stack.
-     6   varset   n              ; Pop the top of the stack,
-                                 ;   and bind `n' to the value.
-
-                                 ; In effect, the sequence `dup varset'
-                                 ;   copies the top of the stack
-                                 ;   into the value of `n'
-                                 ;   without popping it.
-
-     7   constant 0              ; Push 0 onto stack.
-     8   gtr                     ; Pop top two values off stack,
-                                 ;   test if N is greater than 0
-                                 ;   and push result onto stack.
-
-     9   goto-if-not-nil 1       ; Goto 1 if `n' > 0
-                                 ;   (this continues the while loop)
-                                 ;   else continue.
-
-     12  varref   t1             ; Push value of `t1' onto stack.
+     7   constant 0            ; Push 0 onto stack.
+     8   gtr                   ; Pop top two values off stack,
+                               ;   test if N is greater than 0
+                               ;   and push result onto stack.
+     9   goto-if-not-nil 1     ; Goto 1 if `n' > 0
+                               ;   (this continues the while loop)
+                               ;   else continue.
+     12  varref   t1           ; Push value of `t1' onto stack.
      13  constant current-time-string  ; Push `current-time-string'
-                                       ;   onto top of stack.
-     14  call     0              ; Call `current-time-string' again.
-
-     15  unbind   1              ; Unbind `t1' in local environment.
-     16  list2                   ; Pop top two elements off stack,
-                                 ;   create a list of them,
-                                 ;   and push list onto stack.
-     17  return                  ; Return value of the top of stack.
+                                       ;   onto the top of the stack.
+     14  call     0            ; Call `current-time-string' again.
+     15  unbind   1            ; Unbind `t1' in local environment.
+     16  list2                 ; Pop top two elements off stack, create a
+                               ;   list of them, and push it onto stack.
+     17  return                ; Return value of the top of stack.
 
 
 File: elisp,  Node: Advising Functions,  Next: Debugging,  Prev: Byte Compilation,  Up: Top
@@ -3426,7 +3399,7 @@ File: elisp,  Node: Invoking the Debugger,  Next: Internals of Debugger,  Prev: 
 Here we describe in full detail the function `debug' that is used to
 invoke the debugger.
 
- -- Function: debug &rest debugger-args
+ -- Command: debug &rest debugger-args
      This function enters the debugger.  It switches buffers to a buffer
      named `*Backtrace*' (or `*Backtrace*<2>' if it is the second
      recursive entry to the debugger, etc.), and fills it with
@@ -4534,8 +4507,8 @@ File: elisp,  Node: Edebug Display Update,  Next: Edebug Recursive Edit,  Prev: 
 
 When Edebug needs to display something (e.g., in trace mode), it saves
 the current window configuration from "outside" Edebug (*note Window
-Configurations::).  When you exit Edebug (by continuing the program),
-it restores the previous window configuration.
+Configurations::).  When you exit Edebug, it restores the previous
+window configuration.
 
    Emacs redisplays only when it pauses.  Usually, when you continue
 execution, the program re-enters Edebug at a breakpoint or after
@@ -5871,11 +5844,9 @@ shared structure:
  -- Variable: print-continuous-numbering
      If non-`nil', that means number continuously across print calls.
      This affects the numbers printed for `#N=' labels and `#M#'
-     references.
-
-     Don't set this variable with `setq'; you should only bind it
-     temporarily to `t' with `let'.  When you do that, you should also
-     bind `print-number-table' to `nil'.
+     references.  Don't set this variable with `setq'; you should only
+     bind it temporarily to `t' with `let'.  When you do that, you
+     should also bind `print-number-table' to `nil'.
 
  -- Variable: print-number-table
      This variable holds a vector used internally by printing to
@@ -5883,9 +5854,9 @@ shared structure:
      to bind it to `nil' when you bind `print-continuous-numbering'.
 
  -- Variable: float-output-format
-     This variable specifies how to print floating point numbers.  Its
-     default value is `nil', meaning use the shortest output that
-     represents the number without losing information.
+     This variable specifies how to print floating point numbers.  The
+     default is `nil', meaning use the shortest output that represents
+     the number without losing information.
 
      To control output format more precisely, you can put a string in
      this variable.  The string should hold a `%'-specification to be
@@ -6346,8 +6317,7 @@ delete duplicates in history.
      If the value of this variable is `nil', standard functions that
      read from the minibuffer don't add new elements to the history
      list.  This lets Lisp programs explicitly manage input history by
-     using `add-to-history'.  By default, `history-add-new-input' is
-     non-`nil'.
+     using `add-to-history'.  The default value is `t'.
 
  -- User Option: history-length
      The value of this variable specifies the maximum length for all
@@ -6517,8 +6487,8 @@ higher-level completion features that do use the minibuffer.
      You can also use a function as COLLECTION.  Then the function is
      solely responsible for performing completion; `try-completion'
      returns whatever this function returns.  The function is called
-     with three arguments: STRING, PREDICATE and `nil' (the reason for
-     the third argument is so that the same function can be used in
+     with three arguments: STRING, PREDICATE and `nil' (the third
+     argument is so that the same function can be used in
      `all-completions' and do the appropriate thing in either case).
      *Note Programmed Completion::.
 
@@ -6541,7 +6511,7 @@ higher-level completion features that do use the minibuffer.
      matched by three of the alist CARs.  All of the matches begin with
      the characters `fooba', so that is the result.  In the second
      example, there is only one possible match, and it is exact, so the
-     value is `t'.
+     return value is `t'.
 
           (try-completion
            "foo"

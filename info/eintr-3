@@ -18,11 +18,11 @@ Inc.
 
    Published by the:
 
-     GNU Press,                          Website: http://www.gnupress.org
-     a division of the                   General: press@gnu.org
-     Free Software Foundation, Inc.      Orders:  sales@gnu.org
-     51 Franklin Street, Fifth Floor     Tel: +1 (617) 542-5942
-     Boston, MA 02110-1301 USA           Fax: +1 (617) 542-2652
+     GNU Press,                        http://www.fsf.org/campaigns/gnu-press/
+     a division of the                 email: sales@fsf.org
+     Free Software Foundation, Inc.    Tel: +1 (617) 542-5942
+     51 Franklin Street, Fifth Floor   Fax: +1 (617) 542-2652
+     Boston, MA 02110-1301 USA
 
 
    ISBN 1-882114-43-4
@@ -2732,7 +2732,7 @@ Index
 * Byte compiling:                        Byte Compiling.      (line   6)
 * C language primitives:                 Primitive Functions. (line   6)
 * C, a digression into:                  Digression into C.   (line   6)
-* call defined:                          Switching Buffers.   (line  57)
+* call defined:                          Switching Buffers.   (line  55)
 * cancel-debug-on-entry:                 debug-on-entry.      (line  83)
 * car, introduced:                       car cdr & cons.      (line   6)
 * cdr, introduced:                       car cdr & cons.      (line   6)
@@ -2849,7 +2849,7 @@ Index
 * Formatting help:                       Typing Lists.        (line   6)
 * forward-paragraph:                     forward-paragraph.   (line   6)
 * forward-sentence:                      forward-sentence.    (line   6)
-* function defined:                      Making Errors.       (line  51)
+* function defined:                      Making Errors.       (line  46)
 * function definition defined:           defun.               (line   6)
 * Function definition installation:      Install.             (line   6)
 * Function definition writing:           Writing Defuns.      (line   6)
@@ -3005,7 +3005,7 @@ Index
 * Print vertical axis:                   print-Y-axis.        (line   6)
 * print-elements-of-list:                print-elements-of-list.
                                                               (line   6)
-* print-elements-recursively:            Recursion with list. (line  25)
+* print-elements-recursively:            Recursion with list. (line  23)
 * print-graph Final version.:            The final version.   (line  75)
 * print-graph varlist:                   print-graph Varlist. (line   6)
 * print-X-axis:                          X Axis Tic Marks.    (line 146)
