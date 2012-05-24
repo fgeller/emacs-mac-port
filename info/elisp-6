@@ -1,10 +1,12 @@
-This is /home/cyd/emacs/doc/lispref/../../info/elisp, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/lispref/elisp.texi.
+This is
+/Volumes/Data/Midway/emacs-24.0.97/doc/lispref/../../info/elisp,
+produced by makeinfo version 4.8 from
+/Volumes/Data/Midway/emacs-24.0.97/doc/lispref/elisp.texi.
 
-This is the `GNU Emacs Lisp Reference Manual' corresponding to Emacs
+   This is the `GNU Emacs Lisp Reference Manual' corresponding to Emacs
 version 24.0.97.
 
-Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
+   Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -371,9 +373,9 @@ File: elisp,  Node: Making Backups,  Next: Rename or Copy,  Up: Backup Files
      This variable's value is a function to be called on certain
      occasions to decide whether a file should have backup files.  The
      function receives one argument, an absolute file name to consider.
-     If the function returns `nil', backups are disabled for that file.
-     Otherwise, the other variables in this section say whether and how
-     to make backups.
+     If the function returns `nil', backups are disabled for that
+     file.  Otherwise, the other variables in this section say whether
+     and how to make backups.
 
      The default value is `normal-backup-enable-predicate', which checks
      for files in `temporary-file-directory' and
@@ -1009,11 +1011,11 @@ effective only in a particular buffer.  This feature allows each buffer
 to override the values of certain variables.  Most major modes override
 variables such as `fill-column' or `comment-column' in this way.  For
 more information about buffer-local variables and functions related to
-them, see *note Buffer-Local Variables::.
+them, see *Note Buffer-Local Variables::.
 
    For functions and variables related to visiting files in buffers, see
-*note Visiting Files:: and *note Saving Buffers::.  For functions and
-variables related to the display of buffers in windows, see *note
+*Note Visiting Files:: and *Note Saving Buffers::.  For functions and
+variables related to the display of buffers in windows, see *Note
 Buffers and Windows::.
 
  -- Function: bufferp object
@@ -1057,7 +1059,7 @@ window.  This is to prevent confusion: it ensures that the buffer that
 the cursor is in, when Emacs reads a command, is the buffer to which
 that command applies (*note Command Loop::).  Thus, you should not use
 `set-buffer' to switch visibly to a different buffer; for that, use the
-functions described in *note Switching Buffers::.
+functions described in *Note Switching Buffers::.
 
    When writing a Lisp function, do _not_ rely on this behavior of the
 command loop to restore the current buffer after an operation.  Editing
@@ -1157,7 +1159,7 @@ evaluation.
      The current buffer is restored even in case of an abnormal exit via
      `throw' or error (*note Nonlocal Exits::).
 
-     See also `with-temp-file' in *note Writing to Files: Definition of
+     See also `with-temp-file' in *Note Writing to Files: Definition of
      with-temp-file.
 
 
@@ -1176,7 +1178,7 @@ argument called BUFFER must be an actual buffer object, not a name.
 have names starting with a space, so that the `list-buffers' and
 `buffer-menu' commands don't mention them (but if such a buffer visits
 a file, it *is* mentioned).  A name starting with space also initially
-disables recording undo information; see *note Undo::.
+disables recording undo information; see *Note Undo::.
 
  -- Function: buffer-name &optional buffer
      This function returns the name of BUFFER as a string.  BUFFER
@@ -1223,7 +1225,7 @@ disables recording undo information; see *note Undo::.
           (get-buffer "Frazzle-nots")
                => nil
 
-     See also the function `get-buffer-create' in *note Creating
+     See also the function `get-buffer-create' in *Note Creating
      Buffers::.
 
  -- Function: generate-new-buffer-name starting-name &optional ignore
@@ -1247,7 +1249,7 @@ disables recording undo information; see *note Undo::.
           (generate-new-buffer-name "foo" "foo<6>")
                => "foo<5>"
 
-     See the related function `generate-new-buffer' in *note Creating
+     See the related function `generate-new-buffer' in *Note Creating
      Buffers::.
 
 
@@ -1291,7 +1293,7 @@ Visiting Files::.
      This buffer-local variable holds the abbreviated truename of the
      file visited in the current buffer, or `nil' if no file is visited.
      It is a permanent local, unaffected by `kill-all-local-variables'.
-     *Note Truenames::, and *note abbreviate-file-name::.
+     *Note Truenames::, and *Note abbreviate-file-name::.
 
  -- Variable: buffer-file-number
      This buffer-local variable holds the file number and directory
@@ -1302,7 +1304,7 @@ Visiting Files::.
      The value is normally a list of the form `(FILENUM DEVNUM)'.  This
      pair of numbers uniquely identifies the file among all files
      accessible on the system.  See the function `file-attributes', in
-     *note File Attributes::, for more information about them.
+     *Note File Attributes::, for more information about them.
 
      If `buffer-file-name' is the name of a symbolic link, then both
      numbers refer to the recursive target.
@@ -1397,7 +1399,7 @@ does not match the newly-visited file, even if it is unchanged from the
 file formerly visited.
 
    The functions that modify the contents of buffers are described in
-*note Text::.
+*Note Text::.
 
  -- Function: buffer-modified-p &optional buffer
      This function returns `t' if the buffer BUFFER has been modified
@@ -1493,7 +1495,7 @@ how to examine a file's modification time.)
      This function returns the current buffer's recorded last file
      modification time, as a list of the form `(HIGH LOW)'.  (This is
      the same format that `file-attributes' uses to return time values;
-     see *note File Attributes::.)
+     see *Note File Attributes::.)
 
      If the buffer has no recorded last modification time, this function
      returns zero.  This case occurs, for instance, if the buffer is not
@@ -1538,7 +1540,7 @@ how to examine a file's modification time.)
      occasions.  It exists so you can customize Emacs by redefining it.
      See the file `userlock.el' for the standard definition.
 
-     See also the file locking mechanism in *note File Locks::.
+     See also the file locking mechanism in *Note File Locks::.
 
 
 File: elisp,  Node: Read Only Buffers,  Next: The Buffer List,  Prev: Modification Time,  Up: Buffers
@@ -1628,7 +1630,7 @@ the Lisp programmer which directly manipulate the buffer list.
 maintains a local buffer list for each frame, in which the buffers that
 have been displayed (or had their windows selected) in that frame come
 first.  (This order is recorded in the frame's `buffer-list' frame
-parameter; see *note Buffer Parameters::.)  Buffers never displayed in
+parameter; see *Note Buffer Parameters::.)  Buffers never displayed in
 that frame come afterward, ordered according to the fundamental buffer
 list.
 
@@ -1775,7 +1777,7 @@ can also create a buffer (*note Processes::).
 
      The major mode for a newly created buffer is set to Fundamental
      mode.  (The default value of the variable `major-mode' is handled
-     at a higher level; see *note Auto Major Mode::.)  If the name
+     at a higher level; see *Note Auto Major Mode::.)  If the name
      begins with a space, the buffer initially disables undo
      information recording (*note Undo::).
 
@@ -2621,9 +2623,9 @@ This section describes functions for creating a new window by
 
  -- Command: split-window &optional window size side
      This function creates a new live window next to the window WINDOW.
-     If WINDOW is omitted or `nil', it defaults to the selected window.
-     That window is "split", and reduced in size.  The space is taken
-     up by the new window, which is returned.
+     If WINDOW is omitted or `nil', it defaults to the selected
+     window.  That window is "split", and reduced in size.  The space
+     is taken up by the new window, which is returned.
 
      The optional second argument SIZE determines the sizes of WINDOW
      and/or the new window.  If it is omitted or `nil', both windows
@@ -2670,7 +2672,7 @@ This section describes functions for creating a new window by
      *Note Window Parameters::.
 
    As an example, here is a sequence of `split-window' calls that
-yields the window configuration discussed in *note Windows and Frames::.
+yields the window configuration discussed in *Note Windows and Frames::.
 This example demonstrates splitting a live window as well as splitting
 an internal window.  We begin with a frame containing a single window
 (a live root window), which we denote by W4.  Calling `(split-window
@@ -3088,7 +3090,7 @@ last window in the sequence is followed by the first one.
      is `nil', a minibuffer window is included only if it is currently
      "active"; this matches the behavior of `C-x o'.  (Note that a
      minibuffer window is active as long as its minibuffer is in use;
-     see *note Minibuffers::).
+     see *Note Minibuffers::).
 
      If MINIBUF is `t', the cyclic ordering includes all minibuffer
      windows.  If MINIBUF is neither `t' nor `nil', minibuffer windows
@@ -3235,7 +3237,7 @@ functions for displaying a specific buffer in a window.
      and fringe widths unchanged.
 
      When writing an application, you should normally use the
-     higher-level functions described in *note Switching Buffers::,
+     higher-level functions described in *Note Switching Buffers::,
      instead of calling `set-window-buffer' directly.
 
      This function runs `window-scroll-functions', followed by
@@ -5141,6 +5143,9 @@ several remote locations.  *Note Multiple Terminals::.
     `w32'
           The frame is displayed on a MS-Windows graphical terminal.
 
+    `mac'
+          The frame is displayed on a Mac OS X graphical terminal.
+
     `ns'
           The frame is displayed on a GNUstep or Macintosh Cocoa
           graphical terminal.
@@ -5257,7 +5262,7 @@ attributes:
 
    * The kind of display associated with the terminal.  This is the
      symbol returned by the function `terminal-live-p' (i.e. `x', `t',
-     `w32', `ns', or `pc').  *Note Frames::.
+     `w32', `mac', `ns', or `pc').  *Note Frames::.
 
    * A list of terminal parameters.  *Note Terminal Parameters::.
 
@@ -5656,12 +5661,12 @@ character units (*note Face Attributes::).
 
 `height'
      The height of the frame contents, in characters.  (To get the
-     height in pixels, call `frame-pixel-height'; see *note Size and
+     height in pixels, call `frame-pixel-height'; see *Note Size and
      Position::.)
 
 `width'
      The width of the frame contents, in characters.  (To get the width
-     in pixels, call `frame-pixel-width'; see *note Size and
+     in pixels, call `frame-pixel-width'; see *Note Size and
      Position::.)
 
 `user-size'
@@ -6017,7 +6022,7 @@ usual fashion.
 
    Here are some special features for working with sizes and positions.
 (For the precise meaning of "selected frame" used by these functions,
-see *note Input Focus::.)
+see *Note Input Focus::.)
 
  -- Function: set-frame-position frame left top
      This function sets the position of the top left corner of FRAME to
@@ -6282,7 +6287,7 @@ File: elisp,  Node: Finding All Frames,  Next: Minibuffers and Frames,  Prev: De
      Like `next-frame', but cycles through all frames in the opposite
      direction.
 
-   See also `next-window' and `previous-window', in *note Cyclic Window
+   See also `next-window' and `previous-window', in *Note Cyclic Window
 Ordering::.
 
 

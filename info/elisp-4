@@ -1,10 +1,12 @@
-This is /home/cyd/emacs/doc/lispref/../../info/elisp, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/lispref/elisp.texi.
+This is
+/Volumes/Data/Midway/emacs-24.0.97/doc/lispref/../../info/elisp,
+produced by makeinfo version 4.8 from
+/Volumes/Data/Midway/emacs-24.0.97/doc/lispref/elisp.texi.
 
-This is the `GNU Emacs Lisp Reference Manual' corresponding to Emacs
+   This is the `GNU Emacs Lisp Reference Manual' corresponding to Emacs
 version 24.0.97.
 
-Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
+   Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -570,7 +572,7 @@ does not; but it seems best to describe them together.
  -- Function: y-or-n-p-with-timeout prompt seconds default
      Like `y-or-n-p', except that if the user fails to answer within
      SECONDS seconds, this function stops waiting and returns DEFAULT.
-     It works by setting up a timer; see *note Timers::.  The argument
+     It works by setting up a timer; see *Note Timers::.  The argument
      SECONDS may be an integer or a floating point number.
 
  -- Function: yes-or-no-p prompt
@@ -670,7 +672,7 @@ facilities such as the ability to answer the whole series at once.
      object and then exit; or `C-h' to get help.  These are the same
      answers that `query-replace' accepts.  The keymap
      `query-replace-map' defines their meaning for `map-y-or-n-p' as
-     well as for `query-replace'; see *note Search and Replace::.
+     well as for `query-replace'; see *Note Search and Replace::.
 
      You can use ACTION-ALIST to specify additional possible answers
      and what they mean.  It is an alist of elements of the form `(CHAR
@@ -1133,7 +1135,7 @@ command's `interactive' form.
      shift-translation, and the region is temporarily active,
      deactivate the region before the command is run.
      Shift-translation is controlled on the user level by
-     `shift-select-mode'; see *note Shift Selection: (emacs)Shift
+     `shift-select-mode'; see *Note Shift Selection: (emacs)Shift
      Selection.
 
      You can use `*', `@', and `^' together; the order does not matter.
@@ -1479,7 +1481,7 @@ command (*note Keymaps::).
      `t' only for objects that `call-interactively' could call--thus,
      not for keyboard macros.
 
-     See `documentation' in *note Accessing Documentation::, for a
+     See `documentation' in *Note Accessing Documentation::, for a
      realistic example of using `commandp'.
 
  -- Function: call-interactively command &optional record-flag keys
@@ -1845,7 +1847,7 @@ There are two kinds of input you can get from the keyboard: ordinary
 keys, and function keys.  Ordinary keys correspond to characters; the
 events they generate are represented in Lisp as characters.  The event
 type of a character event is the character itself (an integer); see
-*note Classifying Events::.
+*Note Classifying Events::.
 
    An input character event consists of a "basic code" between 0 and
 524287, plus any or all of these "modifier bits":
@@ -2443,7 +2445,7 @@ A few other event types represent occurrences within the system.
 
      The precise meaning of the event parameters and the way these
      parameters are used to display the help-echo text are described in
-     *note Text help-echo::.
+     *Note Text help-echo::.
 
 `sigusr1'
 `sigusr2'
@@ -2867,12 +2869,12 @@ File: elisp,  Node: Reading Input,  Next: Special Events,  Prev: Input Events,  
 The editor command loop reads key sequences using the function
 `read-key-sequence', which uses `read-event'.  These and other
 functions for event input are also available for use in Lisp programs.
-See also `momentary-string-display' in *note Temporary Displays::, and
-`sit-for' in *note Waiting::.  *Note Terminal Input::, for functions
+See also `momentary-string-display' in *Note Temporary Displays::, and
+`sit-for' in *Note Waiting::.  *Note Terminal Input::, for functions
 and variables for controlling terminal input modes and debugging
 terminal input.
 
-   For higher-level input facilities, see *note Minibuffers::.
+   For higher-level input facilities, see *Note Minibuffers::.
 
 * Menu:
 
@@ -3099,7 +3101,7 @@ The lowest level functions for command input are `read-event',
 
    We emphasize that, unlike `read-key-sequence', the functions
 `read-event', `read-char', and `read-char-exclusive' do not perform the
-translations described in *note Translation Keymaps::.  If you wish to
+translations described in *Note Translation Keymaps::.  If you wish to
 read a single key taking these translations into account, use the
 function `read-key':
 
@@ -3582,10 +3584,10 @@ that normal quitting is permitted after the first character of input.
  -- Command: keyboard-quit
      This function signals the `quit' condition with `(signal 'quit
      nil)'.  This is the same thing that quitting does.  (See `signal'
-     in *note Errors::.)
+     in *Note Errors::.)
 
    You can specify a character other than `C-g' to use for quitting.
-See the function `set-input-mode' in *note Terminal Input::.
+See the function `set-input-mode' in *Note Terminal Input::.
 
 
 File: elisp,  Node: Prefix Command Arguments,  Next: Recursive Editing,  Prev: Quitting,  Up: Command Loop
@@ -4043,7 +4045,7 @@ an input event, in its Lisp form.  *Note Input Events::.  For example,
 the vector `[?\C-x ?l]' represents the key sequence `C-x l'.
 
    For examples of key sequences written in string and vector
-representations, *note Init Rebinding: (emacs)Init Rebinding.
+representations, *Note Init Rebinding: (emacs)Init Rebinding.
 
  -- Macro: kbd keyseq-text
      This macro converts the text KEYSEQ-TEXT (a string constant) into
@@ -4491,7 +4493,7 @@ regardless of the current buffer, such as `C-f'.  The variable
 contain new or overriding definitions for keys.  The current buffer's
 local keymap is always active except when `overriding-local-map'
 overrides it.  The `local-map' text or overlay property can specify an
-alternative local keymap for certain parts of the buffer; see *note
+alternative local keymap for certain parts of the buffer; see *Note
 Special Properties::.
 
    Each minor mode can have a keymap; if it does, the keymap is active
@@ -4593,7 +4595,7 @@ description of the order and conditions for searching them:
 
 FIND-IN and FIND-IN-ANY are pseudo functions that search in one keymap
 and in an alist of keymaps, respectively.  (Searching a single keymap
-for a binding is called "key lookup"; see *note Key Lookup::.)  If the
+for a binding is called "key lookup"; see *Note Key Lookup::.)  If the
 key sequence starts with a mouse event, or a symbolic prefix event
 followed by a mouse event, that event's position is used instead of
 point and the current buffer.  Mouse events on an embedded string use
@@ -4693,7 +4695,7 @@ alter local bindings.
      minor modes so that they don't interfere with each other.  If you
      do this properly, the order will not matter.
 
-     See *note Keymaps and Minor Modes::, for more information about
+     See *Note Keymaps and Minor Modes::, for more information about
      minor modes.  See also `minor-mode-key-binding' (*note Functions
      for Key Lookup::).
 
@@ -4803,7 +4805,7 @@ COMMAND
 ARRAY
      The array (either a string or a vector) is a keyboard macro.  The
      events used so far in the lookup form a complete key, and the
-     array is its binding.  See *note Keyboard Macros::, for more
+     array is its binding.  See *Note Keyboard Macros::, for more
      information.
 
 KEYMAP
@@ -4901,7 +4903,7 @@ Here are the functions and variables pertaining to key lookup.
      KEY.  Otherwise, `lookup-key' reports only bindings for the
      specific sequence KEY, ignoring default bindings except when you
      explicitly ask about them.  (To do this, supply `t' as an element
-     of KEY; see *note Format of Keymaps::.)
+     of KEY; see *Note Format of Keymaps::.)
 
      If KEY contains a meta character (not a function key), that
      character is implicitly replaced by a two-character sequence: the
@@ -5037,7 +5039,7 @@ key sequence.
      than one event long, the change is actually made in another keymap
      reached from KEYMAP.)  The argument BINDING can be any Lisp
      object, but only certain types are meaningful.  (For a list of
-     meaningful types, see *note Key Lookup::.)  The value returned by
+     meaningful types, see *Note Key Lookup::.)  The value returned by
      `define-key' is BINDING.
 
      If KEY is `[t]', this sets the default binding in KEYMAP.  When an
@@ -5710,7 +5712,7 @@ non-selectable string, the binding looks like this:
      (menu-item ITEM-NAME)
 
 A string starting with two or more dashes specifies a separator line;
-see *note Menu Separators::.
+see *Note Menu Separators::.
 
    To define a real menu item which can be selected, the extended format
 binding looks like this:
@@ -5949,7 +5951,7 @@ File: elisp,  Node: Mouse Menus,  Next: Keyboard Menus,  Prev: Defining Menus,  
 
 The usual way to make a menu keymap produce a menu is to make it the
 definition of a prefix key.  (A Lisp program can explicitly pop up a
-menu and receive the user's choice--see *note Pop-Up Menus::.)
+menu and receive the user's choice--see *Note Pop-Up Menus::.)
 
    If the prefix key ends with a mouse event, Emacs handles the menu
 keymap by popping up a visible menu, so that the user can select a
@@ -6393,7 +6395,7 @@ enable individually.
    This chapter describes how to write both major and minor modes, how
 to indicate them in the mode line, and how they run hooks supplied by
 the user.  For related topics such as keymaps and syntax tables, see
-*note Keymaps::, and *note Syntax Tables::.
+*Note Keymaps::, and *Note Syntax Tables::.
 
 * Menu:
 
@@ -6500,9 +6502,9 @@ kinds of abnormal hooks.
  -- Function: run-hook-with-args-until-success hook &rest args
      This function runs an abnormal hook by calling each hook function,
      stopping if one of them "succeeds" by returning a non-`nil' value.
-     Each hook function is passed the arguments ARGS.  If this function
-     stops because one of the hook functions returns a non-`nil' value,
-     it returns that value; otherwise it returns `nil'.
+     Each hook function is passed the arguments ARGS.  If this
+     function stops because one of the hook functions returns a
+     non-`nil' value, it returns that value; otherwise it returns `nil'.
 
  -- Macro: with-wrapper-hook hook args &rest body
      This macro runs the abnormal hook `hook' as a series of nested

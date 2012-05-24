@@ -1,9 +1,10 @@
-This is /home/cyd/emacs/doc/emacs/../../info/emacs, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/emacs/emacs.texi.
+This is /Volumes/Data/Midway/emacs-24.0.97/doc/emacs/../../info/emacs,
+produced by makeinfo version 4.8 from
+/Volumes/Data/Midway/emacs-24.0.97/doc/emacs/emacs.texi.
 
-This is the `GNU Emacs Manual', updated for Emacs version 24.0.97.
+   This is the `GNU Emacs Manual', updated for Emacs version 24.0.97.
 
-Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
+   Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -791,7 +792,7 @@ File: emacs,  Node: Undisplayable Characters,  Next: Unibyte Mode,  Prev: Modify
 There may be some non-ASCII characters that your terminal cannot
 display.  Most text terminals support just a single character set (use
 the variable `default-terminal-coding-system' to tell Emacs which one,
-*note Terminal Coding::); characters that can't be encoded in that
+*Note Terminal Coding::); characters that can't be encoded in that
 coding system are displayed as `?' by default.
 
    Graphical displays can display a broader range of characters, but
@@ -825,7 +826,7 @@ character sets at a time.  To specify _which_ of these codes to use,
 invoke `M-x set-language-environment' and specify a suitable language
 environment such as `Latin-N'.
 
-   For more information about unibyte operation, see *note Disabling
+   For more information about unibyte operation, see *Note Disabling
 Multibyte::.
 
    Emacs can also display bytes in the range 160 to 255 as readable
@@ -1568,7 +1569,7 @@ File: emacs,  Node: Indent Convenience,  Prev: Just Spaces,  Up: Indentation
 
 The variable `tab-always-indent' tweaks the behavior of the <TAB>
 (`indent-for-tab-command') command.  The default value, `t', gives the
-behavior described in *note Indentation::.  If you change the value to
+behavior described in *Note Indentation::.  If you change the value to
 the symbol `complete', then <TAB> first tries to indent the current
 line, and if the line was already indented, it tries to complete the
 text at point (*note Symbol Completion::).  If the value is `nil', then
@@ -1702,7 +1703,7 @@ about this command.
 the syntax table.  Any character can, for example, be declared to be a
 word delimiter.  *Note Syntax Tables: (elisp)Syntax Tables.
 
-   In addition, see *note Position Info:: for the `M-='
+   In addition, see *Note Position Info:: for the `M-='
 (`count-words-region') and `M-x count-words' commands, which count and
 report the number of words in the region or buffer.
 
@@ -2766,7 +2767,7 @@ exported documents:
      This is an example.
      #+end_example
 
-   For further details, see *note Exporting: (org)Exporting. and *note
+   For further details, see *Note Exporting: (org)Exporting. and *Note
 Publishing: (org)Publishing.
 
 
@@ -2813,7 +2814,7 @@ are not documented in this manual:
      equations within Emacs buffers.  Unlike BibTeX mode and the RefTeX
      package, AUCTeX is not distributed with Emacs by default.  It can
      be downloaded via the Package Menu (*note Packages::); once
-     installed, see *note The AUCTeX Manual: (auctex)Top.
+     installed, see *Note The AUCTeX Manual: (auctex)Top.
 
 * Menu:
 
@@ -4227,13 +4228,13 @@ File: emacs,  Node: Basic Indent,  Next: Multi-line Indent,  Up: Program Indent
      (`newline-and-indent').
 
    The basic indentation command is <TAB> (`indent-for-tab-command'),
-which was documented in *note Indentation::.  In programming language
+which was documented in *Note Indentation::.  In programming language
 modes, <TAB> indents the current line, based on the indentation and
 syntactic content of the preceding lines; if the region is active,
 <TAB> indents each line within the region, not just the current line.
 
    The command `C-j' (`newline-and-indent'), which was documented in
-*note Indentation Commands::, does the same as <RET> followed by <TAB>:
+*Note Indentation Commands::, does the same as <RET> followed by <TAB>:
 it inserts a new line, then adjusts the line's indentation.
 
    When indenting a line that starts within a parenthetical grouping,
@@ -4389,7 +4390,7 @@ the indentation of the "anchor statement".
      Select a predefined style STYLE (`c-set-style').
 
    A "style" is a named collection of customizations that can be used
-in C mode and the related modes.  *note Styles: (ccmode)Styles, for a
+in C mode and the related modes.  *Note Styles: (ccmode)Styles, for a
 complete description.  Emacs comes with several predefined styles,
 including `gnu', `k&r', `bsd', `stroustrup', `linux', `python', `java',
 `whitesmith', `ellemtel', and `awk'.  Some of these styles are
@@ -4427,7 +4428,7 @@ Project for C; it is the default, so as to encourage use of our
 recommended style.
 
    *Note Indentation Engine Basics: (ccmode)Indentation Engine Basics,
-and *note Customizing Indentation: (ccmode)Customizing Indentation, for
+and *Note Customizing Indentation: (ccmode)Customizing Indentation, for
 more information on customizing indentation for C and related modes,
 including how to override parts of an existing style and how to define
 your own styles.
@@ -4751,7 +4752,7 @@ comment to delimiters to add).
 setting the variables `c-indent-comment-alist' and
 `c-indent-comments-syntactically-p'.  For example, on a line ending in
 a closing brace, `M-;' puts the comment one space after the brace
-rather than at `comment-column'.  For full details see *note Comment
+rather than at `comment-column'.  For full details see *Note Comment
 Commands: (ccmode)Comment Commands.
 
 
@@ -4789,7 +4790,7 @@ File: emacs,  Node: Options for Comments,  Prev: Multi-Line Comments,  Up: Comme
 26.5.3 Options Controlling Comments
 -----------------------------------
 
-As mentioned in *note Comment Commands::, when the `M-j' command adds a
+As mentioned in *Note Comment Commands::, when the `M-j' command adds a
 comment to a line, it tries to place the comment at the column
 specified by the buffer-local variable `comment-column'.  You can set
 either the local value or the default value of this buffer-local
@@ -4933,7 +4934,7 @@ pops up a window with possible candidates asking you to choose one of
 them.
 
    For more information about setting up and using `M-x woman', see
-*note WoMan: (woman)Top.
+*Note WoMan: (woman)Top.
 
 
 File: emacs,  Node: Lisp Doc,  Prev: Man Page,  Up: Documentation
@@ -5065,7 +5066,7 @@ File: emacs,  Node: Semantic,  Next: Misc for Programs,  Prev: Glasses,  Up: Pro
 
 Semantic is a package that provides language-aware editing commands
 based on `source code parsers'.  This section provides a brief
-description of Semantic; for full details, see *note Semantic:
+description of Semantic; for full details, see *Note Semantic:
 (semantic)Top.
 
    Most of the "language aware" features in Emacs, such as Font Lock
@@ -6254,7 +6255,7 @@ highlighted, instead of the entire source line.
 similar to `M-x grep', but it supplies a different initial default for
 the command--one that runs both `find' and `grep', so as to search
 every file in a directory tree.  See also the `find-grep-dired'
-command, in *note Dired and Find::.
+command, in *Note Dired and Find::.
 
    The commands `M-x lgrep' (local grep) and `M-x rgrep' (recursive
 grep) are more user-friendly versions of `grep' and `grep-find', which
@@ -6297,7 +6298,7 @@ the errors that it finds by using `M-x flymake-goto-next-error' and
 flymake-display-err-menu-for-current-line' to display any error
 messages associated with the current line.
 
-   For more details about using Flymake, see *note Flymake:
+   For more details about using Flymake, see *Note Flymake:
 (flymake)Top.
 
 
@@ -6392,7 +6393,7 @@ File: emacs,  Node: Debugger Operation,  Next: Commands of GUD,  Prev: Starting 
 The "GUD interaction buffer" is an Emacs buffer which is used to send
 text commands to a debugger subprocess, and record its output.  This is
 the basic interface for interacting with a debugger, used by `M-x
-gud-gdb' and other commands listed in *note Starting GUD::.  The `M-x
+gud-gdb' and other commands listed in *Note Starting GUD::.  The `M-x
 gdb' command extends this interface with additional specialized buffers
 for controlling breakpoints, stack frames, and other aspects of the
 debugger state (*note GDB Graphical Interface::).

@@ -1,10 +1,12 @@
-This is /home/cyd/emacs/doc/lispref/../../info/elisp, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/lispref/elisp.texi.
+This is
+/Volumes/Data/Midway/emacs-24.0.97/doc/lispref/../../info/elisp,
+produced by makeinfo version 4.8 from
+/Volumes/Data/Midway/emacs-24.0.97/doc/lispref/elisp.texi.
 
-This is the `GNU Emacs Lisp Reference Manual' corresponding to Emacs
+   This is the `GNU Emacs Lisp Reference Manual' corresponding to Emacs
 version 24.0.97.
 
-Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
+   Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -71,7 +73,7 @@ the usual conventions, please make it compatible.
      which documentation to print.
 
    * The major mode command should set the variable `mode-name' to the
-     "pretty" name of the mode, usually a string (but see *note Mode
+     "pretty" name of the mode, usually a string (but see *Note Mode
      Line Data::, for other possible forms).  The name of the mode
      appears in the mode line.
 
@@ -157,7 +159,7 @@ the usual conventions, please make it compatible.
      `font-lock-defaults' (*note Font Lock Mode::).
 
    * Each face that the mode defines should, if possible, inherit from
-     an existing Emacs face.  *Note Basic Faces::, and *note Faces for
+     an existing Emacs face.  *Note Basic Faces::, and *Note Faces for
      Font Lock::.
 
    * The mode should specify how Imenu should find the definitions or
@@ -201,7 +203,7 @@ the usual conventions, please make it compatible.
      macro, but this is not required.  Such a mode should call the
      parent mode command inside a `delay-mode-hooks' form.  (Using
      `define-derived-mode' does this automatically.)  *Note Derived
-     Modes::, and *note Mode Hooks::.
+     Modes::, and *Note Mode Hooks::.
 
    * If something special should be done if the user switches a buffer
      from this mode to any other major mode, this mode can set up a
@@ -1111,8 +1113,8 @@ mode in one self-contained definition.
  -- Macro: define-minor-mode mode doc [init-value [lighter [keymap]]]
           keyword-args... body...
      This macro defines a new minor mode whose name is MODE (a symbol).
-     It defines a command named MODE to toggle the minor mode, with DOC
-     as its documentation string.
+     It defines a command named MODE to toggle the minor mode, with
+     DOC as its documentation string.
 
      The toggle command takes one optional (prefix) argument.  If
      called interactively with no argument it toggles the mode on or
@@ -1374,7 +1376,7 @@ defined to have mode line constructs as their values.
 `STRING'
      A string as a mode line construct appears verbatim except for
      "`%'-constructs" in it.  These stand for substitution of other
-     data; see *note %-Constructs::.
+     data; see *Note %-Constructs::.
 
      If parts of the string have `face' properties, they control
      display of the text just as they would text in the buffer.  Any
@@ -1683,7 +1685,7 @@ right.
 
 `%n'
      `Narrow' when narrowing is in effect; nothing otherwise (see
-     `narrow-to-region' in *note Narrowing::).
+     `narrow-to-region' in *Note Narrowing::).
 
 `%p'
      The percentage of the buffer text above the *top* of window, or
@@ -2241,8 +2243,8 @@ behavior using the OVERRIDE element of a SUBEXP-HIGHLIGHTER.
      If LAXMATCH is non-`nil', it means there should be no error if
      there is no subexpression numbered SUBEXP in MATCHER.  Obviously,
      fontification of the subexpression numbered SUBEXP will not occur.
-     However, fontification of other subexpressions (and other regexps)
-     will continue.  If LAXMATCH is `nil', and the specified
+     However, fontification of other subexpressions (and other
+     regexps) will continue.  If LAXMATCH is `nil', and the specified
      subexpression is missing, then an error is signaled which
      terminates search-based fontification.
 
@@ -3462,7 +3464,7 @@ of documentation strings is not sufficient as a manual because a good
 manual is not organized in that fashion; it is organized in terms of
 topics of discussion.
 
-   For commands to display documentation strings, see *note Help:
+   For commands to display documentation strings, see *Note Help:
 (emacs)Help.
 
 * Menu:
@@ -3496,7 +3498,7 @@ you should not indent the second line of a documentation string, if it
 has one, because that looks odd when you use `C-h f'
 (`describe-function') or `C-h v' (`describe-variable') to view the
 documentation string.  There are many other conventions for
-documentation strings; see *note Documentation Tips::.
+documentation strings; see *Note Documentation Tips::.
 
    Documentation strings can contain several special substrings, which
 stand for key bindings to be looked up in the current keymaps when the
@@ -3862,7 +3864,7 @@ File: elisp,  Node: Help Functions,  Prev: Describing Characters,  Up: Documenta
 
 Emacs provides a variety of on-line help functions, all accessible to
 the user as subcommands of the prefix `C-h'.  For more information
-about them, see *note Help: (emacs)Help.  Here we describe some
+about them, see *Note Help: (emacs)Help.  Here we describe some
 program-level interfaces to the same information.
 
  -- Command: apropos pattern &optional do-all
@@ -3955,8 +3957,8 @@ program-level interfaces to the same information.
  -- Command: describe-prefix-bindings
      This function calls `describe-bindings' to display a list of all
      the subcommands of the prefix key of the most recent key sequence.
-     The prefix described consists of all but the last event of that key
-     sequence.  (The last event is, presumably, the help character.)
+     The prefix described consists of all but the last event of that
+     key sequence.  (The last event is, presumably, the help character.)
 
    The following two functions are meant for modes that want to provide
 help without relinquishing control, such as the "electric" modes.
@@ -4046,8 +4048,8 @@ File: elisp,  Node: Files,  Next: Backups and Auto-Saving,  Prev: Documentation,
 
 This chapter describes the Emacs Lisp functions and variables to find,
 create, view, save, and otherwise work with files and file directories.
-A few other file-related functions are described in *note Buffers::,
-and those related to backups and auto-saving are described in *note
+A few other file-related functions are described in *Note Buffers::,
+and those related to backups and auto-saving are described in *Note
 Backups and Auto-Saving::.
 
    Many of the file functions take one or more arguments that are file
@@ -4146,7 +4148,7 @@ temporary buffer.  Visiting the file is not necessary and takes longer.
 
           (switch-to-buffer (find-file-noselect filename nil nil wildcards))
 
-     (See `switch-to-buffer' in *note Switching Buffers::.)
+     (See `switch-to-buffer' in *Note Switching Buffers::.)
 
      If WILDCARDS is non-`nil', which is always true in an interactive
      call, then `find-file' expands wildcard characters in FILENAME and
@@ -4225,7 +4227,7 @@ temporary buffer.  Visiting the file is not necessary and takes longer.
  -- Command: find-file-other-window filename &optional wildcards
      This command selects a buffer visiting the file FILENAME, but does
      so in a window other than the selected window.  It may use another
-     existing window or split a window; see *note Switching Buffers::.
+     existing window or split a window; see *Note Switching Buffers::.
 
      When this command is called interactively, it prompts for FILENAME.
 
@@ -4288,7 +4290,7 @@ are sometimes useful in user Lisp code: `create-file-buffer' and
      This function creates a suitably named buffer for visiting
      FILENAME, and returns it.  It uses FILENAME (sans directory) as
      the name if that name is free; otherwise, it appends a string such
-     as `<2>' to get an unused name.  See also *note Creating Buffers::.
+     as `<2>' to get an unused name.  See also *Note Creating Buffers::.
 
      *Please note:* `create-file-buffer' does _not_ associate the new
      buffer with a file and does not select the buffer.  It also does
@@ -4566,7 +4568,7 @@ You can copy a file from the disk and insert it into a buffer using the
 
    If you want to pass a file name to another process so that another
 program can read the file, use the function `file-local-copy'; see
-*note Magic File Names::.
+*Note Magic File Names::.
 
 
 File: elisp,  Node: Writing to Files,  Next: File Locks,  Prev: Reading from Files,  Up: Files
@@ -4662,7 +4664,7 @@ visited; that could cause confusion in the mechanisms for visiting.
      The current buffer is restored even in case of an abnormal exit via
      `throw' or error (*note Nonlocal Exits::).
 
-     See also `with-temp-buffer' in *note The Current Buffer:
+     See also `with-temp-buffer' in *Note The Current Buffer:
      Definition of with-temp-buffer.
 
 
@@ -4685,7 +4687,7 @@ that you and another user will both lock the same file "simultaneously".
 If this happens, it is possible for the two users to make changes
 simultaneously, but Emacs will still warn the user who saves second.
 Also, the detection of modification of a buffer visiting a file changed
-on disk catches some cases of simultaneous editing; see *note
+on disk catches some cases of simultaneous editing; see *Note
 Modification Time::.
 
  -- Function: file-locked-p filename
@@ -5098,7 +5100,7 @@ parent directories.
        4. The time of last access, as a list of two integers.  The
           first integer has the high-order 16 bits of time, the second
           has the low 16 bits.  (This is similar to the value of
-          `current-time'; see *note Time of Day::.)  Note that on some
+          `current-time'; see *Note Time of Day::.)  Note that on some
           FAT-based filesystems, only the date of last access is
           recorded, so this time will always hold the midnight of the
           day of last access.
@@ -5197,7 +5199,7 @@ file access controls than ordinary "Unix-style" file permissions.  If
 Emacs has been compiled with SELinux support on a system with SELinux
 enabled, you can use the function `file-selinux-context' to retrieve a
 file's SELinux security context.  For the function
-`set-file-selinux-context', see *note Changing Files::.
+`set-file-selinux-context', see *Note Changing Files::.
 
  -- Function: file-selinux-context filename
      This function returns the SELinux security context of the file
@@ -5334,7 +5336,7 @@ with its (recursive) target.
      names for one file are not allowed.  Some systems implement
      multiple names by copying the file instead.
 
-     See also `file-nlinks' in *note File Attributes::.
+     See also `file-nlinks' in *Note File Attributes::.
 
  -- Command: rename-file filename newname &optional ok-if-already-exists
      This command renames the file FILENAME as NEWNAME.
@@ -5395,7 +5397,7 @@ with its (recursive) target.
      interactively, TRASH is `t' if no prefix argument is given, and
      `nil' otherwise.
 
-     See also `delete-directory' in *note Create/Delete Dirs::.
+     See also `delete-directory' in *Note Create/Delete Dirs::.
 
  -- Command: set-file-modes filename mode
      This function sets the "file mode" (or "file permissions") of
@@ -5969,7 +5971,7 @@ File: elisp,  Node: File Name Completion,  Next: Standard File Names,  Prev: Uni
 ---------------------------
 
 This section describes low-level subroutines for completing a file
-name.  For higher level functions, see *note Reading File Names::.
+name.  For higher level functions, see *Note Reading File Names::.
 
  -- Function: file-name-all-completions partial-filename directory
      This function returns a list of all possible completions for a file
@@ -6537,7 +6539,7 @@ The function `write-region':
    This shows the symmetry of the lowest-level operations; reading and
 writing handle things in opposite order.  The rest of this section
 describes the two facilities surrounding the three variables named
-above, as well as some related functions.  *note Coding Systems::, for
+above, as well as some related functions.  *Note Coding Systems::, for
 details on character encoding and decoding.
 
 
