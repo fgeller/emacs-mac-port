@@ -1,10 +1,9 @@
-This is /Volumes/Data/Midway/emacs-24.0.97/doc/emacs/../../info/emacs,
-produced by makeinfo version 4.8 from
-/Volumes/Data/Midway/emacs-24.0.97/doc/emacs/emacs.texi.
+This is /home/cyd/emacs/doc/emacs/../../info/emacs, produced by
+makeinfo version 4.13 from /home/cyd/emacs/doc/emacs/emacs.texi.
 
-   This is the `GNU Emacs Manual', updated for Emacs version 24.0.97.
+This is the `GNU Emacs Manual', updated for Emacs version 24.1.
 
-   Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
+Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -33,14 +32,14 @@ The Emacs Editor
 Emacs is the extensible, customizable, self-documenting real-time
 display editor.  This Info file describes how to edit with Emacs and
 some of the ways to customize it; it corresponds to GNU Emacs version
-24.0.97.
+24.1.
 
    If you are reading this in Emacs, type `h' to read a basic
 introduction to the Info documentation system.
 
-   For information on extending Emacs, see *Note Emacs Lisp: (elisp)Top.
+   For information on extending Emacs, see *note Emacs Lisp: (elisp)Top.
 
-   This is the `GNU Emacs Manual', updated for Emacs version 24.0.97.
+   This is the `GNU Emacs Manual', updated for Emacs version 24.1.
 
    Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
 
@@ -148,7 +147,6 @@ Appendices
 * Emacs Invocation::    Hairy startup options.
 * X Resources::         X resources for customizing Emacs.
 * Antinews::            Information about Emacs version 23.
-* Mac Port::            Using Emacs under Mac OS X with the Mac port.
 * Mac OS / GNUstep::    Using Emacs under Mac OS and GNUstep.
 * Microsoft Windows::   Using Emacs on Microsoft Windows and MS-DOS.
 * Manifesto::           What's GNU?  Gnu's Not Unix!
@@ -1354,12 +1352,12 @@ often display messages ending in `...' while they are working
 percentage), and add `done' when they are finished.
 
    Informative echo area messages are saved in a special buffer named
-`*Messages*'.  (We have not explained buffers yet; see *Note Buffers::,
+`*Messages*'.  (We have not explained buffers yet; see *note Buffers::,
 for more information about them.)  If you miss a message that appeared
 briefly on the screen, you can switch to the `*Messages*' buffer to see
 it again.  The `*Messages*' buffer is limited to a certain number of
 lines, specified by the variable `message-log-max'.  (We have not
-explained variables either; see *Note Variables::, for more information
+explained variables either; see *note Variables::, for more information
 about them.)  Beyond this limit, one line is deleted from the beginning
 whenever a new message line is added at the end.
 
@@ -1567,7 +1565,7 @@ Customization::).
    Simple characters and control characters, as well as certain
 non-keyboard inputs such as mouse clicks, are collectively referred to
 as "input events".  For details about how Emacs internally handles
-input events, see *Note Input Events: (elisp)Input Events.
+input events, see *note Input Events: (elisp)Input Events.
 
    ---------- Footnotes ----------
 
@@ -2029,7 +2027,7 @@ equivalent keys `<down>' and `<up>'.  You can force these commands to
 move according to "logical lines" (i.e., according to the text lines in
 the buffer) by setting the variable `line-move-visual' to `nil'; if a
 logical line occupies multiple screen lines, the cursor then skips over
-the additional screen lines.  For details, see *Note Continuation
+the additional screen lines.  For details, see *note Continuation
 Lines::.  *Note Variables::, for how to set variables such as
 `line-move-visual'.
 
@@ -2143,7 +2141,7 @@ another, earlier change, back to the limit of the undo information
 available.  If all recorded changes have already been undone, the undo
 command displays an error message and does nothing.
 
-   To learn more about the `undo' command, see *Note Undo::.
+   To learn more about the `undo' command, see *note Undo::.
 
 
 File: emacs,  Node: Basic Files,  Next: Basic Help,  Prev: Basic Undo,  Up: Basic
@@ -2177,7 +2175,7 @@ existed.  This creates an empty buffer, in which you can insert the
 text you want to put in the file.  Emacs actually creates the file the
 first time you save this buffer with `C-x C-s'.
 
-   To learn more about using files in Emacs, see *Note Files::.
+   To learn more about using files in Emacs, see *note Files::.
 
 
 File: emacs,  Node: Basic Help,  Next: Blank Lines,  Prev: Basic Files,  Up: Basic
@@ -2337,7 +2335,7 @@ It displays a line in the echo area that looks like this:
    After `Char:', this shows the character in the buffer at point.  The
 text inside the parenthesis shows the corresponding decimal, octal and
 hex character codes; for more information about how `C-x =' displays
-character information, see *Note International Chars::.  After `point='
+character information, see *note International Chars::.  After `point='
 is the position of point as a character count (the first character in
 the buffer is position 1, the second character is position 2, and so
 on).  The number after that is the total number of characters in the
@@ -2562,7 +2560,7 @@ leading directory name in front of the `~' is ignored: thus,
 
    On MS-Windows and MS-DOS systems, where a user doesn't always have a
 home directory, Emacs uses several alternatives.  For MS-Windows, see
-*Note Windows HOME::; for MS-DOS, see *Note MS-DOS File Names::.  On
+*note Windows HOME::; for MS-DOS, see *note MS-DOS File Names::.  On
 these systems, the `~USER-ID/' construct is supported only for the
 current user, i.e., only if USER-ID is the current user's login name.
 
@@ -2613,12 +2611,12 @@ instance, you cannot split it.  *Note Windows::.
 However, if you add two or more lines' worth of text into the
 minibuffer, it expands automatically to accommodate the text.  The
 variable `resize-mini-windows' controls the resizing of the minibuffer.
-The default value is `grow-only', which means the behavior we have
-just described.  If the value is `t', the minibuffer window will also
-shrink automatically if you remove some lines of text from the
-minibuffer, down to a minimum of one screen line.  If the value is
-`nil', the minibuffer window never changes size automatically, but you
-can use the usual window-resizing commands on it (*note Windows::).
+The default value is `grow-only', which means the behavior we have just
+described.  If the value is `t', the minibuffer window will also shrink
+automatically if you remove some lines of text from the minibuffer,
+down to a minimum of one screen line.  If the value is `nil', the
+minibuffer window never changes size automatically, but you can use the
+usual window-resizing commands on it (*note Windows::).
 
    The variable `max-mini-window-height' controls the maximum height
 for resizing the minibuffer window.  A floating-point number specifies
@@ -2834,7 +2832,7 @@ File: emacs,  Node: Completion Styles,  Next: Completion Options,  Prev: Complet
 
 Completion commands work by narrowing a large list of possible
 completion alternatives to a smaller subset that "matches" what you
-have typed in the minibuffer.  In *Note Completion Example::, we gave a
+have typed in the minibuffer.  In *note Completion Example::, we gave a
 simple example of such matching.  The procedure of determining what
 constitutes a "match" is quite intricate.  Emacs attempts to offer
 plausible completions under most circumstances.
@@ -3984,7 +3982,7 @@ region is empty (i.e., if mark and point are at the same position).  If
 you want them to operate on the empty region, change the variable
 `use-empty-active-region' to `t'.
 
-   As described in *Note Erasing::, the <DEL> (`backward-delete-char')
+   As described in *note Erasing::, the <DEL> (`backward-delete-char')
 and <delete> (`delete-forward-char') commands also act this way.  If
 the mark is active, they delete the text in the region.  (As an
 exception, if you supply a numeric argument N, where N is not one, these
@@ -4471,7 +4469,7 @@ killed.  There is only one kill ring, shared by all buffers, so you can
 kill text in one buffer and yank it in another buffer.  This is the
 usual way to move text from one buffer to another.  (There are several
 other methods: for instance, you could store the text in a register;
-see *Note Registers::.  *Note Accumulating Text::, for some other ways
+see *note Registers::.  *Note Accumulating Text::, for some other ways
 to move text around.)
 
    The maximum number of entries in the kill ring is controlled by the
@@ -4489,7 +4487,7 @@ File: emacs,  Node: Earlier Kills,  Next: Appending Kills,  Prev: Kill Ring,  Up
 12.2.2 Yanking Earlier Kills
 ----------------------------
 
-As explained in *Note Yanking::, you can use a numeric argument to
+As explained in *note Yanking::, you can use a numeric argument to
 `C-y' to yank text that is no longer the most recent kill.  This is
 useful if you remember which kill ring entry you want.  If you don't,
 you can use the `M-y' (`yank-pop') command to cycle through the
@@ -5116,7 +5114,7 @@ the buffer.
      rectangle) (`insert-register').
 
    The `C-x r i R' (`insert-register') command, previously documented
-in *Note Text Registers::, inserts a rectangle rather than a text
+in *note Text Registers::, inserts a rectangle rather than a text
 string, if the register contains a rectangle.
 
 
@@ -6308,7 +6306,7 @@ three dots do not appear at the end of a line that precedes hidden
 lines.  Then there is no visible indication of the hidden lines.  This
 variable becomes local automatically when set.
 
-   See also *Note Outline Mode:: for another way to hide part of the
+   See also *note Outline Mode:: for another way to hide part of the
 text in a buffer.
 
 
