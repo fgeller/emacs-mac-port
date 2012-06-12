@@ -44,7 +44,7 @@
 
    Plan B. 
    	Build a self-contained Emacs.app with build-emacs.app.sh
- 	*Tested on Mac OS X 10.7.3*
+ 	*Tested on Mac OS X 10.7.4*
 
    Plan C.  
    	If you are using Homebrew, copy "emacs-mac.rb" to your brew's
