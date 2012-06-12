@@ -1977,6 +1977,11 @@ non-nil, and the input device supports it."
 				(cadr (pos-visible-in-window-p
 				       (posn-point target-posn) nil t)))
 			       (scrolled-pixel-height (- target-y first-y)))
+			  ;; Emacs 23 -> 24 incompatibility: the
+			  ;; actual row part of POSITION now counts
+			  ;; the header line.
+			  (if header-line-height
+			      (setq target-row (1- target-row)))
 			  (scroll-up (if (= delta-y scrolled-pixel-height)
 					 target-row
 				       (1+ target-row)))

@@ -1,10 +1,11 @@
-This is /home/cyd/emacs/doc/lispref/../../info/elisp, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/lispref/elisp.texi.
+This is /Volumes/Data/Midway/emacs-24.1/doc/lispref/../../info/elisp,
+produced by makeinfo version 4.8 from
+/Volumes/Data/Midway/emacs-24.1/doc/lispref/elisp.texi.
 
-This is the `GNU Emacs Lisp Reference Manual' corresponding to Emacs
+   This is the `GNU Emacs Lisp Reference Manual' corresponding to Emacs
 version 24.1.
 
-Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
+   Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -382,7 +383,7 @@ systems.
      `COM1', or `\\.\COM10' (double the backslashes in Lisp strings).
 
      SPEED is the speed of the serial port in bits per second.  9600 is
-     a common value.  The buffer is in Term mode; see *note Term Mode:
+     a common value.  The buffer is in Term mode; see *Note Term Mode:
      (emacs)Term Mode, for the commands to use in that buffer.  You can
      change the speed and the configuration in the mode line menu.
 
@@ -1220,7 +1221,7 @@ in the echo area.
      either `nil' or a list--then it uses a dialog box or pop-up menu to
      display the message.  Otherwise, it uses the echo area.  (This is
      the same criterion that `y-or-n-p' uses to make a similar
-     decision; see *note Yes-or-No Queries::.)
+     decision; see *Note Yes-or-No Queries::.)
 
      You can force use of the mouse or of the echo area by binding
      `last-nonmenu-event' to a suitable value around the call.
@@ -2341,7 +2342,7 @@ them:
 `help-echo'
      If an overlay has a `help-echo' property, then when you move the
      mouse onto the text in the overlay, Emacs displays a help string
-     in the echo area, or in the tooltip window.  For details see *note
+     in the echo area, or in the tooltip window.  For details see *Note
      Text help-echo::.
 
 `modification-hooks'
@@ -2515,7 +2516,7 @@ File: elisp,  Node: Width,  Next: Line Height,  Prev: Overlays,  Up: Display
 ===========
 
 Since not all characters have the same width, these functions let you
-check the width of a character.  *Note Primitive Indent::, and *note
+check the width of a character.  *Note Primitive Indent::, and *Note
 Screen Lines::, for related functions.
 
  -- Function: char-width char
@@ -2764,8 +2765,9 @@ Customize interface (*note Customization::).
                The kind of window system the frame uses--either
                `graphic' (any graphics-capable display), `x', `pc' (for
                the MS-DOS console), `w32' (for MS Windows 9X/NT/2K/XP),
-               or `tty' (a non-graphics-capable display).  *Note
-               window-system: Window Systems.
+               `mac' (for the Mac OS X display), or `tty' (a
+               non-graphics-capable display).  *Note window-system:
+               Window Systems.
 
          `class'
                What kinds of colors the frame supports--either `color',
@@ -2880,7 +2882,7 @@ attribute is ignored.
 
      The value can also be a floating point number or a function, which
      specifies the height relative to an "underlying face" (i.e., a
-     face that has a lower priority in the list described in *note
+     face that has a lower priority in the list described in *Note
      Displaying Faces::).  If the value is a floating point number,
      that specifies the amount by which to scale the height of the
      underlying face.  If the value is a function, that function is
@@ -5650,9 +5652,9 @@ called `insert-...button'.
 
    The button-creation functions all take the `&rest' argument
 PROPERTIES, which should be a sequence of PROPERTY VALUE pairs,
-specifying properties to add to the button; see *note Button
+specifying properties to add to the button; see *Note Button
 Properties::.  In addition, the keyword argument `:type' may be used to
-specify a button-type from which to inherit other properties; see *note
+specify a button-type from which to inherit other properties; see *Note
 Button Types::.  Any properties not explicitly specified during
 creation will be inherited from the button's type (if the type defines
 such a property).
@@ -5807,8 +5809,8 @@ File: elisp,  Node: Abstract Display,  Next: Blinking,  Prev: Buttons,  Up: Disp
 
 The Ewoc package constructs buffer text that represents a structure of
 Lisp objects, and updates the text to follow changes in that structure.
-This is like the "view" component in the "model/view/controller" design
-paradigm.
+This is like the "view" component in the "model/view/controller"
+design paradigm.
 
    An "ewoc" is a structure that organizes information required to
 construct buffer text that represents certain Lisp data.  The buffer
@@ -6581,6 +6583,9 @@ concerned; the individual Emacs windows are not known to X at all.
     `w32'
           Emacs is displaying the frame using native MS-Windows GUI.
 
+    `mac'
+          Emacs is displaying the frame using native Mac OS X GUI.
+
     `ns'
           Emacs is displaying the frame using the Nextstep interface
           (used on GNUstep and Mac OS X).
@@ -6610,7 +6615,7 @@ predicates or boolean flag variables, if you want to write code that
 works differently on text terminals and graphic displays.  That is
 because `window-system' is not a good indicator of Emacs capabilities
 on a given display type.  Instead, use `display-graphic-p' or any of
-the other `display-*-p' predicates described in *note Display Feature
+the other `display-*-p' predicates described in *Note Display Feature
 Testing::.
 
  -- Variable: window-setup-hook

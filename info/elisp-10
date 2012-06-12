@@ -1,10 +1,11 @@
-This is /home/cyd/emacs/doc/lispref/../../info/elisp, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/lispref/elisp.texi.
+This is /Volumes/Data/Midway/emacs-24.1/doc/lispref/../../info/elisp,
+produced by makeinfo version 4.8 from
+/Volumes/Data/Midway/emacs-24.1/doc/lispref/elisp.texi.
 
-This is the `GNU Emacs Lisp Reference Manual' corresponding to Emacs
+   This is the `GNU Emacs Lisp Reference Manual' corresponding to Emacs
 version 24.1.
 
-Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
+   Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -411,7 +412,7 @@ command-line arguments.
      arguments is in `command-line-args'.)
 
      The command-line arguments are parsed by the `command-line-1'
-     function in the `startup.el' file.  See also *note Command Line
+     function in the `startup.el' file.  See also *Note Command Line
      Arguments for Emacs Invocation: (emacs)Emacs Invocation.
 
  -- Variable: command-line-args
@@ -477,7 +478,7 @@ control.  The low-level primitive for killing Emacs is `kill-emacs'.
 
      If EXIT-DATA is an integer, that is used as the exit status of the
      Emacs process.  (This is useful primarily in batch operation; see
-     *note Batch Mode::.)
+     *Note Batch Mode::.)
 
      If EXIT-DATA is a string, its contents are stuffed into the
      terminal input buffer so that the shell (or whatever program next
@@ -1338,7 +1339,7 @@ elapsed and processor time, used by the Emacs process.
      "uptime"--the elapsed wall-clock time this instance of Emacs is
      running.  The string is formatted by `format-seconds' according to
      the optional argument FORMAT.  For the available format
-     descriptors, see *note format-seconds: Time Parsing.  If FORMAT is
+     descriptors, see *Note format-seconds: Time Parsing.  If FORMAT is
      `nil' or omitted, it defaults to `"%Y, %D, %H, %M, %z%S"'.
 
      When called interactively, it prints the uptime in the echo area.
@@ -1633,7 +1634,7 @@ File: elisp,  Node: Terminal Input,  Next: Terminal Output,  Prev: Idle Timers, 
 ====================
 
 This section describes functions and variables for recording or
-manipulating terminal input.  See *note Display::, for related
+manipulating terminal input.  See *Note Display::, for related
 functions.
 
 * Menu:
@@ -1796,7 +1797,7 @@ than optimal.  To fix the problem, set `baud-rate'.
      You close the termscript file by calling this function with an
      argument of `nil'.
 
-     See also `open-dribble-file' in *note Recording Input::.
+     See also `open-dribble-file' in *Note Recording Input::.
 
           (open-termscript "../junk/termscript")
                => nil
@@ -2241,13 +2242,13 @@ extracted from a multi-file package).
    Emacs then searches every Lisp file in the content directory for
 autoload magic comments (*note Autoload::).  These autoload definitions
 are saved to a file named `NAME-autoloads.el' in the content directory.
-They are typically used to autoload the principal user commands defined
-in the package, but they can also perform other tasks, such as adding
-an element to `auto-mode-alist' (*note Auto Major Mode::).  Note that a
-package typically does _not_ autoload every function and variable
-defined within it--only the handful of commands typically called to
-begin using the package.  Emacs then byte-compiles every Lisp file in
-the package.
+They are typically used to autoload the principal user commands
+defined in the package, but they can also perform other tasks, such as
+adding an element to `auto-mode-alist' (*note Auto Major Mode::).  Note
+that a package typically does _not_ autoload every function and
+variable defined within it--only the handful of commands typically
+called to begin using the package.  Emacs then byte-compiles every Lisp
+file in the package.
 
    After installation, the installed package is "loaded": Emacs adds
 the package's content directory to `load-path', and evaluates the
@@ -2324,7 +2325,7 @@ a description of the `Package-Requires' header.  If the header is
 omitted, the package has no dependencies.
 
    The file ought to also contain one or more autoload magic comments,
-as explained in *note Packaging Basics::.  In the above example, a magic
+as explained in *Note Packaging Basics::.  In the above example, a magic
 comment autoloads `superfrobnicator-mode'.
 
    *Note Package Archives::, for a explanation of how to add a
@@ -2556,8 +2557,8 @@ A.1 Old Lisp Features in Emacs 23
 
    * Because Emacs no longer supports SELinux file contexts, the
      PRESERVE-SELINUX-CONTEXT argument to `copy-file' has been removed.
-     The return value of `backup-buffer' no longer has an entry for the
-     SELinux file context.
+     The return value of `backup-buffer' no longer has an entry for
+     the SELinux file context.
 
    * For mouse click input events in the text area, the Y pixel
      coordinate in the POSITION list (*note Click Events::) now counts
@@ -6164,7 +6165,7 @@ handled.
      `"Scan error"'
      This happens when certain syntax-parsing functions find invalid
      syntax or mismatched parentheses.
-     *Note List Motion::, and *note Parsing Expressions::.
+     *Note List Motion::, and *Note Parsing Expressions::.
 
 `search-failed'
      `"Search failed"'

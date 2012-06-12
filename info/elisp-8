@@ -1,10 +1,11 @@
-This is /home/cyd/emacs/doc/lispref/../../info/elisp, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/lispref/elisp.texi.
+This is /Volumes/Data/Midway/emacs-24.1/doc/lispref/../../info/elisp,
+produced by makeinfo version 4.8 from
+/Volumes/Data/Midway/emacs-24.1/doc/lispref/elisp.texi.
 
-This is the `GNU Emacs Lisp Reference Manual' corresponding to Emacs
+   This is the `GNU Emacs Lisp Reference Manual' corresponding to Emacs
 version 24.1.
 
-Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
+   Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -664,9 +665,9 @@ Here are the Lisp facilities for working with coding systems:
 
  -- Function: coding-system-list &optional base-only
      This function returns a list of all coding system names (symbols).
-     If BASE-ONLY is non-`nil', the value includes only the base coding
-     systems.  Otherwise, it includes alias and variant coding systems
-     as well.
+     If BASE-ONLY is non-`nil', the value includes only the base
+     coding systems.  Otherwise, it includes alias and variant coding
+     systems as well.
 
  -- Function: coding-system-p object
      This function returns `t' if OBJECT is a coding system name or
@@ -693,13 +694,13 @@ Here are the Lisp facilities for working with coding systems:
 
      If this function returns a vector, Emacs will decide, as part of
      the text encoding or decoding process, what eol conversion to use.
-     For decoding, the end-of-line format of the text is auto-detected,
-     and the eol conversion is set to match it (e.g., DOS-style CRLF
-     format will imply `dos' eol conversion).  For encoding, the eol
-     conversion is taken from the appropriate default coding system
-     (e.g., default value of `buffer-file-coding-system' for
-     `buffer-file-coding-system'), or from the default eol conversion
-     appropriate for the underlying platform.
+     For decoding, the end-of-line format of the text is
+     auto-detected, and the eol conversion is set to match it (e.g.,
+     DOS-style CRLF format will imply `dos' eol conversion).  For
+     encoding, the eol conversion is taken from the appropriate default
+     coding system (e.g., default value of `buffer-file-coding-system'
+     for `buffer-file-coding-system'), or from the default eol
+     conversion appropriate for the underlying platform.
 
  -- Function: coding-system-change-eol-conversion coding-system eol-type
      This function returns a coding system which is like CODING-SYSTEM
@@ -746,7 +747,7 @@ Here are the Lisp facilities for working with coding systems:
      some coding systems cannot encode some of the characters, the
      value is an alist, each element of which has the form
      `(CODING-SYSTEM1 POS1 POS2 ...)', meaning that CODING-SYSTEM1
-     cannot encode characters at buffer positions POS1, POS2, ....
+     cannot encode characters at buffer positions POS1, POS2, .....
 
      START may be a string, in which case END is ignored and the
      returned value references string indices instead of buffer
@@ -1426,7 +1427,7 @@ future, symbols may also be usable as input method names.
      it is good for.
 
    The fundamental interface to input methods is through the variable
-`input-method-function'.  *Note Reading One Event::, and *note Invoking
+`input-method-function'.  *Note Reading One Event::, and *Note Invoking
 the Input Method::.
 
 
@@ -1511,7 +1512,7 @@ portions of it.
 
    The `skip-chars...' functions also perform a kind of searching.
 *Note Skipping Characters::.  To search for changes in character
-properties, see *note Property Search::.
+properties, see *Note Property Search::.
 
 
 File: elisp,  Node: String Search,  Next: Searching and Case,  Up: Searching and Matching
@@ -2387,7 +2388,7 @@ File: elisp,  Node: Regexp Search,  Next: POSIX Regexps,  Prev: Regular Expressi
 
 In GNU Emacs, you can search for the next match for a regular
 expression either incrementally or not.  For incremental search
-commands, see *note Regular Expression Search: (emacs)Regexp Search.
+commands, see *Note Regular Expression Search: (emacs)Regexp Search.
 Here we describe only the search functions useful in programs.  The
 principal one is `re-search-forward'.
 
@@ -2626,7 +2627,7 @@ match data around it, to prevent it from being overwritten.
    Notice that all functions are allowed to overwrite the match data
 unless they're explicitly documented not to do so.  A consequence is
 that functions that are run implicitly in the background (*note
-Timers::, and *note Idle Timers::) should likely save and restore the
+Timers::, and *Note Idle Timers::) should likely save and restore the
 match data explicitly.
 
 * Menu:
@@ -2956,8 +2957,9 @@ this.
           fixedcase literal subexp start
      This function copies STRING and searches it for matches for
      REGEXP, and replaces them with REP.  It returns the modified copy.
-     If START is non-`nil', the search for matches starts at that index
-     in STRING, so matches starting before that index are not changed.
+     If START is non-`nil', the search for matches starts at that
+     index in STRING, so matches starting before that index are not
+     changed.
 
      This function uses `replace-match' to do the replacement, and it
      passes the optional arguments FIXEDCASE, LITERAL and SUBEXP along
@@ -4269,7 +4271,7 @@ nonstandard way.
 
    If the minor mode Abbrev mode is enabled, the buffer-local variable
 `abbrev-mode' is non-`nil', and abbrevs are automatically expanded in
-the buffer.  For the user-level commands for abbrevs, see *note Abbrev
+the buffer.  For the user-level commands for abbrevs, see *Note Abbrev
 Mode: (emacs)Abbrevs.
 
 * Menu:
@@ -4795,7 +4797,7 @@ argument that specifies where the standard output from the program will
 go.  It should be a buffer or a buffer name; if it is a buffer name,
 that will create the buffer if it does not already exist.  It can also
 be `nil', which says to discard the output unless a filter function
-handles it.  (*Note Filter Functions::, and *note Read and Print::.)
+handles it.  (*Note Filter Functions::, and *Note Read and Print::.)
 Normally, you should avoid having multiple processes send output to the
 same buffer because their output would be intermixed randomly.  For
 synchronous processes, you can send the output to a file instead of a
@@ -4998,7 +5000,7 @@ much like text written into a file.  *Note Coding Systems::.
      decoding output is `undecided', meaning deduce the encoding from
      the actual data, then redisplay sometimes cannot continue once
      non-ASCII characters are encountered.  There are fundamental
-     reasons why it is hard to fix this; see *note Output from
+     reasons why it is hard to fix this; see *Note Output from
      Processes::.)
 
      Otherwise the function `call-process' does no redisplay, and the
@@ -5176,7 +5178,7 @@ much like text written into a file.  *Note Coding Systems::.
 
    ---------- Footnotes ----------
 
-   (1) On other systems, Emacs uses a Lisp emulation of `ls'; see *note
+   (1) On other systems, Emacs uses a Lisp emulation of `ls'; see *Note
 Contents of Directories::.
 
 
@@ -5257,7 +5259,7 @@ delay.
 
      Depending on the implementation of the file handler, it might not
      be possible to apply `process-filter' or `process-sentinel' to the
-     resulting process object.  *Note Filter Functions::, and *note
+     resulting process object.  *Note Filter Functions::, and *Note
      Sentinels::.
 
      Some file handlers may not support `start-file-process' (for
@@ -5516,7 +5518,7 @@ Several functions return information about processes.
  -- Function: process-tty-name process
      This function returns the terminal name that PROCESS is using for
      its communication with Emacs--or `nil' if it is using pipes
-     instead of a terminal (see `process-connection-type' in *note
+     instead of a terminal (see `process-connection-type' in *Note
      Asynchronous Processes::).  If PROCESS represents a program
      running on a remote host, the terminal name used by that program on
      the remote host is provided as process property `remote-tty'.
@@ -5661,7 +5663,7 @@ shell, this is the shell itself.
 communicate with the subprocess, because the operating system does not
 support the distinction in the case of pipes.  For the same reason,
 job-control shells won't work when a pipe is used.  See
-`process-connection-type' in *note Asynchronous Processes::.
+`process-connection-type' in *Note Asynchronous Processes::.
 
  -- Function: interrupt-process &optional process current-group
      This function interrupts the process PROCESS by sending the signal
@@ -5952,7 +5954,7 @@ system to use (*note Process Information::).  Otherwise, the coding
 system comes from `coding-system-for-read', if that is non-`nil'; or
 else from the defaulting mechanism (*note Default Coding Systems::).
 If the text output by a process contains null bytes, Emacs by default
-uses `no-conversion' for it; see *note inhibit-null-byte-detection:
+uses `no-conversion' for it; see *Note inhibit-null-byte-detection:
 Lisp and Coding Systems, for how to control this behavior.
 
    *Warning:* Coding systems such as `undecided', which determine the
@@ -6419,7 +6421,7 @@ subprocess.  *Note Process Information::.
 stopped means not accepting new connections.  (Up to 5 connection
 requests will be queued for when you resume the server; you can
 increase this limit, unless it is imposed by the operating system--see
-the `:server' keyword of `make-network-process', *note Network
+the `:server' keyword of `make-network-process', *Note Network
 Processes::.)  For a network stream connection, being stopped means not
 processing input (any arriving input waits until you resume the
 connection).  For a datagram connection, some number of packets may be

@@ -850,7 +850,7 @@ for details on preparing Emacs for automatic allout activation.
 
 ;;;### (autoloads (allout-widgets-mode allout-widgets-auto-activation
 ;;;;;;  allout-widgets-setup allout-widgets) "allout-widgets" "allout-widgets.el"
-;;;;;;  (20400 62402))
+;;;;;;  (20432 47835))
 ;;; Generated autoloads from allout-widgets.el
 
 (let ((loads (get 'allout-widgets 'custom-loads))) (if (member '"allout-widgets" loads) nil (put 'allout-widgets 'custom-loads (cons '"allout-widgets" loads))))
@@ -5139,7 +5139,7 @@ Enable CUA selection mode without the C-z/C-x/C-c/C-v bindings.
 ;;;;;;  customize-mode customize customize-push-and-save customize-save-variable
 ;;;;;;  customize-set-variable customize-set-value custom-menu-sort-alphabetically
 ;;;;;;  custom-buffer-sort-alphabetically custom-browse-sort-alphabetically)
-;;;;;;  "cus-edit" "cus-edit.el" (20424 24226))
+;;;;;;  "cus-edit" "cus-edit.el" (20438 37850))
 ;;; Generated autoloads from cus-edit.el
 
 (defvar custom-browse-sort-alphabetically nil "\
@@ -6588,7 +6588,7 @@ redefine OBJECT if it is a symbol.
 ;;;;;;  standard-display-g1 standard-display-ascii standard-display-default
 ;;;;;;  standard-display-8bit describe-current-display-table describe-display-table
 ;;;;;;  set-display-table-slot display-table-slot make-display-table)
-;;;;;;  "disp-table" "disp-table.el" (20352 65510))
+;;;;;;  "disp-table" "disp-table.el" (20438 37850))
 ;;; Generated autoloads from disp-table.el
 
 (autoload 'make-display-table "disp-table" "\
@@ -8324,7 +8324,7 @@ Other values are interpreted as usual.
 ;;;***
 
 ;;;### (autoloads (report-emacs-bug-query-existing-bugs report-emacs-bug)
-;;;;;;  "emacsbug" "mail/emacsbug.el" (20400 62402))
+;;;;;;  "emacsbug" "mail/emacsbug.el" (20438 37850))
 ;;; Generated autoloads from mail/emacsbug.el
 
 (autoload 'report-emacs-bug "emacsbug" "\
@@ -8775,7 +8775,7 @@ Look at CONFIG and try to expand GROUP.
 ;;;***
 
 ;;;### (autoloads (erc-handle-irc-url erc-tls erc erc-select-read-args)
-;;;;;;  "erc" "erc/erc.el" (20400 62402))
+;;;;;;  "erc" "erc/erc.el" (20438 37850))
 ;;; Generated autoloads from erc/erc.el
 
 (autoload 'erc-select-read-args "erc" "\
@@ -15317,7 +15317,7 @@ of `inferior-lisp-program').  Runs the hooks from
 ;;;;;;  Info-goto-emacs-key-command-node Info-goto-emacs-command-node
 ;;;;;;  Info-mode info-finder info-apropos Info-index Info-directory
 ;;;;;;  Info-on-current-buffer info-standalone info-emacs-manual
-;;;;;;  info info-other-window) "info" "info.el" (20400 62402))
+;;;;;;  info info-other-window) "info" "info.el" (20438 37850))
 ;;; Generated autoloads from info.el
 
 (autoload 'info-other-window "info" "\
@@ -24405,7 +24405,7 @@ variable.
 ;;;;;;  rmail-secondary-file-directory rmail-primary-inbox-list rmail-highlighted-headers
 ;;;;;;  rmail-retry-ignored-headers rmail-displayed-headers rmail-ignored-headers
 ;;;;;;  rmail-user-mail-address-regexp rmail-movemail-variant-p)
-;;;;;;  "rmail" "mail/rmail.el" (20400 62402))
+;;;;;;  "rmail" "mail/rmail.el" (20436 17935))
 ;;; Generated autoloads from mail/rmail.el
 
 (autoload 'rmail-movemail-variant-p "rmail" "\
@@ -33757,7 +33757,7 @@ Zone out, completely.
 ;;;;;;  "vc/ediff-ptch.el" "vc/ediff-vers.el" "vc/ediff-wind.el"
 ;;;;;;  "vc/pcvs-info.el" "vc/pcvs-parse.el" "vc/pcvs-util.el" "vc/vc-dav.el"
 ;;;;;;  "vcursor.el" "vt-control.el" "vt100-led.el" "w32-fns.el"
-;;;;;;  "w32-vars.el" "x-dnd.el") (20424 36496 403265))
+;;;;;;  "w32-vars.el" "x-dnd.el") (20438 42836 504706))
 
 ;;;***
 
