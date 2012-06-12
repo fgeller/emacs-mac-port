@@ -15,9 +15,11 @@ compver=x86_64-apple-darwin`uname -r`
 
 # make an emacs bundle
 mkdir $installprefix
+set -e
 ./configure --with-mac --enable-mac-app=$installprefix --prefix=$installprefix
 make
 make install
+set +e
 
 mv $installprefix/share/emacs/$version/* $app_dir
 mv $installprefix/share/info $app_dir
