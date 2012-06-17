@@ -1,5 +1,6 @@
 0. current
 
+   + update 06/16/2012: update deps of automake, thanks jmdeldin
    + update 06/11/2012: Emacs 24.1    with emacs-24.1-mac-3.0
                         fix build-emacs.app.sh with 'set -/+e'
    + update 06/02/2012: Emacs 24.1-rc with emacs-24.1-rc-mac-2.94
