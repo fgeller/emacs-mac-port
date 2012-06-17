@@ -7,6 +7,8 @@ class EmacsMac <Formula
 
   head 'git://github.com/railwaycat/emacs-mac-port.git'
 
+  depends_on 'automake'
+
   def caveats
     s = ""
     s += <<-EOS.undent
