@@ -2814,27 +2814,49 @@ mac_ctfont_create_preferred_family_for_attributes (CFDictionaryRef attributes)
   if (charset_string
       && (length = CFStringGetLength (charset_string)) > 0)
     {
-      CTFontRef last_resort =
-	CTFontCreateWithName (CFSTR ("LastResort"), 0, NULL);
+      CFAttributedStringRef attr_string = NULL;
+      CTLineRef ctline = NULL;
+      CFDictionaryRef attrs =
+      CFDictionaryCreate (NULL, NULL, NULL, 0,
+                          &kCFTypeDictionaryKeyCallBacks,
+                          &kCFTypeDictionaryValueCallBacks);
 
-      if (last_resort)
-	{
-	  CTFontRef font = CTFontCreateForString (last_resort, charset_string,
-						  CFRangeMake (0, length));
+      if (attrs)
+      {
+        attr_string = CFAttributedStringCreate (NULL, charset_string, attrs);
+        CFRelease (attrs);
+      }
+      if (attr_string)
+      {
+        ctline = CTLineCreateWithAttributedString (attr_string);
+        CFRelease (attr_string);
+      }
+      if (ctline)
+      {
+        CFArrayRef runs = CTLineGetGlyphRuns (ctline);
+        CFIndex i, nruns = CFArrayGetCount (runs);
+        CTFontRef font;
 
-	  if (font)
-	    {
-	      result = CTFontCopyAttribute (font, kCTFontFamilyNameAttribute);
+        for (i = 0; i < nruns; i++)
+          {
+            CTRunRef run = CFArrayGetValueAtIndex (runs, i);
+            CFDictionaryRef attributes = CTRunGetAttributes (run);
+            CTFontRef font_in_run;
 
-	      if (CFStringCompare (result, CFSTR ("LastResort"), 0)
-		  == kCFCompareEqualTo)
-		{
-		  CFRelease (result);
-		  result = NULL;
-		}
-	      CFRelease (font);
-	    }
-	  CFRelease (last_resort);
+            if (attributes == NULL)
+              break;
+            font_in_run =
+              CFDictionaryGetValue (attributes, kCTFontAttributeName);
+            if (font_in_run == NULL)
+              break;
+            if (i == 0)
+              font = font_in_run;
+            else if (!mac_ctfont_equal_in_postscript_name (font, font_in_run))
+              break;
+          }
+        if (nruns > 0 && i == nruns)
+          result = CTFontCopyAttribute (font, kCTFontFamilyNameAttribute);
+        CFRelease (ctline);
 	}
     }
 

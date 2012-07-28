@@ -1,5 +1,7 @@
 0. current
 
+   + update 07/28/2012: Emacs 24.1    with emacs-24.1-mac-3.1
+                                         + macfont patch for 10.8
    + update 05/24/2012: fix emacs-mac.rb for homebrew
    + update 05/17/2012: Emacs 24.0.97 with emacs-24.0.97-mac-2.93
    + update 04/27/2012: Emacs 24.0.96 with emacs-24.0.96-mac-2.92
