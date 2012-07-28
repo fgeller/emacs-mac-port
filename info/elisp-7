@@ -1,11 +1,10 @@
-This is /Volumes/Data/Midway/emacs-24.1/doc/lispref/../../info/elisp,
-produced by makeinfo version 4.8 from
-/Volumes/Data/Midway/emacs-24.1/doc/lispref/elisp.texi.
+This is /home/cyd/emacs/doc/lispref/../../info/elisp, produced by
+makeinfo version 4.13 from /home/cyd/emacs/doc/lispref/elisp.texi.
 
-   This is the `GNU Emacs Lisp Reference Manual' corresponding to Emacs
+This is the `GNU Emacs Lisp Reference Manual' corresponding to Emacs
 version 24.1.
 
-   Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
+Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -462,25 +461,6 @@ general, but it does support the clipboard.  `x-get-selection' and
 clipboard holds other types of data, Emacs treats the clipboard as
 empty.
 
-   On Mac OS X, selection-like data transfer between applications is
-performed through a mechanism called "pasteboards".  The clipboard is a
-particular pasteboard named `Apple CFPasteboard general'.  Types of
-pasteboard data are called "pasteboard data types", which are
-identified by strings such as `NSStringPboardType'.  The Mac port of
-Emacs associates a selection with a pasteboard, and a selection type
-with a pasteboard data type via `mac-pasteboard-name' and
-`mac-pasteboard-data-type' properties, respectively.
-
-     (get 'CLIPBOARD 'mac-pasteboard-name)
-          => "Apple CFPasteboard general"
-     (get 'NSStringPboardType 'mac-pasteboard-data-type)
-          => "NSStringPboardType"
-
-   Conventionally, selection types for pasteboard data types on Mac OS X
-are named according to the identifiers defined in the NSPasteboard
-class, (e.g., `NSStringPboardType', `NSTIFFPboardType', and
-`NSFilenamesPboardType').
-
 
 File: elisp,  Node: Drag and Drop,  Next: Color Names,  Prev: Window System Selections,  Up: Frames
 
@@ -528,7 +508,7 @@ numerical RGB specification of colors.)
 
    These functions provide a way to determine which color names are
 valid, and what they look like.  In some cases, the value depends on the
-"selected frame", as described below; see *Note Input Focus::, for the
+"selected frame", as described below; see *note Input Focus::, for the
 meaning of the term "selected frame".
 
    To read user input of color names with completion, use `read-color'
@@ -623,7 +603,7 @@ standard set of colors and will try to use them automatically.
 are used by Emacs.
 
    Several of these functions use or return "rgb values", described in
-*Note Color Names::.
+*note Color Names::.
 
    These functions accept a display (either a frame or the name of a
 terminal) as an optional argument.  We hope in the future to make Emacs
@@ -738,7 +718,7 @@ display to ask the question about.  It can be a display name, a frame
 (which designates the display that frame is on), or `nil' (which refers
 to the selected frame's display, *note Input Focus::).
 
-   *Note Color Names::, *Note Text Terminal Colors::, for other
+   *Note Color Names::, *note Text Terminal Colors::, for other
 functions to obtain information about displays.
 
  -- Function: display-popup-menus-p &optional display
@@ -1229,7 +1209,7 @@ control characters are displayed.
      corresponding to the buffer position POS.  If POS is `nil' or
      omitted, the current buffer position is used.
 
-   Also see the functions `bolp' and `eolp' in *Note Near Point::.
+   Also see the functions `bolp' and `eolp' in *note Near Point::.
 These functions do not move point, but test whether it is already at the
 beginning or end of a line.
 
@@ -1390,9 +1370,9 @@ File: elisp,  Node: List Motion,  Next: Skipping Characters,  Prev: Screen Lines
 Here are several functions concerned with balanced-parenthesis
 expressions (also called "sexps" in connection with moving across them
 in Emacs).  The syntax table controls how these functions interpret
-various characters; see *Note Syntax Tables::.  *Note Parsing
+various characters; see *note Syntax Tables::.  *Note Parsing
 Expressions::, for lower-level primitives for scanning sexps or parts of
-sexps.  For user-level commands, see *Note Commands for Editing with
+sexps.  For user-level commands, see *note Commands for Editing with
 Parentheses: (emacs)Parentheses.
 
  -- Command: forward-list &optional arg
@@ -1482,7 +1462,7 @@ File: elisp,  Node: Skipping Characters,  Prev: List Motion,  Up: Motion
 
 The following two functions move point over a specified set of
 characters.  For example, they are often used to skip whitespace.  For
-related functions, see *Note Motion and Syntax::.
+related functions, see *note Motion and Syntax::.
 
    These functions convert the set string to multibyte if the buffer is
 multibyte, and they convert it to unibyte if the buffer is unibyte, as
@@ -1552,8 +1532,8 @@ the Lisp sources of Emacs.
    If you only need to save and restore the identity of the current
 buffer, use `save-current-buffer' or `with-current-buffer' instead
 (*note Current Buffer::).  If you need to save or restore window
-configurations, see the forms described in *Note Window
-Configurations:: and in *Note Frame Configurations::.
+configurations, see the forms described in *note Window
+Configurations:: and in *note Frame Configurations::.
 
  -- Special Form: save-excursion body...
      This special form saves the identity of the current buffer and the
@@ -1626,7 +1606,7 @@ save the entire buffer regardless of any narrowing.
 
    If you need to display in a single buffer several very different
 types of text, consider using an alternative facility described in
-*Note Swapping Text::.
+*note Swapping Text::.
 
  -- Command: narrow-to-region start end
      This function sets the accessible portion of the current buffer to
@@ -2344,7 +2324,7 @@ File: elisp,  Node: Near Point,  Next: Buffer Contents,  Up: Text
 
 Many functions are provided to look at the characters around point.
 Several simple functions are described here.  See also `looking-at' in
-*Note Regexp Search::.
+*note Regexp Search::.
 
    In the following four functions, "beginning" or "end" of buffer
 refers to the beginning or end of the accessible portion.
@@ -2400,7 +2380,7 @@ refers to the beginning or end of the accessible portion.
  -- Function: bobp
      This function returns `t' if point is at the beginning of the
      buffer.  If narrowing is in effect, this means the beginning of the
-     accessible portion of the text.  See also `point-min' in *Note
+     accessible portion of the text.  See also `point-min' in *note
      Point::.
 
  -- Function: eobp
@@ -2715,7 +2695,7 @@ programs.
 
      This command performs abbrev expansion if Abbrev mode is enabled
      and the inserted character does not have word-constituent syntax.
-     (*Note Abbrevs::, and *Note Syntax Class Table::.)  It is also
+     (*Note Abbrevs::, and *note Syntax Class Table::.)  It is also
      responsible for calling `blink-paren-function' when the inserted
      character has close parenthesis syntax (*note Blinking::).
 
@@ -3372,7 +3352,7 @@ Most buffers have an "undo list", which records all changes made to the
 buffer's text so that they can be undone.  (The buffers that don't have
 one are usually special-purpose buffers for which Emacs assumes that
 undoing is not useful.  In particular, any buffer whose name begins
-with a space has its undo recording off by default; see *Note Buffer
+with a space has its undo recording off by default; see *note Buffer
 Names::.)  All the primitives that modify the text in the buffer
 automatically add elements to the front of the undo list, which is in
 the variable `buffer-undo-list'.
@@ -3834,7 +3814,7 @@ When "Adaptive Fill Mode" is enabled, Emacs determines the fill prefix
 automatically from the text in each paragraph being filled rather than
 using a predetermined value.  During filling, this fill prefix gets
 inserted at the start of the second and subsequent lines of the
-paragraph as described in *Note Filling::, and in *Note Auto Filling::.
+paragraph as described in *note Filling::, and in *note Auto Filling::.
 
  -- User Option: adaptive-fill-mode
      Adaptive Fill mode is enabled when this variable is non-`nil'.  It
@@ -3919,7 +3899,7 @@ File: elisp,  Node: Auto Filling,  Next: Sorting,  Prev: Adaptive Fill,  Up: Tex
 Auto Fill mode is a minor mode that fills lines automatically as text
 is inserted.  This section describes the hook used by Auto Fill mode.
 For a description of functions that you can call explicitly to fill and
-justify existing text, see *Note Filling::.
+justify existing text, see *note Filling::.
 
    Auto Fill mode also enables the functions that change the margins and
 justification style to refill portions of the text.  *Note Margins::.
@@ -4203,7 +4183,7 @@ also ignore overlays and text properties, aside from invisibility.
      the characters between the start of the current line and point.
 
      For an example of using `current-column', see the description of
-     `count-lines' in *Note Text Lines::.
+     `count-lines' in *note Text Lines::.
 
  -- Command: move-to-column column &optional force
      This function moves point to COLUMN in the current line.  The
@@ -5288,7 +5268,7 @@ each Emacs command.  *Note Adjusting Point::.
      the beginning and end of the inserted text.  The functions are
      called _after_ the actual insertion takes place.
 
-     See also *Note Change Hooks::, for other hooks that are called
+     See also *note Change Hooks::, for other hooks that are called
      when you change text in a buffer.
 
 `point-entered'
@@ -5318,7 +5298,7 @@ each Emacs command.  *Note Adjusting Point::.
      actual change in the value of point runs these hook functions.
 
      The variable `inhibit-point-motion-hooks' can inhibit running the
-     `point-left' and `point-entered' hooks, see *Note Inhibit point
+     `point-left' and `point-entered' hooks, see *note Inhibit point
      motion hooks::.
 
 `composition'
@@ -5349,7 +5329,7 @@ File: elisp,  Node: Format Properties,  Next: Sticky Properties,  Prev: Special 
 ---------------------------------
 
 These text properties affect the behavior of the fill commands.  They
-are used for representing formatted text.  *Note Filling::, and *Note
+are used for representing formatted text.  *Note Filling::, and *note
 Margins::.
 
 `hard'
@@ -5826,7 +5806,7 @@ finding the boundaries of intervals, assuming that intervals are always
 coalesced whenever possible.  *Note Property Search::.
 
    Emacs also provides explicit intervals as a presentation feature; see
-*Note Overlays::.
+*note Overlays::.
 
 
 File: elisp,  Node: Substitution,  Next: Transposition,  Prev: Text Properties,  Up: Text
@@ -6232,7 +6212,7 @@ File: elisp,  Node: Change Hooks,  Prev: Atomic Changes,  Up: Text
 
 These hook variables let you arrange to take notice of all changes in
 all buffers (or in a particular buffer, if you make them buffer-local).
-See also *Note Special Properties::, for how to detect changes to
+See also *note Special Properties::, for how to detect changes to
 specific parts of the text.
 
    The functions you use in these hooks should save and restore the
