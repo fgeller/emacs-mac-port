@@ -10,14 +10,16 @@ app_dir=$installprefix/Emacs.app/Contents/Resources
 # this may not works since emacs 24*
 # version=`grep 'defconst[ ]*emacs-version' ./lisp/version.el \
 #     | sed -e 's/^[^"]*"\([^"]*\)".*$/\1/'`
-version=24.1
+version=24.2
 compver=x86_64-apple-darwin`uname -r`
 
 # make an emacs bundle
 mkdir $installprefix
+set -e
 ./configure --with-mac --enable-mac-app=$installprefix --prefix=$installprefix
 make
 make install
+set +e
 
 mv $installprefix/share/emacs/$version/* $app_dir
 mv $installprefix/share/info $app_dir
