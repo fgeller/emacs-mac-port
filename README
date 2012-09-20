@@ -27,11 +27,22 @@
 
 1. What's this?
 
-   This is "Mac port" addition to GNU Emacs 23 by Yamamoto Mitsuharu. This
-   provides a native GUI support for Mac OS X 10.2 - 10.6.  Note that Emacs 23
-   already contains the official GUI support via the NS (Cocoa) port for Mac
-   OS X 10.4 and later.  So if it is good enough for you, then you don't need
-   to try this.
+   This is "Mac port" addition to GNU Emacs 24 by Yamamoto Mitsuharu
+   <mituharu@math.s.chiba-u.ac.jp>. This provides a native GUI support
+   for Mac OS X 10.4 - 10.8.  Note that Emacs 23 already contains the
+   official GUI support via the NS (Cocoa) port for Mac OS X 10.4 and
+   later.  So if it is good enough for you, then you don't need to try
+   this.
+
+   *** IMPORTANT NOTE ***
+
+   If you find a bug, then please try to reproduce it with some
+   official builds such as X11 or NS (Cocoa).  If it turns out to be
+   specific to the Mac port, then please report it to
+   "mituharu+bug-gnu-emacs-mac@math.s.chiba-u.ac.jp".  Otherwise
+   (i.e., it is also reproducible with official ones), report it using
+   M-x report-emacs-bug *USING THE OFFICIAL BUILD* as such.
+
 
    More about this fork, please read README-mac.
 
@@ -52,7 +63,7 @@
    	If you are using Homebrew, copy "emacs-mac.rb" to your brew's
    	formula directory(usually at /usr/local/Library/Formula/), and
        
-       $ brew install --HEAD emacs-mac
+        $ brew install --HEAD emacs-mac
 
    Plan D. 
    	1). Get the latest code from git repository
@@ -63,7 +74,8 @@
 	  if you cloned this repository before:
      	     $ git pull
 
-	2). Follow the step g. h. i. in "2. Build instructions" from README-mac
+	2). Follow the step g. h. i. in "2. Build instructions" from
+	README-mac
 
       	  You can SKIP step a. b. c. d. e. and f. because code in this
       	  repository was patched already.
