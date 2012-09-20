@@ -17,7 +17,8 @@
                                          + unerased-cursor.patch
                                          + lion-toolbar.patch
    + update 08/28/2011: Emacs 23.3a   with emacs-23.3a-mac-1.9995
-   + update 07/25/2011: Emacs 23.3    with emacs-23.3-mac-1.9993 + svg64.patch
+   + update 07/25/2011: Emacs 23.3    with emacs-23.3-mac-1.9993 
+                                         + svg64.patch
    + add "build-emacs.app.sh"
    + update 03/23/2011: Emacs 23.3    with emacs-23.3-mac-1.9992
    + update 03/08/2011: Emacs 23 bzr  with emacs-23.2.93-mac-1.9991
@@ -36,6 +37,9 @@
 
    *** IMPORTANT NOTE ***
 
+   [If you find a bug of the prebuilt emacs bundle, build-emacs.app.sh
+   and emacs-mac.rb, please feel free to open a issue on github.]
+
    If you find a bug, then please try to reproduce it with some
    official builds such as X11 or NS (Cocoa).  If it turns out to be
    specific to the Mac port, then please report it to
@@ -43,6 +47,9 @@
    (i.e., it is also reproducible with official ones), report it using
    M-x report-emacs-bug *USING THE OFFICIAL BUILD* as such.
 
+   Emacs Mac port is now active developing by Mr Yamamoto Mitsuharu
+   <mituharu@math.s.chiba-u.ac.jp> by publishing patches on
+   emacs-devel mailing list. This is *not* an official repo.
 
    More about this fork, please read README-mac.
 
