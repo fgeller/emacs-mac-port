@@ -1,5 +1,6 @@
 0. current
 
+   + update 10/30/2012: Emacs 24.2    with emacs-24.2-mac-3.3
    + update 08/27/2012: Emacs 24.2    with emacs-24.2-mac-3.2
    + update 07/28/2012: Emacs 24.1    with emacs-24.1-mac-3.1
                                          + macfont patch for 10.8
@@ -59,12 +60,16 @@
    	Without clone and compile, just download from
 
 	https://github.com/downloads/railwaycat/emacs-mac-port/Emacs.zip
+	
+	If you prefer the official Emacs icon (the "E" and a pan), please download this
+	
+	https://github.com/downloads/railwaycat/emacs-mac-port/Emacs-official-icon.zip
 
-	* Tested on Mac OS X 10.8.1 *
+	* Tested on Mac OS X 10.8.2/10.7.5*
 	
    Plan B. 
    	Build a self-contained Emacs.app with build-emacs.app.sh
- 	* Tested on Mac OS X 10.8.1 *
+ 	* Tested on Mac OS X 10.8.2/10.7.5 *
 
    Plan C.  
    	If you are using Homebrew, copy "emacs-mac.rb" to your brew's
