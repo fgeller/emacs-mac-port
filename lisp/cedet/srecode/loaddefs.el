@@ -4,7 +4,7 @@
 
 
 ;;;### (autoloads (srecode-compile-templates) "srecode/compile" "compile.el"
-;;;;;;  "58f9f2b15fbcd8d932adf77df4df8119")
+;;;;;;  "83f903bc0ba9705c2ed3e4f6c4ed5cf4")
 ;;; Generated autoloads from compile.el
 
 (autoload 'srecode-compile-templates "srecode/compile" "\
@@ -14,15 +14,23 @@ Compile a semantic recode template file into a mode-local variable.
 
 ;;;***
 
-;;;### (autoloads (srecode-semantic-handle-:cpp) "srecode/cpp" "cpp.el"
-;;;;;;  "00760d33c0a4cd816b3f82d98a471999")
+;;;### (autoloads (srecode-semantic-handle-:cpp srecode-semantic-handle-:c)
+;;;;;;  "srecode/cpp" "cpp.el" "8b0a59137511abd011ef67d603193de7")
 ;;; Generated autoloads from cpp.el
 
-(autoload 'srecode-semantic-handle-:cpp "srecode/cpp" "\
-Add macros into the dictionary DICT based on the current c++ file.
+(autoload 'srecode-semantic-handle-:c "srecode/cpp" "\
+Add macros into the dictionary DICT based on the current c file.
 Adds the following:
 FILENAME_SYMBOL - filename converted into a C compat symbol.
 HEADER - Shown section if in a header file.
+
+\(fn DICT)" nil nil)
+
+(autoload 'srecode-semantic-handle-:cpp "srecode/cpp" "\
+Add macros into the dictionary DICT based on the current c file.
+Calls `srecode-semantic-handle-:c.
+Also adds the following:
+ - nothing -
 
 \(fn DICT)" nil nil)
 
@@ -103,7 +111,7 @@ Insert get/set methods for the current class.
 ;;;***
 
 ;;;### (autoloads (srecode-insert-getset) "srecode/getset" "getset.el"
-;;;;;;  "67702a5ec00fdc0ea224d0d09f502f33")
+;;;;;;  "10cc08485892a323fca129e0921ce56d")
 ;;; Generated autoloads from getset.el
 
 (autoload 'srecode-insert-getset "srecode/getset" "\
@@ -117,7 +125,7 @@ will be derived.
 
 ;;;***
 
-;;;### (autoloads (srecode-insert) "srecode/insert" "insert.el" "3a0867cf5c79c0a3ac2e182da5833f62")
+;;;### (autoloads (srecode-insert) "srecode/insert" "insert.el" "4f0564173191232184050ecd5f6cd753")
 ;;; Generated autoloads from insert.el
 
 (autoload 'srecode-insert "srecode/insert" "\
@@ -129,7 +137,7 @@ DICT-ENTRIES are additional dictionary values to add.
 ;;;***
 
 ;;;### (autoloads (srecode-semantic-handle-:java) "srecode/java"
-;;;;;;  "java.el" "e2902e03ea4babd108d96d5d450416b8")
+;;;;;;  "java.el" "1cddc8f8f867459a85dca4d628e38b25")
 ;;; Generated autoloads from java.el
 
 (autoload 'srecode-semantic-handle-:java "srecode/java" "\
@@ -142,7 +150,7 @@ FILENAME_AS_CLASS - file converted to a Java class name.
 
 ;;;***
 
-;;;### (autoloads (srecode-get-maps) "srecode/map" "map.el" "1cb7349beeff34a63428c4be4eda3384")
+;;;### (autoloads (srecode-get-maps) "srecode/map" "map.el" "b376896dfaacbc0c2be3905242112ca6")
 ;;; Generated autoloads from map.el
 
 (autoload 'srecode-get-maps "srecode/map" "\
@@ -154,7 +162,7 @@ Optional argument RESET forces a reset of the current map.
 ;;;***
 
 ;;;### (autoloads (global-srecode-minor-mode srecode-minor-mode)
-;;;;;;  "srecode/mode" "mode.el" "ce9424062ec5e503f85f2e3658e025aa")
+;;;;;;  "srecode/mode" "mode.el" "ae64a2562bceb79ee1e8d280cb850d70")
 ;;; Generated autoloads from mode.el
 
 (autoload 'srecode-minor-mode "srecode/mode" "\

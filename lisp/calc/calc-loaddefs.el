@@ -9,7 +9,7 @@
 ;;;;;;  math-read-preprocess-string calcDigit-edit calcDigit-algebraic
 ;;;;;;  calc-alg-digit-entry calc-do-alg-entry calc-alg-entry calc-algebraic-entry
 ;;;;;;  calc-auto-algebraic-entry calc-do-calc-eval calc-do-quick-calc)
-;;;;;;  "calc-aent" "calc-aent.el" "78f333ed32d8aa3113e59cf2fe7af97e")
+;;;;;;  "calc-aent" "calc-aent.el" "7f257135da8558dfe44cea638f580f31")
 ;;; Generated autoloads from calc-aent.el
 
 (autoload 'calc-do-quick-calc "calc-aent" "\
@@ -132,7 +132,7 @@ Replace some substrings of STR by Calc equivalents.
 ;;;;;;  math-constp calc-record-why calc-do-handle-whys calc-help
 ;;;;;;  calc-info-summary calc-tutorial calc-info-goto-node calc-info
 ;;;;;;  another-calc calc-other-window calc-big-or-small calc-dispatch-help)
-;;;;;;  "calc-misc" "calc-misc.el" "545a60b16451fad7dc06c6b368712c1d")
+;;;;;;  "calc-misc" "calc-misc.el" "cd98dbcbfbd695ed5936357b14f36193")
 ;;; Generated autoloads from calc-misc.el
 
 (autoload 'calc-dispatch-help "calc-misc" "\

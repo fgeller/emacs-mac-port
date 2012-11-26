@@ -4,7 +4,7 @@
 
 
 ;;;### (autoloads (ede-cpp-root-project-root) "ede/cpp-root" "cpp-root.el"
-;;;;;;  "3aeab969c6e7e2876ae2546b69012fb2")
+;;;;;;  "e2056aa3d63d78a975ca42ca3c7cd230")
 ;;; Generated autoloads from cpp-root.el
 
 (autoload 'ede-cpp-root-project-root "ede/cpp-root" "\
@@ -12,7 +12,7 @@ Get the root directory for DIR.
 
 \(fn &optional DIR)" nil nil)
 
-(add-to-list 'ede-project-class-files (ede-project-autoload "cpp-root" :name "CPP ROOT" :file 'ede/cpp-root :proj-file 'ede-cpp-root-project-file-for-dir :proj-root 'ede-cpp-root-project-root :load-type 'ede-cpp-root-load :class-sym 'ede-cpp-root :new-p nil) t)
+(ede-add-project-autoload (ede-project-autoload "cpp-root" :name "CPP ROOT" :file 'ede-cpp-root :proj-file 'ede-cpp-root-project-file-for-dir :proj-root 'ede-cpp-root-project-root :load-type 'ede-cpp-root-load :class-sym 'ede-cpp-root :new-p nil :safe-p t) 'unique)
 
 ;;;***
 
@@ -42,7 +42,7 @@ Create a custom-like buffer for sorting targets of current project.
 ;;;***
 
 ;;;### (autoloads (ede-emacs-project-root) "ede/emacs" "emacs.el"
-;;;;;;  "6ca4794695231c82dce4516b44f0d356")
+;;;;;;  "3d14ccb9826cba886783832675c4c6cb")
 ;;; Generated autoloads from emacs.el
 
 (autoload 'ede-emacs-project-root "ede/emacs" "\
@@ -50,11 +50,11 @@ Get the root directory for DIR.
 
 \(fn &optional DIR)" nil nil)
 
-(add-to-list 'ede-project-class-files (ede-project-autoload "emacs" :name "EMACS ROOT" :file 'ede/emacs :proj-file "src/emacs.c" :proj-root 'ede-emacs-project-root :load-type 'ede-emacs-load :class-sym 'ede-emacs-project :new-p nil) t)
+(ede-add-project-autoload (ede-project-autoload "emacs" :name "EMACS ROOT" :file 'ede/emacs :proj-file "src/emacs.c" :proj-root-dirmatch "emacs[^/]*" :proj-root 'ede-emacs-project-root :load-type 'ede-emacs-load :class-sym 'ede-emacs-project :new-p nil :safe-p t) 'unique)
 
 ;;;***
 
-;;;### (autoloads (ede-find-file) "ede/files" "files.el" "6e34b470a669fc0f7623d476a565879d")
+;;;### (autoloads (ede-find-file) "ede/files" "files.el" "41dc5672e26187c6881df0ae085e7444")
 ;;; Generated autoloads from files.el
 
 (autoload 'ede-find-file "ede/files" "\
@@ -67,7 +67,7 @@ the current EDE project.
 ;;;***
 
 ;;;### (autoloads (ede-enable-generic-projects) "ede/generic" "generic.el"
-;;;;;;  "f41cd9ab6c1b3cd82da42feb3608837b")
+;;;;;;  "0f8456f9701578311fe1e3c7f7543027")
 ;;; Generated autoloads from generic.el
 
 (autoload 'ede-enable-generic-projects "ede/generic" "\
@@ -77,8 +77,8 @@ Enable generic project loaders.
 
 ;;;***
 
-;;;### (autoloads (ede-linux-project-root) "ede/linux" "linux.el"
-;;;;;;  "ad23b3acbf4fc04619f42b722b7e9c68")
+;;;### (autoloads (ede-linux-load ede-linux-project-root) "ede/linux"
+;;;;;;  "linux.el" "ab3cdafb63649d46bbe2c21ab87a4ef9")
 ;;; Generated autoloads from linux.el
 
 (autoload 'ede-linux-project-root "ede/linux" "\
@@ -86,12 +86,20 @@ Get the root directory for DIR.
 
 \(fn &optional DIR)" nil nil)
 
-(add-to-list 'ede-project-class-files (ede-project-autoload "linux" :name "LINUX ROOT" :file 'ede/linux :proj-file "scripts/ver_linux" :proj-root 'ede-linux-project-root :load-type 'ede-linux-load :class-sym 'ede-linux-project :new-p nil) t)
+(autoload 'ede-linux-load "ede/linux" "\
+Return an Linux Project object if there is a match.
+Return nil if there isn't one.
+Argument DIR is the directory it is created for.
+ROOTPROJ is nil, since there is only one project.
+
+\(fn DIR &optional ROOTPROJ)" nil nil)
+
+(ede-add-project-autoload (ede-project-autoload "linux" :name "LINUX ROOT" :file 'ede/linux :proj-file "scripts/ver_linux" :proj-root-dirmatch "linux[^/]*" :proj-root 'ede-linux-project-root :load-type 'ede-linux-load :class-sym 'ede-linux-project :new-p nil :safe-p t) 'unique)
 
 ;;;***
 
 ;;;### (autoloads (ede-enable-locate-on-project) "ede/locate" "locate.el"
-;;;;;;  "1bdddcb7cb1fb8dbbee667a178d0ef12")
+;;;;;;  "6d7bd631384f1e0b1db8b76f784c8d49")
 ;;; Generated autoloads from locate.el
 
 (autoload 'ede-enable-locate-on-project "ede/locate" "\
@@ -164,7 +172,7 @@ Run `vc-dir' on the current project.
 
 ;;;***
 
-;;;### (autoloads (ede-update-version) "ede/util" "util.el" "c3faeec43650d237387a0210cf784c2f")
+;;;### (autoloads (ede-update-version) "ede/util" "util.el" "0bff38f166b26cdd787a81c16d613e9a")
 ;;; Generated autoloads from util.el
 
 (autoload 'ede-update-version "ede/util" "\
