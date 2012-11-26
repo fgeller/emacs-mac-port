@@ -93,3 +93,10 @@
 
       	  You can SKIP step a. b. c. d. e. f. and g. because code in this
       	  repository was patched already.
+
+3. Useful links
+   * switch meta and option key
+   https://gist.github.com/3498096
+
+   * An Emacs.app CLI starter, modified from Aquamacs
+   https://gist.github.com/4043945
