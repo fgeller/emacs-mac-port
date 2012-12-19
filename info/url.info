@@ -137,7 +137,7 @@ File: url.info,  Node: Parsed URIs,  Next: URI Encoding,  Up: URI Parsing
 Each parsed URI structure contains the following slots:
 
 `type'
-     The URI scheme (a string, e.g. `http').  *Note Supported URL
+     The URI scheme (a string, e.g., `http').  *Note Supported URL
      Types::, for a list of schemes that the `url' library knows how to
      process.  This slot can also be `nil', if the URI is not fully
      specified.
@@ -173,7 +173,7 @@ Each parsed URI structure contains the following slots:
      webpage.
 
 `fullness'
-     This is `t' if the URI is fully specified, i.e. the hierarchical
+     This is `t' if the URI is fully specified, i.e., the hierarchical
      components of the URI (the hostname and/or username and/or
      password) are preceded by `//'.
 
@@ -209,7 +209,7 @@ in accordance with RFC 3986.
 
  -- Function: url-encode-url url-string
      This function return a properly URI-encoded version of URL-STRING.
-     It also performs "URI normalization", e.g. converting the scheme
+     It also performs "URI normalization", e.g., converting the scheme
      component to lowercase if it was previously uppercase.
 
    To convert between a string containing arbitrary characters and a
@@ -527,7 +527,7 @@ File: url.info,  Node: mailto,  Next: news/nntp/snews,  Prev: info,  Up: Support
 A `mailto' URL specifies an email message to be sent to a given email
 address.  For example, `mailto:foo@bar.com' specifies sending a message
 to `foo@bar.com'.  The "retrieval method" for such URLs is to open a
-mail composition buffer in which the appropriate content (e.g. the
+mail composition buffer in which the appropriate content (e.g., the
 recipient address) has been filled in.
 
    As defined in RFC 2368, a `mailto' URL has the form
@@ -1781,35 +1781,35 @@ Node: Top1047
 Node: Introduction2507
 Node: URI Parsing3774
 Node: Parsed URIs5091
-Node: URI Encoding7098
-Node: Retrieving URLs9448
-Node: Supported URL Types12794
-Node: http/https13652
-Node: Cookies14718
-Node: HTTP language/coding15709
-Node: HTTP URL Options17341
-Node: Dealing with HTTP documents18277
-Node: file/ftp18648
-Node: info19765
-Node: mailto20081
-Node: news/nntp/snews21426
-Node: rlogin/telnet/tn327022939
-Node: irc23543
-Node: data24461
-Node: nfs24950
-Node: ldap25723
-Node: man25866
-Node: General Facilities26110
-Node: Disk Caching26333
-Node: Proxies28861
-Node: Gateways in general30921
-Ref: Gateways in general-Footnote-134972
-Node: Suppressing network connections35047
-Node: History35703
-Node: Customization37547
-Node: GNU Free Documentation License39800
-Node: Function Index64979
-Node: Variable Index67505
-Node: Concept Index72380
+Node: URI Encoding7100
+Node: Retrieving URLs9451
+Node: Supported URL Types12797
+Node: http/https13655
+Node: Cookies14721
+Node: HTTP language/coding15712
+Node: HTTP URL Options17344
+Node: Dealing with HTTP documents18280
+Node: file/ftp18651
+Node: info19768
+Node: mailto20084
+Node: news/nntp/snews21430
+Node: rlogin/telnet/tn327022943
+Node: irc23547
+Node: data24465
+Node: nfs24954
+Node: ldap25727
+Node: man25870
+Node: General Facilities26114
+Node: Disk Caching26337
+Node: Proxies28865
+Node: Gateways in general30925
+Ref: Gateways in general-Footnote-134976
+Node: Suppressing network connections35051
+Node: History35707
+Node: Customization37551
+Node: GNU Free Documentation License39804
+Node: Function Index64983
+Node: Variable Index67509
+Node: Concept Index72384
 
 End Tag Table

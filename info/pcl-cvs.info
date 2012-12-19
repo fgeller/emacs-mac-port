@@ -499,7 +499,7 @@ binary file to the repository, and want to specify the flags `-kb' to
 Subsequent `cvs add' commands will use the previously prevailing flags.
 
    As a second example, say you are about to perform a diff and want to
-see the result in unified diff format, i.e. you'd like to pass the flag
+see the result in unified diff format, i.e., you'd like to pass the flag
 `-u' to both `cvs diff' and `diff'.  You'd also like all subsequent
 diffs to use this flag.  You can type `C-u C-u = -u <RET>' and the diff
 will be performed, and the default flags will be set to `("-u")'.  You
@@ -655,8 +655,8 @@ risk of error, `C-c C-c' will ask for confirmation if the set of
 selected files has changed between the first step and the last.  You can
 change this last detail with `log-edit-confirm'.
 
-   As for the difference between `c' (i.e. `cvs-mode-commit') and `C'
-(i.e. `cvs-mode-commit-setup') is that the first gets you straight to
+   As for the difference between `c' (i.e., `cvs-mode-commit') and `C'
+(i.e., `cvs-mode-commit-setup') is that the first gets you straight to
 `*cvs-commit*' without erasing it or changing anything to its content,
 while the second first erases `*cvs-commit*' and tries to initialize it
 with a sane default (it does that by either using a template provided
@@ -1916,29 +1916,29 @@ Node: Selected files14858
 Node: Commands16497
 Node: Entering PCL-CVS17904
 Node: Setting flags20125
-Node: Updating the buffer22600
-Node: Movement commands23665
-Node: Marking files24247
-Node: Committing changes25388
-Node: Editing files27305
-Node: Getting info about files28217
-Node: Adding and removing files28736
-Node: Undoing changes30009
-Node: Removing handled entries30485
-Node: Ignoring files31345
-Node: Viewing differences31905
-Node: Invoking Ediff33482
-Node: Updating files34344
-Node: Tagging files34610
-Node: Miscellaneous commands35388
-Node: Log Edit Mode36358
-Node: Log View Mode37701
-Node: Customization38277
-Node: Customizing Faces41909
-Node: Bugs42709
-Node: GNU Free Documentation License44253
-Node: Function and Variable Index69440
-Node: Concept Index76851
-Node: Key Index85275
+Node: Updating the buffer22601
+Node: Movement commands23666
+Node: Marking files24248
+Node: Committing changes25389
+Node: Editing files27308
+Node: Getting info about files28220
+Node: Adding and removing files28739
+Node: Undoing changes30012
+Node: Removing handled entries30488
+Node: Ignoring files31348
+Node: Viewing differences31908
+Node: Invoking Ediff33485
+Node: Updating files34347
+Node: Tagging files34613
+Node: Miscellaneous commands35391
+Node: Log Edit Mode36361
+Node: Log View Mode37704
+Node: Customization38280
+Node: Customizing Faces41912
+Node: Bugs42712
+Node: GNU Free Documentation License44256
+Node: Function and Variable Index69443
+Node: Concept Index76854
+Node: Key Index85278
 
 End Tag Table

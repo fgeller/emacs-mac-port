@@ -1,7 +1,7 @@
 This is /home/cyd/emacs/doc/emacs/../../info/emacs.info, produced by
 makeinfo version 4.13 from /home/cyd/emacs/doc/emacs/emacs.texi.
 
-This is the `GNU Emacs Manual', updated for Emacs version 24.2.90.
+This is the `GNU Emacs Manual', updated for Emacs version 24.2.91.
 
 Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
 
@@ -32,14 +32,14 @@ The Emacs Editor
 Emacs is the extensible, customizable, self-documenting real-time
 display editor.  This Info file describes how to edit with Emacs and
 some of the ways to customize it; it corresponds to GNU Emacs version
-24.2.90.
+24.2.91.
 
    If you are reading this in Emacs, type `h' to read a basic
 introduction to the Info documentation system.
 
    For information on extending Emacs, see *note Emacs Lisp: (elisp)Top.
 
-   This is the `GNU Emacs Manual', updated for Emacs version 24.2.90.
+   This is the `GNU Emacs Manual', updated for Emacs version 24.2.91.
 
    Copyright (C) 1985-1987, 1993-2012 Free Software Foundation, Inc.
 
@@ -1551,7 +1551,7 @@ example, `Control-a' is entered by holding down the <Ctrl> key while
 pressing `a'; we will refer to this as `C-a' for short.  Similarly
 `Meta-a', or `M-a' for short, is entered by holding down the <Alt> key
 and pressing `a'.  Modifier keys can also be applied to
-non-alphanumerical characters, e.g. `C-<F1>' or `M-<left>'.
+non-alphanumerical characters, e.g., `C-<F1>' or `M-<left>'.
 
    You can also type Meta characters using two-character sequences
 starting with <ESC>.  Thus, you can enter `M-a' by typing `<ESC> a'.
@@ -1885,7 +1885,7 @@ is ignored.
 character, using the minibuffer.  If you enter a name, the command
 provides completion (*note Completion::).  If you enter a code-point,
 it should be as a hexadecimal number (the convention for Unicode), or a
-number with a specified radix, e.g. `#o23072' (octal); *Note Integer
+number with a specified radix, e.g., `#o23072' (octal); *Note Integer
 Basics: (elisp)Integer Basics.  The command then inserts the
 corresponding character into the buffer.  For example, both of the
 following insert the infinity sign (Unicode code-point `U+221E'):
@@ -2103,7 +2103,7 @@ may not recognize the <DEL> key properly.  *Note DEL Does Not Delete::,
 if you encounter this problem.
 
    The <delete> (`delete-forward-char') command deletes in the
-"opposite direction": it deletes the character after point, i.e. the
+"opposite direction": it deletes the character after point, i.e., the
 character under the cursor.  If point was at the end of a line, this
 joins the following line onto this one.  Like `<DEL>', it deletes the
 text in the region if the region is active (*note Mark::).
@@ -4283,7 +4283,7 @@ File: emacs.info,  Node: Deletion and Killing,  Next: Yanking,  Up: Killing
 
 Most commands which erase text from the buffer save it in the kill
 ring.  These are known as "kill" commands, and their names normally
-contain the word `kill' (e.g. `kill-line').  The kill ring stores
+contain the word `kill' (e.g., `kill-line').  The kill ring stores
 several recent kills, not just the last one, so killing is a very safe
 operation: you don't have to worry much about losing text that you
 previously killed.  The kill ring is shared by all buffers, so text
@@ -4367,7 +4367,7 @@ does likewise but leaves a single space before point, regardless of the
 number of spaces that existed previously (even if there were none
 before).  With a numeric argument N, it leaves N spaces before point if
 N is positive; if N is negative, it deletes newlines in addition to
-spaces and tabs, leaving a single space before point.
+spaces and tabs, leaving -N spaces before point.
 
    `C-x C-o' (`delete-blank-lines') deletes all blank lines after the
 current line.  If the current line is blank, it deletes all blank lines
@@ -4519,7 +4519,7 @@ wish, with `C-u C-<SPC>' (*note Mark Ring::).
 
    With a plain prefix argument (`C-u C-y'), the command instead leaves
 the cursor in front of the inserted text, and sets the mark at the end.
-Using any other prefix argument specifies an earlier kill; e.g. `C-u 4
+Using any other prefix argument specifies an earlier kill; e.g., `C-u 4
 C-y' reinserts the fourth most recent kill.  *Note Earlier Kills::.
 
    On graphical displays, `C-y' first checks if another application has
@@ -4751,11 +4751,11 @@ clipboard is only overwritten by explicit "cut" or "copy" commands.
    Under X, whenever the region is active (*note Mark::), the text in
 the region is saved in the primary selection.  This applies regardless
 of whether the region was made by dragging or clicking the mouse (*note
-Mouse Commands::), or by keyboard commands (e.g. by typing `C-<SPC>'
+Mouse Commands::), or by keyboard commands (e.g., by typing `C-<SPC>'
 and moving point; *note Setting Mark::).
 
    If you change the variable `select-active-regions' to `only', Emacs
-saves only temporarily active regions to the primary selection, i.e.
+saves only temporarily active regions to the primary selection, i.e.,
 those made with the mouse or with shift selection (*note Shift
 Selection::).  If you change `select-active-regions' to `nil', Emacs
 avoids saving active regions to the primary selection entirely.
@@ -5033,8 +5033,8 @@ means the variable `mark-even-if-inactive' has no effect for `C-x' and
 
    To enter an Emacs command like `C-x C-f' while the mark is active,
 use one of the following methods: either hold `Shift' together with the
-prefix key, e.g. `S-C-x C-f', or quickly type the prefix key twice,
-e.g. `C-x C-x C-f'.
+prefix key, e.g., `S-C-x C-f', or quickly type the prefix key twice,
+e.g., `C-x C-x C-f'.
 
    To disable the overriding of standard Emacs binding by CUA mode,
 while retaining the other features of CUA mode described below, set the
@@ -5053,7 +5053,7 @@ same side as the cursor).
 
    With CUA you can easily copy text and rectangles into and out of
 registers by providing a one-digit numeric prefix to the kill, copy,
-and yank commands, e.g. `C-1 C-c' copies the region into register `1',
+and yank commands, e.g., `C-1 C-c' copies the region into register `1',
 and `C-2 C-v' yanks the contents of register `2'.
 
    CUA mode also has a global mark feature which allows easy moving and
@@ -5064,9 +5064,9 @@ inserted at the global mark rather than at the current position.
 
    For example, to copy words from various buffers into a word list in
 a given buffer, set the global mark in the target buffer, then navigate
-to each of the words you want in the list, mark it (e.g. with `S-M-f'),
-copy it to the list with `C-c' or `M-w', and insert a newline after the
-word in the target list by pressing <RET>.
+to each of the words you want in the list, mark it (e.g., with
+`S-M-f'), copy it to the list with `C-c' or `M-w', and insert a newline
+after the word in the target list by pressing <RET>.
 
 
 File: emacs.info,  Node: Registers,  Next: Display,  Prev: Killing,  Up: Top
@@ -5590,14 +5590,14 @@ variables `scroll-up-aggressively' and `scroll-down-aggressively',
 which directly specify the vertical position of point after scrolling.
 The value of `scroll-up-aggressively' should be either `nil' (the
 default), or a floating point number F between 0 and 1.  The latter
-means that when point goes below the bottom window edge (i.e.
+means that when point goes below the bottom window edge (i.e.,
 scrolling forward), Emacs scrolls the window so that point is F parts
 of the window height from the bottom window edge.  Thus, larger F means
 more aggressive scrolling: more new text is brought into view.  The
 default value, `nil', is equivalent to 0.5.
 
    Likewise, `scroll-down-aggressively' is used when point goes above
-the bottom window edge (i.e. scrolling backward).  The value specifies
+the bottom window edge (i.e., scrolling backward).  The value specifies
 how far point should be from the top margin of the window after
 scrolling.  Thus, as with `scroll-up-aggressively', a larger value is
 more aggressive.
@@ -6349,7 +6349,7 @@ text, so blank lines at the end of the buffer stand out because they
 lack this image.  To enable this feature, set the buffer-local variable
 `indicate-empty-lines' to a non-`nil' value.  You can enable or disable
 this feature for all new buffers by setting the default value of this
-variable, e.g. `(setq-default indicate-empty-lines t)'.
+variable, e.g., `(setq-default indicate-empty-lines t)'.
 
    Whitespace mode is a buffer-local minor mode that lets you
 "visualize" many kinds of whitespace in the buffer, by either drawing
@@ -6486,7 +6486,7 @@ looks like this:
 Here HH and MM are the hour and minute, followed always by `am' or
 `pm'.  L.LL is the average number, collected for the last few minutes,
 of processes in the whole system that were either running or ready to
-run (i.e. were waiting for an available processor).  (Some fields may
+run (i.e., were waiting for an available processor).  (Some fields may
 be missing if your operating system cannot support them.)  If you
 prefer time display in 24-hour format, set the variable
 `display-time-24hr-format' to `t'.
@@ -6566,7 +6566,7 @@ as octal escape sequences instead of caret escape sequences.
 
    Some non-ASCII characters have the same appearance as an ASCII space
 or hyphen (minus) character.  Such characters can cause problems if
-they are entered into a buffer without your realization, e.g. by
+they are entered into a buffer without your realization, e.g., by
 yanking; for instance, source code compilers typically do not treat
 non-ASCII spaces as whitespace characters.  To deal with this problem,
 Emacs displays such characters specially: it displays `U+00A0'
@@ -7114,7 +7114,7 @@ from the last page to the first page or vice versa.
 
    When the current match is on a history element, that history element
 is pulled into the minibuffer.  If you exit the incremental search
-normally (e.g. by typing <RET>), it remains in the minibuffer
+normally (e.g., by typing <RET>), it remains in the minibuffer
 afterwards.  Canceling the search, with `C-g', restores the contents of
 the minibuffer when you began the search.
 
@@ -9043,7 +9043,7 @@ the minibuffer, it usually inserts the default directory into the
 minibuffer as the initial contents.  You can inhibit this insertion by
 changing the variable `insert-default-directory' to `nil' (*note
 Minibuffer File::).  Regardless, Emacs always assumes that any relative
-file name is relative to the default directory, e.g. entering a file
+file name is relative to the default directory, e.g., entering a file
 name without a directory specifies a file in the default directory.
 
    When you visit a file, Emacs sets `default-directory' in the
@@ -9678,7 +9678,7 @@ spurious, just use `p' to tell Emacs to go ahead anyway.
 multiple names, Emacs does not prevent two users from editing it
 simultaneously under different names.
 
-   A lock file cannot be written in some circumstances, e.g. if Emacs
+   A lock file cannot be written in some circumstances, e.g., if Emacs
 lacks the system permissions or the system does not support symbolic
 links.  In these cases, Emacs can still detect the collision when you
 try to save a file, by checking the file's last-modification date.  If
@@ -9898,10 +9898,10 @@ operating systems.  It may not work satisfactorily on some other
 systems.
 
    Dired buffers only auto-revert when the file list of the buffer's
-main directory changes (e.g. when a new file is added).  They do not
-auto-revert when information about a particular file changes (e.g. when
-the size changes) or when inserted subdirectories change.  To be sure
-that _all_ listed information is up to date, you have to manually
+main directory changes (e.g., when a new file is added).  They do not
+auto-revert when information about a particular file changes (e.g.,
+when the size changes) or when inserted subdirectories change.  To be
+sure that _all_ listed information is up to date, you have to manually
 revert using `g', _even_ if auto-reverting is enabled in the Dired
 buffer.  Sometimes, you might get the impression that modifying or
 saving files listed in the main directory actually does cause
@@ -10843,10 +10843,10 @@ can use ImageMagick to render a wide variety of images.  The variable
 `imagemagick-enabled-types' lists the image types that Emacs may render
 using ImageMagick; each element in the list should be an internal
 ImageMagick name for an image type, as a symbol or an equivalent string
-(e.g. `BMP' for `.bmp' images).  To enable ImageMagick for all possible
-image types, change `imagemagick-enabled-types' to `t'.  The variable
-`imagemagick-types-inhibit' lists the image types which should never be
-rendered using ImageMagick, regardless of the value of
+(e.g., `BMP' for `.bmp' images).  To enable ImageMagick for all
+possible image types, change `imagemagick-enabled-types' to `t'.  The
+variable `imagemagick-types-inhibit' lists the image types which should
+never be rendered using ImageMagick, regardless of the value of
 `imagemagick-enabled-types' (the default list includes types like `C'
 and `HTML', which ImageMagick can render as an "image" but Emacs should
 not).  To disable ImageMagick entirely, change
@@ -11424,7 +11424,7 @@ unique adds `<2>', `<3>', etc. to the end of the buffer names (all but
 one of them).
 
    Other methods work by adding parts of each file's directory to the
-buffer name.  To select one, load the library `uniquify' (e.g.  using
+buffer name.  To select one, load the library `uniquify' (e.g., using
 `(require 'uniquify)'), and customize the variable
 `uniquify-buffer-name-style' (*note Easy Customization::).
 
@@ -11762,7 +11762,7 @@ line taller, taking space from a vertically adjacent window without
 changing the height of the frame.  With a positive numeric argument,
 this command increases the window height by that many lines; with a
 negative argument, it reduces the height by that many lines.  If there
-are no vertically adjacent windows (i.e. the window is at the full
+are no vertically adjacent windows (i.e., the window is at the full
 frame height), that signals an error.  The command also signals an
 error if you attempt to reduce the height of any window below a certain
 minimum number of lines, specified by the variable `window-min-height'
@@ -11801,7 +11801,7 @@ will be diverted to that buffer.  These commands usually work by
 calling `switch-to-buffer' internally (*note Select Buffer::).
 
    Some commands try to display "intelligently", trying not to take
-over the selected window, e.g. by splitting off a new window and
+over the selected window, e.g., by splitting off a new window and
 displaying the desired buffer there.  Such commands, which include the
 various help commands (*note Help::), work by calling `display-buffer'
 internally.  *Note Window Choice::, for details.
@@ -11884,7 +11884,7 @@ File: emacs.info,  Node: Window Convenience,  Prev: Displaying Buffers,  Up: Win
 =============================================
 
 Winner mode is a global minor mode that records the changes in the
-window configuration (i.e. how the frames are partitioned into
+window configuration (i.e., how the frames are partitioned into
 windows), so that you can "undo" them.  You can toggle Winner mode with
 `M-x winner-mode', or by customizing the variable `winner-mode'.  When
 the mode is enabled, `C-c left' (`winner-undo') undoes the last window
@@ -11916,7 +11916,7 @@ File: emacs.info,  Node: Frames,  Next: International,  Prev: Windows,  Up: Top
 21 Frames and Graphical Displays
 ********************************
 
-When Emacs is started on a graphical display, e.g. on the X Window
+When Emacs is started on a graphical display, e.g., on the X Window
 System, it occupies a graphical system-level "window".  In this manual,
 we call this a "frame", reserving the word "window" for the part of the
 frame used for displaying a buffer.  A frame initially contains one
@@ -12118,8 +12118,8 @@ File: emacs.info,  Node: Mouse References,  Next: Menu Mouse Clicks,  Prev: Word
 ========================================
 
 Some Emacs buffers include "buttons", or "hyperlinks": pieces of text
-that perform some action (e.g. following a reference) when activated
-(e.g. by clicking on them).  Usually, a button's text is visually
+that perform some action (e.g., following a reference) when activated
+(e.g., by clicking on them).  Usually, a button's text is visually
 highlighted: it is underlined, or a box is drawn around it.  If you
 move the mouse over a button, the shape of the mouse cursor changes and
 the button lights up.  If you change the variable `mouse-highlight' to
@@ -12461,7 +12461,7 @@ MAKER
      The name of the font manufacturer.
 
 FAMILY
-     The name of the font family (e.g. `courier').
+     The name of the font family (e.g., `courier').
 
 WEIGHT
      The font weight--normally either `bold', `medium' or `light'.
@@ -13799,7 +13799,7 @@ system for a file's contents, you can use these commands to specify one:
      decoding it using coding system RIGHT instead.
 
    The command `C-x <RET> f' (`set-buffer-file-coding-system') sets the
-file coding system for the current buffer (i.e. the coding system to
+file coding system for the current buffer (i.e., the coding system to
 use when saving or reverting the file).  You specify which coding
 system using the minibuffer.  You can also invoke this command by
 clicking with `Mouse-3' on the coding system indicator in the mode line
@@ -14247,7 +14247,7 @@ no font appear as a hollow box.
 
    If you use Latin-1 characters but your terminal can't display
 Latin-1, you can arrange to display mnemonic ASCII sequences instead,
-e.g. `"o' for o-umlaut.  Load the library `iso-ascii' to do this.
+e.g., `"o' for o-umlaut.  Load the library `iso-ascii' to do this.
 
    If your terminal can display Latin-1, you can display characters
 from other European character sets using a mixture of equivalent
@@ -14265,7 +14265,7 @@ The ISO 8859 Latin-N character sets define character codes in the range
 0240 to 0377 octal (160 to 255 decimal) to handle the accented letters
 and punctuation needed by various European languages (and some
 non-European ones).  Note that Emacs considers bytes with codes in this
-range as raw bytes, not as characters, even in a unibyte buffer, i.e.
+range as raw bytes, not as characters, even in a unibyte buffer, i.e.,
 if you disable multibyte characters.  However, Emacs can still handle
 these character codes as if they belonged to _one_ of the single-byte
 character sets at a time.  To specify _which_ of these codes to use,
@@ -14414,7 +14414,7 @@ directionality when they are displayed.  The default value is `t'.
 
    Each paragraph of bidirectional text can have its own "base
 direction", either right-to-left or left-to-right.  (Paragraph
-boundaries are empty lines, i.e. lines consisting entirely of
+boundaries are empty lines, i.e., lines consisting entirely of
 whitespace characters.)  Text in left-to-right paragraphs begins on the
 screen at the left margin of the window and is truncated or continued
 when it reaches the right margin.  By contrast, text in right-to-left
@@ -14515,7 +14515,7 @@ the name of the mode and add `-mode' to get the name of the command to
 select that mode (e.g., `M-x lisp-mode' enters Lisp mode).
 
    The value of the buffer-local variable `major-mode' is a symbol with
-the same name as the major mode command (e.g. `lisp-mode').  This
+the same name as the major mode command (e.g., `lisp-mode').  This
 variable is set automatically; you should not change it yourself.
 
    The default value of `major-mode' determines the major mode to use
@@ -14548,9 +14548,9 @@ list of its key bindings, type `C-h m' (`describe-mode').
    Every major mode, apart from Fundamental mode, defines a "mode
 hook", a customizable list of Lisp functions to run each time the mode
 is enabled in a buffer.  *Note Hooks::, for more information about
-hooks.  Each mode hook is named after its major mode, e.g. Fortran mode
-has `fortran-mode-hook'.  Furthermore, all text-based major modes run
-`text-mode-hook', and all programming language modes run
+hooks.  Each mode hook is named after its major mode, e.g., Fortran
+mode has `fortran-mode-hook'.  Furthermore, all text-based major modes
+run `text-mode-hook', and all programming language modes run
 `prog-mode-hook', prior to running their own mode hooks.  Hook
 functions can look at the value of the variable `major-mode' to see
 which mode is actually being entered.
@@ -14929,8 +14929,8 @@ a variety of commands to perform indentation in other ways.
      leftward).
 
      This command can be used to remove all indentation from the lines
-     in the region, by invoking it with a large negative argument, e.g.
-     `C-u -1000 C-x <TAB>'.
+     in the region, by invoking it with a large negative argument,
+     e.g., `C-u -1000 C-x <TAB>'.
 
 
 File: emacs.info,  Node: Tab Stops,  Next: Just Spaces,  Prev: Indentation Commands,  Up: Indentation
@@ -15724,9 +15724,9 @@ current line.  *Note Indentation::, for details.
 
    Text mode turns off the features concerned with comments except when
 you explicitly invoke them.  It changes the syntax table so that
-single-quotes are considered part of words (e.g. `don't' is considered
+single-quotes are considered part of words (e.g., `don't' is considered
 one word).  However, if a word starts with a single-quote, it is
-treated as a prefix for the purposes of capitalization (e.g. `M-c'
+treated as a prefix for the purposes of capitalization (e.g., `M-c'
 converts `'hello'' into `'Hello'', as expected).
 
    If you indent the first lines of paragraphs, then you should use
@@ -15969,10 +15969,10 @@ indirect, and all of their bodies.
    The command `C-c C-l' (`hide-leaves') hides the body of the current
 heading line as well as all the bodies in its subtree; the subheadings
 themselves are left visible.  The command `C-c C-k' (`show-branches')
-reveals the subheadings, if they had previously been hidden (e.g. by
+reveals the subheadings, if they had previously been hidden (e.g., by
 `C-c C-d').  The command `C-c C-i' (`show-children') is a weaker
-version of this; it reveals just the direct subheadings, i.e. those one
-level down.
+version of this; it reveals just the direct subheadings, i.e., those
+one level down.
 
    The command `C-c C-o' (`hide-other') hides everything except the
 entry that point is in, plus its parents (the headers leading up from
@@ -16039,7 +16039,7 @@ in the mode line shows how deep you've gone.
 
    When zooming in on a heading, to see only the child subheadings
 specify a numeric argument: `C-u C-c C-z'.  The number of levels of
-children can be specified too (compare `M-x show-children'), e.g. `M-2
+children can be specified too (compare `M-x show-children'), e.g., `M-2
 C-c C-z' exposes two levels of child subheadings.  Alternatively, the
 body can be specified with a negative argument: `M-- C-c C-z'.  The
 whole subtree can be expanded, similarly to `C-c C-s' (`M-x
@@ -16170,7 +16170,7 @@ effect, except that it uses the tag `DEADLINE'.
    Once you have some TODO items planned in an Org file, you can add
 that file to the list of "agenda files" by typing `C-c ['
 (`org-agenda-file-to-front').  Org mode is designed to let you easily
-maintain multiple agenda files, e.g. for organizing different aspects
+maintain multiple agenda files, e.g., for organizing different aspects
 of your life.  The list of agenda files is stored in the variable
 `org-agenda-files'.
 
@@ -16387,8 +16387,8 @@ File: emacs.info,  Node: TeX Print,  Next: TeX Misc,  Prev: LaTeX Editing,  Up: 
 -----------------------------
 
 You can invoke TeX as an subprocess of Emacs, supplying either the
-entire contents of the buffer or just part of it (e.g. one chapter of a
-larger document).
+entire contents of the buffer or just part of it (e.g., one chapter of
+a larger document).
 
 `C-c C-b'
      Invoke TeX on the entire current buffer (`tex-buffer').
@@ -16451,7 +16451,7 @@ is determined by the variable `tex-dvi-print-command'.
 shell command strings described in the preceding paragraph.  For
 example, if `tex-dvi-view-command' is `"xdvi"', `C-c C-v' runs `xdvi
 OUTPUT-FILE-NAME'.  In some cases, however, the file name needs to be
-embedded in the command, e.g. if you need to provide the file name as
+embedded in the command, e.g., if you need to provide the file name as
 an argument to one command whose output is piped to another.  You can
 specify where to put the file name with `*' in the command string.  For
 example,
@@ -16646,7 +16646,7 @@ File: emacs.info,  Node: Nroff Mode,  Next: Enriched Text,  Prev: HTML Mode,  Up
 ================
 
 Nroff mode, a major mode derived from Text mode, is specialized for
-editing nroff files (e.g. Unix man pages).  Type `M-x nroff-mode' to
+editing nroff files (e.g., Unix man pages).  Type `M-x nroff-mode' to
 enter this mode.  Entering Nroff mode runs the hook `text-mode-hook',
 then `nroff-mode-hook' (*note Hooks::).
 
@@ -17286,7 +17286,7 @@ high, the table is 67 characters wide and 16 lines high with 2 columns
 and 3 rows, and a total of 5 cells.
 
    `M-x table-insert-sequence' inserts a string into each cell.  Each
-string is a part of a sequence i.e. a series of increasing integer
+string is a part of a sequence i.e., a series of increasing integer
 numbers.
 
    `M-x table-generate-source' generates a table formatted for a
@@ -17627,7 +17627,7 @@ move around in a buffer.
    To either enable or disable Which Function mode, use the command
 `M-x which-function-mode'.  Which Function mode is a global minor mode.
 By default, it takes effect in all major modes major modes that know
-how to support it (i.e. all the major modes that support Imenu).  You
+how to support it (i.e., all the major modes that support Imenu).  You
 can restrict it to a specific list of major modes by changing the value
 of the variable `which-func-modes' from `t' (which means to support all
 available major modes) to a list of major mode names.
@@ -17684,7 +17684,7 @@ it inserts a new line, then adjusts the line's indentation.
    When indenting a line that starts within a parenthetical grouping,
 Emacs usually places the start of the line under the preceding line
 within the group, or under the text after the parenthesis.  If you
-manually give one of these lines a nonstandard indentation (e.g. for
+manually give one of these lines a nonstandard indentation (e.g., for
 aesthetic purposes), the lines below will follow it.
 
    The indentation commands for most programming language modes assume
@@ -17724,7 +17724,7 @@ large chunks of code:
    To reindent the contents of a single parenthetical grouping,
 position point before the beginning of the grouping and type `C-M-q'.
 This changes the relative indentation within the grouping, without
-affecting its overall indentation (i.e. the indentation of the line
+affecting its overall indentation (i.e., the indentation of the line
 where the grouping starts).  The function that `C-M-q' runs depends on
 the major mode; it is `indent-pp-sexp' in Lisp mode, `c-indent-exp' in
 C mode, etc.  To correct the overall indentation as well, type <TAB>
@@ -17939,7 +17939,7 @@ internally as "sexps"(1)).
 
    To move forward over a balanced expression, use `C-M-f'
 (`forward-sexp').  If the first significant character after point is an
-opening delimiter (e.g. `(', `[' or `{' in C), this command moves past
+opening delimiter (e.g., `(', `[' or `{' in C), this command moves past
 the matching closing delimiter.  If the character begins a symbol,
 string, or number, the command moves over that.
 
@@ -18158,7 +18158,7 @@ removes N delimiters.
 
    If the region is not active, and there is no existing comment on the
 current line, `M-;' adds a new comment to the current line.  If the
-line is blank (i.e. empty or containing only whitespace characters),
+line is blank (i.e., empty or containing only whitespace characters),
 the comment is indented to the same position where <TAB> would indent
 to (*note Basic Indent::).  If the line is non-blank, the comment is
 placed after the last non-whitespace character on the line; normally,
@@ -18210,7 +18210,7 @@ type `M-j' or `C-M-j' (`comment-indent-new-line').  This breaks the
 current line, and inserts the necessary comment delimiters and
 indentation to continue the comment.
 
-   For languages with closing comment delimiters (e.g. `*/' in C), the
+   For languages with closing comment delimiters (e.g., `*/' in C), the
 exact behavior of `M-j' depends on the value of the variable
 `comment-multi-line'.  If the value is `nil', the command closes the
 comment on the old line and starts a new comment on the new line.
@@ -18747,7 +18747,7 @@ File: emacs.info,  Node: Other C Commands,  Prev: Hungry Delete,  Up: C Modes
      Enable (or disable) "subword mode".  In subword mode, Emacs's word
      commands recognize upper case letters in `StudlyCapsIdentifiers'
      as word boundaries.  This is indicated by the flag `/w' on the
-     mode line after the mode name (e.g. `C/law').  You can even use
+     mode line after the mode name (e.g., `C/law').  You can even use
      `M-x subword-mode' in non-CC Mode buffers.
 
      In the GNU project, we recommend using underscores to separate
@@ -18933,7 +18933,7 @@ commands to move by statements and other program units.
 `C-c C-p'
      Move to the beginning of the previous statement
      (`fortran-previous-statement'/`f90-previous-statement').  If there
-     is no previous statement (i.e. if called from the first statement
+     is no previous statement (i.e., if called from the first statement
      in the buffer), move to the start of the buffer.
 
 `C-c C-e'
@@ -19590,8 +19590,8 @@ message for a different source file.
 
    You can type `C-c C-f' to toggle Next Error Follow mode.  In this
 minor mode, ordinary cursor motion in the compilation buffer
-automatically updates the source buffer, i.e. moving the cursor over an
-error message causes the locus of that error to be displayed.
+automatically updates the source buffer, i.e., moving the cursor over
+an error message causes the locus of that error to be displayed.
 
    The features of Compilation mode are also available in a minor mode
 called Compilation Minor mode.  This lets you parse error messages in
@@ -19643,7 +19643,7 @@ process terminates, this is sufficient:
 
    On the MS-DOS "operating system", asynchronous subprocesses are not
 supported, so `M-x compile' runs the compilation command synchronously
-(i.e. you must wait until the command finishes before you can do
+(i.e., you must wait until the command finishes before you can do
 anything else in Emacs).  *Note MS-DOS::.
 
 
@@ -20788,7 +20788,7 @@ control operations.
 
    Some uncommon or intricate version control operations, such as
 altering repository settings, are not supported in VC.  You should
-perform such tasks outside Emacs, e.g. via the command line.
+perform such tasks outside Emacs, e.g., via the command line.
 
    This section provides a general overview of version control, and
 describes the version control systems that VC supports.  You can skip
@@ -20839,7 +20839,7 @@ it refers to as "back ends":
 
    * SCCS was the first version control system ever built, and was long
      ago superseded by more advanced ones.  VC compensates for certain
-     features missing in SCCS (e.g. tag names for releases) by
+     features missing in SCCS (e.g., tag names for releases) by
      implementing them itself.  Other VC features, such as multiple
      branches, are simply unavailable.  Since SCCS is non-free, we
      recommend avoiding it.
@@ -21137,8 +21137,8 @@ File: emacs.info,  Node: VC With A Merging VCS,  Next: VC With A Locking VCS,  U
 28.1.3.1 Basic Version Control with Merging
 ...........................................
 
-On a merging-based version control system (i.e. most modern ones; *note
-VCS Merging::), `C-x v v' does the following:
+On a merging-based version control system (i.e., most modern ones;
+*note VCS Merging::), `C-x v v' does the following:
 
    * If there is more than one file in the VC fileset and the files have
      inconsistent version control statuses, signal an error.  (Note,
@@ -21146,7 +21146,7 @@ VCS Merging::), `C-x v v' does the following:
      files and "modified" files; *note Registering::.)
 
    * If none of the files in the VC fileset are registered with a
-     version control system, register the VC fileset, i.e. place it
+     version control system, register the VC fileset, i.e., place it
      under version control.  *Note Registering::.  If Emacs cannot find
      a system to register under, it prompts for a repository type,
      creates a new repository, and registers the VC fileset with it.
@@ -21241,7 +21241,7 @@ additional arguments to specify precisely how to do the operation.
      If the fileset is unmodified (and unlocked), this checks the
      specified revision into the working tree.  You can also specify a
      revision on another branch by giving its revision or branch ID
-     (*note Switching Branches::).  An empty argument (i.e. `C-u C-x v
+     (*note Switching Branches::).  An empty argument (i.e., `C-u C-x v
      v <RET>') checks out the latest ("head") revision on the current
      branch.
 
@@ -21394,8 +21394,8 @@ generating a new diff.
 revision IDs (*note VCS Concepts::), and displays a diff between those
 versions of the fileset.  This will not work reliably for multi-file VC
 filesets, if the version control system is file-based rather than
-changeset-based (e.g. CVS), since then revision IDs for different files
-would not be related in any meaningful way.
+changeset-based (e.g., CVS), since then revision IDs for different
+files would not be related in any meaningful way.
 
    Instead of the revision ID, some version control systems let you
 specify revisions in other formats.  For instance, under Bazaar you can
@@ -21411,7 +21411,7 @@ VC fileset.
 session.  *Note Ediff: (ediff)Top.
 
    `C-x v D' (`vc-root-diff') is similar to `C-x v =', but it displays
-the changes in the entire current working tree (i.e. the working tree
+the changes in the entire current working tree (i.e., the working tree
 containing the current VC fileset).  If you invoke this command from a
 Dired buffer, it applies to the working tree containing the directory.
 
@@ -21420,7 +21420,7 @@ use for generating diffs.  The options used are taken from the first
 non-`nil' value amongst the variables `vc-BACKEND-diff-switches',
 `vc-diff-switches', and `diff-switches' (*note Comparing Files::), in
 that order.  Here, BACKEND stands for the relevant version control
-system, e.g. `bzr' for Bazaar.  Since `nil' means to check the next
+system, e.g., `bzr' for Bazaar.  Since `nil' means to check the next
 variable in the sequence, either of the first two may use the value `t'
 to mean no switches at all.  Most of the `vc-BACKEND-diff-switches'
 variables default to `nil', but some default to `t'; these are for
@@ -21452,12 +21452,12 @@ use the following keys to browse the annotations of past revisions,
 view diffs, or view log entries:
 
 `p'
-     Annotate the previous revision, i.e. the revision before the one
+     Annotate the previous revision, i.e., the revision before the one
      currently annotated.  A numeric prefix argument is a repeat count,
      so `C-u 10 p' would take you back 10 revisions.
 
 `n'
-     Annotate the next revision, i.e. the revision after the one
+     Annotate the next revision, i.e., the revision after the one
      currently annotated.  A numeric prefix argument is a repeat count.
 
 `j'
@@ -21598,8 +21598,8 @@ compare past revisions (*note Old Revisions::):
      in that revision.
 
 `<RET>'
-     In a compact-style log buffer (e.g. the one created by `C-x v L'),
-     toggle between showing and hiding the full log entry for the
+     In a compact-style log buffer (e.g., the one created by `C-x v
+     L'), toggle between showing and hiding the full log entry for the
      revision at point.
 
    Because fetching many log entries can be slow, the `*vc-change-log*'
@@ -21676,7 +21676,7 @@ The VC Directory buffer contains a list of version-controlled files and
 their version control statuses.  It lists files in the current
 directory (the one specified when you called `C-x v d') and its
 subdirectories, but only those with a "noteworthy" status.  Files that
-are up-to-date (i.e. the same as in the repository) are omitted.  If
+are up-to-date (i.e., the same as in the repository) are omitted.  If
 all the files in a subdirectory are up-to-date, the subdirectory is not
 listed either.  As an exception, if a file has become up-to-date as a
 direct result of a VC command, it is listed.
@@ -21710,7 +21710,7 @@ repository, which may be on a remote machine, to check for updates.  If
 you change the variable `vc-stay-local' or `vc-cvs-stay-local' (for
 CVS) to `nil' (*note CVS Options::), then Emacs avoids contacting a
 remote repository when generating the VC Directory buffer (it will
-still contact it when necessary, e.g. when doing a commit).  This may
+still contact it when necessary, e.g., when doing a commit).  This may
 be desirable if you are working offline or the network is slow.
 
    The VC Directory buffer omits subdirectories listed in the variable
@@ -21876,7 +21876,7 @@ main line of development) normally have IDs of the form 1.1, 1.2, 1.3,
 revision IDs 1.2.1.1, 1.2.1.2, ..., the second branch created from
 revision 1.2 has revision IDs 1.2.2.1, 1.2.2.2, ..., and so forth.  You
 can also specify the "branch ID", which is a branch revision ID
-omitting its final component (e.g. 1.2.1), to switch to the latest
+omitting its final component (e.g., 1.2.1), to switch to the latest
 revision on that branch.
 
    On a locking-based system, switching to a different branch also
@@ -22245,11 +22245,6 @@ appropriate version control system.  If `vc-command-messages' is
 non-`nil', VC displays messages to indicate which shell commands it
 runs, and additional messages when the commands finish.
 
-   You can specify additional directories to search for version control
-programs by setting the variable `vc-path'.  These directories are
-searched before the usual search path.  It is rarely necessary to set
-this variable, because VC normally finds the proper files automatically.
-
 
 File: emacs.info,  Node: RCS and SCCS,  Next: CVS Options,  Prev: General VC Options,  Up: Customizing VC
 
@@ -22576,8 +22571,8 @@ Here is how tag syntax is defined for the most popular languages:
 
      In Ada, the same name can be used for different kinds of entity
      (e.g., for a procedure and for a function).  Also, for things like
-     packages, procedures and functions, there is the spec (i.e. the
-     interface) and the body (i.e. the implementation).  To make it
+     packages, procedures and functions, there is the spec (i.e., the
+     interface) and the body (i.e., the implementation).  To make it
      easier to pick the definition you want, Ada tag name have suffixes
      indicating the type of entity:
 
@@ -24688,9 +24683,9 @@ of `diff', and file at point is the second argument.  The output of the
 Files::).
 
    If the region is active, the default for the file read using the
-minibuffer is the file at the mark (i.e. the ordinary Emacs mark, not a
-Dired mark; *note Setting Mark::).  Otherwise, if the file at point has
-a backup file (*note Backup::), that is the default.
+minibuffer is the file at the mark (i.e., the ordinary Emacs mark, not
+a Dired mark; *note Setting Mark::).  Otherwise, if the file at point
+has a backup file (*note Backup::), that is the default.
 
 
 File: emacs.info,  Node: Subdirectories in Dired,  Next: Subdir Switches,  Prev: Comparison in Dired,  Up: Dired
@@ -26701,7 +26696,7 @@ knows about.  These are: `holiday-general-holidays',
 `holiday-bahai-holidays', `holiday-christian-holidays',
 `holiday-hebrew-holidays', `holiday-islamic-holidays',
 `holiday-oriental-holidays', and `holiday-other-holidays'.  The names
-should be self-explanatory; e.g. `holiday-solar-holidays' lists sun-
+should be self-explanatory; e.g., `holiday-solar-holidays' lists sun-
 and moon-related holidays.
 
    You can customize these lists of holidays to your own needs,
@@ -27131,7 +27126,7 @@ of the diary entries, or add items.
    You can write `comments' in diary entries, by setting the variables
 `diary-comment-start' and `diary-comment-end' to strings that delimit
 comments.  The fancy display does not print comments.  You might want
-to put meta-data for the use of other packages (e.g. the appointment
+to put meta-data for the use of other packages (e.g., the appointment
 package, *note Appointments::) inside comments.
 
    Your main diary file can include other files.  This permits a group
@@ -27461,7 +27456,7 @@ comes the contents of the field.
 people use only standard field names with accepted meanings.
 
    The `From' header field identifies the person sending the email
-(i.e. you).  This should be a valid mailing address, as replies are
+(i.e., you).  This should be a valid mailing address, as replies are
 normally sent there.  The default contents of this header field are
 computed from the variables `user-full-name' (which specifies your full
 name) and `user-mail-address' (your email address).  On some operating
@@ -29366,7 +29361,7 @@ Gnus uses several buffers to display information and to receive
 commands.  The three most commonly-used Gnus buffers are the "group
 buffer", the "summary buffer" and the "article buffer".
 
-   The "group buffer" contains a list of article sources (e.g.
+   The "group buffer" contains a list of article sources (e.g.,
 newsgroups and email inboxes), which are collectively referred to as
 "groups".  This is the first buffer Gnus displays when it starts up.
 It normally displays only the groups to which you subscribe and that
@@ -29453,7 +29448,7 @@ The following commands are available in the Gnus group buffer:
 
 `u'
      Toggle the subscription status of the group on the current line
-     (i.e. turn a subscribed group into an unsubscribed group, or vice
+     (i.e., turn a subscribed group into an unsubscribed group, or vice
      versa).  Invoking this on a killed or zombie group turns it into an
      unsubscribed group.
 
@@ -29737,7 +29732,7 @@ Command Output*', displayed in another window (if the output is long).
 `M-! gunzip foo.gz <RET>'.  That shell command normally creates the
 file `foo' and produces no terminal output.
 
-   A numeric argument to `shell-command', e.g. `M-1 M-!', causes it to
+   A numeric argument to `shell-command', e.g., `M-1 M-!', causes it to
 insert terminal output into the current buffer instead of a separate
 buffer.  It puts point before the output, and sets the mark after the
 output.  For instance, `M-1 M-! gunzip < foo.gz <RET>' would insert the
@@ -29809,7 +29804,7 @@ type the input, terminated by <RET>.
    While the subshell is waiting or running a command, you can switch
 windows or buffers and perform other editing in Emacs.  Emacs inserts
 the output from the subshell into the Shell buffer whenever it has time
-to process it (e.g. while waiting for keyboard input).
+to process it (e.g., while waiting for keyboard input).
 
    In the Shell buffer, prompts are displayed with the face
 `comint-highlight-prompt', and submitted input lines are displayed with
@@ -29817,7 +29812,7 @@ the face `comint-highlight-input'.  This makes it easier to distinguish
 input lines from the shell output.  *Note Faces::.
 
    To make multiple subshells, invoke `M-x shell' with a prefix
-argument (e.g. `C-u M-x shell').  Then the command will read a buffer
+argument (e.g., `C-u M-x shell').  Then the command will read a buffer
 name, and create (or reuse) a subshell in that buffer.  You can also
 rename the `*shell*' buffer using `M-x rename-uniquely', then create a
 new `*shell*' buffer using plain `M-x shell'.  Subshells in different
@@ -29842,7 +29837,7 @@ coding system for a running subshell by typing `C-x <RET> p' in the
 shell buffer.  *Note Communication Coding::.
 
    Emacs sets the environment variable `INSIDE_EMACS' in the subshell
-to `VERSION,comint', where VERSION is the Emacs version (e.g. `24.1').
+to `VERSION,comint', where VERSION is the Emacs version (e.g., `24.1').
 Programs can check this variable to determine whether they are running
 inside an Emacs subshell.  (It also sets the `EMACS' environment
 variable to `t', if that environment variable is not already defined.
@@ -30398,8 +30393,8 @@ File: emacs.info,  Node: Remote Host,  Next: Serial Terminal,  Prev: Term Mode, 
 =======================
 
 You can login to a remote computer, using whatever commands you would
-from a regular terminal (e.g. using the `telnet' or `rlogin' commands),
-from a Term window.
+from a regular terminal (e.g., using the `telnet' or `rlogin'
+commands), from a Term window.
 
    A program that asks you for a password will normally suppress
 echoing of the password, so the password will not show up in the
@@ -30601,7 +30596,7 @@ below:
      Create a new graphical "client frame", instead of using an
      existing Emacs frame.  See below for the special behavior of `C-x
      C-c' in a client frame.  If Emacs cannot create a new graphical
-     frame (e.g. if it cannot connect to the X server), it tries to
+     frame (e.g., if it cannot connect to the X server), it tries to
      create a text terminal client frame, as though you had supplied
      the `-t' option instead.
 
@@ -30694,7 +30689,7 @@ create from a client frame is also considered a client frame.  If you
 type `C-x C-c' (`save-buffers-kill-terminal') in a client frame, that
 command does not kill the Emacs session as it normally does (*note
 Exiting::).  Instead, Emacs deletes the client frame; furthermore, if
-the client frame has an `emacsclient' waiting to regain control (i.e.
+the client frame has an `emacsclient' waiting to regain control (i.e.,
 if you did not supply the `-n' option), Emacs deletes all other frames
 of the same client, and marks the client's server buffers as finished,
 as though you had typed `C-x #' in all of them.  If it so happens that
@@ -30747,7 +30742,7 @@ for printing by calling the `lpr' program.  To change the printer
 program, customize the variable `lpr-command'.  To specify extra
 switches to give the printer program, customize the list variable
 `lpr-switches'.  Its value should be a list of option strings, each of
-which should start with `-' (e.g. the option string `"-w80"' specifies
+which should start with `-' (e.g., the option string `"-w80"' specifies
 a line width of 80 columns).  The default is the empty list, `nil'.
 
    To specify the printer to use, set the variable `printer-name'.  The
@@ -31586,7 +31581,7 @@ References::).  Following a URL is done by calling `browse-url' as a
 subroutine (*note Browse-URL::).
 
    It can be useful to add `goto-address-mode' to mode hooks and hooks
-for displaying an incoming message (e.g. `rmail-show-message-hook' for
+for displaying an incoming message (e.g., `rmail-show-message-hook' for
 Rmail, and `mh-show-mode-hook' for MH-E).  This is not needed for Gnus,
 which has a similar feature of its own.
 
@@ -31667,7 +31662,7 @@ File: emacs.info,  Node: Amusements,  Next: Packages,  Prev: Hyperlinking,  Up: 
 46 Other Amusements
 *******************
 
-The `animate' package makes text dance (e.g.  `M-x
+The `animate' package makes text dance (e.g., `M-x
 animate-birthday-present').
 
    `M-x blackbox', `M-x mpuz' and `M-x 5x5' are puzzles.  `blackbox'
@@ -31775,9 +31770,9 @@ The command `M-x list-packages' brings up the "package menu".  This is
 a buffer listing all the packages that Emacs knows about, one on each
 line, with the following information:
 
-   * The package name (e.g. `auctex').
+   * The package name (e.g., `auctex').
 
-   * The package's version number (e.g. `11.86').
+   * The package's version number (e.g., `11.86').
 
    * The package's status--normally one of `available' (can be
      downloaded from the package archive), `installed', or `built-in'
@@ -32488,10 +32483,10 @@ this check, and are always considered safe.
 
    Setting or saving Custom themes actually works by customizing the
 variable `custom-enabled-themes'.  The value of this variable is a list
-of Custom theme names (as Lisp symbols, e.g. `tango').  Instead of
+of Custom theme names (as Lisp symbols, e.g., `tango').  Instead of
 using the `*Custom Themes*' buffer to set `custom-enabled-themes', you
 can customize the variable using the usual customization interface,
-e.g. with `M-x customize-option'.  Note that Custom themes are not
+e.g., with `M-x customize-option'.  Note that Custom themes are not
 allowed to set `custom-enabled-themes' themselves.
 
    Any customizations that you make through the customization buffer
@@ -33404,7 +33399,7 @@ you can specify them in your initialization file by writing Lisp code.
 *Note Init File::, for a description of the initialization file.
 
    There are several ways to write a key binding using Lisp.  The
-simplest is to use the `kbd' macro, which converts a textual
+simplest is to use the `kbd' function, which converts a textual
 representation of a key sequence--similar to how we have written key
 sequences in this manual--into a form that can be passed as an argument
 to `global-set-key'.  For example, here's how to bind `C-z' to the
@@ -33427,11 +33422,11 @@ and mouse events:
      (global-set-key (kbd "C-<right>") 'forward-sentence)
      (global-set-key (kbd "<mouse-2>") 'mouse-save-then-kill)
 
-   Instead of using the `kbd' macro, you can use a Lisp string or
-vector to specify the key sequence.  Using a string is simpler, but
-only works for ASCII characters and Meta-modified ASCII characters.
-For example, here's how to bind `C-x M-l' to `make-symbolic-link'
-(*note Misc File Ops::):
+   Instead of using `kbd', you can use a Lisp string or vector to
+specify the key sequence.  Using a string is simpler, but only works
+for ASCII characters and Meta-modified ASCII characters.  For example,
+here's how to bind `C-x M-l' to `make-symbolic-link' (*note Misc File
+Ops::):
 
      (global-set-key "\C-x\M-l" 'make-symbolic-link)
 
@@ -33996,7 +33991,7 @@ Lisp expressions:
      Here a full file name is used, so no searching is done.
 
    * Tell Emacs to find the definition for the function `myfunction' by
-     loading a Lisp library named `mypackage' (i.e. a file
+     loading a Lisp library named `mypackage' (i.e., a file
      `mypackage.elc' or `mypackage.el'):
 
           (autoload 'myfunction "mypackage" "Do what I say." t)
@@ -34475,7 +34470,7 @@ core dump is a file containing voluminous data about the state of the
 program prior to the crash, usually examined by loading it into a
 debugger such as GDB.  On many platforms, core dumps are disabled by
 default, and you must explicitly enable them by running the shell
-command `ulimit -c unlimited' (e.g. in your shell startup script).
+command `ulimit -c unlimited' (e.g., in your shell startup script).
 
 
 File: emacs.info,  Node: After a Crash,  Next: Emergency Escape,  Prev: Crashing,  Up: Lossage
@@ -34515,14 +34510,15 @@ was not stripped of its debugging symbols.
 `core.emacs', so that another crash won't overwrite it.
 
    To use this script, run `gdb' with the file name of your Emacs
-executable and the file name of the core dump, e.g. `gdb /usr/bin/emacs
-core.emacs'.  At the `(gdb)' prompt, load the recovery script: `source
-/usr/src/emacs/etc/emacs-buffer.gdb'.  Then type the command
-`ybuffer-list' to see which buffers are available.  For each buffer, it
-lists a buffer number.  To save a buffer, use `ysave-buffer'; you
-specify the buffer number, and the file name to write that buffer into.
-You should use a file name which does not already exist; if the file
-does exist, the script does not make a backup of its old contents.
+executable and the file name of the core dump, e.g., `gdb
+/usr/bin/emacs core.emacs'.  At the `(gdb)' prompt, load the recovery
+script: `source /usr/src/emacs/etc/emacs-buffer.gdb'.  Then type the
+command `ybuffer-list' to see which buffers are available.  For each
+buffer, it lists a buffer number.  To save a buffer, use
+`ysave-buffer'; you specify the buffer number, and the file name to
+write that buffer into.  You should use a file name which does not
+already exist; if the file does exist, the script does not make a
+backup of its old contents.
 
 
 File: emacs.info,  Node: Emergency Escape,  Prev: After a Crash,  Up: Lossage
@@ -37166,7 +37162,7 @@ an alias for `-fn') to specify a default font:
 
    When passing a font name to Emacs on the command line, you may need
 to "quote" it, by enclosing it in quotation marks, if it contains
-characters that the shell treats specially (e.g. spaces).  For example:
+characters that the shell treats specially (e.g., spaces).  For example:
 
      emacs -fn "DejaVu Sans Mono-12"
 
@@ -37244,7 +37240,7 @@ using either color names or RGB triplets (*note Colors::).
           Depending on your terminal's capabilities, Emacs might be
           able to turn on a color mode for 8, 16, 88, or 256 as the
           value of NUM.  If there is no mode that supports NUM colors,
-          Emacs acts as if NUM were 0, i.e. it uses the terminal's
+          Emacs acts as if NUM were 0, i.e., it uses the terminal's
           default color support mode.
      If MODE is omitted, it defaults to ANSI8.
 
@@ -37433,10 +37429,10 @@ frame doesn't appear until you deiconify (or "un-minimize") it.
 
    By default, Emacs uses an icon containing the Emacs logo.  On
 desktop environments such as Gnome, this icon is also displayed in
-other contexts, e.g. when switching into an Emacs frame.  The `-nbi' or
-`--no-bitmap-icon' option tells Emacs to let the window manager choose
-what sort of icon to use--usually just a small rectangle containing the
-frame's title.
+other contexts, e.g., when switching into an Emacs frame.  The `-nbi'
+or `--no-bitmap-icon' option tells Emacs to let the window manager
+choose what sort of icon to use--usually just a small rectangle
+containing the frame's title.
 
 
 File: emacs.info,  Node: Misc X,  Prev: Icons X,  Up: Emacs Invocation
@@ -37889,7 +37885,7 @@ D.5 GTK resources
 =================
 
 If Emacs is compiled with GTK+ toolkit support, the simplest way to
-customize its GTK+ widgets (e.g. menus, dialogs, tool bars and scroll
+customize its GTK+ widgets (e.g., menus, dialogs, tool bars and scroll
 bars) is to choose an appropriate GTK+ theme, for example with the
 GNOME theme selector.
 
@@ -37983,8 +37979,8 @@ D.5.2 GTK widget names
 ----------------------
 
 A GTK+ widget is specified by a "widget name" and a "widget class".
-The widget name refers to a specific widget (e.g. `emacs-menuitem'),
-while the widget class refers to a collection of similar widgets (e.g.
+The widget name refers to a specific widget (e.g., `emacs-menuitem'),
+while the widget class refers to a collection of similar widgets (e.g.,
 `GtkMenuItem').  A widget always has a class, but need not have a name.
 
    "Absolute names" are sequences of widget names or widget classes,
@@ -38120,7 +38116,7 @@ possible states are:
 
 `ACTIVE'
      This is the state for a widget that is ready to do something.  It
-     is also for the trough of a scroll bar, i.e. `bg[ACTIVE] = "red"'
+     is also for the trough of a scroll bar, i.e., `bg[ACTIVE] = "red"'
      sets the scroll bar trough to red.  Buttons that have been pressed
      but not released yet ("armed") are in this state.
 
@@ -38163,7 +38159,7 @@ possible states are:
      You can't specify the file by its absolute file name.  GTK looks
      for the pixmap file in directories specified in `pixmap_path'.
      `pixmap_path' is a colon-separated list of directories within
-     double quotes, specified at the top level in a `gtkrc' file (i.e.
+     double quotes, specified at the top level in a `gtkrc' file (i.e.,
      not inside a style definition; see example above):
 
           pixmap_path "/usr/share/pixmaps:/usr/include/X11/pixmaps"
@@ -38185,8 +38181,8 @@ possible states are:
    There are three ways to specify a color: a color name, an RGB
 triplet, or a GTK-style RGB triplet.  *Note Colors::, for a description
 of color names and RGB triplets.  Color names should be enclosed with
-double quotes, e.g. `"red"'.  RGB triplets should be written without
-double quotes, e.g. `#ff0000'.  GTK-style RGB triplets have the form
+double quotes, e.g., `"red"'.  RGB triplets should be written without
+double quotes, e.g., `#ff0000'.  GTK-style RGB triplets have the form
 `{ R, G, B }', where R, G and B are either integers in the range 0-65535
 or floats in the range 0.0-1.0.
 
@@ -38198,7 +38194,7 @@ Appendix E Emacs 23 Antinews
 
 For those users who live backwards in time, here is information about
 downgrading to Emacs version 23.4.  We hope you will enjoy the greater
-simplicity that results from the absence of many Emacs 24.2.90 features.
+simplicity that results from the absence of many Emacs 24.2.91 features.
 
    * Support for displaying and editing "bidirectional" text has been
      removed.  Text is now always displayed on the screen in a single
@@ -38776,7 +38772,7 @@ the count of different file names that are associated with (a.k.a.
 "links to") the file's data; this is only useful on NTFS volumes.
 `uid' means display the numerical identifier of the user who owns the
 file.  `gid' means display the numerical identifier of the file owner's
-group.  The default value is `(links uid gid)' i.e. all the 3 optional
+group.  The default value is `(links uid gid)' i.e., all the 3 optional
 attributes are displayed.
 
    The variable `ls-lisp-emulation' controls the flavor of the `ls'
@@ -40840,7 +40836,7 @@ File Name
      Unix systems, an absolute file name starts with a slash (the root
      directory) or with `~/' or `~USER/' (a home directory).  On
      MS-Windows/MS-DOS, an absolute file name can also start with a
-     drive letter and a colon, e.g.  `D:'.
+     drive letter and a colon, e.g., `D:'.
 
      Some people use the term "pathname" for file names, but we do not;
      we use the word "path" only in the term "search path" (q.v.).
@@ -46469,7 +46465,6 @@ Variable Index
 * vc-make-backup-files <1>:              General VC Options.  (line   6)
 * vc-make-backup-files:                  Backup.              (line   6)
 * vc-mistrust-permissions:               RCS and SCCS.        (line  26)
-* vc-path:                               General VC Options.  (line  29)
 * vc-revert-show-diff:                   VC Undo.             (line  10)
 * vc-static-header-alist:                Version Headers.     (line  29)
 * vc-stay-local <1>:                     CVS Options.         (line  11)
@@ -48235,750 +48230,750 @@ Node: Echo Area62009
 Node: Mode Line64850
 Node: Menu Bar70483
 Node: User Input72238
-Ref: User Input-Footnote-174631
-Node: Keys74691
-Node: Commands77116
-Node: Entering Emacs79432
-Ref: Entering Emacs-Footnote-182613
-Node: Exiting82815
-Node: Basic85562
-Node: Inserting Text86672
-Node: Moving Point90108
-Node: Erasing96459
-Node: Basic Undo98676
-Node: Basic Files99823
-Node: Basic Help101214
-Node: Blank Lines101704
-Node: Continuation Lines103113
-Node: Position Info105422
-Node: Arguments109030
-Node: Repeating113226
-Node: Minibuffer114447
-Node: Basic Minibuffer115425
-Node: Minibuffer File117368
-Node: Minibuffer Edit120168
-Node: Completion123616
-Node: Completion Example124824
-Node: Completion Commands126286
-Node: Completion Exit128865
-Node: Completion Styles131582
-Node: Completion Options134812
-Node: Minibuffer History137836
-Node: Repetition141204
-Node: Passwords143639
-Node: Yes or No Prompts145082
-Node: M-x147021
-Node: Help149574
-Node: Help Summary152183
-Node: Key Help155726
-Node: Name Help156901
-Node: Apropos159432
-Node: Help Mode163208
-Node: Package Keywords165116
-Node: Language Help166056
-Node: Misc Help167121
-Node: Help Files169784
-Node: Help Echo171367
-Node: Mark172243
-Node: Setting Mark174549
-Ref: Setting Mark-Footnote-1178443
-Node: Marking Objects178742
-Node: Using Region181095
-Node: Mark Ring184045
-Node: Global Mark Ring186456
-Node: Shift Selection187369
-Node: Disabled Transient Mark189038
-Node: Killing191587
-Node: Deletion and Killing192677
-Node: Deletion194423
-Node: Killing by Lines196894
-Node: Other Kill Commands198726
-Node: Kill Options200417
-Node: Yanking201226
+Ref: User Input-Footnote-174632
+Node: Keys74692
+Node: Commands77117
+Node: Entering Emacs79433
+Ref: Entering Emacs-Footnote-182614
+Node: Exiting82816
+Node: Basic85563
+Node: Inserting Text86673
+Node: Moving Point90110
+Node: Erasing96461
+Node: Basic Undo98679
+Node: Basic Files99826
+Node: Basic Help101217
+Node: Blank Lines101707
+Node: Continuation Lines103116
+Node: Position Info105425
+Node: Arguments109033
+Node: Repeating113229
+Node: Minibuffer114450
+Node: Basic Minibuffer115428
+Node: Minibuffer File117371
+Node: Minibuffer Edit120171
+Node: Completion123619
+Node: Completion Example124827
+Node: Completion Commands126289
+Node: Completion Exit128868
+Node: Completion Styles131585
+Node: Completion Options134815
+Node: Minibuffer History137839
+Node: Repetition141207
+Node: Passwords143642
+Node: Yes or No Prompts145085
+Node: M-x147024
+Node: Help149577
+Node: Help Summary152186
+Node: Key Help155729
+Node: Name Help156904
+Node: Apropos159435
+Node: Help Mode163211
+Node: Package Keywords165119
+Node: Language Help166059
+Node: Misc Help167124
+Node: Help Files169787
+Node: Help Echo171370
+Node: Mark172246
+Node: Setting Mark174552
+Ref: Setting Mark-Footnote-1178446
+Node: Marking Objects178745
+Node: Using Region181098
+Node: Mark Ring184048
+Node: Global Mark Ring186459
+Node: Shift Selection187372
+Node: Disabled Transient Mark189041
+Node: Killing191590
+Node: Deletion and Killing192680
+Node: Deletion194427
+Node: Killing by Lines196893
+Node: Other Kill Commands198725
+Node: Kill Options200416
+Node: Yanking201225
 Node: Kill Ring203035
 Node: Earlier Kills203990
 Node: Appending Kills206378
 Node: Cut and Paste208777
 Node: Clipboard209975
 Node: Primary Selection212523
-Node: Secondary Selection214383
-Node: Accumulating Text216148
-Node: Rectangles219334
-Node: CUA Bindings224819
-Node: Registers227417
-Node: Position Registers229102
-Node: Text Registers230158
-Node: Rectangle Registers232618
-Node: Configuration Registers233401
-Node: Number Registers234408
-Node: File Registers235408
-Node: Bookmarks236087
-Node: Display239550
-Node: Scrolling241623
-Node: Recentering245553
-Node: Auto Scrolling248402
-Node: Horizontal Scrolling251675
-Node: Narrowing254680
-Node: View Mode257140
-Node: Follow Mode257989
-Node: Faces258795
-Node: Colors261455
-Node: Standard Faces263583
-Node: Text Scale268917
-Node: Font Lock270337
-Node: Highlight Interactively274980
-Node: Fringes279175
-Node: Displaying Boundaries281023
-Node: Useless Whitespace282389
-Node: Selective Display285537
-Node: Optional Mode Line287049
-Node: Text Display292085
-Node: Cursor Display295254
-Node: Line Truncation297847
-Node: Visual Line Mode299162
-Node: Display Custom301214
-Node: Search303729
-Node: Incremental Search305100
-Node: Basic Isearch306318
-Node: Repeat Isearch308711
-Node: Error in Isearch311370
-Node: Special Isearch313128
-Node: Isearch Yank316296
-Node: Isearch Scroll317747
-Node: Isearch Minibuffer319393
-Node: Nonincremental Search320661
-Node: Word Search321662
-Node: Symbol Search323769
-Node: Regexp Search325504
-Node: Regexps328616
-Node: Regexp Backslash338147
-Node: Regexp Example344217
-Node: Search Case344784
-Node: Replace346546
-Node: Unconditional Replace347912
-Node: Regexp Replace349127
-Node: Replacement and Case352293
-Node: Query Replace353570
-Node: Other Repeating Search358696
-Node: Fixit362789
-Node: Undo363805
-Ref: Undo-Footnote-1368263
-Node: Transpose368514
-Node: Fixing Case371057
-Node: Spelling371729
-Node: Keyboard Macros378945
-Node: Basic Keyboard Macro380988
-Node: Keyboard Macro Ring385883
-Node: Keyboard Macro Counter388398
-Node: Keyboard Macro Query392990
-Node: Save Keyboard Macro394963
-Node: Edit Keyboard Macro398079
-Node: Keyboard Macro Step-Edit399209
-Node: Files402344
-Node: File Names404279
-Ref: File Names with $406864
-Node: Visiting407967
-Node: Saving416650
-Node: Save Commands417328
-Node: Backup422132
-Node: Backup Names424493
-Node: Backup Deletion427400
-Node: Backup Copying428800
-Node: Customize Save430942
-Node: Interlocking432464
-Node: File Shadowing435773
-Node: Time Stamps437827
-Node: Reverting438703
-Node: Autorevert441669
-Node: Auto Reverting the Buffer Menu443542
-Node: Auto Reverting Dired444362
-Node: Supporting additional buffers446527
-Node: Auto Save450667
-Node: Auto Save Files451851
-Node: Auto Save Control454465
-Node: Recover456441
-Node: File Aliases458415
-Node: Directories460981
-Node: Comparing Files463708
-Node: Diff Mode466343
-Node: Misc File Ops472070
-Node: Compressed Files477183
-Node: File Archives478055
-Node: Remote Files480797
-Node: Quoted File Names484145
-Node: File Name Cache485729
-Node: File Conveniences487488
-Node: Filesets490063
-Node: Buffers491972
-Node: Select Buffer494880
-Node: List Buffers499015
-Node: Misc Buffer500809
-Node: Kill Buffer503272
-Node: Several Buffers506253
-Node: Indirect Buffers511469
-Node: Buffer Convenience513842
-Node: Uniquify514371
-Node: Iswitchb516215
-Node: Buffer Menus517586
-Node: Windows518436
-Node: Basic Window519331
-Node: Split Window521260
-Node: Other Window524473
-Node: Pop Up Window526318
-Node: Change Window527790
-Node: Displaying Buffers530960
-Node: Window Choice532916
-Node: Window Convenience535178
-Node: Frames536705
-Node: Mouse Commands539767
-Node: Word and Line Mouse545283
-Node: Mouse References546491
-Node: Menu Mouse Clicks548845
-Node: Mode Line Mouse550390
-Node: Creating Frames551873
-Node: Frame Commands553662
-Node: Fonts555538
-Node: Speedbar563716
-Node: Multiple Displays566583
-Node: Frame Parameters567594
-Node: Scroll Bars568948
-Node: Drag and Drop570806
-Node: Menu Bars571657
-Node: Tool Bars572578
-Node: Dialog Boxes573822
-Node: Tooltips575355
-Node: Mouse Avoidance576734
-Node: Non-Window Terminals578345
-Node: Text-Only Mouse579519
-Node: International580466
-Node: International Chars584789
-Node: Disabling Multibyte589813
-Node: Language Environments592629
-Ref: Describe Language Environment597303
-Node: Input Methods598275
-Node: Select Input Method603579
-Node: Coding Systems607413
-Ref: Coding Systems-Footnote-1613142
-Node: Recognize Coding613355
-Node: Specify Coding619183
-Node: Output Coding620404
-Node: Text Coding623038
-Node: Communication Coding627124
-Node: File Name Coding630499
-Node: Terminal Coding632556
-Node: Fontsets634947
-Ref: Fontsets-Footnote-1637634
-Node: Defining Fontsets637838
-Node: Modifying Fontsets642420
-Node: Undisplayable Characters643859
-Node: Unibyte Mode645057
-Node: Charsets649169
-Node: Bidirectional Editing651350
-Node: Modes655063
-Node: Major Modes656226
-Node: Minor Modes660579
-Node: Choosing Modes666363
-Node: Indentation672388
-Node: Indentation Commands674607
-Node: Tab Stops677165
-Node: Just Spaces679176
-Node: Indent Convenience680800
-Node: Text681697
-Node: Words684256
-Node: Sentences687201
-Node: Paragraphs690391
-Node: Pages693264
-Node: Filling696114
-Node: Auto Fill696800
-Node: Fill Commands698865
-Node: Fill Prefix702422
-Node: Adaptive Fill706343
-Node: Case708935
-Node: Text Mode711205
-Node: Outline Mode713577
-Node: Outline Format715726
-Node: Outline Motion718421
-Node: Outline Visibility719752
-Node: Outline Views723541
-Node: Foldout724446
-Node: Org Mode728180
-Node: Org Organizer730171
-Node: Org Authoring731670
-Node: TeX Mode732872
-Ref: TeX Mode-Footnote-1735432
-Node: TeX Editing735517
-Node: LaTeX Editing738584
-Node: TeX Print740080
-Node: TeX Misc747221
-Node: HTML Mode747797
-Node: Nroff Mode751469
-Node: Enriched Text752910
-Node: Enriched Mode754439
-Node: Hard and Soft Newlines756313
-Node: Editing Format Info757515
-Node: Enriched Faces758665
-Node: Enriched Indentation760530
-Node: Enriched Justification762350
-Node: Enriched Properties763637
-Node: Text Based Tables764244
-Node: Table Definition766287
-Node: Table Creation767671
-Node: Table Recognition768796
-Node: Cell Commands770070
-Node: Cell Justification771905
-Node: Table Rows and Columns773430
-Node: Table Conversion774549
-Node: Table Misc777581
-Node: Two-Column778639
-Node: Programs781731
-Node: Program Modes783332
-Node: Defuns785954
-Node: Left Margin Paren786652
-Node: Moving by Defuns789009
-Node: Imenu791340
-Node: Which Function793304
-Node: Program Indent794076
-Node: Basic Indent795105
-Node: Multi-line Indent796746
-Node: Lisp Indent799112
-Node: C Indent800657
-Node: Custom C Indent802090
-Node: Parentheses805184
-Node: Expressions806265
-Ref: Expressions-Footnote-1809870
-Node: Moving by Parens809937
-Node: Matching811839
-Node: Comments813861
-Node: Comment Commands815161
-Node: Multi-Line Comments819174
-Node: Options for Comments820461
-Node: Documentation823361
-Node: Info Lookup823887
-Node: Man Page824908
-Node: Lisp Doc827849
-Node: Hideshow828695
-Node: Symbol Completion830550
-Node: Glasses832016
-Node: Semantic832733
-Ref: Semantic-Footnote-1835029
-Node: Misc for Programs835076
-Node: C Modes836599
-Node: Motion in C837335
-Node: Electric C839346
-Node: Hungry Delete840921
-Node: Other C Commands842282
-Node: Asm Mode847118
-Node: Fortran847692
-Node: Fortran Motion849511
-Node: Fortran Indent851699
-Node: ForIndent Commands852467
-Node: ForIndent Cont853854
-Node: ForIndent Num856241
-Node: ForIndent Conv857274
-Node: ForIndent Vars858343
-Node: Fortran Comments860350
-Node: Fortran Autofill864425
-Node: Fortran Columns865592
-Node: Fortran Abbrev868548
-Node: Building869324
-Node: Compilation870617
-Node: Compilation Mode874861
-Node: Compilation Shell880635
-Node: Grep Searching882547
-Node: Flymake885847
-Node: Debuggers887113
-Node: Starting GUD888195
-Node: Debugger Operation890064
-Node: Commands of GUD893006
-Node: GUD Customization897002
-Node: GDB Graphical Interface899292
-Node: GDB User Interface Layout900847
-Node: Source Buffers903208
-Node: Breakpoints Buffer904973
-Node: Threads Buffer906235
-Node: Stack Buffer908370
-Node: Other GDB Buffers909096
-Node: Watch Expressions911079
-Node: Multithreaded Debugging913793
-Node: Executing Lisp916867
-Node: Lisp Libraries918164
-Node: Lisp Eval922337
-Node: Lisp Interaction925894
-Node: External Lisp927365
-Node: Maintaining929481
-Node: Version Control930322
-Node: Introduction to VC931925
-Node: Why Version Control?933225
-Node: Version Control Systems934177
-Node: VCS Concepts936947
-Node: VCS Merging938565
-Node: VCS Changesets940988
-Node: VCS Repositories941898
-Node: Types of Log File943047
-Node: VC Mode Line944898
-Node: Basic VC Editing947015
-Node: VC With A Merging VCS949035
-Node: VC With A Locking VCS951579
-Node: Advanced C-x v v953171
-Node: Log Buffer954585
-Node: Registering957779
-Node: Old Revisions959781
-Node: VC Change Log966146
-Node: VC Undo970706
-Node: VC Directory Mode971799
-Node: VC Directory Buffer973200
-Node: VC Directory Commands975628
-Node: Branches979666
-Node: Switching Branches980776
-Node: VC Pull982427
-Node: Merging984036
-Node: Creating Branches986135
-Node: Miscellaneous VC987716
-Node: Change Logs and VC988273
-Node: VC Delete/Rename990343
-Node: Revision Tags991980
-Node: Version Headers994809
-Node: Customizing VC996623
-Node: General VC Options997578
-Node: RCS and SCCS999183
-Node: CVS Options1001311
-Node: Change Log1004160
-Node: Change Log Commands1004699
-Node: Format of ChangeLog1007292
-Node: Tags1009062
-Node: Tag Syntax1011288
-Node: Create Tags Table1016889
-Node: Etags Regexps1021308
-Node: Select Tags Table1026485
-Node: Find Tag1028199
-Node: Tags Search1031285
-Node: List Tags1034655
-Node: EDE1036418
-Node: Emerge1038724
-Node: Overview of Emerge1039802
-Node: Submodes of Emerge1043037
-Node: State of Difference1044805
-Node: Merge Commands1047328
-Node: Exiting Emerge1049859
-Node: Combining in Emerge1050735
-Node: Fine Points of Emerge1051632
-Node: Abbrevs1052589
-Node: Abbrev Concepts1053922
-Node: Defining Abbrevs1055366
-Node: Expanding Abbrevs1058139
-Node: Editing Abbrevs1061510
-Node: Saving Abbrevs1063709
-Node: Dynamic Abbrevs1066069
-Node: Dabbrev Customization1068992
-Node: Dired1071444
-Node: Dired Enter1073917
-Node: Dired Navigation1076271
-Node: Dired Deletion1077876
-Node: Flagging Many Files1080773
-Node: Dired Visiting1083311
-Node: Marks vs Flags1084907
-Node: Operating on Files1090281
-Node: Shell Commands in Dired1096243
-Node: Transforming File Names1099290
-Node: Comparison in Dired1102589
-Node: Subdirectories in Dired1103409
-Node: Subdir Switches1105141
-Node: Subdirectory Motion1107166
-Node: Hiding Subdirectories1108374
-Node: Dired Updating1109584
-Node: Dired and Find1112801
-Node: Wdired1114983
-Node: Image-Dired1116480
-Node: Misc Dired Features1119896
-Node: Calendar/Diary1123341
-Node: Calendar Motion1125294
-Node: Calendar Unit Motion1126170
-Node: Move to Beginning or End1128431
-Node: Specified Dates1129580
-Node: Scroll Calendar1130888
-Node: Counting Days1132601
-Node: General Calendar1133115
-Node: Writing Calendar Files1134695
-Node: Holidays1138806
-Node: Sunrise/Sunset1141886
-Node: Lunar Phases1144917
-Node: Other Calendars1146230
-Node: Calendar Systems1147458
-Node: To Other Calendar1151112
-Node: From Other Calendar1153252
-Node: Mayan Calendar1155780
-Node: Diary1159015
-Node: Displaying the Diary1160852
-Node: Format of Diary File1163986
-Node: Date Formats1166212
-Node: Adding to Diary1168893
-Node: Special Diary Entries1170972
-Node: Appointments1175454
-Node: Importing Diary1178318
-Node: Daylight Saving1180135
-Node: Time Intervals1182763
-Node: Advanced Calendar/Diary Usage1184682
-Node: Calendar Customizing1185642
-Node: Holiday Customizing1187924
-Node: Date Display Format1193905
-Node: Time Display Format1194925
-Node: Diary Customizing1196016
-Node: Non-Gregorian Diary1199911
-Node: Diary Display1202932
-Node: Fancy Diary Display1206593
-Node: Sexp Diary Entries1208496
-Node: Sending Mail1216286
-Node: Mail Format1218456
-Node: Mail Headers1219873
-Node: Mail Aliases1224668
-Node: Mail Commands1226716
-Node: Mail Sending1227564
-Node: Header Editing1230640
-Node: Citing Mail1232589
-Node: Mail Misc1234074
-Node: Mail Signature1236926
-Node: Mail Amusements1238214
-Ref: Mail Amusements-Footnote-11239379
-Node: Mail Methods1239420
-Node: Rmail1240830
-Node: Rmail Basics1242643
-Node: Rmail Scrolling1245006
-Node: Rmail Motion1246235
-Node: Rmail Deletion1250068
-Node: Rmail Inbox1253092
-Node: Rmail Files1257003
-Node: Rmail Output1259873
-Node: Rmail Labels1264197
-Node: Rmail Attributes1266616
-Node: Rmail Reply1268252
-Node: Rmail Summary1274139
-Node: Rmail Make Summary1275151
-Node: Rmail Summary Edit1278221
-Node: Rmail Sorting1282812
-Node: Rmail Display1284916
-Node: Rmail Coding1288861
-Node: Rmail Editing1290488
-Node: Rmail Digest1291820
-Node: Rmail Rot131292905
-Node: Movemail1293633
-Node: Remote Mailboxes1297234
-Node: Other Mailbox Formats1300559
-Node: Gnus1301173
-Node: Buffers of Gnus1301869
-Node: Gnus Startup1303218
-Node: Gnus Group Buffer1305069
-Node: Gnus Summary Buffer1306330
-Node: Document View1307345
-Ref: Document View-Footnote-11309073
-Ref: Document View-Footnote-21309238
-Node: DocView Navigation1309476
-Node: DocView Searching1311024
-Node: DocView Slicing1312037
-Node: DocView Conversion1313208
-Node: Shell1313860
-Node: Single Shell1316210
-Node: Interactive Shell1319904
-Node: Shell Mode1322847
-Ref: Shell Mode-Footnote-11329621
-Node: Shell Prompts1329841
-Node: Shell History1331651
-Node: Shell Ring1332466
-Node: Shell History Copying1335878
-Node: History References1337357
-Node: Directory Tracking1338525
-Node: Shell Options1340240
-Node: Terminal emulator1342845
-Node: Term Mode1345110
-Node: Remote Host1346598
-Node: Serial Terminal1347688
-Node: Emacs Server1348698
-Ref: Emacs Server-Footnote-11351561
-Node: Invoking emacsclient1351729
-Node: emacsclient Options1354817
-Node: Printing1361019
-Node: PostScript1363516
-Node: PostScript Variables1366083
-Node: Printing Package1369849
-Node: Sorting1371182
-Node: Picture Mode1376698
-Node: Basic Picture1379118
-Node: Insert in Picture1381683
-Node: Tabs in Picture1383213
-Node: Rectangles in Picture1385065
-Node: Editing Binary Files1386950
-Node: Saving Emacs Sessions1388447
-Node: Recursive Edit1390960
-Node: Emulation1394407
-Node: Hyperlinking1397319
-Node: Browse-URL1397788
-Node: Goto Address mode1398920
-Node: FFAP1399927
-Node: Amusements1402187
-Node: Packages1405093
-Node: Package Menu1406541
-Node: Package Installation1409511
-Node: Package Files1413597
-Node: Customization1415279
-Node: Easy Customization1416348
-Node: Customization Groups1417767
-Node: Browsing Custom1419948
-Node: Changing a Variable1422386
-Node: Saving Customizations1428884
-Node: Face Customization1430815
-Node: Specific Customization1433991
-Node: Custom Themes1436652
-Node: Creating Custom Themes1440906
-Node: Variables1443246
-Node: Examining1445877
-Node: Hooks1448199
-Node: Locals1452663
-Node: File Variables1456299
-Node: Specifying File Variables1456867
-Node: Safe File Variables1462982
-Node: Directory Variables1465979
-Ref: Directory Variables-Footnote-11469919
-Node: Key Bindings1470148
-Node: Keymaps1471375
-Node: Prefix Keymaps1473693
-Node: Local Keymaps1475632
-Node: Minibuffer Maps1477336
-Node: Rebinding1478144
-Node: Init Rebinding1481299
-Node: Modifier Keys1485182
-Node: Function Keys1487015
-Node: Named ASCII Chars1489752
-Node: Mouse Buttons1491260
-Node: Disabling1496613
-Node: Init File1498777
-Node: Init Syntax1501795
-Node: Init Examples1504661
-Node: Terminal Init1510379
-Node: Find Init1512321
-Node: Init Non-ASCII1513431
-Node: Quitting1515051
-Node: Lossage1520001
-Node: DEL Does Not Delete1520928
-Node: Stuck Recursive1523007
-Node: Screen Garbled1523677
-Node: Text Garbled1524577
-Node: Memory Full1525256
-Node: Crashing1526405
-Node: After a Crash1528543
-Node: Emergency Escape1530909
-Node: Bugs1532955
-Node: Known Problems1533736
-Node: Bug Criteria1536719
-Node: Understanding Bug Reporting1539423
-Node: Checklist1542242
-Node: Sending Patches1559937
-Node: Contributing1565080
-Node: Service1566185
-Node: Copying1566830
-Node: GNU Free Documentation License1604409
-Node: Emacs Invocation1629586
-Node: Action Arguments1633053
-Node: Initial Options1635672
-Ref: Initial Options-Footnote-11640899
-Node: Command Example1640948
-Node: Environment1641785
-Node: General Variables1643814
-Ref: General Variables-Footnote-11650637
-Node: Misc Variables1650914
-Node: MS-Windows Registry1653630
-Node: Display X1655248
-Node: Font X1657154
-Node: Colors X1657829
-Node: Window Size X1660745
-Node: Borders X1665277
-Node: Title X1666510
-Node: Icons X1667265
-Node: Misc X1668287
-Node: X Resources1669177
-Node: Resources1670216
-Node: Table of Resources1674150
-Node: Lucid Resources1680210
-Node: LessTif Resources1682031
-Node: GTK resources1684991
-Node: GTK Resource Basics1687024
-Node: GTK Widget Names1688795
-Node: GTK Names in Emacs1690423
-Node: GTK styles1692085
-Node: Antinews1696719
-Node: Mac OS / GNUstep1701642
-Node: Mac / GNUstep Basics1703101
-Node: Mac / GNUstep Customization1705603
-Node: Mac / GNUstep Events1706958
-Node: GNUstep Support1710794
-Node: Microsoft Windows1711079
-Node: Windows Startup1712615
-Node: Text and Binary1716569
-Node: Windows Files1721926
-Node: ls in Lisp1723511
-Node: Windows HOME1728985
-Ref: Windows HOME-Footnote-11731510
-Node: Windows Keyboard1731587
-Ref: Windows Keyboard-Footnote-11737373
-Node: Windows Mouse1737672
-Node: Windows Processes1738681
-Node: Windows Printing1742030
-Ref: Windows Printing-Footnote-11748417
-Node: Windows Fonts1748615
-Node: Windows Misc1753301
-Node: MS-DOS1754314
-Node: MS-DOS Keyboard1755561
-Node: MS-DOS Mouse1757509
-Node: MS-DOS Display1760244
-Node: MS-DOS File Names1764316
-Node: MS-DOS Printing1767060
-Node: MS-DOS and MULE1768464
-Ref: MS-DOS and MULE-Footnote-11773369
-Ref: MS-DOS and MULE-Footnote-21773704
-Node: MS-DOS Processes1774049
-Node: Manifesto1776442
-Ref: Manifesto-Footnote-11800658
-Ref: Manifesto-Footnote-21801547
-Ref: Manifesto-Footnote-31801820
-Ref: Manifesto-Footnote-41801862
-Ref: Manifesto-Footnote-51802382
-Ref: Manifesto-Footnote-61802488
-Ref: Manifesto-Footnote-71803089
-Node: Glossary1803440
-Ref: Glossary - Abbrev1803548
-Ref: Glossary - Balanced Expression1806483
-Ref: Glossary - Binding1807252
-Ref: Glossary - C-1809678
-Ref: Glossary - Compilation1812444
-Ref: Glossary - Continuation Line1813576
-Ref: Glossary - Daemon1816280
-Ref: Glossary - Default1816878
-Ref: Glossary - Deletion of Files1817922
-Ref: Glossary - Directory Local Variable1818940
-Ref: Glossary - End Of Line1820973
-Ref: Glossary - File Locking1823441
-Ref: Glossary - Filling1824968
-Ref: Glossary - Font Lock1825225
-Ref: Glossary - Free Software Foundation1826562
-Ref: Glossary - Global Substitution1828388
-Ref: Glossary - Incremental Search1832181
-Ref: Glossary - Killing1835353
-Ref: Glossary - Mail1838034
-Ref: Glossary - Minibuffer History1840569
-Ref: Glossary - Numeric Argument1843167
-Ref: Glossary - Page1843777
-Ref: Glossary - Quitting1845867
-Ref: Glossary - Regular Expression1848309
-Ref: Glossary - Server1852334
-Ref: Glossary - Tags Table1855525
-Ref: Glossary - Text Terminal1856387
-Ref: Glossary - Tooltips1857357
-Ref: Glossary - Truncation1858248
-Ref: Glossary - Yanking1861070
-Node: Acknowledgments1861283
-Node: Key Index1913600
-Node: Option Index1986715
-Node: Command Index1993015
-Node: Variable Index2110762
-Node: Concept Index2171527
+Node: Secondary Selection214385
+Node: Accumulating Text216150
+Node: Rectangles219336
+Node: CUA Bindings224821
+Node: Registers227423
+Node: Position Registers229108
+Node: Text Registers230164
+Node: Rectangle Registers232624
+Node: Configuration Registers233407
+Node: Number Registers234414
+Node: File Registers235414
+Node: Bookmarks236093
+Node: Display239556
+Node: Scrolling241629
+Node: Recentering245559
+Node: Auto Scrolling248408
+Node: Horizontal Scrolling251683
+Node: Narrowing254688
+Node: View Mode257148
+Node: Follow Mode257997
+Node: Faces258803
+Node: Colors261463
+Node: Standard Faces263591
+Node: Text Scale268925
+Node: Font Lock270345
+Node: Highlight Interactively274988
+Node: Fringes279183
+Node: Displaying Boundaries281031
+Node: Useless Whitespace282397
+Node: Selective Display285546
+Node: Optional Mode Line287058
+Node: Text Display292095
+Node: Cursor Display295265
+Node: Line Truncation297858
+Node: Visual Line Mode299173
+Node: Display Custom301225
+Node: Search303740
+Node: Incremental Search305111
+Node: Basic Isearch306329
+Node: Repeat Isearch308722
+Node: Error in Isearch311381
+Node: Special Isearch313139
+Node: Isearch Yank316307
+Node: Isearch Scroll317758
+Node: Isearch Minibuffer319404
+Node: Nonincremental Search320673
+Node: Word Search321674
+Node: Symbol Search323781
+Node: Regexp Search325516
+Node: Regexps328628
+Node: Regexp Backslash338159
+Node: Regexp Example344229
+Node: Search Case344796
+Node: Replace346558
+Node: Unconditional Replace347924
+Node: Regexp Replace349139
+Node: Replacement and Case352305
+Node: Query Replace353582
+Node: Other Repeating Search358708
+Node: Fixit362801
+Node: Undo363817
+Ref: Undo-Footnote-1368275
+Node: Transpose368526
+Node: Fixing Case371069
+Node: Spelling371741
+Node: Keyboard Macros378957
+Node: Basic Keyboard Macro381000
+Node: Keyboard Macro Ring385895
+Node: Keyboard Macro Counter388410
+Node: Keyboard Macro Query393002
+Node: Save Keyboard Macro394975
+Node: Edit Keyboard Macro398091
+Node: Keyboard Macro Step-Edit399221
+Node: Files402356
+Node: File Names404291
+Ref: File Names with $406877
+Node: Visiting407980
+Node: Saving416663
+Node: Save Commands417341
+Node: Backup422145
+Node: Backup Names424506
+Node: Backup Deletion427413
+Node: Backup Copying428813
+Node: Customize Save430955
+Node: Interlocking432477
+Node: File Shadowing435787
+Node: Time Stamps437841
+Node: Reverting438717
+Node: Autorevert441683
+Node: Auto Reverting the Buffer Menu443556
+Node: Auto Reverting Dired444376
+Node: Supporting additional buffers446543
+Node: Auto Save450683
+Node: Auto Save Files451867
+Node: Auto Save Control454481
+Node: Recover456457
+Node: File Aliases458431
+Node: Directories460997
+Node: Comparing Files463724
+Node: Diff Mode466359
+Node: Misc File Ops472086
+Node: Compressed Files477199
+Node: File Archives478071
+Node: Remote Files480813
+Node: Quoted File Names484161
+Node: File Name Cache485745
+Node: File Conveniences487504
+Node: Filesets490080
+Node: Buffers491989
+Node: Select Buffer494897
+Node: List Buffers499032
+Node: Misc Buffer500826
+Node: Kill Buffer503289
+Node: Several Buffers506270
+Node: Indirect Buffers511486
+Node: Buffer Convenience513859
+Node: Uniquify514388
+Node: Iswitchb516232
+Node: Buffer Menus517603
+Node: Windows518453
+Node: Basic Window519348
+Node: Split Window521277
+Node: Other Window524490
+Node: Pop Up Window526335
+Node: Change Window527807
+Node: Displaying Buffers530978
+Node: Window Choice532935
+Node: Window Convenience535197
+Node: Frames536725
+Node: Mouse Commands539788
+Node: Word and Line Mouse545304
+Node: Mouse References546512
+Node: Menu Mouse Clicks548868
+Node: Mode Line Mouse550413
+Node: Creating Frames551896
+Node: Frame Commands553685
+Node: Fonts555561
+Node: Speedbar563740
+Node: Multiple Displays566607
+Node: Frame Parameters567618
+Node: Scroll Bars568972
+Node: Drag and Drop570830
+Node: Menu Bars571681
+Node: Tool Bars572602
+Node: Dialog Boxes573846
+Node: Tooltips575379
+Node: Mouse Avoidance576758
+Node: Non-Window Terminals578369
+Node: Text-Only Mouse579543
+Node: International580490
+Node: International Chars584813
+Node: Disabling Multibyte589837
+Node: Language Environments592653
+Ref: Describe Language Environment597327
+Node: Input Methods598299
+Node: Select Input Method603603
+Node: Coding Systems607437
+Ref: Coding Systems-Footnote-1613166
+Node: Recognize Coding613379
+Node: Specify Coding619207
+Node: Output Coding620428
+Node: Text Coding623062
+Node: Communication Coding627149
+Node: File Name Coding630524
+Node: Terminal Coding632581
+Node: Fontsets634972
+Ref: Fontsets-Footnote-1637659
+Node: Defining Fontsets637863
+Node: Modifying Fontsets642445
+Node: Undisplayable Characters643884
+Node: Unibyte Mode645083
+Node: Charsets649196
+Node: Bidirectional Editing651377
+Node: Modes655091
+Node: Major Modes656254
+Node: Minor Modes660609
+Node: Choosing Modes666393
+Node: Indentation672418
+Node: Indentation Commands674637
+Node: Tab Stops677196
+Node: Just Spaces679207
+Node: Indent Convenience680831
+Node: Text681728
+Node: Words684287
+Node: Sentences687232
+Node: Paragraphs690422
+Node: Pages693295
+Node: Filling696145
+Node: Auto Fill696831
+Node: Fill Commands698896
+Node: Fill Prefix702453
+Node: Adaptive Fill706374
+Node: Case708966
+Node: Text Mode711236
+Node: Outline Mode713610
+Node: Outline Format715759
+Node: Outline Motion718454
+Node: Outline Visibility719785
+Node: Outline Views723576
+Node: Foldout724481
+Node: Org Mode728216
+Node: Org Organizer730207
+Node: Org Authoring731707
+Node: TeX Mode732909
+Ref: TeX Mode-Footnote-1735469
+Node: TeX Editing735554
+Node: LaTeX Editing738621
+Node: TeX Print740117
+Node: TeX Misc747260
+Node: HTML Mode747836
+Node: Nroff Mode751508
+Node: Enriched Text752950
+Node: Enriched Mode754479
+Node: Hard and Soft Newlines756353
+Node: Editing Format Info757555
+Node: Enriched Faces758705
+Node: Enriched Indentation760570
+Node: Enriched Justification762390
+Node: Enriched Properties763677
+Node: Text Based Tables764284
+Node: Table Definition766327
+Node: Table Creation767711
+Node: Table Recognition768836
+Node: Cell Commands770110
+Node: Cell Justification771945
+Node: Table Rows and Columns773470
+Node: Table Conversion774589
+Node: Table Misc777621
+Node: Two-Column778680
+Node: Programs781772
+Node: Program Modes783373
+Node: Defuns785995
+Node: Left Margin Paren786693
+Node: Moving by Defuns789050
+Node: Imenu791381
+Node: Which Function793345
+Node: Program Indent794118
+Node: Basic Indent795147
+Node: Multi-line Indent796789
+Node: Lisp Indent799156
+Node: C Indent800701
+Node: Custom C Indent802134
+Node: Parentheses805228
+Node: Expressions806309
+Ref: Expressions-Footnote-1809915
+Node: Moving by Parens809982
+Node: Matching811884
+Node: Comments813906
+Node: Comment Commands815206
+Node: Multi-Line Comments819220
+Node: Options for Comments820508
+Node: Documentation823408
+Node: Info Lookup823934
+Node: Man Page824955
+Node: Lisp Doc827896
+Node: Hideshow828742
+Node: Symbol Completion830597
+Node: Glasses832063
+Node: Semantic832780
+Ref: Semantic-Footnote-1835076
+Node: Misc for Programs835123
+Node: C Modes836646
+Node: Motion in C837382
+Node: Electric C839393
+Node: Hungry Delete840968
+Node: Other C Commands842329
+Node: Asm Mode847166
+Node: Fortran847740
+Node: Fortran Motion849559
+Node: Fortran Indent851748
+Node: ForIndent Commands852516
+Node: ForIndent Cont853903
+Node: ForIndent Num856290
+Node: ForIndent Conv857323
+Node: ForIndent Vars858392
+Node: Fortran Comments860399
+Node: Fortran Autofill864474
+Node: Fortran Columns865641
+Node: Fortran Abbrev868597
+Node: Building869373
+Node: Compilation870666
+Node: Compilation Mode874910
+Node: Compilation Shell880685
+Node: Grep Searching882598
+Node: Flymake885898
+Node: Debuggers887164
+Node: Starting GUD888246
+Node: Debugger Operation890115
+Node: Commands of GUD893057
+Node: GUD Customization897053
+Node: GDB Graphical Interface899343
+Node: GDB User Interface Layout900898
+Node: Source Buffers903259
+Node: Breakpoints Buffer905024
+Node: Threads Buffer906286
+Node: Stack Buffer908421
+Node: Other GDB Buffers909147
+Node: Watch Expressions911130
+Node: Multithreaded Debugging913844
+Node: Executing Lisp916918
+Node: Lisp Libraries918215
+Node: Lisp Eval922388
+Node: Lisp Interaction925945
+Node: External Lisp927416
+Node: Maintaining929532
+Node: Version Control930373
+Node: Introduction to VC931976
+Node: Why Version Control?933277
+Node: Version Control Systems934229
+Node: VCS Concepts937000
+Node: VCS Merging938618
+Node: VCS Changesets941041
+Node: VCS Repositories941951
+Node: Types of Log File943100
+Node: VC Mode Line944951
+Node: Basic VC Editing947068
+Node: VC With A Merging VCS949088
+Node: VC With A Locking VCS951634
+Node: Advanced C-x v v953226
+Node: Log Buffer954641
+Node: Registering957835
+Node: Old Revisions959837
+Node: VC Change Log966207
+Node: VC Undo970768
+Node: VC Directory Mode971861
+Node: VC Directory Buffer973262
+Node: VC Directory Commands975692
+Node: Branches979730
+Node: Switching Branches980840
+Node: VC Pull982492
+Node: Merging984101
+Node: Creating Branches986200
+Node: Miscellaneous VC987781
+Node: Change Logs and VC988338
+Node: VC Delete/Rename990408
+Node: Revision Tags992045
+Node: Version Headers994874
+Node: Customizing VC996688
+Node: General VC Options997643
+Node: RCS and SCCS998965
+Node: CVS Options1001093
+Node: Change Log1003942
+Node: Change Log Commands1004481
+Node: Format of ChangeLog1007074
+Node: Tags1008844
+Node: Tag Syntax1011070
+Node: Create Tags Table1016673
+Node: Etags Regexps1021092
+Node: Select Tags Table1026269
+Node: Find Tag1027983
+Node: Tags Search1031069
+Node: List Tags1034439
+Node: EDE1036202
+Node: Emerge1038508
+Node: Overview of Emerge1039586
+Node: Submodes of Emerge1042821
+Node: State of Difference1044589
+Node: Merge Commands1047112
+Node: Exiting Emerge1049643
+Node: Combining in Emerge1050519
+Node: Fine Points of Emerge1051416
+Node: Abbrevs1052373
+Node: Abbrev Concepts1053706
+Node: Defining Abbrevs1055150
+Node: Expanding Abbrevs1057923
+Node: Editing Abbrevs1061294
+Node: Saving Abbrevs1063493
+Node: Dynamic Abbrevs1065853
+Node: Dabbrev Customization1068776
+Node: Dired1071228
+Node: Dired Enter1073701
+Node: Dired Navigation1076055
+Node: Dired Deletion1077660
+Node: Flagging Many Files1080557
+Node: Dired Visiting1083095
+Node: Marks vs Flags1084691
+Node: Operating on Files1090065
+Node: Shell Commands in Dired1096027
+Node: Transforming File Names1099074
+Node: Comparison in Dired1102373
+Node: Subdirectories in Dired1103194
+Node: Subdir Switches1104926
+Node: Subdirectory Motion1106951
+Node: Hiding Subdirectories1108159
+Node: Dired Updating1109369
+Node: Dired and Find1112586
+Node: Wdired1114768
+Node: Image-Dired1116265
+Node: Misc Dired Features1119681
+Node: Calendar/Diary1123126
+Node: Calendar Motion1125079
+Node: Calendar Unit Motion1125955
+Node: Move to Beginning or End1128216
+Node: Specified Dates1129365
+Node: Scroll Calendar1130673
+Node: Counting Days1132386
+Node: General Calendar1132900
+Node: Writing Calendar Files1134480
+Node: Holidays1138591
+Node: Sunrise/Sunset1141671
+Node: Lunar Phases1144702
+Node: Other Calendars1146015
+Node: Calendar Systems1147243
+Node: To Other Calendar1150897
+Node: From Other Calendar1153037
+Node: Mayan Calendar1155565
+Node: Diary1158800
+Node: Displaying the Diary1160637
+Node: Format of Diary File1163771
+Node: Date Formats1165997
+Node: Adding to Diary1168678
+Node: Special Diary Entries1170757
+Node: Appointments1175239
+Node: Importing Diary1178103
+Node: Daylight Saving1179920
+Node: Time Intervals1182548
+Node: Advanced Calendar/Diary Usage1184467
+Node: Calendar Customizing1185427
+Node: Holiday Customizing1187709
+Node: Date Display Format1193691
+Node: Time Display Format1194711
+Node: Diary Customizing1195802
+Node: Non-Gregorian Diary1199697
+Node: Diary Display1202718
+Node: Fancy Diary Display1206379
+Node: Sexp Diary Entries1208283
+Node: Sending Mail1216073
+Node: Mail Format1218243
+Node: Mail Headers1219660
+Node: Mail Aliases1224456
+Node: Mail Commands1226504
+Node: Mail Sending1227352
+Node: Header Editing1230428
+Node: Citing Mail1232377
+Node: Mail Misc1233862
+Node: Mail Signature1236714
+Node: Mail Amusements1238002
+Ref: Mail Amusements-Footnote-11239167
+Node: Mail Methods1239208
+Node: Rmail1240618
+Node: Rmail Basics1242431
+Node: Rmail Scrolling1244794
+Node: Rmail Motion1246023
+Node: Rmail Deletion1249856
+Node: Rmail Inbox1252880
+Node: Rmail Files1256791
+Node: Rmail Output1259661
+Node: Rmail Labels1263985
+Node: Rmail Attributes1266404
+Node: Rmail Reply1268040
+Node: Rmail Summary1273927
+Node: Rmail Make Summary1274939
+Node: Rmail Summary Edit1278009
+Node: Rmail Sorting1282600
+Node: Rmail Display1284704
+Node: Rmail Coding1288649
+Node: Rmail Editing1290276
+Node: Rmail Digest1291608
+Node: Rmail Rot131292693
+Node: Movemail1293421
+Node: Remote Mailboxes1297022
+Node: Other Mailbox Formats1300347
+Node: Gnus1300961
+Node: Buffers of Gnus1301657
+Node: Gnus Startup1303007
+Node: Gnus Group Buffer1304858
+Node: Gnus Summary Buffer1306120
+Node: Document View1307135
+Ref: Document View-Footnote-11308863
+Ref: Document View-Footnote-21309028
+Node: DocView Navigation1309266
+Node: DocView Searching1310814
+Node: DocView Slicing1311827
+Node: DocView Conversion1312998
+Node: Shell1313650
+Node: Single Shell1316000
+Node: Interactive Shell1319695
+Node: Shell Mode1322641
+Ref: Shell Mode-Footnote-11329415
+Node: Shell Prompts1329635
+Node: Shell History1331445
+Node: Shell Ring1332260
+Node: Shell History Copying1335672
+Node: History References1337151
+Node: Directory Tracking1338319
+Node: Shell Options1340034
+Node: Terminal emulator1342639
+Node: Term Mode1344904
+Node: Remote Host1346392
+Node: Serial Terminal1347483
+Node: Emacs Server1348493
+Ref: Emacs Server-Footnote-11351356
+Node: Invoking emacsclient1351524
+Node: emacsclient Options1354612
+Node: Printing1360816
+Node: PostScript1363314
+Node: PostScript Variables1365881
+Node: Printing Package1369647
+Node: Sorting1370980
+Node: Picture Mode1376496
+Node: Basic Picture1378916
+Node: Insert in Picture1381481
+Node: Tabs in Picture1383011
+Node: Rectangles in Picture1384863
+Node: Editing Binary Files1386748
+Node: Saving Emacs Sessions1388245
+Node: Recursive Edit1390758
+Node: Emulation1394205
+Node: Hyperlinking1397117
+Node: Browse-URL1397586
+Node: Goto Address mode1398718
+Node: FFAP1399726
+Node: Amusements1401986
+Node: Packages1404892
+Node: Package Menu1406340
+Node: Package Installation1409312
+Node: Package Files1413398
+Node: Customization1415080
+Node: Easy Customization1416149
+Node: Customization Groups1417568
+Node: Browsing Custom1419749
+Node: Changing a Variable1422187
+Node: Saving Customizations1428685
+Node: Face Customization1430616
+Node: Specific Customization1433792
+Node: Custom Themes1436453
+Node: Creating Custom Themes1440709
+Node: Variables1443049
+Node: Examining1445680
+Node: Hooks1448002
+Node: Locals1452466
+Node: File Variables1456102
+Node: Specifying File Variables1456670
+Node: Safe File Variables1462785
+Node: Directory Variables1465782
+Ref: Directory Variables-Footnote-11469722
+Node: Key Bindings1469951
+Node: Keymaps1471178
+Node: Prefix Keymaps1473496
+Node: Local Keymaps1475435
+Node: Minibuffer Maps1477139
+Node: Rebinding1477947
+Node: Init Rebinding1481102
+Node: Modifier Keys1484979
+Node: Function Keys1486812
+Node: Named ASCII Chars1489549
+Node: Mouse Buttons1491057
+Node: Disabling1496410
+Node: Init File1498574
+Node: Init Syntax1501592
+Node: Init Examples1504458
+Node: Terminal Init1510177
+Node: Find Init1512119
+Node: Init Non-ASCII1513229
+Node: Quitting1514849
+Node: Lossage1519799
+Node: DEL Does Not Delete1520726
+Node: Stuck Recursive1522805
+Node: Screen Garbled1523475
+Node: Text Garbled1524375
+Node: Memory Full1525054
+Node: Crashing1526203
+Node: After a Crash1528342
+Node: Emergency Escape1530710
+Node: Bugs1532756
+Node: Known Problems1533537
+Node: Bug Criteria1536520
+Node: Understanding Bug Reporting1539224
+Node: Checklist1542043
+Node: Sending Patches1559738
+Node: Contributing1564881
+Node: Service1565986
+Node: Copying1566631
+Node: GNU Free Documentation License1604210
+Node: Emacs Invocation1629387
+Node: Action Arguments1632854
+Node: Initial Options1635473
+Ref: Initial Options-Footnote-11640700
+Node: Command Example1640749
+Node: Environment1641586
+Node: General Variables1643615
+Ref: General Variables-Footnote-11650438
+Node: Misc Variables1650715
+Node: MS-Windows Registry1653431
+Node: Display X1655049
+Node: Font X1656955
+Node: Colors X1657631
+Node: Window Size X1660548
+Node: Borders X1665080
+Node: Title X1666313
+Node: Icons X1667068
+Node: Misc X1668091
+Node: X Resources1668981
+Node: Resources1670020
+Node: Table of Resources1673954
+Node: Lucid Resources1680014
+Node: LessTif Resources1681835
+Node: GTK resources1684795
+Node: GTK Resource Basics1686829
+Node: GTK Widget Names1688600
+Node: GTK Names in Emacs1690230
+Node: GTK styles1691892
+Node: Antinews1696530
+Node: Mac OS / GNUstep1701453
+Node: Mac / GNUstep Basics1702912
+Node: Mac / GNUstep Customization1705414
+Node: Mac / GNUstep Events1706769
+Node: GNUstep Support1710605
+Node: Microsoft Windows1710890
+Node: Windows Startup1712426
+Node: Text and Binary1716380
+Node: Windows Files1721737
+Node: ls in Lisp1723322
+Node: Windows HOME1728797
+Ref: Windows HOME-Footnote-11731322
+Node: Windows Keyboard1731399
+Ref: Windows Keyboard-Footnote-11737185
+Node: Windows Mouse1737484
+Node: Windows Processes1738493
+Node: Windows Printing1741842
+Ref: Windows Printing-Footnote-11748229
+Node: Windows Fonts1748427
+Node: Windows Misc1753113
+Node: MS-DOS1754126
+Node: MS-DOS Keyboard1755373
+Node: MS-DOS Mouse1757321
+Node: MS-DOS Display1760056
+Node: MS-DOS File Names1764128
+Node: MS-DOS Printing1766872
+Node: MS-DOS and MULE1768276
+Ref: MS-DOS and MULE-Footnote-11773181
+Ref: MS-DOS and MULE-Footnote-21773516
+Node: MS-DOS Processes1773861
+Node: Manifesto1776254
+Ref: Manifesto-Footnote-11800470
+Ref: Manifesto-Footnote-21801359
+Ref: Manifesto-Footnote-31801632
+Ref: Manifesto-Footnote-41801674
+Ref: Manifesto-Footnote-51802194
+Ref: Manifesto-Footnote-61802300
+Ref: Manifesto-Footnote-71802901
+Node: Glossary1803252
+Ref: Glossary - Abbrev1803360
+Ref: Glossary - Balanced Expression1806295
+Ref: Glossary - Binding1807064
+Ref: Glossary - C-1809490
+Ref: Glossary - Compilation1812256
+Ref: Glossary - Continuation Line1813388
+Ref: Glossary - Daemon1816092
+Ref: Glossary - Default1816690
+Ref: Glossary - Deletion of Files1817734
+Ref: Glossary - Directory Local Variable1818752
+Ref: Glossary - End Of Line1820785
+Ref: Glossary - File Locking1823253
+Ref: Glossary - Filling1824780
+Ref: Glossary - Font Lock1825037
+Ref: Glossary - Free Software Foundation1826374
+Ref: Glossary - Global Substitution1828200
+Ref: Glossary - Incremental Search1831993
+Ref: Glossary - Killing1835165
+Ref: Glossary - Mail1837846
+Ref: Glossary - Minibuffer History1840381
+Ref: Glossary - Numeric Argument1842979
+Ref: Glossary - Page1843589
+Ref: Glossary - Quitting1845679
+Ref: Glossary - Regular Expression1848121
+Ref: Glossary - Server1852146
+Ref: Glossary - Tags Table1855337
+Ref: Glossary - Text Terminal1856199
+Ref: Glossary - Tooltips1857169
+Ref: Glossary - Truncation1858060
+Ref: Glossary - Yanking1860882
+Node: Acknowledgments1861095
+Node: Key Index1913412
+Node: Option Index1986527
+Node: Command Index1992827
+Node: Variable Index2110574
+Node: Concept Index2171266
 
 End Tag Table
 

@@ -275,13 +275,13 @@ But Emacs (22 or later) includes TRAMP already, and there is a TRAMP
 package for XEmacs, as well.  So maybe it is easier to just use those.
 But if you want the bleeding edge, read on......
 
-   For the especially brave, TRAMP is available from CVS.  The CVS
+   For the especially brave, TRAMP is available from Git.  The Git
 version is the latest version of the code and may contain incomplete
 features or new issues.  Use these versions at your own risk.
 
    Instructions for obtaining the latest development version of TRAMP
-from CVS can be found by going to the Savannah project page at the
-following URL and then clicking on the CVS link in the navigation bar
+from Git can be found by going to the Savannah project page at the
+following URL and then clicking on the Git link in the navigation bar
 at the top.
 
 `http://savannah.gnu.org/projects/tramp/'
@@ -289,18 +289,20 @@ at the top.
 Or follow the example session below:
 
      ] *cd ~/emacs*
-     ] *export CVS_RSH="ssh"*
-     ] *cvs -z3 -d:pserver:anonymous@cvs.savannah.gnu.org:/sources/tramp co tramp*
+     ] *git clone git://git.savannah.gnu.org/tramp.git*
+
+Tramp developers use instead
+
+     ] *git clone login@git.sv.gnu.org:/srv/git/tramp.git*
 
 You should now have a directory `~/emacs/tramp' containing the latest
 version of TRAMP.  You can fetch the latest updates from the repository
 by issuing the command:
 
      ] *cd ~/emacs/tramp*
-     ] *export CVS_RSH="ssh"*
-     ] *cvs update -d*
+     ] *git pull*
 
-Once you've got updated files from the CVS repository, you need to run
+Once you've got updated files from the Git repository, you need to run
 `autoconf' in order to get an up-to-date `configure' script:
 
      ] *cd ~/emacs/tramp*
@@ -716,7 +718,7 @@ fair trade-off between both approaches.
      requests to Ange-FTP.
 
 `smb' -- `smbclient'
-     This is another not natural TRAMP method.  It uses the `smbclient'
+     This is another not native TRAMP method.  It uses the `smbclient'
      command on different Unices in order to connect to an SMB server.
      An SMB server might be a Samba (or CIFS) server on another UNIX
      host or, more interesting, a host running MS Windows.  So far, it
@@ -727,7 +729,7 @@ fair trade-off between both approaches.
      remote host.  Remember that the `$' character, in which default
      shares usually end, must be written `$$' due to environment
      variable substitution in file names.  If no share name is given
-     (i.e. remote directory `/'), all available shares are listed.
+     (i.e., remote directory `/'), all available shares are listed.
 
      Since authorization is done on share level, you will always be
      prompted for a password if you access another share on the same
@@ -2496,7 +2498,7 @@ File: tramp.info,  Node: Frequently Asked Questions,  Next: Function Index,  Pre
 
        2. Use configuration possibilities of your method:
 
-          Several connection methods (i.e. the programs used) offer
+          Several connection methods (i.e., the programs used) offer
           powerful configuration possibilities (*note Customizing
           Completion::).  In the given case, this could be
           `~/.ssh/config':
@@ -3649,46 +3651,46 @@ Node: Top1074
 Node: Overview5362
 Ref: Overview-Footnote-111111
 Node: Obtaining Tramp11263
-Node: History12851
-Node: Configuration14187
-Node: Connection types16428
-Node: Inline methods18273
-Node: External methods24006
-Node: GVFS based methods33414
-Node: Gateway methods34827
-Node: Default Method36284
-Node: Default User40258
-Node: Default Host42213
-Node: Multi-hops42987
-Ref: Multi-hops-Footnote-148119
-Node: Customizing Methods48474
-Node: Customizing Completion48887
-Node: Password handling52356
-Ref: Using an authentication file53070
-Ref: Caching passwords53779
-Node: Connection caching54748
-Node: Remote Programs56396
-Node: Remote shell setup59193
-Node: Auto-save and Backup68243
-Node: Windows setup hints71123
-Node: Usage72887
-Node: Filename Syntax74271
-Node: Alternative Syntax76837
-Node: Filename completion77829
-Node: Ad-hoc multi-hops80808
-Node: Remote processes82246
-Ref: Running a debugger on a remote host88481
-Node: Cleanup remote connections90364
-Node: Bug Reports91690
-Node: Frequently Asked Questions94010
-Node: Files directories and localnames114403
-Node: Localname deconstruction114823
-Node: External packages115557
-Node: Traces and Profiles118003
-Node: Issues120208
-Node: GNU Free Documentation License121914
-Node: Function Index147065
-Node: Variable Index149112
-Node: Concept Index151282
+Node: History12849
+Node: Configuration14185
+Node: Connection types16426
+Node: Inline methods18271
+Node: External methods24004
+Node: GVFS based methods33412
+Node: Gateway methods34825
+Node: Default Method36282
+Node: Default User40256
+Node: Default Host42211
+Node: Multi-hops42985
+Ref: Multi-hops-Footnote-148117
+Node: Customizing Methods48472
+Node: Customizing Completion48885
+Node: Password handling52354
+Ref: Using an authentication file53068
+Ref: Caching passwords53777
+Node: Connection caching54746
+Node: Remote Programs56394
+Node: Remote shell setup59191
+Node: Auto-save and Backup68241
+Node: Windows setup hints71121
+Node: Usage72885
+Node: Filename Syntax74269
+Node: Alternative Syntax76835
+Node: Filename completion77827
+Node: Ad-hoc multi-hops80806
+Node: Remote processes82244
+Ref: Running a debugger on a remote host88479
+Node: Cleanup remote connections90362
+Node: Bug Reports91688
+Node: Frequently Asked Questions94008
+Node: Files directories and localnames114402
+Node: Localname deconstruction114822
+Node: External packages115556
+Node: Traces and Profiles118002
+Node: Issues120207
+Node: GNU Free Documentation License121913
+Node: Function Index147064
+Node: Variable Index149111
+Node: Concept Index151281
 
 End Tag Table

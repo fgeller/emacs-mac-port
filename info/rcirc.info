@@ -148,7 +148,7 @@ File: rcirc.info,  Node: Getting started with rcirc,  Prev: Internet Relay Chat,
 Use the command `M-x irc' to connect using the defaults.  *Note
 Configuration::, if you want to change the defaults.
 
-   Use `C-u M-x irc' if you don't want to use the defaults, eg. if you
+   Use `C-u M-x irc' if you don't want to use the defaults, e.g., if you
 want to connect to a different network, or connect to the same network
 using a different nick.  This will prompt you for four things:
 
@@ -566,7 +566,7 @@ notices using `C-c C-o'.
 `rcirc-omit-responses' variable.  Here's an example of how to omit away
 messages:
 
-     (setq rcirc-omit-responses '("JOIN" "PART" "QUIT" "NICK" "AWAY))
+     (setq rcirc-omit-responses '("JOIN" "PART" "QUIT" "NICK" "AWAY"))
 
    Notice that these messages will not be omitted if the nick in
 question has recently been active.  After all, you don't want to
@@ -1496,25 +1496,25 @@ Node: Top989
 Node: Basics2726
 Node: Internet Relay Chat2992
 Node: Getting started with rcirc4513
-Node: Reference7395
-Node: rcirc commands7737
-Node: Useful IRC commands10604
-Node: Configuration11336
-Node: Fighting Information Overload16237
-Node: Channels16737
-Node: People18313
-Node: Keywords19924
-Node: Notices20429
-Node: Hacking and Tweaking21327
-Node: Skipping /away messages using handlers21797
-Node: Using fly spell mode22549
-Node: Scrolling conservatively22975
-Node: Changing the time stamp format23652
-Node: Defining a new command24033
-Node: Reconnecting after you have lost the connection24858
-Node: GNU Free Documentation License26723
-Node: Key Index51906
-Node: Variable Index53292
-Node: Index54801
+Node: Reference7397
+Node: rcirc commands7739
+Node: Useful IRC commands10606
+Node: Configuration11338
+Node: Fighting Information Overload16239
+Node: Channels16739
+Node: People18315
+Node: Keywords19926
+Node: Notices20431
+Node: Hacking and Tweaking21330
+Node: Skipping /away messages using handlers21800
+Node: Using fly spell mode22552
+Node: Scrolling conservatively22978
+Node: Changing the time stamp format23655
+Node: Defining a new command24036
+Node: Reconnecting after you have lost the connection24861
+Node: GNU Free Documentation License26726
+Node: Key Index51909
+Node: Variable Index53295
+Node: Index54804
 
 End Tag Table

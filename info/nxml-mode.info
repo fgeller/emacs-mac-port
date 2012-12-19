@@ -336,7 +336,7 @@ having sections implicitly delimited by different `hN' elements.  This
 limitation may be removed in a future version.
 
    The variable `nxml-section-element-name-regexp' gives a regexp for
-the local names (i.e. the part of the name following any prefix) of
+the local names (i.e., the part of the name following any prefix) of
 section elements. The variable `nxml-heading-element-name-regexp' gives
 a regexp for the local names of heading elements. For an element to be
 recognized as a section
@@ -618,7 +618,7 @@ specifies that the schema for `spec.xml' is `docbook.rnc'.
 attribute to specify the schema for any document whose URI matches a
 pattern.  The pattern has the same syntax as an absolute or relative
 URI except that the path component of the URI can use a `*' character
-to stand for zero or more characters within a path segment (i.e. any
+to stand for zero or more characters within a path segment (i.e., any
 character other `/').  Typically, the URI pattern looks like a relative
 URI, but, whereas a relative URI in the `resource' attribute is
 resolved into a particular absolute URI using the base URI of the
@@ -818,15 +818,15 @@ Node: Completion4975
 Node: Inserting end-tags8980
 Node: Paragraphs10298
 Node: Outlining12558
-Node: Locating a schema18174
-Node: Commands for locating a schema19621
-Node: Schema locating files22245
-Node: Schema locating file syntax basics23138
-Node: Using the document's URI to locate a schema25030
-Node: Using the document element to locate a schema27555
-Node: Using type identifiers in schema locating files28621
-Node: Using multiple schema locating files31037
-Node: DTDs32865
-Node: Limitations34329
+Node: Locating a schema18175
+Node: Commands for locating a schema19622
+Node: Schema locating files22246
+Node: Schema locating file syntax basics23139
+Node: Using the document's URI to locate a schema25031
+Node: Using the document element to locate a schema27557
+Node: Using type identifiers in schema locating files28623
+Node: Using multiple schema locating files31039
+Node: DTDs32867
+Node: Limitations34331
 
 End Tag Table

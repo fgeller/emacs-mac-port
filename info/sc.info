@@ -183,7 +183,7 @@ display the minor mode string `SC'.
 cited text and want to re-fill it, you must use an add-on package such
 as `filladapt' or `gin-mode'.  These packages can recognize Supercited
 text and will fill them appropriately.  Emacs's built-in filling
-routines, e.g. `fill-paragraph', do not recognize cited text and will
+routines, e.g., `fill-paragraph', do not recognize cited text and will
 not re-fill them properly because it cannot guess the `fill-prefix'
 being used.  *Note Post-yank Formatting Commands::, for details.
 
@@ -1019,7 +1019,7 @@ appropriate strings.  By changing these variables in your hook
 functions, you change the attribution and citation strings used by
 Supercite.  One possible use of this would be to override any
 automatically derived attribution string when it is only one character
-long; e.g. you prefer to use `"initials"' but the author only has one
+long; e.g., you prefer to use `"initials"' but the author only has one
 name.
 
 
@@ -1527,7 +1527,7 @@ steps:
 
   1. Insert the original message, including the mail headers into the
      reply buffer. At this point you should not modify the raw text in
-     any way (except for any necessary decoding, e.g. of
+     any way (except for any necessary decoding, e.g., of
      quoted-printable text), and you should place all the original
      headers into the body of the reply.  This means that many of the
      mail headers will be duplicated, one copy above the
@@ -2536,36 +2536,36 @@ Node: Introduction2560
 Node: Usage Overview3587
 Node: What Supercite Does Not Do4733
 Node: What Supercite Does5870
-Node: Citations8690
-Node: Citation Elements10995
-Node: Recognizing Citations12865
-Node: Information Keys and the Info Alist14603
-Node: Reference Headers17182
-Node: The Built-in Header Rewrite Functions18733
-Node: Electric References21162
-Node: Getting Connected24018
-Node: Replying and Yanking27151
-Node: Reply Buffer Initialization27471
-Node: Filling Cited Text34335
-Node: Selecting an Attribution37781
-Node: Attribution Preferences38654
-Node: Anonymous Attributions42542
-Node: Author Names45587
-Node: Configuring the Citation Engine48032
-Node: Using Regi49793
-Node: Frames You Can Customize53633
-Node: Post-yank Formatting Commands56128
-Node: Citing Commands57291
-Node: Insertion Commands59469
-Node: Variable Toggling Shortcuts60414
-Node: Mail Field Commands62779
-Node: Miscellaneous Commands65121
-Node: Hints to MUA Authors65521
-Node: Thanks and History69201
-Node: GNU Free Documentation License71262
-Node: Concept Index96444
-Node: Command Index104303
-Node: Key Index111433
-Node: Variable Index113811
+Node: Citations8691
+Node: Citation Elements10996
+Node: Recognizing Citations12866
+Node: Information Keys and the Info Alist14604
+Node: Reference Headers17183
+Node: The Built-in Header Rewrite Functions18734
+Node: Electric References21163
+Node: Getting Connected24019
+Node: Replying and Yanking27152
+Node: Reply Buffer Initialization27472
+Node: Filling Cited Text34336
+Node: Selecting an Attribution37782
+Node: Attribution Preferences38655
+Node: Anonymous Attributions42543
+Node: Author Names45589
+Node: Configuring the Citation Engine48034
+Node: Using Regi49795
+Node: Frames You Can Customize53635
+Node: Post-yank Formatting Commands56130
+Node: Citing Commands57293
+Node: Insertion Commands59471
+Node: Variable Toggling Shortcuts60416
+Node: Mail Field Commands62781
+Node: Miscellaneous Commands65123
+Node: Hints to MUA Authors65523
+Node: Thanks and History69204
+Node: GNU Free Documentation License71265
+Node: Concept Index96447
+Node: Command Index104306
+Node: Key Index111436
+Node: Variable Index113814
 
 End Tag Table

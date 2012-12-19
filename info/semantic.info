@@ -227,7 +227,7 @@ minor modes.  The variable `semantic-default-submodes' determines which
 auxiliary modes are enabled; the defaults are SemanticDB mode (*note
 SemanticDB::) and Global Semantic Idle Scheduler mode (*note Idle
 Scheduler::).  You can also toggle the auxiliary minor modes
-separately, using their mode functions (e.g. `M-x
+separately, using their mode functions (e.g., `M-x
 semanticdb-minor-mode'), or via the `Development' menu.  The various
 auxiliary minor modes are described in the following sections.
 
@@ -283,7 +283,7 @@ File: semantic.info,  Node: Semantic mode user commands,  Up: Semantic mode
 Semantic mode provides a number of commands for navigating, querying,
 and editing source code in a language-aware manner.  These commands
 generally act on "tags", which are the source-code units deemed
-"important" by the present programming language (e.g. functions in the
+"important" by the present programming language (e.g., functions in the
 C programming language).
 
    These commands may be used in any buffer that has been parsed by
@@ -2461,57 +2461,57 @@ Node: Introduction2732
 Node: Semantic Components6014
 Node: Using Semantic7365
 Node: Semantic mode8790
-Node: Semantic mode user commands11673
-Node: SemanticDB14850
-Node: Semanticdb Tag Storage16230
-Node: Semanticdb Search Configuration18804
-Node: Search Throttle20234
-Node: Semanticdb Roots22428
-Node: Include paths23913
-Node: Semanticdb search debugging commands25218
-Node: Changing Backends26598
-Node: Create System Databases27356
-Node: Idle Scheduler27991
-Node: Reparsing Options29700
-Node: Idle Working Options31184
-Node: Debugging Idle Time Issues32454
-Node: Idle Summary Mode33137
-Node: Idle Completions Mode34758
-Node: Analyzer37745
-Node: Smart Completion38297
-Node: Smart Summary41444
-Node: Smart Jump42360
-Node: Analyzer Debug43379
-Node: Speedbar49856
-Node: SymRef51147
-Node: MRU Bookmarks53102
-Node: Sticky Func Mode54049
-Node: Highlight Func Mode55204
-Node: Tag Decoration Mode56261
-Node: Semantic Internals60261
-Node: Parser code60985
-Node: Tag handling62739
-Node: Semanticdb Internals64418
-Node: Analyzer Internals66551
-Node: Tools68513
-Node: Tests70200
-Node: Glossary70658
-Ref: BNF70815
-Ref: bovinate71014
-Ref: bovine lambda71103
-Ref: bovine parser71286
-Ref: context71412
-Ref: LALR71421
-Ref: lexer71427
-Ref: LL71641
-Ref: nonterminal71645
-Ref: overloadable71837
-Ref: parser71945
-Ref: tag71998
-Ref: token72343
-Ref: token stream72461
-Ref: wisent parser72540
-Node: GNU Free Documentation License72706
-Node: Index97876
+Node: Semantic mode user commands11674
+Node: SemanticDB14852
+Node: Semanticdb Tag Storage16232
+Node: Semanticdb Search Configuration18806
+Node: Search Throttle20236
+Node: Semanticdb Roots22430
+Node: Include paths23915
+Node: Semanticdb search debugging commands25220
+Node: Changing Backends26600
+Node: Create System Databases27358
+Node: Idle Scheduler27993
+Node: Reparsing Options29702
+Node: Idle Working Options31186
+Node: Debugging Idle Time Issues32456
+Node: Idle Summary Mode33139
+Node: Idle Completions Mode34760
+Node: Analyzer37747
+Node: Smart Completion38299
+Node: Smart Summary41446
+Node: Smart Jump42362
+Node: Analyzer Debug43381
+Node: Speedbar49858
+Node: SymRef51149
+Node: MRU Bookmarks53104
+Node: Sticky Func Mode54051
+Node: Highlight Func Mode55206
+Node: Tag Decoration Mode56263
+Node: Semantic Internals60263
+Node: Parser code60987
+Node: Tag handling62741
+Node: Semanticdb Internals64420
+Node: Analyzer Internals66553
+Node: Tools68515
+Node: Tests70202
+Node: Glossary70660
+Ref: BNF70817
+Ref: bovinate71016
+Ref: bovine lambda71105
+Ref: bovine parser71288
+Ref: context71414
+Ref: LALR71423
+Ref: lexer71429
+Ref: LL71643
+Ref: nonterminal71647
+Ref: overloadable71839
+Ref: parser71947
+Ref: tag72000
+Ref: token72345
+Ref: token stream72463
+Ref: wisent parser72542
+Node: GNU Free Documentation License72708
+Node: Index97878
 
 End Tag Table

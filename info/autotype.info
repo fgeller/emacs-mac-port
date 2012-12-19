@@ -115,7 +115,7 @@ willing to furnish it.  An example would be multiple "else if"
 conditions.  You can recognize this situation by a prompt ending in
 <RET>, `C-g' or `C-h'.  This means that entering an empty string will
 simply assume that you are finished.  Typing quit on the other hand
-terminates the loop but also the rest of the skeleton, e.g. an "else"
+terminates the loop but also the rest of the skeleton, e.g., an "else"
 clause is skipped.  Only a syntactically necessary termination still
 gets inserted.
 
@@ -133,8 +133,8 @@ languages, reindent the wrapped code for you.
 
    Skeleton commands take an optional numeric prefix argument (*note
 (emacs)Arguments::).  This is interpreted in two different ways
-depending on whether the prefix is positive, i.e. forwards oriented or
-negative, i.e. backwards oriented.
+depending on whether the prefix is positive, i.e., forwards oriented,
+or negative, i.e., backwards oriented.
 
    A positive prefix means to wrap the skeleton around that many
 following words.  This is accomplished by putting the words there where
@@ -229,11 +229,11 @@ the following table:
      that interregion.
 
 `&'
-     Logical and.  Iff preceding element moved point, i.e. usually
+     Logical and.  Iff preceding element moved point, i.e., usually
      inserted something, do following element.
 
 `|'
-     Logical xor.  Iff preceding element didn't move point, i.e.
+     Logical xor.  Iff preceding element didn't move point, i.e.,
      usually inserted nothing, do following element.
 
 `-NUMBER'
@@ -367,7 +367,7 @@ function can simply insert some text, indeed, it can be skeleton
 command (*note Using Skeletons::).  It can be a lambda function which
 will for example conditionally call another function.  Or it can even
 reset the mode for the buffer. If you want to perform several such
-actions in order, you use a vector, i.e. several of the above elements
+actions in order, you use a vector, i.e., several of the above elements
 between square brackets (`[...]').
 
    By default C and C++ headers insert a definition of a symbol derived
@@ -391,13 +391,13 @@ Modes::) are set to Shell script mode.
 documentation with `C-h f define-auto-insert'.
 
    The variable `auto-insert' says what to do when `auto-insert' is
-called non-interactively, e.g. when a newly found file is empty (see
+called non-interactively, e.g., when a newly found file is empty (see
 above):
 `nil'
      Do nothing.
 
 `t'
-     Insert something if possible, i.e. there is a matching entry in
+     Insert something if possible, i.e., there is a matching entry in
      `auto-insert-alist'.
 
 other
@@ -432,8 +432,8 @@ inserted as a comment.
 `copyright-limit' characters of the buffer and updates it when
 necessary.  The current year (variable `copyright-current-year') is
 added to the existing ones, in the same format as the preceding year,
-i.e. 1994, '94 or 94.  If a dash-separated year list up to last year is
-found, that is extended to current year, else the year is added
+i.e., 1994, '94 or 94.  If a dash-separated year list up to last year
+is found, that is extended to current year, else the year is added
 separated by a comma.  Or it replaces them when this is called with a
 prefix argument.  If a header referring to a wrong version of the GNU
 General Public License (*note (emacs)Copying::) is found, that is
@@ -473,7 +473,7 @@ furnished with a magic number, nor is it made executable.  This is
 mainly intended for resource files, which are only meant to be read in.
 
    The variable `executable-insert' says what to do when
-`executable-set-magic' is called non-interactively, e.g. when file has
+`executable-set-magic' is called non-interactively, e.g., when file has
 no or the wrong magic number:
 `nil'
      Do nothing.
@@ -1181,20 +1181,20 @@ Variable Index
 Tag Table:
 Node: Top1075
 Node: Using Skeletons4321
-Node: Wrapping Skeletons5797
-Node: Skeletons as Abbrevs8405
-Node: Skeleton Language9301
-Node: Inserting Pairs12884
-Node: Autoinserting15271
-Node: Copyrights19063
-Node: Executables20936
-Node: Timestamps22639
-Node: QuickURL24019
-Node: Tempo24890
-Node: Hippie Expand26078
-Node: GNU Free Documentation License27115
-Node: Concept Index52298
-Node: Command Index53414
-Node: Variable Index54879
+Node: Wrapping Skeletons5798
+Node: Skeletons as Abbrevs8409
+Node: Skeleton Language9305
+Node: Inserting Pairs12890
+Node: Autoinserting15277
+Node: Copyrights19072
+Node: Executables20946
+Node: Timestamps22650
+Node: QuickURL24030
+Node: Tempo24901
+Node: Hippie Expand26089
+Node: GNU Free Documentation License27126
+Node: Concept Index52309
+Node: Command Index53425
+Node: Variable Index54890
 
 End Tag Table

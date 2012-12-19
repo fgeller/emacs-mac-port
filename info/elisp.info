@@ -2,7 +2,7 @@ This is /home/cyd/emacs/doc/lispref/../../info/elisp.info, produced by
 makeinfo version 4.13 from /home/cyd/emacs/doc/lispref/elisp.texi.
 
 This is the `GNU Emacs Lisp Reference Manual' corresponding to Emacs
-version 24.2.90.
+version 24.2.91.
 
 Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
@@ -31,7 +31,7 @@ Emacs Lisp
 **********
 
 This is the `GNU Emacs Lisp Reference Manual' corresponding to Emacs
-version 24.2.90.
+version 24.2.91.
 
 Copyright (C) 1990-1996, 1998-2012 Free Software Foundation, Inc.
 
@@ -259,6 +259,7 @@ Lists
 * Modifying Lists::         Storing new pieces into an existing list.
 * Sets And Lists::          A list can represent a finite mathematical set.
 * Association Lists::       A list can represent a finite relation or mapping.
+* Property Lists::          A list of paired elements.
 
 Modifying Existing List Structure
 
@@ -266,6 +267,12 @@ Modifying Existing List Structure
 * Setcdr::                  Replacing part of the list backbone.
                               This can be used to remove or add elements.
 * Rearrangement::           Reordering the elements in a list; combining lists.
+
+Property Lists
+
+* Plists and Alists::       Comparison of the advantages of property
+                              lists and association lists.
+* Plist Access::            Accessing property lists stored elsewhere.
 
 Sequences, Arrays, and Vectors
 
@@ -291,15 +298,13 @@ Symbols
                               and property lists.
 * Definitions::             A definition says how a symbol will be used.
 * Creating Symbols::        How symbols are kept unique.
-* Property Lists::          Each symbol has a property list
+* Symbol Properties::       Each symbol has a property list
                               for recording miscellaneous information.
 
-Property Lists
+Symbol Properties
 
-* Plists and Alists::       Comparison of the advantages of property
-                              lists and association lists.
-* Symbol Plists::           Functions to access symbols' property lists.
-* Other Plists::            Accessing property lists stored elsewhere.
+* Symbol Plists::           Accessing symbol properties.
+* Standard Properties::     Standard meanings of symbol properties.
 
 Evaluation
 
@@ -1438,7 +1443,7 @@ chapters describe features that are peculiar to Emacs Lisp or relate
 specifically to editing.
 
    This is the `GNU Emacs Lisp Reference Manual', corresponding to
-Emacs version 24.2.90.
+Emacs version 24.2.91.
 
 * Menu:
 
@@ -1741,11 +1746,11 @@ when you call the function.
           (+ (- X W) Y...)
 
    By convention, any argument whose name contains the name of a type
-(e.g. INTEGER, INTEGER1 or BUFFER) is expected to be of that type.  A
+(e.g., INTEGER, INTEGER1 or BUFFER) is expected to be of that type.  A
 plural of a type (such as BUFFERS) often means a list of objects of
 that type.  An argument named OBJECT may be of any type.  (For a list
 of Emacs object types, *note Lisp Data Types::.)  An argument with any
-other sort of name (e.g. NEW-FILE) is specific to the function; if the
+other sort of name (e.g., NEW-FILE) is specific to the function; if the
 function has a documentation string, the type of the argument should be
 described there (*note Documentation::).
 
@@ -2766,9 +2771,10 @@ There are two text representations for non-ASCII characters in Emacs
 strings: multibyte and unibyte (*note Text Representations::).  Roughly
 speaking, unibyte strings store raw bytes, while multibyte strings
 store human-readable text.  Each character in a unibyte string is a
-byte, i.e. its value is between 0 and 255.  By contrast, each character
-in a multibyte string may have a value between 0 to 4194303 (*note
-Character Type::).  In both cases, characters above 127 are non-ASCII.
+byte, i.e., its value is between 0 and 255.  By contrast, each
+character in a multibyte string may have a value between 0 to 4194303
+(*note Character Type::).  In both cases, characters above 127 are
+non-ASCII.
 
    You can include a non-ASCII character in a string constant by
 writing it literally.  If the string constant is read from a multibyte
@@ -2790,7 +2796,7 @@ automatically assumes that it is multibyte.
    You can also use hexadecimal escape sequences (`\xN') and octal
 escape sequences (`\N') in string constants.  *But beware:* If a string
 constant contains hexadecimal or octal escape sequences, and these
-escape sequences all specify unibyte characters (i.e. less than 256),
+escape sequences all specify unibyte characters (i.e., less than 256),
 and there are no other literal non-ASCII characters or Unicode-style
 escape sequences in the string, then Emacs automatically assumes that
 it is a unibyte string.  That is to say, it assumes that all non-ASCII
@@ -3632,18 +3638,18 @@ File: elisp.info,  Node: Equality Predicates,  Prev: Type Predicates,  Up: Lisp 
 
 Here we describe functions that test for equality between two objects.
 Other functions test equality of contents between objects of specific
-types, e.g. strings.  For these predicates, see the appropriate chapter
-describing the data type.
+types, e.g., strings.  For these predicates, see the appropriate
+chapter describing the data type.
 
  -- Function: eq object1 object2
      This function returns `t' if OBJECT1 and OBJECT2 are the same
      object, and `nil' otherwise.
 
      If OBJECT1 and OBJECT2 are integers with the same value, they are
-     considered to be the same object (i.e. `eq' returns `t').  If
+     considered to be the same object (i.e., `eq' returns `t').  If
      OBJECT1 and OBJECT2 are symbols with the same name, they are
      normally the same object--but see *note Creating Symbols:: for
-     exceptions.  For other types (e.g. lists, vectors, strings), two
+     exceptions.  For other types (e.g., lists, vectors, strings), two
      arguments with the same contents or elements are not necessarily
      `eq' to each other: they are `eq' only if they are the same
      object, meaning that a change in the contents of one will be
@@ -4683,7 +4689,7 @@ strings to choose various seed values.
 
      If LIMIT is a positive integer, the value is chosen to be
      nonnegative and less than LIMIT.  Otherwise, the value might be
-     any integer representable in Lisp, i.e. an integer between
+     any integer representable in Lisp, i.e., an integer between
      `most-negative-fixnum' and `most-positive-fixnum' (*note Integer
      Basics::).
 
@@ -5146,17 +5152,21 @@ File: elisp.info,  Node: Text Comparison,  Next: String Conversion,  Prev: Modif
 
  -- Function: compare-strings string1 start1 end1 string2 start2 end2
           &optional ignore-case
-     This function compares the specified part of STRING1 with the
+     This function compares a specified part of STRING1 with a
      specified part of STRING2.  The specified part of STRING1 runs
-     from index START1 up to index END1 (`nil' means the end of the
-     string).  The specified part of STRING2 runs from index START2 up
-     to index END2 (`nil' means the end of the string).
+     from index START1 (inclusive) up to index END1 (exclusive); `nil'
+     for START1 means the start of the string, while `nil' for END1
+     means the length of the string.  Likewise, the specified part of
+     STRING2 runs from index START2 up to index END2.
 
-     The strings are both converted to multibyte for the comparison
-     (*note Text Representations::) so that a unibyte string and its
-     conversion to multibyte are always regarded as equal.  If
-     IGNORE-CASE is non-`nil', then case is ignored, so that upper case
-     letters can be equal to lower case letters.
+     The strings are compared by the numeric values of their characters.
+     For instance, STR1 is considered "smaller than" STR2 if its first
+     differing character has a smaller numeric value.  If IGNORE-CASE
+     is non-`nil', characters are converted to lower-case before
+     comparing them.  Unibyte strings are converted to multibyte for
+     comparison (*note Text Representations::), so that a unibyte
+     string and its conversion to multibyte are always regarded as
+     equal.
 
      If the specified portions of the two strings match, the value is
      `t'.  Otherwise, the value is an integer which indicates how many
@@ -5710,6 +5720,7 @@ the whole list.
 * Modifying Lists::     Storing new pieces into an existing list.
 * Sets And Lists::      A list can represent a finite mathematical set.
 * Association Lists::   A list can represent a finite relation or mapping.
+* Property Lists::      A list of paired elements.
 
 
 File: elisp.info,  Node: Cons Cells,  Next: List-related Predicates,  Up: Lists
@@ -6839,7 +6850,7 @@ a way to add an element to a list stored in a variable and used as a
 set.
 
 
-File: elisp.info,  Node: Association Lists,  Prev: Sets And Lists,  Up: Lists
+File: elisp.info,  Node: Association Lists,  Next: Property Lists,  Prev: Sets And Lists,  Up: Lists
 
 5.8 Association Lists
 =====================
@@ -7072,12 +7083,130 @@ ignores certain differences between strings.  *Note Text Comparison::.
      `assq-delete-all' except that it compares the CDR of each ALIST
      association instead of the CAR.
 
-
    ---------- Footnotes ----------
 
    (1) This usage of "key" is not related to the term "key sequence";
 it means a value used to look up an item in a table.  In this case, the
 table is the alist, and the alist associations are the items.
+
+
+File: elisp.info,  Node: Property Lists,  Prev: Association Lists,  Up: Lists
+
+5.9 Property Lists
+==================
+
+A "property list" ("plist" for short) is a list of paired elements.
+Each of the pairs associates a property name (usually a symbol) with a
+property or value.  Here is an example of a property list:
+
+     (pine cones numbers (1 2 3) color "blue")
+
+This property list associates `pine' with `cones', `numbers' with `(1 2
+3)', and `color' with `"blue"'.  The property names and values can be
+any Lisp objects, but the names are usually symbols (as they are in
+this example).
+
+   Property lists are used in several contexts.  For instance, the
+function `put-text-property' takes an argument which is a property
+list, specifying text properties and associated values which are to be
+applied to text in a string or buffer.  *Note Text Properties::.
+
+   Another prominent use of property lists is for storing symbol
+properties.  Every symbol possesses a list of properties, used to
+record miscellaneous information about the symbol; these properties are
+stored in the form of a property list.  *Note Symbol Properties::.
+
+* Menu:
+
+* Plists and Alists::           Comparison of the advantages of property
+                                  lists and association lists.
+* Plist Access::                Accessing property lists stored elsewhere.
+
+
+File: elisp.info,  Node: Plists and Alists,  Next: Plist Access,  Up: Property Lists
+
+5.9.1 Property Lists and Association Lists
+------------------------------------------
+
+Association lists (*note Association Lists::) are very similar to
+property lists.  In contrast to association lists, the order of the
+pairs in the property list is not significant, since the property names
+must be distinct.
+
+   Property lists are better than association lists for attaching
+information to various Lisp function names or variables.  If your
+program keeps all such information in one association list, it will
+typically need to search that entire list each time it checks for an
+association for a particular Lisp function name or variable, which
+could be slow.  By contrast, if you keep the same information in the
+property lists of the function names or variables themselves, each
+search will scan only the length of one property list, which is usually
+short.  This is why the documentation for a variable is recorded in a
+property named `variable-documentation'.  The byte compiler likewise
+uses properties to record those functions needing special treatment.
+
+   However, association lists have their own advantages.  Depending on
+your application, it may be faster to add an association to the front of
+an association list than to update a property.  All properties for a
+symbol are stored in the same property list, so there is a possibility
+of a conflict between different uses of a property name.  (For this
+reason, it is a good idea to choose property names that are probably
+unique, such as by beginning the property name with the program's usual
+name-prefix for variables and functions.)  An association list may be
+used like a stack where associations are pushed on the front of the list
+and later discarded; this is not possible with a property list.
+
+
+File: elisp.info,  Node: Plist Access,  Prev: Plists and Alists,  Up: Property Lists
+
+5.9.2 Property Lists Outside Symbols
+------------------------------------
+
+The following functions can be used to manipulate property lists.  They
+all compare property names using `eq'.
+
+ -- Function: plist-get plist property
+     This returns the value of the PROPERTY property stored in the
+     property list PLIST.  It accepts a malformed PLIST argument.  If
+     PROPERTY is not found in the PLIST, it returns `nil'.  For example,
+
+          (plist-get '(foo 4) 'foo)
+               => 4
+          (plist-get '(foo 4 bad) 'foo)
+               => 4
+          (plist-get '(foo 4 bad) 'bad)
+               => nil
+          (plist-get '(foo 4 bad) 'bar)
+               => nil
+
+ -- Function: plist-put plist property value
+     This stores VALUE as the value of the PROPERTY property in the
+     property list PLIST.  It may modify PLIST destructively, or it may
+     construct a new list structure without altering the old.  The
+     function returns the modified property list, so you can store that
+     back in the place where you got PLIST.  For example,
+
+          (setq my-plist '(bar t foo 4))
+               => (bar t foo 4)
+          (setq my-plist (plist-put my-plist 'foo 69))
+               => (bar t foo 69)
+          (setq my-plist (plist-put my-plist 'quux '(a)))
+               => (bar t foo 69 quux (a))
+
+ -- Function: lax-plist-get plist property
+     Like `plist-get' except that it compares properties using `equal'
+     instead of `eq'.
+
+ -- Function: lax-plist-put plist property value
+     Like `plist-put' except that it compares properties using `equal'
+     instead of `eq'.
+
+ -- Function: plist-member plist property
+     This returns non-`nil' if PLIST contains the given PROPERTY.
+     Unlike `plist-get', this allows you to distinguish between a
+     missing property and a property with the value `nil'.  The value
+     is actually the tail of PLIST whose `car' is PROPERTY.
+
 
 
 File: elisp.info,  Node: Sequences Arrays Vectors,  Next: Hash Tables,  Prev: Lists,  Up: Top
@@ -7504,10 +7633,10 @@ are constants when evaluated, and can hold elements of any type.
 
    * The subtype controls the number of "extra slots" in the
      char-table.  This number is specified by the subtype's
-     `char-table-extra-slots' symbol property, which should be an
-     integer between 0 and 10.  If the subtype has no such symbol
-     property, the char-table has no extra slots.  *Note Property
-     Lists::, for information about symbol properties.
+     `char-table-extra-slots' symbol property (*note Symbol
+     Properties::), whose value should be an integer between 0 and 10.
+     If the subtype has no such symbol property, the char-table has no
+     extra slots.
 
    A char-table can have a "parent", which is another char-table.  If
 it does, then whenever the char-table specifies `nil' for a particular
@@ -8105,7 +8234,7 @@ Type::.
                                and property lists.
 * Definitions::              A definition says how a symbol will be used.
 * Creating Symbols::         How symbols are kept unique.
-* Property Lists::           Each symbol has a property list
+* Symbol Properties::        Each symbol has a property list
                                for recording miscellaneous information.
 
 
@@ -8162,7 +8291,7 @@ Function Cells::).
 
    The property list cell normally should hold a correctly formatted
 property list.  To get a symbol's property list, use the function
-`symbol-plist'.  *Note Property Lists::.
+`symbol-plist'.  *Note Symbol Properties::.
 
    The function cell or the value cell may be "void", which means that
 the cell does not reference any object.  (This is not the same thing as
@@ -8221,8 +8350,8 @@ macro and function definitions are kept in the function cell, and that
 cell can hold only one Lisp object at any given time.  *Note Macros::.
 
    As previously noted, Emacs Lisp allows the same symbol to be defined
-both as a variable (e.g. with `defvar') and as a function or macro
-(e.g. with `defun').  Such definitions do not conflict.
+both as a variable (e.g., with `defvar') and as a function or macro
+(e.g., with `defun').  Such definitions do not conflict.
 
    These definition also act as guides for programming tools.  For
 example, the `C-h f' and `C-h v' commands create help buffers
@@ -8230,7 +8359,7 @@ containing links to the relevant variable, function, or macro
 definitions.  *Note Name Help: (emacs)Name Help.
 
 
-File: elisp.info,  Node: Creating Symbols,  Next: Property Lists,  Prev: Definitions,  Up: Symbols
+File: elisp.info,  Node: Creating Symbols,  Next: Symbol Properties,  Prev: Definitions,  Up: Symbols
 
 8.3 Creating and Interning Symbols
 ==================================
@@ -8405,80 +8534,58 @@ not a string, or if the obarray is not a vector.
      returns `nil'.
 
 
-File: elisp.info,  Node: Property Lists,  Prev: Creating Symbols,  Up: Symbols
+File: elisp.info,  Node: Symbol Properties,  Prev: Creating Symbols,  Up: Symbols
 
-8.4 Property Lists
-==================
+8.4 Symbol Properties
+=====================
 
-A "property list" ("plist" for short) is a list of paired elements.
-Each of the pairs associates a property name (usually a symbol) with a
-property or value.
+A symbol may possess any number of "symbol properties", which can be
+used to record miscellaneous information about the symbol.  For
+example, when a symbol has a `risky-local-variable' property with a
+non-`nil' value, that means the variable which the symbol names is a
+risky file-local variable (*note File Local Variables::).
 
-   Every symbol has a cell that stores a property list (*note Symbol
-Components::).  This property list is used to record information about
-the symbol, such as its variable documentation and the name of the file
-where it was defined.
-
-   Property lists can also be used in other contexts.  For instance,
-you can assign property lists to character positions in a string or
-buffer.  *Note Text Properties::.
-
-   The property names and values in a property list can be any Lisp
-objects, but the names are usually symbols.  Property list functions
-compare the property names using `eq'.  Here is an example of a
-property list, found on the symbol `progn' when the compiler is loaded:
-
-     (lisp-indent-function 0 byte-compile byte-compile-progn)
-
-Here `lisp-indent-function' and `byte-compile' are property names, and
-the other two elements are the corresponding values.
+   Each symbol's properties and property values are stored in the
+symbol's property list cell (*note Symbol Components::), in the form of
+a property list (*note Property Lists::).
 
 * Menu:
 
-* Plists and Alists::           Comparison of the advantages of property
-                                  lists and association lists.
-* Symbol Plists::               Functions to access symbols' property lists.
-* Other Plists::                Accessing property lists stored elsewhere.
+* Symbol Plists::        Accessing symbol properties.
+* Standard Properties::  Standard meanings of symbol properties.
 
 
-File: elisp.info,  Node: Plists and Alists,  Next: Symbol Plists,  Up: Property Lists
+File: elisp.info,  Node: Symbol Plists,  Next: Standard Properties,  Up: Symbol Properties
 
-8.4.1 Property Lists and Association Lists
-------------------------------------------
+8.4.1 Accessing Symbol Properties
+---------------------------------
 
-Association lists (*note Association Lists::) are very similar to
-property lists.  In contrast to association lists, the order of the
-pairs in the property list is not significant since the property names
-must be distinct.
+The following functions can be used to access symbol properties.
 
-   Property lists are better than association lists for attaching
-information to various Lisp function names or variables.  If your
-program keeps all such information in one association list, it will
-typically need to search that entire list each time it checks for an
-association for a particular Lisp function name or variable, which
-could be slow.  By contrast, if you keep the same information in the
-property lists of the function names or variables themselves, each
-search will scan only the length of one property list, which is usually
-short.  This is why the documentation for a variable is recorded in a
-property named `variable-documentation'.  The byte compiler likewise
-uses properties to record those functions needing special treatment.
+ -- Function: get symbol property
+     This function returns the value of the property named PROPERTY in
+     SYMBOL's property list.  If there is no such property, it returns
+     `nil'.  Thus, there is no distinction between a value of `nil' and
+     the absence of the property.
 
-   However, association lists have their own advantages.  Depending on
-your application, it may be faster to add an association to the front of
-an association list than to update a property.  All properties for a
-symbol are stored in the same property list, so there is a possibility
-of a conflict between different uses of a property name.  (For this
-reason, it is a good idea to choose property names that are probably
-unique, such as by beginning the property name with the program's usual
-name-prefix for variables and functions.)  An association list may be
-used like a stack where associations are pushed on the front of the list
-and later discarded; this is not possible with a property list.
+     The name PROPERTY is compared with the existing property names
+     using `eq', so any object is a legitimate property.
 
-
-File: elisp.info,  Node: Symbol Plists,  Next: Other Plists,  Prev: Plists and Alists,  Up: Property Lists
+     See `put' for an example.
 
-8.4.2 Property List Functions for Symbols
------------------------------------------
+ -- Function: put symbol property value
+     This function puts VALUE onto SYMBOL's property list under the
+     property name PROPERTY, replacing any previous property value.
+     The `put' function returns VALUE.
+
+          (put 'fly 'verb 'transitive)
+               =>'transitive
+          (put 'fly 'noun '(a buzzing little bug))
+               => (a buzzing little bug)
+          (get 'fly 'verb)
+               => transitive
+          (symbol-plist 'fly)
+               => (verb transitive noun (a buzzing little bug))
 
  -- Function: symbol-plist symbol
      This function returns the property list of SYMBOL.
@@ -8498,92 +8605,122 @@ File: elisp.info,  Node: Symbol Plists,  Next: Other Plists,  Prev: Plists and A
      nonstandard fashion; in fact, the abbrev mechanism does so (*note
      Abbrevs::).
 
- -- Function: get symbol property
-     This function finds the value of the property named PROPERTY in
-     SYMBOL's property list.  If there is no such property, `nil' is
-     returned.  Thus, there is no distinction between a value of `nil'
-     and the absence of the property.
+     You could define `put' in terms of `setplist' and `plist-put', as
+     follows:
 
-     The name PROPERTY is compared with the existing property names
-     using `eq', so any object is a legitimate property.
-
-     See `put' for an example.
+          (defun put (symbol prop value)
+            (setplist symbol
+                      (plist-put (symbol-plist symbol) prop value)))
 
  -- Function: function-get symbol property
      This function is identical to `get', except that if SYMBOL is the
      name of a function alias, it looks in the property list of the
      symbol naming the actual function.  *Note Defining Functions::.
 
- -- Function: put symbol property value
-     This function puts VALUE onto SYMBOL's property list under the
-     property name PROPERTY, replacing any previous property value.
-     The `put' function returns VALUE.
-
-          (put 'fly 'verb 'transitive)
-               =>'transitive
-          (put 'fly 'noun '(a buzzing little bug))
-               => (a buzzing little bug)
-          (get 'fly 'verb)
-               => transitive
-          (symbol-plist 'fly)
-               => (verb transitive noun (a buzzing little bug))
-
 
-File: elisp.info,  Node: Other Plists,  Prev: Symbol Plists,  Up: Property Lists
+File: elisp.info,  Node: Standard Properties,  Prev: Symbol Plists,  Up: Symbol Properties
 
-8.4.3 Property Lists Outside Symbols
-------------------------------------
+8.4.2 Standard Symbol Properties
+--------------------------------
 
-These functions are useful for manipulating property lists not stored
-in symbols:
+Here, we list the symbol properties which are used for special purposes
+in Emacs.  In the following table, whenever we say "the named
+function", that means the function whose name is the relevant symbol;
+similarly for "the named variable" etc.
 
- -- Function: plist-get plist property
-     This returns the value of the PROPERTY property stored in the
-     property list PLIST.  It accepts a malformed PLIST argument.  If
-     PROPERTY is not found in the PLIST, it returns `nil'.  For example,
+`:advertised-binding'
+     This property value specifies the preferred key binding, when
+     showing documentation, for the named function.  *Note Keys in
+     Documentation::.
 
-          (plist-get '(foo 4) 'foo)
-               => 4
-          (plist-get '(foo 4 bad) 'foo)
-               => 4
-          (plist-get '(foo 4 bad) 'bad)
-               => nil
-          (plist-get '(foo 4 bad) 'bar)
-               => nil
+`char-table-extra-slots'
+     The value, if non-`nil', specifies the number of extra slots in
+     the named char-table type.  *Note Char-Tables::.
 
- -- Function: plist-put plist property value
-     This stores VALUE as the value of the PROPERTY property in the
-     property list PLIST.  It may modify PLIST destructively, or it may
-     construct a new list structure without altering the old.  The
-     function returns the modified property list, so you can store that
-     back in the place where you got PLIST.  For example,
+`customized-face'
+`face-defface-spec'
+`saved-face'
+`theme-face'
+     These properties are used to record a face's standard, saved,
+     customized, and themed face specs.  Do not set them directly; they
+     are managed by `defface' and related functions.  *Note Defining
+     Faces::.
 
-          (setq my-plist '(bar t foo 4))
-               => (bar t foo 4)
-          (setq my-plist (plist-put my-plist 'foo 69))
-               => (bar t foo 69)
-          (setq my-plist (plist-put my-plist 'quux '(a)))
-               => (bar t foo 69 quux (a))
+`customized-value'
+`saved-value'
+`standard-value'
+`theme-value'
+     These properties are used to record a customizable variable's
+     standard value, saved value, customized-but-unsaved value, and
+     themed values.  Do not set them directly; they are managed by
+     `defcustom' and related functions.  *Note Variable Definitions::.
 
-   You could define `put' in terms of `plist-put' as follows:
+`disabled'
+     If the value is non-`nil', the named function is disabled as a
+     command.  *Note Disabling Commands::.
 
-     (defun put (symbol prop value)
-       (setplist symbol
-                 (plist-put (symbol-plist symbol) prop value)))
+`face-documentation'
+     The value stores the documentation string of the named face.  This
+     is set automatically by `defface'.  *Note Defining Faces::.
 
- -- Function: lax-plist-get plist property
-     Like `plist-get' except that it compares properties using `equal'
-     instead of `eq'.
+`history-length'
+     The value, if non-`nil', specifies the maximum minibuffer history
+     length for the named history list variable.  *Note Minibuffer
+     History::.
 
- -- Function: lax-plist-put plist property value
-     Like `plist-put' except that it compares properties using `equal'
-     instead of `eq'.
+`interactive-form'
+     The value is an interactive form for the named function.  Normally,
+     you should not set this directly; use the `interactive' special
+     form instead.  *Note Interactive Call::.
 
- -- Function: plist-member plist property
-     This returns non-`nil' if PLIST contains the given PROPERTY.
-     Unlike `plist-get', this allows you to distinguish between a
-     missing property and a property with the value `nil'.  The value
-     is actually the tail of PLIST whose `car' is PROPERTY.
+`menu-enable'
+     The value is an expression for determining whether the named menu
+     item should be enabled in menus.  *Note Simple Menu Items::.
+
+`mode-class'
+     If the value is `special', the named major mode is "special".
+     *Note Major Mode Conventions::.
+
+`permanent-local'
+     If the value is non-`nil', the named variable is a buffer-local
+     variable whose value should not be reset when changing major modes.
+     *Note Creating Buffer-Local::.
+
+`permanent-local-hook'
+     If the value is non-`nil', the named function should not be
+     deleted from the local value of a hook variable when changing major
+     modes.  *Note Setting Hooks::.
+
+`pure'
+     This property is used internally to mark certain named functions
+     for byte compiler optimization.  Do not set it.
+
+`risky-local-variable'
+     If the value is non-`nil', the named variable is considered risky
+     as a file-local variable.  *Note File Local Variables::.
+
+`safe-function'
+     If the value is non-`nil', the named function is considered
+     generally safe for evaluation.  *Note Function Safety::.
+
+`safe-local-eval-function'
+     If the value is non-`nil', the named function is safe to call in
+     file-local evaluation forms.  *Note File Local Variables::.
+
+`safe-local-variable'
+     The value specifies a function for determining safe file-local
+     values for the named variable.  *Note File Local Variables::.
+
+`side-effect-free'
+     A non-`nil' value indicates that the named function is free of
+     side-effects, for determining function safety (*note Function
+     Safety::) as well as for byte compiler optimizations.  Do not set
+     it.
+
+`variable-documentation'
+     If non-`nil', this specifies the named vaariable's documentation
+     string.  This is set automatically by `defvar' and related
+     functions.  *Note Defining Faces::.
 
 
 
@@ -9507,6 +9644,111 @@ Therefore, the choice between them is a matter of style.  For example:
      (if A B C)
      ==
      (cond (A B) (t C))
+
+* Menu:
+
+* Pattern matching case statement::
+
+
+File: elisp.info,  Node: Pattern matching case statement,  Up: Conditionals
+
+10.2.1 Pattern matching case statement
+--------------------------------------
+
+To compare a particular value against various possible cases, the macro
+`pcase' can come handy.  It takes the following form:
+
+     (pcase EXP BRANCH1 BRANCH2 BRANCH3 ...)
+
+   where each BRANCH takes the form `(UPATTERN BODY-FORMS...)'.
+
+   It will first evaluate EXP and then compare the value against each
+UPATTERN to see which BRANCH to use, after which it will run the
+corresponding BODY-FORMS.  A common use case is to distinguish between
+a few different constant values:
+
+     (pcase (get-return-code x)
+       (`success       (message "Done!"))
+       (`would-block   (message "Sorry, can't do it now"))
+       (`read-only     (message "The shmliblick is read-only"))
+       (`access-denied (message "You do not have the needed rights"))
+       (code           (message "Unknown return code %S" code)))
+
+   In the last clause, `code' is a variable that gets bound to the
+value that was returned by `(get-return-code x)'.
+
+   To give a more complex example, a simple interpreter for a little
+expression language could look like:
+
+     (defun evaluate (exp env)
+       (pcase exp
+         (`(add ,x ,y)         (+ (evaluate x env) (evaluate y env)))
+         (`(call ,fun ,arg)    (funcall (evaluate fun) (evaluate arg env)))
+         (`(fn ,arg ,body)     (lambda (val)
+                                 (evaluate body (cons (cons arg val) env))))
+         ((pred numberp)       exp)
+         ((pred symbolp)       (cdr (assq exp env)))
+         (_                    (error "Unknown expression %S" exp))))
+
+   Where ``(add ,x ,y)' is a pattern that checks that `exp' is a three
+element list starting with the symbol `add', then extracts the second
+and third elements and binds them to the variables `x' and `y'.  `(pred
+numberp)' is a pattern that simply checks that `exp' is a number, and
+`_' is the catch-all pattern that matches anything.
+
+   There are two kinds of patterns involved in `pcase', called
+_U-patterns_ and _Q-patterns_.  The UPATTERN mentioned above are
+U-patterns and can take the following forms:
+
+``QPATTERN'
+     This is one of the most common form of patterns.  The intention is
+     to mimic the backquote macro: this pattern matches those values
+     that could have been built by such a backquote expression.  Since
+     we're pattern matching rather than building a value, the unquote
+     does not indicate where to plug an expression, but instead it lets
+     one specify a U-pattern that should match the value at that
+     location.
+
+     More specifically, a Q-pattern can take the following forms:
+    `(QPATTERN1 . QPATTERN2)'
+          This pattern matches any cons cell whose `car' matches
+          QPATTERN1 and whose `cdr' matches PATTERN2.
+
+    `ATOM'
+          This pattern matches any atom `equal' to ATOM.
+
+    `,UPATTERN'
+          This pattern matches any object that matches the UPATTERN.
+
+`SYMBOL'
+     A mere symbol in a U-pattern matches anything, and additionally
+     let-binds this symbol to the value that it matched, so that you
+     can later refer to it, either in the BODY-FORMS or also later in
+     the pattern.
+
+`_'
+     This so-called _don't care_ pattern matches anything, like the
+     previous one, but unless symbol patterns it does not bind any
+     variable.
+
+`(pred PRED)'
+     This pattern matches if the function PRED returns non-`nil' when
+     called with the object being matched.
+
+`(or UPATTERN1 UPATTERN2...)'
+     This pattern matches as soon as one of the argument patterns
+     succeeds.  All argument patterns should let-bind the same
+     variables.
+
+`(and UPATTERN1 UPATTERN2...)'
+     This pattern matches only if all the argument patterns succeed.
+
+`(guard EXP)'
+     This pattern ignores the object being examined and simply succeeds
+     if EXP evaluates to non-`nil' and fails otherwise.  It is
+     typically used inside an `and' pattern.  For example, `(and x
+     (guard (< x 10)))' is a pattern which matches any number smaller
+     than 10 and let-binds it to the variable `x'.
 
 
 File: elisp.info,  Node: Combining Conditions,  Next: Iteration,  Prev: Conditionals,  Up: Control Structures
@@ -10540,7 +10782,7 @@ effect, using `setq' on the local variable stores the specified value
 in the local binding.  When that local binding is no longer in effect,
 the previously shadowed value (or lack of one) comes back.
 
-   A variable can have more than one local binding at a time (e.g. if
+   A variable can have more than one local binding at a time (e.g., if
 there are nested `let' forms that bind the variable).  The "current
 binding" is the local binding that is actually in effect.  It
 determines the value returned by evaluating the variable symbol, and it
@@ -10647,7 +10889,7 @@ void, trying to evaluate the variable signals a `void-variable' error
 rather than a value.
 
    Under lexical binding rules, the value cell only holds the
-variable's global value, i.e. the value outside of any lexical binding
+variable's global value, i.e., the value outside of any lexical binding
 construct.  When a variable is lexically bound, the local value is
 determined by the lexical environment; the variable may have a local
 value if its symbol's value cell is unassigned.
@@ -10740,7 +10982,7 @@ calls `defvar' as a subroutine).  *Note Variable Definitions::.
 
      If SYMBOL is void and VALUE is specified, `defvar' evaluates VALUE
      and sets SYMBOL to the result.  But if SYMBOL already has a value
-     (i.e. it is not void), VALUE is not even evaluated, and SYMBOL's
+     (i.e., it is not void), VALUE is not even evaluated, and SYMBOL's
      value remains unchanged.  If VALUE is omitted, the value of SYMBOL
      is not changed in any case.
 
@@ -11095,9 +11337,9 @@ by the following example:
 The function `getx' refers to `x'.  This is a "free" reference, in the
 sense that there is no binding for `x' within that `defun' construct
 itself.  When we call `getx' from within a `let' form in which `x' is
-(dynamically) bound, it retrieves the local value of `x' (i.e. 1).  But
-when we call `getx' outside the `let' form, it retrieves the global
-value of `x' (i.e. -99).
+(dynamically) bound, it retrieves the local value of `x' (i.e., 1).
+But when we call `getx' outside the `let' form, it retrieves the global
+value of `x' (i.e., -99).
 
    Here is another example, which illustrates setting a dynamically
 bound variable using `setq':
@@ -11138,7 +11380,7 @@ However, if used without restraint, this can also make programs hard to
 understand.  There are two clean ways to use this technique:
 
    * If a variable has no global definition, use it as a local variable
-     only within a binding construct, e.g. the body of the `let' form
+     only within a binding construct, e.g., the body of the `let' form
      where the variable was bound, or the body of the function for an
      argument variable.  If this convention is followed consistently
      throughout a program, the value of the variable will not affect,
@@ -11155,7 +11397,7 @@ understand.  There are two clean ways to use this technique:
 
      Then you can bind the variable anywhere in a program, knowing
      reliably what the effect will be.  Wherever you encounter the
-     variable, it will be easy to refer back to the definition, e.g.
+     variable, it will be easy to refer back to the definition, e.g.,
      via the `C-h v' command (provided the variable definition has been
      loaded into Emacs).  *Note Name Help: (emacs)Name Help.
 
@@ -11244,7 +11486,7 @@ a closure, in which the lexical environment lives on even after the
 it increments `x', using the binding of `x' in that lexical environment.
 
    Note that functions like `symbol-value', `boundp', and `set' only
-retrieve or modify a variable's dynamic binding (i.e. the contents of
+retrieve or modify a variable's dynamic binding (i.e., the contents of
 its symbol's value cell).  Also, the code in the body of a `defun' or
 `defmacro' cannot refer to surrounding lexical variables.
 
@@ -11287,7 +11529,7 @@ Variables::).  All other variables are subject to lexical binding.
 
  -- Function: special-variable-p SYMBOL
      This function returns non-`nil' if SYMBOL is a special variable
-     (i.e. it has a `defvar', `defcustom', or `defconst' variable
+     (i.e., it has a `defvar', `defcustom', or `defconst' variable
      definition).  Otherwise, the return value is `nil'.
 
    The use of a special variable as a formal argument in a function is
@@ -12290,10 +12532,10 @@ values of variables or the contents of data structures.
 
    In most computer languages, every function has a name.  But in Lisp,
 a function in the strictest sense has no name: it is an object which
-can _optionally_ be associated with a symbol (e.g. `car') that serves
+can _optionally_ be associated with a symbol (e.g., `car') that serves
 as the function name.  *Note Function Names::.  When a function has
 been given a name, we usually also refer to that symbol as a "function"
-(e.g. we refer to "the function `car'").  In this manual, the
+(e.g., we refer to "the function `car'").  In this manual, the
 distinction between a function name and the function object itself is
 usually unimportant, but we will take note wherever it is relevant.
 
@@ -12304,7 +12546,7 @@ below, these are not considered functions in Emacs Lisp.
    Here are important terms for functions and function-like objects:
 
 "lambda expression"
-     A function (in the strict sense, i.e. a function object) which is
+     A function (in the strict sense, i.e., a function object) which is
      written in Lisp.  These are described in the following section.
      *Note Lambda Expressions::.
 
@@ -12315,7 +12557,7 @@ below, these are not considered functions in Emacs Lisp.
      all special forms (see below) are also considered primitives.
 
      Usually, a function is implemented as a primitive because it is a
-     fundamental part of Lisp (e.g. `car'), or because it provides a
+     fundamental part of Lisp (e.g., `car'), or because it provides a
      low-level interface to operating system services, or because it
      needs to run fast.  Unlike functions defined in Lisp, primitives
      can be modified or added only by changing the C sources and
@@ -12368,7 +12610,7 @@ below, these are not considered functions in Emacs Lisp.
 function:
 
  -- Function: functionp object
-     This function returns `t' if OBJECT is any kind of function, i.e.
+     This function returns `t' if OBJECT is any kind of function, i.e.,
      can be passed to `funcall'.  Note that `functionp' returns `t' for
      symbols that are function names, and returns `nil' for special
      forms.
@@ -12659,7 +12901,7 @@ File: elisp.info,  Node: Function Names,  Next: Defining Functions,  Prev: Lambd
 
 A symbol can serve as the name of a function.  This happens when the
 symbol's "function cell" (*note Symbol Components::) contains a
-function object (e.g. a lambda expression).  Then the symbol itself
+function object (e.g., a lambda expression).  Then the symbol itself
 becomes a valid, callable function, equivalent to the function object
 in its function cell.
 
@@ -13141,7 +13383,7 @@ can make it void once more using `fmakunbound'.
      that define or alter functions, like `defadvice' (*note Advising
      Functions::).  (If `defun' were not a primitive, it could be
      written as a Lisp macro using `fset'.)  You can also use it to
-     give a symbol a function definition that is not a list, e.g. a
+     give a symbol a function definition that is not a list, e.g., a
      keyboard macro (*note Keyboard Macros::):
 
           ;; Define a named keyboard macro.
@@ -13160,7 +13402,7 @@ File: elisp.info,  Node: Closures,  Next: Obsolete Functions,  Prev: Function Ce
 
 As explained in *note Variable Scoping::, Emacs can optionally enable
 lexical binding of variables.  When lexical binding is enabled, any
-named function that you create (e.g. with `defun'), as well as any
+named function that you create (e.g., with `defun'), as well as any
 anonymous function that you create using the `lambda' macro or the
 `function' special form or the `#'' syntax (*note Anonymous
 Functions::), is automatically converted into a "closure".
@@ -13422,7 +13664,7 @@ statement with `ext:', then it will be checked if it is found,
 otherwise skipped without error.
 
    There are some function definitions that `check-declare' does not
-understand (e.g. `defstruct' and some other macros).  In such cases,
+understand (e.g., `defstruct' and some other macros).  In such cases,
 you can pass a non-`nil' FILEONLY argument to `declare-function',
 meaning to only check that the file exists, not that it actually
 defines the function.  Note that to do this without having to specify
@@ -14218,7 +14460,7 @@ one name.
      `:version'.
 
      PACKAGE should be the official name of the package, as a symbol
-     (e.g. `MH-E').  VERSION should be a string.  If the package
+     (e.g., `MH-E').  VERSION should be a string.  If the package
      PACKAGE is released as part of Emacs, PACKAGE and VERSION should
      appear in the value of `customize-package-emacs-version-alist'.
 
@@ -14305,7 +14547,7 @@ and add your group to each of them using the `:group' keyword.
      `:prefix' keyword are omitted from tag names, whenever the user
      customizes the group.
 
-     The default value is `nil', i.e. the prefix-discarding feature is
+     The default value is `nil', i.e., the prefix-discarding feature is
      disabled.  This is because discarding prefixes often leads to
      confusing names for options and faces.
 
@@ -14324,7 +14566,7 @@ Defining Variables::), customizable variables are defined using the
 Customize interface, the values it is allowed to take, etc.
 
  -- Macro: defcustom option standard doc [keyword value]...
-     This macro declares OPTION as a user option (i.e. a customizable
+     This macro declares OPTION as a user option (i.e., a customizable
      variable).  You should not quote OPTION.
 
      The argument STANDARD is an expression that specifies the standard
@@ -14344,7 +14586,9 @@ Customize interface, the values it is allowed to take, etc.
      The argument DOC specifies the documentation string for the
      variable.
 
-     Every `defcustom' should specify `:group' at least once.
+     If a `defcustom' does not specify any `:group', the last group
+     defined with `defgroup' in the same file will be used.  This way,
+     most `defcustom' do not need an explicit `:group'.
 
      When you evaluate a `defcustom' form with `C-M-x' in Emacs Lisp
      mode (`eval-defun'), a special feature of `eval-defun' arranges to
@@ -14354,8 +14598,8 @@ Customize interface, the values it is allowed to take, etc.
 
      If you put a `defcustom' in a pre-loaded Emacs Lisp file (*note
      Building Emacs::), the standard value installed at dump time might
-     be incorrect, e.g. because another variable that it depends on has
-     not been assigned the right value yet.  In that case, use
+     be incorrect, e.g., because another variable that it depends on
+     has not been assigned the right value yet.  In that case, use
      `custom-reevaluate-setting', described below, to re-evaluate the
      standard value after Emacs starts up.
 
@@ -14495,7 +14739,7 @@ definition.  You can do it thus:
 record the expression for the standard value, `saved-value' to record
 the value saved by the user with the customization buffer, and
 `customized-value' to record the value set by the user with the
-customization buffer, but not saved.  *Note Property Lists::.  These
+customization buffer, but not saved.  *Note Symbol Properties::.  These
 properties are lists, the car of which is an expression that evaluates
 to the value.
 
@@ -15295,7 +15539,7 @@ disabling themes:
 
  -- Function: custom-theme-p theme
      This function return a non-`nil' value if THEME (a symbol) is the
-     name of a Custom theme (i.e. a Custom theme which has been loaded
+     name of a Custom theme (i.e., a Custom theme which has been loaded
      into Emacs, whether or not the theme is enabled).  Otherwise, it
      returns `nil'.
 
@@ -15795,9 +16039,9 @@ for all files in the current directory.
 
    The same magic comment can copy any kind of form into `loaddefs.el'.
 The form following the magic comment is copied verbatim, _except_ if it
-is one of the forms which the autoload facility handles specially (e.g.
-by conversion into an `autoload' call).  The forms which are not copied
-verbatim are the following:
+is one of the forms which the autoload facility handles specially
+(e.g., by conversion into an `autoload' call).  The forms which are not
+copied verbatim are the following:
 
 Definitions for function or function-like objects:
      `defun' and `defmacro'; also `cl-defun' and `cl-defmacro' (*note
@@ -16066,7 +16310,7 @@ file is loaded.
      This function returns `t' if FEATURE has been provided in the
      current Emacs session (i.e., if FEATURE is a member of
      `features'.)  If SUBFEATURE is non-`nil', then the function
-     returns `t' only if that subfeature is provided as well (i.e. if
+     returns `t' only if that subfeature is provided as well (i.e., if
      SUBFEATURE is a member of the `subfeature' property of the FEATURE
      symbol.)
 
@@ -16228,7 +16472,7 @@ loaded, use the function `eval-after-load':
 
           (eval-after-load "foo/bar/my_inst.elc" ...)
 
-     LIBRARY can also be a feature (i.e. a symbol), in which case FORM
+     LIBRARY can also be a feature (i.e., a symbol), in which case FORM
      is evaluated at the end of any file where `(provide LIBRARY)' is
      called.
 
@@ -16825,7 +17069,7 @@ source; these do not appear in the output of `disassemble'.
      11  sub1                  ; Pop `integer', decrement value,
                                ;   push new value onto stack.
      12  call     1            ; Call function `factorial' using first
-                               ;   (i.e. top) stack element as argument;
+                               ;   (i.e., top) stack element as argument;
                                ;   push returned value onto stack.
      13 mult                   ; Pop top two values off stack, multiply
                                ;   them, and push result onto stack.
@@ -16854,7 +17098,7 @@ source; these do not appear in the output of `disassemble'.
      3:1 varref   n            ; Get value of `n' from the environment
                                ;   and push the value on the stack.
      4   sub1                  ; Subtract 1 from top of stack.
-     5   dup                   ; Duplicate top of stack; i.e. copy the top
+     5   dup                   ; Duplicate top of stack; i.e., copy the top
                                ;   of the stack and push copy onto stack.
      6   varset   n            ; Pop the top of the stack,
                                ;   and bind `n' to the value.
@@ -16877,6 +17121,7 @@ source; these do not appear in the output of `disassemble'.
      16  list2                 ; Pop top two elements off stack, create a
                                ;   list of them, and push it onto stack.
      17  return                ; Return value of the top of stack.
+
 
 
 File: elisp.info,  Node: Advising Functions,  Next: Debugging,  Prev: Byte Compilation,  Up: Top
@@ -20400,7 +20645,7 @@ File: elisp.info,  Node: Output Variables,  Prev: Output Functions,  Up: Read an
 
  -- Variable: print-quoted
      If this is non-`nil', that means to print quoted forms using
-     abbreviated reader syntax, e.g. `(quote foo)' prints as `'foo',
+     abbreviated reader syntax, e.g., `(quote foo)' prints as `'foo',
      and `(function foo)' as `#'foo'.
 
  -- Variable: print-escape-newlines
@@ -21886,7 +22131,7 @@ completion behavior.
      meanings as in `try-completion' (*note Basic Completion::), and
      the POINT argument is the position of point within STRING.  Each
      function should return a non-`nil' value if it performed its job,
-     and `nil' if it did not (e.g. if there is no way to complete
+     and `nil' if it did not (e.g., if there is no way to complete
      STRING according to the completion style).
 
      When the user calls a completion command like
@@ -22613,7 +22858,7 @@ of `find-file' does not use the minibuffer, so if you call `find-file'
 as a function from Lisp code, you must supply the file name string as
 an ordinary Lisp function argument.
 
-   If the command is a keyboard macro (i.e. a string or vector), Emacs
+   If the command is a keyboard macro (i.e., a string or vector), Emacs
 executes it using `execute-kbd-macro' (*note Keyboard Macros::).
 
  -- Variable: pre-command-hook
@@ -22688,8 +22933,8 @@ command's `interactive' form.
 
      The `interactive' form must be located at top-level in the
      function body, or in the function symbol's `interactive-form'
-     property (*note Symbol Plists::).  It has its effect because the
-     command loop looks for it before calling the function (*note
+     property (*note Symbol Properties::).  It has its effect because
+     the command loop looks for it before calling the function (*note
      Interactive Call::).  Once the function is called, all its body
      forms are executed; at this time, if the `interactive' form occurs
      within the body, the form simply returns `nil' without even
@@ -24703,9 +24948,9 @@ The lowest level functions for command input are `read-event',
 
  -- Function: read-char &optional prompt inherit-input-method seconds
      This function reads and returns a character of command input.  If
-     the user generates an event which is not a character (i.e. a mouse
-     click or function key event), `read-char' signals an error.  The
-     arguments work as in `read-event'.
+     the user generates an event which is not a character (i.e., a
+     mouse click or function key event), `read-char' signals an error.
+     The arguments work as in `read-event'.
 
      In the first example, the user types the character `1' (ASCII code
      49).  The second example shows a keyboard macro definition that
@@ -24958,7 +25203,7 @@ See also the function `read-passwd' (*note Reading a Password::).
      events most recently unread will be reread first.
 
      Events read from this list are not normally added to the current
-     command's key sequence (as returned by e.g. `this-command-keys'),
+     command's key sequence (as returned by, e.g., `this-command-keys'),
      as the events will already have been added once as they were read
      for the first time.  An element of the form `(`t' . EVENT)' forces
      EVENT to be added to the current command's key sequence.
@@ -25076,7 +25321,7 @@ input comes in, while `sleep-for' pauses without updating the screen.
      Some systems support only a whole number of seconds; on these
      systems, SECONDS is rounded down.
 
-     The expression `(sit-for 0)' is equivalent to `(redisplay)', i.e.
+     The expression `(sit-for 0)' is equivalent to `(redisplay)', i.e.,
      it requests a redisplay, without any delay, if there is no pending
      input.  *Note Forcing Redisplay::.
 
@@ -25684,9 +25929,9 @@ the vector `[?\C-x ?l]' represents the key sequence `C-x l'.
    For examples of key sequences written in string and vector
 representations, *note Init Rebinding: (emacs)Init Rebinding.
 
- -- Macro: kbd keyseq-text
-     This macro converts the text KEYSEQ-TEXT (a string constant) into
-     a key sequence (a string or vector constant).  The contents of
+ -- Function: kbd keyseq-text
+     This function converts the text KEYSEQ-TEXT (a string constant)
+     into a key sequence (a string or vector constant).  The contents of
      KEYSEQ-TEXT should use the same syntax as in the buffer invoked by
      the `C-x C-k <RET>' (`kmacro-edit-macro') command; in particular,
      you must surround function key names with `<...>'.  *Note Edit
@@ -26690,8 +26935,8 @@ don't appear in compiled files.
    The functions below signal an error if KEYMAP is not a keymap, or if
 KEY is not a string or vector representing a key sequence.  You can use
 event types (symbols) as shorthand for events that are lists.  The
-`kbd' macro (*note Key Sequences::) is a convenient way to specify the
-key sequence.
+`kbd' function (*note Key Sequences::) is a convenient way to specify
+the key sequence.
 
  -- Function: define-key keymap key binding
      This function sets the binding for KEY in KEYMAP.  (If KEY is more
@@ -26870,7 +27115,7 @@ ordinary key binding specifies `kill-line', it is remapped to
 `my-kill-line'; if an ordinary binding specifies `my-kill-line', it is
 remapped to `my-other-kill-line'.
 
-   To undo the remapping of a command, remap it to `nil'; e.g.
+   To undo the remapping of a command, remap it to `nil'; e.g.,
 
      (define-key my-mode-map [remap kill-line] nil)
 
@@ -26934,7 +27179,7 @@ P'; later the function `read-key-sequence' translates this back into
 
      Entries in `local-function-key-map' are ignored if they conflict
      with bindings made in the minor mode, local, or global keymaps.
-     I.e.  the remapping only applies if the original key sequence would
+     I.e., the remapping only applies if the original key sequence would
      otherwise not have any binding.
 
      `local-function-key-map' inherits from `function-key-map', but the
@@ -27328,7 +27573,7 @@ an existing menu, you can specify its position in the menu using
 
    ---------- Footnotes ----------
 
-   (1) It is required for menus which do not use a toolkit, e.g. under
+   (1) It is required for menus which do not use a toolkit, e.g., under
 MS-DOS.
 
 
@@ -28938,14 +29183,14 @@ File: elisp.info,  Node: Basic Major Modes,  Next: Mode Hooks,  Prev: Derived Mo
 
 Apart from Fundamental mode, there are three major modes that other
 major modes commonly derive from: Text mode, Prog mode, and Special
-mode.  While Text mode is useful in its own right (e.g. for editing
+mode.  While Text mode is useful in its own right (e.g., for editing
 files ending in `.txt'), Prog mode and Special mode exist mainly to let
 other modes derive from them.
 
    As far as possible, new major modes should be derived, either
 directly or indirectly, from one of these three modes.  One reason is
-that this allows users to customize a single mode hook (e.g.
-`prog-mode-hook') for an entire family of relevant modes (e.g. all
+that this allows users to customize a single mode hook (e.g.,
+`prog-mode-hook') for an entire family of relevant modes (e.g., all
 programming language modes).
 
  -- Command: text-mode
@@ -29048,12 +29293,12 @@ File: elisp.info,  Node: Tabulated List Mode,  Next: Generic Modes,  Prev: Mode 
 23.2.7 Tabulated List mode
 --------------------------
 
-Tabulated List mode is a major mode for displaying tabulated data, i.e.
-data consisting of "entries", each entry occupying one row of text with
-its contents divided into columns.  Tabulated List mode provides
-facilities for pretty-printing rows and columns, and sorting the rows
-according to the values in each column.  It is derived from Special
-mode (*note Basic Major Modes::).
+Tabulated List mode is a major mode for displaying tabulated data,
+i.e., data consisting of "entries", each entry occupying one row of
+text with its contents divided into columns.  Tabulated List mode
+provides facilities for pretty-printing rows and columns, and sorting
+the rows according to the values in each column.  It is derived from
+Special mode (*note Basic Major Modes::).
 
    Tabulated List mode is intended to be used as a parent mode by a more
 specialized major mode.  Examples include Process Menu mode (*note
@@ -29068,7 +29313,7 @@ variables documented below; then, it should call the function
 `tabulated-list-init-header' to initialize the header line.
 
    The derived mode should also define a "listing command".  This, not
-the mode command, is what the user calls (e.g. `M-x list-processes').
+the mode command, is what the user calls (e.g., `M-x list-processes').
 The listing command should create or switch to a buffer, turn on the
 derived mode, specify the tabulated data, and finally call
 `tabulated-list-print' to populate the buffer.
@@ -29392,11 +29637,11 @@ Minor Modes::.
 
      The mode command should accept one optional argument.  If called
      interactively with no prefix argument, it should toggle the mode
-     (i.e. enable if it is disabled, and disable if it is enabled).  If
+     (i.e., enable if it is disabled, and disable if it is enabled).  If
      called interactively with a prefix argument, it should enable the
      mode if the argument is positive and disable it otherwise.
 
-     If the mode command is called from Lisp (i.e. non-interactively),
+     If the mode command is called from Lisp (i.e., non-interactively),
      it should enable the mode if the argument is omitted or `nil'; it
      should toggle the mode if the argument is the symbol `toggle';
      otherwise it should treat the argument in the same way as for an
@@ -31038,7 +31283,7 @@ special cases.  *Note Syntax Properties::.
 
      This variable is semi-obsolete; we usually recommend setting
      `syntax-begin-function' instead.  One of its uses is to tune the
-     behavior of syntactic fontification, e.g. to ensure that different
+     behavior of syntactic fontification, e.g., to ensure that different
      kinds of strings or comments are highlighted differently.
 
      The specified function is called with no arguments.  It should
@@ -31400,7 +31645,7 @@ of tokens like parentheses and many other cases.
 
         * A token can be an `opener' (something similar to an
           open-paren), a `closer' (like a close-paren), or `neither' of
-          the two (e.g. an infix operator, or an inner token like
+          the two (e.g., an infix operator, or an inner token like
           `"else"').
 
      Precedence conflicts can be resolved via RESOLVERS, which is a
@@ -31593,7 +31838,7 @@ efforts to restructure the grammar.  Do not despair: while the parser
 cannot be made more clever, you can make the lexer as smart as you
 want.  So, the solution is then to look at the tokens involved in the
 conflict and to split one of those tokens into 2 (or more) different
-tokens.  E.g. if the grammar needs to distinguish between two
+tokens.  E.g., if the grammar needs to distinguish between two
 incompatible uses of the token `"begin"', make the lexer return
 different tokens (say `"begin-fun"' and `"begin-plain"') depending on
 which kind of `"begin"' it finds.  This pushes the work of
@@ -31714,8 +31959,8 @@ another context).  These functions all start with the prefix
      By _separator_, we mean here a token whose sole purpose is to
      separate various elements within some enclosing syntactic
      construct, and which does not have any semantic significance in
-     itself (i.e. it would typically not exist as a node in an abstract
-     syntax tree).
+     itself (i.e., it would typically not exist as a node in an
+     abstract syntax tree).
 
      Such a token is expected to have an associative syntax and be
      closely tied to its syntactic parent.  Typical examples are `","'
@@ -31848,6 +32093,7 @@ the alist `desktop-buffer-mode-handlers'.
      and it should return the restored buffer.  Here
      DESKTOP-BUFFER-MISC is the value returned by the function
      optionally bound to `desktop-save-buffer'.
+
 
 
 File: elisp.info,  Node: Documentation,  Next: Files,  Prev: Modes,  Up: Top
@@ -32216,7 +32462,7 @@ the character itself.
      Emacs notation for keyboard input.  A normal printing character
      appears as itself, but a control character turns into a string
      starting with `C-', a meta character turns into a string starting
-     with `M-', and space, tab, etc. appear as `SPC', `TAB', etc.  A
+     with `M-', and space, tab, etc., appear as `SPC', `TAB', etc.  A
      function key symbol appears inside angle brackets `<...>'.  An
      event that is a list appears as the name of the symbol in the CAR
      of the list, inside angle brackets.
@@ -32451,6 +32697,7 @@ help functions.
      area at first, and display the longer HELP-TEXT strings only if
      the user types the help character again.
 
+
 
 File: elisp.info,  Node: Files,  Next: Backups and Auto-Saving,  Prev: Documentation,  Up: Top
 
@@ -32680,9 +32927,9 @@ temporary buffer.  Visiting the file is not necessary and takes longer.
  -- Variable: find-file-literally
      This buffer-local variable, if set to a non-`nil' value, makes
      `save-buffer' behave as if the buffer were visiting its file
-     literally, i.e. without conversions of any kind.  The command
+     literally, i.e., without conversions of any kind.  The command
      `find-file-literally' sets this variable's local value, but other
-     equivalent functions and commands can do that as well, e.g. to
+     equivalent functions and commands can do that as well, e.g., to
      avoid automatic addition of a newline at the end of the file.
      This variable is permanent local, so it is unaffected by changes
      of major modes.
@@ -33667,7 +33914,7 @@ File Names::, for the `locate-user-emacs-file' function.
      suitable.  The predicate is passed the candidate file name as its
      single argument.  If PREDICATE is `nil' or omitted, `locate-file'
      uses `file-readable-p' as the predicate.  *Note Kinds of Files::,
-     for other useful predicates, e.g.  `file-executable-p' and
+     for other useful predicates, e.g., `file-executable-p' and
      `file-directory-p'.
 
      For compatibility, PREDICATE can also be one of the symbols
@@ -33884,7 +34131,7 @@ with its (recursive) target.
      into the equivalent integer value.  If the symbolic specification
      is based on an existing file, that file's mode bits are taken from
      the optional argument BASE-MODES; if that argument is omitted or
-     `nil', it defaults to 0, i.e. no access rights at all.
+     `nil', it defaults to 0, i.e., no access rights at all.
 
  -- Function: set-file-times filename &optional time
      This function sets the access and modification times of FILENAME
@@ -37077,7 +37324,7 @@ windows--the ones actually displaying buffers.  The internal nodes of
 the window tree are "internal windows", which are not live.
 
    A "valid window" is one that is either live or internal.  A valid
-window can be "deleted", i.e. removed from its frame (*note Deleting
+window can be "deleted", i.e., removed from its frame (*note Deleting
 Windows::); then it is no longer valid, but the Lisp object
 representing it might be still referenced from other Lisp objects.  A
 deleted window may be made valid again by restoring a saved window
@@ -37168,7 +37415,7 @@ the same parent are called "siblings".
  -- Function: window-parent &optional window
      This function returns the parent window of WINDOW.  If WINDOW is
      omitted or `nil', it defaults to the selected window.  The return
-     value is `nil' if WINDOW has no parent (i.e. it is a minibuffer
+     value is `nil' if WINDOW has no parent (i.e., it is a minibuffer
      window or the root window of its frame).
 
    Each internal window always has at least two child windows.  If this
@@ -37377,13 +37624,13 @@ window has any adjacent windows.
 
  -- Function: window-full-height-p &optional window
      This function returns non-`nil' if WINDOW has no other window
-     above or below it in its frame, i.e. its total height equals the
+     above or below it in its frame, i.e., its total height equals the
      total height of the root window on that frame.  If WINDOW is
      omitted or `nil', it defaults to the selected window.
 
  -- Function: window-full-width-p &optional window
      This function returns non-`nil' if WINDOW has no other window to
-     the left or right in its frame, i.e. its total width equals that
+     the left or right in its frame, i.e., its total width equals that
      of the root window on that frame.  If WINDOW is omitted or `nil',
      it defaults to the selected window.
 
@@ -37530,7 +37777,7 @@ resized to fit the same space.
      it as far as possible but does not signal a error.
 
      This function tries to resize windows adjacent to the edge that is
-     moved.  If this is not possible for some reason (e.g. if that
+     moved.  If this is not possible for some reason (e.g., if that
      adjacent window is fixed-size), it may resize other windows.
 
    The following commands resize windows in more specific ways.  When
@@ -37738,7 +37985,7 @@ Configurations::).
      This function removes WINDOW from display and returns `nil'.  If
      WINDOW is omitted or `nil', it defaults to the selected window.
      If deleting the window would leave no more windows in the window
-     tree (e.g. if it is the only live window in the frame), an error
+     tree (e.g., if it is the only live window in the frame), an error
      is signaled.
 
      By default, the space taken up by WINDOW is given to one of its
@@ -38595,7 +38842,7 @@ manages to display the buffer and returns a non-`nil' value.
  -- Variable: display-buffer-overriding-action
      The value of this variable should be a display action, which is
      treated with the highest priority by `display-buffer'.  The
-     default value is empty, i.e. `(nil . nil)'.
+     default value is empty, i.e., `(nil . nil)'.
 
  -- User Option: display-buffer-alist
      The value of this option is an alist mapping conditions to display
@@ -38711,8 +38958,8 @@ succeeds, and `nil' if it fails.
           adjust the width of the window; its return value is ignored.
 
      This function can fail if no window splitting can be performed for
-     some reason (e.g. if the selected frame has an `unsplittable' frame
-     parameter; *note Buffer Parameters::).
+     some reason (e.g., if the selected frame has an `unsplittable'
+     frame parameter; *note Buffer Parameters::).
 
  -- Function: display-buffer-below-selected buffer alist
      This function tries to display BUFFER in a window below the
@@ -39720,7 +39967,7 @@ left edge.
 horizontal scrolling of a window as necessary to ensure that point is
 always visible.  However, you can still set the horizontal scrolling
 value explicitly.  The value you specify serves as a lower bound for
-automatic scrolling, i.e. automatic scrolling will not scroll a window
+automatic scrolling, i.e., automatic scrolling will not scroll a window
 to a column less than the specified one.
 
  -- Command: scroll-left &optional count set-minimum
@@ -39816,7 +40063,7 @@ draws the tool bar).  In both cases, the X and Y coordinates increase
 rightward and downward respectively.
 
    Except where noted, X and Y coordinates are reported in integer
-character units, i.e. numbers of lines and columns respectively.  On a
+character units, i.e., numbers of lines and columns respectively.  On a
 graphical display, each "line" and "column" corresponds to the height
 and width of a default character specified by the frame's default font.
 
@@ -40332,7 +40579,7 @@ several remote locations.  *Note Multiple Terminals::.
 
  -- Function: terminal-live-p object
      This predicate returns a non-`nil' value if OBJECT is a terminal
-     that is live (i.e. not deleted), and `nil' otherwise.  For live
+     that is live (i.e., not deleted), and `nil' otherwise.  For live
      terminals, the return value indicates what kind of frames are
      displayed on that terminal; the list of possible values is the
      same as for `framep' above.
@@ -40427,14 +40674,14 @@ terminals simultaneously in each session.  On other systems, it can
 only use a single terminal.  Each terminal object has the following
 attributes:
 
-   * The name of the device used by the terminal (e.g. `:0.0' or
+   * The name of the device used by the terminal (e.g., `:0.0' or
      `/dev/tty').
 
    * The terminal and keyboard coding systems used on the terminal.
      *Note Terminal I/O Encoding::.
 
    * The kind of display associated with the terminal.  This is the
-     symbol returned by the function `terminal-live-p' (i.e. `x', `t',
+     symbol returned by the function `terminal-live-p' (i.e., `x', `t',
      `w32', `ns', or `pc').  *Note Frames::.
 
    * A list of terminal parameters.  *Note Terminal Parameters::.
@@ -40520,7 +40767,7 @@ distinguish between the different physical monitors.
 
      Before creating the frame, this function ensures that Emacs is "set
      up" to display graphics.  For instance, if Emacs has not processed
-     X resources (e.g. if it was started on a text terminal), it does
+     X resources (e.g., if it was started on a text terminal), it does
      so at this time.  In all other respects, this function behaves like
      `make-frame' (*note Creating Frames::).
 
@@ -40661,9 +40908,9 @@ creates a separate "minibuffer-only frame" as well.
 
  -- User Option: minibuffer-frame-alist
      This variable's value is an alist of parameter values used when
-     creating an initial minibuffer-only frame (i.e. the minibuffer-only
-     frame that Emacs creates if `initial-frame-alist' specifies a
-     frame with no minibuffer).
+     creating an initial minibuffer-only frame (i.e., the
+     minibuffer-only frame that Emacs creates if `initial-frame-alist'
+     specifies a frame with no minibuffer).
 
  -- User Option: default-frame-alist
      This is an alist specifying default values of frame parameters for
@@ -41430,7 +41677,7 @@ File: elisp.info,  Node: Finding All Frames,  Next: Minibuffers and Frames,  Pre
 =======================
 
  -- Function: frame-list
-     This function returns a list of all the live frames, i.e. those
+     This function returns a list of all the live frames, i.e., those
      that have not been deleted.  It is analogous to `buffer-list' for
      buffers, and includes frames on all terminals.  The list that you
      get is newly created, so modifying the list doesn't have any
@@ -41681,8 +41928,8 @@ File: elisp.info,  Node: Raising and Lowering,  Next: Frame Configurations,  Pre
 =================================
 
 Most window systems use a desktop metaphor.  Part of this metaphor is
-the idea that system-level windows (e.g. Emacs frames) are stacked in a
-notional third dimension perpendicular to the screen surface.  Where
+the idea that system-level windows (e.g., Emacs frames) are stacked in
+a notional third dimension perpendicular to the screen surface.  Where
 two overlap, the one higher up covers the one underneath.  You can
 "raise" or "lower" a frame using the functions `raise-frame' and
 `lower-frame'.
@@ -43083,7 +43330,7 @@ the search functions do (*note Searching and Matching::).
      it, and `\' quotes `^', `-' or `\'.  Thus, `"a-zA-Z"' skips over
      all letters, stopping before the first nonletter, and `"^a-zA-Z"'
      skips nonletters stopping before the first letter.  See *Note
-     Regular Expressions::.  Character classes can also be used, e.g.
+     Regular Expressions::.  Character classes can also be used, e.g.,
      `"[:alnum:]"'.  See *note Char Classes::.
 
      If LIMIT is supplied (it must be a number or a marker), it
@@ -44052,7 +44299,7 @@ any portion of the text in the buffer into a string.
      `filter-buffer-substring-functions', and returns the result.  The
      obsolete variable `buffer-substring-filters' is also consulted.
      If both of these variables are `nil', the value is the unaltered
-     text from the buffer, i.e. what `buffer-substring' would return.
+     text from the buffer, i.e., what `buffer-substring' would return.
 
      If DELETE is non-`nil', this function deletes the text between
      START and END after copying it, like `delete-and-extract-region'.
@@ -44073,7 +44320,7 @@ any portion of the text in the buffer into a string.
      of `filter-buffer-substring'.
 
      The first hook function is passed a FUN that is equivalent to the
-     default operation of `filter-buffer-substring', i.e. it returns
+     default operation of `filter-buffer-substring', i.e., it returns
      the buffer-substring between START and END (processed by any
      `buffer-substring-filters') and optionally deletes the original
      text from the buffer.  In most cases, the hook function will call
@@ -46641,7 +46888,7 @@ each Emacs command.  *Note Adjusting Point::.
         * A list of faces.  This specifies a face which is an aggregate
           of the attributes of each of the listed faces.  Faces
           occurring earlier in the list have higher priority.  Each
-          list element must have one of the two above forms (i.e.
+          list element must have one of the two above forms (i.e.,
           either a face name or a property list of face attributes).
 
      Font Lock mode (*note Font Lock Mode::) works in most buffers by
@@ -46663,7 +46910,7 @@ each Emacs command.  *Note Adjusting Point::.
      `mouse-face' property value.
 
      Emacs ignores all face attributes from the `mouse-face' property
-     that alter the text size (e.g. `:height', `:weight', and
+     that alter the text size (e.g., `:height', `:weight', and
      `:slant').  Those attributes are always the same as for the
      unhighlighted text.
 
@@ -47598,7 +47845,7 @@ from this code.
  -- Command: base64-encode-region beg end &optional no-line-break
      This function converts the region from BEG to END into base 64
      code.  It returns the length of the encoded text.  An error is
-     signaled if a character in the region is multibyte, i.e. in a
+     signaled if a character in the region is multibyte, i.e., in a
      multibyte buffer the region must contain only characters from the
      charsets `ascii', `eight-bit-control' and `eight-bit-graphic'.
 
@@ -47649,14 +47896,14 @@ File: elisp.info,  Node: Checksum/Hash,  Next: Parsing HTML/XML,  Prev: Base 64,
 
 Emacs has built-in support for computing "cryptographic hashes".  A
 cryptographic hash, or "checksum", is a digital "fingerprint" of a
-piece of data (e.g. a block of text) which can be used to check that
+piece of data (e.g., a block of text) which can be used to check that
 you have an unaltered copy of that data.
 
    Emacs supports several common cryptographic hash algorithms: MD5,
 SHA-1, SHA-2, SHA-224, SHA-256, SHA-384 and SHA-512.  MD5 is the oldest
 of these algorithms, and is commonly used in "message digests" to check
 the integrity of messages transmitted over a network.  MD5 is not
-"collision resistant" (i.e. it is possible to deliberately design
+"collision resistant" (i.e., it is possible to deliberately design
 different pieces of data which have the same MD5 hash), so you should
 not used it for anything security-related.  A similar theoretical
 weakness also exists in SHA-1.  Therefore, for security-related
@@ -48411,7 +48658,7 @@ properties that Emacs knows about:
    ---------- Footnotes ----------
 
    (1) The Unicode specification writes these tag names inside `<..>'
-brackets, but the tag names in Emacs do not include the brackets; e.g.
+brackets, but the tag names in Emacs do not include the brackets; e.g.,
 Unicode specifies `<small>' where Emacs uses `small'.
 
 
@@ -48635,8 +48882,8 @@ translation table to use for translating the result.
      Each element of ALIST is of the form `(FROM . TO)', where FROM and
      TO are either characters or vectors specifying a sequence of
      characters.  If FROM is a character, that character is translated
-     to TO (i.e. to a character or a character sequence).  If FROM is a
-     vector of characters, that sequence is translated to TO.  The
+     to TO (i.e., to a character or a character sequence).  If FROM is
+     a vector of characters, that sequence is translated to TO.  The
      returned table has a translation table for reverse mapping in the
      first extra slot, and the maximum length of all the FROM character
      sequences in the second extra slot.
@@ -48939,8 +49186,8 @@ Here are the Lisp facilities for working with coding systems:
 
  -- Function: detect-coding-region start end &optional highest
      This function chooses a plausible coding system for decoding the
-     text from START to END.  This text should be a byte sequence, i.e.
-     unibyte text or multibyte text with only ASCII and eight-bit
+     text from START to END.  This text should be a byte sequence,
+     i.e., unibyte text or multibyte text with only ASCII and eight-bit
      characters (*note Explicit Encoding::).
 
      Normally this function returns a list of coding systems that could
@@ -50305,8 +50552,8 @@ used on its own.)  Here is a table of the special `\' constructs.
      their number implicitly, based on their position, which can be
      inconvenient.  This construct allows you to force a particular
      group number.  There is no particular restriction on the numbering,
-     e.g. you can have several groups with the same number in which case
-     the last one to match (i.e. the rightmost match) will win.
+     e.g., you can have several groups with the same number in which
+     case the last one to match (i.e., the rightmost match) will win.
      Implicitly numbered groups always get the smallest integer larger
      than the one of any previous group.
 
@@ -50929,7 +51176,7 @@ query the match data immediately after searching, before calling any
 other function that might perform another search.  Alternatively, you
 may save and restore the match data (*note Saving Match Data::) around
 the call to functions that could perform another search.  Or use the
-functions that explicitly do not modify the match data; e.g.
+functions that explicitly do not modify the match data; e.g.,
 `string-match-p'.
 
    A search which fails may or may not alter the match data.  In the
@@ -51474,7 +51721,7 @@ arguments (*note Syntax Table Functions::).
 
    The first character in a syntax descriptor must be a syntax class
 designator character.  The second character, if present, specifies a
-matching character (e.g. in Lisp, the matching character for `(' is
+matching character (e.g., in Lisp, the matching character for `(' is
 `)'); a space specifies that there is no matching character.  Then come
 characters specifying additional syntax properties (*note Syntax
 Flags::).
@@ -51747,7 +51994,7 @@ altering syntax tables.
      is the standard syntax table.
 
      In the new syntax table, all characters are initially given the
-     "inherit" (`@') syntax class, i.e. their syntax is inherited from
+     "inherit" (`@') syntax class, i.e., their syntax is inherited from
      the parent table (*note Syntax Class Table::).
 
  -- Function: copy-syntax-table &optional table
@@ -51766,7 +52013,7 @@ altering syntax tables.
      The syntax is changed only for TABLE, which defaults to the
      current buffer's syntax table, and not in any other syntax table.
 
-     The argument SYNTAX-DESCRIPTOR is a syntax descriptor, i.e. a
+     The argument SYNTAX-DESCRIPTOR is a syntax descriptor, i.e., a
      string whose first character is a syntax class designator and whose
      second and subsequent characters optionally specify a matching
      character and syntax flags.  *Note Syntax Descriptors::.  An error
@@ -51954,7 +52201,7 @@ This section describes functions for parsing and scanning balanced
 expressions.  We will refer to such expressions as "sexps", following
 the terminology of Lisp, even though these functions can act on
 languages other than Lisp.  Basically, a sexp is either a balanced
-parenthetical grouping, a string, or a "symbol" (i.e. a sequence of
+parenthetical grouping, a string, or a "symbol" (i.e., a sequence of
 characters whose syntax is either word constituent or symbol
 constituent).  However, characters in the expression prefix syntax
 class (*note Syntax Class Table::) are treated as part of the sexp if
@@ -52556,7 +52803,7 @@ in an abbrev table.
 
    When a major mode defines a system abbrev, it should call
 `define-abbrev' and specify `t' for the `:system' property.  Be aware
-that any saved non-"system" abbrevs are restored at startup, i.e.
+that any saved non-"system" abbrevs are restored at startup, i.e.,
 before some major modes are loaded.  Therefore, major modes should not
 assume that their abbrev tables are empty when they are first loaded.
 
@@ -53312,7 +53559,7 @@ much like text written into a file.  *Note Coding Systems::.
      above.  If DESTINATION is the integer 0, `call-process-region'
      discards the output and returns `nil' immediately, without waiting
      for the subprocess to finish (this only works if asynchronous
-     subprocesses are supported; i.e. not on MS-DOS).
+     subprocesses are supported; i.e., not on MS-DOS).
 
      The remaining arguments, ARGS, are strings that specify command
      line arguments for the program.
@@ -55820,7 +56067,7 @@ waiting for input.
      instead of being preempted, even if input is pending and the
      variable `redisplay-dont-pause' is `nil' (see below).  If
      `redisplay-dont-pause' is non-`nil' (the default), this function
-     redisplays in any case, i.e. FORCE does nothing.
+     redisplays in any case, i.e., FORCE does nothing.
 
      The function returns `t' if it actually tried to redisplay, and
      `nil' otherwise.  A value of `t' does not mean that redisplay
@@ -55889,7 +56136,7 @@ for this; *note Display Tables::).
      beyond the right edge of the window are truncated; otherwise, they
      are continued.  As a special exception, the variable
      `truncate-partial-width-windows' takes precedence in
-     "partial-width" windows (i.e. windows that do not occupy the
+     "partial-width" windows (i.e., windows that do not occupy the
      entire frame width).
 
  -- User Option: truncate-partial-width-windows
@@ -57165,7 +57412,7 @@ them:
 `mouse-face'
      This property is used instead of `face' when the mouse is within
      the range of the overlay.  However, Emacs ignores all face
-     attributes from this property that alter the text size (e.g.
+     attributes from this property that alter the text size (e.g.,
      `:height', `:weight', and `:slant').  Those attributes are always
      the same as in the unhighlighted text.
 
@@ -57357,7 +57604,7 @@ Screen Lines::, for related functions.
 
  -- Function: char-width char
      This function returns the width in columns of the character CHAR,
-     if it were displayed in the current buffer (i.e. taking into
+     if it were displayed in the current buffer (i.e., taking into
      account the buffer's display table, if any; *note Display
      Tables::).  The width of a tab character is usually `tab-width'
      (*note Usual Display::).
@@ -57874,7 +58121,7 @@ via the Customize interface (*note Customization::).
        :group 'basic-faces)
 
    Internally, Emacs stores the face's default specification in its
-`face-defface-spec' symbol property (*note Property Lists::).  The
+`face-defface-spec' symbol property (*note Symbol Properties::).  The
 `saved-face' property stores the face specification saved by the user,
 using the customization buffer; the `customized-face' property stores
 the face specification customized for the current session, but not
@@ -58131,7 +58378,7 @@ implement the `text-scale-adjust' command (*note Text Scale:
      definition of FACE.
 
      REMAPPING may be any face specification suitable for a `face' text
-     property: either a face (i.e. a face name or a property list of
+     property: either a face (i.e., a face name or a property list of
      attribute/value pairs), or a list of faces.  For details, see the
      description of the `face' text property in *note Special
      Properties::.  REMAPPING serves as the complete specification for
@@ -58318,7 +58565,7 @@ for Font Lock::.
 `underline'
 `fixed-pitch'
 `variable-pitch'
-     These have the attributes indicated by their names (e.g. `bold'
+     These have the attributes indicated by their names (e.g., `bold'
      has a bold `:weight' attribute), with all other attributes
      unspecified (and so given by `default').
 
@@ -58945,7 +59192,7 @@ indicate truncated or continued lines, buffer boundaries, etc.
 
      *Note Fringe Bitmaps::, for a list of standard bitmap symbols and
      how to define your own.  In addition, `nil' represents the empty
-     bitmap (i.e. an indicator that is not shown).
+     bitmap (i.e., an indicator that is not shown).
 
      When `fringe-indicator-alist' has a buffer-local value, and there
      is no bitmap defined for a logical indicator, or the bitmap is
@@ -59291,7 +59538,7 @@ those don't apply to the replacement.
 property" means all the consecutive characters that have the same Lisp
 object as their `display' property; these characters are replaced as a
 single unit.  If two characters have different Lisp objects as their
-`display' properties (i.e. objects which are not `eq'), they are
+`display' properties (i.e., objects which are not `eq'), they are
 handled separately.
 
    Here is an example which illustrates this point.  A string serves as
@@ -60020,7 +60267,7 @@ image descriptor properties:
 
 `:index'
      This has the same meaning as it does for GIF images (*note GIF
-     Images::), i.e. it specifies which image to view inside an image
+     Images::), i.e., it specifies which image to view inside an image
      bundle file format such as DJVM.  You can use the `image-metadata'
      function to retrieve the total number of images in an image bundle.
 
@@ -60115,11 +60362,11 @@ convenient ways to create image descriptors.
      depending on image type.  All specifications must at least contain
      the properties `:type TYPE' and either `:file FILE' or
      `:data DATA', where TYPE is a symbol specifying the image type,
-     e.g. `xbm', FILE is the file to load the image from, and DATA is a
-     string containing the actual image data.  The first specification
-     in the list whose TYPE is supported, and FILE exists, is used to
-     construct the image specification to be returned.  If no
-     specification is satisfied, `nil' is returned.
+     e.g., `xbm', FILE is the file to load the image from, and DATA is
+     a string containing the actual image data.  The first
+     specification in the list whose TYPE is supported, and FILE
+     exists, is used to construct the image specification to be
+     returned.  If no specification is satisfied, `nil' is returned.
 
      The image is looked for in `image-load-path'.
 
@@ -60523,7 +60770,7 @@ Overlays::) to hold the button properties:
 (*note Text Properties::) to hold the button properties.  Such buttons
 do not add markers to the buffer, so editing in the buffer does not
 slow down if there is an extremely large numbers of buttons.  However,
-if there is an existing face text property on the text (e.g. a face
+if there is an existing face text property on the text (e.g., a face
 assigned by Font Lock mode), the button face may not be visible.  Both
 of these functions return the starting position of the new button.
 
@@ -61053,7 +61300,7 @@ Display Tables::).
      `ctl-arrow'.  If this variable is non-`nil' (the default), these
      characters are displayed as sequences of two glyphs, where the
      first glyph is `^' (a display table can specify a glyph to use
-     instead of `^'); e.g. the <DEL> character is displayed as `^?'.
+     instead of `^'); e.g., the <DEL> character is displayed as `^?'.
 
      If `ctl-arrow' is `nil', these characters are displayed as octal
      escapes (see below).
@@ -61295,7 +61542,7 @@ File: elisp.info,  Node: Glyphless Chars,  Prev: Glyphs,  Up: Character Display
 -----------------------------------
 
 "Glyphless characters" are characters which are displayed in a special
-way, e.g. as a box containing a hexadecimal code, instead of being
+way, e.g., as a box containing a hexadecimal code, instead of being
 displayed literally.  These include characters which are explicitly
 defined to be glyphless, as well as characters for which there is no
 available font (on a graphical display), and characters which cannot be
@@ -61486,7 +61733,7 @@ Emacs can display text written in scripts, such as Arabic, Farsi, and
 Hebrew, whose natural ordering for horizontal text display runs from
 right to left.  Furthermore, segments of Latin script and digits
 embedded in right-to-left text are displayed left-to-right, while
-segments of right-to-left script embedded in left-to-right text (e.g.
+segments of right-to-left script embedded in left-to-right text (e.g.,
 Arabic or Hebrew text in comments or strings in a program source file)
 are appropriately displayed right-to-left.  We call such mixtures of
 left-to-right and right-to-left text "bidirectional text".  This
@@ -61494,7 +61741,7 @@ section describes the facilities and options for editing and displaying
 bidirectional text.
 
    Text is stored in Emacs buffers and strings in "logical" (or
-"reading") order, i.e. the order in which a human would read each
+"reading") order, i.e., the order in which a human would read each
 character.  In right-to-left and bidirectional text, the order in which
 characters are displayed on the screen (called "visual order") is not
 the same as logical order; the characters' screen positions do not
@@ -61997,7 +62244,7 @@ and no library is found whose name is identical to the terminal's name,
 Emacs strips from the terminal's name the last hyphen or underscore and
 everything that follows it, and tries again.  This process is repeated
 until Emacs finds a matching library, or until there are no more
-hyphens or underscores in the name (i.e. there is no terminal-specific
+hyphens or underscores in the name (i.e., there is no terminal-specific
 library).  For example, if the terminal name is `xterm-256color' and
 there is no `term/xterm-256color.el' library, Emacs tries to load
 `term/xterm.el'.  If necessary, the terminal library can evaluate
@@ -62166,7 +62413,7 @@ control.  The low-level primitive for killing Emacs is `kill-emacs'.
    The `kill-emacs' function is normally called via the higher-level
 command `C-x C-c' (`save-buffers-kill-terminal').  *Note Exiting:
 (emacs)Exiting.  It is also called automatically if Emacs receives a
-`SIGTERM' or `SIGHUP' operating system signal (e.g. when the
+`SIGTERM' or `SIGHUP' operating system signal (e.g., when the
 controlling terminal is disconnected), or if it receives a `SIGINT'
 signal while running in batch mode (*note Batch Mode::).
 
@@ -62174,10 +62421,11 @@ signal while running in batch mode (*note Batch Mode::).
      This normal hook is run by `kill-emacs', before it kills Emacs.
 
      Because `kill-emacs' can be called in situations where user
-     interaction is impossible (e.g. when the terminal is disconnected),
-     functions on this hook should not attempt to interact with the
-     user.  If you want to interact with the user when Emacs is
-     shutting down, use `kill-emacs-query-functions', described below.
+     interaction is impossible (e.g., when the terminal is
+     disconnected), functions on this hook should not attempt to
+     interact with the user.  If you want to interact with the user
+     when Emacs is shutting down, use `kill-emacs-query-functions',
+     described below.
 
    When Emacs is killed, all the information in the Emacs process,
 aside from files that have been saved, is lost.  Because killing Emacs
@@ -62377,14 +62625,14 @@ system, the user's UID, and so on.
 
     `windows-nt'
           Microsoft Windows NT, 9X and later.  The value of
-          `system-type' is always `windows-nt', e.g. even on Windows 7.
+          `system-type' is always `windows-nt', e.g., even on Windows 7.
 
 
      We do not wish to add new symbols to make finer distinctions
      unless it is absolutely necessary!  In fact, we hope to eliminate
      some of these alternatives in the future.  If you need to make a
      finer distinction than `system-type' allows for, you can test
-     `system-configuration', e.g. against a regexp.
+     `system-configuration', e.g., against a regexp.
 
  -- Function: system-name
      This function returns the name of the machine you are running on,
@@ -62634,7 +62882,7 @@ microsecond to the specified time.
 
    The return value of `current-time' represents time using four
 integers, as do the timestamps in the return value of `file-attributes'
-(*note Definition of file-attributes::).  In function arguments, e.g.
+(*note Definition of file-attributes::).  In function arguments, e.g.,
 the TIME-VALUE argument to `current-time-string', two-, three-, and
 four-integer lists are accepted.  You can convert times from the list
 representation into standard human-readable strings using
@@ -62998,7 +63246,7 @@ Time values are lists of two to four integers (*note Time of Day::).
 
     `%z'
           Non-printing control flag.  When it is used, other specifiers
-          must be given in the order of decreasing size, i.e. years
+          must be given in the order of decreasing size, i.e., years
           before days, hours before minutes, etc.  Nothing will be
           produced in the result string to the left of `%z' until the
           first non-zero conversion is encountered.  For example, the
@@ -63958,12 +64206,12 @@ for creating them differs, as explained in the following sections.
    Each package (whether simple or multi-file) has certain "attributes":
 
 Name
-     A short word (e.g. `auctex').  This is usually also the symbol
+     A short word (e.g., `auctex').  This is usually also the symbol
      prefix used in the program (*note Coding Conventions::).
 
 Version
      A version number, in a form that the function `version-to-list'
-     understands (e.g. `11.86').  Each release of a package should be
+     understands (e.g., `11.86').  Each release of a package should be
      accompanied by an increase in the version number.
 
 Brief description
@@ -63988,7 +64236,7 @@ Dependencies
    Installing a package, either via the command `package-install-file',
 or via the Package Menu, creates a subdirectory of `package-user-dir'
 named `NAME-VERSION', where NAME is the package's name and VERSION its
-version (e.g. `~/.emacs.d/elpa/auctex-11.86/').  We call this the
+version (e.g., `~/.emacs.d/elpa/auctex-11.86/').  We call this the
 package's "content directory".  It is where Emacs puts the package's
 contents (the single Lisp file for a simple package, or the files
 extracted from a multi-file package).
@@ -64235,7 +64483,7 @@ Appendix A Emacs 23 Antinews
 
 For those users who live backwards in time, here is information about
 downgrading to Emacs version 23.4.  We hope you will enjoy the greater
-simplicity that results from the absence of many Emacs 24.2.90 features.
+simplicity that results from the absence of many Emacs 24.2.91 features.
 
 A.1 Old Lisp Features in Emacs 23
 =================================
@@ -68608,7 +68856,7 @@ Index
 * asking the user questions:             Yes-or-No Queries.   (line   6)
 * assoc:                                 Association Lists.   (line  60)
 * assoc-default:                         Association Lists.   (line 157)
-* assoc-string:                          Text Comparison.     (line 128)
+* assoc-string:                          Text Comparison.     (line 132)
 * association list:                      Association Lists.   (line   6)
 * assq:                                  Association Lists.   (line 100)
 * assq-delete-all:                       Association Lists.   (line 213)
@@ -69423,10 +69671,10 @@ Index
 * cursor-type, a frame parameter:        Cursor Parameters.   (line   8)
 * cust-print:                            Printing in Edebug.  (line   6)
 * custom-add-frequent-value:             Variable Definitions.
-                                                              (line 176)
+                                                              (line 178)
 * custom-initialize-delay:               Building Emacs.      (line  90)
 * custom-reevaluate-setting:             Variable Definitions.
-                                                              (line 191)
+                                                              (line 193)
 * custom-set-faces:                      Applying Customizations.
                                                               (line  37)
 * custom-set-variables:                  Applying Customizations.
@@ -69436,7 +69684,7 @@ Index
 * custom-theme-set-variables:            Custom Themes.       (line  38)
 * custom-unlispify-remove-prefixes:      Group Definitions.   (line  52)
 * custom-variable-p:                     Variable Definitions.
-                                                              (line 204)
+                                                              (line 206)
 * customizable variables, how to define: Variable Definitions.
                                                               (line   6)
 * customization groups, defining:        Group Definitions.   (line   6)
@@ -70491,7 +70739,7 @@ Index
 * function safety:                       Function Safety.     (line   6)
 * function-documentation:                Documentation Basics.
                                                               (line  42)
-* function-get:                          Symbol Plists.       (line  36)
+* function-get:                          Symbol Plists.       (line  59)
 * functionals:                           Calling Functions.   (line 103)
 * functionp:                             What Is a Function.  (line  92)
 * functions in modes:                    Major Mode Conventions.
@@ -70521,9 +70769,9 @@ Index
 * generated-autoload-file:               Autoload.            (line 190)
 * generic mode:                          Generic Modes.       (line   6)
 * geometry specification:                Geometry.            (line  10)
-* get:                                   Symbol Plists.       (line  25)
+* get:                                   Symbol Plists.       (line   9)
 * get, defcustom keyword:                Variable Definitions.
-                                                              (line  80)
+                                                              (line  82)
 * get-buffer:                            Buffer Names.        (line  50)
 * get-buffer-create:                     Creating Buffers.    (line  17)
 * get-buffer-process:                    Process Buffers.     (line  59)
@@ -70786,7 +71034,7 @@ Index
 * initial-window-system, and startup:    Startup Summary.     (line  31)
 * initialization of Emacs:               Startup Summary.     (line   6)
 * initialize, defcustom keyword:         Variable Definitions.
-                                                              (line  93)
+                                                              (line  95)
 * inline completion:                     Completion in Buffers.
                                                               (line   6)
 * inline functions:                      Inline Functions.    (line   6)
@@ -70860,7 +71108,7 @@ Index
 * interactive, examples of using:        Interactive Examples.
                                                               (line   6)
 * interactive-form:                      Using Interactive.   (line 132)
-* interactive-form, function property:   Using Interactive.   (line  21)
+* interactive-form, symbol property:     Using Interactive.   (line  21)
 * intern:                                Creating Symbols.    (line  96)
 * intern-soft:                           Creating Symbols.    (line 116)
 * internal representation of characters: Text Representations.
@@ -70982,7 +71230,7 @@ Index
 * kill-buffer-query-functions:           Killing Buffers.     (line  66)
 * kill-emacs:                            Killing Emacs.       (line  11)
 * kill-emacs-hook:                       Killing Emacs.       (line  30)
-* kill-emacs-query-functions:            Killing Emacs.       (line  46)
+* kill-emacs-query-functions:            Killing Emacs.       (line  47)
 * kill-local-variable:                   Creating Buffer-Local.
                                                               (line 136)
 * kill-new:                              Low-Level Kill Ring. (line  34)
@@ -71025,8 +71273,8 @@ Index
 * last-prefix-arg:                       Prefix Command Arguments.
                                                               (line  98)
 * last-repeatable-command:               Command Loop Info.   (line  29)
-* lax-plist-get:                         Other Plists.        (line  44)
-* lax-plist-put:                         Other Plists.        (line  48)
+* lax-plist-get:                         Plist Access.        (line  38)
+* lax-plist-put:                         Plist Access.        (line  42)
 * layout on display, and bidirectional text: Bidirectional Display.
                                                               (line 113)
 * layout parameters of frames:           Layout Parameters.   (line   6)
@@ -71722,7 +71970,7 @@ Index
 * options on command line:               Command-Line Arguments.
                                                               (line  29)
 * options, defcustom keyword:            Variable Definitions.
-                                                              (line  59)
+                                                              (line  61)
 * or:                                    Combining Conditions.
                                                               (line  60)
 * ordering of windows, cyclic:           Cyclic Window Ordering.
@@ -71802,7 +72050,11 @@ Index
 * passwords, reading:                    Reading a Password.  (line   6)
 * PATH environment variable:             Subprocess Creation. (line  18)
 * path-separator:                        System Environment.  (line 151)
+* pattern matching:                      Pattern matching case statement.
+                                                              (line   6)
 * PBM:                                   Other Image Types.   (line   6)
+* pcase:                                 Pattern matching case statement.
+                                                              (line   6)
 * peculiar error:                        Error Symbols.       (line  29)
 * peeking at input:                      Event Input Misc.    (line  11)
 * percent symbol in mode line:           Mode Line Data.      (line  20)
@@ -71820,9 +72072,9 @@ Index
 * play-sound-functions:                  Sound Output.        (line  51)
 * plist:                                 Property Lists.      (line   6)
 * plist vs. alist:                       Plists and Alists.   (line   6)
-* plist-get:                             Other Plists.        (line  10)
-* plist-member:                          Other Plists.        (line  52)
-* plist-put:                             Other Plists.        (line  24)
+* plist-get:                             Plist Access.        (line  10)
+* plist-member:                          Plist Access.        (line  46)
+* plist-put:                             Plist Access.        (line  24)
 * point:                                 Point.               (line   6)
 * point excursion:                       Excursions.          (line  22)
 * point in window:                       Window Point.        (line   6)
@@ -72060,7 +72312,7 @@ Index
 * push-button:                           Button Buffer Commands.
                                                               (line  22)
 * push-mark:                             The Mark.            (line 104)
-* put:                                   Symbol Plists.       (line  41)
+* put:                                   Symbol Plists.       (line  20)
 * put-char-code-property:                Character Properties.
                                                               (line 171)
 * put-charset-property:                  Character Sets.      (line  56)
@@ -72303,7 +72555,7 @@ Index
 * ring-remove:                           Rings.               (line  57)
 * ring-size:                             Rings.               (line  23)
 * risky, defcustom keyword:              Variable Definitions.
-                                                              (line 138)
+                                                              (line 140)
 * risky-local-variable-p:                File Local Variables.
                                                               (line 136)
 * rm:                                    Changing Files.      (line 114)
@@ -72327,7 +72579,7 @@ Index
 * safe local variable:                   File Local Variables.
                                                               (line  89)
 * safe, defcustom keyword:               Variable Definitions.
-                                                              (line 142)
+                                                              (line 144)
 * safe-length:                           List Elements.       (line 125)
 * safe-local-eval-forms:                 File Local Variables.
                                                               (line 155)
@@ -72470,10 +72722,10 @@ Index
 * session manager:                       Session Management.  (line   6)
 * set:                                   Setting Variables.   (line  42)
 * set, defcustom keyword:                Variable Definitions.
-                                                              (line  68)
+                                                              (line  70)
 * set-advertised-calling-convention:     Obsolete Functions.  (line  52)
 * set-after, defcustom keyword:          Variable Definitions.
-                                                              (line 146)
+                                                              (line 148)
 * set-auto-coding:                       Default Coding Systems.
                                                               (line 136)
 * set-auto-mode:                         Auto Major Mode.     (line  38)
@@ -72579,7 +72831,7 @@ Index
 * setenv:                                System Environment.  (line 108)
 * setf:                                  Setting Generalized Variables.
                                                               (line  14)
-* setplist:                              Symbol Plists.       (line  10)
+* setplist:                              Symbol Plists.       (line  37)
 * setq:                                  Setting Variables.   (line  11)
 * setq-default:                          Default Value.       (line  36)
 * setq-local:                            Creating Buffer-Local.
@@ -72869,12 +73121,13 @@ Index
                                                               (line   6)
 * symbol in keymap:                      Key Lookup.          (line  82)
 * symbol name hashing:                   Creating Symbols.    (line  11)
+* symbol property:                       Symbol Properties.   (line   6)
 * symbol that evaluates to itself:       Constant Variables.  (line   6)
 * symbol with constant value:            Constant Variables.  (line   6)
 * symbol-file:                           Where Defined.       (line   7)
 * symbol-function:                       Function Cells.      (line  14)
 * symbol-name:                           Creating Symbols.    (line  73)
-* symbol-plist:                          Symbol Plists.       (line   7)
+* symbol-plist:                          Symbol Plists.       (line  34)
 * symbol-value:                          Accessing Variables. (line  15)
 * symbolp:                               Symbols.             (line  17)
 * symbols-consed:                        Memory Usage.        (line  26)
@@ -73546,940 +73799,943 @@ Index
 
 Tag Table:
 Node: Top1117
-Node: Introduction70278
-Node: Caveats72170
-Node: Lisp History73481
-Node: Conventions75159
-Node: Some Terms75967
-Node: nil and t76707
-Node: Evaluation Notation78529
-Node: Printing Notation79458
-Node: Error Messages80259
-Node: Buffer Text Notation80706
-Node: Format of Descriptions81615
-Node: A Sample Function Description82476
-Node: A Sample Variable Description86572
-Node: Version Info87630
-Node: Acknowledgments89425
-Node: Lisp Data Types91205
-Node: Printed Representation93725
-Node: Comments95739
-Node: Programming Types96640
-Node: Integer Type98437
-Node: Floating Point Type99646
-Node: Character Type100550
-Node: Basic Char Syntax101909
-Node: General Escape Syntax104982
-Node: Ctl-Char Syntax106868
-Node: Meta-Char Syntax108649
-Node: Other Char Bits109726
-Ref: modifier bits110526
-Node: Symbol Type110908
-Node: Sequence Type114218
-Node: Cons Cell Type115932
-Node: Box Diagrams118836
-Node: Dotted Pair Notation122466
-Node: Association List Type124983
-Node: Array Type125990
-Node: String Type127720
-Node: Syntax for Strings128513
-Node: Non-ASCII in Strings129679
-Node: Nonprinting Characters132399
-Node: Text Props and Strings133847
-Node: Vector Type135189
-Node: Char-Table Type135968
-Node: Bool-Vector Type136980
-Node: Hash Table Type138184
-Node: Function Type138786
-Node: Macro Type139928
-Node: Primitive Function Type140833
-Node: Byte-Code Type142408
-Node: Autoload Type143028
-Node: Editing Types144038
-Node: Buffer Type145119
-Node: Marker Type147266
-Node: Window Type147996
-Node: Frame Type149211
-Node: Terminal Type149824
-Node: Window Configuration Type150277
-Node: Frame Configuration Type150858
-Node: Process Type151466
-Node: Stream Type152430
-Node: Keymap Type153560
-Node: Overlay Type154024
-Node: Font Type154672
-Node: Circular Objects155195
-Node: Type Predicates156694
-Node: Equality Predicates162041
-Node: Numbers166597
-Node: Integer Basics167927
-Node: Float Basics171321
-Node: Predicates on Numbers174475
-Node: Comparison of Numbers175963
-Node: Numeric Conversions180191
-Node: Arithmetic Operations182798
-Node: Rounding Operations188041
-Node: Bitwise Operations189154
-Node: Math Functions197249
-Node: Random Numbers199435
-Node: Strings and Characters201373
-Node: String Basics202655
-Node: Predicates for Strings205747
-Node: Creating Strings206440
-Node: Modifying Strings214403
-Node: Text Comparison215688
-Node: String Conversion222177
-Node: Formatting Strings226292
-Node: Case Conversion234644
-Node: Case Tables238568
-Node: Lists243640
-Node: Cons Cells244589
-Node: List-related Predicates247102
-Node: List Elements248812
-Ref: Definition of nth251681
-Ref: Definition of safe-length253138
-Node: Building Lists254530
-Ref: Building Lists-Footnote-1262498
-Node: List Variables262972
-Node: Modifying Lists267230
-Node: Setcar268130
-Node: Setcdr270692
-Node: Rearrangement273290
-Node: Sets And Lists279443
-Node: Association Lists286919
-Ref: Association Lists-Footnote-1296274
-Node: Sequences Arrays Vectors296479
-Node: Sequence Functions299010
-Node: Arrays302923
-Node: Array Functions305387
-Node: Vectors307708
-Node: Vector Functions309068
-Node: Char-Tables311265
-Node: Bool-Vectors317504
-Node: Rings318843
-Node: Hash Tables321861
-Node: Creating Hash323599
-Node: Hash Access329697
-Ref: Definition of maphash331169
-Node: Defining Hash331390
-Node: Other Hash334456
-Node: Symbols335636
-Node: Symbol Components336678
-Node: Definitions339810
-Node: Creating Symbols342282
-Ref: Definition of mapatoms348753
-Node: Property Lists349883
-Node: Plists and Alists351330
-Node: Symbol Plists353184
-Node: Other Plists355284
-Node: Evaluation357436
-Node: Intro Eval358294
-Ref: Intro Eval-Footnote-1361321
-Ref: Intro Eval-Footnote-2361455
-Node: Forms361590
-Node: Self-Evaluating Forms362812
-Node: Symbol Forms364333
-Node: Classifying Lists365424
-Node: Function Indirection366187
-Ref: Definition of indirect-function368987
-Node: Function Forms369808
-Node: Macro Forms370812
-Node: Special Forms372419
-Node: Autoloading374453
-Node: Quoting375059
-Node: Backquote376442
-Node: Eval378189
-Ref: Definition of eval-region380600
-Ref: Definition of max-lisp-eval-depth382680
-Node: Control Structures385074
-Node: Sequencing386746
-Node: Conditionals389645
-Node: Combining Conditions393611
-Node: Iteration397233
-Node: Nonlocal Exits400129
-Node: Catch and Throw400834
-Node: Examples of Catch404939
-Node: Errors406867
-Node: Signaling Errors408362
-Ref: Definition of signal410452
-Node: Processing of Errors412919
-Node: Handling Errors414828
-Node: Error Symbols424672
-Node: Cleanups428346
-Node: Variables432062
-Ref: Variables-Footnote-1434286
-Node: Global Variables434505
-Node: Constant Variables435642
-Node: Local Variables436904
-Ref: Definition of max-specpdl-size441346
-Node: Void Variables442092
-Node: Defining Variables445207
-Node: Tips for Defining450277
-Node: Accessing Variables453109
-Node: Setting Variables454787
-Node: Variable Scoping457622
-Node: Dynamic Binding459417
-Node: Dynamic Binding Tips461680
-Node: Lexical Binding463658
-Node: Using Lexical Binding467327
-Node: Buffer-Local Variables470186
-Node: Intro to Buffer-Local471101
-Node: Creating Buffer-Local475245
-Node: Default Value484549
-Node: File Local Variables487966
-Node: Directory Local Variables495846
-Ref: Directory Local Variables-Footnote-1500791
-Node: Variable Aliases500901
-Node: Variables with Restricted Values504429
-Node: Generalized Variables505724
-Node: Setting Generalized Variables506626
-Node: Adding Generalized Variables509977
-Node: Functions512774
-Node: What Is a Function514218
-Node: Lambda Expressions519659
-Node: Lambda Components520820
-Node: Simple Lambda522630
-Node: Argument List524185
-Node: Function Documentation528123
-Node: Function Names530756
-Node: Defining Functions532754
-Ref: Definition of defalias534800
-Node: Calling Functions536369
-Ref: Calling Functions-Footnote-1541654
-Node: Mapping Functions541865
-Ref: Definition of mapcar542806
-Node: Anonymous Functions545129
-Node: Function Cells548633
-Node: Closures551951
-Node: Obsolete Functions553527
-Node: Inline Functions556829
-Node: Declare Form559099
-Ref: Definition of declare559473
-Node: Declaring Functions561479
-Node: Function Safety565103
-Node: Related Topics566714
-Node: Macros567961
-Node: Simple Macro569251
-Node: Expansion570019
-Node: Compiling Macros573608
-Node: Defining Macros575274
-Node: Problems with Macros577362
-Node: Wrong Time578153
-Node: Argument Evaluation579209
-Node: Surprising Local Vars582115
-Node: Eval During Expansion584189
-Node: Repeated Expansion585971
-Node: Indenting Macros588350
-Node: Customization590725
-Node: Common Keywords591978
-Node: Group Definitions598226
-Node: Variable Definitions601052
-Node: Customization Types611004
-Node: Simple Types612874
-Node: Composite Types615717
-Node: Splicing into Lists628194
-Node: Type Keywords629970
-Node: Defining New Types634131
-Node: Applying Customizations637548
-Node: Custom Themes639820
-Node: Loading643831
-Node: How Programs Do Loading645629
-Ref: Definition of load-read-function652117
-Node: Load Suffixes652709
-Node: Library Search654890
-Node: Loading Non-ASCII659597
-Node: Autoload660935
-Ref: autoload cookie666034
-Node: Repeated Loading670916
-Node: Named Features672934
-Node: Where Defined679487
-Node: Unloading681831
-Node: Hooks for Loading684305
-Node: Byte Compilation686966
-Node: Speed of Byte-Code688630
-Node: Compilation Functions689557
-Node: Docs and Compilation695684
-Node: Dynamic Loading698058
-Node: Eval During Compile700670
-Node: Compiler Errors703851
-Node: Byte-Code Objects706525
-Node: Disassembly708764
-Node: Advising Functions714462
-Node: Simple Advice717160
-Node: Defining Advice719903
-Node: Around-Advice726052
-Node: Computed Advice727573
-Node: Activation of Advice729353
-Node: Enabling Advice734241
-Node: Preactivation735790
-Node: Argument Access in Advice738446
-Node: Combined Definition741563
-Node: Debugging744026
-Node: Debugger745581
-Node: Error Debugging746737
-Node: Infinite Loops751549
-Node: Function Debugging752813
-Node: Explicit Debug755864
-Node: Using Debugger756994
-Node: Debugger Commands759994
-Node: Invoking the Debugger763932
-Node: Internals of Debugger767918
-Node: Edebug772376
-Node: Using Edebug774670
-Node: Instrumenting777267
-Node: Edebug Execution Modes780427
-Node: Jumping783917
-Node: Edebug Misc786883
-Node: Breaks788304
-Node: Breakpoints788830
-Node: Global Break Condition791500
-Node: Source Breakpoints792561
-Node: Trapping Errors793519
-Node: Edebug Views794653
-Node: Edebug Eval796781
-Node: Eval List797874
-Node: Printing in Edebug801849
-Node: Trace Buffer803537
-Node: Coverage Testing805476
-Node: The Outside Context808248
-Node: Checking Whether to Stop808991
-Node: Edebug Display Update809698
-Node: Edebug Recursive Edit811832
-Node: Edebug and Macros813448
-Node: Instrumenting Macro Calls814020
-Node: Specification List817469
-Node: Backtracking825543
-Node: Specification Examples827700
-Node: Edebug Options829820
-Node: Syntax Errors834855
-Node: Excess Open836206
-Node: Excess Close837972
-Node: Test Coverage839239
-Node: Profiling840849
-Node: Read and Print843124
-Node: Streams Intro844102
-Node: Input Streams846171
-Node: Input Functions851030
-Node: Output Streams853328
-Node: Output Functions857541
-Node: Output Variables862534
-Node: Minibuffers867571
-Node: Intro to Minibuffers869165
-Node: Text from Minibuffer872830
-Ref: Definition of minibuffer-local-map880020
-Node: Object from Minibuffer881863
-Node: Minibuffer History884682
-Node: Initial Input889879
-Node: Completion891612
-Node: Basic Completion893688
-Ref: Definition of test-completion898914
-Node: Minibuffer Completion902861
-Node: Completion Commands907593
-Node: High-Level Completion913888
-Ref: Definition of read-variable918127
-Node: Reading File Names919700
-Node: Completion Variables928782
-Node: Programmed Completion933240
-Node: Completion in Buffers937864
-Node: Yes-or-No Queries941436
-Node: Multiple Queries946108
-Node: Reading a Password950342
-Node: Minibuffer Commands951271
-Node: Minibuffer Windows953083
-Ref: Definition of minibuffer-window953530
-Node: Minibuffer Contents954786
-Node: Recursive Mini956521
-Node: Minibuffer Misc957949
-Ref: Definition of minibuffer-help-form958578
-Ref: Definition of minibuffer-scroll-window958749
-Node: Command Loop960136
-Node: Command Overview961711
-Node: Defining Commands964805
-Node: Using Interactive965790
-Ref: Using Interactive-Footnote-1972413
-Node: Interactive Codes972466
-Node: Interactive Examples980419
-Node: Interactive Call981858
-Node: Distinguish Interactive987125
-Node: Command Loop Info989720
-Ref: Definition of this-command-keys-vector993661
-Node: Adjusting Point995516
-Node: Input Events996676
-Node: Keyboard Events998857
-Node: Function Keys1001588
-Node: Mouse Events1004474
-Node: Click Events1005598
-Node: Drag Events1011744
-Node: Button-Down Events1013182
-Ref: Button-Down Events-Footnote-11014378
-Node: Repeat Events1014438
-Node: Motion Events1018809
-Node: Focus Events1019516
-Node: Misc Events1020987
-Node: Event Examples1025972
-Node: Classifying Events1027480
-Node: Accessing Mouse1031449
-Node: Accessing Scroll1037139
-Node: Strings of Events1038330
-Node: Reading Input1042165
-Node: Key Sequence Input1043222
-Node: Reading One Event1048784
-Node: Event Mod1054658
-Node: Invoking the Input Method1058298
-Node: Quoted Character Input1060267
-Node: Event Input Misc1061797
-Node: Special Events1066110
-Node: Waiting1067369
-Node: Quitting1070139
-Node: Prefix Command Arguments1075759
-Node: Recursive Editing1080694
-Node: Disabling Commands1085747
-Node: Command History1087925
-Node: Keyboard Macros1089639
-Node: Keymaps1092695
-Node: Key Sequences1094648
-Node: Keymap Basics1097162
-Node: Format of Keymaps1099701
-Node: Creating Keymaps1104208
-Node: Inheritance and Keymaps1106720
-Node: Prefix Keys1109854
-Ref: Definition of define-prefix-command1113482
-Node: Active Keymaps1114104
-Node: Searching Keymaps1119525
-Node: Controlling Active Maps1121540
-Ref: Definition of minor-mode-map-alist1124021
-Node: Key Lookup1128656
-Node: Functions for Key Lookup1133969
-Node: Changing Key Bindings1139318
-Node: Remapping Commands1147503
-Node: Translation Keymaps1149885
-Node: Key Binding Commands1156335
-Node: Scanning Keymaps1159134
-Node: Menu Keymaps1166071
-Node: Defining Menus1166949
-Ref: Defining Menus-Footnote-11169059
-Node: Simple Menu Items1169139
-Node: Extended Menu Items1171049
-Node: Menu Separators1175883
-Node: Alias Menu Items1178370
-Node: Mouse Menus1179603
-Node: Keyboard Menus1181592
-Node: Menu Example1182806
-Node: Menu Bar1185454
-Node: Tool Bar1188817
-Node: Modifying Menus1197388
-Node: Easy Menu1198918
-Node: Modes1203419
-Node: Hooks1204683
-Node: Running Hooks1207004
-Node: Setting Hooks1211344
-Node: Major Modes1213726
-Node: Major Mode Conventions1216648
-Node: Auto Major Mode1227980
-Node: Mode Help1235209
-Node: Derived Modes1236126
-Node: Basic Major Modes1241084
-Node: Mode Hooks1243510
-Node: Tabulated List Mode1246141
-Node: Generic Modes1251726
-Node: Example Major Modes1253896
-Node: Minor Modes1258929
-Node: Minor Mode Conventions1260127
-Node: Keymaps and Minor Modes1265408
-Node: Defining Minor Modes1266532
-Node: Mode Line Format1274855
-Node: Mode Line Basics1276221
-Node: Mode Line Data1277964
-Node: Mode Line Top1282186
-Node: Mode Line Variables1284663
-Ref: Definition of minor-mode-alist1288581
-Node: %-Constructs1290487
-Node: Properties in Mode1294272
-Node: Header Lines1295809
-Node: Emulating Mode Line1296751
-Node: Imenu1298901
-Node: Font Lock Mode1305672
-Node: Font Lock Basics1307355
-Node: Search-based Fontification1310985
-Node: Customizing Keywords1320633
-Node: Other Font Lock Variables1323690
-Node: Levels of Font Lock1326883
-Node: Precalculated Fontification1328253
-Node: Faces for Font Lock1329218
-Node: Syntactic Font Lock1331428
-Node: Multiline Font Lock1334758
-Node: Font Lock Multiline1337943
-Node: Region to Refontify1340331
-Node: Auto-Indentation1341709
-Node: SMIE1344550
-Node: SMIE setup1346315
-Node: Operator Precedence Grammars1348195
-Node: SMIE Grammar1351804
-Node: SMIE Lexer1354593
-Node: SMIE Tricks1356806
-Node: SMIE Indentation1360104
-Node: SMIE Indentation Helpers1363525
-Node: SMIE Indentation Example1365799
-Node: Desktop Save Mode1368846
-Node: Documentation1370616
-Node: Documentation Basics1371993
-Node: Accessing Documentation1375369
-Ref: describe-symbols example1378446
-Ref: Definition of Snarf-documentation1381337
-Node: Keys in Documentation1382374
-Node: Describing Characters1385674
-Node: Help Functions1389554
-Ref: Definition of data-directory1395070
-Node: Files1398033
-Node: Visiting Files1400459
-Node: Visiting Functions1401968
-Node: Subroutines of Visiting1409615
-Node: Saving Buffers1412292
-Ref: Definition of save-some-buffers1413836
-Ref: Definition of write-file1414963
-Node: Reading from Files1420597
-Node: Writing to Files1423543
-Ref: Definition of with-temp-file1427453
-Node: File Locks1428040
-Node: Information about Files1431691
-Node: Testing Accessibility1432546
-Node: Kinds of Files1437422
-Node: Truenames1439834
-Node: File Attributes1442482
-Ref: Definition of file-attributes1445572
-Node: Locating Files1451354
-Node: Changing Files1454023
-Node: File Names1463999
-Node: File Name Components1465728
-Node: Relative File Names1470082
-Node: Directory Names1472268
-Ref: abbreviate-file-name1474952
-Node: File Name Expansion1475562
-Ref: Definition of substitute-in-file-name1479014
-Node: Unique File Names1480710
-Node: File Name Completion1485200
-Node: Standard File Names1488355
-Node: Contents of Directories1490996
-Node: Create/Delete Dirs1495858
-Node: Magic File Names1498313
-Node: Format Conversion1509714
-Node: Format Conversion Overview1510484
-Node: Format Conversion Round-Trip1511491
-Node: Format Conversion Piecemeal1518479
-Node: Backups and Auto-Saving1523487
-Node: Backup Files1524162
-Node: Making Backups1525550
-Node: Rename or Copy1530209
-Node: Numbered Backups1533321
-Node: Backup Names1535656
-Node: Auto-Saving1539389
-Node: Reverting1548912
-Ref: Definition of revert-buffer-function1551569
-Node: Buffers1553415
-Node: Buffer Basics1554938
-Node: Current Buffer1556995
-Ref: Definition of with-temp-buffer1562700
-Node: Buffer Names1563565
-Node: Buffer File Name1567194
-Node: Buffer Modification1573285
-Node: Modification Time1576366
-Node: Read Only Buffers1581004
-Node: The Buffer List1584117
-Node: Creating Buffers1590848
-Node: Killing Buffers1593329
-Node: Indirect Buffers1597949
-Node: Swapping Text1600973
-Node: Buffer Gap1603186
-Node: Windows1604186
-Node: Basic Windows1606676
-Node: Windows and Frames1610075
-Node: Window Sizes1619963
-Node: Resizing Windows1627481
-Node: Splitting Windows1634218
-Node: Deleting Windows1640470
-Node: Recombining Windows1644456
-Node: Selecting Windows1657483
-Node: Cyclic Window Ordering1660811
-Node: Buffers and Windows1667791
-Node: Switching Buffers1672675
-Node: Choosing Window1678750
-Node: Display Action Functions1683010
-Node: Choosing Window Options1691710
-Node: Window History1697308
-Node: Dedicated Windows1702444
-Node: Quitting Windows1705189
-Node: Window Point1710695
-Node: Window Start and End1713085
-Node: Textual Scrolling1721063
-Node: Vertical Scrolling1731327
-Node: Horizontal Scrolling1733927
-Node: Coordinates and Windows1739541
-Node: Window Configurations1746160
-Node: Window Parameters1752459
-Node: Window Hooks1758081
-Node: Frames1761271
-Node: Creating Frames1765946
-Node: Multiple Terminals1768323
-Node: Frame Parameters1775022
-Node: Parameter Access1776200
-Node: Initial Parameters1777837
-Node: Window Frame Parameters1780970
-Node: Basic Parameters1782153
-Node: Position Parameters1783810
-Node: Size Parameters1786959
-Node: Layout Parameters1788456
-Node: Buffer Parameters1790921
-Node: Management Parameters1792203
-Node: Cursor Parameters1794241
-Node: Font and Color Parameters1796617
-Node: Size and Position1801588
-Node: Geometry1806181
-Node: Terminal Parameters1807378
-Node: Frame Titles1809100
-Node: Deleting Frames1810740
-Node: Finding All Frames1812126
-Node: Minibuffers and Frames1813845
-Node: Input Focus1815125
-Node: Visibility of Frames1821148
-Node: Raising and Lowering1823374
-Node: Frame Configurations1824997
-Node: Mouse Tracking1825891
-Node: Mouse Position1827564
-Node: Pop-Up Menus1829825
-Node: Dialog Boxes1833638
-Node: Pointer Shape1836015
-Node: Window System Selections1837898
-Node: Drag and Drop1840797
-Node: Color Names1842112
-Node: Text Terminal Colors1846438
-Node: Resources1849160
-Node: Display Feature Testing1851470
-Ref: Display Face Attribute Testing1853442
-Node: Positions1858647
-Node: Point1860158
-Node: Motion1862867
-Node: Character Motion1863639
-Node: Word Motion1865343
-Node: Buffer End Motion1867365
-Node: Text Lines1869120
-Ref: Definition of count-lines1872519
-Node: Screen Lines1873649
-Node: List Motion1880890
-Node: Skipping Characters1884884
-Node: Excursions1887483
-Node: Narrowing1890436
-Node: Markers1895056
-Node: Overview of Markers1896083
-Node: Predicates on Markers1899257
-Node: Creating Markers1900158
-Node: Information from Markers1903496
-Node: Marker Insertion Types1904438
-Node: Moving Markers1905602
-Node: The Mark1906996
-Node: The Region1917202
-Node: Text1919128
-Node: Near Point1922239
-Node: Buffer Contents1925458
-Node: Comparing Text1931162
-Node: Insertion1932597
-Node: Commands for Insertion1937437
-Node: Deletion1940693
-Node: User-Level Deletion1945237
-Node: The Kill Ring1949557
-Node: Kill Ring Concepts1951784
-Node: Kill Functions1952840
-Node: Yanking1954796
-Node: Yank Commands1958237
-Node: Low-Level Kill Ring1961211
-Node: Internals of Kill Ring1965293
-Node: Undo1968193
-Node: Maintaining Undo1973873
-Node: Filling1977182
-Ref: Definition of sentence-end-double-space1983587
-Node: Margins1985516
-Node: Adaptive Fill1989812
-Node: Auto Filling1993919
-Node: Sorting1995396
-Node: Columns2005747
-Node: Indentation2008446
-Node: Primitive Indent2009232
-Node: Mode-Specific Indent2010706
-Node: Region Indent2014416
-Node: Relative Indent2017457
-Node: Indent Tabs2019858
-Node: Motion by Indent2021242
-Node: Case Changes2022159
-Node: Text Properties2025405
-Node: Examining Properties2027741
-Node: Changing Properties2031494
-Node: Property Search2036819
-Node: Special Properties2043274
-Ref: Text help-echo2046705
-Ref: Inhibit point motion hooks2058561
-Ref: Help display2058795
-Node: Format Properties2059228
-Node: Sticky Properties2060228
-Node: Lazy Properties2064229
-Node: Clickable Text2066417
-Node: Fields2073690
-Node: Not Intervals2079083
-Node: Substitution2081589
-Node: Registers2083454
-Node: Transposition2086698
-Node: Base 642087598
-Ref: Base 64-Footnote-12089794
-Node: Checksum/Hash2090069
-Node: Parsing HTML/XML2093114
-Node: Atomic Changes2094703
-Node: Change Hooks2098297
-Node: Non-ASCII Characters2101873
-Node: Text Representations2103185
-Ref: Text Representations-Footnote-12107778
-Node: Converting Representations2108069
-Node: Selecting a Representation2111653
-Node: Character Codes2114384
-Node: Character Properties2116458
-Ref: Character Properties-Footnote-12125506
-Node: Character Sets2125702
-Node: Scanning Charsets2130502
-Node: Translation of Characters2132185
-Node: Coding Systems2136963
-Node: Coding System Basics2138206
-Node: Encoding and I/O2142732
-Node: Lisp and Coding Systems2146711
-Node: User-Chosen Coding Systems2154273
-Node: Default Coding Systems2158511
-Node: Specifying Coding Systems2168095
-Node: Explicit Encoding2171647
-Node: Terminal I/O Encoding2177850
-Node: MS-DOS File Types2179817
-Node: Input Methods2182390
-Node: Locales2185307
-Node: Searching and Matching2187543
-Node: String Search2188773
-Node: Searching and Case2194779
-Node: Regular Expressions2196716
-Node: Syntax of Regexps2197829
-Node: Regexp Special2199659
-Node: Char Classes2210144
-Node: Regexp Backslash2212354
-Node: Regexp Example2221446
-Node: Regexp Functions2223946
-Ref: Regexp Functions-Footnote-12226728
-Node: Regexp Search2226955
-Node: POSIX Regexps2234591
-Node: Match Data2236513
-Node: Replacing Match2237968
-Node: Simple Match Data2241547
-Node: Entire Match Data2246805
-Node: Saving Match Data2249788
-Node: Search and Replace2251128
-Node: Standard Regexps2258689
-Node: Syntax Tables2261275
-Node: Syntax Basics2262356
-Node: Syntax Descriptors2265042
-Node: Syntax Class Table2267484
-Node: Syntax Flags2273946
-Node: Syntax Table Functions2277571
-Node: Syntax Properties2282026
-Node: Motion and Syntax2284941
-Node: Parsing Expressions2286535
-Node: Motion via Parsing2288533
-Node: Position Parse2291591
-Node: Parser State2294058
-Node: Low-Level Parsing2296962
-Node: Control Parsing2298771
-Node: Syntax Table Internals2299650
-Node: Categories2302861
-Node: Abbrevs2308736
-Node: Abbrev Tables2311341
-Node: Defining Abbrevs2314020
-Node: Abbrev Files2316615
-Node: Abbrev Expansion2318692
-Node: Standard Abbrev Tables2324738
-Node: Abbrev Properties2326327
-Node: Abbrev Table Properties2327687
-Node: Processes2329429
-Node: Subprocess Creation2332303
-Node: Shell Arguments2336568
-Node: Synchronous Processes2340238
-Ref: Synchronous Processes-Footnote-12352069
-Node: Asynchronous Processes2352169
-Node: Deleting Processes2358661
-Node: Process Information2360712
-Ref: Coding systems for a subprocess2366835
-Node: Input to Processes2367933
-Node: Signals to Processes2370825
-Node: Output from Processes2375269
-Node: Process Buffers2377790
-Node: Filter Functions2381141
-Ref: Process Filter Example2383344
-Node: Decoding Output2385950
-Node: Accepting Output2387847
-Node: Sentinels2389949
-Node: Query Before Exit2394525
-Node: System Processes2395540
-Node: Transaction Queues2402529
-Node: Network2404425
-Node: Network Servers2411508
-Node: Datagrams2413512
-Node: Low-Level Network2414777
-Node: Network Processes2415385
-Node: Network Options2421948
-Node: Network Feature Testing2425427
-Node: Misc Network2426671
-Node: Serial Ports2428450
-Node: Byte Packing2435701
-Node: Bindat Spec2436645
-Node: Bindat Functions2442258
-Node: Bindat Examples2445055
-Node: Display2451060
-Node: Refresh Screen2452846
-Node: Forcing Redisplay2454177
-Node: Truncation2456976
-Node: The Echo Area2461368
-Node: Displaying Messages2462280
-Ref: message-box2465015
-Node: Progress2466487
-Node: Logging Messages2471786
-Node: Echo Area Customization2473657
-Node: Warnings2475523
-Node: Warning Basics2476080
-Node: Warning Variables2478860
-Node: Warning Options2482174
-Node: Delayed Warnings2483541
-Node: Invisible Text2485144
-Node: Selective Display2491749
-Node: Temporary Displays2495916
-Node: Overlays2502638
-Node: Managing Overlays2504070
-Node: Overlay Properties2509842
-Node: Finding Overlays2519138
-Node: Width2521716
-Node: Line Height2524183
-Node: Faces2528459
-Node: Face Attributes2531144
-Node: Defining Faces2540000
-Node: Attribute Functions2546037
-Node: Displaying Faces2553766
-Node: Face Remapping2556047
-Node: Face Functions2560652
-Node: Auto Faces2562325
-Node: Basic Faces2563944
-Node: Font Selection2565894
-Ref: Font Selection-Footnote-12570160
-Node: Font Lookup2570260
-Node: Fontsets2572712
-Node: Low-Level Font2578416
-Node: Fringes2585090
-Node: Fringe Size/Pos2585825
-Node: Fringe Indicators2588116
-Node: Fringe Cursors2592224
-Node: Fringe Bitmaps2593943
-Node: Customizing Bitmaps2596703
-Node: Overlay Arrow2598769
-Node: Scroll Bars2601206
-Node: Display Property2605163
-Node: Replacing Specs2606443
-Node: Specified Space2608568
-Node: Pixel Specification2611306
-Node: Other Display Specs2614029
-Node: Display Margins2618596
-Node: Images2620996
-Node: Image Formats2622519
-Node: Image Descriptors2624589
-Node: XBM Images2631786
-Node: XPM Images2633964
-Node: GIF Images2634521
-Node: TIFF Images2635019
-Node: PostScript Images2635447
-Node: ImageMagick Images2636304
-Node: Other Image Types2638794
-Node: Defining Images2639841
-Node: Showing Images2645174
-Node: Animated Images2650003
-Node: Image Cache2651248
-Node: Buttons2654248
-Node: Button Properties2655644
-Node: Button Types2657646
-Node: Making Buttons2659005
-Node: Manipulating Buttons2661474
-Node: Button Buffer Commands2663518
-Node: Abstract Display2666450
-Node: Abstract Display Functions2669218
-Node: Abstract Display Example2674227
-Node: Blinking2678927
-Node: Character Display2680880
-Node: Usual Display2682086
-Node: Display Tables2685956
-Node: Active Display Table2689821
-Node: Glyphs2691462
-Node: Glyphless Chars2693510
-Node: Beeping2697156
-Node: Window Systems2698462
-Node: Bidirectional Display2701062
-Node: System Interface2710417
-Node: Starting Up2712288
-Node: Startup Summary2712871
-Node: Init File2721101
-Node: Terminal-Specific2724716
-Node: Command-Line Arguments2727776
-Node: Getting Out2731431
-Node: Killing Emacs2732047
-Node: Suspending Emacs2734640
-Node: System Environment2739911
-Node: User Identification2748397
-Node: Time of Day2751927
-Node: Time Conversion2756267
-Node: Time Parsing2760262
-Node: Processor Run Time2767647
-Node: Time Calculations2769316
-Node: Timers2770442
-Node: Idle Timers2776950
-Node: Terminal Input2781317
-Node: Input Modes2781751
-Node: Recording Input2784153
-Node: Terminal Output2785617
-Node: Sound Output2788564
-Node: X11 Keysyms2790716
-Node: Batch Mode2792242
-Node: Session Management2793483
-Node: Notifications2795575
-Node: Dynamic Libraries2803124
-Node: Packaging2805285
-Node: Packaging Basics2806167
-Node: Simple Packages2810252
-Node: Multi-file Packages2812472
-Node: Package Archives2815734
-Node: Antinews2819263
-Node: GNU Free Documentation License2824640
-Node: GPL2849805
-Node: Tips2887377
-Node: Coding Conventions2888594
-Ref: Coding Conventions-Footnote-12897498
-Node: Key Binding Conventions2897599
-Node: Programming Tips2900544
-Node: Compilation Tips2904702
-Node: Warning Tips2906624
-Node: Documentation Tips2908224
-Ref: Docstring hyperlinks2912681
-Node: Comment Tips2919042
-Node: Library Headers2922591
-Node: GNU Emacs Internals2929096
-Node: Building Emacs2929884
-Node: Pure Storage2935078
-Node: Garbage Collection2938004
-Node: Memory Usage2947775
-Node: Writing Emacs Primitives2949418
-Ref: Defining Lisp variables in C2956775
-Node: Object Internals2960285
-Node: Buffer Internals2961546
-Node: Window Internals2970278
-Node: Process Internals2977184
-Node: Standard Errors2979895
-Node: Standard Keymaps2986158
-Node: Standard Hooks2991176
-Node: Index2996276
+Node: Introduction70405
+Node: Caveats72297
+Node: Lisp History73608
+Node: Conventions75286
+Node: Some Terms76094
+Node: nil and t76834
+Node: Evaluation Notation78656
+Node: Printing Notation79585
+Node: Error Messages80386
+Node: Buffer Text Notation80833
+Node: Format of Descriptions81742
+Node: A Sample Function Description82603
+Node: A Sample Variable Description86701
+Node: Version Info87759
+Node: Acknowledgments89554
+Node: Lisp Data Types91334
+Node: Printed Representation93854
+Node: Comments95868
+Node: Programming Types96769
+Node: Integer Type98566
+Node: Floating Point Type99775
+Node: Character Type100679
+Node: Basic Char Syntax102038
+Node: General Escape Syntax105111
+Node: Ctl-Char Syntax106997
+Node: Meta-Char Syntax108778
+Node: Other Char Bits109855
+Ref: modifier bits110655
+Node: Symbol Type111037
+Node: Sequence Type114347
+Node: Cons Cell Type116061
+Node: Box Diagrams118965
+Node: Dotted Pair Notation122595
+Node: Association List Type125112
+Node: Array Type126119
+Node: String Type127849
+Node: Syntax for Strings128642
+Node: Non-ASCII in Strings129808
+Node: Nonprinting Characters132530
+Node: Text Props and Strings133978
+Node: Vector Type135320
+Node: Char-Table Type136099
+Node: Bool-Vector Type137111
+Node: Hash Table Type138315
+Node: Function Type138917
+Node: Macro Type140059
+Node: Primitive Function Type140964
+Node: Byte-Code Type142539
+Node: Autoload Type143159
+Node: Editing Types144169
+Node: Buffer Type145250
+Node: Marker Type147397
+Node: Window Type148127
+Node: Frame Type149342
+Node: Terminal Type149955
+Node: Window Configuration Type150408
+Node: Frame Configuration Type150989
+Node: Process Type151597
+Node: Stream Type152561
+Node: Keymap Type153691
+Node: Overlay Type154155
+Node: Font Type154803
+Node: Circular Objects155326
+Node: Type Predicates156825
+Node: Equality Predicates162172
+Node: Numbers166731
+Node: Integer Basics168061
+Node: Float Basics171455
+Node: Predicates on Numbers174609
+Node: Comparison of Numbers176097
+Node: Numeric Conversions180325
+Node: Arithmetic Operations182932
+Node: Rounding Operations188175
+Node: Bitwise Operations189288
+Node: Math Functions197383
+Node: Random Numbers199569
+Node: Strings and Characters201508
+Node: String Basics202790
+Node: Predicates for Strings205882
+Node: Creating Strings206575
+Node: Modifying Strings214538
+Node: Text Comparison215823
+Node: String Conversion222548
+Node: Formatting Strings226663
+Node: Case Conversion235015
+Node: Case Tables238939
+Node: Lists244011
+Node: Cons Cells245011
+Node: List-related Predicates247524
+Node: List Elements249234
+Ref: Definition of nth252103
+Ref: Definition of safe-length253560
+Node: Building Lists254952
+Ref: Building Lists-Footnote-1262920
+Node: List Variables263394
+Node: Modifying Lists267652
+Node: Setcar268552
+Node: Setcdr271114
+Node: Rearrangement273712
+Node: Sets And Lists279865
+Node: Association Lists287341
+Ref: Association Lists-Footnote-1296718
+Node: Property Lists296923
+Node: Plists and Alists298279
+Node: Plist Access300133
+Node: Sequences Arrays Vectors302130
+Node: Sequence Functions304661
+Node: Arrays308574
+Node: Array Functions311038
+Node: Vectors313359
+Node: Vector Functions314719
+Node: Char-Tables316916
+Node: Bool-Vectors323122
+Node: Rings324461
+Node: Hash Tables327479
+Node: Creating Hash329217
+Node: Hash Access335315
+Ref: Definition of maphash336787
+Node: Defining Hash337008
+Node: Other Hash340074
+Node: Symbols341254
+Node: Symbol Components342296
+Node: Definitions345431
+Node: Creating Symbols347905
+Ref: Definition of mapatoms354379
+Node: Symbol Properties355509
+Node: Symbol Plists356278
+Node: Standard Properties358639
+Node: Evaluation362515
+Node: Intro Eval363373
+Ref: Intro Eval-Footnote-1366400
+Ref: Intro Eval-Footnote-2366534
+Node: Forms366669
+Node: Self-Evaluating Forms367891
+Node: Symbol Forms369412
+Node: Classifying Lists370503
+Node: Function Indirection371266
+Ref: Definition of indirect-function374066
+Node: Function Forms374887
+Node: Macro Forms375891
+Node: Special Forms377498
+Node: Autoloading379532
+Node: Quoting380138
+Node: Backquote381521
+Node: Eval383268
+Ref: Definition of eval-region385679
+Ref: Definition of max-lisp-eval-depth387759
+Node: Control Structures390153
+Node: Sequencing391825
+Node: Conditionals394724
+Node: Pattern matching case statement398736
+Node: Combining Conditions402869
+Node: Iteration406491
+Node: Nonlocal Exits409387
+Node: Catch and Throw410092
+Node: Examples of Catch414197
+Node: Errors416125
+Node: Signaling Errors417620
+Ref: Definition of signal419710
+Node: Processing of Errors422177
+Node: Handling Errors424086
+Node: Error Symbols433930
+Node: Cleanups437604
+Node: Variables441320
+Ref: Variables-Footnote-1443544
+Node: Global Variables443763
+Node: Constant Variables444900
+Node: Local Variables446162
+Ref: Definition of max-specpdl-size450605
+Node: Void Variables451351
+Node: Defining Variables454467
+Node: Tips for Defining459538
+Node: Accessing Variables462370
+Node: Setting Variables464048
+Node: Variable Scoping466883
+Node: Dynamic Binding468678
+Node: Dynamic Binding Tips470942
+Node: Lexical Binding472922
+Node: Using Lexical Binding476592
+Node: Buffer-Local Variables479452
+Node: Intro to Buffer-Local480367
+Node: Creating Buffer-Local484511
+Node: Default Value493815
+Node: File Local Variables497232
+Node: Directory Local Variables505112
+Ref: Directory Local Variables-Footnote-1510057
+Node: Variable Aliases510167
+Node: Variables with Restricted Values513695
+Node: Generalized Variables514990
+Node: Setting Generalized Variables515892
+Node: Adding Generalized Variables519243
+Node: Functions522040
+Node: What Is a Function523484
+Node: Lambda Expressions528930
+Node: Lambda Components530091
+Node: Simple Lambda531901
+Node: Argument List533456
+Node: Function Documentation537394
+Node: Function Names540027
+Node: Defining Functions542026
+Ref: Definition of defalias544072
+Node: Calling Functions545641
+Ref: Calling Functions-Footnote-1550926
+Node: Mapping Functions551137
+Ref: Definition of mapcar552078
+Node: Anonymous Functions554401
+Node: Function Cells557905
+Node: Closures561224
+Node: Obsolete Functions562801
+Node: Inline Functions566103
+Node: Declare Form568373
+Ref: Definition of declare568747
+Node: Declaring Functions570753
+Node: Function Safety574378
+Node: Related Topics575989
+Node: Macros577236
+Node: Simple Macro578526
+Node: Expansion579294
+Node: Compiling Macros582883
+Node: Defining Macros584549
+Node: Problems with Macros586637
+Node: Wrong Time587428
+Node: Argument Evaluation588484
+Node: Surprising Local Vars591390
+Node: Eval During Expansion593464
+Node: Repeated Expansion595246
+Node: Indenting Macros597625
+Node: Customization600000
+Node: Common Keywords601253
+Node: Group Definitions607502
+Node: Variable Definitions610329
+Node: Customization Types620419
+Node: Simple Types622289
+Node: Composite Types625132
+Node: Splicing into Lists637609
+Node: Type Keywords639385
+Node: Defining New Types643546
+Node: Applying Customizations646963
+Node: Custom Themes649235
+Node: Loading653247
+Node: How Programs Do Loading655045
+Ref: Definition of load-read-function661533
+Node: Load Suffixes662125
+Node: Library Search664306
+Node: Loading Non-ASCII669013
+Node: Autoload670351
+Ref: autoload cookie675450
+Node: Repeated Loading680333
+Node: Named Features682351
+Node: Where Defined688905
+Node: Unloading691249
+Node: Hooks for Loading693723
+Node: Byte Compilation696385
+Node: Speed of Byte-Code698049
+Node: Compilation Functions698976
+Node: Docs and Compilation705103
+Node: Dynamic Loading707477
+Node: Eval During Compile710089
+Node: Compiler Errors713270
+Node: Byte-Code Objects715944
+Node: Disassembly718183
+Node: Advising Functions723884
+Node: Simple Advice726582
+Node: Defining Advice729325
+Node: Around-Advice735474
+Node: Computed Advice736995
+Node: Activation of Advice738775
+Node: Enabling Advice743663
+Node: Preactivation745212
+Node: Argument Access in Advice747868
+Node: Combined Definition750985
+Node: Debugging753448
+Node: Debugger755003
+Node: Error Debugging756159
+Node: Infinite Loops760971
+Node: Function Debugging762235
+Node: Explicit Debug765286
+Node: Using Debugger766416
+Node: Debugger Commands769416
+Node: Invoking the Debugger773354
+Node: Internals of Debugger777340
+Node: Edebug781798
+Node: Using Edebug784092
+Node: Instrumenting786689
+Node: Edebug Execution Modes789849
+Node: Jumping793339
+Node: Edebug Misc796305
+Node: Breaks797726
+Node: Breakpoints798252
+Node: Global Break Condition800922
+Node: Source Breakpoints801983
+Node: Trapping Errors802941
+Node: Edebug Views804075
+Node: Edebug Eval806203
+Node: Eval List807296
+Node: Printing in Edebug811271
+Node: Trace Buffer812959
+Node: Coverage Testing814898
+Node: The Outside Context817670
+Node: Checking Whether to Stop818413
+Node: Edebug Display Update819120
+Node: Edebug Recursive Edit821254
+Node: Edebug and Macros822870
+Node: Instrumenting Macro Calls823442
+Node: Specification List826891
+Node: Backtracking834965
+Node: Specification Examples837122
+Node: Edebug Options839242
+Node: Syntax Errors844277
+Node: Excess Open845628
+Node: Excess Close847394
+Node: Test Coverage848661
+Node: Profiling850271
+Node: Read and Print852546
+Node: Streams Intro853524
+Node: Input Streams855593
+Node: Input Functions860452
+Node: Output Streams862750
+Node: Output Functions866963
+Node: Output Variables871956
+Node: Minibuffers876994
+Node: Intro to Minibuffers878588
+Node: Text from Minibuffer882253
+Ref: Definition of minibuffer-local-map889443
+Node: Object from Minibuffer891286
+Node: Minibuffer History894105
+Node: Initial Input899302
+Node: Completion901035
+Node: Basic Completion903111
+Ref: Definition of test-completion908337
+Node: Minibuffer Completion912284
+Node: Completion Commands917016
+Node: High-Level Completion923311
+Ref: Definition of read-variable927550
+Node: Reading File Names929123
+Node: Completion Variables938205
+Node: Programmed Completion942664
+Node: Completion in Buffers947288
+Node: Yes-or-No Queries950860
+Node: Multiple Queries955532
+Node: Reading a Password959766
+Node: Minibuffer Commands960695
+Node: Minibuffer Windows962507
+Ref: Definition of minibuffer-window962954
+Node: Minibuffer Contents964210
+Node: Recursive Mini965945
+Node: Minibuffer Misc967373
+Ref: Definition of minibuffer-help-form968002
+Ref: Definition of minibuffer-scroll-window968173
+Node: Command Loop969560
+Node: Command Overview971135
+Node: Defining Commands974230
+Node: Using Interactive975215
+Ref: Using Interactive-Footnote-1981842
+Node: Interactive Codes981895
+Node: Interactive Examples989848
+Node: Interactive Call991287
+Node: Distinguish Interactive996554
+Node: Command Loop Info999149
+Ref: Definition of this-command-keys-vector1003090
+Node: Adjusting Point1004945
+Node: Input Events1006105
+Node: Keyboard Events1008286
+Node: Function Keys1011017
+Node: Mouse Events1013903
+Node: Click Events1015027
+Node: Drag Events1021173
+Node: Button-Down Events1022611
+Ref: Button-Down Events-Footnote-11023807
+Node: Repeat Events1023867
+Node: Motion Events1028238
+Node: Focus Events1028945
+Node: Misc Events1030416
+Node: Event Examples1035401
+Node: Classifying Events1036909
+Node: Accessing Mouse1040878
+Node: Accessing Scroll1046568
+Node: Strings of Events1047759
+Node: Reading Input1051594
+Node: Key Sequence Input1052651
+Node: Reading One Event1058213
+Node: Event Mod1064087
+Node: Invoking the Input Method1067727
+Node: Quoted Character Input1069696
+Node: Event Input Misc1071226
+Node: Special Events1075541
+Node: Waiting1076800
+Node: Quitting1079571
+Node: Prefix Command Arguments1085191
+Node: Recursive Editing1090126
+Node: Disabling Commands1095179
+Node: Command History1097357
+Node: Keyboard Macros1099071
+Node: Keymaps1102127
+Node: Key Sequences1104080
+Node: Keymap Basics1106600
+Node: Format of Keymaps1109139
+Node: Creating Keymaps1113646
+Node: Inheritance and Keymaps1116158
+Node: Prefix Keys1119292
+Ref: Definition of define-prefix-command1122920
+Node: Active Keymaps1123542
+Node: Searching Keymaps1128963
+Node: Controlling Active Maps1130978
+Ref: Definition of minor-mode-map-alist1133459
+Node: Key Lookup1138094
+Node: Functions for Key Lookup1143407
+Node: Changing Key Bindings1148756
+Node: Remapping Commands1156944
+Node: Translation Keymaps1159327
+Node: Key Binding Commands1165777
+Node: Scanning Keymaps1168576
+Node: Menu Keymaps1175513
+Node: Defining Menus1176391
+Ref: Defining Menus-Footnote-11178501
+Node: Simple Menu Items1178582
+Node: Extended Menu Items1180492
+Node: Menu Separators1185326
+Node: Alias Menu Items1187813
+Node: Mouse Menus1189046
+Node: Keyboard Menus1191035
+Node: Menu Example1192249
+Node: Menu Bar1194897
+Node: Tool Bar1198260
+Node: Modifying Menus1206831
+Node: Easy Menu1208361
+Node: Modes1212862
+Node: Hooks1214126
+Node: Running Hooks1216447
+Node: Setting Hooks1220787
+Node: Major Modes1223169
+Node: Major Mode Conventions1226091
+Node: Auto Major Mode1237423
+Node: Mode Help1244652
+Node: Derived Modes1245569
+Node: Basic Major Modes1250527
+Node: Mode Hooks1252956
+Node: Tabulated List Mode1255587
+Node: Generic Modes1261174
+Node: Example Major Modes1263344
+Node: Minor Modes1268377
+Node: Minor Mode Conventions1269575
+Node: Keymaps and Minor Modes1274858
+Node: Defining Minor Modes1275982
+Node: Mode Line Format1284305
+Node: Mode Line Basics1285671
+Node: Mode Line Data1287414
+Node: Mode Line Top1291636
+Node: Mode Line Variables1294113
+Ref: Definition of minor-mode-alist1298031
+Node: %-Constructs1299937
+Node: Properties in Mode1303722
+Node: Header Lines1305259
+Node: Emulating Mode Line1306201
+Node: Imenu1308351
+Node: Font Lock Mode1315122
+Node: Font Lock Basics1316805
+Node: Search-based Fontification1320435
+Node: Customizing Keywords1330083
+Node: Other Font Lock Variables1333140
+Node: Levels of Font Lock1336333
+Node: Precalculated Fontification1337703
+Node: Faces for Font Lock1338668
+Node: Syntactic Font Lock1340878
+Node: Multiline Font Lock1344209
+Node: Font Lock Multiline1347394
+Node: Region to Refontify1349782
+Node: Auto-Indentation1351160
+Node: SMIE1354001
+Node: SMIE setup1355766
+Node: Operator Precedence Grammars1357646
+Node: SMIE Grammar1361256
+Node: SMIE Lexer1364045
+Node: SMIE Tricks1366258
+Node: SMIE Indentation1369557
+Node: SMIE Indentation Helpers1372978
+Node: SMIE Indentation Example1375253
+Node: Desktop Save Mode1378300
+Node: Documentation1380071
+Node: Documentation Basics1381448
+Node: Accessing Documentation1384824
+Ref: describe-symbols example1387901
+Ref: Definition of Snarf-documentation1390792
+Node: Keys in Documentation1391829
+Node: Describing Characters1395129
+Node: Help Functions1399010
+Ref: Definition of data-directory1404526
+Node: Files1407490
+Node: Visiting Files1409916
+Node: Visiting Functions1411425
+Node: Subroutines of Visiting1419074
+Node: Saving Buffers1421751
+Ref: Definition of save-some-buffers1423295
+Ref: Definition of write-file1424422
+Node: Reading from Files1430056
+Node: Writing to Files1433002
+Ref: Definition of with-temp-file1436912
+Node: File Locks1437499
+Node: Information about Files1441150
+Node: Testing Accessibility1442005
+Node: Kinds of Files1446881
+Node: Truenames1449293
+Node: File Attributes1451941
+Ref: Definition of file-attributes1455031
+Node: Locating Files1460813
+Node: Changing Files1463482
+Node: File Names1473459
+Node: File Name Components1475188
+Node: Relative File Names1479542
+Node: Directory Names1481728
+Ref: abbreviate-file-name1484412
+Node: File Name Expansion1485022
+Ref: Definition of substitute-in-file-name1488474
+Node: Unique File Names1490170
+Node: File Name Completion1494660
+Node: Standard File Names1497815
+Node: Contents of Directories1500456
+Node: Create/Delete Dirs1505318
+Node: Magic File Names1507773
+Node: Format Conversion1519174
+Node: Format Conversion Overview1519944
+Node: Format Conversion Round-Trip1520951
+Node: Format Conversion Piecemeal1527939
+Node: Backups and Auto-Saving1532947
+Node: Backup Files1533622
+Node: Making Backups1535010
+Node: Rename or Copy1539669
+Node: Numbered Backups1542781
+Node: Backup Names1545116
+Node: Auto-Saving1548849
+Node: Reverting1558372
+Ref: Definition of revert-buffer-function1561029
+Node: Buffers1562875
+Node: Buffer Basics1564398
+Node: Current Buffer1566455
+Ref: Definition of with-temp-buffer1572160
+Node: Buffer Names1573025
+Node: Buffer File Name1576654
+Node: Buffer Modification1582745
+Node: Modification Time1585826
+Node: Read Only Buffers1590464
+Node: The Buffer List1593577
+Node: Creating Buffers1600308
+Node: Killing Buffers1602789
+Node: Indirect Buffers1607409
+Node: Swapping Text1610433
+Node: Buffer Gap1612646
+Node: Windows1613646
+Node: Basic Windows1616136
+Node: Windows and Frames1619536
+Node: Window Sizes1629425
+Node: Resizing Windows1636945
+Node: Splitting Windows1643683
+Node: Deleting Windows1649935
+Node: Recombining Windows1653922
+Node: Selecting Windows1666949
+Node: Cyclic Window Ordering1670277
+Node: Buffers and Windows1677257
+Node: Switching Buffers1682141
+Node: Choosing Window1688216
+Node: Display Action Functions1692477
+Node: Choosing Window Options1701178
+Node: Window History1706776
+Node: Dedicated Windows1711912
+Node: Quitting Windows1714657
+Node: Window Point1720163
+Node: Window Start and End1722553
+Node: Textual Scrolling1730531
+Node: Vertical Scrolling1740795
+Node: Horizontal Scrolling1743395
+Node: Coordinates and Windows1749010
+Node: Window Configurations1755630
+Node: Window Parameters1761929
+Node: Window Hooks1767551
+Node: Frames1770741
+Node: Creating Frames1775417
+Node: Multiple Terminals1777794
+Node: Frame Parameters1784496
+Node: Parameter Access1785674
+Node: Initial Parameters1787311
+Node: Window Frame Parameters1790445
+Node: Basic Parameters1791628
+Node: Position Parameters1793285
+Node: Size Parameters1796434
+Node: Layout Parameters1797931
+Node: Buffer Parameters1800396
+Node: Management Parameters1801678
+Node: Cursor Parameters1803716
+Node: Font and Color Parameters1806092
+Node: Size and Position1811063
+Node: Geometry1815656
+Node: Terminal Parameters1816853
+Node: Frame Titles1818575
+Node: Deleting Frames1820215
+Node: Finding All Frames1821601
+Node: Minibuffers and Frames1823321
+Node: Input Focus1824601
+Node: Visibility of Frames1830624
+Node: Raising and Lowering1832850
+Node: Frame Configurations1834474
+Node: Mouse Tracking1835368
+Node: Mouse Position1837041
+Node: Pop-Up Menus1839302
+Node: Dialog Boxes1843115
+Node: Pointer Shape1845492
+Node: Window System Selections1847375
+Node: Drag and Drop1850274
+Node: Color Names1851589
+Node: Text Terminal Colors1855915
+Node: Resources1858637
+Node: Display Feature Testing1860947
+Ref: Display Face Attribute Testing1862919
+Node: Positions1868124
+Node: Point1869635
+Node: Motion1872344
+Node: Character Motion1873116
+Node: Word Motion1874820
+Node: Buffer End Motion1876842
+Node: Text Lines1878597
+Ref: Definition of count-lines1881996
+Node: Screen Lines1883126
+Node: List Motion1890367
+Node: Skipping Characters1894361
+Node: Excursions1896961
+Node: Narrowing1899914
+Node: Markers1904534
+Node: Overview of Markers1905561
+Node: Predicates on Markers1908735
+Node: Creating Markers1909636
+Node: Information from Markers1912974
+Node: Marker Insertion Types1913916
+Node: Moving Markers1915080
+Node: The Mark1916474
+Node: The Region1926680
+Node: Text1928606
+Node: Near Point1931717
+Node: Buffer Contents1934936
+Node: Comparing Text1940642
+Node: Insertion1942077
+Node: Commands for Insertion1946917
+Node: Deletion1950173
+Node: User-Level Deletion1954717
+Node: The Kill Ring1959037
+Node: Kill Ring Concepts1961264
+Node: Kill Functions1962320
+Node: Yanking1964276
+Node: Yank Commands1967717
+Node: Low-Level Kill Ring1970691
+Node: Internals of Kill Ring1974773
+Node: Undo1977673
+Node: Maintaining Undo1983353
+Node: Filling1986662
+Ref: Definition of sentence-end-double-space1993067
+Node: Margins1994996
+Node: Adaptive Fill1999292
+Node: Auto Filling2003399
+Node: Sorting2004876
+Node: Columns2015227
+Node: Indentation2017926
+Node: Primitive Indent2018712
+Node: Mode-Specific Indent2020186
+Node: Region Indent2023896
+Node: Relative Indent2026937
+Node: Indent Tabs2029338
+Node: Motion by Indent2030722
+Node: Case Changes2031639
+Node: Text Properties2034885
+Node: Examining Properties2037221
+Node: Changing Properties2040974
+Node: Property Search2046299
+Node: Special Properties2052754
+Ref: Text help-echo2056187
+Ref: Inhibit point motion hooks2068043
+Ref: Help display2068277
+Node: Format Properties2068710
+Node: Sticky Properties2069710
+Node: Lazy Properties2073711
+Node: Clickable Text2075899
+Node: Fields2083172
+Node: Not Intervals2088565
+Node: Substitution2091071
+Node: Registers2092936
+Node: Transposition2096180
+Node: Base 642097080
+Ref: Base 64-Footnote-12099277
+Node: Checksum/Hash2099552
+Node: Parsing HTML/XML2102599
+Node: Atomic Changes2104188
+Node: Change Hooks2107782
+Node: Non-ASCII Characters2111358
+Node: Text Representations2112670
+Ref: Text Representations-Footnote-12117263
+Node: Converting Representations2117554
+Node: Selecting a Representation2121138
+Node: Character Codes2123869
+Node: Character Properties2125943
+Ref: Character Properties-Footnote-12134991
+Node: Character Sets2135188
+Node: Scanning Charsets2139988
+Node: Translation of Characters2141671
+Node: Coding Systems2146450
+Node: Coding System Basics2147693
+Node: Encoding and I/O2152219
+Node: Lisp and Coding Systems2156198
+Node: User-Chosen Coding Systems2163761
+Node: Default Coding Systems2167999
+Node: Specifying Coding Systems2177583
+Node: Explicit Encoding2181135
+Node: Terminal I/O Encoding2187338
+Node: MS-DOS File Types2189305
+Node: Input Methods2191878
+Node: Locales2194795
+Node: Searching and Matching2197031
+Node: String Search2198261
+Node: Searching and Case2204267
+Node: Regular Expressions2206204
+Node: Syntax of Regexps2207317
+Node: Regexp Special2209147
+Node: Char Classes2219632
+Node: Regexp Backslash2221842
+Node: Regexp Example2230936
+Node: Regexp Functions2233436
+Ref: Regexp Functions-Footnote-12236218
+Node: Regexp Search2236445
+Node: POSIX Regexps2244081
+Node: Match Data2246003
+Node: Replacing Match2247458
+Node: Simple Match Data2251037
+Node: Entire Match Data2256296
+Node: Saving Match Data2259279
+Node: Search and Replace2260619
+Node: Standard Regexps2268180
+Node: Syntax Tables2270766
+Node: Syntax Basics2271847
+Node: Syntax Descriptors2274533
+Node: Syntax Class Table2276976
+Node: Syntax Flags2283438
+Node: Syntax Table Functions2287063
+Node: Syntax Properties2291520
+Node: Motion and Syntax2294435
+Node: Parsing Expressions2296029
+Node: Motion via Parsing2298028
+Node: Position Parse2301086
+Node: Parser State2303553
+Node: Low-Level Parsing2306457
+Node: Control Parsing2308266
+Node: Syntax Table Internals2309145
+Node: Categories2312356
+Node: Abbrevs2318231
+Node: Abbrev Tables2320836
+Node: Defining Abbrevs2323515
+Node: Abbrev Files2326111
+Node: Abbrev Expansion2328188
+Node: Standard Abbrev Tables2334234
+Node: Abbrev Properties2335823
+Node: Abbrev Table Properties2337183
+Node: Processes2338925
+Node: Subprocess Creation2341799
+Node: Shell Arguments2346064
+Node: Synchronous Processes2349734
+Ref: Synchronous Processes-Footnote-12361566
+Node: Asynchronous Processes2361666
+Node: Deleting Processes2368158
+Node: Process Information2370209
+Ref: Coding systems for a subprocess2376332
+Node: Input to Processes2377430
+Node: Signals to Processes2380322
+Node: Output from Processes2384766
+Node: Process Buffers2387287
+Node: Filter Functions2390638
+Ref: Process Filter Example2392841
+Node: Decoding Output2395447
+Node: Accepting Output2397344
+Node: Sentinels2399446
+Node: Query Before Exit2404022
+Node: System Processes2405037
+Node: Transaction Queues2412026
+Node: Network2413922
+Node: Network Servers2421005
+Node: Datagrams2423009
+Node: Low-Level Network2424274
+Node: Network Processes2424882
+Node: Network Options2431445
+Node: Network Feature Testing2434924
+Node: Misc Network2436168
+Node: Serial Ports2437947
+Node: Byte Packing2445198
+Node: Bindat Spec2446142
+Node: Bindat Functions2451755
+Node: Bindat Examples2454552
+Node: Display2460557
+Node: Refresh Screen2462343
+Node: Forcing Redisplay2463674
+Node: Truncation2466474
+Node: The Echo Area2470867
+Node: Displaying Messages2471779
+Ref: message-box2474514
+Node: Progress2475986
+Node: Logging Messages2481285
+Node: Echo Area Customization2483156
+Node: Warnings2485022
+Node: Warning Basics2485579
+Node: Warning Variables2488359
+Node: Warning Options2491673
+Node: Delayed Warnings2493040
+Node: Invisible Text2494643
+Node: Selective Display2501248
+Node: Temporary Displays2505415
+Node: Overlays2512137
+Node: Managing Overlays2513569
+Node: Overlay Properties2519341
+Node: Finding Overlays2528638
+Node: Width2531216
+Node: Line Height2533684
+Node: Faces2537960
+Node: Face Attributes2540645
+Node: Defining Faces2549501
+Node: Attribute Functions2555541
+Node: Displaying Faces2563270
+Node: Face Remapping2565551
+Node: Face Functions2570157
+Node: Auto Faces2571830
+Node: Basic Faces2573449
+Node: Font Selection2575400
+Ref: Font Selection-Footnote-12579666
+Node: Font Lookup2579766
+Node: Fontsets2582218
+Node: Low-Level Font2587922
+Node: Fringes2594596
+Node: Fringe Size/Pos2595331
+Node: Fringe Indicators2597622
+Node: Fringe Cursors2601731
+Node: Fringe Bitmaps2603450
+Node: Customizing Bitmaps2606210
+Node: Overlay Arrow2608276
+Node: Scroll Bars2610713
+Node: Display Property2614670
+Node: Replacing Specs2615950
+Node: Specified Space2618076
+Node: Pixel Specification2620814
+Node: Other Display Specs2623537
+Node: Display Margins2628104
+Node: Images2630504
+Node: Image Formats2632027
+Node: Image Descriptors2634097
+Node: XBM Images2641294
+Node: XPM Images2643472
+Node: GIF Images2644029
+Node: TIFF Images2644527
+Node: PostScript Images2644955
+Node: ImageMagick Images2645812
+Node: Other Image Types2648303
+Node: Defining Images2649350
+Node: Showing Images2654684
+Node: Animated Images2659513
+Node: Image Cache2660758
+Node: Buttons2663758
+Node: Button Properties2665154
+Node: Button Types2667156
+Node: Making Buttons2668515
+Node: Manipulating Buttons2670985
+Node: Button Buffer Commands2673029
+Node: Abstract Display2675961
+Node: Abstract Display Functions2678729
+Node: Abstract Display Example2683738
+Node: Blinking2688438
+Node: Character Display2690391
+Node: Usual Display2691597
+Node: Display Tables2695468
+Node: Active Display Table2699333
+Node: Glyphs2700974
+Node: Glyphless Chars2703022
+Node: Beeping2706669
+Node: Window Systems2707975
+Node: Bidirectional Display2710575
+Node: System Interface2719932
+Node: Starting Up2721803
+Node: Startup Summary2722386
+Node: Init File2730616
+Node: Terminal-Specific2734231
+Node: Command-Line Arguments2737292
+Node: Getting Out2740947
+Node: Killing Emacs2741563
+Node: Suspending Emacs2744163
+Node: System Environment2749434
+Node: User Identification2757922
+Node: Time of Day2761452
+Node: Time Conversion2765793
+Node: Time Parsing2769788
+Node: Processor Run Time2777174
+Node: Time Calculations2778843
+Node: Timers2779969
+Node: Idle Timers2786477
+Node: Terminal Input2790844
+Node: Input Modes2791278
+Node: Recording Input2793680
+Node: Terminal Output2795144
+Node: Sound Output2798091
+Node: X11 Keysyms2800243
+Node: Batch Mode2801769
+Node: Session Management2803010
+Node: Notifications2805102
+Node: Dynamic Libraries2812651
+Node: Packaging2814812
+Node: Packaging Basics2815694
+Node: Simple Packages2819782
+Node: Multi-file Packages2822002
+Node: Package Archives2825264
+Node: Antinews2828793
+Node: GNU Free Documentation License2834170
+Node: GPL2859335
+Node: Tips2896907
+Node: Coding Conventions2898124
+Ref: Coding Conventions-Footnote-12907028
+Node: Key Binding Conventions2907129
+Node: Programming Tips2910074
+Node: Compilation Tips2914232
+Node: Warning Tips2916154
+Node: Documentation Tips2917754
+Ref: Docstring hyperlinks2922211
+Node: Comment Tips2928572
+Node: Library Headers2932121
+Node: GNU Emacs Internals2938626
+Node: Building Emacs2939414
+Node: Pure Storage2944608
+Node: Garbage Collection2947534
+Node: Memory Usage2957305
+Node: Writing Emacs Primitives2958948
+Ref: Defining Lisp variables in C2966305
+Node: Object Internals2969815
+Node: Buffer Internals2971076
+Node: Window Internals2979808
+Node: Process Internals2986714
+Node: Standard Errors2989425
+Node: Standard Keymaps2995688
+Node: Standard Hooks3000706
+Node: Index3005806
 
 End Tag Table
 

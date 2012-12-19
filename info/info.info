@@ -341,7 +341,7 @@ same size screen, it would be impossible to warn you anyway.
    (1) The key which we call "Backspace or DEL" in this manual is
 labeled differently on different keyboards.  Look for a key which is a
 little ways above the <ENTER> or <RET> key and which you normally use
-outside Emacs to erase the character before the cursor, i.e. the
+outside Emacs to erase the character before the cursor, i.e., the
 character you typed last.  It might be labeled `Backspace' or `<-' or
 `DEL', or sometimes `Delete'.
 
@@ -1450,28 +1450,28 @@ Node: Help6497
 Node: Help-P8150
 Node: Help-^L9358
 Ref: Help-^L-Footnote-113894
-Node: Help-Inv14267
-Node: Help-]15951
-Node: Help-M17516
-Node: Help-FOO26074
-Node: Help-Xref27039
-Node: Help-Int30616
-Node: Help-Q33626
-Node: Advanced34784
-Node: Search Text35997
-Node: Search Index37792
-Node: Go to node40233
-Node: Choose menu subtopic41260
-Node: Create Info buffer42448
-Node: Emacs Info Variables43792
-Node: Expert Info47579
-Node: Add48933
-Ref: Add-Footnote-151935
-Node: Menus52188
-Node: Cross-refs55080
-Node: Help-Cross55856
-Node: Tags56525
-Node: Checking58041
-Node: Index58968
+Node: Help-Inv14268
+Node: Help-]15952
+Node: Help-M17517
+Node: Help-FOO26075
+Node: Help-Xref27040
+Node: Help-Int30617
+Node: Help-Q33627
+Node: Advanced34785
+Node: Search Text35998
+Node: Search Index37793
+Node: Go to node40234
+Node: Choose menu subtopic41261
+Node: Create Info buffer42449
+Node: Emacs Info Variables43793
+Node: Expert Info47580
+Node: Add48934
+Ref: Add-Footnote-151936
+Node: Menus52189
+Node: Cross-refs55081
+Node: Help-Cross55857
+Node: Tags56526
+Node: Checking58042
+Node: Index58969
 
 End Tag Table

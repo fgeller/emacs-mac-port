@@ -332,7 +332,7 @@ Otherwise, if WoMan can find a configuration file named (by default)
 `man.conf' (or something very similar), which seems to be the standard
 mechanism under GNU/Linux, then it parses that.  To be precise,
 "something very similar" means starting with `man' and ending with
-`.conf' and possibly more lowercase letters, e.g.
+`.conf' and possibly more lowercase letters, e.g.,
 `manual.configuration'.  The search path and/or precise full path name
 for this file are set by the value of the customizable user option
 `woman-man.conf-path'.  If all else fails, WoMan uses a plausible
@@ -361,7 +361,7 @@ files that it can access, which can be very slow, especially if a
 network is involved.  For this reason, it caches various amounts of
 information, after which retrieving it from the cache is very fast.  If
 the cache ever gets out of synchronism with reality, running the
-`woman' command with a prefix argument (e.g. `C-u M-x woman') will
+`woman' command with a prefix argument (e.g., `C-u M-x woman') will
 force it to rebuild its cache.  This is necessary only if the names or
 locations of any man files change; it is not necessary if only their
 contents change.  It would always be necessary if such a change occurred
@@ -429,8 +429,8 @@ minibuffer.
 You can also bind the variable `woman-use-topic-at-point' locally to a
 non-`nil' value (using `let'), in which case `woman' will can use the
 suggested topic without confirmation if possible.  This may be useful
-to provide special private key bindings, e.g. this key binding for `C-c
-w' runs WoMan on the topic at point without seeking confirmation:
+to provide special private key bindings, e.g., this key binding for
+`C-c w' runs WoMan on the topic at point without seeking confirmation:
 
      (global-set-key "\C-cw"
                      (lambda ()
@@ -452,7 +452,7 @@ The filename interface is accessed principally via the extended command
 (provided WoMan is installed and loaded or set up to autoload).  This
 command can be used to browse any accessible man file, regardless of
 its filename or location.  If the file is compressed then automatic
-file decompression must already be turned on (e.g. see the
+file decompression must already be turned on (e.g., see the
 `Help->Options' submenu)--it is turned on automatically only by the
 `woman' topic interface.
 
@@ -492,7 +492,7 @@ File: woman.info,  Node: Automatic,  Prev: Filename,  Up: Finding
 
 Emacs provides an interface to detect automatically the format of a file
 and decode it when it is visited.  It is used primarily by the
-facilities for editing rich (i.e. formatted) text, as a way to store
+facilities for editing rich (i.e., formatted) text, as a way to store
 formatting information transparently as ASCII markup.  WoMan can in
 principle use this interface, but it must be configured explicitly.
 
@@ -604,7 +604,7 @@ File: woman.info,  Node: References,  Next: Changing,  Prev: Navigation,  Up: Br
 
 Man pages usually contain a "SEE ALSO" section containing references to
 other man pages.  If these man pages are installed then WoMan can
-easily be directed to follow the reference, i.e. to find and format the
+easily be directed to follow the reference, i.e., to find and format the
 man page.  When the mouse is passed over a correctly formatted reference
 it is highlighted, in which case clicking the middle button `Mouse-2'
 will cause WoMan to follow the reference.  Alternatively, when point is
@@ -664,13 +664,13 @@ share code).
      item had been used.
 
 `q'
-     Bury the buffer containing the current man page (`Man-quit'), i.e.
-     move it to the bottom of the buffer stack.
+     Bury the buffer containing the current man page (`Man-quit'),
+     i.e., move it to the bottom of the buffer stack.
 
 `k'
-     Kill the buffer containing the current man page (`Man-kill'), i.e.
-     delete it completely so that it can be retrieved only by formatting
-     the page again.
+     Kill the buffer containing the current man page (`Man-kill'),
+     i.e., delete it completely so that it can be retrieved only by
+     formatting the page again.
 
 `M-p'
      Find the previous WoMan buffer (`WoMan-previous-manpage').
@@ -680,7 +680,7 @@ share code).
 
 `R'
      Call WoMan to reformat the last man page formatted by WoMan
-     (`woman-reformat-last-file'), e.g. after changing the fill column.
+     (`woman-reformat-last-file'), e.g., after changing the fill column.
 
 
 File: woman.info,  Node: Convenience,  Next: Imenu,  Prev: Changing,  Up: Browsing
@@ -739,7 +739,7 @@ All WoMan user options are customizable, and it is recommended to
 change them only via the standard Emacs customization facilities.
 WoMan defines a top-level customization group called `WoMan' under the
 parent group `Help'.  It can be accessed either via the standard Emacs
-facilities, e.g. via the `Help->Customize' submenu, or via the WoMan
+facilities, e.g., via the `Help->Customize' submenu, or via the WoMan
 major mode menu.
 
 The top-level WoMan group contains only a few general options and three
@@ -750,7 +750,7 @@ be possible via existing user options.
 
 `woman-show-log'
      A boolean value that defaults to `nil'.  If non-`nil' then show the
-     `*WoMan-Log*' buffer if appropriate, i.e. if any warning messages
+     `*WoMan-Log*' buffer if appropriate, i.e., if any warning messages
      are written to it.  *Note The *WoMan-Log* Buffer: Log.
 
 `woman-pre-format-hook'
@@ -828,13 +828,13 @@ browse, and the appearance of the browsing interface.
           ("/usr/man" "/usr/local/man")
 
      Any environment variables (names of which must have the Unix-style
-     form `$NAME', e.g. `$HOME', `$EMACSDATA', `$EMACS_DIR', regardless
-     of platform) are evaluated first but each element must evaluate to
-     a _single_ directory name.  Trailing `/'s are ignored.  (Specific
-     directories in `woman-path' are also searched.)
+     form `$NAME', e.g., `$HOME', `$EMACSDATA', `$EMACS_DIR',
+     regardless of platform) are evaluated first but each element must
+     evaluate to a _single_ directory name.  Trailing `/'s are ignored.
+     (Specific directories in `woman-path' are also searched.)
 
      On Microsoft platforms I recommend including drive letters
-     explicitly, e.g.
+     explicitly, e.g.:
 
           ("C:/Cygwin/usr/man" "C:/usr/man" "C:/usr/local/man")
 
@@ -869,9 +869,10 @@ browse, and the appearance of the browsing interface.
      and on other platforms is `nil'.
 
      Any environment variables (names of which must have the Unix-style
-     form `$NAME', e.g. `$HOME', `$EMACSDATA', `$EMACS_DIR', regardless
-     of platform) are evaluated first but each element must evaluate to
-     a _single_ directory name (regexp, see above).  For example
+     form `$NAME', e.g., `$HOME', `$EMACSDATA', `$EMACS_DIR',
+     regardless of platform) are evaluated first but each element must
+     evaluate to a _single_ directory name (regexp, see above).  For
+     example
 
           ("$EMACSDATA")
 
@@ -913,7 +914,7 @@ browse, and the appearance of the browsing interface.
 
 `woman-dired-keys'
      A list of `dired' mode keys to be defined to run WoMan on the
-     current file, e.g. `("w" "W")' or any non-`nil' atom to
+     current file, e.g., `("w" "W")' or any non-`nil' atom to
      automatically define `w' and `W' if they are unbound, or `nil' to
      do nothing.  Default is `t'.
 
@@ -1075,7 +1076,7 @@ WoMan provides partial experimental support for special symbols,
 initially only for MS-Windows and only for MS-Windows fonts.  This
 includes both non-ASCII characters from the main text font and use of a
 separate symbol font.  Later, support will be added for other font
-types (e.g. `bdf' fonts) and for the X Window System.  In Emacs 20.7,
+types (e.g., `bdf' fonts) and for the X Window System.  In Emacs 20.7,
 the current support works partially under Windows 9x but may not work
 on any other platform.
 
@@ -1146,7 +1147,7 @@ File: woman.info,  Node: Bugs,  Next: Acknowledgments,  Prev: Technical,  Up: To
 8 Reporting Bugs
 ****************
 
-If WoMan fails completely, or formats a file incorrectly (i.e.
+If WoMan fails completely, or formats a file incorrectly (i.e.,
 obviously wrongly or significantly differently from `man') or
 inelegantly, then please
 
@@ -1745,19 +1746,19 @@ Variable Index
 * woman-addition-face:                   Faces.               (line  31)
 * woman-bold-face:                       Faces.               (line  21)
 * woman-bold-headings:                   Formatting Options.  (line  22)
-* woman-cache-filename:                  Interface Options.   (line 116)
-* woman-cache-level:                     Interface Options.   (line  97)
+* woman-cache-filename:                  Interface Options.   (line 117)
+* woman-cache-level:                     Interface Options.   (line  98)
 * woman-default-indent:                  Formatting Options.  (line  17)
-* woman-dired-keys:                      Interface Options.   (line 125)
+* woman-dired-keys:                      Interface Options.   (line 126)
 * woman-emulation:                       Formatting Options.  (line  38)
-* woman-file-compression-regexp:         Interface Options.   (line 178)
+* woman-file-compression-regexp:         Interface Options.   (line 179)
 * woman-fill-column:                     Formatting Options.  (line   8)
 * woman-fill-frame:                      Formatting Options.  (line  12)
 * woman-fontify:                         Faces.               (line   9)
 * woman-ignore:                          Formatting Options.  (line  27)
-* woman-imenu:                           Interface Options.   (line 139)
-* woman-imenu-generic-expression:        Interface Options.   (line 131)
-* woman-imenu-title:                     Interface Options.   (line 144)
+* woman-imenu:                           Interface Options.   (line 140)
+* woman-imenu-generic-expression:        Interface Options.   (line 132)
+* woman-imenu-title:                     Interface Options.   (line 145)
 * woman-italic-face:                     Faces.               (line  14)
 * woman-man.conf-path:                   Interface Options.   (line   9)
 * woman-manpath:                         Interface Options.   (line  22)
@@ -1768,13 +1769,13 @@ Variable Index
 * woman-preserve-ascii:                  Formatting Options.  (line  32)
 * woman-show-log:                        Customization.       (line  19)
 * woman-symbol-font:                     Special symbols.     (line  25)
-* woman-uncompressed-file-regexp:        Interface Options.   (line 161)
+* woman-uncompressed-file-regexp:        Interface Options.   (line 162)
 * woman-unknown-face:                    Faces.               (line  24)
 * woman-use-extended-font:               Special symbols.     (line  16)
-* woman-use-own-frame:                   Interface Options.   (line 194)
+* woman-use-own-frame:                   Interface Options.   (line 195)
 * woman-use-symbol-font:                 Special symbols.     (line  20)
-* woman-use-topic-at-point:              Interface Options.   (line 148)
-* woman-use-topic-at-point-default:      Interface Options.   (line 153)
+* woman-use-topic-at-point:              Interface Options.   (line 149)
+* woman-use-topic-at-point-default:      Interface Options.   (line 154)
 
 
 File: woman.info,  Node: Keystroke Index,  Next: Concept Index,  Prev: Variable Index,  Up: Top
@@ -1874,30 +1875,30 @@ Node: Introduction3015
 Node: Background5538
 Node: Finding12800
 Node: Topic14361
-Node: Cache18749
-Node: Word at point20462
-Node: Filename21399
-Node: Automatic23654
-Node: Browsing25217
-Node: Fonts26448
-Node: Navigation27109
-Node: References27992
-Node: Changing29387
-Node: Convenience31400
-Node: Imenu32144
-Node: Customization32942
-Node: Interface Options34931
-Node: Formatting Options43647
-Node: Faces45202
-Node: Special symbols46486
-Node: Log47718
-Node: Technical48838
-Node: Bugs49554
-Node: Acknowledgments50321
-Node: GNU Free Documentation License52245
-Node: Command Index77418
-Node: Variable Index79408
-Node: Keystroke Index82042
-Node: Concept Index83802
+Node: Cache18751
+Node: Word at point20464
+Node: Filename21402
+Node: Automatic23658
+Node: Browsing25222
+Node: Fonts26453
+Node: Navigation27114
+Node: References27997
+Node: Changing29393
+Node: Convenience31409
+Node: Imenu32153
+Node: Customization32951
+Node: Interface Options34942
+Node: Formatting Options43666
+Node: Faces45221
+Node: Special symbols46505
+Node: Log47738
+Node: Technical48858
+Node: Bugs49574
+Node: Acknowledgments50342
+Node: GNU Free Documentation License52266
+Node: Command Index77439
+Node: Variable Index79429
+Node: Keystroke Index82063
+Node: Concept Index83823
 
 End Tag Table

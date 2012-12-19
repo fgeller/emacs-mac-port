@@ -98,7 +98,7 @@ are all there, but instead of being colon-separated on one single line,
 they make up a forms.
 
    The contents of the forms consist of the contents of the fields of
-the record (e.g. `root', `0', `1', `Super User') interspersed with
+the record (e.g., `root', `0', `1', `Super User') interspersed with
 normal text (e.g `User : ', `Uid: ').
 
    If you modify the contents of the fields, Forms mode will analyze
@@ -588,7 +588,7 @@ think twice before using this.
 
    The default format for the data file, using `"\t"' to separate
 fields and `"\^k"' to separate lines within a field, matches the file
-format of some popular database programs, e.g. FileMaker.  So
+format of some popular database programs, e.g., FileMaker.  So
 `forms-mode' can decrease the need to use proprietary software.
 
 
@@ -1367,17 +1367,17 @@ Index
 Tag Table:
 Node: Top1133
 Node: Forms Example3413
-Node: Entering and Exiting Forms Mode4618
-Node: Forms Commands6832
-Node: Data File Format10639
-Node: Control File Format11984
-Node: Format Description16618
-Node: Modifying Forms Contents19956
-Node: Miscellaneous21839
-Node: Error Messages23383
-Node: Long Example27632
-Node: Credits30781
-Node: GNU Free Documentation License31560
-Node: Index56733
+Node: Entering and Exiting Forms Mode4619
+Node: Forms Commands6833
+Node: Data File Format10640
+Node: Control File Format11985
+Node: Format Description16619
+Node: Modifying Forms Contents19957
+Node: Miscellaneous21840
+Node: Error Messages23385
+Node: Long Example27634
+Node: Credits30783
+Node: GNU Free Documentation License31562
+Node: Index56735
 
 End Tag Table

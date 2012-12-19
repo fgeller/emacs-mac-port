@@ -5710,7 +5710,7 @@ they are extremely useful.
      [12]
      [13] # Place mail sent to any MH-E mailing list in +mh-e.
      [14] :0 w: mh-e$LOCKEXT
-     [15] * ^TO.*mh-e-.*.*sourceforge.net
+     [15] * ^TO.*mh-e-.*@.*sourceforge.net
      [16] | myrcvstore -create +mh-e
 
    Line 14 creates a lock file in your mail directory based upon the
@@ -5793,7 +5793,7 @@ the GnuCash mailing list, substitute one to which you are subscribed.
      # Place mail sent to the GnuCash mailing list in gnucash.spool, where
      # Gnus will pick it up.
      :0:
-     * ^TO.*gnucash.*.*gnucash.org
+     * ^TO.*gnucash.*@.*gnucash.org
      gnucash.spool
 
    Wait for some messages to appear in `gnucash.spool' and run Gnus
@@ -9447,25 +9447,25 @@ Node: Scan Line Formats208670
 Ref: Scan Line Formats-Footnote-1224748
 Ref: Scan Line Formats-Footnote-2224892
 Node: Procmail225018
-Ref: Procmail-Footnote-1230431
-Ref: Procmail-Footnote-2230573
-Ref: Procmail-Footnote-3230731
-Node: Odds and Ends230803
-Node: Bug Reports231218
-Node: Mailing Lists231738
-Node: MH FAQ and Support232258
-Node: Getting MH-E232957
-Node: History234628
-Node: From Brian Reid235255
-Ref: From Brian Reid-Footnote-1236412
-Node: From Jim Larus236891
-Node: From Stephen Gildea239145
-Node: From Bill Wohler241301
-Node: GFDL243228
-Node: GPL268365
-Node: Key Index305915
-Node: Command Index336225
-Node: Option Index359236
-Node: Concept Index382757
+Ref: Procmail-Footnote-1230433
+Ref: Procmail-Footnote-2230575
+Ref: Procmail-Footnote-3230733
+Node: Odds and Ends230805
+Node: Bug Reports231220
+Node: Mailing Lists231740
+Node: MH FAQ and Support232260
+Node: Getting MH-E232959
+Node: History234630
+Node: From Brian Reid235257
+Ref: From Brian Reid-Footnote-1236414
+Node: From Jim Larus236893
+Node: From Stephen Gildea239147
+Node: From Bill Wohler241303
+Node: GFDL243230
+Node: GPL268367
+Node: Key Index305917
+Node: Command Index336227
+Node: Option Index359238
+Node: Concept Index382759
 
 End Tag Table

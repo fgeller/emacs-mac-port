@@ -144,7 +144,7 @@ etc.  *Note Directory Editor: (emacs)Dired, for an example.
 is always between 2 characters, and is "looking at" the right hand
 character.  The cursor is positioned on the right hand character.
 Thus, when the "point" is looking at the end-of-line, the cursor is on
-the end-of-line character, i.e. beyond the last character on the line.
+the end-of-line character, i.e., beyond the last character on the line.
 This is the default Emacs behavior.
 
    The default settings of Viper try to mimic the behavior of Vi,
@@ -214,7 +214,7 @@ mode, etc.  You can also turn Viper on and off at any time while in Vi
 command mode.  *Note States in Viper::, for more information.
 
    Emacs uses Control and Meta modifiers.  These are denoted as C and M,
-e.g. `^Z' as `C-z' and `Meta-x' as `M-x'.  The Meta key is usually
+e.g., `^Z' as `C-z' and `Meta-x' as `M-x'.  The Meta key is usually
 located on each side of the Space bar; it is used in a manner similar
 to the Control key, e.g., `M-x' means typing `x' while holding the Meta
 key down.  For keyboards that do not have a Meta key, <ESC> is used as
@@ -3207,10 +3207,10 @@ File: viper.info,  Node: Changing Text,  Next: Search and Replace,  Prev: Deleti
 `:[x,y]s/<pat>/<repl>/<f>'
      Substitute (on lines x through y) the pattern <pat> (default the
      last pattern) with <repl>.  Useful flags <f> are `g' for `global'
-     (i.e. change every non-overlapping occurrence of <pat>) and `c' for
-     `confirm' (type `y' to confirm a particular substitution, else `n'
-     ).  Instead of `/' any punctuation CHAR unequal to <space> <tab>
-     and <lf> can be used as delimiter.
+     (i.e., change every non-overlapping occurrence of <pat>) and `c'
+     for `confirm' (type `y' to confirm a particular substitution, else
+     `n' ).  Instead of `/' any punctuation CHAR unequal to <space>
+     <tab> and <lf> can be used as delimiter.
 
      In Emacs, `\&' stands for the last matched expression, so
      `s/[ab]+/\&\&/' will double the string matched by `[ab]'.  Viper
@@ -3233,7 +3233,7 @@ File: viper.info,  Node: Changing Text,  Next: Search and Replace,  Prev: Deleti
      Move text between `x' and `y' to the position after `z'.
 
 `&'
-     Repeat latest Ex substitute command, e.g.  `:s/wrong/right'.
+     Repeat latest Ex substitute command, e.g., `:s/wrong/right'.
 
 `:x,yp'
 `:g/Pat/p'
@@ -3328,8 +3328,8 @@ from wrapping around.
 `:[x,y]s/<pat>/<repl>/<f>'
      Substitute (on lines x through y) the pattern <pat> (default the
      last pattern) with <repl>.  Useful flags <f> are `g' for `global'
-     (i.e. change every non-overlapping occurrence of <pat>) and `c' for
-     `confirm' (type `y' to confirm a particular substitution, else
+     (i.e., change every non-overlapping occurrence of <pat>) and `c'
+     for `confirm' (type `y' to confirm a particular substitution, else
      `n').  Instead of `/' any punctuation character other than <space>
      <tab> and <lf> can be used as delimiter.
 
@@ -3337,7 +3337,7 @@ from wrapping around.
      <repl>_.
 
 `&'
-     Repeat latest Ex substitute command, e.g. `:s/wrong/right'.
+     Repeat latest Ex substitute command, e.g., `:s/wrong/right'.
 
 `:global /<pattern>/<ex-command>'
 `:g /<pattern>/<ex-command>'
@@ -5248,57 +5248,57 @@ Tag Table:
 Node: Top994
 Node: Overview4207
 Node: Emacs Preliminaries5808
-Node: Loading Viper11168
-Node: States in Viper13359
-Node: Emacs State18428
-Node: Vi State19914
-Node: Insert State26798
-Node: Replace State29682
-Node: The Minibuffer31351
-Node: Multiple Files in Viper33259
-Node: Unimplemented Features36706
-Node: Improvements over Vi37434
-Node: Basics38525
-Node: Undo and Backups40981
-Node: History42159
-Node: Macros and Registers43770
-Node: Completion45459
-Node: Improved Search45898
-Node: Abbreviation Facilities48263
-Node: Movement and Markers49248
-Node: New Commands52305
-Node: Useful Packages58398
-Node: Customization60465
-Node: Rudimentary Changes62277
-Node: Key Bindings77099
-Node: Packages that Change Keymaps86949
-Node: Viper Specials92828
-Node: Vi Macros110548
-Node: Commands123957
-Node: Groundwork124801
-Node: Text Handling131275
-Node: Move Commands131952
-Node: Marking135710
-Node: Appending Text136957
-Node: Editing in Insert State139300
-Node: Deleting Text139895
-Node: Changing Text141244
-Node: Search and Replace144251
-Node: Yanking146814
-Node: Undoing147740
-Node: Display148088
-Node: File and Buffer Handling149405
-Node: Mapping153936
-Node: Shell Commands155639
-Node: Options157484
-Node: Emacs Related Commands159692
-Node: Mouse-bound Commands161273
-Node: Acknowledgments162145
-Node: GNU Free Documentation License165291
-Node: Key Index190427
-Node: Function Index208042
-Node: Variable Index219724
-Node: Package Index225395
-Node: Concept Index226054
+Node: Loading Viper11170
+Node: States in Viper13361
+Node: Emacs State18430
+Node: Vi State19916
+Node: Insert State26800
+Node: Replace State29684
+Node: The Minibuffer31353
+Node: Multiple Files in Viper33261
+Node: Unimplemented Features36708
+Node: Improvements over Vi37436
+Node: Basics38527
+Node: Undo and Backups40983
+Node: History42161
+Node: Macros and Registers43772
+Node: Completion45461
+Node: Improved Search45900
+Node: Abbreviation Facilities48265
+Node: Movement and Markers49250
+Node: New Commands52307
+Node: Useful Packages58400
+Node: Customization60467
+Node: Rudimentary Changes62279
+Node: Key Bindings77101
+Node: Packages that Change Keymaps86951
+Node: Viper Specials92830
+Node: Vi Macros110550
+Node: Commands123959
+Node: Groundwork124803
+Node: Text Handling131277
+Node: Move Commands131954
+Node: Marking135712
+Node: Appending Text136959
+Node: Editing in Insert State139302
+Node: Deleting Text139897
+Node: Changing Text141246
+Node: Search and Replace144254
+Node: Yanking146819
+Node: Undoing147745
+Node: Display148093
+Node: File and Buffer Handling149410
+Node: Mapping153941
+Node: Shell Commands155644
+Node: Options157489
+Node: Emacs Related Commands159697
+Node: Mouse-bound Commands161278
+Node: Acknowledgments162150
+Node: GNU Free Documentation License165296
+Node: Key Index190432
+Node: Function Index208047
+Node: Variable Index219729
+Node: Package Index225400
+Node: Concept Index226059
 
 End Tag Table

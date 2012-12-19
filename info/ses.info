@@ -744,7 +744,7 @@ variables are processed.
 except in the local-variables part, since SES locates things by
 counting newlines.  Use `C-x C-e' at the end of a line to install your
 edits into the spreadsheet data structures (this does not update the
-print area, use e.g. `C-c C-l' for that).
+print area, use, e.g., `C-c C-l' for that).
 
    The data area is maintained as an image of spreadsheet data
 structures that area stored in buffer-local variables.  If the data
@@ -1480,10 +1480,10 @@ Node: For Gurus22893
 Node: Deferred updates23155
 Node: Nonrelocatable references24679
 Node: The data area25584
-Node: Buffer-local variables in spreadsheets26808
-Node: Uses of defadvice in SES28259
-Node: Index29082
-Node: Acknowledgments37422
-Node: GNU Free Documentation License38592
+Node: Buffer-local variables in spreadsheets26810
+Node: Uses of defadvice in SES28261
+Node: Index29084
+Node: Acknowledgments37424
+Node: GNU Free Documentation License38594
 
 End Tag Table

@@ -1,7 +1,7 @@
 This is /home/cyd/emacs/doc/misc/../../info/erc.info, produced by
 makeinfo version 4.13 from /home/cyd/emacs/doc/misc/erc.texi.
 
-This manual is for ERC as distributed with Emacs 24.2.90.
+This manual is for ERC as distributed with Emacs 24.2.91.
 
    Copyright (C) 2005-2012 Free Software Foundation, Inc.
 
@@ -31,7 +31,7 @@ File: erc.info,  Node: Top,  Next: Introduction,  Up: (dir)
 ERC
 ***
 
-This manual is for ERC as distributed with Emacs 24.2.90.
+This manual is for ERC as distributed with Emacs 24.2.91.
 
    Copyright (C) 2005-2012 Free Software Foundation, Inc.
 
@@ -255,7 +255,7 @@ ERC has some features that distinguish it from some IRC clients.
 
    * user scripting
 
-     Users can load scripts (e.g. auto greeting scripts) when ERC
+     Users can load scripts (e.g., auto greeting scripts) when ERC
      starts up.
 
      It is also possible to make custom IRC commands, if you know a
@@ -674,7 +674,7 @@ command can optionally go into `~/.emacs.d/.ercrc.el'.
                                 (erc :server "localhost" :port "6667"
                                      :nick "MYNICK")))
 
-     ;; Make C-c RET (or C-c C-RET) send messages instead of RET. This has
+     ;; Make C-c RET (or C-c C-RET) send messages instead of RET.  This has
      ;; been commented out to avoid confusing new users.
      ;; (define-key erc-mode-map (kbd "RET") nil)
      ;; (define-key erc-mode-map (kbd "C-c RET") 'erc-send-current-line)
@@ -708,7 +708,7 @@ check out all the available options for ERC is to do `M-x
 customize-group erc RET'.
 
  -- User Option: erc-hide-list
-     If non, `nil', this is a list of IRC message types to hide, e.g.
+     If non, `nil', this is a list of IRC message types to hide, e.g.:
 
           (setq erc-hide-list '("JOIN" "PART" "QUIT"))
 
@@ -2088,16 +2088,16 @@ Node: Introduction3333
 Node: Getting Started4059
 Node: Sample Session4836
 Node: Special Features7220
-Node: Keystroke Summary9518
-Node: Modules12060
-Node: Advanced Usage14104
-Node: Connecting14456
-Node: Sample Configuration18436
-Node: Options21805
-Node: Getting Help and Reporting Bugs22434
-Node: History23222
-Node: Copying25428
-Node: GNU Free Documentation License63005
-Node: Concept Index88177
+Node: Keystroke Summary9519
+Node: Modules12061
+Node: Advanced Usage14105
+Node: Connecting14457
+Node: Sample Configuration18437
+Node: Options21807
+Node: Getting Help and Reporting Bugs22437
+Node: History23225
+Node: Copying25431
+Node: GNU Free Documentation License63008
+Node: Concept Index88180
 
 End Tag Table

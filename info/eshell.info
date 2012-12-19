@@ -770,7 +770,7 @@ Create more meta variables
 
 Eshell scripts can't execute in the background
 
-Support zsh's "Parameter Expansion" syntax, i.e. `${NAME:-VAL}'
+Support zsh's "Parameter Expansion" syntax, i.e., `${NAME:-VAL}'
 
 Write an `info' alias that can take arguments
      So that the user can enter `info chmod', for example.
@@ -841,7 +841,7 @@ Write a `help' command
 
 Implement `stty' in Lisp
 
-Support `rc''s matching operator, e.g. `~ (LIST) REGEXP'
+Support `rc''s matching operator, e.g., `~ (LIST) REGEXP'
 
 Implement `bg' and `fg' as editors of `eshell-process-list'
      Using `bg' on a process that is already in the background does
@@ -1524,9 +1524,9 @@ Node: Built-in UNIX commands17571
 Node: Extras and Goodies17729
 Node: Bugs and ideas17879
 Node: Known problems18479
-Node: GNU Free Documentation License33633
-Node: Concept Index58815
-Node: Function and Variable Index60000
-Node: Key Index60843
+Node: GNU Free Documentation License33635
+Node: Concept Index58817
+Node: Function and Variable Index60002
+Node: Key Index60845
 
 End Tag Table

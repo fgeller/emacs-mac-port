@@ -616,7 +616,7 @@ widget specific way.
           `nil'
 
 `:parent'
-     The parent of a nested widget (e.g. a `menu-choice' item or an
+     The parent of a nested widget (e.g., a `menu-choice' item or an
      element of a `editable-list' widget).
 
 `:sibling-args'
@@ -746,9 +746,9 @@ This widget will match all string values.
      `widget-field-face', see *note User Interface::.
 
 `:secret'
-     Character used to display the value.  You can set this to e.g. `?*'
-     if the field contains a password or other secret information.  By
-     default, this is `nil', and the value is not secret.
+     Character used to display the value.  You can set this to, e.g.,
+     `?*' if the field contains a password or other secret information.
+     By default, this is `nil', and the value is not secret.
 
 `:valid-regexp'
      By default the `:validate' function will match the content of the
@@ -835,7 +835,7 @@ specified TYPE arguments.
 
 `:button-args'
      A list of keywords to pass to the radio buttons.  Useful for
-     setting e.g. the `:help-echo' for each button.
+     setting, e.g., the `:help-echo' for each button.
 
 `:buttons'
      The widgets representing the radio buttons.
@@ -968,11 +968,11 @@ match at least one of the specified TYPE arguments.
      sequence given in the specification.  By setting `:greedy' to
      non-`nil', it will allow the items to come in any sequence.
      However, if you extract the value they will be in the sequence
-     given in the checklist, i.e. the original sequence is forgotten.
+     given in the checklist, i.e., the original sequence is forgotten.
 
 `:button-args'
-     A list of keywords to pass to the checkboxes.  Useful for setting
-     e.g. the `:help-echo' for each checkbox.
+     A list of keywords to pass to the checkboxes.  Useful for setting,
+     e.g., the `:help-echo' for each checkbox.
 
 `:buttons'
      The widgets representing the checkboxes.
@@ -1300,7 +1300,7 @@ must begin with a `:'.
      Non-`nil' if WIDGET has a value (even `nil') for property PROPERTY.
 
    Occasionally it can be useful to know which kind of widget you have,
-i.e. the name of the widget type you gave when the widget was created.
+i.e., the name of the widget type you gave when the widget was created.
 
  -- Function: widget-type widget
      Return the name of WIDGET, a symbol.
@@ -2307,33 +2307,33 @@ Node: User Interface5264
 Node: Programming Example10990
 Node: Setting Up the Buffer15202
 Node: Basic Types16874
-Node: link23503
-Node: url-link24016
-Node: info-link24325
-Node: push-button24612
-Node: editable-field25184
-Node: text26577
-Node: menu-choice26871
-Node: radio-button-choice27724
-Node: item29311
-Node: choice-item29696
-Node: toggle30191
-Node: checkbox30943
-Node: checklist31247
-Node: editable-list32687
-Node: group33866
-Node: Sexp Types34151
-Node: constants34500
-Node: generic35573
-Node: atoms36128
-Node: composite38054
-Node: Widget Properties41039
-Node: Defining New Widgets44097
-Node: Widget Browser50130
-Node: Widget Minor Mode50988
-Node: Utilities51542
-Node: Widget Wishlist52030
-Node: GNU Free Documentation License53292
-Node: Index78467
+Node: link23504
+Node: url-link24017
+Node: info-link24326
+Node: push-button24613
+Node: editable-field25185
+Node: text26579
+Node: menu-choice26873
+Node: radio-button-choice27726
+Node: item29315
+Node: choice-item29700
+Node: toggle30195
+Node: checkbox30947
+Node: checklist31251
+Node: editable-list32694
+Node: group33873
+Node: Sexp Types34158
+Node: constants34507
+Node: generic35580
+Node: atoms36135
+Node: composite38061
+Node: Widget Properties41046
+Node: Defining New Widgets44105
+Node: Widget Browser50138
+Node: Widget Minor Mode50996
+Node: Utilities51550
+Node: Widget Wishlist52038
+Node: GNU Free Documentation License53300
+Node: Index78475
 
 End Tag Table

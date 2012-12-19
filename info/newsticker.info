@@ -172,7 +172,7 @@ File: newsticker.info,  Node: Configuration,  Next: Remarks,  Prev: Usage,  Up: 
 5 Configuration
 ***************
 
-All Newsticker options are customizable, i.e. they can be changed with
+All Newsticker options are customizable, i.e., they can be changed with
 Emacs customization methods.  Call the command `customize-group' and
 enter `newsticker' for the customization group.
 
@@ -218,7 +218,7 @@ and some of the most important options.
    * `newsticker-miscellaneous' contains other Newsticker options.
 
    * `newsticker-ticker' contains options that define how headlines are
-     shown in the echo area, i.e. the "ticker".
+     shown in the echo area, i.e., the "ticker".
 
         * `newsticker-ticker-interval' and `newsticker-scroll-smoothly'
           define how headlines are shown in the echo area.
@@ -770,8 +770,8 @@ Node: Requirements3975
 Node: Installation4707
 Node: Usage5183
 Node: Configuration6505
-Node: Remarks9311
-Node: GNU Free Documentation License9490
-Node: Index34661
+Node: Remarks9313
+Node: GNU Free Documentation License9492
+Node: Index34663
 
 End Tag Table

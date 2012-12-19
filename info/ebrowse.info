@@ -349,7 +349,7 @@ File: ebrowse.info,  Node: Tree Buffers,  Next: Member Buffers,  Prev: Loading a
 
 Class trees are displayed in "tree buffers" which install their own
 major mode.  Most Emacs keys work in tree buffers in the usual way,
-e.g. you can move around in the buffer with the usual `C-f', `C-v'
+e.g., you can move around in the buffer with the usual `C-f', `C-v'
 etc., or you can search with `C-s'.
 
    Tree-specific commands are bound to simple keystrokes, similar to
@@ -737,7 +737,7 @@ File: ebrowse.info,  Node: Searching Members,  Next: Switching to Tree,  Prev: I
      list is switched to the one containing the member.
 
      With a prefix argument (`C-u'), all members in the class tree,
-     i.e. all members the browser knows about appear in the completion
+     i.e., all members the browser knows about appear in the completion
      list.  The member display will be switched to the class and member
      list containing the member.
 
@@ -1031,7 +1031,7 @@ the stack:
      stack.  Directly after you performed a jump, this will put you
      back to the position where you came from.
 
-     The stack is not popped, i.e. you can always switch back and forth
+     The stack is not popped, i.e., you can always switch back and forth
      between positions in the stack.  To avoid letting the stack grow to
      infinite size there is a maximum number of positions defined.
      When this number is reached, older positions are discarded when
@@ -1099,7 +1099,7 @@ given regular expression.  This command can be very useful if you
 remember only part of a member name, and not its beginning.
 
    A special buffer is popped up containing all identifiers matching the
-regular expression, and what kind of symbol it is (e.g. a member
+regular expression, and what kind of symbol it is (e.g., a member
 function, or a type).  You can then switch to this buffer, and use the
 command `C-c C-m f', for example, to jump to a specific member.
 
@@ -1804,41 +1804,41 @@ Node: Matching9904
 Node: Verbosity11873
 Node: Loading a Tree12312
 Node: Tree Buffers13331
-Node: Source Display14613
-Node: Member Display15404
-Node: Go to Class17186
-Node: Quitting17918
-Node: File Name Display18121
-Node: Expanding and Collapsing19078
-Node: Tree Indentation20080
-Node: Killing Classes20472
-Node: Saving a Tree20847
-Node: Statistics21223
-Node: Marking Classes21507
-Node: Member Buffers22327
-Node: Switching Member Lists23945
-Node: Finding/Viewing24754
-Node: Inherited Members25814
-Node: Searching Members26137
-Node: Switching to Tree27050
-Node: Filters27403
-Node: Attributes28153
-Node: Long and Short Display29225
-Node: Regexp Display30184
-Node: Switching Classes30733
-Node: Killing/Burying31543
-Node: Column Width31775
-Node: Redisplay32054
-Node: Getting Help32446
-Node: Tags-like Functions32576
-Node: Finding and Viewing33382
-Node: Position Stack34925
-Node: Search & Replace36230
-Node: Members in Files37360
-Node: Apropos37638
-Node: Symbol Completion38263
-Node: Member Buffer Display38497
-Node: GNU Free Documentation License38762
-Node: Concept Index63950
+Node: Source Display14614
+Node: Member Display15405
+Node: Go to Class17187
+Node: Quitting17919
+Node: File Name Display18122
+Node: Expanding and Collapsing19079
+Node: Tree Indentation20081
+Node: Killing Classes20473
+Node: Saving a Tree20848
+Node: Statistics21224
+Node: Marking Classes21508
+Node: Member Buffers22328
+Node: Switching Member Lists23946
+Node: Finding/Viewing24755
+Node: Inherited Members25815
+Node: Searching Members26138
+Node: Switching to Tree27052
+Node: Filters27405
+Node: Attributes28155
+Node: Long and Short Display29227
+Node: Regexp Display30186
+Node: Switching Classes30735
+Node: Killing/Burying31545
+Node: Column Width31777
+Node: Redisplay32056
+Node: Getting Help32448
+Node: Tags-like Functions32578
+Node: Finding and Viewing33384
+Node: Position Stack34927
+Node: Search & Replace36233
+Node: Members in Files37363
+Node: Apropos37641
+Node: Symbol Completion38267
+Node: Member Buffer Display38501
+Node: GNU Free Documentation License38766
+Node: Concept Index63954
 
 End Tag Table

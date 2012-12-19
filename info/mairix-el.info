@@ -226,7 +226,7 @@ in your `.emacs' and adapt to your needs:
 
 `mairix-widget-search-based-on-article'
      Create a mairix query using graphical widgets, but based on the
-     currently displayed article, i.e. the available fields will be
+     currently displayed article, i.e., the available fields will be
      filled with the current header values.
 
 `mairix-search-from-this-article'
@@ -321,7 +321,7 @@ Node: About mairix and mairix.el2628
 Node: Configuring mairix4749
 Node: Setting up mairix.el6749
 Node: Using mairix.el7710
-Node: Extending mairix.el12828
+Node: Extending mairix.el12829
 
 End Tag Table
 

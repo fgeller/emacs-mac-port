@@ -67,7 +67,7 @@ Emacs minor mode. Flymake runs the pre-configured syntax check tool
 (compiler for C++ files, `perl' for perl files, etc.) in the
 background, passing it a temporary copy of the current buffer, and
 parses the output for known error/warning message patterns. Flymake
-then highlights erroneous lines (i.e. lines for which at least one
+then highlights erroneous lines (i.e., lines for which at least one
 error or warning has been reported by the syntax check tool), and
 displays an overall buffer status in the mode line. Status information
 displayed by Flymake contains total number of errors and warnings
@@ -275,10 +275,6 @@ This section summarizes variables used for Flymake configuration.
      A list of `(filename-regexp, init-function, cleanup-function
      getfname-function)' for configuring syntax check tools. *Note
      Adding support for a new syntax check tool::.
-
-`flymake-buildfile-dirs'
-     A list of directories (relative paths) for searching a buildfile.
-     *Note Locating the buildfile::.
 
 `flymake-master-file-dirs'
      A list of directories for searching a master file. *Note Locating
@@ -643,10 +639,8 @@ buildfile to reference the 'project configuration' file.
 
    Special function, `flymake-find-buildfile' is provided for locating
 buildfiles.  Searching for a buildfile is done in a manner similar to
-that of searching for possible master files. A customizable variable
-`flymake-buildfile-dirs' holds a list of relative paths to the
-buildfile. They are checked sequentially until a buildfile is found. In
-case there's no build file, syntax check is aborted.
+that of searching for possible master files.  In case there's no build
+file, syntax check is aborted.
 
    Buildfile values are also cached.
 
@@ -1287,30 +1281,30 @@ Index
 Tag Table:
 Node: Top1119
 Node: Overview of Flymake2222
-Node: Installing Flymake4038
-Node: Using Flymake4730
-Node: Flymake mode5031
-Node: Running the syntax check5567
-Node: Navigating to error lines6092
-Node: Viewing error messages6852
-Node: Syntax check statuses7445
-Node: Troubleshooting9212
-Node: Configuring Flymake9733
-Node: Customizable variables10116
-Node: Adding support for a new syntax check tool12706
-Node: Example -- Configuring a tool called directly14945
-Node: Example -- Configuring a tool called via make16567
-Node: Flymake Implementation18195
-Node: Determining whether syntax check is possible19294
-Node: Making a temporary copy20670
-Node: Locating a master file21980
-Node: Getting the include directories23361
-Node: Locating the buildfile24418
-Node: Starting the syntax check process25889
-Node: Parsing the output26426
-Node: Highlighting erroneous lines27871
-Node: Interaction with other modes28606
-Node: GNU Free Documentation License29680
-Node: Index54863
+Node: Installing Flymake4039
+Node: Using Flymake4731
+Node: Flymake mode5032
+Node: Running the syntax check5568
+Node: Navigating to error lines6093
+Node: Viewing error messages6853
+Node: Syntax check statuses7446
+Node: Troubleshooting9213
+Node: Configuring Flymake9734
+Node: Customizable variables10117
+Node: Adding support for a new syntax check tool12573
+Node: Example -- Configuring a tool called directly14812
+Node: Example -- Configuring a tool called via make16434
+Node: Flymake Implementation18062
+Node: Determining whether syntax check is possible19161
+Node: Making a temporary copy20537
+Node: Locating a master file21847
+Node: Getting the include directories23228
+Node: Locating the buildfile24285
+Node: Starting the syntax check process25601
+Node: Parsing the output26138
+Node: Highlighting erroneous lines27583
+Node: Interaction with other modes28318
+Node: GNU Free Documentation License29392
+Node: Index54575
 
 End Tag Table

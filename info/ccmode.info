@@ -406,13 +406,13 @@ external program like GNU `indent', which will rearrange brace
 location, amongst other things.
 
    Preprocessor directives are handled as syntactic whitespace from
-other code, i.e. they can be interspersed anywhere without affecting the
-indentation of the surrounding code, just like comments.
+other code, i.e., they can be interspersed anywhere without affecting
+the indentation of the surrounding code, just like comments.
 
    The code inside macro definitions is, by default, still analyzed
 syntactically so that you get relative indentation there just as you'd
 get if the same code was outside a macro.  However, since there is no
-hint about the syntactic context, i.e. whether the macro expands to an
+hint about the syntactic context, i.e., whether the macro expands to an
 expression, to some statements, or perhaps to whole functions, the
 syntactic recognition can be wrong.  CC Mode manages to figure it out
 correctly most of the time, though.
@@ -501,7 +501,7 @@ Basics::):
      encompassing point.  It leaves point unchanged.  This function
      can't be used to reindent a nested brace construct, such as a
      nested class or function, or a Java method.  The top-level
-     construct being reindented must be complete, i.e. it must have
+     construct being reindented must be complete, i.e., it must have
      both a beginning brace and an ending brace.
 
 `C-M-\' (`indent-region')
@@ -695,7 +695,7 @@ CC Mode contains some useful commands for moving around in C code.
      A popular programming style, especially for object-oriented
      languages such as C++ is to write symbols in a mixed case format,
      where the first letter of each word is capitalized, and not
-     separated by underscores.  E.g.
+     separated by underscores.  E.g.,
      `SymbolsWithMixedCaseAndNoUnderlines'.
 
      These commands move backward or forward to the beginning of the
@@ -719,7 +719,7 @@ File: ccmode.info,  Node: Filling and Breaking,  Next: Minor Modes,  Prev: Movem
 
 Since there's a lot of normal text in comments and string literals, CC
 Mode provides features to edit these like in text mode.  The goal is to
-do it seamlessly, i.e. you can use auto fill mode, sentence and
+do it seamlessly, i.e., you can use auto fill mode, sentence and
 paragraph movement, paragraph filling, adaptive filling etc. wherever
 there's a piece of normal text without having to think much about it.
 CC Mode keeps the indentation, fixes suitable comment line prefixes,
@@ -732,7 +732,7 @@ set this up for you, so you probably won't have to bother.
 
    Line breaks are by default handled (almost) the same regardless of
 whether they are made by auto fill mode (*note Auto Fill: (emacs)Auto
-Fill.), by paragraph filling (e.g. with `M-q'), or explicitly with
+Fill.), by paragraph filling (e.g., with `M-q'), or explicitly with
 `M-j' or similar methods.  In string literals, the new line gets the
 same indentation as the previous nonempty line.(1).
 
@@ -777,7 +777,7 @@ same indentation as the previous nonempty line.(1).
 
 `M-x c-context-open-line'
      This is to `C-o' (`M-x open-line') as `c-context-line-break' is to
-     `RET'.  I.e. it works just like `c-context-line-break' but leaves
+     `RET'.  I.e., it works just like `c-context-line-break' but leaves
      the point before the inserted line break.
 
    ---------- Footnotes ----------
@@ -804,7 +804,7 @@ electric mode
 
 auto-newline mode
      This automatically inserts newlines where you'd probably want to
-     type them yourself, e.g. after typing `}'s.  Its action is
+     type them yourself, e.g., after typing `}'s.  Its action is
      suppressed when electric mode is disabled.
 
 hungry-delete mode
@@ -816,7 +816,7 @@ hungry-delete mode
 subword mode
      This mode makes basic word movement commands like `M-f'
      (`forward-word') and `M-b' (`backward-word') treat the parts of
-     sillycapsed symbols as different words.  E.g. `NSGraphicsContext'
+     sillycapsed symbols as different words.  E.g., `NSGraphicsContext'
      is treated as three words `NS', `Graphics', and `Context'.
 
 syntactic-indentation mode
@@ -921,7 +921,7 @@ default).
      (`c-electric-slash') causes reindentation when you type it as the
      second component of a C style block comment opener (`/*') or a C++
      line comment opener (`//') respectively, but only if the comment
-     opener is the first thing on the line (i.e. there's only
+     opener is the first thing on the line (i.e., there's only
      whitespace before it).
 
      Additionally, you can configure CC Mode so that typing a slash at
@@ -1025,7 +1025,7 @@ sometimes after it, sometimes both.
    Auto-newline only triggers when the following conditions hold:
 
    * Auto-newline minor mode is enabled, as evidenced by the indicator
-     `a' after the mode name on the modeline (e.g. `C/a' or `C/la').
+     `a' after the mode name on the modeline (e.g., `C/a' or `C/la').
 
    * The character was typed at the end of a line, or with only
      whitespace after it, and possibly a `\' escaping the newline.
@@ -1035,8 +1035,8 @@ sometimes after it, sometimes both.
 
    * The character was not typed inside of a literal (1).
 
-   * No numeric argument was supplied to the command (i.e. it was typed
-     as normal, with no `C-u' prefix).
+   * No numeric argument was supplied to the command (i.e., it was
+     typed as normal, with no `C-u' prefix).
 
    You can configure the precise circumstances in which newlines get
 inserted (see *note Custom Auto-newlines::).  Typically, the style
@@ -1181,7 +1181,7 @@ File: ccmode.info,  Node: Subword Movement,  Next: Other Commands,  Prev: Hungry
 ================================
 
 In spite of the GNU Coding Standards, it is popular to name a symbol by
-mixing uppercase and lowercase letters, e.g. `GtkWidget',
+mixing uppercase and lowercase letters, e.g., `GtkWidget',
 `EmacsFrameClass', or `NSGraphicsContext'.  Here we call these mixed
 case symbols "nomenclatures".  Also, each capitalized (or completely
 uppercase) part of a nomenclature is called a "subword".  Here are some
@@ -1386,9 +1386,9 @@ additional regexps to match those you use:
      For each language there's a variable `*-font-lock-extra-types',
      where `*' stands for the language in question.  It contains a list
      of regexps that matches identifiers that should be recognized as
-     types, e.g. `\\sw+_t' to recognize all identifiers ending with `_t'
-     as is customary in C code.  Each regexp should not match more than
-     a single identifier.
+     types, e.g., `\\sw+_t' to recognize all identifiers ending with
+     `_t' as is customary in C code.  Each regexp should not match more
+     than a single identifier.
 
      The default values contain regexps for many types in standard
      runtime libraries that are otherwise difficult to recognize, and
@@ -1452,7 +1452,7 @@ faces are currently provided, with the exception of a replacement face
      like labels.
 
    * Preprocessor directives get `font-lock-preprocessor-face' if it
-     exists (i.e. XEmacs).  In Emacs they get `font-lock-builtin-face'
+     exists (i.e., XEmacs).  In Emacs they get `font-lock-builtin-face'
      or `font-lock-reference-face', for lack of a closer equivalent.
 
    * Some kinds of syntactic errors are fontified with
@@ -1471,13 +1471,13 @@ File: ccmode.info,  Node: Doc Comments,  Next: AWK Mode Font Locking,  Prev: Fac
 ==========================
 
 There are various tools to supply documentation in the source as
-specially structured comments, e.g. the standard Javadoc tool in Java.
+specially structured comments, e.g., the standard Javadoc tool in Java.
 CC Mode provides an extensible mechanism to fontify such comments and
 the special markup inside them.
 
  -- User Option: c-doc-comment-style
      This is a style variable that specifies which documentation comment
-     style to recognize, e.g. `javadoc' for Javadoc comments.
+     style to recognize, e.g., `javadoc' for Javadoc comments.
 
      The value may also be a list of styles, in which case all of them
      are recognized simultaneously (presumably with markup cues that
@@ -1495,7 +1495,7 @@ the special markup inside them.
      Note that CC Mode uses this variable to set other variables that
      handle fontification etc.  That's done at mode initialization or
      when you switch to a style which sets this variable.  Thus, if you
-     change it in some other way, e.g. interactively in a CC Mode
+     change it in some other way, e.g., interactively in a CC Mode
      buffer, you will need to do `M-x java-mode' (or whatever mode
      you're currently using) to reinitialize.
 
@@ -1813,7 +1813,7 @@ File: ccmode.info,  Node: Style Variables,  Next: Styles,  Prev: CC Hooks,  Up: 
 The variables that CC Mode's style system control are called "style
 variables".  Note that style variables are ordinary Lisp variables,
 which the style system initializes; you can change their values at any
-time (e.g. in a hook function).  The style system can also set other
+time (e.g., in a hook function).  The style system can also set other
 variables, to some extent.  *Note Styles::.
 
    "Style variables" are handled specially in several ways:
@@ -2230,8 +2230,8 @@ per-file basis:
      you visit the file, CC Mode will automatically institute these
      offsets using `c-set-offset'.
 
-   Note that file style settings (i.e. `c-file-style') are applied
-before file offset settings (i.e. `c-file-offsets')(1).
+   Note that file style settings (i.e., `c-file-style') are applied
+before file offset settings (i.e., `c-file-offsets')(1).
 
    If you set any variable by the file local variables mechanism, that
 setting takes priority over all other settings, even those in your mode
@@ -2289,8 +2289,8 @@ prefix.
 
      with zero or more stars at the beginning of every line.  If you
      change this variable, please make sure it still matches the
-     comment starter (i.e. `//') of line comments _and_ the line prefix
-     inside block comments.
+     comment starter (i.e., `//') of line comments _and_ the line
+     prefix inside block comments.
 
      Also note that since CC Mode uses the value of
      `c-comment-prefix-regexp' to set up several other variables at
@@ -2307,7 +2307,7 @@ line prefix from the other lines in the comment.
    CC Mode uses adaptive fill mode (*note Adaptive Fill:
 (emacs)Adaptive Fill.) to make Emacs correctly keep the line prefix when
 filling paragraphs.  That also makes Emacs preserve the text
-indentation _inside_ the comment line prefix.  E.g. in the following
+indentation _inside_ the comment line prefix.  E.g., in the following
 comment, both paragraphs will be filled with the left margins of the
 texts kept intact:
 
@@ -2323,7 +2323,7 @@ texts kept intact:
 Kyle E. Jones' Filladapt package(2), which handles things like bulleted
 lists nicely.  There's a convenience function `c-setup-filladapt' that
 tunes the relevant variables in Filladapt for use in CC Mode.  Call it
-from a mode hook, e.g. with something like this in your `.emacs':
+from a mode hook, e.g., with something like this in your `.emacs':
 
      (defun my-c-mode-common-hook ()
        (c-setup-filladapt)
@@ -2355,7 +2355,7 @@ from a mode hook, e.g. with something like this in your `.emacs':
 
  -- User Option: c-ignore-auto-fill
      When auto fill mode is enabled, CC Mode can selectively ignore it
-     depending on the context the line break would occur in, e.g. to
+     depending on the context the line break would occur in, e.g., to
      never break a line automatically inside a string literal.  This
      variable takes a list of symbols for the different contexts where
      auto-filling never should occur:
@@ -2373,7 +2373,7 @@ from a mode hook, e.g. with something like this in your `.emacs':
           Inside a preprocessor directive.
 
     `code'
-          Anywhere else, i.e. in normal code.
+          Anywhere else, i.e., in normal code.
 
      By default, `c-ignore-auto-fill' is set to `(string cpp code)',
      which means that when auto-fill mode is activated, auto-filling
@@ -2395,7 +2395,7 @@ as appropriate for comments.
    Note that CC Mode sets `comment-multi-line' to `t' at startup.  The
 reason is that `M-j' could otherwise produce sequences of single line
 block comments for texts that should logically be treated as one
-comment, and the rest of the paragraph handling code (e.g. `M-q' and
+comment, and the rest of the paragraph handling code (e.g., `M-q' and
 `M-a') can't cope with that, which would lead to inconsistent behavior.
 
    ---------- Footnotes ----------
@@ -2418,7 +2418,7 @@ still uses the value on that variable if it's set.
    (4) Actually, this default setting of `c-block-comment-prefix'
 typically gets overridden by the default style `gnu', which sets it to
 blank.  You can see the line splitting effect described here by setting
-a different style, e.g. `k&r' *Note Choosing a Style::.
+a different style, e.g., `k&r' *Note Choosing a Style::.
 
 
 File: ccmode.info,  Node: Custom Auto-newlines,  Next: Clean-ups,  Prev: Custom Filling and Breaking,  Up: Top
@@ -2622,11 +2622,11 @@ instead specify brace "hanginess" by giving a syntactic symbol an
 the "hanginess" of a brace, usually by looking at the code near it.
 
    An action function is called with two arguments: the syntactic symbol
-for the brace (e.g. `substatement-open'), and the buffer position where
-the brace has been inserted.  Point is undefined on entry to an action
-function, but the function must preserve it (e.g. by using
+for the brace (e.g., `substatement-open'), and the buffer position
+where the brace has been inserted.  Point is undefined on entry to an
+action function, but the function must preserve it (e.g., by using
 `save-excursion').  The return value should be a list containing some
-combination of `before' and `after', including neither of them (i.e.
+combination of `before' and `after', including neither of them (i.e.,
 `nil').
 
  -- Variable: c-syntactic-context
@@ -2777,7 +2777,7 @@ File: ccmode.info,  Node: Hanging Semicolons and Commas,  Prev: Hanging Colons, 
      Mode also comes with the criteria function
      `c-semi&comma-no-newlines-for-oneline-inliners', which suppresses
      newlines after semicolons inside one-line inline method definitions
-     (e.g. in C++ or Java).
+     (e.g., in C++ or Java).
 
    ---------- Footnotes ----------
 
@@ -2792,13 +2792,13 @@ File: ccmode.info,  Node: Clean-ups,  Next: Indentation Engine Basics,  Prev: Cu
 "Clean-ups" are mechanisms which remove (or exceptionally, add)
 whitespace in specific circumstances and are complementary to colon and
 brace hanging.  You enable a clean-up by adding its symbol into
-`c-cleanup-list', e.g. like this:
+`c-cleanup-list', e.g., like this:
 
      (add-to-list 'c-cleanup-list 'space-before-funcall)
 
    On the surface, it would seem that clean-ups overlap the
 functionality provided by the `c-hanging-*-alist' variables.  Clean-ups,
-however, are used to adjust code "after-the-fact", i.e. to adjust the
+however, are used to adjust code "after-the-fact", i.e., to adjust the
 whitespace in constructs later than when they were typed.
 
    Most of the clean-ups remove automatically inserted newlines, and are
@@ -2945,7 +2945,7 @@ Auto-newline minor mode are enabled:
 `space-before-funcall'
      Insert a space between the function name and the opening
      parenthesis of a function call.  This produces function calls in
-     the style mandated by the GNU coding standards, e.g.
+     the style mandated by the GNU coding standards, e.g.,
      `signal (SIGINT, SIG_IGN)' and `abort ()'.  Clean up occurs when
      the opening parenthesis is typed.  This clean-up should never be
      active in AWK Mode, since such a space is syntactically invalid
@@ -2956,13 +2956,13 @@ Auto-newline minor mode are enabled:
      parenthesis of a function call that has no arguments.  This is
      typically used together with `space-before-funcall' if you prefer
      the GNU function call style for functions with arguments but think
-     it looks ugly when it's only an empty parenthesis pair.  I.e. you
+     it looks ugly when it's only an empty parenthesis pair.  I.e., you
      will get `signal (SIGINT, SIG_IGN)', but `abort()'.  Clean up
      occurs when the closing parenthesis is typed.
 
 `comment-close-slash'
      When inside a block comment, terminate the comment when you type a
-     slash at the beginning of a line (i.e. immediately after the
+     slash at the beginning of a line (i.e., immediately after the
      comment prefix).  This clean-up removes whitespace preceding the
      slash and if needed, inserts a star to complete the token `*/'.
      Type `C-q /' in this situation if you just want a literal `/'
@@ -3039,7 +3039,7 @@ typical example:
      ((defun-block-intro 1959))
 
 The first thing inside each syntactic element is always a "syntactic
-symbol".  It describes the kind of construct that was recognized, e.g.
+symbol".  It describes the kind of construct that was recognized, e.g.,
 `statement', `substatement', `class-open', `class-close', etc.  *Note
 Syntactic Symbols::, for a complete list of currently recognized
 syntactic symbols and their semantics.  The remaining entries are
@@ -3135,7 +3135,7 @@ function still has this dotted pair form (*note Custom Line-Up::).
    (2) The line numbers in this and future examples don't actually
 appear in the buffer, of course!
 
-   (3) With a universal argument (i.e. `C-u C-c C-s') the analysis is
+   (3) With a universal argument (i.e., `C-u C-c C-s') the analysis is
 inserted into the buffer as a comment on the current line.
 
    (4) A "substatement" is the line after a conditional statement, such
@@ -3384,7 +3384,7 @@ by using `C-c C-s'.
      Method Symbols::.
 
 `extern-lang-open'
-     Brace that opens an `extern' block (e.g. `extern "C" {...}').
+     Brace that opens an `extern' block (e.g., `extern "C" {...}').
      *note External Scope Symbols::.
 
 `extern-lang-close'
@@ -3419,11 +3419,11 @@ by using `C-c C-s'.
 
 `inlambda'
      Analogous to `inclass' syntactic symbol, but used inside lambda
-     (i.e. anonymous) functions.  Only used in Pike mode.  *note
+     (i.e., anonymous) functions.  Only used in Pike mode.  *note
      Statement Block Symbols::.
 
 `lambda-intro-cont'
-     Lines continuing the header of a lambda function, i.e. between the
+     Lines continuing the header of a lambda function, i.e., between the
      `lambda' keyword and the function body.  Only used in Pike mode.
      *note Statement Block Symbols::.
 
@@ -3478,7 +3478,7 @@ top-level construct introduction so it has the syntax
 `topmost-intro-cont'.  Line 3 shows a `defun-open' since it is the
 brace that opens a top-level function definition.  Line 9 is the
 corresponding `defun-close' since it contains the brace that closes the
-top-level function definition.  Line 4 is a `defun-block-intro', i.e.
+top-level function definition.  Line 4 is a `defun-block-intro', i.e.,
 it is the first line of a brace-block, enclosed in a top-level function
 definition.
 
@@ -3768,7 +3768,7 @@ where `inextern-lang' is a modifier similar in purpose to `inclass'.
 
    There are various other top level blocks like `extern', and they are
 all treated in the same way except that the symbols are named after the
-keyword that introduces the block.  E.g. C++ namespace blocks get the
+keyword that introduces the block.  E.g., C++ namespace blocks get the
 three symbols `namespace-open', `namespace-close' and `innamespace'.
 The currently recognized top level blocks are:
 
@@ -3915,10 +3915,10 @@ File: ccmode.info,  Node: Multiline Macro Symbols,  Next: Objective-C Method Sym
 ------------------------------
 
 Multiline preprocessor macro definitions are normally handled just like
-other code, i.e. the lines inside them are indented according to the
+other code, i.e., the lines inside them are indented according to the
 syntactic analysis of the preceding lines inside the macro.  The first
-line inside a macro definition (i.e. the line after the starting line of
-the cpp directive itself) gets `cpp-define-intro'.  In this example:
+line inside a macro definition (i.e., the line after the starting line
+of the cpp directive itself) gets `cpp-define-intro'.  In this example:
 
       1: #define LIST_LOOP(cons, listp)                         \
       2:   for (cons = listp; !NILP (cons); cons = XCDR (cons)) \
@@ -3930,7 +3930,7 @@ line 1 is given the syntactic symbol `cpp-macro'.  The first line of a
 cpp directive is always given that symbol.  Line 2 is given
 `cpp-define-intro', so that you can give the macro body as a whole some
 extra indentation.  Lines 3 through 5 are then analyzed as normal code,
-i.e. `substatement' on lines 3 and 4, and `else-clause' on line 5.
+i.e., `substatement' on lines 3 and 4, and `else-clause' on line 5.
 
    The syntactic analysis inside macros can be turned off with
 `c-syntactic-indentation-in-macros' (*note Custom Macros::).  In that
@@ -4076,7 +4076,7 @@ code (1):
 
    Here, line 2 is the first line in an argument declaration list and
 so is given the `knr-argdecl-intro' syntactic symbol.  Subsequent lines
-(i.e. lines 3 and 4 in this example), are given `knr-argdecl' syntax.
+(i.e., lines 3 and 4 in this example), are given `knr-argdecl' syntax.
 
    ---------- Footnotes ----------
 
@@ -4614,7 +4614,7 @@ parentheses and statements within brace blocks.
 
  -- Function: c-lineup-inexpr-block
      This can be used with the in-expression block symbols to indent the
-     whole block to the column where the construct is started.  E.g.
+     whole block to the column where the construct is started.  E.g.,
      for Java anonymous classes, this lines up the class under the
      `new' keyword, and in Pike it lines up the lambda function body
      under the `lambda' keyword.  Returns `nil' if the block isn't part
@@ -4678,7 +4678,7 @@ parentheses and statements within brace blocks.
      Works with: `defun-close', `defun-block-intro', `inline-close',
      `block-close', `brace-list-close', `brace-list-intro',
      `statement-block-intro', `arglist-intro', `arglist-cont-nonempty',
-     `arglist-close', and all `in*' symbols, e.g. `inclass' and
+     `arglist-close', and all `in*' symbols, e.g., `inclass' and
      `inextern-lang'.
 
    ---------- Footnotes ----------
@@ -4858,7 +4858,7 @@ line.
 
      Since this function doesn't do anything for lines without an infix
      operator you typically want to use it together with some other
-     lineup settings, e.g. as follows (the `arglist-close' setting is
+     lineup settings, e.g., as follows (the `arglist-close' setting is
      just a suggestion to get a consistent style):
 
           (c-set-offset 'arglist-cont
@@ -4883,7 +4883,7 @@ line.
 
  -- Function: c-lineup-math
      Like `c-lineup-assignments' but indent with `c-basic-offset' if no
-     assignment operator was found on the first line.  I.e. this
+     assignment operator was found on the first line.  I.e., this
      function is the same as specifying a list `(c-lineup-assignments
      +)'.  It's provided for compatibility with old configurations.
 
@@ -4907,7 +4907,7 @@ line.
      `arglist-cont', `arglist-cont-nonempty'.
 
  -- Function: c-lineup-streamop
-     Line up C++ stream operators (i.e. `<<' and `>>').
+     Line up C++ stream operators (i.e., `<<' and `>>').
 
      Works with: `stream-op'.
 
@@ -4961,7 +4961,7 @@ of comment structure.
           **************************************************/
 
      The style variable `c-comment-prefix-regexp' is used to recognize
-     the comment line prefix, e.g. the `*' that usually starts every
+     the comment line prefix, e.g., the `*' that usually starts every
      line inside a comment.
 
      Works with: The `c' syntactic symbol.
@@ -5040,7 +5040,7 @@ any earlier category.
 
      If `c-syntactic-indentation-in-macros' is non-`nil', the function
      returns the relative indentation to the macro start line to allow
-     accumulation with other offsets.  E.g. in the following cases,
+     accumulation with other offsets.  E.g., in the following cases,
      `cpp-define-intro' is combined with the `statement-block-intro'
      that comes from the `do {' that hangs on the `#define' line:
 
@@ -5097,7 +5097,7 @@ any earlier category.
      This is done only in an `asm' or `__asm__' block, and only to
      those lines mentioned.  Anywhere else `nil' is returned.  The usual
      arrangement is to have this routine as an extra feature at the
-     start of arglist lineups, e.g.
+     start of arglist lineups, e.g.:
 
           (c-lineup-gcc-asm-reg c-lineup-arglist)
 
@@ -5171,8 +5171,8 @@ in *note c-offsets-alist::.
 
    Line-up functions must not move point or change the content of the
 buffer (except temporarily).  They are however allowed to do "hidden
-buffer changes", i.e. setting text properties for caching purposes etc.
-Buffer undo recording is disabled while they run.
+buffer changes", i.e., setting text properties for caching purposes
+etc.  Buffer undo recording is disabled while they run.
 
    The syntactic element passed as the parameter to a line-up function
 is a cons cell of the form
@@ -5189,8 +5189,8 @@ In the future, we may decide to convert to using the full list
 format--you can prepare your setup for this by using the access
 functions (`c-langelem-sym', etc.)  described below.
 
-   Some syntactic symbols, e.g. `arglist-cont-nonempty', have more info
-in the syntactic element - typically other positions that can be
+   Some syntactic symbols, e.g., `arglist-cont-nonempty', have more
+info in the syntactic element - typically other positions that can be
 interesting besides the anchor position.  That info can't be accessed
 through the passed argument, which is a cons cell.  Instead, you can
 get this information from the variable `c-syntactic-element', which is
@@ -5266,9 +5266,9 @@ To configure macros which you invoke without a terminating `;', see
 
      When the indentation engine calls this hook, the variable
      `c-syntactic-context' is bound to the current syntactic context
-     (i.e. what you would get by typing `C-c C-s' on the source line.
+     (i.e., what you would get by typing `C-c C-s' on the source line.
      *Note Custom Braces::.).  Note that you should not change point or
-     mark inside a `c-special-indent-hook' function, i.e. you'll
+     mark inside a `c-special-indent-hook' function, i.e., you'll
      probably want to wrap your function in a `save-excursion'(1).
 
      Setting `c-special-indent-hook' in style definitions is handled
@@ -5331,14 +5331,14 @@ customized with these variables:
  -- User Option: c-backslash-max-column
      These variables control the alignment columns for line continuation
      backslashes in multiline macros.  They are used by the functions
-     that automatically insert or align such backslashes, e.g.
+     that automatically insert or align such backslashes, e.g.,
      `c-backslash-region' and `c-context-line-break'.
 
      `c-backslash-column' specifies the minimum column for the
      backslashes.  If any line in the macro goes past this column, then
-     the next tab stop (i.e. next multiple of `tab-width') in that line
-     is used as the alignment column for all the backslashes, so that
-     they remain in a single column.  However, if any lines go past
+     the next tab stop (i.e., next multiple of `tab-width') in that
+     line is used as the alignment column for all the backslashes, so
+     that they remain in a single column.  However, if any lines go past
      `c-backslash-max-column' then the backslashes in the rest of the
      macro will be kept at that column, so that the lines which are too
      long "stick out" instead.
@@ -5350,7 +5350,7 @@ customized with these variables:
  -- User Option: c-auto-align-backslashes
      Align automatically inserted line continuation backslashes if
      non-`nil'.  When line continuation backslashes are inserted
-     automatically for line breaks in multiline macros, e.g. by
+     automatically for line breaks in multiline macros, e.g., by
      `c-context-line-break', they are aligned with the other
      backslashes in the same macro if this flag is set.
 
@@ -5513,8 +5513,8 @@ pathological code can cause CC Mode to perform fairly badly.  This
 section gives some insight in how CC Mode operates, how that interacts
 with some coding styles, and what you can use to improve performance.
 
-   The overall goal is that CC Mode shouldn't be overly slow (i.e. take
-more than a fraction of a second) in any interactive operation.  I.e.
+   The overall goal is that CC Mode shouldn't be overly slow (i.e., take
+more than a fraction of a second) in any interactive operation.  I.e.,
 it's tuned to limit the maximum response time in single operations,
 which is sometimes at the expense of batch-like operations like
 reindenting whole blocks.  If you find that CC Mode gradually gets
@@ -5567,7 +5567,7 @@ Emacs approach to finding the defun starts.
 Mode to use XEmacs-specific built-in functions which, in some
 circumstances, can locate the top-most opening brace much more quickly
 than `beginning-of-defun'.  Preliminary testing has shown that for
-styles where these braces are hung (e.g. most JDK-derived Java styles),
+styles where these braces are hung (e.g., most JDK-derived Java styles),
 this hack can improve performance of the core syntax parsing routines
 from 3 to 60 times.  However, for styles which _do_ conform to Emacs's
 recommended style of putting top-level braces in column zero, this hack
@@ -5578,7 +5578,7 @@ since the necessary built-in functions don't exist (in Emacs 22.1 as of
 this writing in February 2007).
 
    Text properties are used to speed up skipping over syntactic
-whitespace, i.e. comments and preprocessor directives.  Indenting a
+whitespace, i.e., comments and preprocessor directives.  Indenting a
 line after a huge macro definition can be slow the first time, but
 after that the text properties are in place and it should be fast (even
 after you've edited other parts of the file and then moved back).
@@ -5586,10 +5586,11 @@ after you've edited other parts of the file and then moved back).
    Font locking can be a CPU hog, especially the font locking done on
 decoration level 3 which tries to be very accurate.  Note that that
 level is designed to be used with a font lock support mode that only
-fontifies the text that's actually shown, i.e. Lazy Lock or Just-in-time
-Lock mode, so make sure you use one of them.  Fontification of a whole
-buffer with some thousand lines can often take over a minute.  That is
-a known weakness; the idea is that it never should happen.
+fontifies the text that's actually shown, i.e., Lazy Lock or
+Just-in-time Lock mode, so make sure you use one of them.
+Fontification of a whole buffer with some thousand lines can often take
+over a minute.  That is a known weakness; the idea is that it never
+should happen.
 
    The most effective way to speed up font locking is to reduce the
 decoration level to 2 by setting `font-lock-maximum-decoration'
@@ -5599,7 +5600,7 @@ for more info.
 
    ---------- Footnotes ----------
 
-   (1) E.g. a function in C, or outermost class definition in C++ or
+   (1) E.g., a function in C, or outermost class definition in C++ or
 Java.
 
    (2) This has been observed in Emacs 19.34 and XEmacs 19.15.
@@ -5626,8 +5627,8 @@ File: ccmode.info,  Node: Limitations and Known Bugs,  Next: FAQ,  Prev: Perform
      currently no intention to change this goal.
 
      If you want to reformat old code, you're probably better off using
-     some other tool instead, e.g. *note GNU indent: (indent)Top, which
-     has more powerful reformatting capabilities than CC Mode.
+     some other tool instead, e.g., *note GNU indent: (indent)Top,
+     which has more powerful reformatting capabilities than CC Mode.
 
    * The support for C++ templates (in angle brackets) is not yet
      complete.  When a non-nested template is used in a declaration, CC
@@ -5760,7 +5761,7 @@ _before_ your bug example, if you think it might affect our ability to
 reproduce it.
 
    Please try to produce the problem in an Emacs instance without any
-customizations loaded (i.e. start it with the `-q --no-site-file'
+customizations loaded (i.e., start it with the `-q --no-site-file'
 arguments).  If it works correctly there, the problem might be caused
 by faulty customizations in either your own or your site configuration.
 In that case, we'd appreciate it if you isolate the Emacs Lisp code
@@ -7104,127 +7105,127 @@ Node: Getting Started8283
 Ref: Getting Started-Footnote-112419
 Node: Commands12493
 Node: Indentation Commands13329
-Ref: Indentation Commands-Footnote-120043
-Node: Comment Commands20164
-Ref: Comment Commands-Footnote-122595
-Node: Movement Commands22662
-Ref: Movement Commands-Footnote-128107
-Node: Filling and Breaking28166
-Ref: Filling and Breaking-Footnote-131584
-Ref: Filling and Breaking-Footnote-231725
-Node: Minor Modes31789
-Ref: Minor Modes-Footnote-135246
-Ref: Minor Modes-Footnote-235364
-Ref: Minor Modes-Footnote-335432
-Node: Electric Keys35500
-Node: Auto-newlines41106
-Ref: Auto-newlines-Footnote-142912
-Node: Hungry WS Deletion43113
-Ref: Hungry WS Deletion-Footnote-148621
-Ref: Hungry WS Deletion-Footnote-248757
-Node: Subword Movement48822
-Node: Other Commands51065
-Node: Font Locking54014
-Node: Font Locking Preliminaries54875
-Node: Faces58913
-Node: Doc Comments61500
-Node: AWK Mode Font Locking64329
-Node: Config Basics66757
-Ref: Config Basics-Footnote-173591
-Ref: Config Basics-Footnote-273637
-Node: CC Hooks73779
-Node: Style Variables76196
-Ref: Style Variables-Footnote-179434
-Ref: Style Variables-Footnote-279832
-Node: Styles79877
-Node: Built-in Styles81211
-Ref: Built-in Styles-Footnote-182910
-Ref: Built-in Styles-Footnote-283015
-Node: Choosing a Style83159
-Node: Adding Styles85184
-Ref: Adding Styles-Footnote-188507
-Ref: Adding Styles-Footnote-288581
-Node: Guessing the Style88807
-Node: File Styles92923
-Ref: File Styles-Footnote-194490
-Node: Custom Filling and Breaking94776
-Ref: Custom Filling and Breaking-Footnote-1101419
-Ref: Custom Filling and Breaking-Footnote-2101639
-Ref: Custom Filling and Breaking-Footnote-3101924
-Ref: Custom Filling and Breaking-Footnote-4102102
-Node: Custom Auto-newlines102368
-Node: Hanging Braces104210
-Ref: Hanging Braces-Footnote-1109616
-Ref: Hanging Braces-Footnote-2109697
-Ref: Hanging Braces-Footnote-3109844
-Node: Custom Braces110057
-Node: Hanging Colons113378
-Node: Hanging Semicolons and Commas114922
-Ref: Hanging Semicolons and Commas-Footnote-1117895
-Node: Clean-ups117946
-Ref: Clean-ups-Footnote-1124600
-Node: Indentation Engine Basics124801
-Node: Syntactic Analysis127064
-Ref: Syntactic Analysis-Footnote-1130584
-Ref: Syntactic Analysis-Footnote-2130859
-Ref: Syntactic Analysis-Footnote-3130960
-Ref: Syntactic Analysis-Footnote-4131090
-Node: Syntactic Symbols131298
-Node: Function Symbols141087
-Node: Class Symbols142258
-Ref: Class Symbols-Footnote-1146584
-Node: Conditional Construct Symbols146807
-Ref: Conditional Construct Symbols-Footnote-1149049
-Node: Switch Statement Symbols149174
-Node: Brace List Symbols150106
-Node: External Scope Symbols151767
-Ref: External Scope Symbols-Footnote-1153140
-Node: Paren List Symbols153274
-Node: Literal Symbols155359
-Node: Multiline Macro Symbols157848
-Ref: Multiline Macro Symbols-Footnote-1159409
-Node: Objective-C Method Symbols159471
-Node: Java Symbols160239
-Node: Statement Block Symbols161515
-Ref: Statement Block Symbols-Footnote-1163540
-Node: K&R Symbols163853
-Ref: K&R Symbols-Footnote-1164479
-Node: Indentation Calculation164526
-Node: Customizing Indentation167760
-Node: c-offsets-alist169357
-Ref: c-offsets-alist-Footnote-1175869
-Ref: c-offsets-alist-Footnote-2175984
-Node: Interactive Customization176307
-Ref: Interactive Customization-Footnote-1179262
-Node: Line-Up Functions179401
-Node: Brace/Paren Line-Up181203
-Ref: c-lineup-arglist-close-under-paren182273
-Ref: Brace/Paren Line-Up-Footnote-1187642
-Node: List Line-Up187782
-Node: Operator Line-Up192616
-Node: Comment Line-Up196669
-Node: Misc Line-Up199496
-Ref: Misc Line-Up-Footnote-1204060
-Node: Custom Line-Up204371
-Ref: Custom Line-Up-Footnote-1208628
-Node: Other Indentation208785
-Ref: Other Indentation-Footnote-1210791
-Node: Custom Macros210985
-Node: Macro Backslashes212440
-Node: Macros with ;214380
-Node: Odds and Ends216259
-Node: Sample .emacs File217912
-Node: Performance Issues220256
-Ref: Performance Issues-Footnote-1225745
-Ref: Performance Issues-Footnote-2225821
-Node: Limitations and Known Bugs225885
-Node: FAQ228342
-Ref: FAQ-Footnote-1231102
-Node: Updating CC Mode231170
-Node: Mailing Lists and Bug Reports231770
-Node: GNU Free Documentation License233649
-Node: Command and Function Index258859
-Node: Variable Index279504
-Node: Concept and Key Index293267
+Ref: Indentation Commands-Footnote-120046
+Node: Comment Commands20167
+Ref: Comment Commands-Footnote-122598
+Node: Movement Commands22665
+Ref: Movement Commands-Footnote-128111
+Node: Filling and Breaking28170
+Ref: Filling and Breaking-Footnote-131591
+Ref: Filling and Breaking-Footnote-231732
+Node: Minor Modes31796
+Ref: Minor Modes-Footnote-135255
+Ref: Minor Modes-Footnote-235373
+Ref: Minor Modes-Footnote-335441
+Node: Electric Keys35509
+Node: Auto-newlines41116
+Ref: Auto-newlines-Footnote-142924
+Node: Hungry WS Deletion43125
+Ref: Hungry WS Deletion-Footnote-148633
+Ref: Hungry WS Deletion-Footnote-248769
+Node: Subword Movement48834
+Node: Other Commands51078
+Node: Font Locking54027
+Node: Font Locking Preliminaries54888
+Node: Faces58927
+Node: Doc Comments61515
+Node: AWK Mode Font Locking64347
+Node: Config Basics66775
+Ref: Config Basics-Footnote-173609
+Ref: Config Basics-Footnote-273655
+Node: CC Hooks73797
+Node: Style Variables76214
+Ref: Style Variables-Footnote-179453
+Ref: Style Variables-Footnote-279851
+Node: Styles79896
+Node: Built-in Styles81230
+Ref: Built-in Styles-Footnote-182929
+Ref: Built-in Styles-Footnote-283034
+Node: Choosing a Style83178
+Node: Adding Styles85203
+Ref: Adding Styles-Footnote-188526
+Ref: Adding Styles-Footnote-288600
+Node: Guessing the Style88826
+Node: File Styles92942
+Ref: File Styles-Footnote-194511
+Node: Custom Filling and Breaking94797
+Ref: Custom Filling and Breaking-Footnote-1101446
+Ref: Custom Filling and Breaking-Footnote-2101666
+Ref: Custom Filling and Breaking-Footnote-3101951
+Ref: Custom Filling and Breaking-Footnote-4102129
+Node: Custom Auto-newlines102396
+Node: Hanging Braces104238
+Ref: Hanging Braces-Footnote-1109644
+Ref: Hanging Braces-Footnote-2109725
+Ref: Hanging Braces-Footnote-3109872
+Node: Custom Braces110085
+Node: Hanging Colons113409
+Node: Hanging Semicolons and Commas114953
+Ref: Hanging Semicolons and Commas-Footnote-1117927
+Node: Clean-ups117978
+Ref: Clean-ups-Footnote-1124637
+Node: Indentation Engine Basics124838
+Node: Syntactic Analysis127101
+Ref: Syntactic Analysis-Footnote-1130622
+Ref: Syntactic Analysis-Footnote-2130897
+Ref: Syntactic Analysis-Footnote-3130998
+Ref: Syntactic Analysis-Footnote-4131129
+Node: Syntactic Symbols131337
+Node: Function Symbols141129
+Node: Class Symbols142301
+Ref: Class Symbols-Footnote-1146627
+Node: Conditional Construct Symbols146850
+Ref: Conditional Construct Symbols-Footnote-1149092
+Node: Switch Statement Symbols149217
+Node: Brace List Symbols150149
+Node: External Scope Symbols151810
+Ref: External Scope Symbols-Footnote-1153184
+Node: Paren List Symbols153318
+Node: Literal Symbols155403
+Node: Multiline Macro Symbols157892
+Ref: Multiline Macro Symbols-Footnote-1159456
+Node: Objective-C Method Symbols159518
+Node: Java Symbols160286
+Node: Statement Block Symbols161562
+Ref: Statement Block Symbols-Footnote-1163587
+Node: K&R Symbols163900
+Ref: K&R Symbols-Footnote-1164527
+Node: Indentation Calculation164574
+Node: Customizing Indentation167808
+Node: c-offsets-alist169405
+Ref: c-offsets-alist-Footnote-1175917
+Ref: c-offsets-alist-Footnote-2176032
+Node: Interactive Customization176355
+Ref: Interactive Customization-Footnote-1179310
+Node: Line-Up Functions179449
+Node: Brace/Paren Line-Up181251
+Ref: c-lineup-arglist-close-under-paren182321
+Ref: Brace/Paren Line-Up-Footnote-1187692
+Node: List Line-Up187832
+Node: Operator Line-Up192666
+Node: Comment Line-Up196722
+Node: Misc Line-Up199550
+Ref: Misc Line-Up-Footnote-1204116
+Node: Custom Line-Up204427
+Ref: Custom Line-Up-Footnote-1208687
+Node: Other Indentation208844
+Ref: Other Indentation-Footnote-1210852
+Node: Custom Macros211046
+Node: Macro Backslashes212501
+Node: Macros with ;214444
+Node: Odds and Ends216323
+Node: Sample .emacs File217976
+Node: Performance Issues220320
+Ref: Performance Issues-Footnote-1225813
+Ref: Performance Issues-Footnote-2225890
+Node: Limitations and Known Bugs225954
+Node: FAQ228412
+Ref: FAQ-Footnote-1231172
+Node: Updating CC Mode231240
+Node: Mailing Lists and Bug Reports231840
+Node: GNU Free Documentation License233720
+Node: Command and Function Index258930
+Node: Variable Index279575
+Node: Concept and Key Index293338
 
 End Tag Table

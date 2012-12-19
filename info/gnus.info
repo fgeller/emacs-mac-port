@@ -1772,7 +1772,7 @@ isn't done because it is nice or clever, it is done purely for reasons
 of efficiency.
 
    It is recommended that you keep all your mail groups (if any) on
-quite low levels (e.g. 1 or 2).
+quite low levels (e.g., 1 or 2).
 
    Maybe the following description of the default behavior of Gnus
 helps to understand what these levels are all about.  By default, Gnus
@@ -1827,7 +1827,7 @@ default.  If it is `nil', inactive groups won't be listed.
 level prefix to `g' or `l', all subsequent commands will use this level
 as the "work" level.
 
-   Gnus will normally just activate (i. e., query the server about)
+   Gnus will normally just activate (i.e., query the server about)
 groups on level `gnus-activate-level' or less.  If you don't want to
 activate unsubscribed groups, for instance, you might set this variable
 to 5.  The default is 6.
@@ -2036,7 +2036,7 @@ not only from the Group buffer, but in any Gnus buffer.
 `gnus-read-ephemeral-gmane-group-url'
      This command is similar to `gnus-read-ephemeral-gmane-group', but
      the group name and the article number and range are constructed
-     from a given URL.  Supported URL formats include e.g.
+     from a given URL.  Supported URL formats include:
      `http://thread.gmane.org/gmane.foo.bar/12300/focus=12399',
      `http://thread.gmane.org/gmane.foo.bar/12345/',
      `http://article.gmane.org/gmane.foo.bar/12345/',
@@ -2393,7 +2393,7 @@ which is an alist of regexps and values.
           (add-to-list 'gnus-newsgroup-variables 'message-from-style)
 
      A use for this feature is to remove a mailing list identifier tag
-     in the subject fields of articles.  E.g. if the news group
+     in the subject fields of articles.  E.g., if the news group
 
           nntp+news.gnus.org:gmane.text.docbook.apps
 
@@ -3914,7 +3914,7 @@ where to display it; and when to display it.
 include extra headers when generating overview (NOV) files.  If you
 have old overview files, you should regenerate them after changing this
 variable, by entering the server buffer using `^', and then `g' on the
-appropriate mail server (e.g. nnml) to cause regeneration.
+appropriate mail server (e.g., nnml) to cause regeneration.
 
    You also have to instruct Gnus to display the data by changing the
 `%n' spec to the `%f' spec in the `gnus-summary-line-format' variable.
@@ -5560,8 +5560,8 @@ File: gnus.info,  Node: More Threading,  Next: Low-Level Threading,  Prev: Filli
      sorting sub-threads using the default
      `gnus-thread-sort-by-number', responses can end up appearing
      before the article to which they are responding to.  Setting this
-     variable to an alternate value (e.g. `gnus-thread-sort-by-date'),
-     in a group's parameters or in an appropriate hook (e.g.
+     variable to an alternate value (e.g., `gnus-thread-sort-by-date'),
+     in a group's parameters or in an appropriate hook (e.g.,
      `gnus-summary-generate-hook') can produce a more logical
      sub-thread ordering in such instances.
 
@@ -6964,7 +6964,7 @@ articles by default.
      offensive jokes and such.)
 
      It's commonly called "rot13" because each letter is rotated 13
-     positions in the alphabet, e. g. `B' (letter #2) -> `O' (letter
+     positions in the alphabet, e.g., `B' (letter #2) -> `O' (letter
      #15).  It is sometimes referred to as "Caesar rotate" because
      Caesar is rumored to have employed this form of, uh, somewhat weak
      encryption.
@@ -7046,7 +7046,7 @@ articles by default.
      (`gnus-article-capitalize-sentences').
 
 `W c'
-     Translate CRLF pairs (i. e., `^M's on the end of the lines) into LF
+     Translate CRLF pairs (i.e., `^M's on the end of the lines) into LF
      (this takes care of DOS line endings), and then translate any
      remaining CRs into LF (this takes care of Mac line endings)
      (`gnus-article-remove-cr').
@@ -7470,18 +7470,18 @@ they'll be removed.
      Piconify the `From' header (`gnus-treat-from-picon').
 
 `W D m'
-     Piconify all mail headers (i. e., `Cc', `To')
+     Piconify all mail headers (i.e., `Cc', `To')
      (`gnus-treat-mail-picon').
 
 `W D n'
-     Piconify all news headers (i. e., `Newsgroups' and `Followup-To')
+     Piconify all news headers (i.e., `Newsgroups' and `Followup-To')
      (`gnus-treat-newsgroups-picon').
 
 `W D g'
      Gravatarify the `From' header (`gnus-treat-from-gravatar').
 
 `W D h'
-     Gravatarify all mail headers (i. e., `Cc', `To')
+     Gravatarify all mail headers (i.e., `Cc', `To')
      (`gnus-treat-from-gravatar').
 
 `W D D'
@@ -7705,7 +7705,7 @@ the same manner:
      variable is only used when `gnus-inhibit-mime-unbuttonizing' is
      `nil'.
 
-     To see e.g. security buttons but no other buttons, you could set
+     E.g., to see security buttons but no other buttons, you could set
      this variable to `("multipart/signed")' and leave
      `gnus-unbuttonized-mime-types' at the default value.
 
@@ -7721,8 +7721,8 @@ the same manner:
 `gnus-article-mime-part-function'
      For each MIME part, this function will be called with the MIME
      handle as the parameter.  The function is meant to be used to allow
-     users to gather information from the article (e. g., add Vcard
-     info to the bbdb database) or to do actions based on parts (e. g.,
+     users to gather information from the article (e.g., add Vcard info
+     to the bbdb database) or to do actions based on parts (e.g.,
      automatically save all jpegs into some directory).
 
      Here's an example function the does the latter:
@@ -7974,7 +7974,7 @@ File: gnus.info,  Node: Finding the Parent,  Next: Alternative Approaches,  Prev
      it'll make this command work a whole lot faster.  Of course, it'll
      make group entry somewhat slow.
 
-     The `gnus-refer-thread-limit' variable says how many old (i. e.,
+     The `gnus-refer-thread-limit' variable says how many old (i.e.,
      articles before the first displayed in the current group) headers
      to fetch when doing this command.  The default is 200.  If `t', all
      the available headers will be fetched.  This variable can be
@@ -9553,7 +9553,7 @@ File: gnus.info,  Node: Misc Article,  Prev: Article Keymap,  Up: Article Buffer
          `p'
                Displayed when article is digitally signed or encrypted,
                and Gnus has hidden the security headers.  (N.B. does
-               not tell anything about security status, i.e. good or
+               not tell anything about security status, i.e., good or
                bad signature.)
 
          `s'
@@ -9941,7 +9941,7 @@ continue to be stored in the old (now empty) group.
      run) contains the message including the message header.  Changes
      made to the message will only affect the Gcc copy, but not the
      original message.  You can use these hooks to edit the copy (and
-     influence subsequent transformations), e.g. remove MML secure tags
+     influence subsequent transformations), e.g., remove MML secure tags
      (*note Signing and encrypting::).
 
 
@@ -10219,7 +10219,7 @@ could be a virtual group, or it could be your own personal mail group.
 
    A foreign group (or any group, really) is specified by a "name" and
 a "select method".  To take the latter first, a select method is a list
-where the first element says what back end to use (e.g. `nntp',
+where the first element says what back end to use (e.g., `nntp',
 `nnspool', `nnml') and the second element is the "server name".  There
 may be additional elements in the select method, where the value may
 have special meaning for the back end in question.
@@ -10538,7 +10538,7 @@ File: gnus.info,  Node: Servers and Methods,  Next: Unavailable Servers,  Prev: 
 6.1.6 Servers and Methods
 -------------------------
 
-Wherever you would normally use a select method (e.g.
+Wherever you would normally use a select method (e.g.,
 `gnus-secondary-select-method', in the group select method, when
 browsing a foreign server) you can use a virtual server name instead.
 This could potentially save lots of typing.  And it's nice all over.
@@ -11646,9 +11646,9 @@ fetched from the spool file `/user/spools/foo.spool'.
           `MAILHOST' environment variable.
 
     `:port'
-          The port number of the POP server.  This can be a number (eg,
-          `:port 1234') or a string (eg, `:port "pop3"').  If it is a
-          string, it should be a service name as listed in
+          The port number of the POP server.  This can be a number
+          (e.g., `:port 1234') or a string (e.g., `:port "pop3"').  If
+          it is a string, it should be a service name as listed in
           `/etc/services' on Unix systems.  The default is `"pop3"'.
           On some systems you might need to specify it as `"pop-3"'
           instead.
@@ -11773,8 +11773,8 @@ fetched from the spool file `/user/spools/foo.spool'.
 
 `imap'
      Get mail from a IMAP server.  If you don't want to use IMAP as
-     intended, as a network mail reading protocol (ie with nnimap), for
-     some reason or other, Gnus let you treat it similar to a POP
+     intended, as a network mail reading protocol (i.e., with nnimap),
+     for some reason or other, Gnus let you treat it similar to a POP
      server and fetches articles from a given IMAP mailbox.  *Note
      Using IMAP::, for more information.
 
@@ -12238,7 +12238,7 @@ will be substituted with the text matched by the groupings 1 through 9.
    Where `nnmail-split-lowercase-expanded' controls whether the
 lowercase of the matched string should be used for the substitution.
 Setting it as non-`nil' is useful to avoid the creation of multiple
-groups when users send to an address using different case (i.e.
+groups when users send to an address using different case (i.e.,
 mailing-list@domain vs Mailing-List@Domain).  The default value is `t'.
 
    `nnmail-split-fancy-with-parent' is a function which allows you to
@@ -12700,11 +12700,11 @@ various functions that can be put in these hooks.
           Translate all `TAB' characters into `SPACE' characters.
 
     `nnmail-ignore-broken-references'
-          Some mail user agents (e.g. Eudora and Pegasus) produce broken
-          `References' headers, but correct `In-Reply-To' headers.  This
-          function will get rid of the `References' header if the
-          headers contain a line matching the regular expression
-          `nnmail-broken-references-mailers'.
+          Some mail user agents (e.g., Eudora and Pegasus) produce
+          broken `References' headers, but correct `In-Reply-To'
+          headers.  This function will get rid of the `References'
+          header if the headers contain a line matching the regular
+          expression `nnmail-broken-references-mailers'.
 
 
 `nnmail-prepare-incoming-message-hook'
@@ -13617,7 +13617,7 @@ File: gnus.info,  Node: RSS,  Next: Customizing W3,  Prev: Web Searches,  Up: Br
 Some web sites have an RDF Site Summary (RSS).  RSS is a format for
 summarizing headlines from news related sites (such as BBC or CNN).
 But basically anything list-like can be presented as an RSS feed:
-weblogs, changelogs or recent changes to a wiki (e.g.
+weblogs, changelogs or recent changes to a wiki (e.g.,
 `http://cliki.net/recent-changes.rdf').
 
    RSS has a quite regular and nice interface, and it's possible to get
@@ -13669,7 +13669,7 @@ Language).
 
 `nnrss-ignore-article-fields'
      Some feeds update constantly article fields during their
-     publications, e.g. to indicate the number of comments.  However,
+     publications, e.g., to indicate the number of comments.  However,
      if there is a difference between the local article and the distant
      one, the latter is considered to be new.  To avoid this and
      discard some fields, set this variable to the list of fields to be
@@ -13827,7 +13827,7 @@ all, Gnus is a newsreader, in case you're forgetting.  `nneething' does
 this in a two-step process.  First, it snoops each file in question.
 If the file looks like an article (i.e., the first few lines look like
 headers), it will use this as the head.  If this is just some arbitrary
-file without a head (e.g. a C source file), `nneething' will cobble up
+file without a head (e.g., a C source file), `nneething' will cobble up
 a header out of thin air.  It will use file ownership, name and date
 and do whatever it can with these elements.
 
@@ -14486,7 +14486,7 @@ variables are probably the only ones you will want to change:
 
  -- Variable: nndiary-reminders
      This is the list of times when you want to be reminded of your
-     appointments (e.g. 3 weeks before, then 2 days before, then 1 hour
+     appointments (e.g., 3 weeks before, then 2 days before, then 1 hour
      before and that's it).  Remember that "being reminded" means that
      the diary message will pop up as brand new and unread again when
      you get new mail.
@@ -14534,9 +14534,9 @@ the event's date.
 
    `gnus-diary' provides two supplemental user formats to be used in
 summary line formats.  `D' corresponds to a formatted time string for
-the next occurrence of the event (e.g. "Sat, Sep 22 01, 12:00"), while
+the next occurrence of the event (e.g., "Sat, Sep 22 01, 12:00"), while
 `d' corresponds to an approximate remaining time until the next
-occurrence of the event (e.g. "in 6 months, 1 week").
+occurrence of the event (e.g., "in 6 months, 1 week").
 
    For example, here's how Joe's birthday is displayed in my
 `nndiary+diary:birthdays' summary buffer (note that the message is
@@ -14964,7 +14964,7 @@ have to know:  The functions are called with no parameters, but the
 values.
 
    For example, you could decide that you don't want to download
-articles that were posted more than a certain number of days ago (e.g.
+articles that were posted more than a certain number of days ago (e.g.,
 posted more than `gnus-agent-expire-days' ago) you might write a
 function something along the lines of the following:
 
@@ -15564,8 +15564,9 @@ File: gnus.info,  Node: Agent Variables,  Next: Example Setup,  Prev: Outgoing M
 
 `gnus-agent-cache'
      Variable to control whether use the locally stored NOV and
-     articles when plugged, e.g. essentially using the Agent as a cache.
-     The default is non-`nil', which means to use the Agent as a cache.
+     articles when plugged, e.g., essentially using the Agent as a
+     cache.  The default is non-`nil', which means to use the Agent as
+     a cache.
 
 `gnus-agent-go-online'
      If `gnus-agent-go-online' is `nil', the Agent will never
@@ -15802,7 +15803,7 @@ list, and upon group exit, this list is saved.
 
    The current score file is by default the group's local score file,
 even if no such score file actually exists.  To insert score commands
-into some other score file (e.g. `all.SCORE'), you must first make this
+into some other score file (e.g., `all.SCORE'), you must first make this
 score file the current one.
 
    General score commands that don't actually change the score file:
@@ -16321,9 +16322,9 @@ to be valid syntactically, if not semantically.
                This match key is somewhat special, in that it will
                match the `From' header, and affect the score of not
                only the matching articles, but also all followups to
-               the matching articles.  This allows you e.g. increase
-               the score of followups to your own articles, or decrease
-               the score of followups to the articles of some known
+               the matching articles.  This allows you to increase the
+               score of followups to your own articles, or decrease the
+               score of followups to the articles of some known
                trouble-maker.  Uses the same match types as the `From'
                header uses.  (Using this match key will lead to
                creation of `ADAPT' files.)
@@ -16403,7 +16404,7 @@ to be valid syntactically, if not semantically.
      Next time you enter the group, you will see new articles in the
      interesting threads, plus any new threads.
 
-     I.e.--the orphan score atom is for high-volume groups where a few
+     I.e., the orphan score atom is for high-volume groups where a few
      interesting threads which can't be found automatically by ordinary
      scoring rules exist.
 
@@ -17171,7 +17172,7 @@ problem.  When score files are loaded and `gnus-decay-scores' is
 non-`nil', Gnus will run the score files through the decaying mechanism
 thereby lowering the scores of all non-permanent score rules.  If
 `gnus-decay-scores' is a regexp, only score files matching this regexp
-are treated.  E.g. you may set it to `\\.ADAPT\\'' if only _adaptive_
+are treated.  E.g., you may set it to `\\.ADAPT\\'' if only _adaptive_
 score files should be decayed.  The decay itself if performed by the
 `gnus-decay-score-function' function, which is `gnus-decay-score' by
 default.  Here's the definition of that function:
@@ -17376,7 +17377,7 @@ search is always case-insensitive and supports the following features
 
 `Boolean query operators'
      AND, OR, and NOT are supported, and parentheses can be used to
-     control operator precedence, e.g. (emacs OR xemacs) AND linux.
+     control operator precedence, e.g., (emacs OR xemacs) AND linux.
      Note that operators must be written with all capital letters to be
      recognized. Also preceding a term with a - sign is equivalent to
      NOT term.
@@ -17419,12 +17420,12 @@ The `gmane' engine requires no configuration.
 
 `Boolean query operators'
      AND, OR, NOT (or AND NOT), and XOR are supported, and brackets can
-     be used to control operator precedence, e.g. (emacs OR xemacs) AND
-     linux.  Note that operators must be written with all capital
+     be used to control operator precedence, e.g., (emacs OR xemacs)
+     AND linux.  Note that operators must be written with all capital
      letters to be recognized.
 
 `Required and excluded terms'
-     + and - can be used to require or exclude terms, e.g. football
+     + and - can be used to require or exclude terms, e.g., football
      -american
 
 `Unicode handling'
@@ -17433,8 +17434,8 @@ The `gmane' engine requires no configuration.
 
 `Stopwords'
      Common English words (like 'the' and 'a') are ignored by default.
-     You can override this by prefixing such words with a + (e.g. +the)
-     or enclosing the word in quotes (e.g. "the").
+     You can override this by prefixing such words with a + (e.g.,
+     +the) or enclosing the word in quotes (e.g., "the").
 
 
    The query can be limited to articles by a specific author using a
@@ -17658,8 +17659,8 @@ File: gnus.info,  Node: nnmairix requirements,  Next: What nnmairix does,  Prev:
 
 Mairix searches local mail--that means, mairix absolutely must have
 direct access to your mail folders.  If your mail resides on another
-server (e.g. an IMAP server) and you happen to have shell access,
-`nnmairix' supports running mairix remotely, e.g. via ssh.
+server (e.g., an IMAP server) and you happen to have shell access,
+`nnmairix' supports running mairix remotely, e.g., via ssh.
 
    Additionally, `nnmairix' only supports the following Gnus back ends:
 `nnml', `nnmaildir', and `nnimap'.  You must use one of these back ends
@@ -17682,7 +17683,7 @@ File: gnus.info,  Node: What nnmairix does,  Next: Setting up mairix,  Prev: nnm
 The back end `nnmairix' enables you to call mairix from within Gnus,
 either to query mairix with a search term or to update the database.
 While visiting a message in the summary buffer, you can use several
-pre-defined shortcuts for calling mairix, e.g. to quickly search for
+pre-defined shortcuts for calling mairix, e.g., to quickly search for
 all mails from the sender of the current message or to display the
 whole thread associated with the message, even if the mails are in
 different folders.
@@ -17691,7 +17692,7 @@ different folders.
 bound to certain mairix searches.  This way, you can easily create a
 group containing mails from a certain sender, with a certain subject
 line or even for one specific thread based on the Message-ID.  If you
-check for new mail in these folders (e.g. by pressing `g' or `M-g'),
+check for new mail in these folders (e.g., by pressing `g' or `M-g'),
 they automatically update themselves by calling mairix.
 
    You might ask why you need `nnmairix' at all, since mairix already
@@ -17701,7 +17702,7 @@ does not--at least not without problems.  Most probably you will get
 strange article counts, and sometimes you might see mails which Gnus
 claims have already been canceled and are inaccessible.  This is due to
 the fact that Gnus isn't really amused when things are happening behind
-its back.  Another problem can be the mail back end itself, e.g. if you
+its back.  Another problem can be the mail back end itself, e.g., if you
 use mairix with an IMAP server (I had Dovecot complaining about corrupt
 index files when mairix changed the contents of the search group).
 Using `nnmairix' should circumvent these problems.
@@ -17715,12 +17716,13 @@ results are stored in folders named `zz_mairix-<NAME>-<NUMBER>' on this
 mail back end, but it will present these folders in the Gnus front end
 only with `<NAME>'.  You can use an existing mail back end where you
 already store your mail, but if you're uncomfortable with `nnmairix'
-creating new mail groups alongside your other mail, you can also create
-e.g. a new `nnmaildir' or `nnml' server exclusively for mairix, but then
-make sure those servers do not accidentally receive your new mail
-(*note nnmairix caveats::).  A special case exists if you want to use
-mairix remotely on an IMAP server with `nnimap'--here the mairix
-folders and your other mail must be on the same `nnimap' back end.
+creating new mail groups alongside your other mail, you can also
+create, e.g., a new `nnmaildir' or `nnml' server exclusively for
+mairix, but then make sure those servers do not accidentally receive
+your new mail (*note nnmairix caveats::).  A special case exists if you
+want to use mairix remotely on an IMAP server with `nnimap'--here the
+mairix folders and your other mail must be on the same `nnimap' back
+end.
 
 
 File: gnus.info,  Node: Setting up mairix,  Next: Configuring nnmairix,  Prev: What nnmairix does,  Up: nnmairix
@@ -17813,7 +17815,7 @@ server.  You will have to specify the following:
      which are accessed through `nnmaildir', `nnimap' and `nnml' are
      supported.  As explained above, for locally stored mails, this can
      be an existing server where you store your mails.  However, you
-     can also create e.g. a new `nnmaildir' or `nnml' server
+     can also create, e.g., a new `nnmaildir' or `nnml' server
      exclusively for `nnmairix' in your secondary select methods (*note
      Finding the News::).  If you use a secondary `nnml' server just
      for mairix, make sure that you explicitly set the server variable
@@ -17824,18 +17826,18 @@ server.  You will have to specify the following:
 
    * The *command* to call the mairix binary.  This will usually just
      be `mairix', but you can also choose something like `ssh SERVER
-     mairix' if you want to call mairix remotely, e.g. on your IMAP
+     mairix' if you want to call mairix remotely, e.g., on your IMAP
      server.  If you want to add some default options to mairix, you
      could do this here, but better use the variable
      `nnmairix-mairix-search-options' instead.
 
    * The name of the *default search group*.  This will be the group
-     where all temporary mairix searches are stored, i.e. all searches
+     where all temporary mairix searches are stored, i.e., all searches
      which are not bound to permanent `nnmairix' groups.  Choose
      whatever you like.
 
    * If the mail back end is `nnimap' or `nnmaildir', you will be asked
-     if you work with *Maildir++*, i.e. with hidden maildir folders
+     if you work with *Maildir++*, i.e., with hidden maildir folders
      (=beginning with a dot).  For example, you have to answer `yes'
      here if you work with the Dovecot IMAP server.  Otherwise, you
      should answer `no' here.
@@ -17880,7 +17882,7 @@ In group mode:
 
 `G b t'
      Toggles the 'threads' parameter for the `nnmairix' group under
-     cursor, i.e.  if you want see the whole threads of the found
+     cursor, i.e., if you want see the whole threads of the found
      messages (`nnmairix-group-toggle-threads-this-group').
 
 `G b u'
@@ -17947,10 +17949,11 @@ In group mode:
 `$ o'
      (Only in `nnmairix' groups!) Tries determine the group this article
      originally came from and displays the article in this group, so
-     that e.g. replying to this article the correct posting styles/group
-     parameters are applied (`nnmairix-goto-original-article').  This
-     function will use the registry if available, but can also parse the
-     article file name as a fallback method.
+     that, e.g., replying to this article the correct posting
+     styles/group parameters are applied
+     (`nnmairix-goto-original-article').  This function will use the
+     registry if available, but can also parse the article file name as
+     a fallback method.
 
 `$ u'
      Remove possibly existing tick mark from original article
@@ -18043,7 +18046,7 @@ slower than the registry--if you set hundreds or even thousands of
 marks this way, it might take some time. You can avoid this situation by
 setting `nnmairix-only-use-registry' to t.
 
-   Maybe you also want to propagate marks the other way round, i.e. if
+   Maybe you also want to propagate marks the other way round, i.e., if
 you tick an article in a "real" mail group, you'd like to have the same
 article in a `nnmairix' group ticked, too. For several good reasons,
 this can only be done efficiently if you use maildir. To immediately
@@ -18092,7 +18095,7 @@ File: gnus.info,  Node: nnmairix tips and tricks,  Next: nnmairix caveats,  Prev
      For example, you can create a group for all ticked articles, where
      the articles always stay unread:
 
-     Hit `G b g', enter group name (e.g. `important'), use `F:f' as
+     Hit `G b g', enter group name (e.g., `important'), use `F:f' as
      query and do not include threads.
 
      Now activate marks propagation for this group by using `G b p'.
@@ -18105,7 +18108,7 @@ File: gnus.info,  Node: nnmairix tips and tricks,  Next: nnmairix caveats,  Prev
      is to set `nnmairix-propagate-marks-to-nnmairix-groups' to `t',
      but see the above comments about this option.  If it works for
      you, the tick marks should also exist in the `nnmairix' group and
-     you can remove them as usual, e.g. by marking an article as read.
+     you can remove them as usual, e.g., by marking an article as read.
 
      When you have removed a tick mark from the original article, this
      article should vanish from the `nnmairix' group after you have
@@ -18121,9 +18124,9 @@ File: gnus.info,  Node: nnmairix tips and tricks,  Next: nnmairix caveats,  Prev
      see them when you enter the back end server in the server buffer.
      You should not subscribe these groups! Unfortunately, these groups
      will usually get _auto-subscribed_ when you use `nnmaildir' or
-     `nnml', i.e. you will suddenly see groups of the form `zz_mairix*'
-     pop up in your group buffer. If this happens to you, simply kill
-     these groups with C-k.  For avoiding this, turn off
+     `nnml', i.e., you will suddenly see groups of the form
+     `zz_mairix*' pop up in your group buffer. If this happens to you,
+     simply kill these groups with C-k.  For avoiding this, turn off
      auto-subscription completely by setting the variable
      `gnus-auto-subscribed-groups' to `nil' (*note Filtering New
      Groups::), or if you like to keep this feature use the following
@@ -18682,7 +18685,7 @@ split.
 
    Point will be put in the buffer that has the optional third element
 `point'.  In a `frame' split, the last subsplit having a leaf split
-where the tag `frame-focus' is a member (i.e. is the third or fourth
+where the tag `frame-focus' is a member (i.e., is the third or fourth
 element in the list, depending on whether the `point' tag is present)
 gets focus.
 
@@ -18973,11 +18976,11 @@ screen refresh may be quicker.
 
    By default, Gnus displays information on the current article in the
 mode lines of the summary and article buffers.  The information Gnus
-wishes to display (e.g. the subject of the article) is often longer
+wishes to display (e.g., the subject of the article) is often longer
 than the mode lines, and therefore have to be cut off at some point.
 The `gnus-mode-non-string-length' variable says how long the other
 elements on the line is (i.e., the non-info part).  If you put
-additional elements on the mode line (e.g. a clock), you should modify
+additional elements on the mode line (e.g., a clock), you should modify
 this variable:
 
      (add-hook 'display-time-hook
@@ -19828,7 +19831,7 @@ source parameter (*note Mail Source Specifiers::) follow.
                   "mv %t /tmp/foo; formail -bs spamc < /tmp/foo > %t")))
 
    Once you manage to process your incoming spool somehow, thus making
-the mail contain e.g. a header indicating it is spam, you are ready to
+the mail contain, e.g., a header indicating it is spam, you are ready to
 filter it out.  Using normal split methods (*note Splitting Mail::):
 
      (setq nnmail-split-methods '(("spam"  "^X-Spam-Flag: YES")
@@ -20434,7 +20437,7 @@ From Reiner Steib <reiner.steib@gmx.de>.
 
    My provider has set up bogofilter (in combination with DCC) on the
 mail server (IMAP).  Recognized spam goes to `spam.detected', the rest
-goes through the normal filter rules, i.e. to `some.folder' or to
+goes through the normal filter rules, i.e., to `some.folder' or to
 `INBOX'.  Training on false positives or negatives is done by copying
 or moving the article to `training.ham' or `training.spam'
 respectively.  A cron job on the server feeds those to bogofilter with
@@ -20455,7 +20458,7 @@ of the job for me:
    * The Spam folder:
 
      In the folder `spam.detected', I have to check for false positives
-     (i.e. legitimate mails, that were wrongly judged as spam by
+     (i.e., legitimate mails, that were wrongly judged as spam by
      bogofilter or DCC).
 
      Because of the `gnus-group-spam-classification-spam' entry, all
@@ -20468,10 +20471,10 @@ of the job for me:
 
      The `gnus-article-sort-by-chars' entry simplifies detection of
      false positives for me.  I receive lots of worms (sweN, ...), that
-     all have a similar size.  Grouping them by size (i.e. chars) makes
-     finding other false positives easier.  (Of course worms aren't spam
-     (UCE, UBE) strictly speaking.  Anyhow, bogofilter is an excellent
-     tool for filtering those unwanted mails for me.)
+     all have a similar size.  Grouping them by size (i.e., chars)
+     makes finding other false positives easier.  (Of course worms
+     aren't spam (UCE, UBE) strictly speaking.  Anyhow, bogofilter is
+     an excellent tool for filtering those unwanted mails for me.)
 
    * Ham folders:
 
@@ -20493,7 +20496,7 @@ spam and reports the to Gmane at group exit:
 
    Additionally, I use `(setq spam-report-gmane-use-article-number nil)'
 because I don't read the groups directly from news.gmane.org, but
-through my local news server (leafnode).  I.e. the article numbers are
+through my local news server (leafnode).  I.e., the article numbers are
 not the same as on news.gmane.org, thus `spam-report.el' has to check
 the `X-Report-Spam' header to find the correct number.
 
@@ -21069,7 +21072,7 @@ messages.
        (spam-process ((ham spam-use-spamoracle)
                       (spam spam-use-spamoracle))))
    For this group the `spam-use-spamoracle' is installed for both ham
-and spam processing.  If the group contains spam message (e.g. because
+and spam processing.  If the group contains spam message (e.g., because
 SpamOracle has not had enough sample messages yet) and the user marks
 some messages as spam messages, these messages will be processed by
 SpamOracle.  The processor sends the messages to SpamOracle as new
@@ -22723,7 +22726,7 @@ New features in Gnus 5.6:
    * `gnus-alter-header-function' can now be used to alter header
      values.
 
-   * `gnus-summary-goto-article' now accept Message-ID's.
+   * `gnus-summary-goto-article' now accept Message-IDs.
 
    * A new Message command for deleting text in the body of a message
      outside the region: `C-c C-v'.
@@ -23353,8 +23356,8 @@ New features in Gnus 5.10:
           servers/groups separately of `~/.newsrc.eld', while
           preserving marks.  It also makes it possible to share
           articles and marks between users (without sharing the
-          `~/.newsrc.eld' file) within e.g. a department.  It works by
-          storing the marks stored in `~/.newsrc.eld' in a per-group
+          `~/.newsrc.eld' file) within, e.g., a department.  It works
+          by storing the marks stored in `~/.newsrc.eld' in a per-group
           file `.marks' (for nnml) and `GROUPNAME.mrk' (for nnfolder,
           named GROUPNAME).  If the nnml/nnfolder is moved to another
           machine, Gnus will automatically use the `.marks' or `.mrk'
@@ -24204,7 +24207,7 @@ helps isolating the real problem areas).
    A fancier approach is to use the elisp profiler, ELP.  The profiler
 is (or should be) fully documented elsewhere, but to get you started
 there are a few steps that need to be followed.  First, instrument the
-part of Gnus you are interested in for profiling, e.g. `M-x
+part of Gnus you are interested in for profiling, e.g., `M-x
 elp-instrument-package RET gnus' or `M-x elp-instrument-package RET
 message'.  Then perform the operation that is slow and press `M-x
 elp-results'.  You will then see which operations that takes time, and
@@ -25786,7 +25789,7 @@ important/interesting:
 
    * Message-utils now included in Gnus.
 
-   * New format specifiers for summary lines, e.g. %B for a complex
+   * New format specifiers for summary lines, e.g., %B for a complex
      trn-style thread tree.
 
 
@@ -25802,9 +25805,9 @@ Answer
 
 Gnus is released independent from releases of Emacs and XEmacs.
 Therefore, the version bundled with Emacs or the version in XEmacs's
-package system might not be up to date (e.g. Gnus 5.9 bundled with Emacs
-21 is outdated).  You can get the latest released version of Gnus from
-`http://www.gnus.org/dist/gnus.tar.gz' or via anonymous FTP from
+package system might not be up to date (e.g., Gnus 5.9 bundled with
+Emacs 21 is outdated).  You can get the latest released version of Gnus
+from `http://www.gnus.org/dist/gnus.tar.gz' or via anonymous FTP from
 `ftp://ftp.gnus.org/pub/gnus/gnus.tar.gz'.
 
 
@@ -25821,11 +25824,12 @@ Answer
 Untar it via `tar xvzf gnus.tar.gz' and do the common `./configure;
 make; make install' circle.  (under MS-Windows either get the Cygwin
 environment from `http://www.cygwin.com' which allows you to do what's
-described above or unpack the tarball with some packer (e.g. Winace from
-`http://www.winace.com') and use the batch-file make.bat included in
-the tarball to install Gnus.) If you don't want to (or aren't allowed
-to) install Gnus system-wide, you can install it in your home directory
-and add the following lines to your ~/.xemacs/init.el or ~/.emacs:
+described above or unpack the tarball with some packer (e.g., Winace
+from `http://www.winace.com') and use the batch-file make.bat included
+in the tarball to install Gnus.) If you don't want to (or aren't
+allowed to) install Gnus system-wide, you can install it in your home
+directory and add the following lines to your ~/.xemacs/init.el or
+~/.emacs:
 
      (add-to-list 'load-path "/path/to/gnus/lisp")
      (if (featurep 'xemacs)
@@ -25914,8 +25918,8 @@ Answer
 ......
 
 This message means that the last time you used Gnus, it wasn't properly
-exited and therefore couldn't write its information to disk (e.g. which
-messages you read), you are now asked if you want to restore that
+exited and therefore couldn't write its information to disk (e.g.,
+which messages you read), you are now asked if you want to restore that
 information from the auto-save file.
 
    To prevent this message make sure you exit Gnus via `q' in group
@@ -25966,7 +25970,7 @@ Answer
 ......
 
 Gnus offers the topic mode, it allows you to sort your groups in, well,
-topics, e.g. all groups dealing with Linux under the topic linux, all
+topics, e.g., all groups dealing with Linux under the topic linux, all
 dealing with music under the topic music and all dealing with scottish
 music under the topic scottish which is a subtopic of music.
 
@@ -26059,7 +26063,7 @@ Emacs will open the right file for you.  (It will most likely be new,
 and thus empty.)  However, I'd discourage you from doing so, since the
 directory Emacs chooses will most certainly not be what you want, so
 let's do it the correct way.  The first thing you've got to do is to
-create a suitable directory (no blanks in directory name please) e.g.
+create a suitable directory (no blanks in directory name please), e.g.,
 c:\myhome. Then you must set the environment variable HOME to this
 directory.  To do this under Windows 9x or Me include the line
 
@@ -26324,7 +26328,7 @@ functionality to do so.
    However this is Gnus county so there are possibilities to achieve
 what you want. The easiest way is to get an external program which
 retrieves copies of the mail and stores them on disk, so Gnus can read
-it from there. On Unix systems you could use e.g. fetchmail for this,
+it from there. On Unix systems you could use, e.g., fetchmail for this,
 on MS Windows you can use Hamster, an excellent local news and mail
 server.
 
@@ -26335,7 +26339,7 @@ enhanced pop3.el, look in the file, there's documentation on how to tell
 Gnus to use it and not to delete the retrieved mail. For GNU Emacs look
 for the file epop3.el which can do the same (If you know the home of
 this file, please send me an e-mail). You can also tell Gnus to use an
-external program (e.g. fetchmail) to fetch your mail, see the info node
+external program (e.g., fetchmail) to fetch your mail, see the info node
 "Mail Source Specifiers" in the Gnus manual on how to do it.
 
 
@@ -26363,7 +26367,7 @@ File: gnus.info,  Node: FAQ 4 - Reading messages,  Next: FAQ 5 - Composing messa
 * FAQ 4-9::     Is there a way to automatically ignore posts by specific
                 authors or with specific words in the subject? And can I
                 highlight more interesting ones in some way?
-* FAQ 4-10::    How can I disable threading in some (e.g. mail-) groups,
+* FAQ 4-10::    How can I disable threading in some (e.g., mail-) groups,
                 or set other variables specific for some groups?
 * FAQ 4-11::    Can I highlight messages written by me and follow-ups to
                 those?
@@ -26390,8 +26394,8 @@ Answer
 
 If you enter the group by saying `RET' in group buffer with point over
 the group, only unread and ticked messages are loaded. Say `C-u RET'
-instead to load all available messages. If you want only the e.g. 300
-newest say `C-u 300 RET'
+instead to load all available messages. If you want only the 300 newest
+say `C-u 300 RET'
 
    Loading only unread messages can be annoying if you have threaded
 view enabled, say
@@ -26565,8 +26569,8 @@ want.  Hit either `e' for an exact match or `s' for substring-match and
 delete afterwards everything but the name to score down all authors
 with the given name no matter which email address is used. Now you need
 to tell Gnus when to apply the rule and how long it should last, hit
-e.g.  `p' to apply the rule now and let it last forever. If you want to
-raise the score instead of lowering it say `I' instead of `L'.
+`p' to apply the rule now and let it last forever. If you want to raise
+the score instead of lowering it say `I' instead of `L'.
 
    You can also set up rules by hand. To do this say `V f' in summary
 buffer. Then you are asked for the name of the score file, it's
@@ -26575,8 +26579,8 @@ rules valid in all groups. See the Gnus manual for the exact syntax,
 basically it's one big list whose elements are lists again. the first
 element of those lists is the header to score on, then one more list
 with what to match, which score to assign, when to expire the rule and
-how to do the matching. If you find me very interesting, you could e.g.
-add the following to your all.Score:
+how to do the matching. If you find me very interesting, you could add
+the following to your all.Score:
 
      (("references" ("hschmi22.userfqdn.rz-online.de" 500 nil s))
       ("message-id" ("hschmi22.userfqdn.rz-online.de" 999 nil s)))
@@ -26600,7 +26604,7 @@ File: gnus.info,  Node: FAQ 4-10,  Next: FAQ 4-11,  Prev: FAQ 4-9,  Up: FAQ 4 - 
 Question 4.10
 .............
 
-How can I disable threading in some (e.g. mail-) groups, or set other
+How can I disable threading in some (e.g., mail-) groups, or set other
 variables specific for some groups?
 
 Answer
@@ -26712,7 +26716,7 @@ the manual node "Summary Buffer Lines" and the often forgotten node
 things like positioning the cursor and tabulators which allow you a
 summary in table form, but sadly hard tabulators are broken in 5.8.8.
 
-   Since 5.10, Gnus offers you some very nice new specifiers, e.g. %B
+   Since 5.10, Gnus offers you some very nice new specifiers, e.g., %B
 which draws a thread-tree and %&user-date which gives you a date where
 the details are dependent of the articles age. Here's an example which
 uses both:
@@ -27300,7 +27304,7 @@ Gnus? If you say yes, put this snippet by Frank Haun
 <pille3003@fhaun.de> in ~/.gnus.el:
 
      (defun my-archive-article (&optional n)
-       "Copies one or more article(s) to a corresponding `nnml:' group, e.g.
+       "Copies one or more article(s) to a corresponding `nnml:' group, e.g.,
      `gnus.ding' goes to `nnml:1.gnus.ding'. And `nnml:List-gnus.ding' goes
      to `nnml:1.List-gnus-ding'.
 
@@ -27399,7 +27403,7 @@ How to do it?
 Answer
 ......
 
-If you want all read messages to be expired (e.g. in mailing lists
+If you want all read messages to be expired (e.g., in mailing lists
 where there's an online archive), you've got two choices: auto-expire
 and total-expire. Auto-expire means, that every article which has no
 marks set and is selected for reading is marked as expirable, Gnus hits
@@ -27437,8 +27441,8 @@ Say something like this in ~/.gnus.el:
 
      (setq nnmail-expiry-target "nnml:expired")
    (If you want to change the value of nnmail-expiry-target on a per
-group basis see the question "How can I disable threading in some (e.g.
-mail-) groups, or set other variables specific for some groups?")
+group basis see the question "How can I disable threading in some
+(e.g., mail-) groups, or set other variables specific for some groups?")
 
 
 File: gnus.info,  Node: FAQ 7 - Gnus in a dial-up environment,  Next: FAQ 8 - Getting help,  Prev: FAQ 6 - Old messages,  Up: Frequently Asked Questions
@@ -27509,9 +27513,9 @@ Answer
 
 The Gnus agent is part of Gnus, it allows you to fetch mail and news
 and store them on disk for reading them later when you're offline. It
-kind of mimics offline newsreaders like e.g. Forte Agent. If you want
-to use the Agent place the following in ~/.gnus.el if you are still
-using 5.8.8 or 5.9 (it's the default since 5.10):
+kind of mimics offline newsreaders like Forte Agent. If you want to use
+the Agent place the following in ~/.gnus.el if you are still using
+5.8.8 or 5.9 (it's the default since 5.10):
 
      (setq gnus-agent t)
    Now you've got to select the servers whose groups can be stored
@@ -27582,7 +27586,7 @@ File: gnus.info,  Node: FAQ 8 - Getting help,  Next: FAQ 9 - Tuning Gnus,  Prev:
 * Menu:
 
 * FAQ 8-1::    How to find information and help inside Emacs?
-* FAQ 8-2::    I can't find anything in the Gnus manual about X (e.g.
+* FAQ 8-2::    I can't find anything in the Gnus manual about X (e.g.,
                attachments, PGP, MIME...), is it not documented?
 * FAQ 8-3::    Which websites should I know?
 * FAQ 8-4::    Which mailing lists and newsgroups are there?
@@ -27614,7 +27618,7 @@ File: gnus.info,  Node: FAQ 8-2,  Next: FAQ 8-3,  Prev: FAQ 8-1,  Up: FAQ 8 - Ge
 Question 8.2
 ............
 
-I can't find anything in the Gnus manual about X (e.g. attachments,
+I can't find anything in the Gnus manual about X (e.g., attachments,
 PGP, MIME...), is it not documented?
 
 Answer
@@ -28596,12 +28600,12 @@ File: gnus.info,  Node: Index,  Next: Key Index,  Prev: GNU Free Documentation L
                                                               (line  22)
 * gnus-agent-add-server:                 Server Agent Commands.
                                                               (line   7)
-* gnus-agent-auto-agentize-methods:      Agent Variables.     (line 118)
+* gnus-agent-auto-agentize-methods:      Agent Variables.     (line 119)
 * gnus-agent-batch:                      Batching Agents.     (line   6)
 * gnus-agent-cache:                      Agent Variables.     (line  36)
 * gnus-agent-catchup:                    Summary Agent Commands.
                                                               (line  18)
-* gnus-agent-consider-all-articles:      Agent Variables.     (line  62)
+* gnus-agent-consider-all-articles:      Agent Variables.     (line  63)
 * gnus-agent-directory:                  Agent Variables.     (line  17)
 * gnus-agent-enable-expiration:          Category Variables.  (line  46)
 * gnus-agent-expire:                     Agent Expiry.        (line   6)
@@ -28616,18 +28620,18 @@ File: gnus.info,  Node: Index,  Next: Key Index,  Prev: GNU Free Documentation L
 * gnus-agent-fetch-session:              Group Agent Commands.
                                                               (line  14)
 * gnus-agent-fetched-hook:               Agent Variables.     (line  33)
-* gnus-agent-go-online:                  Agent Variables.     (line  41)
+* gnus-agent-go-online:                  Agent Variables.     (line  42)
 * gnus-agent-handle-level:               Agent Variables.     (line  21)
 * gnus-agent-high-score:                 Category Variables.  (line  33)
 * gnus-agent-long-article:               Category Variables.  (line  26)
 * gnus-agent-low-score:                  Category Variables.  (line  29)
 * gnus-agent-mark-article:               Summary Agent Commands.
                                                               (line   7)
-* gnus-agent-mark-unread-after-downloaded: Agent Variables.   (line  49)
-* gnus-agent-max-fetch-size:             Agent Variables.     (line  72)
+* gnus-agent-mark-unread-after-downloaded: Agent Variables.   (line  50)
+* gnus-agent-max-fetch-size:             Agent Variables.     (line  73)
 * gnus-agent-plugged-hook:               Agent Variables.     (line  27)
-* gnus-agent-prompt-send-queue:          Agent Variables.     (line 113)
-* gnus-agent-queue-mail:                 Agent Variables.     (line 107)
+* gnus-agent-prompt-send-queue:          Agent Variables.     (line 114)
+* gnus-agent-queue-mail:                 Agent Variables.     (line 108)
 * gnus-agent-regenerate:                 Agent Regeneration.  (line  19)
 * gnus-agent-regenerate-group:           Agent Regeneration.  (line  24)
 * gnus-agent-remove-group:               Group Agent Commands.
@@ -28639,7 +28643,7 @@ File: gnus.info,  Node: Index,  Next: Key Index,  Prev: GNU Free Documentation L
                                                               (line  30)
 * gnus-agent-summary-fetch-series:       Summary Agent Commands.
                                                               (line  26)
-* gnus-agent-synchronize-flags <1>:      Agent Variables.     (line  55)
+* gnus-agent-synchronize-flags <1>:      Agent Variables.     (line  56)
 * gnus-agent-synchronize-flags <2>:      Agent and flags.     (line  18)
 * gnus-agent-synchronize-flags:          Group Agent Commands.
                                                               (line  32)
@@ -28801,7 +28805,7 @@ File: gnus.info,  Node: Index,  Next: Key Index,  Prev: GNU Free Documentation L
 * gnus-auto-expirable-marks:             Expiring Mail.       (line  28)
 * gnus-auto-expirable-newsgroups:        Expiring Mail.       (line  53)
 * gnus-auto-extend-newsgroup:            Choosing Variables.  (line   9)
-* gnus-auto-goto-ignores:                Agent Variables.     (line  94)
+* gnus-auto-goto-ignores:                Agent Variables.     (line  95)
 * gnus-auto-select-first:                Selecting a Group.   (line  84)
 * gnus-auto-select-next:                 Summary Maneuvering. (line  33)
 * gnus-auto-select-on-ephemeral-exit:    Really Various Summary Commands.
@@ -29592,7 +29596,7 @@ File: gnus.info,  Node: Index,  Next: Key Index,  Prev: GNU Free Documentation L
 * gnus-server-show-server:               Server Commands.     (line  17)
 * gnus-server-to-method:                 Gnus Utility Functions.
                                                               (line  56)
-* gnus-server-unopen-status:             Agent Variables.     (line  85)
+* gnus-server-unopen-status:             Agent Variables.     (line  86)
 * gnus-server-yank-server:               Server Commands.     (line  29)
 * gnus-set-active:                       Gnus Utility Functions.
                                                               (line  35)
@@ -30738,7 +30742,7 @@ File: gnus.info,  Node: Index,  Next: Key Index,  Prev: GNU Free Documentation L
 * nnmairix-propagate-marks-upon-close:   Propagating marks.   (line  63)
 * nnmairix-purge-old-groups:             nnmairix caveats.    (line  47)
 * nnmairix-remove-tick-mark-original-article: nnmairix keyboard shortcuts.
-                                                              (line 112)
+                                                              (line 113)
 * nnmairix-search:                       nnmairix keyboard shortcuts.
                                                               (line  14)
 * nnmairix-search-from-this-article:     nnmairix keyboard shortcuts.
@@ -31342,7 +31346,7 @@ File: gnus.info,  Node: Key Index,  Next: (message),  Prev: Index,  Up: Top
 * $ t (Summary):                         nnmairix keyboard shortcuts.
                                                               (line  93)
 * $ u (Summary):                         nnmairix keyboard shortcuts.
-                                                              (line 112)
+                                                              (line 113)
 * & (Summary):                           Searching for Articles.
                                                               (line  23)
 * * (Summary):                           Persistent Articles. (line  22)
@@ -32232,56 +32236,56 @@ Node: Group Levels74035
 Node: Group Score78449
 Node: Marking Groups79767
 Node: Foreign Groups81072
-Node: Group Parameters87531
-Ref: subscribed90266
-Node: Listing Groups105134
-Node: Sorting Groups108547
-Node: Group Maintenance111858
-Node: Browse Foreign Server112794
-Node: Exiting Gnus114277
-Node: Group Topics115287
-Node: Topic Commands117100
-Node: Topic Variables122393
-Node: Topic Sorting123449
-Node: Topic Topology124747
-Node: Topic Parameters126048
-Node: Non-ASCII Group Names128781
-Node: Misc Group Stuff134327
-Node: Scanning New Messages137354
-Node: Group Information138511
-Node: Group Timestamp139208
-Node: File Commands140946
-Node: Sieve Commands141411
-Node: Summary Buffer143237
-Node: Summary Buffer Format146244
-Node: Summary Buffer Lines147491
-Node: To From Newsgroups153730
-Node: Summary Buffer Mode Line156891
-Node: Summary Highlighting158394
-Node: Summary Maneuvering159561
-Node: Choosing Articles162810
-Node: Choosing Commands163123
-Node: Choosing Variables165242
-Node: Paging the Article166647
-Node: Reply Followup and Post168719
-Node: Summary Mail Commands169098
-Node: Summary Post Commands175446
-Node: Summary Message Commands177671
-Node: Canceling and Superseding178157
-Node: Delayed Articles180493
-Node: Marking Articles184255
-Node: Unread Articles185181
-Node: Read Articles186405
-Node: Other Marks187956
-Node: Setting Marks191208
-Node: Generic Marking Commands194136
-Node: Setting Process Marks195551
-Node: Limiting197974
-Node: Threading202764
-Node: Customizing Threading204467
-Node: Loose Threads204939
-Node: Filling In Threads211108
-Node: More Threading214041
+Node: Group Parameters87527
+Ref: subscribed90262
+Node: Listing Groups105131
+Node: Sorting Groups108544
+Node: Group Maintenance111855
+Node: Browse Foreign Server112791
+Node: Exiting Gnus114274
+Node: Group Topics115284
+Node: Topic Commands117097
+Node: Topic Variables122390
+Node: Topic Sorting123446
+Node: Topic Topology124744
+Node: Topic Parameters126045
+Node: Non-ASCII Group Names128778
+Node: Misc Group Stuff134324
+Node: Scanning New Messages137351
+Node: Group Information138508
+Node: Group Timestamp139205
+Node: File Commands140943
+Node: Sieve Commands141408
+Node: Summary Buffer143234
+Node: Summary Buffer Format146241
+Node: Summary Buffer Lines147488
+Node: To From Newsgroups153727
+Node: Summary Buffer Mode Line156889
+Node: Summary Highlighting158392
+Node: Summary Maneuvering159559
+Node: Choosing Articles162808
+Node: Choosing Commands163121
+Node: Choosing Variables165240
+Node: Paging the Article166645
+Node: Reply Followup and Post168717
+Node: Summary Mail Commands169096
+Node: Summary Post Commands175444
+Node: Summary Message Commands177669
+Node: Canceling and Superseding178155
+Node: Delayed Articles180491
+Node: Marking Articles184253
+Node: Unread Articles185179
+Node: Read Articles186403
+Node: Other Marks187954
+Node: Setting Marks191206
+Node: Generic Marking Commands194134
+Node: Setting Process Marks195549
+Node: Limiting197972
+Node: Threading202762
+Node: Customizing Threading204465
+Node: Loose Threads204937
+Node: Filling In Threads211106
+Node: More Threading214039
 Node: Low-Level Threading216464
 Node: Thread Commands217600
 Node: Sorting the Summary Buffer220355
@@ -32306,386 +32310,386 @@ Node: Article Highlighting259743
 Node: Article Fontisizing262910
 Node: Article Hiding264795
 Node: Article Washing270037
-Ref: Article Washing-Footnote-1279056
-Node: Article Header279158
-Node: Article Buttons279760
-Node: Article Button Levels284139
-Node: Article Date286297
-Node: Article Display288297
-Node: Article Signature290168
-Node: Article Miscellanea292330
-Node: MIME Commands292577
-Node: Charsets301033
-Node: Article Commands304049
-Node: Summary Sorting304835
-Node: Finding the Parent306436
-Node: Alternative Approaches310421
-Node: Pick and Read310883
-Node: Binary Groups313698
-Node: Tree Display314367
-Node: Mail Group Commands318715
-Node: Various Summary Stuff323289
-Node: Summary Group Information327009
-Node: Searching for Articles327549
-Node: Summary Generation Commands328804
-Node: Really Various Summary Commands329501
-Node: Exiting the Summary Buffer331893
-Node: Crosspost Handling335466
-Node: Duplicate Suppression337617
-Node: Security340490
-Node: Mailing List343820
-Node: Article Buffer344750
-Node: Hiding Headers345465
-Node: Using MIME349654
-Node: HTML354630
-Node: Customizing Articles356891
-Node: Article Keymap362508
-Node: Misc Article364625
-Node: Composing Messages368336
-Node: Mail369541
-Node: Posting Server370817
-Node: POP before SMTP372670
-Node: Mail and Post374114
-Node: Archived Messages376325
-Node: Posting Styles382943
-Node: Drafts389083
-Node: Rejected Articles391775
-Node: Signing and encrypting392746
-Node: Select Methods394209
-Node: Server Buffer396103
-Node: Server Buffer Format397963
-Node: Server Commands398778
-Node: Example Methods400324
-Node: Creating a Virtual Server403522
-Node: Server Variables404652
-Node: Servers and Methods405932
-Node: Unavailable Servers406364
-Node: Getting News408451
-Node: NNTP408907
-Node: Direct Functions418965
-Node: Indirect Functions422081
-Node: Common Variables426063
-Node: News Spool427658
-Node: Using IMAP429419
-Node: Connecting to an IMAP Server430066
-Node: Customizing the IMAP Connection430716
-Node: Client-Side IMAP Splitting433034
-Node: Getting Mail434415
-Node: Mail in a Newsreader435536
-Node: Getting Started Reading Mail438726
-Node: Splitting Mail440273
-Node: Mail Sources445421
-Node: Mail Source Specifiers445939
-Node: Mail Source Customization459419
-Node: Fetching Mail461631
-Node: Mail Back End Variables462965
-Node: Fancy Mail Splitting465580
-Node: Group Mail Splitting475727
-Node: Incorporating Old Mail481293
-Node: Expiring Mail483017
-Node: Washing Mail492374
-Node: Duplicates495923
-Node: Not Reading Mail498149
-Node: Choosing a Mail Back End499206
-Node: Unix Mail Box500261
-Node: Babyl500924
-Node: Mail Spool501531
-Node: MH Spool504834
-Node: Maildir505933
-Node: Mail Folders519283
-Node: Comparing Mail Back Ends521479
-Node: Browsing the Web530466
-Node: Archiving Mail532573
-Node: Web Searches533563
-Node: RSS536611
-Node: Customizing W3541721
-Node: Other Sources542718
-Node: Directory Groups543380
-Node: Anything Groups544508
-Node: Document Groups547198
-Node: Document Server Internals550135
-Node: Mail-To-News Gateways556272
-Node: The Empty Backend558166
-Node: Combined Groups558689
-Node: Virtual Groups559003
-Node: Email Based Diary562711
-Node: The NNDiary Back End564525
-Node: Diary Messages565386
-Node: Running NNDiary567339
-Node: Customizing NNDiary570148
-Node: The Gnus Diary Library571046
-Node: Diary Summary Line Format572014
-Node: Diary Articles Sorting574126
-Node: Diary Headers Generation574880
-Node: Diary Group Parameters575853
-Node: Sending or Not Sending576544
-Node: Gnus Unplugged577334
-Node: Agent Basics579594
-Node: Agent Categories583914
-Node: Category Syntax585809
-Node: Category Buffer595150
-Node: Category Variables596294
-Node: Agent Commands598110
-Node: Group Agent Commands598690
-Node: Summary Agent Commands599661
-Node: Server Agent Commands600595
-Node: Agent Visuals600998
-Node: Agent as Cache604958
-Node: Agent Expiry606045
-Node: Agent Regeneration607448
-Node: Agent and flags608804
-Node: Agent and IMAP610610
-Node: Outgoing Messages611274
-Node: Agent Variables612369
-Node: Example Setup618435
-Node: Batching Agents620320
-Node: Agent Caveats620871
-Node: Scoring621676
-Node: Summary Score Commands623997
-Node: Group Score Commands629957
-Node: Score Variables630625
-Node: Score File Format636971
-Node: Score File Editing649949
-Node: Adaptive Scoring651079
-Node: Home Score File657718
-Node: Followups To Yourself660672
-Node: Scoring On Other Headers662186
-Node: Scoring Tips663672
-Node: Reverse Scoring665248
-Node: Global Score Files665760
-Node: Kill Files668529
-Node: Converting Kill Files671104
-Node: Advanced Scoring671890
-Node: Advanced Scoring Syntax672645
-Node: Advanced Scoring Examples674506
-Node: Advanced Scoring Tips676331
-Node: Score Decays677416
-Node: Searching679798
-Node: nnir680448
-Node: What is nnir?680791
-Node: Basic Usage681328
-Node: Setting up nnir683325
-Node: Associating Engines684583
-Node: The imap Engine685905
-Node: The gmane Engine687666
-Node: The swish++ Engine688813
-Node: The swish-e Engine689517
-Node: The namazu Engine690201
-Node: The hyrex Engine692654
-Node: Customizations692846
-Node: nnmairix694358
-Node: About mairix695316
-Node: nnmairix requirements696899
-Node: What nnmairix does697956
-Node: Setting up mairix700755
-Node: Configuring nnmairix703774
-Node: nnmairix keyboard shortcuts706063
-Node: Propagating marks710501
-Node: nnmairix tips and tricks715833
-Node: nnmairix caveats719108
-Node: Various722678
-Node: Process/Prefix724189
-Node: Interactive726296
-Node: Symbolic Prefixes727470
-Node: Formatting Variables729009
-Node: Formatting Basics730988
-Node: Mode Line Formatting731994
-Node: Advanced Formatting732901
-Node: User-Defined Specs734724
-Node: Formatting Fonts735879
-Node: Positioning Point738104
-Node: Tabulation738879
-Node: Wide Characters739771
-Node: Window Layout740474
-Node: Faces and Fonts751417
-Node: Mode Lines751774
-Node: Highlighting and Menus753448
-Node: Daemons755706
-Node: Undo758497
-Node: Predicate Specifiers760102
-Node: Moderation760882
-Node: Fetching a Group762096
-Node: Image Enhancements762567
-Ref: Image Enhancements-Footnote-1763352
-Node: X-Face763422
-Node: Face768040
-Node: Smileys769389
-Node: Picons770884
-Node: Gravatars773566
-Node: XVarious774528
-Node: Fuzzy Matching775938
-Node: Thwarting Email Spam776728
-Node: The problem of spam778196
-Node: Anti-Spam Basics782754
-Node: SpamAssassin785091
-Node: Hashcash788181
-Node: Spam Package791343
-Node: Spam Package Introduction791995
-Node: Filtering Incoming Mail797589
-Node: Detecting Spam in Groups801703
-Node: Spam and Ham Processors802961
-Node: Spam Package Configuration Examples810916
-Node: Spam Back Ends817723
-Node: Blacklists and Whitelists818459
-Node: BBDB Whitelists821581
-Node: Gmane Spam Reporting823414
-Node: Anti-spam Hashcash Payments824869
-Node: Blackholes825492
-Node: Regular Expressions Header Matching827024
-Node: Bogofilter828122
-Node: SpamAssassin back end831523
-Node: ifile spam filtering833411
-Node: Spam Statistics Filtering834669
-Node: SpamOracle836609
-Node: Extending the Spam package841262
-Node: Spam Statistics Package845616
-Node: Creating a spam-stat dictionary847580
-Node: Splitting mail using spam-stat850452
-Node: Low-level interface to the spam-stat dictionary853074
-Node: The Gnus Registry856233
-Node: Gnus Registry Setup857885
-Node: Registry Article Refer Method860407
-Node: Fancy splitting to parent861738
-Node: Store custom flags and keywords863447
-Node: Store arbitrary data865232
-Node: Other modes866102
-Node: Various Various866898
-Node: The End871774
-Node: Appendices872427
-Node: XEmacs873165
-Node: History873580
-Node: Gnus Versions875244
-Node: Why?876887
-Node: Compatibility878260
-Node: Conformity880980
-Node: Emacsen883642
-Node: Gnus Development884093
-Node: Contributors886615
-Node: New Features893102
-Node: ding Gnus893969
-Node: September Gnus897143
-Node: Red Gnus902108
-Node: Quassia Gnus905841
-Node: Pterodactyl Gnus909046
-Node: Oort Gnus910747
-Node: No Gnus935102
-Node: Ma Gnus948370
-Node: On Writing Manuals948874
-Node: Terminology949826
-Node: Customization957990
-Node: Slow/Expensive Connection958605
-Node: Slow Terminal Connection960154
-Node: Little Disk Space961850
-Node: Slow Machine962890
-Node: Troubleshooting963423
-Node: Gnus Reference Guide968016
-Node: Gnus Utility Functions969416
-Node: Back End Interface972209
-Ref: Back End Interface-Footnote-1976235
-Node: Required Back End Functions976328
-Node: Optional Back End Functions984635
-Node: Error Messaging993805
-Node: Writing New Back Ends994904
-Node: Hooking New Back Ends Into Gnus1000389
-Node: Mail-like Back Ends1001853
-Node: Score File Syntax1003498
-Node: Headers1006916
-Node: Ranges1008171
-Node: Group Info1010221
-Node: Extended Interactive1013664
-Node: Emacs/XEmacs Code1015057
-Node: Various File Formats1017030
-Node: Active File Format1017328
-Node: Newsgroups File Format1018329
-Node: Emacs for Heathens1019008
-Node: Keystrokes1019830
-Node: Emacs Lisp1021733
-Node: Frequently Asked Questions1024063
-Node: FAQ - Changes1025603
-Node: FAQ - Introduction1025960
-Node: FAQ 1 - Installation FAQ1027689
-Node: FAQ 1-11028283
-Node: FAQ 1-21028719
-Node: FAQ 1-31029444
-Node: FAQ 1-41029998
-Node: FAQ 1-51031088
-Node: FAQ 1-61031616
-Node: FAQ 1-71031970
-Node: FAQ 2 - Startup / Group buffer1032348
-Node: FAQ 2-11033210
-Node: FAQ 2-21033834
-Node: FAQ 2-31034199
-Node: FAQ 2-41034668
-Node: FAQ 2-51035552
-Node: FAQ 3 - Getting Messages1035900
-Node: FAQ 3-11037267
-Node: FAQ 3-21037814
-Node: FAQ 3-31039206
-Node: FAQ 3-41039749
-Node: FAQ 3-51040317
-Node: FAQ 3-61040776
-Node: FAQ 3-71041335
-Node: FAQ 3-81042235
-Node: FAQ 3-91045430
-Node: FAQ 3-101047039
-Node: FAQ 3-111047402
-Node: FAQ 4 - Reading messages1048896
-Node: FAQ 4-11050826
-Node: FAQ 4-21051998
-Node: FAQ 4-31052490
-Node: FAQ 4-41052730
-Node: FAQ 4-51052977
-Node: FAQ 4-61053622
-Node: FAQ 4-71054228
-Node: FAQ 4-81054710
-Node: FAQ 4-91055398
-Node: FAQ 4-101058261
-Node: FAQ 4-111058884
-Node: FAQ 4-121059385
-Node: FAQ 4-131060327
-Node: FAQ 4-141061628
-Node: FAQ 4-151063760
-Node: FAQ 5 - Composing messages1066868
-Node: FAQ 5-11068565
-Node: FAQ 5-21069514
-Node: FAQ 5-31070136
-Node: FAQ 5-41071317
-Node: FAQ 5-51073383
-Node: FAQ 5-61074687
-Node: FAQ 5-71075334
-Node: FAQ 5-81077308
-Node: FAQ 5-91078797
-Node: FAQ 5-101079632
-Node: FAQ 5-111080035
-Node: FAQ 5-121080654
-Node: FAQ 5-131080992
-Node: FAQ 6 - Old messages1082979
-Node: FAQ 6-11083622
-Node: FAQ 6-21084586
-Node: FAQ 6-31086214
-Node: FAQ 6-41087878
-Node: FAQ 6-51088781
-Node: FAQ 6-61090089
-Node: FAQ 7 - Gnus in a dial-up environment1090584
-Node: FAQ 7-11091203
-Node: FAQ 7-21092965
-Node: FAQ 7-31094083
-Node: FAQ 7-41095522
-Node: FAQ 8 - Getting help1096066
-Node: FAQ 8-11096668
-Node: FAQ 8-21097265
-Node: FAQ 8-31097810
-Node: FAQ 8-41098106
-Node: FAQ 8-51099011
-Node: FAQ 8-61099341
-Node: FAQ 9 - Tuning Gnus1099562
-Node: FAQ 9-11099938
-Node: FAQ 9-21100899
-Node: FAQ 9-31101967
-Node: FAQ - Glossary1102348
-Node: GNU Free Documentation License1103393
-Node: Index1128545
-Node: Key Index1343506
+Ref: Article Washing-Footnote-1279055
+Node: Article Header279157
+Node: Article Buttons279759
+Node: Article Button Levels284138
+Node: Article Date286296
+Node: Article Display288296
+Node: Article Signature290164
+Node: Article Miscellanea292326
+Node: MIME Commands292573
+Node: Charsets301028
+Node: Article Commands304044
+Node: Summary Sorting304830
+Node: Finding the Parent306431
+Node: Alternative Approaches310415
+Node: Pick and Read310877
+Node: Binary Groups313692
+Node: Tree Display314361
+Node: Mail Group Commands318709
+Node: Various Summary Stuff323283
+Node: Summary Group Information327003
+Node: Searching for Articles327543
+Node: Summary Generation Commands328798
+Node: Really Various Summary Commands329495
+Node: Exiting the Summary Buffer331887
+Node: Crosspost Handling335460
+Node: Duplicate Suppression337611
+Node: Security340484
+Node: Mailing List343814
+Node: Article Buffer344744
+Node: Hiding Headers345459
+Node: Using MIME349648
+Node: HTML354624
+Node: Customizing Articles356885
+Node: Article Keymap362502
+Node: Misc Article364619
+Node: Composing Messages368331
+Node: Mail369536
+Node: Posting Server370812
+Node: POP before SMTP372665
+Node: Mail and Post374109
+Node: Archived Messages376320
+Node: Posting Styles382939
+Node: Drafts389079
+Node: Rejected Articles391771
+Node: Signing and encrypting392742
+Node: Select Methods394205
+Node: Server Buffer396100
+Node: Server Buffer Format397960
+Node: Server Commands398775
+Node: Example Methods400321
+Node: Creating a Virtual Server403519
+Node: Server Variables404649
+Node: Servers and Methods405929
+Node: Unavailable Servers406362
+Node: Getting News408449
+Node: NNTP408905
+Node: Direct Functions418963
+Node: Indirect Functions422079
+Node: Common Variables426061
+Node: News Spool427656
+Node: Using IMAP429417
+Node: Connecting to an IMAP Server430064
+Node: Customizing the IMAP Connection430714
+Node: Client-Side IMAP Splitting433032
+Node: Getting Mail434413
+Node: Mail in a Newsreader435534
+Node: Getting Started Reading Mail438724
+Node: Splitting Mail440271
+Node: Mail Sources445419
+Node: Mail Source Specifiers445937
+Node: Mail Source Customization459424
+Node: Fetching Mail461636
+Node: Mail Back End Variables462970
+Node: Fancy Mail Splitting465585
+Node: Group Mail Splitting475733
+Node: Incorporating Old Mail481299
+Node: Expiring Mail483023
+Node: Washing Mail492380
+Node: Duplicates495930
+Node: Not Reading Mail498156
+Node: Choosing a Mail Back End499213
+Node: Unix Mail Box500268
+Node: Babyl500931
+Node: Mail Spool501538
+Node: MH Spool504841
+Node: Maildir505940
+Node: Mail Folders519290
+Node: Comparing Mail Back Ends521486
+Node: Browsing the Web530473
+Node: Archiving Mail532580
+Node: Web Searches533570
+Node: RSS536618
+Node: Customizing W3541730
+Node: Other Sources542727
+Node: Directory Groups543389
+Node: Anything Groups544517
+Node: Document Groups547208
+Node: Document Server Internals550145
+Node: Mail-To-News Gateways556282
+Node: The Empty Backend558176
+Node: Combined Groups558699
+Node: Virtual Groups559013
+Node: Email Based Diary562721
+Node: The NNDiary Back End564535
+Node: Diary Messages565396
+Node: Running NNDiary567349
+Node: Customizing NNDiary570158
+Node: The Gnus Diary Library571057
+Node: Diary Summary Line Format572025
+Node: Diary Articles Sorting574139
+Node: Diary Headers Generation574893
+Node: Diary Group Parameters575866
+Node: Sending or Not Sending576557
+Node: Gnus Unplugged577347
+Node: Agent Basics579607
+Node: Agent Categories583927
+Node: Category Syntax585822
+Node: Category Buffer595164
+Node: Category Variables596308
+Node: Agent Commands598124
+Node: Group Agent Commands598704
+Node: Summary Agent Commands599675
+Node: Server Agent Commands600609
+Node: Agent Visuals601012
+Node: Agent as Cache604972
+Node: Agent Expiry606059
+Node: Agent Regeneration607462
+Node: Agent and flags608818
+Node: Agent and IMAP610624
+Node: Outgoing Messages611288
+Node: Agent Variables612383
+Node: Example Setup618456
+Node: Batching Agents620341
+Node: Agent Caveats620892
+Node: Scoring621697
+Node: Summary Score Commands624018
+Node: Group Score Commands629979
+Node: Score Variables630647
+Node: Score File Format636993
+Node: Score File Editing649969
+Node: Adaptive Scoring651099
+Node: Home Score File657738
+Node: Followups To Yourself660692
+Node: Scoring On Other Headers662206
+Node: Scoring Tips663692
+Node: Reverse Scoring665268
+Node: Global Score Files665780
+Node: Kill Files668549
+Node: Converting Kill Files671124
+Node: Advanced Scoring671910
+Node: Advanced Scoring Syntax672665
+Node: Advanced Scoring Examples674526
+Node: Advanced Scoring Tips676351
+Node: Score Decays677436
+Node: Searching679819
+Node: nnir680469
+Node: What is nnir?680812
+Node: Basic Usage681349
+Node: Setting up nnir683346
+Node: Associating Engines684604
+Node: The imap Engine685926
+Node: The gmane Engine687688
+Node: The swish++ Engine688839
+Node: The swish-e Engine689543
+Node: The namazu Engine690227
+Node: The hyrex Engine692680
+Node: Customizations692872
+Node: nnmairix694384
+Node: About mairix695342
+Node: nnmairix requirements696925
+Node: What nnmairix does697984
+Node: Setting up mairix700788
+Node: Configuring nnmairix703807
+Node: nnmairix keyboard shortcuts706101
+Node: Propagating marks710546
+Node: nnmairix tips and tricks715879
+Node: nnmairix caveats719157
+Node: Various722727
+Node: Process/Prefix724238
+Node: Interactive726345
+Node: Symbolic Prefixes727519
+Node: Formatting Variables729058
+Node: Formatting Basics731037
+Node: Mode Line Formatting732043
+Node: Advanced Formatting732950
+Node: User-Defined Specs734773
+Node: Formatting Fonts735928
+Node: Positioning Point738153
+Node: Tabulation738928
+Node: Wide Characters739820
+Node: Window Layout740523
+Node: Faces and Fonts751467
+Node: Mode Lines751824
+Node: Highlighting and Menus753500
+Node: Daemons755758
+Node: Undo758549
+Node: Predicate Specifiers760154
+Node: Moderation760934
+Node: Fetching a Group762148
+Node: Image Enhancements762619
+Ref: Image Enhancements-Footnote-1763404
+Node: X-Face763474
+Node: Face768092
+Node: Smileys769441
+Node: Picons770936
+Node: Gravatars773618
+Node: XVarious774580
+Node: Fuzzy Matching775990
+Node: Thwarting Email Spam776780
+Node: The problem of spam778248
+Node: Anti-Spam Basics782806
+Node: SpamAssassin785143
+Node: Hashcash788235
+Node: Spam Package791397
+Node: Spam Package Introduction792049
+Node: Filtering Incoming Mail797643
+Node: Detecting Spam in Groups801757
+Node: Spam and Ham Processors803015
+Node: Spam Package Configuration Examples810970
+Node: Spam Back Ends817781
+Node: Blacklists and Whitelists818517
+Node: BBDB Whitelists821639
+Node: Gmane Spam Reporting823472
+Node: Anti-spam Hashcash Payments824927
+Node: Blackholes825550
+Node: Regular Expressions Header Matching827082
+Node: Bogofilter828180
+Node: SpamAssassin back end831581
+Node: ifile spam filtering833469
+Node: Spam Statistics Filtering834727
+Node: SpamOracle836667
+Node: Extending the Spam package841321
+Node: Spam Statistics Package845675
+Node: Creating a spam-stat dictionary847639
+Node: Splitting mail using spam-stat850511
+Node: Low-level interface to the spam-stat dictionary853133
+Node: The Gnus Registry856292
+Node: Gnus Registry Setup857944
+Node: Registry Article Refer Method860466
+Node: Fancy splitting to parent861797
+Node: Store custom flags and keywords863506
+Node: Store arbitrary data865291
+Node: Other modes866161
+Node: Various Various866957
+Node: The End871833
+Node: Appendices872486
+Node: XEmacs873224
+Node: History873639
+Node: Gnus Versions875303
+Node: Why?876946
+Node: Compatibility878319
+Node: Conformity881039
+Node: Emacsen883701
+Node: Gnus Development884152
+Node: Contributors886674
+Node: New Features893161
+Node: ding Gnus894028
+Node: September Gnus897202
+Node: Red Gnus902167
+Node: Quassia Gnus905900
+Node: Pterodactyl Gnus909104
+Node: Oort Gnus910805
+Node: No Gnus935162
+Node: Ma Gnus948430
+Node: On Writing Manuals948934
+Node: Terminology949886
+Node: Customization958050
+Node: Slow/Expensive Connection958665
+Node: Slow Terminal Connection960214
+Node: Little Disk Space961910
+Node: Slow Machine962950
+Node: Troubleshooting963483
+Node: Gnus Reference Guide968077
+Node: Gnus Utility Functions969477
+Node: Back End Interface972270
+Ref: Back End Interface-Footnote-1976296
+Node: Required Back End Functions976389
+Node: Optional Back End Functions984696
+Node: Error Messaging993866
+Node: Writing New Back Ends994965
+Node: Hooking New Back Ends Into Gnus1000450
+Node: Mail-like Back Ends1001914
+Node: Score File Syntax1003559
+Node: Headers1006977
+Node: Ranges1008232
+Node: Group Info1010282
+Node: Extended Interactive1013725
+Node: Emacs/XEmacs Code1015118
+Node: Various File Formats1017091
+Node: Active File Format1017389
+Node: Newsgroups File Format1018390
+Node: Emacs for Heathens1019069
+Node: Keystrokes1019891
+Node: Emacs Lisp1021794
+Node: Frequently Asked Questions1024124
+Node: FAQ - Changes1025664
+Node: FAQ - Introduction1026021
+Node: FAQ 1 - Installation FAQ1027750
+Node: FAQ 1-11028344
+Node: FAQ 1-21028780
+Node: FAQ 1-31029506
+Node: FAQ 1-41030061
+Node: FAQ 1-51031152
+Node: FAQ 1-61031680
+Node: FAQ 1-71032034
+Node: FAQ 2 - Startup / Group buffer1032412
+Node: FAQ 2-11033274
+Node: FAQ 2-21033899
+Node: FAQ 2-31034264
+Node: FAQ 2-41034733
+Node: FAQ 2-51035618
+Node: FAQ 3 - Getting Messages1035966
+Node: FAQ 3-11037333
+Node: FAQ 3-21037880
+Node: FAQ 3-31039274
+Node: FAQ 3-41039817
+Node: FAQ 3-51040385
+Node: FAQ 3-61040844
+Node: FAQ 3-71041403
+Node: FAQ 3-81042303
+Node: FAQ 3-91045498
+Node: FAQ 3-101047107
+Node: FAQ 3-111047470
+Node: FAQ 4 - Reading messages1048967
+Node: FAQ 4-11050898
+Node: FAQ 4-21052065
+Node: FAQ 4-31052557
+Node: FAQ 4-41052797
+Node: FAQ 4-51053044
+Node: FAQ 4-61053689
+Node: FAQ 4-71054295
+Node: FAQ 4-81054777
+Node: FAQ 4-91055465
+Node: FAQ 4-101058317
+Node: FAQ 4-111058941
+Node: FAQ 4-121059442
+Node: FAQ 4-131060384
+Node: FAQ 4-141061685
+Node: FAQ 4-151063818
+Node: FAQ 5 - Composing messages1066926
+Node: FAQ 5-11068623
+Node: FAQ 5-21069572
+Node: FAQ 5-31070194
+Node: FAQ 5-41071375
+Node: FAQ 5-51073441
+Node: FAQ 5-61074745
+Node: FAQ 5-71075392
+Node: FAQ 5-81077366
+Node: FAQ 5-91078855
+Node: FAQ 5-101079690
+Node: FAQ 5-111080093
+Node: FAQ 5-121080712
+Node: FAQ 5-131081050
+Node: FAQ 6 - Old messages1083037
+Node: FAQ 6-11083680
+Node: FAQ 6-21084644
+Node: FAQ 6-31086273
+Node: FAQ 6-41087937
+Node: FAQ 6-51088840
+Node: FAQ 6-61090149
+Node: FAQ 7 - Gnus in a dial-up environment1090645
+Node: FAQ 7-11091264
+Node: FAQ 7-21093026
+Node: FAQ 7-31094139
+Node: FAQ 7-41095578
+Node: FAQ 8 - Getting help1096122
+Node: FAQ 8-11096725
+Node: FAQ 8-21097322
+Node: FAQ 8-31097868
+Node: FAQ 8-41098164
+Node: FAQ 8-51099069
+Node: FAQ 8-61099399
+Node: FAQ 9 - Tuning Gnus1099620
+Node: FAQ 9-11099996
+Node: FAQ 9-21100957
+Node: FAQ 9-31102025
+Node: FAQ - Glossary1102406
+Node: GNU Free Documentation License1103451
+Node: Index1128603
+Node: Key Index1343564
 
 End Tag Table
 

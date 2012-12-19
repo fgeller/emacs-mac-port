@@ -319,7 +319,7 @@ File: emacs-mime.info,  Node: Display Customization,  Next: Files and Directorie
      Emacs does not enable scrolling, which means that you cannot see
      the whole image. To prevent this, the library tries to determine
      the image size before displaying it inline, and if it doesn't fit
-     the window, the library will display it externally (e.g. with
+     the window, the library will display it externally (e.g., with
      `ImageMagick' or `xv'). Setting this variable to `t' disables this
      check and makes the library display all inline images as inline,
      regardless of their size. If you set this variable to `resize',
@@ -356,7 +356,7 @@ File: emacs-mime.info,  Node: Display Customization,  Next: Files and Directorie
      `nil'.(2)
 
 `mm-w3m-safe-url-regexp'
-     A regular expression that matches safe URL names, i.e. URLs that
+     A regular expression that matches safe URL names, i.e., URLs that
      are unlikely to leak personal information when rendering HTML
      email (the default value is `\\`cid:').  If `nil' consider all
      URLs safe.  In Gnus, this will be overridden according to the value
@@ -417,7 +417,7 @@ File: emacs-mime.info,  Node: Files and Directories,  Next: New Viewers,  Prev: 
 
     `mm-file-name-delete-gotchas'
           Delete characters that could have unintended consequences
-          when used with flawed shell scripts, i.e. `|', `>' and `<';
+          when used with flawed shell scripts, i.e., `|', `>' and `<';
           and `-', `.' as the first character.
 
     `mm-file-name-delete-whitespace'
@@ -1259,13 +1259,13 @@ library does.
      of `rfc2047-encoded-word-regexp' is made loose.
 
 `rfc2047-encode-encoded-words'
-     The boolean variable specifies whether encoded words (e.g.
+     The boolean variable specifies whether encoded words (e.g.,
      `=?us-ascii?q?hello?=') should be encoded again.
      `rfc2047-encoded-word-regexp' is used to look for such words.
 
 `rfc2047-allow-irregular-q-encoded-words'
      The boolean variable specifies whether irregular Q encoded words
-     (e.g. `=?us-ascii?q?hello??=') should be decoded.  If it is
+     (e.g., `=?us-ascii?q?hello??=') should be decoded.  If it is
      non-`nil', `rfc2047-encoded-word-regexp-loose' is used instead of
      `rfc2047-encoded-word-regexp' to look for encoded words.
 
@@ -1410,7 +1410,7 @@ DECODED TIME
      valid, return a "zero" time.
 
 `time-less-p'
-     Take two times and say whether the first time is less (i. e.,
+     Take two times and say whether the first time is less (i.e.,
      earlier) than the second time.
 
 `time-since'
@@ -1418,7 +1418,7 @@ DECODED TIME
      time.
 
 `subtract-time'
-     Take two times and subtract the second from the first.  I. e.,
+     Take two times and subtract the second from the first.  I.e.,
      return the time between the two times.
 
 `days-between'
@@ -2335,35 +2335,35 @@ Node: Non-MIME4355
 Node: Handles5946
 Node: Display6803
 Node: Display Customization7529
-Ref: Display Customization-Footnote-114261
-Ref: Display Customization-Footnote-214341
-Node: Files and Directories14468
-Node: New Viewers16194
-Node: Composing17323
-Node: Simple MML Example18289
-Node: MML Definition18937
-Node: Advanced MML Example22763
-Node: Encoding Customization25508
-Node: Charset Translation29949
-Node: Conversion32490
-Node: Flowed text33616
-Node: Interface Functions34872
-Node: Basic Functions40435
-Node: rfc204541484
-Node: rfc223142004
-Node: ietf-drums43298
-Node: rfc204744388
-Node: time-date47197
-Node: qp50668
-Node: base6451640
-Node: binhex52598
-Node: uudecode52999
-Node: yenc53360
-Node: rfc184353643
-Node: mailcap54257
-Node: Standards55186
-Node: GNU Free Documentation License56612
-Node: Index81767
+Ref: Display Customization-Footnote-114263
+Ref: Display Customization-Footnote-214343
+Node: Files and Directories14470
+Node: New Viewers16197
+Node: Composing17326
+Node: Simple MML Example18292
+Node: MML Definition18940
+Node: Advanced MML Example22766
+Node: Encoding Customization25511
+Node: Charset Translation29952
+Node: Conversion32493
+Node: Flowed text33619
+Node: Interface Functions34875
+Node: Basic Functions40438
+Node: rfc204541487
+Node: rfc223142007
+Node: ietf-drums43301
+Node: rfc204744391
+Node: time-date47202
+Node: qp50671
+Node: base6451643
+Node: binhex52601
+Node: uudecode53002
+Node: yenc53363
+Node: rfc184353646
+Node: mailcap54260
+Node: Standards55189
+Node: GNU Free Documentation License56615
+Node: Index81770
 
 End Tag Table
 

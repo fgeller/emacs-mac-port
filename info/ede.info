@@ -1233,7 +1233,7 @@ types in `ede-project-autoload' using the utility
    The function `ede-directory-project-p' will call
 `ede-dir-to-projectfile' on every `ede-project-autoload' until one of
 them returns true.  The method `ede-dir-to-projectfile' in turn gets
-the `:proj-file' slot from the autoload.  If it is a string (ie, a
+the `:proj-file' slot from the autoload.  If it is a string (i.e., a
 project file name), it checks to see if that exists in BUFFER's
 directory.  If it is a function, then it calls that function and
 expects it to return a file name or nil.  If the file exists, then this
@@ -1360,10 +1360,10 @@ File: ede.info,  Node: Sourcecode objects,  Next: Compiler and Linker objects,  
 EDE projects track source file / target associates via source code
 objects.  The definitions for this is in `ede-source.el'.  A source
 code object contains methods that know how to identify a file as being
-of that class, (ie, a C file ends with `.c').  Some targets can handle
-many different types of sources which must all be compiled together.
-For example, a mixed C and C++ program would have instantiations of
-both sourcecode types.
+of that class, (i.e., a C file ends with `.c').  Some targets can
+handle many different types of sources which must all be compiled
+together.  For example, a mixed C and C++ program would have
+instantiations of both sourcecode types.
 
    When a target needs to know if it will accept a source file, it
 references its list of source code objects.  These objects then make
@@ -3979,47 +3979,47 @@ Node: Custom Locate37387
 Node: Extending EDE38866
 Node: Development Overview41534
 Node: Detecting a Project45801
-Node: User interface methods48849
-Node: Base project methods50077
-Node: Sourcecode objects51446
-Node: Compiler and Linker objects53191
-Node: Project55470
-Node: ede-project-placeholder55797
-Node: ede-project57801
-Node: ede-cpp-root-project66767
-Node: ede-simple-project70725
-Node: ede-simple-base-project71307
-Node: ede-proj-project71846
-Node: project-am-makefile77516
-Node: ede-step-project78593
-Node: Targets81984
-Node: ede-target82720
-Node: ede-proj-target88807
-Node: ede-proj-target-makefile94781
-Node: semantic-ede-proj-target-grammar97896
-Node: ede-proj-target-makefile-objectcode99285
-Node: ede-proj-target-makefile-archive100843
-Node: ede-proj-target-makefile-program101961
-Node: ede-proj-target-makefile-shared-object103857
-Node: ede-proj-target-elisp105552
-Node: ede-proj-target-elisp-autoloads107465
-Node: ede-proj-target-makefile-miscelaneous110843
-Node: ede-proj-target-makefile-info112048
-Node: ede-proj-target-scheme114472
-Node: project-am-target115239
-Node: project-am-objectcode116240
-Node: project-am-program117263
-Node: project-am-header-noinst117861
-Node: project-am-header-inst118528
-Node: project-am-lisp119186
-Node: project-am-texinfo119761
-Node: project-am-man120780
-Node: Sourcecode121325
-Node: ede-sourcecode121554
-Node: Compilers124208
-Node: ede-compilation-program124622
-Node: ede-compiler127845
-Node: ede-object-compiler130984
-Node: ede-linker131743
+Node: User interface methods48851
+Node: Base project methods50079
+Node: Sourcecode objects51448
+Node: Compiler and Linker objects53196
+Node: Project55475
+Node: ede-project-placeholder55802
+Node: ede-project57806
+Node: ede-cpp-root-project66772
+Node: ede-simple-project70730
+Node: ede-simple-base-project71312
+Node: ede-proj-project71851
+Node: project-am-makefile77521
+Node: ede-step-project78598
+Node: Targets81989
+Node: ede-target82725
+Node: ede-proj-target88812
+Node: ede-proj-target-makefile94786
+Node: semantic-ede-proj-target-grammar97901
+Node: ede-proj-target-makefile-objectcode99290
+Node: ede-proj-target-makefile-archive100848
+Node: ede-proj-target-makefile-program101966
+Node: ede-proj-target-makefile-shared-object103862
+Node: ede-proj-target-elisp105557
+Node: ede-proj-target-elisp-autoloads107470
+Node: ede-proj-target-makefile-miscelaneous110848
+Node: ede-proj-target-makefile-info112053
+Node: ede-proj-target-scheme114477
+Node: project-am-target115244
+Node: project-am-objectcode116245
+Node: project-am-program117268
+Node: project-am-header-noinst117866
+Node: project-am-header-inst118533
+Node: project-am-lisp119191
+Node: project-am-texinfo119766
+Node: project-am-man120785
+Node: Sourcecode121330
+Node: ede-sourcecode121559
+Node: Compilers124213
+Node: ede-compilation-program124627
+Node: ede-compiler127850
+Node: ede-object-compiler130989
+Node: ede-linker131748
 
 End Tag Table

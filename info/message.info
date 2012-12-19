@@ -148,7 +148,7 @@ should be.  If it does not, it should just return `nil', and the normal
 methods for determining the To header will be used.
 
    Each list element should be a cons, where the CAR should be the name
-of a header (e.g. `Cc') and the CDR should be the header value (e.g.
+of a header (e.g., `Cc') and the CDR should be the header value (e.g.,
 `larsi@ifi.uio.no').  All these headers will be inserted into the head
 of the outgoing mail.
 
@@ -364,7 +364,7 @@ useful:
      fragmented and very difficult to follow.
 
 
-   Gnus honors the MFT header in other's messages (i.e. while following
+   Gnus honors the MFT header in other's messages (i.e., while following
 up to someone else's post) and also provides support for generating
 sensible MFT headers for outgoing messages as well.
 
@@ -954,7 +954,7 @@ your PGP implementation, so we refer to it.
    If you have imported your old PGP 2.x key into GnuPG, and want to
 send signed and encrypted messages to your fellow PGP 2.x users, you'll
 discover that the receiver cannot understand what you send. One
-solution is to use PGP 2.x instead (e.g. if you use `pgg', set
+solution is to use PGP 2.x instead (e.g., if you use `pgg', set
 `pgg-default-scheme' to `pgp'). You could also convince your fellow PGP
 2.x users to convert to GnuPG.  As a final workaround, you can make the
 sign and encryption work in two steps; separately sign, then encrypt a
@@ -1384,7 +1384,7 @@ File: message.info,  Node: Mail Variables,  Next: News Headers,  Prev: Mail Head
      of strings, one string for each argument.  It may also be a
      function.
 
-     For e.g., if you wish to set the envelope sender address so that
+     E.g., if you wish to set the envelope sender address so that
      bounces go to the right place or to deal with listserv's usage of
      that address, you might set this variable to `'("-f"
      "you@some.where")'.
@@ -1451,7 +1451,7 @@ impossible, they will be prompted for.  The following symbols are valid:
      will be created based on the date, time, user name (for the local
      part) and the domain part.  For the domain part, message will look
      (in this order) at `message-user-fqdn', `system-name',
-     `mail-host-address' and `message-user-mail-address' (i.e.
+     `mail-host-address' and `message-user-mail-address' (i.e.,
      `user-mail-address') until a probably valid fully qualified domain
      name (FQDN) was found.
 
@@ -2993,46 +2993,46 @@ Node: Interface2641
 Node: New Mail Message3836
 Node: New News Message4203
 Node: Reply4601
-Node: Wide Reply5976
-Node: Followup7999
-Node: Canceling News8779
-Node: Superseding9964
-Node: Forwarding10623
-Node: Resending12176
-Node: Bouncing12536
-Node: Mailing Lists13112
-Node: Commands18314
-Node: Buffer Entry19057
-Node: Header Commands19733
-Node: Movement24605
-Node: Insertion25174
-Node: MIME26500
-Node: IDNA27708
-Node: Security29039
-Node: Signing and encryption29596
-Node: Using S/MIME32414
-Node: Using PGP/MIME35638
-Node: PGP Compatibility37366
-Node: Various Commands38867
-Node: Sending40645
-Node: Mail Aliases41060
-Node: Spelling42370
-Node: Variables43681
-Node: Message Headers44405
-Node: Mail Headers50676
-Node: Mail Variables51633
+Node: Wide Reply5978
+Node: Followup8001
+Node: Canceling News8781
+Node: Superseding9966
+Node: Forwarding10625
+Node: Resending12178
+Node: Bouncing12538
+Node: Mailing Lists13114
+Node: Commands18317
+Node: Buffer Entry19060
+Node: Header Commands19736
+Node: Movement24608
+Node: Insertion25177
+Node: MIME26503
+Node: IDNA27711
+Node: Security29042
+Node: Signing and encryption29599
+Node: Using S/MIME32417
+Node: Using PGP/MIME35641
+Node: PGP Compatibility37369
+Node: Various Commands38871
+Node: Sending40649
+Node: Mail Aliases41064
+Node: Spelling42374
+Node: Variables43685
+Node: Message Headers44409
+Node: Mail Headers50680
+Node: Mail Variables51637
 Node: News Headers55524
-Node: News Variables62525
-Node: Insertion Variables62935
-Node: Various Message Variables68232
-Node: Sending Variables73808
-Node: Message Buffers75120
-Node: Message Actions77258
-Node: Compatibility78735
-Node: Appendices79183
-Node: Responses79406
-Node: GNU Free Documentation License80764
-Node: Index105917
-Node: Key Index128408
+Node: News Variables62526
+Node: Insertion Variables62936
+Node: Various Message Variables68233
+Node: Sending Variables73809
+Node: Message Buffers75121
+Node: Message Actions77259
+Node: Compatibility78736
+Node: Appendices79184
+Node: Responses79407
+Node: GNU Free Documentation License80765
+Node: Index105918
+Node: Key Index128409
 
 End Tag Table

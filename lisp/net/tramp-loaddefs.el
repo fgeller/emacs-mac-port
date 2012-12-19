@@ -468,7 +468,7 @@ instead of the host name declared in TARGET-VEC.
 ;;;***
 
 ;;;### (autoloads (tramp-sh-file-name-handler tramp-remote-path tramp-terminal-type)
-;;;;;;  "tramp-sh" "tramp-sh.el" (20650 61387 498451 0))
+;;;;;;  "tramp-sh" "tramp-sh.el" (20661 34515 886991 0))
 ;;; Generated autoloads from tramp-sh.el
 
 (defvar tramp-terminal-type "dumb" "\
@@ -652,7 +652,7 @@ Email address to send bug reports to.")
 ;;;;;;  "sasl-cram.el" "sasl-digest.el" "sasl-ntlm.el" "sasl.el"
 ;;;;;;  "secrets.el" "snmp-mode.el" "soap-client.el" "soap-inspect.el"
 ;;;;;;  "socks.el" "telnet.el" "tls.el" "tramp-compat.el" "webjump.el"
-;;;;;;  "xesam.el" "zeroconf.el") (20656 58992 129147 76000))
+;;;;;;  "xesam.el" "zeroconf.el") (20684 34812 393848 678000))
 
 ;;;***
 

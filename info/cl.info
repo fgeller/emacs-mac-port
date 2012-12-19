@@ -177,10 +177,10 @@ this package prior to Emacs 24.3.  Nowadays, it is replaced by
 use different function names (in fact, `cl.el' mainly just defines
 aliases to the `cl-lib.el' definitions).  Where `cl-lib.el' defines a
 function called, for example, `cl-incf', `cl.el' uses the same name but
-without the `cl-' prefix, e.g. `incf' in this example.  There are a few
+without the `cl-' prefix, e.g., `incf' in this example.  There are a few
 exceptions to this.  First, functions such as `cl-defun' where the
 unprefixed version was already used for a standard Emacs Lisp function.
-In such cases, the `cl.el' version adds a `*' suffix, e.g. `defun*'.
+In such cases, the `cl.el' version adds a `*' suffix, e.g., `defun*'.
 Second, there are some obsolete features that are only implemented in
 `cl.el', not in `cl-lib.el', because they are replaced by other
 standard Emacs Lisp features.  Finally, in a very few cases the old
@@ -798,9 +798,9 @@ File: cl.info,  Node: Setf Extensions,  Next: Modify Macros,  Up: Generalized Va
 4.2.1 Setf Extensions
 ---------------------
 
-Several standard (e.g. `car') and Emacs-specific (e.g. `window-point')
-Lisp functions are `setf'-able by default.  This package defines `setf'
-handlers for several additional functions:
+Several standard (e.g., `car') and Emacs-specific (e.g.,
+`window-point') Lisp functions are `setf'-able by default.  This
+package defines `setf' handlers for several additional functions:
 
    * Functions from this package:
           cl-rest        cl-subseq      cl-get         cl-getf
@@ -4283,7 +4283,7 @@ the `cl.el' versions are not simply aliases to the `cl-lib.el' versions.
      C-language calls to the message routines rather than going through
      the Lisp `message' function.
 
-     Note that many primitives (e.g. `+') have special byte-compile
+     Note that many primitives (e.g., `+') have special byte-compile
      handling.  Attempts to redefine such functions using `flet' will
      fail if byte-compiled.
 
@@ -5196,65 +5196,65 @@ Node: Top1066
 Node: Overview3204
 Node: Usage5414
 Node: Organization5848
-Node: Naming Conventions8891
-Node: Program Structure10200
-Node: Argument Lists10627
-Node: Time of Evaluation19808
-Node: Predicates25736
-Node: Type Predicates26064
-Node: Equality Predicates30797
-Node: Control Structure32095
-Node: Assignment32944
-Node: Generalized Variables34187
-Node: Setf Extensions34970
-Node: Modify Macros39123
-Node: Variable Bindings45820
-Node: Dynamic Bindings46373
-Node: Function Bindings47207
-Node: Macro Bindings49766
-Node: Conditionals53049
-Node: Blocks and Exits55649
-Node: Iteration58685
-Node: Loop Facility63964
-Node: Loop Basics64864
-Node: Loop Examples67421
-Node: For Clauses69730
-Node: Iteration Clauses81596
-Node: Accumulation Clauses83466
-Node: Other Clauses85837
-Node: Multiple Values91932
-Node: Macros93477
-Node: Declarations96727
-Node: Symbols104568
-Node: Property Lists104891
-Node: Creating Symbols108121
-Node: Numbers110124
-Node: Predicates on Numbers110590
-Node: Numerical Functions111397
-Node: Random Numbers114708
-Node: Implementation Parameters117275
-Node: Sequences120448
-Node: Sequence Basics121140
-Node: Mapping over Sequences124701
-Node: Sequence Functions130844
-Node: Searching Sequences136443
-Node: Sorting Sequences139534
-Node: Lists142227
-Node: List Functions142675
-Node: Substitution of Expressions145404
-Node: Lists as Sets147342
-Node: Association Lists151140
-Node: Structures152625
-Node: Assertions167471
-Node: Efficiency Concerns169998
-Node: Common Lisp Compatibility174625
-Node: Porting Common Lisp177078
-Node: Obsolete Features186080
-Node: Obsolete Lexical Binding186743
-Node: Obsolete Macros190506
-Node: Obsolete Setf Customization193234
-Node: GNU Free Documentation License199716
-Node: Function Index224898
-Node: Variable Index239481
+Node: Naming Conventions8893
+Node: Program Structure10202
+Node: Argument Lists10629
+Node: Time of Evaluation19810
+Node: Predicates25738
+Node: Type Predicates26066
+Node: Equality Predicates30799
+Node: Control Structure32097
+Node: Assignment32946
+Node: Generalized Variables34189
+Node: Setf Extensions34972
+Node: Modify Macros39127
+Node: Variable Bindings45824
+Node: Dynamic Bindings46377
+Node: Function Bindings47211
+Node: Macro Bindings49770
+Node: Conditionals53053
+Node: Blocks and Exits55653
+Node: Iteration58689
+Node: Loop Facility63968
+Node: Loop Basics64868
+Node: Loop Examples67425
+Node: For Clauses69734
+Node: Iteration Clauses81600
+Node: Accumulation Clauses83470
+Node: Other Clauses85841
+Node: Multiple Values91936
+Node: Macros93481
+Node: Declarations96731
+Node: Symbols104572
+Node: Property Lists104895
+Node: Creating Symbols108125
+Node: Numbers110128
+Node: Predicates on Numbers110594
+Node: Numerical Functions111401
+Node: Random Numbers114712
+Node: Implementation Parameters117279
+Node: Sequences120452
+Node: Sequence Basics121144
+Node: Mapping over Sequences124705
+Node: Sequence Functions130848
+Node: Searching Sequences136447
+Node: Sorting Sequences139538
+Node: Lists142231
+Node: List Functions142679
+Node: Substitution of Expressions145408
+Node: Lists as Sets147346
+Node: Association Lists151144
+Node: Structures152629
+Node: Assertions167475
+Node: Efficiency Concerns170002
+Node: Common Lisp Compatibility174629
+Node: Porting Common Lisp177082
+Node: Obsolete Features186084
+Node: Obsolete Lexical Binding186747
+Node: Obsolete Macros190510
+Node: Obsolete Setf Customization193239
+Node: GNU Free Documentation License199721
+Node: Function Index224903
+Node: Variable Index239486
 
 End Tag Table
