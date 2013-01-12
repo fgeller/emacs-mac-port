@@ -64,11 +64,17 @@
    Plan A.
    	Without clone and compile, just download from
 
+        https://www.dropbox.com/s/xk7b53scwuipvfa/emacs-mac-port-24.2.92-mac-3.92.zip
+
+        Previous versions:
         https://www.dropbox.com/s/ql99ytm7h5km633/emacs-mac-port-24.2.91-mac-3.91.zip
 
         If you prefer the official Emacs icon (the "E" and a pan), please download this
 
-       https://www.dropbox.com/s/sx5tpej6ojczbvp/emacs-mac-port-24.2.91-mac-3.91-official-icon.zip
+        https://www.dropbox.com/s/qm5uhpye6rx59p7/emacs-mac-port-24.2.92-mac-3.92-official-icon.zip
+
+        Previous versions:
+        https://www.dropbox.com/s/sx5tpej6ojczbvp/emacs-mac-port-24.2.91-mac-3.91-official-icon.zip
 
     * Tested on Mac OS X 10.8.2/10.7.5*
 	
