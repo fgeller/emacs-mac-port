@@ -1,7 +1,9 @@
-This is /home/cyd/emacs/doc/misc/../../info/speedbar.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/speedbar.texi.
+This is
+/misc/emacs/bzr/emacs24-merge/doc/misc/../../info/speedbar.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/speedbar.texi.
 
-Copyright (C) 1999-2012  Free Software Foundation, Inc.
+Copyright (C) 1999-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -12,8 +14,7 @@ Copyright (C) 1999-2012  Free Software Foundation, Inc.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
@@ -52,7 +53,7 @@ Expanding refers to clicking on an expansion button to display an
 expanded summary of the entry the expansion button is on.  *Note Basic
 Navigation::.
 
-   Copyright (C) 1999-2012  Free Software Foundation, Inc.
+   Copyright (C) 1999-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -63,8 +64,7 @@ Navigation::.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -1788,33 +1788,33 @@ Concept Index
 
 
 Tag Table:
-Node: Top989
-Node: Introduction3565
-Node: Basic Navigation5092
-Node: Basic Key Bindings5537
-Node: Basic Visuals7678
-Node: Mouse Bindings11633
-Node: Displays Submenu13258
-Node: File Mode13938
-Node: Directory Display14545
-Node: Hidden Files17585
-Node: File Key Bindings18806
-Node: Buffer Mode20240
-Node: Minor Modes21355
-Node: RMAIL22214
-Node: Info23112
-Node: GDB23719
-Node: Customizing24517
-Node: Frames and Faces25328
-Node: Tag Hierarchy Methods26666
-Node: Version Control28892
-Node: Hooks30234
-Node: Extending31490
-Node: Minor Display Modes32561
-Node: Major Display Modes34552
-Node: Tagging Extensions39327
-Node: Creating a display40734
-Node: GNU Free Documentation License45277
-Node: Index70448
+Node: Top921
+Node: Introduction3401
+Node: Basic Navigation4928
+Node: Basic Key Bindings5373
+Node: Basic Visuals7514
+Node: Mouse Bindings11469
+Node: Displays Submenu13094
+Node: File Mode13774
+Node: Directory Display14381
+Node: Hidden Files17421
+Node: File Key Bindings18642
+Node: Buffer Mode20076
+Node: Minor Modes21191
+Node: RMAIL22050
+Node: Info22948
+Node: GDB23555
+Node: Customizing24353
+Node: Frames and Faces25164
+Node: Tag Hierarchy Methods26502
+Node: Version Control28728
+Node: Hooks30070
+Node: Extending31326
+Node: Minor Display Modes32397
+Node: Major Display Modes34388
+Node: Tagging Extensions39163
+Node: Creating a display40570
+Node: GNU Free Documentation License45113
+Node: Index70284
 
 End Tag Table

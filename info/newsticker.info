@@ -1,9 +1,11 @@
-This is /home/cyd/emacs/doc/misc/../../info/newsticker.info, produced
-by makeinfo version 4.13 from /home/cyd/emacs/doc/misc/newsticker.texi.
+This is
+/misc/emacs/bzr/emacs24-merge/doc/misc/../../info/newsticker.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/newsticker.texi.
 
 This manual is for Newsticker (version 1.99, June 2008).
 
-Copyright (C) 2004-2012 Free Software Foundation, Inc.
+Copyright (C) 2004-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -14,8 +16,7 @@ Copyright (C) 2004-2012 Free Software Foundation, Inc.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs network features
 START-INFO-DIR-ENTRY
@@ -30,7 +31,7 @@ Newsticker
 
 This manual is for Newsticker (version 1.99, June 2008).
 
-Copyright (C) 2004-2012 Free Software Foundation, Inc.
+Copyright (C) 2004-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -41,8 +42,7 @@ Copyright (C) 2004-2012 Free Software Foundation, Inc.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -116,8 +116,8 @@ want to get the `net-utils' package which contains `xml.el' for XEmacs.
    Newsticker retrieves headlines either via Emacs's built-in retrieval
 functions, by an arbitrary external program that retrieves files via
 http and prints them to stdout (like wget
-(http://www.gnu.org/software/wget/wget.html), or - on a per feed basis
-- via an arbitrary Lisp command.
+(http://www.gnu.org/software/wget/wget.html), or--on a per feed
+basis--via an arbitrary Lisp command.
 
 
 File: newsticker.info,  Node: Installation,  Next: Usage,  Prev: Requirements,  Up: Top
@@ -764,14 +764,14 @@ Index
 
 
 Tag Table:
-Node: Top1047
-Node: Overview2362
-Node: Requirements3975
-Node: Installation4707
-Node: Usage5183
-Node: Configuration6505
-Node: Remarks9313
-Node: GNU Free Documentation License9492
-Node: Index34663
+Node: Top980
+Node: Overview2200
+Node: Requirements3813
+Node: Installation4543
+Node: Usage5019
+Node: Configuration6341
+Node: Remarks9149
+Node: GNU Free Documentation License9328
+Node: Index34499
 
 End Tag Table

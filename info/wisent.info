@@ -1,7 +1,8 @@
-This is /home/cyd/emacs/doc/misc/../../info/wisent.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/wisent.texi.
+This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/wisent.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/wisent.texi.
 
-Copyright (C) 1988-1993, 1995, 1998-2004, 2007, 2012 Free Software
+Copyright (C) 1988-1993, 1995, 1998-2004, 2007, 2012-2013 Free Software
 Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
@@ -13,8 +14,7 @@ Foundation, Inc.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
@@ -37,8 +37,8 @@ in Emacs buffers.
    It also describes how Wisent is used with the Semantic tool set
 described in the *note Semantic Manual: (semantic)Top.
 
-   Copyright (C) 1988-1993, 1995, 1998-2004, 2007, 2012 Free Software
-Foundation, Inc.
+   Copyright (C) 1988-1993, 1995, 1998-2004, 2007, 2012-2013 Free
+Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -49,8 +49,7 @@ Foundation, Inc.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -72,7 +71,7 @@ GNU Compiler Compiler Bison. Its code is a port of the C code of GNU
 Bison 1.28 & 1.31.
 
    For more details on the basic concepts for understanding Wisent, it
-is worthwhile to read the *note Bison Manual: Top.
+is worthwhile to read the *note Bison Manual: (bison)Top.
 
    Wisent can generate compilers compatible with the Semantic tool set.
 See the *note Semantic Manual: (semantic)Top.
@@ -856,7 +855,6 @@ lookaheads.
          $default    reduce using rule 2 (exp)
 
 
-
      state 9
 
          exp  ->  exp . '+' exp   (rule 1)
@@ -869,7 +867,6 @@ lookaheads.
 
          '/' [reduce using rule 3 (exp)]
          $default    reduce using rule 3 (exp)
-
 
 
      state 10
@@ -2299,32 +2296,32 @@ Index
 
 
 Tag Table:
-Node: Top1019
-Node: Wisent Overview2396
-Node: Wisent Grammar4610
-Node: Grammar format5847
-Ref: action11920
-Node: Example14158
-Node: Compiling a grammar16202
-Node: Conflicts18303
-Node: Grammar Debugging19885
-Node: Understanding the automaton21253
-Node: Wisent Parsing30920
-Node: Writing a lexer33428
-Node: Actions goodies35047
-Node: Report errors35766
-Node: Error recovery37369
-Ref: wisent-skip-token41713
-Node: Debugging actions42887
-Node: Wisent Semantic44730
-Node: Grammar styles45574
-Node: Iterative style46109
-Node: Bison style48485
-Node: Mixed style50168
-Node: Start nonterminals52778
-Node: Useful functions55627
-Node: Wisent Lex56180
-Node: GNU Free Documentation License57613
-Node: Index82788
+Node: Top957
+Node: Wisent Overview2244
+Node: Wisent Grammar4465
+Node: Grammar format5702
+Ref: action11775
+Node: Example14013
+Node: Compiling a grammar16057
+Node: Conflicts18158
+Node: Grammar Debugging19740
+Node: Understanding the automaton21108
+Node: Wisent Parsing30773
+Node: Writing a lexer33281
+Node: Actions goodies34900
+Node: Report errors35619
+Node: Error recovery37222
+Ref: wisent-skip-token41566
+Node: Debugging actions42740
+Node: Wisent Semantic44583
+Node: Grammar styles45427
+Node: Iterative style45962
+Node: Bison style48338
+Node: Mixed style50021
+Node: Start nonterminals52631
+Node: Useful functions55480
+Node: Wisent Lex56033
+Node: GNU Free Documentation License57466
+Node: Index82641
 
 End Tag Table

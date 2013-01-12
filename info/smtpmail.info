@@ -1,7 +1,9 @@
-This is /home/cyd/emacs/doc/misc/../../info/smtpmail.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/smtpmail.texi.
+This is
+/misc/emacs/bzr/emacs24-merge/doc/misc/../../info/smtpmail.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/smtpmail.texi.
 
-Copyright (C) 2003-2012 Free Software Foundation, Inc.
+Copyright (C) 2003-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -12,8 +14,7 @@ Copyright (C) 2003-2012 Free Software Foundation, Inc.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs lisp libraries
 START-INFO-DIR-ENTRY
@@ -26,7 +27,7 @@ File: smtpmail.info,  Node: Top,  Next: How Mail Works,  Up: (dir)
 Emacs SMTP Library
 ******************
 
-Copyright (C) 2003-2012 Free Software Foundation, Inc.
+Copyright (C) 2003-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -37,8 +38,7 @@ Copyright (C) 2003-2012 Free Software Foundation, Inc.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -69,8 +69,8 @@ them on.  The communication between a mail host and other clients does
 not necessarily involve SMTP, however.  Here is short overview of what
 is involved.
 
-   The mail program -- also called a mail user agent (MUA) -- usually
-sends outgoing mail to a mail host.  When your computer is permanently
+   The mail program--also called a mail user agent (MUA)--usually sends
+outgoing mail to a mail host.  When your computer is permanently
 connected to the internet, it might even be a mail host itself.  In
 this case, the MUA will pipe mail to the `/usr/lib/sendmail'
 application.  It will take care of your mail and pass it on to the next
@@ -250,7 +250,7 @@ an encrypted channel for the rest of the process.
 the SMTP library uses.  The default value is `nil', which means to use
 a plain connection, but try to switch to a STARTTLS encrypted
 connection if the server supports it.  Other possible values are:
-`starttls' - insist on STARTTLS; `ssl' - use TLS/SSL; and `plain' - no
+`starttls' to insist on STARTTLS; `ssl' to use TLS/SSL; and `plain' for
 encryption.
 
    Use of any form of TLS/SSL requires support in Emacs.  You can either
@@ -915,16 +915,16 @@ File: smtpmail.info,  Node: Index,  Prev: GNU Free Documentation License,  Up: T
 
 
 Tag Table:
-Node: Top1000
-Node: How Mail Works2402
-Node: Emacs Speaks SMTP5180
-Node: Authentication8783
-Node: Encryption10809
-Ref: Encryption-Footnote-113042
-Node: Queued delivery13088
-Node: Server workarounds14348
-Node: Debugging15549
-Node: GNU Free Documentation License16691
-Node: Index41844
+Node: Top933
+Node: How Mail Works2240
+Node: Emacs Speaks SMTP5014
+Node: Authentication8617
+Node: Encryption10643
+Ref: Encryption-Footnote-112877
+Node: Queued delivery12923
+Node: Server workarounds14183
+Node: Debugging15384
+Node: GNU Free Documentation License16526
+Node: Index41679
 
 End Tag Table

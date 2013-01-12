@@ -1,10 +1,11 @@
-This is /home/cyd/emacs/doc/misc/../../info/sc.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/sc.texi.
+This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/sc.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/sc.texi.
 
 This document describes Supercite, an Emacs package for citing and
 attributing replies to mail and news messages.
 
-   Copyright (C) 1993, 2001-2012 Free Software Foundation, Inc.
+   Copyright (C) 1993, 2001-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -15,8 +16,7 @@ attributing replies to mail and news messages.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs network features
 START-INFO-DIR-ENTRY
@@ -33,7 +33,7 @@ Supercite
 This document describes Supercite, an Emacs package for citing and
 attributing replies to mail and news messages.
 
-   Copyright (C) 1993, 2001-2012 Free Software Foundation, Inc.
+   Copyright (C) 1993, 2001-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -44,8 +44,7 @@ attributing replies to mail and news messages.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
    The manual is divided into the following chapters.
 
@@ -1236,8 +1235,8 @@ modify these variables, or you could modify the default citing frame.
 Alternatively, you could set up association lists of frames for
 recognizing specific alternative forms.
 
-   For each of the actions - citing, unciting, and reciting - an alist
-is consulted to find the frame to use (`sc-cite-frame-alist',
+   For each of the actions--citing, unciting, and reciting--an alist is
+consulted to find the frame to use (`sc-cite-frame-alist',
 `sc-uncite-frame-alist', and `sc-recite-frame-alist' respectively).
 These frames can contain alists of the form:
 
@@ -2531,41 +2530,41 @@ each appears under its `sc-'VARIABLE name and its VARIABLE name.
 
 
 Tag Table:
-Node: Top1187
-Node: Introduction2560
-Node: Usage Overview3587
-Node: What Supercite Does Not Do4733
-Node: What Supercite Does5870
-Node: Citations8691
-Node: Citation Elements10996
-Node: Recognizing Citations12866
-Node: Information Keys and the Info Alist14604
-Node: Reference Headers17183
-Node: The Built-in Header Rewrite Functions18734
-Node: Electric References21163
-Node: Getting Connected24019
-Node: Replying and Yanking27152
-Node: Reply Buffer Initialization27472
-Node: Filling Cited Text34336
-Node: Selecting an Attribution37782
-Node: Attribution Preferences38655
-Node: Anonymous Attributions42543
-Node: Author Names45589
-Node: Configuring the Citation Engine48034
-Node: Using Regi49795
-Node: Frames You Can Customize53635
-Node: Post-yank Formatting Commands56130
-Node: Citing Commands57293
-Node: Insertion Commands59471
-Node: Variable Toggling Shortcuts60416
-Node: Mail Field Commands62781
-Node: Miscellaneous Commands65123
-Node: Hints to MUA Authors65523
-Node: Thanks and History69204
-Node: GNU Free Documentation License71265
-Node: Concept Index96447
-Node: Command Index104306
-Node: Key Index111436
-Node: Variable Index113814
+Node: Top1120
+Node: Introduction2398
+Node: Usage Overview3425
+Node: What Supercite Does Not Do4571
+Node: What Supercite Does5708
+Node: Citations8529
+Node: Citation Elements10834
+Node: Recognizing Citations12704
+Node: Information Keys and the Info Alist14442
+Node: Reference Headers17021
+Node: The Built-in Header Rewrite Functions18572
+Node: Electric References21001
+Node: Getting Connected23857
+Node: Replying and Yanking26990
+Node: Reply Buffer Initialization27310
+Node: Filling Cited Text34174
+Node: Selecting an Attribution37620
+Node: Attribution Preferences38493
+Node: Anonymous Attributions42381
+Node: Author Names45427
+Node: Configuring the Citation Engine47872
+Node: Using Regi49633
+Node: Frames You Can Customize53473
+Node: Post-yank Formatting Commands55966
+Node: Citing Commands57129
+Node: Insertion Commands59307
+Node: Variable Toggling Shortcuts60252
+Node: Mail Field Commands62617
+Node: Miscellaneous Commands64959
+Node: Hints to MUA Authors65359
+Node: Thanks and History69040
+Node: GNU Free Documentation License71101
+Node: Concept Index96283
+Node: Command Index104142
+Node: Key Index111272
+Node: Variable Index113650
 
 End Tag Table

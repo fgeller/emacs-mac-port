@@ -1,7 +1,8 @@
-This is /home/cyd/emacs/doc/misc/../../info/dired-x.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/dired-x.texi.
+This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/dired-x.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/dired-x.texi.
 
-Copyright (C) 1994-1995, 1999, 2001-2012 Free Software Foundation, Inc.
+Copyright (C) 1994-1995, 1999, 2001-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -12,8 +13,7 @@ Copyright (C) 1994-1995, 1999, 2001-2012 Free Software Foundation, Inc.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
@@ -31,10 +31,10 @@ provided by the file `dired-x.el'.
 
    * Based on `dired.texi' by Sebastian Kremer <sk@thp.uni-koeln.de>
 
-   * For `dired-x.el' as distributed with GNU Emacs 24.2.91.
+   * For `dired-x.el' as distributed with GNU Emacs 24.2.92.
 
 
-   Copyright (C) 1994-1995, 1999, 2001-2012 Free Software Foundation,
+   Copyright (C) 1994-1995, 1999, 2001-2013 Free Software Foundation,
 Inc.
 
      Permission is granted to copy, distribute and/or modify this
@@ -46,8 +46,7 @@ Inc.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -1598,32 +1597,32 @@ Variable Index
 
 
 Tag Table:
-Node: Top995
-Node: Introduction2416
-Node: Features2734
-Node: Technical Details3616
-Node: Installation4307
-Node: Optional Installation Dired Jump5413
-Node: Optional Installation File At Point6188
-Node: Omitting Files in Dired6921
-Node: Omitting Variables8414
-Node: Omitting Examples11322
-Node: Omitting Technical12680
-Node: Local Variables13082
-Node: Shell Command Guessing15110
-Node: Virtual Dired18372
-Node: Advanced Mark Commands19902
-Node: Advanced Cleaning Functions21306
-Node: Advanced Cleaning Variables22117
-Node: Special Marking Function23245
-Node: Multiple Dired Directories24813
-Node: Find File At Point25632
-Node: Miscellaneous Commands28393
-Node: Bugs31652
-Node: GNU Free Documentation License31913
-Node: Concept Index57086
-Node: Command Index61388
-Node: Key Index64760
-Node: Variable Index66919
+Node: Top928
+Node: Introduction2254
+Node: Features2572
+Node: Technical Details3454
+Node: Installation4145
+Node: Optional Installation Dired Jump5251
+Node: Optional Installation File At Point6026
+Node: Omitting Files in Dired6759
+Node: Omitting Variables8252
+Node: Omitting Examples11160
+Node: Omitting Technical12518
+Node: Local Variables12920
+Node: Shell Command Guessing14948
+Node: Virtual Dired18210
+Node: Advanced Mark Commands19740
+Node: Advanced Cleaning Functions21144
+Node: Advanced Cleaning Variables21955
+Node: Special Marking Function23083
+Node: Multiple Dired Directories24651
+Node: Find File At Point25470
+Node: Miscellaneous Commands28231
+Node: Bugs31490
+Node: GNU Free Documentation License31751
+Node: Concept Index56924
+Node: Command Index61226
+Node: Key Index64598
+Node: Variable Index66757
 
 End Tag Table

@@ -1,7 +1,8 @@
-This is /home/cyd/emacs/doc/misc/../../info/viper.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/viper.texi.
+This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/viper.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/viper.texi.
 
-Copyright (C) 1995-1997, 2001-2012 Free Software Foundation, Inc.
+Copyright (C) 1995-1997, 2001-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -12,8 +13,7 @@ Copyright (C) 1995-1997, 2001-2012 Free Software Foundation, Inc.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
@@ -49,7 +49,7 @@ is based on VIP version 3.5 by Masahiko Sato and VIP version 4.4 by
 Aamod Sane.  About 15% of the code still comes from those older
 packages.
 
-   Viper is intended to be usable without reading this manual -- the
+   Viper is intended to be usable without reading this manual; the
 defaults are set to make Viper as close to Vi as possible.  At startup,
 Viper will try to set the most appropriate default environment for you,
 based on your familiarity with Emacs.  It will also tell you the basic
@@ -65,7 +65,7 @@ may be visited as needed.
 the current address for Viper bug reports.  Please use the Ex command
 `:submitReport' for this purpose.
 
-   Copyright (C) 1995-1997, 2001-2012 Free Software Foundation, Inc.
+   Copyright (C) 1995-1997, 2001-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -76,8 +76,7 @@ the current address for Viper bug reports.  Please use the Ex command
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -345,7 +344,7 @@ meaning of the various keys in those special modes (typing `C-h m' in a
 buffer provides help with key bindings for the major mode of that
 buffer).
 
-   If you switch to Vi in Dired or similar modes--no harm is done.  It
+   If you switch to Vi in Dired or similar modes, no harm is done.  It
 is just that the special key bindings provided by those modes will be
 temporarily overshadowed by Viper's bindings.  Switching back to
 Viper's Emacs state will revive the environment provided by the current
@@ -1470,7 +1469,7 @@ get the full list of Vi variables, type `:se <SPC> <TAB>'.
 `viper-search-scroll-threshold 2'
      If search lands within this many lines of the window top or
      bottom, the window will be scrolled up or down by about 1/7-th of
-     its size, to reveal the context.  If the value is negative--don't
+     its size, to reveal the context.  If the value is negative, don't
      scroll.
 
 `viper-tags-file-name "TAGS"'
@@ -1778,7 +1777,8 @@ keymaps, since the global keymap has the lowest priority.  To make sure
 that nothing will override a binding in Emacs state, you can write this:
      (define-key viper-emacs-global-user-map "\C-c m" 'smail)
    To customize the binding for `C-h' in Insert state:
-     (define-key viper-insert-global-user-map "\C-h" 'my-del-backwards-function)
+     (define-key viper-insert-global-user-map "\C-h"
+       'my-del-backwards-function)
    Each Emacs command key calls some Lisp function.  If you have
 enabled the Help, (*note Rudimentary Changes::) `C-h k' will show you
 the function for each specific key; `C-h b' will show all bindings, and
@@ -1817,7 +1817,8 @@ Dired functions, the trick can be accomplished via the following code:
      (setq my-dired-vi-purist-map (make-sparse-keymap))
      (define-key my-dired-vi-purist-map "k" 'viper-previous-line)
      (define-key my-dired-vi-purist-map "l" 'viper-forward-char)
-     (viper-modify-major-mode 'dired-mode 'emacs-state my-dired-vi-purist-map)
+     (viper-modify-major-mode 'dired-mode
+                              'emacs-state my-dired-vi-purist-map)
 
    Yet another way to customize key bindings in a major mode is to edit
 the list `viper-major-mode-modifier-list' using the customization
@@ -2420,7 +2421,7 @@ should type `C-x q' (for confirmation) or `C-u C-x q' (for prompt).
 For details, *note Customization: (emacs)Keyboard Macro Query.
 
    When the user finishes defining a macro (which is done by typing
-`C-x)' -- a departure from Vi), you will be asked whether you want this
+`C-x)', a departure from Vi), you will be asked whether you want this
 macro to be global, mode-specific, or buffer-specific.  You will also be
 given a chance to save the macro in your `~/.viper' file.  This is the
 easiest way to save a macro and make it permanently available.  If you
@@ -3028,7 +3029,7 @@ Emacs Preliminaries::, and *Note Basics::, for explanation.  Also see
 `'<a-z>'
      Go to specified Viper mark.
 
-`'
+``<a-z>'
      Go to specified Viper mark and go to the first CHAR on line.
    
 
@@ -3175,7 +3176,7 @@ File: viper.info,  Node: Changing Text,  Next: Search and Replace,  Prev: Deleti
 -------------------
 
 `<count>  r<char>'
-     Replace <count> chars by <char> - no <esc>.
+     Replace <count> chars by <char>; no <esc>.
 
 `<count>  R'
      Overwrite the rest of the line, appending change COUNT - 1 times.
@@ -3420,8 +3421,8 @@ File: viper.info,  Node: Display,  Next: File and Buffer Handling,  Prev: Text H
      At user levels 2 and higher, abort the current command.
 
 `C-c g'
-     Give file name, status, current line number and relative position
-     - all user levels.
+     Give file name, status, current line number and relative
+     position--all user levels.
 
 `C-l'
      Refresh the screen.
@@ -3548,7 +3549,7 @@ you type `1:w' you would see `:11,22w' in the minibuffer.
      `:w![<file>]' and `:q'.
 
 `:pre'
-     Preserve the file - autosave buffers.
+     Preserve the file--autosave buffers.
 
 `:rec'
      Recover file from autosave.
@@ -3740,7 +3741,7 @@ File: viper.info,  Node: Options,  Next: Emacs Related Commands,  Prev: Shell Co
 
 `autoindent'
 `ai'
-     autoindent - In append mode after a <cr> the cursor will move
+     autoindent: In append mode after a <cr> the cursor will move
      directly below the first character on the previous line.  This
      setting affects the current buffer only.
 
@@ -3758,7 +3759,7 @@ File: viper.info,  Node: Options,  Next: Emacs Related Commands,  Prev: Shell Co
 
 `ignorecase'
 `ic'
-     ignorecase - No distinction between upper and lower cases when
+     ignorecase: No distinction between upper and lower cases when
      searching.
 
 `noignorecase'
@@ -3776,7 +3777,7 @@ File: viper.info,  Node: Options,  Next: Emacs Related Commands,  Prev: Shell Co
 
 `readonly'
 `ro'
-     readonly - The file is not to be changed.  If the user attempts to
+     readonly: The file is not to be changed.  If the user attempts to
      write to this file, confirmation will be requested.
 
 `noreadonly'
@@ -3785,16 +3786,16 @@ File: viper.info,  Node: Options,  Next: Emacs Related Commands,  Prev: Shell Co
 
 `shell=<string>'
 `sh=<string>'
-     shell - The program to be used for shell escapes (default `$SHELL'
+     shell: The program to be used for shell escapes (default `$SHELL'
      (default `/bin/sh')).
 
 `shiftwidth=<count>'
 `sw=<count>'
-     shiftwidth - Gives the shiftwidth (default 8 positions).
+     shiftwidth: Gives the shiftwidth (default 8 positions).
 
 `showmatch'
 `sm'
-     showmatch - Whenever you append a `)', Vi shows its match if it's
+     showmatch: Whenever you append a `)', Vi shows its match if it's
      on the same page; also with `{' and `}'.  If there's no match, Vi
      will beep.
 
@@ -3804,7 +3805,7 @@ File: viper.info,  Node: Options,  Next: Emacs Related Commands,  Prev: Shell Co
 
 `tabstop=<count>'
 `ts=<count>'
-     tabstop - The length of a <ht>; warning: this is only IN the
+     tabstop: The length of a <ht>; warning: this is only IN the
      editor, outside of it <ht>s have their normal length (default 8
      positions).  This setting affects the current buffer only.
 
@@ -3814,12 +3815,12 @@ File: viper.info,  Node: Options,  Next: Emacs Related Commands,  Prev: Shell Co
 
 `wrapmargin=<count>'
 `wm=<count>'
-     wrapmargin - In append mode Vi automatically puts a <lf> whenever
+     wrapmargin: In append mode Vi automatically puts a <lf> whenever
      there is a <sp> or <ht> within <wm> columns from the right margin.
 
 `wrapscan'
 `ws'
-     wrapscan - When searching, the end is considered `stuck' to the
+     wrapscan: When searching, the end is considered `stuck' to the
      begin of the file.
 
 `nowrapscan'
@@ -4764,7 +4765,7 @@ Function Index
 * :global:                               Search and Replace.  (line  81)
 * :k:                                    Marking.             (line  49)
 * :make:                                 Shell Commands.      (line  56)
-* :map:                                  Key Bindings.        (line 124)
+* :map:                                  Key Bindings.        (line 126)
 * :map <char> <seq>:                     Mapping.             (line  59)
 * :map! <char> <seq>:                    Mapping.             (line  59)
 * :mark:                                 Marking.             (line  49)
@@ -4873,7 +4874,7 @@ Function Index
                                                               (line 108)
 * toggle-viper-mode <1>:                 Viper Specials.      (line 193)
 * toggle-viper-mode:                     States in Viper.     (line   6)
-* viper-add-local-keys:                  Key Bindings.        (line 183)
+* viper-add-local-keys:                  Key Bindings.        (line 185)
 * viper-buffer-search-enable:            Viper Specials.      (line  21)
 * viper-describe-kbd-macros:             Vi Macros.           (line 253)
 * viper-glob-function:                   Rudimentary Changes. (line 180)
@@ -4883,7 +4884,7 @@ Function Index
                                                               (line 108)
 * viper-mode:                            Packages that Change Keymaps.
                                                               (line 108)
-* viper-modify-major-mode:               Key Bindings.        (line  82)
+* viper-modify-major-mode:               Key Bindings.        (line  83)
 * viper-mouse-click-insert-word:         Viper Specials.      (line 311)
 * viper-mouse-click-search-word:         Viper Specials.      (line 311)
 * viper-set-emacs-state-searchstyle-macros: Viper Specials.   (line  75)
@@ -4896,7 +4897,7 @@ Function Index
 * viper-set-syntax-preference:           Movement and Markers.
                                                               (line  49)
 * viper-unrecord-kbd-macro:              Vi Macros.           (line 126)
-* viper-zap-local-keys:                  Key Bindings.        (line 183)
+* viper-zap-local-keys:                  Key Bindings.        (line 185)
 
 
 File: viper.info,  Node: Variable Index,  Next: Package Index,  Prev: Function Index,  Up: Top
@@ -4910,8 +4911,8 @@ Variable Index
 * buffer-read-only:                      Rudimentary Changes. (line 339)
 * ex-cycle-other-window:                 Rudimentary Changes. (line 339)
 * ex-cycle-through-non-files:            Rudimentary Changes. (line 339)
-* function-key-map:                      Key Bindings.        (line 183)
-* input-decode-map:                      Key Bindings.        (line 183)
+* function-key-map:                      Key Bindings.        (line 185)
+* input-decode-map:                      Key Bindings.        (line 185)
 * viper-allow-multiline-replace-regions: Rudimentary Changes. (line 339)
 * viper-always <1>:                      Packages that Change Keymaps.
                                                               (line 108)
@@ -4925,7 +4926,7 @@ Variable Index
 * viper-delete-backwards-in-replace:     Rudimentary Changes. (line 339)
 * viper-dired-modifier-map:              Viper Specials.      (line  67)
 * viper-electric-mode:                   Rudimentary Changes. (line 339)
-* viper-emacs-global-user-map:           Key Bindings.        (line 183)
+* viper-emacs-global-user-map:           Key Bindings.        (line 185)
 * viper-emacs-state-cursor-color:        Rudimentary Changes. (line 265)
 * viper-emacs-state-hook:                Rudimentary Changes. (line 339)
 * viper-emacs-state-mode-list:           Packages that Change Keymaps.
@@ -4934,7 +4935,7 @@ Variable Index
 * viper-ex-style-editing:                Rudimentary Changes. (line 339)
 * viper-ex-style-motion:                 Rudimentary Changes. (line 339)
 * viper-fast-keyseq-timeout:             Rudimentary Changes. (line 339)
-* viper-insert-global-user-map:          Key Bindings.        (line 183)
+* viper-insert-global-user-map:          Key Bindings.        (line 185)
 * viper-insert-state-cursor-color:       Rudimentary Changes. (line 261)
 * viper-insert-state-hook:               Rudimentary Changes. (line 339)
 * viper-insert-state-mode-list:          Packages that Change Keymaps.
@@ -4942,7 +4943,7 @@ Variable Index
 * viper-insertion-ring-size:             Viper Specials.      (line 107)
 * viper-keep-point-on-repeat:            Rudimentary Changes. (line 339)
 * viper-keep-point-on-undo:              Rudimentary Changes. (line 339)
-* viper-major-mode-modifier-list:        Key Bindings.        (line 113)
+* viper-major-mode-modifier-list:        Key Bindings.        (line 115)
 * viper-mouse-insert-key:                Viper Specials.      (line 231)
 * viper-multiclick-timeout:              Viper Specials.      (line 311)
 * viper-no-multiple-ESC:                 Rudimentary Changes. (line 339)
@@ -4971,7 +4972,7 @@ Variable Index
                                                               (line  17)
 * viper-tags-file-name:                  Rudimentary Changes. (line 339)
 * viper-toggle-key:                      Rudimentary Changes. (line 339)
-* viper-vi-global-user-map:              Key Bindings.        (line 183)
+* viper-vi-global-user-map:              Key Bindings.        (line 185)
 * viper-vi-state-hook:                   Rudimentary Changes. (line 339)
 * viper-vi-state-mode-list:              Packages that Change Keymaps.
                                                               (line  68)
@@ -5245,60 +5246,60 @@ Concept Index
 
 
 Tag Table:
-Node: Top994
-Node: Overview4207
-Node: Emacs Preliminaries5808
-Node: Loading Viper11170
-Node: States in Viper13361
-Node: Emacs State18430
-Node: Vi State19916
-Node: Insert State26800
-Node: Replace State29684
-Node: The Minibuffer31353
-Node: Multiple Files in Viper33261
-Node: Unimplemented Features36708
-Node: Improvements over Vi37436
-Node: Basics38527
-Node: Undo and Backups40983
-Node: History42161
-Node: Macros and Registers43772
-Node: Completion45461
-Node: Improved Search45900
-Node: Abbreviation Facilities48265
-Node: Movement and Markers49250
-Node: New Commands52307
-Node: Useful Packages58400
-Node: Customization60467
-Node: Rudimentary Changes62279
-Node: Key Bindings77101
-Node: Packages that Change Keymaps86951
-Node: Viper Specials92830
-Node: Vi Macros110550
-Node: Commands123959
-Node: Groundwork124803
-Node: Text Handling131277
-Node: Move Commands131954
-Node: Marking135712
-Node: Appending Text136959
-Node: Editing in Insert State139302
-Node: Deleting Text139897
-Node: Changing Text141246
-Node: Search and Replace144254
-Node: Yanking146819
-Node: Undoing147745
-Node: Display148093
-Node: File and Buffer Handling149410
-Node: Mapping153941
-Node: Shell Commands155644
-Node: Options157489
-Node: Emacs Related Commands159697
-Node: Mouse-bound Commands161278
-Node: Acknowledgments162150
-Node: GNU Free Documentation License165296
-Node: Key Index190432
-Node: Function Index208047
-Node: Variable Index219729
-Node: Package Index225400
-Node: Concept Index226059
+Node: Top927
+Node: Overview4043
+Node: Emacs Preliminaries5644
+Node: Loading Viper11006
+Node: States in Viper13197
+Node: Emacs State18266
+Node: Vi State19752
+Node: Insert State26636
+Node: Replace State29520
+Node: The Minibuffer31189
+Node: Multiple Files in Viper33097
+Node: Unimplemented Features36544
+Node: Improvements over Vi37272
+Node: Basics38363
+Node: Undo and Backups40819
+Node: History41997
+Node: Macros and Registers43608
+Node: Completion45297
+Node: Improved Search45736
+Node: Abbreviation Facilities48101
+Node: Movement and Markers49086
+Node: New Commands52143
+Node: Useful Packages58236
+Node: Customization60303
+Node: Rudimentary Changes62115
+Node: Key Bindings76937
+Node: Packages that Change Keymaps86824
+Node: Viper Specials92703
+Node: Vi Macros110423
+Node: Commands123830
+Node: Groundwork124674
+Node: Text Handling131148
+Node: Move Commands131825
+Node: Marking135583
+Node: Appending Text136836
+Node: Editing in Insert State139179
+Node: Deleting Text139774
+Node: Changing Text141123
+Node: Search and Replace144130
+Node: Yanking146695
+Node: Undoing147621
+Node: Display147969
+Node: File and Buffer Handling149285
+Node: Mapping153815
+Node: Shell Commands155518
+Node: Options157363
+Node: Emacs Related Commands159562
+Node: Mouse-bound Commands161143
+Node: Acknowledgments162015
+Node: GNU Free Documentation License165161
+Node: Key Index190297
+Node: Function Index207912
+Node: Variable Index219594
+Node: Package Index225265
+Node: Concept Index225924
 
 End Tag Table

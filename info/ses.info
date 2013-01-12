@@ -1,9 +1,10 @@
-This is /home/cyd/emacs/doc/misc/../../info/ses.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/ses.texi.
+This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/ses.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/ses.texi.
 
 This file documents SES: the Simple Emacs Spreadsheet.
 
-   Copyright (C) 2002-2012 Free Software Foundation, Inc.
+   Copyright (C) 2002-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -14,8 +15,7 @@ This file documents SES: the Simple Emacs Spreadsheet.
      "GNU Free Documentation License."
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
@@ -36,7 +36,7 @@ SES: Simple Emacs Spreadsheet
 
    This file documents SES: the Simple Emacs Spreadsheet.
 
-   Copyright (C) 2002-2012 Free Software Foundation, Inc.
+   Copyright (C) 2002-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -47,8 +47,7 @@ SES: Simple Emacs Spreadsheet
      "GNU Free Documentation License."
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -594,7 +593,7 @@ File: ses.info,  Node: Import and export,  Next: Virus protection,  Prev: More o
      Export a range of cells as tab-separated formulas
      (`ses-export-tsf').
 
-   The exported text goes to the kill ring -- you can paste it into
+   The exported text goes to the kill ring; you can paste it into
 another buffer.  Columns are separated by tabs, rows by newlines.
 
    To import text, use any of the yank commands where the text to paste
@@ -778,7 +777,7 @@ order to avoid a virus warning.
    You can define functions by making them values for the fake local
 variable `eval'.  Such functions can then be used in your formulas and
 printers, but usually each `eval' is presented to the user during file
-loading as a potential virus -- this can get annoying.
+loading as a potential virus.  This can get annoying.
 
    You can define functions in your `.emacs' file.  Other people can
 still read the print area of your spreadsheet, but they won't be able
@@ -1458,32 +1457,32 @@ permit their use in free software.
 
 
 Tag Table:
-Node: Top1033
-Node: Sales Pitch2622
-Node: The Basics3441
-Node: Formulas4761
-Node: Resizing6170
-Node: Printer functions7312
-Node: Clearing cells9068
-Node: Copy/cut/paste9401
-Node: Customizing SES11620
-Node: Advanced Features12988
-Node: The print area13867
-Node: Ranges in formulas14552
-Node: Sorting by column16071
-Node: Standard formula functions16998
-Node: More on cell printing17676
-Node: Import and export19687
-Node: Virus protection20299
-Node: Spreadsheets with details and summary21702
-Node: For Gurus22893
-Node: Deferred updates23155
-Node: Nonrelocatable references24679
-Node: The data area25584
-Node: Buffer-local variables in spreadsheets26810
-Node: Uses of defadvice in SES28261
-Node: Index29084
-Node: Acknowledgments37424
-Node: GNU Free Documentation License38594
+Node: Top966
+Node: Sales Pitch2460
+Node: The Basics3279
+Node: Formulas4599
+Node: Resizing6008
+Node: Printer functions7150
+Node: Clearing cells8906
+Node: Copy/cut/paste9239
+Node: Customizing SES11458
+Node: Advanced Features12826
+Node: The print area13705
+Node: Ranges in formulas14390
+Node: Sorting by column15909
+Node: Standard formula functions16836
+Node: More on cell printing17514
+Node: Import and export19525
+Node: Virus protection20135
+Node: Spreadsheets with details and summary21538
+Node: For Gurus22729
+Node: Deferred updates22991
+Node: Nonrelocatable references24515
+Node: The data area25420
+Node: Buffer-local variables in spreadsheets26646
+Node: Uses of defadvice in SES28096
+Node: Index28919
+Node: Acknowledgments37259
+Node: GNU Free Documentation License38429
 
 End Tag Table

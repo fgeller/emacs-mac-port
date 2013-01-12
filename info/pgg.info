@@ -1,10 +1,11 @@
-This is /home/cyd/emacs/doc/misc/../../info/pgg.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/pgg.texi.
+This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/pgg.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/pgg.texi.
 
 This file describes PGG 0.1, an Emacs interface to various PGP
 implementations.
 
-   Copyright (C) 2001, 2003-2012  Free Software Foundation, Inc.
+   Copyright (C) 2001, 2003-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -15,8 +16,7 @@ implementations.
      "GNU Free Documentation License."
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs network features
 START-INFO-DIR-ENTRY
@@ -36,7 +36,7 @@ decrypt, sign, and verify MIME messages.
    This file describes PGG 0.1, an Emacs interface to various PGP
 implementations.
 
-   Copyright (C) 2001, 2003-2012  Free Software Foundation, Inc.
+   Copyright (C) 2001, 2003-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -47,8 +47,7 @@ implementations.
      "GNU Free Documentation License."
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -1033,22 +1032,22 @@ Variable Index
 
 
 Tag Table:
-Node: Top1090
-Node: Overview2480
-Node: Prerequisites2970
-Node: How to use3967
-Node: User Commands5175
-Node: Selecting an implementation8391
-Node: Caching passphrase9402
-Ref: Caching passphrase-Footnote-112693
-Node: Default user identity12858
-Node: Architecture13903
-Node: Initializing14559
-Node: Back end methods15298
-Node: Getting output17744
-Node: Parsing OpenPGP packets18384
-Node: GNU Free Documentation License19104
-Node: Function Index44293
-Node: Variable Index45832
+Node: Top1022
+Node: Overview2316
+Node: Prerequisites2806
+Node: How to use3803
+Node: User Commands5011
+Node: Selecting an implementation8227
+Node: Caching passphrase9238
+Ref: Caching passphrase-Footnote-112529
+Node: Default user identity12694
+Node: Architecture13739
+Node: Initializing14395
+Node: Back end methods15134
+Node: Getting output17580
+Node: Parsing OpenPGP packets18220
+Node: GNU Free Documentation License18940
+Node: Function Index44129
+Node: Variable Index45668
 
 End Tag Table

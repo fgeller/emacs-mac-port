@@ -1,7 +1,8 @@
-This is /home/cyd/emacs/doc/misc/../../info/srecode.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/srecode.texi.
+This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/srecode.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/srecode.texi.
 
-Copyright (C) 2007-2012 Free Software Foundation, Inc.
+Copyright (C) 2007-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -12,8 +13,7 @@ Copyright (C) 2007-2012 Free Software Foundation, Inc.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
@@ -39,7 +39,7 @@ in choosing a template to insert, this is not the main goal of SRecode.
 someone can write a complex code generator, and the underlying template
 commonality allows it to work in multiple languages with ease.
 
-   Copyright (C) 2007-2012 Free Software Foundation, Inc.
+   Copyright (C) 2007-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -50,8 +50,7 @@ commonality allows it to work in multiple languages with ease.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -454,7 +453,7 @@ associated with the NAME macro.
 
    This will enable that section.
 
-   NOTE: May 11, 2008 - I haven't used this yet, so I don't know if it
+   NOTE: May 11, 2008: I haven't used this yet, so I don't know if it
 works.
 
 
@@ -560,13 +559,13 @@ subdictionary bound to the loop variable.
 macros which will enable different SECTIONS.  The automatic section
 variables are.
 
-   * FIRST - The first entry in the table.
+   * FIRST--The first entry in the table.
 
-   * NOTFIRST - Not the first entry in the table.
+   * NOTFIRST--Not the first entry in the table.
 
-   * LAST - The last entry in the table
+   * LAST--The last entry in the table
 
-   * NOTLAST - Not the last entry in the table.
+   * NOTLAST--Not the last entry in the table.
 
 
 File: srecode.info,  Node: Compound Variable Values,  Prev: Automatic Loop Variables,  Up: Variables
@@ -1649,7 +1648,7 @@ bounds of a class declaration.
 
 Inside a body of code, such as a function or method body.
 
-   - no conventions yet.
+   --no conventions yet.
 
 8.5 Standard Dictionary Values
 ==============================
@@ -1771,7 +1770,7 @@ and then the application specific templates.
      is the name of an application.  In this case, all template files
      for that application will be loaded.
 
-   todo - Add examples.  Most core stuff is already described above.
+   todo: Add examples.  Most core stuff is already described above.
 
 
 File: srecode.info,  Node: GNU Free Documentation License,  Next: Index,  Prev: Application Writing,  Up: Top
@@ -2303,61 +2302,61 @@ Index
 
 
 Tag Table:
-Node: Top981
-Node: Quick Start3147
-Ref: srecode-map-load-path3866
-Ref: srecode-insert4064
-Node: User Templates4457
-Ref: srecode-map-save-file4839
-Node: Parts of SRecode6348
-Node: SRecode Minor Mode10235
-Ref: srecode-insert-ask-variable-method11628
-Node: Template Writing12815
-Ref: `SRecode-template-mode'12959
-Node: Variables14078
-Node: String Values15104
-Node: Multi-string Values15533
-Node: Section Show16367
-Node: Special Variables16890
-Node: Automatic Loop Variables19976
-Node: Compound Variable Values20615
-Node: Templates21101
-Node: Template Section Dictionaries21976
-Node: Template Macros24486
-Node: Contexts27901
-Node: Prompts28943
-Node: Dictionaries30817
-Node: Create a Dictionary31760
-Ref: srecode-create-dictionary31969
-Node: Setting Dictionary Values32239
-Ref: srecode-dictionary-set-value32714
-Ref: srecode-dictionary-show-section32945
-Ref: srecode-dictionary-add-section-dictionary33112
-Node: Compound Dictionary Values34063
-Ref: srecode-dictionary-compound-value34535
-Ref: srecode-compound-toString34996
-Ref: srecode-dump35368
-Node: Argument Resolution36439
-Ref: srecode-resolve-arguments36909
-Node: Creating new Arguments37023
-Node: Querying a Dictionary38005
-Ref: srecode-dictionary-lookup-name38512
-Node: Template Argument Dictionary Entries38765
-Node: Base Arguments39391
-Node: Semantic Arguments42658
-Ref: srecode-semantic-selected-tag43296
-Node: Language Arguments45041
-Node: Developing Template Functions47356
-Ref: srecode-read-template-name49788
-Ref: srecode-table50167
-Ref: srecode-template-get-table50401
-Ref: srecode-insert-fcn51594
-Node: Template Naming Conventions51699
-Node: Inserting Tag Lists55371
-Ref: srecode-semantic-insert-tag55960
-Node: Application Writing57644
-Ref: srecode-load-tables-for-mode58598
-Node: GNU Free Documentation License58923
-Node: Index84103
+Node: Top914
+Node: Quick Start2985
+Ref: srecode-map-load-path3704
+Ref: srecode-insert3902
+Node: User Templates4295
+Ref: srecode-map-save-file4677
+Node: Parts of SRecode6186
+Node: SRecode Minor Mode10073
+Ref: srecode-insert-ask-variable-method11466
+Node: Template Writing12653
+Ref: `SRecode-template-mode'12797
+Node: Variables13916
+Node: String Values14942
+Node: Multi-string Values15371
+Node: Section Show16205
+Node: Special Variables16727
+Node: Automatic Loop Variables19813
+Node: Compound Variable Values20448
+Node: Templates20934
+Node: Template Section Dictionaries21809
+Node: Template Macros24319
+Node: Contexts27734
+Node: Prompts28776
+Node: Dictionaries30650
+Node: Create a Dictionary31593
+Ref: srecode-create-dictionary31802
+Node: Setting Dictionary Values32072
+Ref: srecode-dictionary-set-value32547
+Ref: srecode-dictionary-show-section32778
+Ref: srecode-dictionary-add-section-dictionary32945
+Node: Compound Dictionary Values33896
+Ref: srecode-dictionary-compound-value34368
+Ref: srecode-compound-toString34829
+Ref: srecode-dump35201
+Node: Argument Resolution36272
+Ref: srecode-resolve-arguments36742
+Node: Creating new Arguments36856
+Node: Querying a Dictionary37838
+Ref: srecode-dictionary-lookup-name38345
+Node: Template Argument Dictionary Entries38598
+Node: Base Arguments39224
+Node: Semantic Arguments42491
+Ref: srecode-semantic-selected-tag43129
+Node: Language Arguments44874
+Node: Developing Template Functions47189
+Ref: srecode-read-template-name49621
+Ref: srecode-table50000
+Ref: srecode-template-get-table50234
+Ref: srecode-insert-fcn51427
+Node: Template Naming Conventions51532
+Node: Inserting Tag Lists55204
+Ref: srecode-semantic-insert-tag55793
+Node: Application Writing57477
+Ref: srecode-load-tables-for-mode58431
+Node: GNU Free Documentation License58755
+Node: Index83935
 
 End Tag Table

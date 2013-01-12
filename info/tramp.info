@@ -1,7 +1,8 @@
-This is /home/cyd/emacs/doc/misc/../../info/tramp.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/tramp.texi.
+This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/tramp.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/tramp.texi.
 
-Copyright (C) 1999-2012 Free Software Foundation, Inc.
+Copyright (C) 1999-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -12,8 +13,7 @@ Copyright (C) 1999-2012 Free Software Foundation, Inc.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy
-     and modify this GNU manual.  Buying copies from the FSF supports
-     it in developing GNU and promoting software freedom."
+     and modify this GNU manual."
 
 INFO-DIR-SECTION Emacs network features
 START-INFO-DIR-ENTRY
@@ -45,7 +45,7 @@ the local and the remote host, whereas TRAMP uses a combination of
 <tramp-devel@gnu.org>, and archived at the TRAMP Mail Archive
 (http://lists.gnu.org/archive/html/tramp-devel/).
 
-   Copyright (C) 1999-2012 Free Software Foundation, Inc.
+   Copyright (C) 1999-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -56,8 +56,7 @@ the local and the remote host, whereas TRAMP uses a combination of
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy
-     and modify this GNU manual.  Buying copies from the FSF supports
-     it in developing GNU and promoting software freedom."
+     and modify this GNU manual."
 
 * Menu:
 
@@ -273,7 +272,7 @@ downloaded from `ftp://ftp.gnu.org/gnu/tramp/'.  This release includes
 the full documentation and code for TRAMP, suitable for installation.
 But Emacs (22 or later) includes TRAMP already, and there is a TRAMP
 package for XEmacs, as well.  So maybe it is easier to just use those.
-But if you want the bleeding edge, read on......
+But if you want the bleeding edge, read on...
 
    For the especially brave, TRAMP is available from Git.  The Git
 version is the latest version of the code and may contain incomplete
@@ -383,8 +382,8 @@ Method::.
 * Connection caching::          Reusing connection related information.
 * Remote Programs::             How TRAMP finds and uses programs on the remote machine.
 * Remote shell setup::          Remote shell setup hints.
-* Windows setup hints::         Issues with Cygwin ssh.
 * Auto-save and Backup::        Auto-save and Backup.
+* Windows setup hints::         Issues with Cygwin ssh.
 
 
 File: tramp.info,  Node: Connection types,  Next: Inline methods,  Up: Configuration
@@ -577,7 +576,7 @@ all files which are smaller than TRAMP-COPY-SIZE-LIMIT are still
 transferred with the corresponding inline method.  It should provide a
 fair trade-off between both approaches.
 
-`rcp'  --  `rsh' and `rcp'
+`rcp'--`rsh' and `rcp'
      This method uses the `rsh' and `rcp' commands to connect to the
      remote machine and transfer files.  This is probably the fastest
      connection method available.
@@ -586,7 +585,7 @@ fair trade-off between both approaches.
      commands.  It should be applied on machines where `remsh' is used
      instead of `rsh'.
 
-`scp'  --  `ssh' and `scp'
+`scp'--`ssh' and `scp'
      Using `ssh' to connect to the remote host and `scp' to transfer
      files between the machines is the best method for securely
      connecting to a remote machine and accessing files.
@@ -610,7 +609,7 @@ fair trade-off between both approaches.
      the argument list for `ssh', and to specify `-P 42' in the
      argument list for `scp'.
 
-`sftp'  --  `ssh' and `sftp'
+`sftp'--`ssh' and `sftp'
      That is mostly the same method as `scp', but using `sftp' as
      transfer command.  So the same remarks are valid.
 
@@ -620,7 +619,7 @@ fair trade-off between both approaches.
 
      This method supports the `-p' argument.
 
-`rsync'  --  `ssh' and `rsync'
+`rsync'--`ssh' and `rsync'
      Using the `ssh' command to connect securely to the remote machine
      and the `rsync' command to transfer files is almost identical to
      the `scp' method.
@@ -635,7 +634,7 @@ fair trade-off between both approaches.
 
      This method supports the `-p' argument.
 
-`scpx' -- `ssh' and `scp'
+`scpx'--`ssh' and `scp'
      As you would expect, this is similar to `scp', only a little
      different.  Whereas `scp' opens a normal interactive shell on the
      remote host, this option uses `ssh -t -t HOST -l USER /bin/sh' to
@@ -651,7 +650,7 @@ fair trade-off between both approaches.
 
      This method supports the `-p' argument.
 
-`scpc' -- `ssh' and `scp'
+`scpc'--`ssh' and `scp'
      Newer versions of `ssh' (for example OpenSSH 4) offer an option
      `ControlMaster'.  This allows `scp' to reuse an existing `ssh'
      channel, which increases performance.
@@ -671,14 +670,14 @@ fair trade-off between both approaches.
 
      This method supports the `-p' argument.
 
-`rsyncc'  --  `ssh' and `rsync'
+`rsyncc'--`ssh' and `rsync'
      Like the `scpc' method, `rsyncc' improves the underlying `ssh'
      connection by the option `ControlMaster'.  This allows `rsync' to
      reuse an existing `ssh' channel, which increases performance.
 
      This method supports the `-p' argument.
 
-`pscp' -- `plink' and `pscp'
+`pscp'--`plink' and `pscp'
      This method is similar to `scp', but it uses the `plink' command
      to connect to the remote host, and it uses `pscp' for transferring
      the files.  These programs are part of PuTTY, an SSH
@@ -686,7 +685,7 @@ fair trade-off between both approaches.
 
      This method supports the `-P' argument.
 
-`psftp' -- `plink' and `psftp'
+`psftp'--`plink' and `psftp'
      As you would expect, this method is similar to `sftp', but it uses
      the `plink' command to connect to the remote host, and it uses
      `psftp' for transferring the files.  These programs are part of
@@ -694,7 +693,7 @@ fair trade-off between both approaches.
 
      This method supports the `-P' argument.
 
-`fcp' -- `fsh' and `fcp'
+`fcp'--`fsh' and `fcp'
      This method is similar to `scp', but it uses the `fsh' command to
      connect to the remote host, and it uses `fcp' for transferring the
      files.  `fsh/fcp' are a front-end for `ssh' which allow for
@@ -717,7 +716,7 @@ fair trade-off between both approaches.
      This is not a native TRAMP method.  Instead, it forwards all
      requests to Ange-FTP.
 
-`smb' -- `smbclient'
+`smb'--`smbclient'
      This is another not native TRAMP method.  It uses the `smbclient'
      command on different Unices in order to connect to an SMB server.
      An SMB server might be a Samba (or CIFS) server on another UNIX
@@ -1377,7 +1376,7 @@ remove your persistency file (*note Connection caching::), and restart
 Emacs.
 
 
-File: tramp.info,  Node: Remote shell setup,  Next: Windows setup hints,  Prev: Remote Programs,  Up: Configuration
+File: tramp.info,  Node: Remote shell setup,  Next: Auto-save and Backup,  Prev: Remote Programs,  Up: Configuration
 
 4.15 Remote shell setup hints
 =============================
@@ -1428,12 +1427,11 @@ TRAMP-SHELL-PROMPT-PATTERN
      This regular expression is used by TRAMP in the same way as
      `shell-prompt-pattern', to match prompts from the remote shell.
      This second variable exists because the prompt from the remote
-     shell might be different from the prompt from a local shell --
-     after all, the whole point of TRAMP is to log in to remote hosts
-     as a different user.  The default value of
-     `tramp-shell-prompt-pattern' is the same as the default value of
-     `shell-prompt-pattern', which is reported to work well in many
-     circumstances.
+     shell might be different from the prompt from a local shell--after
+     all, the whole point of TRAMP is to log in to remote hosts as a
+     different user.  The default value of `tramp-shell-prompt-pattern'
+     is the same as the default value of `shell-prompt-pattern', which
+     is reported to work well in many circumstances.
 
 TRAMP-PASSWORD-PROMPT-REGEXP
      During login, TRAMP might be forced to enter a password or a
@@ -1459,7 +1457,7 @@ TRAMP-PASSWORD-PROMPT-REGEXP
                     "passwort" "Passwort"
                     ;; Franc,ais
                     "mot de passe" "Mot de passe") t)
-                ".*: ? *"))
+                ".*:\0? *"))
 
      In parallel, it might also be necessary to adapt
      TRAMP-WRONG-PASSWD-REGEXP.
@@ -1571,7 +1569,7 @@ Interactive shell prompt
 
 
 
-File: tramp.info,  Node: Auto-save and Backup,  Prev: Windows setup hints,  Up: Configuration
+File: tramp.info,  Node: Auto-save and Backup,  Next: Windows setup hints,  Prev: Remote shell setup,  Up: Configuration
 
 4.16 Auto-save and Backup configuration
 =======================================
@@ -1638,7 +1636,7 @@ files, `auto-save-file-name-transforms' should be set to `nil'.
 `tramp-auto-save-directory' to a proper value.
 
 
-File: tramp.info,  Node: Windows setup hints,  Next: Auto-save and Backup,  Prev: Remote shell setup,  Up: Configuration
+File: tramp.info,  Node: Windows setup hints,  Prev: Auto-save and Backup,  Up: Configuration
 
 4.17 Issues with Cygwin ssh
 ===========================
@@ -1729,7 +1727,7 @@ Method::.
      the machine.
 
 `/melancholia:~/.emacs'
-     This also edits the same file -- the `~' is expanded to your home
+     This also edits the same file; the `~' is expanded to your home
      directory on the remote machine, just like it is locally.
 
 `/melancholia:~daniel/.emacs'
@@ -1796,9 +1794,9 @@ support this.
 
    For the time being, `tramp-syntax' can have the following values:
 
-     `ftp' - That is the default syntax
+     `ftp'--That is the default syntax
 
-     `url' - URL-like syntax
+     `url'--URL-like syntax
 
 
 File: tramp.info,  Node: Filename completion,  Next: Ad-hoc multi-hops,  Prev: Alternative Syntax,  Up: Usage
@@ -3445,7 +3443,7 @@ Variable Index
 * password-cache:                        Password handling.   (line  51)
 * password-cache-expiry:                 Password handling.   (line  45)
 * shell-prompt-pattern:                  Remote shell setup.  (line  34)
-* tramp-actions-before-shell:            Remote shell setup.  (line 101)
+* tramp-actions-before-shell:            Remote shell setup.  (line 100)
 * tramp-completion-function-alist:       Customizing Completion.
                                                               (line   6)
 * tramp-completion-mode:                 External packages.   (line  17)
@@ -3459,14 +3457,14 @@ Variable Index
 * tramp-default-user-alist:              Default User.        (line  17)
 * tramp-gvfs-methods:                    GVFS based methods.  (line  34)
 * tramp-own-remote-path:                 Remote Programs.     (line  17)
-* tramp-password-prompt-regexp:          Remote shell setup.  (line  60)
+* tramp-password-prompt-regexp:          Remote shell setup.  (line  59)
 * tramp-persistency-file-name:           Connection caching.  (line   6)
 * tramp-remote-path:                     Remote Programs.     (line  17)
 * tramp-restricted-shell-hosts-alist:    Multi-hops.          (line 100)
 * tramp-save-ad-hoc-proxies:             Ad-hoc multi-hops.   (line  28)
 * tramp-shell-prompt-pattern:            Remote shell setup.  (line  49)
-* tramp-terminal-type:                   Remote shell setup.  (line  98)
-* tramp-wrong-passwd-regexp:             Remote shell setup.  (line  60)
+* tramp-terminal-type:                   Remote shell setup.  (line  97)
+* tramp-wrong-passwd-regexp:             Remote shell setup.  (line  59)
 
 
 File: tramp.info,  Node: Concept Index,  Next: Files directories and localnames,  Prev: Variable Index,  Up: Top
@@ -3635,10 +3633,10 @@ Concept Index
 * sudo method:                           Inline methods.      (line  70)
 * synce method:                          GVFS based methods.  (line  29)
 * telnet method:                         Inline methods.      (line  58)
-* tset Unix command:                     Remote shell setup.  (line  89)
+* tset Unix command:                     Remote shell setup.  (line  88)
 * tunnel method:                         Gateway methods.     (line  22)
 * type-ahead:                            Usage.               (line  14)
-* Unix command tset:                     Remote shell setup.  (line  89)
+* Unix command tset:                     Remote shell setup.  (line  88)
 * using non-standard methods:            Customizing Methods. (line   6)
 * using TRAMP:                           Usage.               (line   6)
 * uuencode:                              Inline methods.      (line  18)
@@ -3647,50 +3645,50 @@ Concept Index
 
 
 Tag Table:
-Node: Top1074
-Node: Overview5362
-Ref: Overview-Footnote-111111
-Node: Obtaining Tramp11263
-Node: History12849
-Node: Configuration14185
-Node: Connection types16426
-Node: Inline methods18271
-Node: External methods24004
-Node: GVFS based methods33412
-Node: Gateway methods34825
-Node: Default Method36282
-Node: Default User40256
-Node: Default Host42211
-Node: Multi-hops42985
-Ref: Multi-hops-Footnote-148117
-Node: Customizing Methods48472
-Node: Customizing Completion48885
-Node: Password handling52354
-Ref: Using an authentication file53068
-Ref: Caching passwords53777
-Node: Connection caching54746
-Node: Remote Programs56394
-Node: Remote shell setup59191
-Node: Auto-save and Backup68241
-Node: Windows setup hints71121
-Node: Usage72885
-Node: Filename Syntax74269
-Node: Alternative Syntax76835
-Node: Filename completion77827
-Node: Ad-hoc multi-hops80806
-Node: Remote processes82244
-Ref: Running a debugger on a remote host88479
-Node: Cleanup remote connections90362
-Node: Bug Reports91688
-Node: Frequently Asked Questions94008
-Node: Files directories and localnames114402
-Node: Localname deconstruction114822
-Node: External packages115556
-Node: Traces and Profiles118002
-Node: Issues120207
-Node: GNU Free Documentation License121913
-Node: Function Index147064
-Node: Variable Index149111
-Node: Concept Index151281
+Node: Top1007
+Node: Overview5200
+Ref: Overview-Footnote-110949
+Node: Obtaining Tramp11101
+Node: History12684
+Node: Configuration14020
+Node: Connection types16261
+Node: Inline methods18106
+Node: External methods23839
+Node: GVFS based methods33215
+Node: Gateway methods34628
+Node: Default Method36085
+Node: Default User40059
+Node: Default Host42014
+Node: Multi-hops42788
+Ref: Multi-hops-Footnote-147920
+Node: Customizing Methods48275
+Node: Customizing Completion48688
+Node: Password handling52157
+Ref: Using an authentication file52871
+Ref: Caching passwords53580
+Node: Connection caching54549
+Node: Remote Programs56197
+Node: Remote shell setup58994
+Node: Auto-save and Backup68039
+Node: Windows setup hints70946
+Node: Usage72683
+Node: Filename Syntax74067
+Node: Alternative Syntax76631
+Node: Filename completion77621
+Node: Ad-hoc multi-hops80600
+Node: Remote processes82038
+Ref: Running a debugger on a remote host88273
+Node: Cleanup remote connections90156
+Node: Bug Reports91482
+Node: Frequently Asked Questions93802
+Node: Files directories and localnames114196
+Node: Localname deconstruction114616
+Node: External packages115350
+Node: Traces and Profiles117796
+Node: Issues120001
+Node: GNU Free Documentation License121707
+Node: Function Index146858
+Node: Variable Index148905
+Node: Concept Index151075
 
 End Tag Table

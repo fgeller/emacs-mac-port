@@ -1,9 +1,11 @@
-This is /home/cyd/emacs/doc/misc/../../info/emacs-mime.info, produced
-by makeinfo version 4.13 from /home/cyd/emacs/doc/misc/emacs-mime.texi.
+This is
+/misc/emacs/bzr/emacs24-merge/doc/misc/../../info/emacs-mime.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/emacs-mime.texi.
 
 This file documents the Emacs MIME interface functionality.
 
-   Copyright (C) 1998-2012 Free Software Foundation, Inc.
+   Copyright (C) 1998-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -14,8 +16,7 @@ This file documents the Emacs MIME interface functionality.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs lisp libraries
 START-INFO-DIR-ENTRY
@@ -46,7 +47,7 @@ read at least RFC2045 and RFC2047.
 
    This file documents the Emacs MIME interface functionality.
 
-   Copyright (C) 1998-2012 Free Software Foundation, Inc.
+   Copyright (C) 1998-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -57,8 +58,7 @@ read at least RFC2045 and RFC2047.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -1630,7 +1630,7 @@ fetched from `http://quimby.gnus.org/notes/'.
      Languages, and Continuations
 
 "RFC1843"
-     HZ - A Data Format for Exchanging Files of Arbitrarily Mixed
+     HZ--A Data Format for Exchanging Files of Arbitrarily Mixed
      Chinese and ASCII characters
 
 "draft-ietf-drums-msg-fmt-05.txt"
@@ -2328,42 +2328,42 @@ File: emacs-mime.info,  Node: Index,  Prev: GNU Free Documentation License,  Up:
 
 
 Tag Table:
-Node: Top1062
-Node: Decoding and Viewing3190
-Node: Dissection3976
-Node: Non-MIME4355
-Node: Handles5946
-Node: Display6803
-Node: Display Customization7529
-Ref: Display Customization-Footnote-114263
-Ref: Display Customization-Footnote-214343
-Node: Files and Directories14470
-Node: New Viewers16197
-Node: Composing17326
-Node: Simple MML Example18292
-Node: MML Definition18940
-Node: Advanced MML Example22766
-Node: Encoding Customization25511
-Node: Charset Translation29952
-Node: Conversion32493
-Node: Flowed text33619
-Node: Interface Functions34875
-Node: Basic Functions40438
-Node: rfc204541487
-Node: rfc223142007
-Node: ietf-drums43301
-Node: rfc204744391
-Node: time-date47202
-Node: qp50671
-Node: base6451643
-Node: binhex52601
-Node: uudecode53002
-Node: yenc53363
-Node: rfc184353646
-Node: mailcap54260
-Node: Standards55189
-Node: GNU Free Documentation License56615
-Node: Index81770
+Node: Top995
+Node: Decoding and Viewing3028
+Node: Dissection3814
+Node: Non-MIME4193
+Node: Handles5784
+Node: Display6641
+Node: Display Customization7367
+Ref: Display Customization-Footnote-114101
+Ref: Display Customization-Footnote-214181
+Node: Files and Directories14308
+Node: New Viewers16035
+Node: Composing17164
+Node: Simple MML Example18130
+Node: MML Definition18778
+Node: Advanced MML Example22604
+Node: Encoding Customization25349
+Node: Charset Translation29790
+Node: Conversion32331
+Node: Flowed text33457
+Node: Interface Functions34713
+Node: Basic Functions40276
+Node: rfc204541325
+Node: rfc223141845
+Node: ietf-drums43139
+Node: rfc204744229
+Node: time-date47040
+Node: qp50509
+Node: base6451481
+Node: binhex52439
+Node: uudecode52840
+Node: yenc53201
+Node: rfc184353484
+Node: mailcap54098
+Node: Standards55027
+Node: GNU Free Documentation License56452
+Node: Index81607
 
 End Tag Table
 

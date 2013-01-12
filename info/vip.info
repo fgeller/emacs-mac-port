@@ -1,7 +1,8 @@
-This is /home/cyd/emacs/doc/misc/../../info/vip.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/vip.texi.
+This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/vip.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/vip.texi.
 
-Copyright (C) 1987, 2001-2012 Free Software Foundation, Inc.
+Copyright (C) 1987, 2001-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -12,8 +13,7 @@ Copyright (C) 1987, 2001-2012 Free Software Foundation, Inc.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
@@ -41,7 +41,7 @@ before you start using VIP.  Other nodes may be visited as needed.
 `ms@Sail.Stanford.Edu' if you are outside of Japan and to
 `masahiko@sato.riec.tohoku.junet' if you are in Japan.
 
-   Copyright (C) 1987, 2001-2012 Free Software Foundation, Inc.
+   Copyright (C) 1987, 2001-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -52,8 +52,7 @@ before you start using VIP.  Other nodes may be visited as needed.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -2603,50 +2602,50 @@ Concept Index
 
 
 Tag Table:
-Node: Top987
-Node: Survey2796
-Node: Basic Concepts3329
-Node: Loading VIP4988
-Node: Modes in VIP5736
-Node: Emacs Mode8352
-Node: Vi Mode8720
-Node: Insert Mode9042
-Node: Differences from Vi9679
-Node: Undoing10867
-Node: Changing11236
-Node: Searching11868
-Node: z Command12595
-Node: Counts12942
-Node: Marking13459
-Node: Region Commands13973
-Node: New Commands14655
-Node: New Bindings17420
-Node: Window Commands19601
-Node: Buffer Commands20082
-Node: File Commands20581
-Node: Misc Commands20962
-Node: Vi Commands21392
-Node: Numeric Arguments22417
-Node: Important Keys22917
-Node: Buffers and Windows24671
-Node: Files26905
-Node: Viewing the Buffer30161
-Node: Mark Commands32074
-Node: Motion Commands32921
-Node: Searching and Replacing38469
-Node: Modifying Commands40754
-Node: Delete Commands42186
-Node: Yank Commands43903
-Node: Put Back Commands44799
-Node: Change Commands46264
-Node: Repeating and Undoing Modifications47297
-Node: Other Vi Commands48126
-Node: Commands in Insert Mode51768
-Node: Ex Commands53851
-Node: Ex Command Reference55040
-Node: Customization61513
-Node: Customizing Constants61945
-Node: Customizing Key Bindings63279
-Node: GNU Free Documentation License64341
+Node: Top920
+Node: Survey2634
+Node: Basic Concepts3167
+Node: Loading VIP4826
+Node: Modes in VIP5574
+Node: Emacs Mode8190
+Node: Vi Mode8558
+Node: Insert Mode8880
+Node: Differences from Vi9517
+Node: Undoing10705
+Node: Changing11074
+Node: Searching11706
+Node: z Command12433
+Node: Counts12780
+Node: Marking13297
+Node: Region Commands13811
+Node: New Commands14493
+Node: New Bindings17258
+Node: Window Commands19439
+Node: Buffer Commands19920
+Node: File Commands20419
+Node: Misc Commands20800
+Node: Vi Commands21230
+Node: Numeric Arguments22255
+Node: Important Keys22755
+Node: Buffers and Windows24509
+Node: Files26743
+Node: Viewing the Buffer29999
+Node: Mark Commands31912
+Node: Motion Commands32759
+Node: Searching and Replacing38307
+Node: Modifying Commands40592
+Node: Delete Commands42024
+Node: Yank Commands43741
+Node: Put Back Commands44637
+Node: Change Commands46102
+Node: Repeating and Undoing Modifications47135
+Node: Other Vi Commands47964
+Node: Commands in Insert Mode51606
+Node: Ex Commands53689
+Node: Ex Command Reference54878
+Node: Customization61351
+Node: Customizing Constants61783
+Node: Customizing Key Bindings63117
+Node: GNU Free Documentation License64179
 
 End Tag Table

@@ -1,9 +1,10 @@
-This is /home/cyd/emacs/doc/misc/../../info/forms.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/forms.texi.
+This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/forms.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/forms.texi.
 
 This file documents Forms mode, a form-editing major mode for GNU Emacs.
 
-   Copyright (C) 1989, 1997, 2001-2012 Free Software Foundation, Inc.
+   Copyright (C) 1989, 1997, 2001-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -14,8 +15,7 @@ This file documents Forms mode, a form-editing major mode for GNU Emacs.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
@@ -43,7 +43,7 @@ it.
    This file documents Forms mode, a form-editing major mode for GNU
 Emacs.
 
-   Copyright (C) 1989, 1997, 2001-2012 Free Software Foundation, Inc.
+   Copyright (C) 1989, 1997, 2001-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -54,8 +54,7 @@ Emacs.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -70,8 +69,8 @@ Emacs.
 * Miscellaneous::               Forms mode messages and other remarks.
 * Error Messages::              List of error messages forms mode can produce.
 * Long Example::                A more complex control file example.
-* GNU Free Documentation License:: The license for this documentation.
 * Credits::                     Thanks everyone.
+* GNU Free Documentation License:: The license for this documentation.
 * Index::                       Index to this manual.
 
 
@@ -693,7 +692,7 @@ format error'.
      modified, and you said `no'.
 
 
-File: forms.info,  Node: Long Example,  Next: GNU Free Documentation License,  Prev: Error Messages,  Up: Top
+File: forms.info,  Node: Long Example,  Next: Credits,  Prev: Error Messages,  Up: Top
 
 10 Long Example
 ***************
@@ -784,7 +783,7 @@ This example is included in the distribution as file
      ;; That's all, folks!
 
 
-File: forms.info,  Node: Credits,  Next: Index,  Prev: GNU Free Documentation License,  Up: Top
+File: forms.info,  Node: Credits,  Next: GNU Free Documentation License,  Prev: Long Example,  Up: Top
 
 11 Credits
 **********
@@ -804,7 +803,7 @@ Richard Stallman (`rms@gnu.org').
 Software Foundation.  Thanks, Richard!
 
 
-File: forms.info,  Node: GNU Free Documentation License,  Next: Credits,  Prev: Long Example,  Up: Top
+File: forms.info,  Node: GNU Free Documentation License,  Next: Index,  Prev: Credits,  Up: Top
 
 Appendix A GNU Free Documentation License
 *****************************************
@@ -1290,7 +1289,7 @@ free software license, such as the GNU General Public License, to
 permit their use in free software.
 
 
-File: forms.info,  Node: Index,  Prev: Credits,  Up: Top
+File: forms.info,  Node: Index,  Prev: GNU Free Documentation License,  Up: Top
 
 Index
 *****
@@ -1365,19 +1364,19 @@ Index
 
 
 Tag Table:
-Node: Top1133
-Node: Forms Example3413
-Node: Entering and Exiting Forms Mode4619
-Node: Forms Commands6833
-Node: Data File Format10640
-Node: Control File Format11985
-Node: Format Description16619
-Node: Modifying Forms Contents19957
-Node: Miscellaneous21840
-Node: Error Messages23385
-Node: Long Example27634
-Node: Credits30783
-Node: GNU Free Documentation License31562
-Node: Index56735
+Node: Top1066
+Node: Forms Example3251
+Node: Entering and Exiting Forms Mode4457
+Node: Forms Commands6671
+Node: Data File Format10478
+Node: Control File Format11823
+Node: Format Description16457
+Node: Modifying Forms Contents19795
+Node: Miscellaneous21678
+Node: Error Messages23223
+Node: Long Example27472
+Node: Credits30598
+Node: GNU Free Documentation License31384
+Node: Index56550
 
 End Tag Table

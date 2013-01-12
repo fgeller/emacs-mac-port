@@ -1,7 +1,8 @@
-This is /home/cyd/emacs/doc/misc/../../info/pcl-cvs.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/pcl-cvs.texi.
+This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/pcl-cvs.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/pcl-cvs.texi.
 
-Copyright (C) 1991-2012 Free Software Foundation, Inc.
+Copyright (C) 1991-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -12,8 +13,7 @@ Copyright (C) 1991-2012 Free Software Foundation, Inc.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
@@ -31,7 +31,7 @@ nowhere near complete, so you are advised to use `M-x customize-group
 RET pcl-cvs <RET>' and to look at the documentation strings of the
 various commands and major modes for further information.
 
-   Copyright (C) 1991-2012 Free Software Foundation, Inc.
+   Copyright (C) 1991-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -42,8 +42,7 @@ various commands and major modes for further information.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -940,15 +939,15 @@ typically the last log message entered.  If it does, mark and point are
 set around the entire contents of the buffer so that it is easy to kill
 the contents of the buffer with `C-w'.
 
-   If you work by writing entries in the `ChangeLog' (*note
-(emacs)Change Log::) and then commit the change under revision control,
+   If you work by writing entries in the `ChangeLog' (*note Change Log:
+(emacs)Change Log.) and then commit the change under revision control,
 you can generate the Log Edit text from the ChangeLog using `C-c C-a'
 (`log-edit-insert-changelog').  This looks for entries for the file(s)
 concerned in the top entry in the ChangeLog and uses those paragraphs
 as the log text.  This text is only inserted if the top entry was made
-under your user name on the current date.  *Note (emacs)Change Logs and
-VC::, for the opposite way of working--generating ChangeLog entries
-from the revision control log.
+under your user name on the current date.  *Note Change Logs and VC:
+(emacs)Change Logs and VC, for the opposite way of working--generating
+ChangeLog entries from the revision control log.
 
    In the Log Edit buffer, `C-c C-f' (`M-x log-edit-show-files') shows
 the list of files to be committed in case you need to check that.
@@ -1907,38 +1906,38 @@ this manual.
 
 
 Tag Table:
-Node: Top980
-Node: About PCL-CVS4215
-Node: Contributors5313
-Node: Getting started7863
-Node: Buffer contents10564
-Node: Selected files14858
-Node: Commands16497
-Node: Entering PCL-CVS17904
-Node: Setting flags20125
-Node: Updating the buffer22601
-Node: Movement commands23666
-Node: Marking files24248
-Node: Committing changes25389
-Node: Editing files27308
-Node: Getting info about files28220
-Node: Adding and removing files28739
-Node: Undoing changes30012
-Node: Removing handled entries30488
-Node: Ignoring files31348
-Node: Viewing differences31908
-Node: Invoking Ediff33485
-Node: Updating files34347
-Node: Tagging files34613
-Node: Miscellaneous commands35391
-Node: Log Edit Mode36361
-Node: Log View Mode37704
-Node: Customization38280
-Node: Customizing Faces41912
-Node: Bugs42712
-Node: GNU Free Documentation License44256
-Node: Function and Variable Index69443
-Node: Concept Index76854
-Node: Key Index85278
+Node: Top913
+Node: About PCL-CVS4053
+Node: Contributors5151
+Node: Getting started7701
+Node: Buffer contents10402
+Node: Selected files14696
+Node: Commands16335
+Node: Entering PCL-CVS17742
+Node: Setting flags19963
+Node: Updating the buffer22439
+Node: Movement commands23504
+Node: Marking files24086
+Node: Committing changes25227
+Node: Editing files27146
+Node: Getting info about files28058
+Node: Adding and removing files28577
+Node: Undoing changes29850
+Node: Removing handled entries30326
+Node: Ignoring files31186
+Node: Viewing differences31746
+Node: Invoking Ediff33323
+Node: Updating files34185
+Node: Tagging files34451
+Node: Miscellaneous commands35229
+Node: Log Edit Mode36199
+Node: Log View Mode37571
+Node: Customization38147
+Node: Customizing Faces41779
+Node: Bugs42579
+Node: GNU Free Documentation License44123
+Node: Function and Variable Index69310
+Node: Concept Index76721
+Node: Key Index85145
 
 End Tag Table

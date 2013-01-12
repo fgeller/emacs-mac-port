@@ -1,7 +1,8 @@
-This is /home/cyd/emacs/doc/misc/../../info/dbus.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/dbus.texi.
+This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/dbus.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/dbus.texi.
 
-Copyright (C) 2007-2012 Free Software Foundation, Inc.
+Copyright (C) 2007-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -12,8 +13,7 @@ Copyright (C) 2007-2012 Free Software Foundation, Inc.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs lisp libraries
 START-INFO-DIR-ENTRY
@@ -31,7 +31,7 @@ message bus system, a simple way for applications to talk to one
 another.  An overview of D-Bus can be found at
 `http://dbus.freedesktop.org/'.
 
-   Copyright (C) 2007-2012 Free Software Foundation, Inc.
+   Copyright (C) 2007-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -42,8 +42,7 @@ another.  An overview of D-Bus can be found at
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -2421,31 +2420,31 @@ permit their use in free software.
 
 
 Tag Table:
-Node: Top973
-Node: Overview2740
-Node: Inspection5091
-Node: Version5696
-Node: Bus names6402
-Node: Introspection10227
-Ref: Introspection-Footnote-117856
-Ref: Introspection-Footnote-218009
-Node: Nodes and Interfaces18161
-Node: Methods and Signal22429
-Node: Properties and Annotations25420
-Ref: Properties and Annotations-Footnote-133687
-Ref: Properties and Annotations-Footnote-233788
-Ref: Properties and Annotations-Footnote-333892
-Node: Arguments and Signatures33983
-Node: Type Conversion36161
-Node: Synchronous Methods43406
-Node: Asynchronous Methods47584
-Node: Receiving Method Calls49400
-Node: Signals61001
-Ref: Signals-Footnote-166030
-Ref: Signals-Footnote-266175
-Node: Alternative Buses66414
-Node: Errors and Events70469
-Node: Index75081
-Node: GNU Free Documentation License82543
+Node: Top906
+Node: Overview2578
+Node: Inspection4929
+Node: Version5534
+Node: Bus names6240
+Node: Introspection10065
+Ref: Introspection-Footnote-117694
+Ref: Introspection-Footnote-217847
+Node: Nodes and Interfaces17999
+Node: Methods and Signal22267
+Node: Properties and Annotations25258
+Ref: Properties and Annotations-Footnote-133525
+Ref: Properties and Annotations-Footnote-233626
+Ref: Properties and Annotations-Footnote-333730
+Node: Arguments and Signatures33821
+Node: Type Conversion35999
+Node: Synchronous Methods43244
+Node: Asynchronous Methods47422
+Node: Receiving Method Calls49238
+Node: Signals60839
+Ref: Signals-Footnote-165868
+Ref: Signals-Footnote-266013
+Node: Alternative Buses66252
+Node: Errors and Events70307
+Node: Index74919
+Node: GNU Free Documentation License82381
 
 End Tag Table

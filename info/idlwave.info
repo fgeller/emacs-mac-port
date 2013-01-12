@@ -1,12 +1,13 @@
-This is /home/cyd/emacs/doc/misc/../../info/idlwave.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/idlwave.texi.
+This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/idlwave.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/idlwave.texi.
 
 This file documents IDLWAVE, a major mode for editing IDL files with
 Emacs, and interacting with an IDL shell run as a subprocess.
 
    This is edition 6.1 of the IDLWAVE User Manual for IDLWAVE 6.1.
 
-   Copyright (C) 1999-2012 Free Software Foundation, Inc.
+   Copyright (C) 1999-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -17,8 +18,7 @@ Emacs, and interacting with an IDL shell run as a subprocess.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs editing modes
 START-INFO-DIR-ENTRY
@@ -39,7 +39,7 @@ Emacs, and interacting with an IDL shell run as a subprocess.
 
    This is edition 6.1 of the IDLWAVE User Manual for IDLWAVE 6.1.
 
-   Copyright (C) 1999-2012 Free Software Foundation, Inc.
+   Copyright (C) 1999-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -50,8 +50,7 @@ Emacs, and interacting with an IDL shell run as a subprocess.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -73,9 +72,9 @@ Emacs, and interacting with an IDL shell run as a subprocess.
 
 Getting Started (Tutorial)
 
-* Lesson I -- Development Cycle::
-* Lesson II -- Customization::
-* Lesson III -- User Catalog::
+* Lesson I---Development Cycle::
+* Lesson II---Customization::
+* Lesson III---User Catalog::
 
 The IDLWAVE Major Mode
 
@@ -237,7 +236,7 @@ because of a name space conflict with CORBA's `idl-mode', defined in
 Emacs in the file `cc-mode.el'.
 
    In this manual, each section ends with a list of related user
-options.  Don't be confused by the sheer number of options available --
+options.  Don't be confused by the sheer number of options available:
 in most cases the default settings are just fine.  The variables are
 listed here to make sure you know where to look if you want to change
 anything.  For a full description of what a particular variable does
@@ -331,12 +330,12 @@ File: idlwave.info,  Node: Getting Started,  Next: The IDLWAVE Major Mode,  Prev
 
 * Menu:
 
-* Lesson I -- Development Cycle::
-* Lesson II -- Customization::
-* Lesson III -- User Catalog::
+* Lesson I---Development Cycle::
+* Lesson II---Customization::
+* Lesson III---User Catalog::
 
 
-File: idlwave.info,  Node: Lesson I -- Development Cycle,  Next: Lesson II -- Customization,  Prev: Getting Started,  Up: Getting Started
+File: idlwave.info,  Node: Lesson I---Development Cycle,  Next: Lesson II---Customization,  Prev: Getting Started,  Up: Getting Started
 
 3.1 Lesson I: Development Cycle
 ===============================
@@ -403,8 +402,8 @@ set up support for font-lock.
 the cursor after the `end' statement of the `for' loop and press <SPC>.
 IDLWAVE blinks back to the beginning of the block and changes the
 generic `end' to the specific `endfor' automatically (as long as the
-variable `idlwave-expand-generic-end' is turned on -- *note Lesson II
--- Customization::).  Now place the cursor in any line you would like
+variable `idlwave-expand-generic-end' is turned on; *note Lesson
+II---Customization::).  Now place the cursor in any line you would like
 to split and press `M-<RET>'.  The line is split at the cursor
 position, with the continuation `$' and indentation all taken care of.
 Use `C-/' to undo the last change.
@@ -455,7 +454,7 @@ list.  Oh, we wanted `YTITLE'.  Fix that up.  Recompile with `C-c C-d
 C-c'. Jump back into the shell with `C-c C-s', press the <UP> arrow to
 recall the previous command and execute again.
 
-   This time we get a plot, but it is pretty ugly -- the points are all
+   This time we get a plot, but it is pretty ugly: the points are all
 connected with a line.  Hmm, isn't there a way for `plot' to use
 symbols instead?  What was that keyword?  Position the cursor on the
 plot line after a comma (where you'd normally type a keyword), and hit
@@ -470,7 +469,7 @@ this, recompile (you know the command by now: `C-c C-d C-c'), go back
 to the shell (if it's vanished, you know what to do: `C-c C-s') and
 execute again.  Now things look pretty good.
 
-   Let's try a different day -- how about April fool's day?
+   Let's try a different day.  How about April fool's day?
 
      plot_wday,1,4
 
@@ -498,7 +497,7 @@ Change the code to plot 100 years and see that every 28 years, the
 sequence of weekdays repeats.
 
 
-File: idlwave.info,  Node: Lesson II -- Customization,  Next: Lesson III -- User Catalog,  Prev: Lesson I -- Development Cycle,  Up: Getting Started
+File: idlwave.info,  Node: Lesson II---Customization,  Next: Lesson III---User Catalog,  Prev: Lesson I---Development Cycle,  Up: Getting Started
 
 3.2 Lesson II: Customization
 ============================
@@ -506,9 +505,9 @@ File: idlwave.info,  Node: Lesson II -- Customization,  Next: Lesson III -- User
 Emacs is probably the most customizable piece of software ever written,
 and it would be a shame if you did not make use of this to adapt IDLWAVE
 to your own preferences.  Customizing Emacs or IDLWAVE is accomplished
-by setting Lisp variables in the `.emacs' file in your home directory
--- but do not be dismayed; for the most part, you can just copy and
-work from the examples given here.
+by setting Lisp variables in the `.emacs' file in your home
+directory--but do not be dismayed; for the most part, you can just copy
+and work from the examples given here.
 
    Let's first use a boolean variable.  These are variables which you
 turn on or off, much like a checkbox. A value of `t' means on, a value
@@ -575,7 +574,7 @@ could even shorten that:
 
 to get compilation on `S-c'.  Often, a modifier key like <SUPER> or
 <HYPER> is bound or can be bound to an otherwise unused key on your
-keyboard -- consult your system documentation.
+keyboard; consult your system documentation.
 
    You can also assign specific commands to keys.  This you must do in
 the _mode-hook_, a special function which is run when a new IDLWAVE
@@ -600,7 +599,7 @@ endless.  Here we set function keys f4-f8 to common debugging commands.
          (local-set-key [f8] 'idlwave-shell-clear-all-bp)))
 
 
-File: idlwave.info,  Node: Lesson III -- User Catalog,  Prev: Lesson II -- Customization,  Up: Getting Started
+File: idlwave.info,  Node: Lesson III---User Catalog,  Prev: Lesson II---Customization,  Up: Getting Started
 
 3.3 Lesson III: User and Library Catalogs
 =========================================
@@ -625,7 +624,7 @@ Directories' from the IDLWAVE entry in the menu bar.  If necessary,
 start the shell first with `C-c C-s' (*note Starting the Shell::).
 IDLWAVE will find out about the IDL `!PATH' variable and offer a list
 of directories on the path.  Simply select them all (or whichever you
-want -- directories with existing library catalogs will not be selected
+want; directories with existing library catalogs will not be selected
 by default) and click on the `Scan&Save' button.  Then go for a cup of
 coffee while IDLWAVE collects information for each and every IDL
 routine on your search path.  All this information is written to the
@@ -1086,8 +1085,8 @@ For IDL system routines, extensive documentation is supplied with IDL.
 IDLWAVE can access the HTML version of this documentation very quickly
 and accurately, based on the local context.  This can be _much_ faster
 than using the IDL online help application, because IDLWAVE usually
-gets you to the right place in the documentation directly -- e.g., a
-specific keyword of a routine -- without any additional browsing and
+gets you to the right place in the documentation directly--e.g., a
+specific keyword of a routine--without any additional browsing and
 scrolling.
 
    For this online help to work, an HTML version of the IDL
@@ -1308,7 +1307,7 @@ File: idlwave.info,  Node: Completion,  Next: Routine Source,  Prev: Online Help
 IDLWAVE offers completion for class names, routine names, keywords,
 system variables, system variable tags, class structure tags, regular
 structure tags and file names.  As in many programming modes, completion
-is bound to `M-<TAB>' (or simply `<TAB>' in the IDLWAVE Shell -- *note
+is bound to `M-<TAB>' (or simply `<TAB>' in the IDLWAVE Shell; *note
 Using the Shell::).  Completion uses exactly the same internal
 information as routine info, so when necessary (rarely) it can be
 updated with `C-c C-i' (`idlwave-update-routine-info').
@@ -1354,7 +1353,7 @@ help (from the IDL manual) is available will be emphasized (e.g.,
 colored blue).  For other items, the corresponding source code or
 DocLib header will be used as the help text.
 
-   Completion is not a blocking operation -- you are free to continue
+   Completion is not a blocking operation; you are free to continue
 editing, enter commands, or simply ignore the `*Completions*' buffer
 during a completion operation.  If, however, the most recent command
 was a completion, `C-g' will remove the buffer and restore the window
@@ -1650,8 +1649,8 @@ insert code templates all start with a `\' (the backslash), or,
 optionally, any other character set in `idlwave-abbrev-start-char'.
 IDLWAVE ensures that abbreviations are only expanded where they should
 be (i.e., not in a string or comment), and permits the point to be
-moved after an abbreviation expansion -- very useful for positioning
-the mark inside of parentheses, etc.
+moved after an abbreviation expansion: very useful for positioning the
+mark inside of parentheses, etc.
 
    Special abbreviations are pre-defined for code templates and other
 useful items.  To visit the full list of abbreviations, use `M-x
@@ -1999,7 +1998,7 @@ interactively, to compile and run IDL programs in Emacs buffers and to
 debug these programs.  The IDLWAVE shell is built on `comint', an Emacs
 packages which handles the communication with the IDL program.
 Unfortunately, IDL for Windows does not have command-prompt versions and
-thus do not allow the interaction with Emacs -- so the IDLWAVE shell
+thus do not allow the interaction with Emacs, so the IDLWAVE shell
 currently only works under Unix and MacOSX.
 
 * Menu:
@@ -2299,7 +2298,7 @@ the prefix key `C-c C-d', so, for example, setting a breakpoint is done
 with `C-c C-d C-b', and compiling a source file with `C-c C-d C-c'.
 You can also easily configure IDLWAVE to use one or more modifier keys
 not in use by other commands, in lieu of the prefix `C-c C-d' (though
-these bindings will typically also be available -- see
+these bindings will typically also be available; see
 `idlwave-shell-activate-prefix-keybindings').  For example, if you
 include in `.emacs':
 
@@ -2310,9 +2309,9 @@ and `control' keys, i.e., `C-S-b'.  Compiling a source file will be on
 `C-S-c', deleting a breakpoint `C-S-d', etc.  In the remainder of this
 chapter we will assume that the `C-c C-d' bindings are active, but each
 of these bindings will have an equivalent shortcut if modifiers are
-given in the `idlwave-shell-debug-modifiers' variable (*note Lesson II
--- Customization::).  A much simpler and faster form of debugging for
-running code is also available by default -- see *note Electric Debug
+given in the `idlwave-shell-debug-modifiers' variable (*note Lesson
+II---Customization::).  A much simpler and faster form of debugging for
+running code is also available by default; see *note Electric Debug
 Mode::.
 
  -- User Option: idlwave-shell-prefix-key (`C-c C-d')
@@ -2341,8 +2340,8 @@ with `C-c C-d C-b' (`idlwave-shell-break-here').  With a prefix arg of
 meaning that it will be deleted after first use.  With a numeric prefix
 greater than one (e.g., `C-4 C-c C-d C-b'), the breakpoint will only be
 active the `nth' time it is hit.  With a single non-numeric prefix
-(i.e., `C-u C-c C-d C-b'), prompt for a condition -- an IDL expression
-to be evaluated and trigger the breakpoint only if true.  To clear the
+(i.e., `C-u C-c C-d C-b'), prompt for a condition: an IDL expression to
+be evaluated and trigger the breakpoint only if true.  To clear the
 breakpoint in the current line, use `C-c C-d C-d'
 (`idlwave-clear-current-bp').  When executed from the shell window, the
 breakpoint where IDL is currently stopped will be deleted.  To clear
@@ -2626,10 +2625,10 @@ time (as long as the shell is running), and are very useful when
 execution is stopped in a buffer due to a triggered breakpoint or error,
 or while composing a long command in the IDLWAVE shell.  In the latter
 case, the command is sent to the shell and its output is visible, but
-point remains unmoved in the command being composed -- you can inspect
+point remains unmoved in the command being composed: you can inspect
 the constituents of a command you're building without interrupting the
 process of building it!  You can even print arbitrary expressions from
-older input or output further up in the shell window -- any expression,
+older input or output further up in the shell window; any expression,
 variable, number, or function you see can be examined.
 
    If the variable `idlwave-shell-separate-examine-output' is non-`nil'
@@ -2975,7 +2974,7 @@ routines (*note Routine Info::) to other source collections.
 with IDLWAVE.  The traditional _user catalog_ and the newer _library
 catalogs_.  Although they can be used interchangeably, the library
 catalogs are more flexible, and preferred.  There are few occasions
-when a user catalog might be preferred -- read below.  Both types of
+when a user catalog might be preferred--read below.  Both types of
 catalogs can coexist without causing problems.
 
    To facilitate the catalog systems, IDLWAVE stores information it
@@ -3026,10 +3025,10 @@ Library catalogs consist of files named `.idlwave_catalog' stored in
 directories containing `.pro' routine files.  They are discovered on
 the IDL search path and loaded automatically when routine information
 is read.  Each catalog file documents the routines found in that
-directory -- one catalog per directory.  Every catalog has a library
-name associated with it (e.g., _AstroLib_).  This name will be shown
-briefly when the catalog is found, and in the routine info of routines
-it documents.
+directory--one catalog per directory.  Every catalog has a library name
+associated with it (e.g., _AstroLib_).  This name will be shown briefly
+when the catalog is found, and in the routine info of routines it
+documents.
 
    Many popular libraries of routines are shipped with IDLWAVE catalog
 files by default, and so will be automatically discovered.  Library
@@ -3482,13 +3481,13 @@ Windows system.  I am assuming that IDLWAVE has been installed in
      ;; location of the IDL system directory (try "print,!DIR")
      (setq idlwave-system-directory "c:/RSI/IDL63/")
 
-Furthermore, Windows sometimes tries to outsmart you -- make sure you
+Furthermore, Windows sometimes tries to outsmart you; make sure you
 check the following things:
 
    * When you download the IDLWAVE distribution, make sure you save the
      file under the names `idlwave.tar.gz'.
 
-   * M-TAB switches among running programs -- use Esc-TAB instead.
+   * M-TAB switches among running programs--use Esc-TAB instead.
 
    * Other issues as yet unnamed...
 
@@ -4689,77 +4688,77 @@ Index
 
 
 Tag Table:
-Node: Top1195
-Node: Introduction5767
-Ref: Introduction-Footnote-19433
-Node: IDLWAVE in a Nutshell9556
-Node: Getting Started12394
-Node: Lesson I -- Development Cycle12676
-Node: Lesson II -- Customization20593
-Node: Lesson III -- User Catalog25587
-Node: The IDLWAVE Major Mode28361
-Node: Code Formatting29455
-Node: Code Indentation30770
-Node: Continued Statement Indentation32302
-Node: Comment Indentation35530
-Node: Continuation Lines36522
-Node: Syntax Highlighting38977
-Node: Octals and Highlighting40011
-Node: Routine Info41097
-Ref: Routine Info-Footnote-147742
-Node: Online Help47908
-Node: Help with HTML Documentation51963
-Node: Help with Source55527
-Node: Completion58450
-Node: Case of Completed Words62569
-Node: Object Method Completion and Class Ambiguity64388
-Node: Object Method Completion in the Shell67076
-Node: Class and Keyword Inheritance67931
-Node: Structure Tag Completion70252
-Node: Routine Source72009
-Node: Resolving Routines73120
-Node: Code Templates74105
-Node: Abbreviations74608
-Node: Actions78485
-Node: Block Boundary Check80328
-Node: Padding Operators81382
-Node: Case Changes83514
-Node: Doc Header85008
-Node: Motion Commands86272
-Node: Misc Options87356
-Node: The IDLWAVE Shell87959
-Node: Starting the Shell88970
-Node: Using the Shell92530
-Ref: Using the Shell-Footnote-196361
-Node: Commands Sent to the Shell96549
-Node: Debugging IDL Programs98672
-Node: A Tale of Two Modes100074
-Node: Debug Key Bindings101204
-Node: Breakpoints and Stepping103090
-Node: Compiling Programs108933
-Node: Walking the Calling Stack110395
-Node: Electric Debug Mode111493
-Ref: Electric Debug Mode-Footnote-1117462
-Node: Examining Variables117589
-Ref: Examining Variables-Footnote-1122461
-Node: Custom Expression Examination122547
-Ref: Custom Expression Examination-Footnote-1126041
-Node: Acknowledgments126245
-Node: Sources of Routine Info128270
-Node: Routine Definitions128984
-Node: Routine Information Sources130370
-Node: Catalogs133879
-Node: Library Catalogs136499
-Node: User Catalog139380
-Ref: User Catalog-Footnote-1142446
-Ref: User Catalog-Footnote-2142529
-Node: Load-Path Shadows142565
-Node: Documentation Scan145158
-Node: HTML Help Browser Tips146635
-Node: Configuration Examples149787
-Node: Windows and MacOS156882
-Node: Troubleshooting159083
-Node: GNU Free Documentation License168823
-Node: Index193999
+Node: Top1128
+Node: Introduction5602
+Ref: Introduction-Footnote-19266
+Node: IDLWAVE in a Nutshell9389
+Node: Getting Started12227
+Node: Lesson I---Development Cycle12506
+Node: Lesson II---Customization20415
+Node: Lesson III---User Catalog25402
+Node: The IDLWAVE Major Mode28172
+Node: Code Formatting29266
+Node: Code Indentation30581
+Node: Continued Statement Indentation32113
+Node: Comment Indentation35341
+Node: Continuation Lines36333
+Node: Syntax Highlighting38788
+Node: Octals and Highlighting39822
+Node: Routine Info40908
+Ref: Routine Info-Footnote-147553
+Node: Online Help47719
+Node: Help with HTML Documentation51770
+Node: Help with Source55334
+Node: Completion58257
+Node: Case of Completed Words62372
+Node: Object Method Completion and Class Ambiguity64191
+Node: Object Method Completion in the Shell66879
+Node: Class and Keyword Inheritance67734
+Node: Structure Tag Completion70055
+Node: Routine Source71812
+Node: Resolving Routines72923
+Node: Code Templates73908
+Node: Abbreviations74411
+Node: Actions78286
+Node: Block Boundary Check80129
+Node: Padding Operators81183
+Node: Case Changes83315
+Node: Doc Header84809
+Node: Motion Commands86073
+Node: Misc Options87157
+Node: The IDLWAVE Shell87760
+Node: Starting the Shell88769
+Node: Using the Shell92329
+Ref: Using the Shell-Footnote-196160
+Node: Commands Sent to the Shell96348
+Node: Debugging IDL Programs98471
+Node: A Tale of Two Modes99873
+Node: Debug Key Bindings101003
+Node: Breakpoints and Stepping102884
+Node: Compiling Programs108725
+Node: Walking the Calling Stack110187
+Node: Electric Debug Mode111285
+Ref: Electric Debug Mode-Footnote-1117254
+Node: Examining Variables117381
+Ref: Examining Variables-Footnote-1122249
+Node: Custom Expression Examination122335
+Ref: Custom Expression Examination-Footnote-1125829
+Node: Acknowledgments126033
+Node: Sources of Routine Info128058
+Node: Routine Definitions128772
+Node: Routine Information Sources130158
+Node: Catalogs133667
+Node: Library Catalogs136285
+Node: User Catalog139164
+Ref: User Catalog-Footnote-1142230
+Ref: User Catalog-Footnote-2142313
+Node: Load-Path Shadows142349
+Node: Documentation Scan144942
+Node: HTML Help Browser Tips146419
+Node: Configuration Examples149571
+Node: Windows and MacOS156666
+Node: Troubleshooting158863
+Node: GNU Free Documentation License168603
+Node: Index193779
 
 End Tag Table

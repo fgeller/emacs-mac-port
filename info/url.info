@@ -1,5 +1,6 @@
-This is /home/cyd/emacs/doc/misc/../../info/url.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/url.texi.
+This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/url.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/url.texi.
 
 INFO-DIR-SECTION Emacs lisp libraries
 START-INFO-DIR-ENTRY
@@ -8,7 +9,7 @@ END-INFO-DIR-ENTRY
 
    This is the manual for the `url' Emacs Lisp library.
 
-   Copyright (C) 1993-1999, 2002, 2004-2012 Free Software Foundation,
+   Copyright (C) 1993-1999, 2002, 2004-2013 Free Software Foundation,
 Inc.
 
      Permission is granted to copy, distribute and/or modify this
@@ -20,8 +21,7 @@ Inc.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 
 File: url.info,  Node: Top,  Next: Introduction,  Up: (dir)
@@ -31,7 +31,7 @@ URL
 
 This is the manual for the `url' Emacs Lisp library.
 
-   Copyright (C) 1993-1999, 2002, 2004-2012 Free Software Foundation,
+   Copyright (C) 1993-1999, 2002, 2004-2013 Free Software Foundation,
 Inc.
 
      Permission is granted to copy, distribute and/or modify this
@@ -43,8 +43,7 @@ Inc.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -1777,39 +1776,39 @@ Concept Index
 
 
 Tag Table:
-Node: Top1047
-Node: Introduction2507
-Node: URI Parsing3774
-Node: Parsed URIs5091
-Node: URI Encoding7100
-Node: Retrieving URLs9451
-Node: Supported URL Types12797
-Node: http/https13655
-Node: Cookies14721
-Node: HTTP language/coding15712
-Node: HTTP URL Options17344
-Node: Dealing with HTTP documents18280
-Node: file/ftp18651
-Node: info19768
-Node: mailto20084
-Node: news/nntp/snews21430
-Node: rlogin/telnet/tn327022943
-Node: irc23547
-Node: data24465
-Node: nfs24954
-Node: ldap25727
-Node: man25870
-Node: General Facilities26114
-Node: Disk Caching26337
-Node: Proxies28865
-Node: Gateways in general30925
-Ref: Gateways in general-Footnote-134976
-Node: Suppressing network connections35051
-Node: History35707
-Node: Customization37551
-Node: GNU Free Documentation License39804
-Node: Function Index64983
-Node: Variable Index67509
-Node: Concept Index72384
+Node: Top980
+Node: Introduction2345
+Node: URI Parsing3612
+Node: Parsed URIs4929
+Node: URI Encoding6938
+Node: Retrieving URLs9289
+Node: Supported URL Types12635
+Node: http/https13493
+Node: Cookies14559
+Node: HTTP language/coding15550
+Node: HTTP URL Options17182
+Node: Dealing with HTTP documents18118
+Node: file/ftp18489
+Node: info19606
+Node: mailto19922
+Node: news/nntp/snews21268
+Node: rlogin/telnet/tn327022781
+Node: irc23385
+Node: data24303
+Node: nfs24792
+Node: ldap25565
+Node: man25708
+Node: General Facilities25952
+Node: Disk Caching26175
+Node: Proxies28703
+Node: Gateways in general30763
+Ref: Gateways in general-Footnote-134814
+Node: Suppressing network connections34889
+Node: History35545
+Node: Customization37389
+Node: GNU Free Documentation License39642
+Node: Function Index64821
+Node: Variable Index67347
+Node: Concept Index72222
 
 End Tag Table

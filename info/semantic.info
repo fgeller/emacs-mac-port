@@ -1,9 +1,11 @@
-This is /home/cyd/emacs/doc/misc/../../info/semantic.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/semantic.texi.
+This is
+/misc/emacs/bzr/emacs24-merge/doc/misc/../../info/semantic.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/semantic.texi.
 
 This manual documents the Semantic library and utilities.
 
-   Copyright (C) 1999-2005, 2007, 2009-2012 Free Software Foundation,
+   Copyright (C) 1999-2005, 2007, 2009-2013 Free Software Foundation,
 Inc.
 
      Permission is granted to copy, distribute and/or modify this
@@ -15,8 +17,7 @@ Inc.
      "GNU Free Documentation License."
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
@@ -43,7 +44,7 @@ use the mailing list cedet-semantic@sourceforge.net via the URL:
 
    This manual documents the Semantic library and utilities.
 
-   Copyright (C) 1999-2005, 2007, 2009-2012 Free Software Foundation,
+   Copyright (C) 1999-2005, 2007, 2009-2013 Free Software Foundation,
 Inc.
 
      Permission is granted to copy, distribute and/or modify this
@@ -55,8 +56,7 @@ Inc.
      "GNU Free Documentation License."
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -2456,62 +2456,62 @@ Index
 
 
 Tag Table:
-Node: Top1079
-Node: Introduction2732
-Node: Semantic Components6014
-Node: Using Semantic7365
-Node: Semantic mode8790
-Node: Semantic mode user commands11674
-Node: SemanticDB14852
-Node: Semanticdb Tag Storage16232
-Node: Semanticdb Search Configuration18806
-Node: Search Throttle20236
-Node: Semanticdb Roots22430
-Node: Include paths23915
-Node: Semanticdb search debugging commands25220
-Node: Changing Backends26600
-Node: Create System Databases27358
-Node: Idle Scheduler27993
-Node: Reparsing Options29702
-Node: Idle Working Options31186
-Node: Debugging Idle Time Issues32456
-Node: Idle Summary Mode33139
-Node: Idle Completions Mode34760
-Node: Analyzer37747
-Node: Smart Completion38299
-Node: Smart Summary41446
-Node: Smart Jump42362
-Node: Analyzer Debug43381
-Node: Speedbar49858
-Node: SymRef51149
-Node: MRU Bookmarks53104
-Node: Sticky Func Mode54051
-Node: Highlight Func Mode55206
-Node: Tag Decoration Mode56263
-Node: Semantic Internals60263
-Node: Parser code60987
-Node: Tag handling62741
-Node: Semanticdb Internals64420
-Node: Analyzer Internals66553
-Node: Tools68515
-Node: Tests70202
-Node: Glossary70660
-Ref: BNF70817
-Ref: bovinate71016
-Ref: bovine lambda71105
-Ref: bovine parser71288
-Ref: context71414
-Ref: LALR71423
-Ref: lexer71429
-Ref: LL71643
-Ref: nonterminal71647
-Ref: overloadable71839
-Ref: parser71947
-Ref: tag72000
-Ref: token72345
-Ref: token stream72463
-Ref: wisent parser72542
-Node: GNU Free Documentation License72708
-Node: Index97878
+Node: Top1012
+Node: Introduction2570
+Node: Semantic Components5852
+Node: Using Semantic7203
+Node: Semantic mode8628
+Node: Semantic mode user commands11512
+Node: SemanticDB14690
+Node: Semanticdb Tag Storage16070
+Node: Semanticdb Search Configuration18644
+Node: Search Throttle20074
+Node: Semanticdb Roots22268
+Node: Include paths23753
+Node: Semanticdb search debugging commands25058
+Node: Changing Backends26438
+Node: Create System Databases27196
+Node: Idle Scheduler27831
+Node: Reparsing Options29540
+Node: Idle Working Options31024
+Node: Debugging Idle Time Issues32294
+Node: Idle Summary Mode32977
+Node: Idle Completions Mode34598
+Node: Analyzer37585
+Node: Smart Completion38137
+Node: Smart Summary41284
+Node: Smart Jump42200
+Node: Analyzer Debug43219
+Node: Speedbar49696
+Node: SymRef50987
+Node: MRU Bookmarks52942
+Node: Sticky Func Mode53889
+Node: Highlight Func Mode55044
+Node: Tag Decoration Mode56101
+Node: Semantic Internals60101
+Node: Parser code60825
+Node: Tag handling62579
+Node: Semanticdb Internals64258
+Node: Analyzer Internals66391
+Node: Tools68353
+Node: Tests70040
+Node: Glossary70498
+Ref: BNF70655
+Ref: bovinate70854
+Ref: bovine lambda70943
+Ref: bovine parser71126
+Ref: context71252
+Ref: LALR71261
+Ref: lexer71267
+Ref: LL71481
+Ref: nonterminal71485
+Ref: overloadable71677
+Ref: parser71785
+Ref: tag71838
+Ref: token72183
+Ref: token stream72301
+Ref: wisent parser72380
+Node: GNU Free Documentation License72546
+Node: Index97716
 
 End Tag Table

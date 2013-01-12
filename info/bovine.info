@@ -1,7 +1,8 @@
-This is /home/cyd/emacs/doc/misc/../../info/bovine.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/bovine.texi.
+This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/bovine.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/bovine.texi.
 
-Copyright (C) 1999-2004, 2012 Free Software Foundation, Inc.
+Copyright (C) 1999-2004, 2012-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -12,8 +13,7 @@ Copyright (C) 1999-2004, 2012 Free Software Foundation, Inc.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
@@ -37,7 +37,7 @@ compiled, the contents is converted into a file of the form
 `NAME-by.el'.  This, in turn is byte compiled.  *note Grammar Framework
 Manual: (grammar-fw)top.
 
-   Copyright (C) 1999-2004, 2012 Free Software Foundation, Inc.
+   Copyright (C) 1999-2004, 2012-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -48,8 +48,7 @@ Manual: (grammar-fw)top.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -104,7 +103,7 @@ of simplified Emacs Lisp expressions for concocting the parse tree.
    In bison, each time an element of COMPONENTS is found, it is
 "shifted" onto the parser stack.  (The stack of matched elements.)
 When all COMPONENTS' elements have been matched, it is "reduced" to
-RESULT.  *Note (bison)Algorithm::.
+RESULT.  *Note Algorithm: (bison)Algorithm.
 
    A particular RESULT written into your grammar becomes the parser's
 goal.  It is designated by a `%start' statement (*note Starting
@@ -309,8 +308,8 @@ into the return list whereas:
           `variable', though any symbol will work.
 
     ATTRIBUTES
-          Is an optional set of labeled values such as
-          `:constant-flag t :parent "parenttype"'.
+          Is an optional set of labeled values such as `:constant-flag
+          t :parent "parenttype"'.
 
 `(TAG-VARIABLE NAME TYPE DEFAULT-VALUE [ATTRIBUTES])'
 `(TAG-FUNCTION NAME TYPE ARG-LIST [ATTRIBUTES])'
@@ -865,14 +864,14 @@ permit their use in free software.
 
 
 Tag Table:
-Node: Top996
-Node: Starting Rules2723
-Node: Bovine Grammar Rules3721
-Node: How Lexical Tokens Match5234
-Node: Grammar-to-Lisp Details6752
-Node: Order of components in rules7925
-Node: Optional Lambda Expression8470
-Node: Bovine Examples12129
-Node: GNU Free Documentation License13078
+Node: Top934
+Node: Starting Rules2571
+Node: Bovine Grammar Rules3569
+Node: How Lexical Tokens Match5091
+Node: Grammar-to-Lisp Details6609
+Node: Order of components in rules7782
+Node: Optional Lambda Expression8327
+Node: Bovine Examples11986
+Node: GNU Free Documentation License12935
 
 End Tag Table

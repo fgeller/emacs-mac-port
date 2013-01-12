@@ -1,9 +1,10 @@
-This is /home/cyd/emacs/doc/misc/../../info/ebrowse.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/ebrowse.texi.
+This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/ebrowse.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/ebrowse.texi.
 
 This file documents Ebrowse, a C++ class browser for GNU Emacs.
 
-   Copyright (C) 2000-2012 Free Software Foundation, Inc.
+   Copyright (C) 2000-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -14,8 +15,7 @@ This file documents Ebrowse, a C++ class browser for GNU Emacs.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
@@ -32,7 +32,7 @@ You can browse C++ class hierarchies from within Emacs by using Ebrowse.
 
    This file documents Ebrowse, a C++ class browser for GNU Emacs.
 
-   Copyright (C) 2000-2012 Free Software Foundation, Inc.
+   Copyright (C) 2000-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -43,8 +43,7 @@ You can browse C++ class hierarchies from within Emacs by using Ebrowse.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -1794,51 +1793,51 @@ Concept Index
 
 
 Tag Table:
-Node: Top1055
-Node: Overview2522
-Node: Generating browser files6121
-Node: Input files7272
-Node: Output file8541
-Node: Structs and unions9455
-Node: Matching9904
-Node: Verbosity11873
-Node: Loading a Tree12312
-Node: Tree Buffers13331
-Node: Source Display14614
-Node: Member Display15405
-Node: Go to Class17187
-Node: Quitting17919
-Node: File Name Display18122
-Node: Expanding and Collapsing19079
-Node: Tree Indentation20081
-Node: Killing Classes20473
-Node: Saving a Tree20848
-Node: Statistics21224
-Node: Marking Classes21508
-Node: Member Buffers22328
-Node: Switching Member Lists23946
-Node: Finding/Viewing24755
-Node: Inherited Members25815
-Node: Searching Members26138
-Node: Switching to Tree27052
-Node: Filters27405
-Node: Attributes28155
-Node: Long and Short Display29227
-Node: Regexp Display30186
-Node: Switching Classes30735
-Node: Killing/Burying31545
-Node: Column Width31777
-Node: Redisplay32056
-Node: Getting Help32448
-Node: Tags-like Functions32578
-Node: Finding and Viewing33384
-Node: Position Stack34927
-Node: Search & Replace36233
-Node: Members in Files37363
-Node: Apropos37641
-Node: Symbol Completion38267
-Node: Member Buffer Display38501
-Node: GNU Free Documentation License38766
-Node: Concept Index63954
+Node: Top988
+Node: Overview2360
+Node: Generating browser files5959
+Node: Input files7110
+Node: Output file8379
+Node: Structs and unions9293
+Node: Matching9742
+Node: Verbosity11711
+Node: Loading a Tree12150
+Node: Tree Buffers13169
+Node: Source Display14452
+Node: Member Display15243
+Node: Go to Class17025
+Node: Quitting17757
+Node: File Name Display17960
+Node: Expanding and Collapsing18917
+Node: Tree Indentation19919
+Node: Killing Classes20311
+Node: Saving a Tree20686
+Node: Statistics21062
+Node: Marking Classes21346
+Node: Member Buffers22166
+Node: Switching Member Lists23784
+Node: Finding/Viewing24593
+Node: Inherited Members25653
+Node: Searching Members25976
+Node: Switching to Tree26890
+Node: Filters27243
+Node: Attributes27993
+Node: Long and Short Display29065
+Node: Regexp Display30024
+Node: Switching Classes30573
+Node: Killing/Burying31383
+Node: Column Width31615
+Node: Redisplay31894
+Node: Getting Help32286
+Node: Tags-like Functions32416
+Node: Finding and Viewing33222
+Node: Position Stack34765
+Node: Search & Replace36071
+Node: Members in Files37201
+Node: Apropos37479
+Node: Symbol Completion38105
+Node: Member Buffer Display38339
+Node: GNU Free Documentation License38604
+Node: Concept Index63792
 
 End Tag Table

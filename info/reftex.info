@@ -1,10 +1,11 @@
-This is /home/cyd/emacs/doc/misc/../../info/reftex.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/reftex.texi.
+This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/reftex.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/reftex.texi.
 
-This manual documents RefTeX (version 24.2.91), a package to do labels,
+This manual documents RefTeX (version 24.2.92), a package to do labels,
 references, citations and indices for LaTeX documents with Emacs.
 
-   Copyright (C) 1997-2012  Free Software Foundation, Inc.
+   Copyright (C) 1997-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -15,8 +16,7 @@ references, citations and indices for LaTeX documents with Emacs.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
@@ -33,7 +33,7 @@ RefTeX
 RefTeX is a package for managing Labels, References, Citations and
 index entries with GNU Emacs.
 
-   This manual documents RefTeX version 24.2.91.
+   This manual documents RefTeX version 24.2.92.
 
    Don't be discouraged by the size of this manual, which covers RefTeX
 in great depth.  All you need to know to use RefTeX can be summarized
@@ -487,7 +487,7 @@ Promotion and Demotion
      `\chapter', `\subsection' to `\section' etc. If there is an active
      region, all sections in the region will be promoted, including the
      one at point.  To avoid mistakes, RefTeX requires a fresh document
-     scan before executing this command - if necessary, it will
+     scan before executing this command; if necessary, it will
      automatically do this scan and ask the user to repeat the promotion
      command.
 
@@ -503,7 +503,7 @@ Promotion and Demotion
      label prefix determines the wording of a reference.  After a
      promotion/demotion it may be necessary to change a few labels from
      `sec:xyz' to `cha:xyz' or vice versa.  This command can be used to
-     do this - it launches a query replace to rename the definition and
+     do this; it launches a query replace to rename the definition and
      all references of a label.
 
 Exiting
@@ -640,7 +640,7 @@ records the figure counter, not the section counter.
    Several different environments can share a common counter and
 therefore a common label category.  For example labels in both
 `equation' and `eqnarray' environments record the value of the same
-counter - the equation counter.
+counter: the equation counter.
 
 * Menu:
 
@@ -1180,7 +1180,7 @@ macro _is itself_ a figure label, and where to find the context.
 this is a figure label which will be listed together with labels from
 normal figure environments.  The `nil' entries for prefix and reference
 format mean to use the defaults for figure labels.  The `3' for the
-context method means to grab the third macro argument - the caption.
+context method means to grab the third macro argument: the caption.
 
    As a side effect of this configuration, `reftex-label' will now
 insert the required naked label (without the `\label' macro) when point
@@ -1239,7 +1239,7 @@ following is equivalent to the line above.
      (setq reftex-label-alist '(AMSTeX))
 
    Note that this is automatically done by the `amsmath.el' style file
-of AUCTeX (*note Style Files::) - so if you use AUCTeX, this
+of AUCTeX (*note Style Files::); so if you use AUCTeX, this
 configuration will not be necessary.
 
 
@@ -1435,7 +1435,7 @@ cross-references with page information.  `fancyref' is a package where
 a macro call like `\fref{FIG:MAP-OF-GERMANY}' creates not only the
 number of the referenced counter but also the complete text around it,
 like `Figure 3 on the preceding page'.  In order to make it work you
-need to use label prefixes like `fig:' consistently - something RefTeX
+need to use label prefixes like `fig:' consistently--something RefTeX
 does automatically.  For each of these packages a variable could be
 configured to make its macros to take precedence over `\ref'.  Those
 were `reftex-vref-is-default' and `reftex-fref-is-default'
@@ -1924,7 +1924,7 @@ A phrase line looks like this:
 
    `<TABs>' stands for white space containing at least one <TAB>.  KEY
 must be at the start of the line and is the character identifying one
-of the macros defined in the file header.  It is optional - when
+of the macros defined in the file header.  It is optional; when
 omitted, the first macro definition line in the file will be used for
 this phrase.  The PHRASE is the phrase to be searched for when
 indexing.  It may contain several words separated by spaces.  By
@@ -1970,7 +1970,7 @@ File: reftex.info,  Node: Consistency Checks,  Next: Global Indexing,  Prev: Col
 
 Before indexing the phrases in the phrases buffer, they should be
 checked carefully for consistency.  A first step is to sort the phrases
-alphabetically - this is done with the command `C-c C-s'
+alphabetically; this is done with the command `C-c C-s'
 (`reftex-index-sort-phrases').  It will sort all phrases in the buffer
 alphabetically by search phrase.  If you want to group certain phrases
 and only sort within the groups, insert empty lines between the groups.
@@ -2318,7 +2318,7 @@ with `reftex-index'.  These codes need to be unique. `?i', `?I', and
 respectively.
 
    The following string is empty unless your macro adds a superordinate
-entry to the index key - this is the case for the `\astobj' macro.
+entry to the index key; this is the case for the `\astobj' macro.
 
    The next entry can be a hook function to exclude certain matches, it
 almost always can be `nil'.
@@ -3166,9 +3166,9 @@ described here.  All commands are available from the `Ref' menu.  See
  -- Command: reftex-index-phrase-selection-or-word
      Add current selection or the word at point to the phrases buffer.
      When you are in transient-mark-mode and the region is active, the
-     selection will be used - otherwise the word at point.  You get a
-     chance to edit the entry in the phrases buffer - to save the
-     buffer and return to the LaTeX document, finish with `C-c C-c'.
+     selection will be used; otherwise the word at point.  You get a
+     chance to edit the entry in the phrases buffer; to save the buffer
+     and return to the LaTeX document, finish with `C-c C-c'.
 
  -- Command: reftex-index-visit-phrases-buffer
      Switch to the phrases buffer, initialize if empty.
@@ -3291,7 +3291,7 @@ File: reftex.info,  Node: Options,  Next: Keymaps and Hooks,  Prev: Commands,  U
 *************************
 
 Here is a complete list of RefTeX's configuration variables.  All
-variables have customize support - so if you are not familiar with Emacs
+variables have customize support, so if you are not familiar with Emacs
 Lisp (and even if you are) you might find it more comfortable to use
 `customize' to look at and change these variables. `M-x
 reftex-customize' will get you there.
@@ -3453,7 +3453,7 @@ File: reftex.info,  Node: Options (Defining Label Environments),  Next: Options 
           `\myfig').  For macros, indicate the arguments, as in
           `\myfig[]{}{}{*}{}'.  Use square brackets for optional
           arguments, a star to mark the label argument, if any.  The
-          macro does not have to have a label argument - you could also
+          macro does not have to have a label argument; you could also
           use `\label{...}' inside one of its arguments.
 
           Special names: `section' for section labels, `any' to define a
@@ -3596,7 +3596,7 @@ File: reftex.info,  Node: Options (Defining Label Environments),  Next: Options 
  -- User Option: reftex-default-context-regexps
      Alist with default regular expressions for finding context.  The
      emacs lisp form `(format regexp (regexp-quote environment))' is
-     used to calculate the final regular expression - so `%s' will be
+     used to calculate the final regular expression, so `%s' will be
      replaced with the environment or macro.
 
  -- User Option: reftex-trust-label-prefix
@@ -3784,7 +3784,7 @@ File: reftex.info,  Node: Options (Referencing Labels),  Next: Options (Creating
      (table), `i' (item), `e' (equation), `n' (footnote), plus any
      definitions in `reftex-label-alist'.
 
-     Most options can also be switched from the label menu itself - so
+     Most options can also be switched from the label menu itself, so
      if you decide here to not have a table of contents in the label
      menu, you can still get one interactively during selection from
      the label menu.
@@ -3835,9 +3835,9 @@ File: reftex.info,  Node: Options (Referencing Labels),  Next: Options (Creating
      type.  To do that, RefTeX will look at the word before the cursor
      and compare it with the magic words given in `reftex-label-alist'.
      When it finds a match, RefTeX will immediately offer the correct
-     label menu - otherwise it will prompt you for a label type.  If
-     you set this variable to `nil', RefTeX will always prompt for a
-     label type.
+     label menu; otherwise it will prompt you for a label type.  If you
+     set this variable to `nil', RefTeX will always prompt for a label
+     type.
 
  -- Normal Hook: reftex-display-copied-context-hook
      Normal Hook which is run before context is displayed anywhere.
@@ -4070,11 +4070,11 @@ File: reftex.info,  Node: Options (Index Support),  Next: Options (Viewing Cross
      The final entry may also be a symbol.  It must have an association
      in the variable `reftex-index-macros-builtin' to specify the main
      indexing package you are using.  Valid values are currently
-          default         The LaTeX default - unnecessary to specify this one
+          default         The LaTeX default; unnecessary to specify this one
           multind         The multind.sty package
           index           The index.sty package
           index-shortcut  The index.sty packages with the ^ and _ shortcuts.
-                          Should not be used - only for old documents
+                          Should not be used; only for old documents
      Note that AUCTeX sets these things internally for RefTeX as well,
      so with a sufficiently new version of AUCTeX, you should not set
      the package here.
@@ -4083,7 +4083,7 @@ File: reftex.info,  Node: Options (Index Support),  Next: Options (Viewing Cross
      The default index macro for `reftex-index-selection-or-word'.
      This is a list with `(MACRO-KEY DEFAULT-TAG)'.
 
-     MACRO-KEY is a character identifying an index macro - see
+     MACRO-KEY is a character identifying an index macro; see
      `reftex-index-macros'.
 
      DEFAULT-TAG is the tag to be used if the macro requires a TAG
@@ -4159,7 +4159,7 @@ File: reftex.info,  Node: Options (Index Support),  Next: Options (Viewing Cross
 
  -- User Option: reftex-index-phrases-wrap-long-lines
      Non-`nil' means, when indexing from the phrases buffer, wrap lines.
-     Inserting indexing commands in a line makes the line longer - often
+     Inserting indexing commands in a line makes the line longer, often
      so long that it does not fit onto the screen.  When this variable
      is non-`nil', newlines will be added as necessary before and/or
      after the indexing command to keep lines short.  However, the
@@ -4313,7 +4313,7 @@ File: reftex.info,  Node: Options (Finding Files),  Next: Options (Optimizations
      recursion.  Thus, in a path `.//:/tex/', search first `./', then
      `/tex/', and then all subdirectories of `./'.  If this option is
      `nil', the subdirectories of `./' are searched before `/tex/'.
-     This is mainly for speed - most of the time the recursive path is
+     This is mainly for speed; most of the time the recursive path is
      for the system files and not for the user files.  Set this to
      `nil' if the default makes RefTeX finding files with equal names
      in wrong sequence.
@@ -4418,8 +4418,8 @@ File: reftex.info,  Node: Options (Optimizations),  Next: Options (Fontification
  -- User Option: reftex-use-multiple-selection-buffers
      Non-`nil' means use a separate selection buffer for each label
      type.  These buffers are kept from one selection to the next and
-     need not to be created for each use - so the menu generally comes
-     up faster.  The selection buffers will be erased (and therefore
+     need not be created for each use, so the menu generally comes up
+     faster.  The selection buffers will be erased (and therefore
      updated) automatically when new labels in its category are added.
      See the variable `reftex-auto-update-selection-buffers'.
 
@@ -6150,84 +6150,84 @@ Index
 
 
 Tag Table:
-Node: Top1187
-Node: Introduction5898
-Node: Installation6746
-Node: RefTeX in a Nutshell10514
-Node: Table of Contents16709
-Node: Labels and References25006
-Node: Creating Labels26419
-Ref: Creating Labels-Footnote-128851
-Node: Referencing Labels29331
-Node: Builtin Label Environments36864
-Node: Defining Label Environments38277
-Node: Theorem and Axiom39629
-Node: Quick Equation44394
-Node: Figure Wrapper46005
-Node: Adding Magic Words47955
-Node: Using \eqref48919
-Node: Non-Standard Environments49772
-Node: Putting it Together53738
-Node: Reference Info54510
-Node: Reference Styles55159
-Ref: Reference Styles-Footnote-159218
-Node: xr (LaTeX package)59321
-Node: Citations60459
-Node: Creating Citations61342
-Node: Citation Styles66077
-Node: Citation Info68092
-Node: Chapterbib and Bibunits68737
-Node: Citations Outside LaTeX69403
-Node: BibTeX Database Subsets70519
-Node: Index Support71907
-Node: Creating Index Entries75067
-Node: The Index Phrases File76406
-Node: Collecting Phrases78547
-Ref: Collecting Phrases-Footnote-181383
-Ref: Collecting Phrases-Footnote-281465
-Node: Consistency Checks81546
-Node: Global Indexing83032
-Ref: Global Indexing-Footnote-186235
-Node: Displaying and Editing the Index86382
-Node: Builtin Index Macros92215
-Node: Defining Index Macros92823
-Ref: Defining Index Macros-Footnote-196366
-Node: Viewing Cross-References96427
-Ref: Viewing Cross-References-Footnote-199046
-Ref: Viewing Cross-References-Footnote-299119
-Node: RefTeXs Menu99175
-Node: Key Bindings99574
-Node: Faces101111
-Node: Multifile Documents101650
-Node: Language Support103410
-Node: Finding Files104869
-Node: Optimizations107975
-Node: AUCTeX113240
-Ref: AUCTeX-Footnote-1113870
-Node: AUCTeX-RefTeX Interface113950
-Ref: AUCTeX-RefTeX Interface-Footnote-1116247
-Ref: AUCTeX-RefTeX Interface-Footnote-2116369
-Node: Style Files116528
-Ref: Style Files-Footnote-1120434
-Node: Bib-Cite120555
-Node: Problems and Work-Arounds121593
-Node: Imprint125648
-Node: Commands127711
-Node: Options136095
-Node: Options (Table of Contents)136891
-Node: Options (Defining Label Environments)141811
-Node: Options (Creating Labels)152550
-Node: Options (Referencing Labels)156951
-Node: Options (Creating Citations)162013
-Node: Options (Index Support)168631
-Node: Options (Viewing Cross-References)178292
-Node: Options (Finding Files)180904
-Node: Options (Optimizations)184778
-Node: Options (Fontification)189272
-Node: Options (Misc)192670
-Node: Keymaps and Hooks194451
-Node: Changes195228
-Node: GNU Free Documentation License200500
-Node: Index225667
+Node: Top1119
+Node: Introduction5830
+Node: Installation6678
+Node: RefTeX in a Nutshell10446
+Node: Table of Contents16641
+Node: Labels and References24936
+Node: Creating Labels26348
+Ref: Creating Labels-Footnote-128780
+Node: Referencing Labels29260
+Node: Builtin Label Environments36793
+Node: Defining Label Environments38206
+Node: Theorem and Axiom39558
+Node: Quick Equation44323
+Node: Figure Wrapper45934
+Node: Adding Magic Words47883
+Node: Using \eqref48847
+Node: Non-Standard Environments49699
+Node: Putting it Together53665
+Node: Reference Info54437
+Node: Reference Styles55086
+Ref: Reference Styles-Footnote-159144
+Node: xr (LaTeX package)59247
+Node: Citations60385
+Node: Creating Citations61268
+Node: Citation Styles66003
+Node: Citation Info68018
+Node: Chapterbib and Bibunits68663
+Node: Citations Outside LaTeX69329
+Node: BibTeX Database Subsets70445
+Node: Index Support71833
+Node: Creating Index Entries74993
+Node: The Index Phrases File76332
+Node: Collecting Phrases78473
+Ref: Collecting Phrases-Footnote-181308
+Ref: Collecting Phrases-Footnote-281390
+Node: Consistency Checks81471
+Node: Global Indexing82956
+Ref: Global Indexing-Footnote-186159
+Node: Displaying and Editing the Index86306
+Node: Builtin Index Macros92139
+Node: Defining Index Macros92747
+Ref: Defining Index Macros-Footnote-196289
+Node: Viewing Cross-References96350
+Ref: Viewing Cross-References-Footnote-198969
+Ref: Viewing Cross-References-Footnote-299042
+Node: RefTeXs Menu99098
+Node: Key Bindings99497
+Node: Faces101034
+Node: Multifile Documents101573
+Node: Language Support103333
+Node: Finding Files104792
+Node: Optimizations107898
+Node: AUCTeX113163
+Ref: AUCTeX-Footnote-1113793
+Node: AUCTeX-RefTeX Interface113873
+Ref: AUCTeX-RefTeX Interface-Footnote-1116170
+Ref: AUCTeX-RefTeX Interface-Footnote-2116292
+Node: Style Files116451
+Ref: Style Files-Footnote-1120357
+Node: Bib-Cite120478
+Node: Problems and Work-Arounds121516
+Node: Imprint125571
+Node: Commands127634
+Node: Options136016
+Node: Options (Table of Contents)136811
+Node: Options (Defining Label Environments)141731
+Node: Options (Creating Labels)152468
+Node: Options (Referencing Labels)156869
+Node: Options (Creating Citations)161929
+Node: Options (Index Support)168547
+Node: Options (Viewing Cross-References)178204
+Node: Options (Finding Files)180816
+Node: Options (Optimizations)184689
+Node: Options (Fontification)189179
+Node: Options (Misc)192577
+Node: Keymaps and Hooks194358
+Node: Changes195135
+Node: GNU Free Documentation License200407
+Node: Index225574
 
 End Tag Table

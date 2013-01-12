@@ -1,9 +1,10 @@
-This is /home/cyd/emacs/doc/misc/../../info/message.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/message.texi.
+This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/message.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/message.texi.
 
 This file documents Message, the Emacs message composition mode.
 
-   Copyright (C) 1996-2012 Free Software Foundation, Inc.
+   Copyright (C) 1996-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -14,8 +15,7 @@ This file documents Message, the Emacs message composition mode.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs network features
 START-INFO-DIR-ENTRY
@@ -31,7 +31,7 @@ Message
 
 This file documents Message, the Emacs message composition mode.
 
-   Copyright (C) 1996-2012 Free Software Foundation, Inc.
+   Copyright (C) 1996-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -42,8 +42,7 @@ This file documents Message, the Emacs message composition mode.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 All message composition from Gnus (both mail and news) takes place in
 Message mode buffers.
@@ -418,7 +417,7 @@ following variables would come in handy.
 do.  And just send it; as always.  Just before the message is sent out,
 Gnus' MFT generation thingy kicks in and checks if the message already
 has a MFT field.  If there is one, it is left alone.  (Except if it's
-empty - in that case, the field is removed and is not replaced with an
+empty; in that case, the field is removed and is not replaced with an
 automatically generated one.  This lets you disable MFT generation on a
 per-message basis.)  If there is none, then the list of recipient
 addresses (in the To: and Cc: headers) is checked to see if one of them
@@ -1832,12 +1831,12 @@ File: message.info,  Node: Various Message Variables,  Next: Sending Variables, 
      present.
 
 `message-send-mail-hook'
-     Hook run before sending mail messages.  This hook is run very late
-     - just before the message is actually sent as mail.
+     Hook run before sending mail messages.  This hook is run very late:
+     just before the message is actually sent as mail.
 
 `message-send-news-hook'
-     Hook run before sending news messages.  This hook is run very late
-     - just before the message is actually sent as news.
+     Hook run before sending news messages.  This hook is run very late:
+     just before the message is actually sent as news.
 
 `message-sent-hook'
      Hook run after sending messages.
@@ -2988,51 +2987,51 @@ File: message.info,  Node: Key Index,  Prev: Index,  Up: Top
 
 
 Tag Table:
-Node: Top1114
-Node: Interface2641
-Node: New Mail Message3836
-Node: New News Message4203
-Node: Reply4601
-Node: Wide Reply5978
-Node: Followup8001
-Node: Canceling News8781
-Node: Superseding9966
-Node: Forwarding10625
-Node: Resending12178
-Node: Bouncing12538
-Node: Mailing Lists13114
-Node: Commands18317
-Node: Buffer Entry19060
-Node: Header Commands19736
-Node: Movement24608
-Node: Insertion25177
-Node: MIME26503
-Node: IDNA27711
-Node: Security29042
-Node: Signing and encryption29599
-Node: Using S/MIME32417
-Node: Using PGP/MIME35641
-Node: PGP Compatibility37369
-Node: Various Commands38871
-Node: Sending40649
-Node: Mail Aliases41064
-Node: Spelling42374
-Node: Variables43685
-Node: Message Headers44409
-Node: Mail Headers50680
-Node: Mail Variables51637
-Node: News Headers55524
-Node: News Variables62526
-Node: Insertion Variables62936
-Node: Various Message Variables68233
-Node: Sending Variables73809
-Node: Message Buffers75121
-Node: Message Actions77259
-Node: Compatibility78736
-Node: Appendices79184
-Node: Responses79407
-Node: GNU Free Documentation License80765
-Node: Index105918
-Node: Key Index128409
+Node: Top1047
+Node: Interface2479
+Node: New Mail Message3674
+Node: New News Message4041
+Node: Reply4439
+Node: Wide Reply5816
+Node: Followup7839
+Node: Canceling News8619
+Node: Superseding9804
+Node: Forwarding10463
+Node: Resending12016
+Node: Bouncing12376
+Node: Mailing Lists12952
+Node: Commands18154
+Node: Buffer Entry18897
+Node: Header Commands19573
+Node: Movement24445
+Node: Insertion25014
+Node: MIME26340
+Node: IDNA27548
+Node: Security28879
+Node: Signing and encryption29436
+Node: Using S/MIME32254
+Node: Using PGP/MIME35478
+Node: PGP Compatibility37206
+Node: Various Commands38708
+Node: Sending40486
+Node: Mail Aliases40901
+Node: Spelling42211
+Node: Variables43522
+Node: Message Headers44246
+Node: Mail Headers50517
+Node: Mail Variables51474
+Node: News Headers55361
+Node: News Variables62363
+Node: Insertion Variables62773
+Node: Various Message Variables68070
+Node: Sending Variables73644
+Node: Message Buffers74956
+Node: Message Actions77094
+Node: Compatibility78571
+Node: Appendices79019
+Node: Responses79242
+Node: GNU Free Documentation License80600
+Node: Index105753
+Node: Key Index128244
 
 End Tag Table

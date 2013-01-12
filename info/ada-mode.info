@@ -1,7 +1,9 @@
-This is /home/cyd/emacs/doc/misc/../../info/ada-mode.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/ada-mode.texi.
+This is
+/misc/emacs/bzr/emacs24-merge/doc/misc/../../info/ada-mode.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/ada-mode.texi.
 
-Copyright (C) 1999-2012  Free Software Foundation, Inc.
+Copyright (C) 1999-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -12,8 +14,7 @@ Copyright (C) 1999-2012  Free Software Foundation, Inc.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs editing modes
 START-INFO-DIR-ENTRY
@@ -26,7 +27,7 @@ File: ada-mode.info,  Node: Top,  Next: Overview,  Prev: (dir),  Up: (dir)
 Ada Mode
 ********
 
-Copyright (C) 1999-2012  Free Software Foundation, Inc.
+Copyright (C) 1999-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -37,8 +38,7 @@ Copyright (C) 1999-2012  Free Software Foundation, Inc.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -508,8 +508,8 @@ directory `"."' is the project file directory.
           ada_project_path_sep=:
           ada_project_path=$GDS_ROOT/makerules
           ada_project_path=../opentoken
-     the environment variable `ADA_PROJECT_PATH' will be set to
-     `"/home/shared/makerules:/home/opentoken/"'.
+     then as a result the environment variable `ADA_PROJECT_PATH' will
+     be set to `"/home/shared/makerules:/home/opentoken/"'.
 
      The default value is not the current value of this environment
      variable, because that will typically have been set by another
@@ -1446,7 +1446,7 @@ additional functions to handle comments:
      Continue comment on next line.
 
 `C-c ;'
-     Comment the selected region (add - at the beginning of lines).
+     Comment the selected region (add `--' at the beginning of lines).
 
 `C-c :'
      Uncomment the selected region
@@ -2003,34 +2003,34 @@ Index
 
 
 Tag Table:
-Node: Top1006
-Node: Overview2773
-Node: Installation4081
-Node: Customization5209
-Node: Non-standard file names6116
-Node: Other compiler7611
-Node: Other customization8114
-Node: Compiling Executing8767
-Node: Compile commands9438
-Node: Compiler errors12175
-Node: Project files13054
-Node: Project File Overview13757
-Node: GUI Editor16059
-Node: Project file variables16534
-Node: Compiling Examples23612
-Node: No project files24410
-Node: Set compiler options29096
-Node: Set source search path31061
-Node: Use GNAT project file33338
-Node: Use multiple GNAT project files35521
-Node: Moving Through Ada Code37410
-Node: Identifier completion39366
-Node: Automatic Smart Indentation40928
-Node: Formatting Parameter Lists43745
-Node: Automatic Casing44151
-Node: Statement Templates47395
-Node: Comment Handling48863
-Node: GNU Free Documentation License49394
-Node: Index74572
+Node: Top938
+Node: Overview2609
+Node: Installation3917
+Node: Customization5045
+Node: Non-standard file names5952
+Node: Other compiler7447
+Node: Other customization7950
+Node: Compiling Executing8603
+Node: Compile commands9274
+Node: Compiler errors12011
+Node: Project files12890
+Node: Project File Overview13593
+Node: GUI Editor15895
+Node: Project file variables16370
+Node: Compiling Examples23465
+Node: No project files24263
+Node: Set compiler options28949
+Node: Set source search path30914
+Node: Use GNAT project file33191
+Node: Use multiple GNAT project files35374
+Node: Moving Through Ada Code37263
+Node: Identifier completion39219
+Node: Automatic Smart Indentation40781
+Node: Formatting Parameter Lists43598
+Node: Automatic Casing44004
+Node: Statement Templates47248
+Node: Comment Handling48716
+Node: GNU Free Documentation License49250
+Node: Index74428
 
 End Tag Table

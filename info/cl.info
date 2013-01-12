@@ -1,9 +1,10 @@
-This is /home/cyd/emacs/doc/misc/../../info/cl.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/cl.texi.
+This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/cl.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/cl.texi.
 
 This file documents the GNU Emacs Common Lisp emulation package.
 
-   Copyright (C) 1993, 2001-2012 Free Software Foundation, Inc.
+   Copyright (C) 1993, 2001-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -14,8 +15,7 @@ This file documents the GNU Emacs Common Lisp emulation package.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs lisp libraries
 START-INFO-DIR-ENTRY
@@ -30,7 +30,7 @@ GNU Emacs Common Lisp Emulation
 
 This file documents the GNU Emacs Common Lisp emulation package.
 
-   Copyright (C) 1993, 2001-2012 Free Software Foundation, Inc.
+   Copyright (C) 1993, 2001-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -41,8 +41,7 @@ This file documents the GNU Emacs Common Lisp emulation package.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -5192,69 +5191,69 @@ Variable Index
 
 
 Tag Table:
-Node: Top1066
-Node: Overview3204
-Node: Usage5414
-Node: Organization5848
-Node: Naming Conventions8893
-Node: Program Structure10202
-Node: Argument Lists10629
-Node: Time of Evaluation19810
-Node: Predicates25738
-Node: Type Predicates26066
-Node: Equality Predicates30799
-Node: Control Structure32097
-Node: Assignment32946
-Node: Generalized Variables34189
-Node: Setf Extensions34972
-Node: Modify Macros39127
-Node: Variable Bindings45824
-Node: Dynamic Bindings46377
-Node: Function Bindings47211
-Node: Macro Bindings49770
-Node: Conditionals53053
-Node: Blocks and Exits55653
-Node: Iteration58689
-Node: Loop Facility63968
-Node: Loop Basics64868
-Node: Loop Examples67425
-Node: For Clauses69734
-Node: Iteration Clauses81600
-Node: Accumulation Clauses83470
-Node: Other Clauses85841
-Node: Multiple Values91936
-Node: Macros93481
-Node: Declarations96731
-Node: Symbols104572
-Node: Property Lists104895
-Node: Creating Symbols108125
-Node: Numbers110128
-Node: Predicates on Numbers110594
-Node: Numerical Functions111401
-Node: Random Numbers114712
-Node: Implementation Parameters117279
-Node: Sequences120452
-Node: Sequence Basics121144
-Node: Mapping over Sequences124705
-Node: Sequence Functions130848
-Node: Searching Sequences136447
-Node: Sorting Sequences139538
-Node: Lists142231
-Node: List Functions142679
-Node: Substitution of Expressions145408
-Node: Lists as Sets147346
-Node: Association Lists151144
-Node: Structures152629
-Node: Assertions167475
-Node: Efficiency Concerns170002
-Node: Common Lisp Compatibility174629
-Node: Porting Common Lisp177082
-Node: Obsolete Features186084
-Node: Obsolete Lexical Binding186747
-Node: Obsolete Macros190510
-Node: Obsolete Setf Customization193239
-Node: GNU Free Documentation License199721
-Node: Function Index224903
-Node: Variable Index239486
+Node: Top999
+Node: Overview3042
+Node: Usage5252
+Node: Organization5686
+Node: Naming Conventions8731
+Node: Program Structure10040
+Node: Argument Lists10467
+Node: Time of Evaluation19648
+Node: Predicates25576
+Node: Type Predicates25904
+Node: Equality Predicates30637
+Node: Control Structure31935
+Node: Assignment32784
+Node: Generalized Variables34027
+Node: Setf Extensions34810
+Node: Modify Macros38965
+Node: Variable Bindings45662
+Node: Dynamic Bindings46215
+Node: Function Bindings47049
+Node: Macro Bindings49608
+Node: Conditionals52891
+Node: Blocks and Exits55491
+Node: Iteration58527
+Node: Loop Facility63806
+Node: Loop Basics64706
+Node: Loop Examples67263
+Node: For Clauses69572
+Node: Iteration Clauses81438
+Node: Accumulation Clauses83308
+Node: Other Clauses85679
+Node: Multiple Values91774
+Node: Macros93319
+Node: Declarations96569
+Node: Symbols104410
+Node: Property Lists104733
+Node: Creating Symbols107963
+Node: Numbers109966
+Node: Predicates on Numbers110432
+Node: Numerical Functions111239
+Node: Random Numbers114550
+Node: Implementation Parameters117117
+Node: Sequences120290
+Node: Sequence Basics120982
+Node: Mapping over Sequences124543
+Node: Sequence Functions130686
+Node: Searching Sequences136285
+Node: Sorting Sequences139376
+Node: Lists142069
+Node: List Functions142517
+Node: Substitution of Expressions145246
+Node: Lists as Sets147184
+Node: Association Lists150982
+Node: Structures152467
+Node: Assertions167313
+Node: Efficiency Concerns169840
+Node: Common Lisp Compatibility174467
+Node: Porting Common Lisp176920
+Node: Obsolete Features185922
+Node: Obsolete Lexical Binding186585
+Node: Obsolete Macros190348
+Node: Obsolete Setf Customization193077
+Node: GNU Free Documentation License199559
+Node: Function Index224741
+Node: Variable Index239324
 
 End Tag Table

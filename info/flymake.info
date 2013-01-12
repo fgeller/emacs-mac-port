@@ -1,10 +1,11 @@
-This is /home/cyd/emacs/doc/misc/../../info/flymake.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/flymake.texi.
+This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/flymake.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/flymake.texi.
 
 This manual is for GNU Flymake (version 0.3, April 2004), which is a
 universal on-the-fly syntax checker for GNU Emacs.
 
-   Copyright (C) 2004-2012 Free Software Foundation, Inc.
+   Copyright (C) 2004-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -15,8 +16,7 @@ universal on-the-fly syntax checker for GNU Emacs.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
@@ -32,7 +32,7 @@ GNU Flymake
 This manual is for GNU Flymake (version 0.3, April 2004), which is a
 universal on-the-fly syntax checker for GNU Emacs.
 
-   Copyright (C) 2004-2012 Free Software Foundation, Inc.
+   Copyright (C) 2004-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -43,8 +43,7 @@ universal on-the-fly syntax checker for GNU Emacs.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -338,8 +337,8 @@ File: flymake.info,  Node: Adding support for a new syntax check tool,  Prev: Cu
 
 * Menu:
 
-* Example -- Configuring a tool called directly::
-* Example -- Configuring a tool called via make::
+* Example---Configuring a tool called directly::
+* Example---Configuring a tool called via make::
 
    Syntax check tools are configured using the
 `flymake-allowed-file-name-masks' list. Each item of this list has the
@@ -385,10 +384,10 @@ new tool is not yet supported by Flymake, add a new entry to the
 support for various syntax check tools.
 
 
-File: flymake.info,  Node: Example -- Configuring a tool called directly,  Next: Example -- Configuring a tool called via make,  Up: Adding support for a new syntax check tool
+File: flymake.info,  Node: Example---Configuring a tool called directly,  Next: Example---Configuring a tool called via make,  Up: Adding support for a new syntax check tool
 
-4.2.1 Example - Configuring a tool called directly
---------------------------------------------------
+4.2.1 Example--Configuring a tool called directly
+-------------------------------------------------
 
 In this example, we will add support for `perl' as a syntax check tool.
 `perl' supports the `-c' option which does syntax checking.
@@ -426,10 +425,10 @@ appropriate command line.
                  flymake-err-line-patterns))
 
 
-File: flymake.info,  Node: Example -- Configuring a tool called via make,  Prev: Example -- Configuring a tool called directly,  Up: Adding support for a new syntax check tool
+File: flymake.info,  Node: Example---Configuring a tool called via make,  Prev: Example---Configuring a tool called directly,  Up: Adding support for a new syntax check tool
 
-4.2.2 Example - Configuring a tool called via make
---------------------------------------------------
+4.2.2 Example--Configuring a tool called via make
+-------------------------------------------------
 
 In this example we will add support for C files syntax checked by `gcc'
 called via `make'.
@@ -493,7 +492,7 @@ File: flymake.info,  Node: Flymake Implementation,  Next: GNU Free Documentation
 `flymake-start-syntax-check-for-current-buffer'.  Flymake first
 determines whether it is able to do syntax check. It then saves a copy
 of the buffer in a temporary file in the buffer's directory (or in the
-system temp directory - for java files), creates a syntax check command
+system temp directory, for java files), creates a syntax check command
 and launches a process with this command. The output is parsed using a
 list of error message patterns, and error information (file name, line
 number, type and text) is saved. After the process has finished,
@@ -1226,9 +1225,9 @@ Index
 
 * Adding support for a new syntax check tool: Adding support for a new syntax check tool.
                                                                 (line 6)
-* Adding support for C (gcc+make):       Example -- Configuring a tool called via make.
+* Adding support for C (gcc+make):       Example---Configuring a tool called via make.
                                                                 (line 6)
-* Adding support for perl:               Example -- Configuring a tool called directly.
+* Adding support for perl:               Example---Configuring a tool called directly.
                                                                 (line 6)
 * buildfile, locating:                   Locating the buildfile.
                                                                 (line 6)
@@ -1279,32 +1278,32 @@ Index
 
 
 Tag Table:
-Node: Top1119
-Node: Overview of Flymake2222
-Node: Installing Flymake4039
-Node: Using Flymake4731
-Node: Flymake mode5032
-Node: Running the syntax check5568
-Node: Navigating to error lines6093
-Node: Viewing error messages6853
-Node: Syntax check statuses7446
-Node: Troubleshooting9213
-Node: Configuring Flymake9734
-Node: Customizable variables10117
-Node: Adding support for a new syntax check tool12573
-Node: Example -- Configuring a tool called directly14812
-Node: Example -- Configuring a tool called via make16434
-Node: Flymake Implementation18062
-Node: Determining whether syntax check is possible19161
-Node: Making a temporary copy20537
-Node: Locating a master file21847
-Node: Getting the include directories23228
-Node: Locating the buildfile24285
-Node: Starting the syntax check process25601
-Node: Parsing the output26138
-Node: Highlighting erroneous lines27583
-Node: Interaction with other modes28318
-Node: GNU Free Documentation License29392
-Node: Index54575
+Node: Top1052
+Node: Overview of Flymake2060
+Node: Installing Flymake3877
+Node: Using Flymake4569
+Node: Flymake mode4870
+Node: Running the syntax check5406
+Node: Navigating to error lines5931
+Node: Viewing error messages6691
+Node: Syntax check statuses7284
+Node: Troubleshooting9051
+Node: Configuring Flymake9572
+Node: Customizable variables9955
+Node: Adding support for a new syntax check tool12411
+Node: Example---Configuring a tool called directly14648
+Node: Example---Configuring a tool called via make16266
+Node: Flymake Implementation17890
+Node: Determining whether syntax check is possible18988
+Node: Making a temporary copy20364
+Node: Locating a master file21674
+Node: Getting the include directories23055
+Node: Locating the buildfile24112
+Node: Starting the syntax check process25428
+Node: Parsing the output25965
+Node: Highlighting erroneous lines27410
+Node: Interaction with other modes28145
+Node: GNU Free Documentation License29219
+Node: Index54402
 
 End Tag Table

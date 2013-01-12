@@ -1,10 +1,11 @@
-This is /home/cyd/emacs/doc/misc/../../info/woman.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/woman.texi.
+This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/woman.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/woman.texi.
 
 This file documents WoMan: A program to browse Unix manual pages `W.O.
 (without) man'.
 
-Copyright (C) 2001-2012 Free Software Foundation, Inc.
+Copyright (C) 2001-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -15,8 +16,7 @@ Copyright (C) 2001-2012 Free Software Foundation, Inc.
      "GNU Free Documentation License."
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
@@ -30,7 +30,7 @@ WoMan: Browse Unix Manual Pages "W.O. (without) Man"
 ****************************************************
 
      Software Version 0.54 (beta)
-     Manual Last Updated Time-stamp: <Thu 24-Jun-2010 00:06:54 gm on grasmoor>
+     Manual Last Updated Time-stamp: <2012-12-31 21:44:20 eggert>
 
      Francis J. Wright <F.J.Wright@qmw.ac.uk>
      School of Mathematical Sciences (http://centaur.maths.qmw.ac.uk/)
@@ -40,7 +40,7 @@ WoMan: Browse Unix Manual Pages "W.O. (without) Man"
 This file documents WoMan: A program to browse Unix manual pages `W.O.
 (without) man'.
 
-Copyright (C) 2001-2012 Free Software Foundation, Inc.
+Copyright (C) 2001-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -51,8 +51,7 @@ Copyright (C) 2001-2012 Free Software Foundation, Inc.
      "GNU Free Documentation License."
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -1870,35 +1869,35 @@ Concept Index
 
 
 Tag Table:
-Node: Top1087
-Node: Introduction3015
-Node: Background5538
-Node: Finding12800
-Node: Topic14361
-Node: Cache18751
-Node: Word at point20464
-Node: Filename21402
-Node: Automatic23658
-Node: Browsing25222
-Node: Fonts26453
-Node: Navigation27114
-Node: References27997
-Node: Changing29393
-Node: Convenience31409
-Node: Imenu32153
-Node: Customization32951
-Node: Interface Options34942
-Node: Formatting Options43666
-Node: Faces45221
-Node: Special symbols46505
-Node: Log47738
-Node: Technical48858
-Node: Bugs49574
-Node: Acknowledgments50342
-Node: GNU Free Documentation License52266
-Node: Command Index77439
-Node: Variable Index79429
-Node: Keystroke Index82063
-Node: Concept Index83823
+Node: Top1020
+Node: Introduction2840
+Node: Background5363
+Node: Finding12625
+Node: Topic14186
+Node: Cache18576
+Node: Word at point20289
+Node: Filename21227
+Node: Automatic23483
+Node: Browsing25047
+Node: Fonts26278
+Node: Navigation26939
+Node: References27822
+Node: Changing29218
+Node: Convenience31234
+Node: Imenu31978
+Node: Customization32776
+Node: Interface Options34767
+Node: Formatting Options43491
+Node: Faces45046
+Node: Special symbols46330
+Node: Log47563
+Node: Technical48683
+Node: Bugs49399
+Node: Acknowledgments50167
+Node: GNU Free Documentation License52091
+Node: Command Index77264
+Node: Variable Index79254
+Node: Keystroke Index81888
+Node: Concept Index83648
 
 End Tag Table

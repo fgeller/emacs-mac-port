@@ -15,7 +15,7 @@
 ;;;;;;  org-babel-pop-to-session-maybe org-babel-load-in-session-maybe
 ;;;;;;  org-babel-expand-src-block-maybe org-babel-view-src-block-info
 ;;;;;;  org-babel-execute-maybe org-babel-execute-safely-maybe) "ob"
-;;;;;;  "ob.el" "c1c43e7a2a3e4cca97feb654e4ccc984")
+;;;;;;  "ob.el" "d7149a9570cdc0164c5483b27216b5fb")
 ;;; Generated autoloads from ob.el
 
 (autoload 'org-babel-execute-safely-maybe "ob" "\
@@ -238,7 +238,7 @@ Mark current src block.
 ;;;***
 
 ;;;### (autoloads (org-babel-describe-bindings) "ob-keys" "ob-keys.el"
-;;;;;;  "19f0cb88a91c99a93aa97ad3b207902b")
+;;;;;;  "f50ec310c1d81f092bdf4223aaf86661")
 ;;; Generated autoloads from ob-keys.el
 
 (autoload 'org-babel-describe-bindings "ob-keys" "\
@@ -249,7 +249,7 @@ Describe all keybindings behind `org-babel-key-prefix'.
 ;;;***
 
 ;;;### (autoloads (org-babel-lob-get-info org-babel-lob-execute-maybe)
-;;;;;;  "ob-lob" "ob-lob.el" "71e3c5766732ead3bb574b5ff6749816")
+;;;;;;  "ob-lob" "ob-lob.el" "2911a7425b09b2411451d82e761878e6")
 ;;; Generated autoloads from ob-lob.el
 
 (autoload 'org-babel-lob-execute-maybe "ob-lob" "\
@@ -267,7 +267,7 @@ Return a Library of Babel function call as a string.
 ;;;***
 
 ;;;### (autoloads (org-babel-tangle org-babel-tangle-file org-babel-load-file)
-;;;;;;  "ob-tangle" "ob-tangle.el" "dfec9d5bd86a26ef0bf0ffab94aa8f20")
+;;;;;;  "ob-tangle" "ob-tangle.el" "c32a248c96cd88e3da0c71e2d185049b")
 ;;; Generated autoloads from ob-tangle.el
 
 (autoload 'org-babel-load-file "ob-tangle" "\
@@ -301,7 +301,7 @@ exported source code blocks by language.
 
 ;;;### (autoloads (org-archive-subtree-default-with-confirmation
 ;;;;;;  org-archive-subtree-default org-toggle-archive-tag org-archive-to-archive-sibling
-;;;;;;  org-archive-subtree) "org-archive" "org-archive.el" "7b05b7f1e46a92e829bfc176e02c6787")
+;;;;;;  org-archive-subtree) "org-archive" "org-archive.el" "cb370581950dc2bde1c89a6a9d082023")
 ;;; Generated autoloads from org-archive.el
 
 (autoload 'org-archive-subtree "org-archive" "\
@@ -350,7 +350,7 @@ This command is set with the variable `org-archive-default-command'.
 ;;;### (autoloads (org-export-ascii-preprocess org-export-as-ascii
 ;;;;;;  org-export-region-as-ascii org-replace-region-by-ascii org-export-as-ascii-to-buffer
 ;;;;;;  org-export-as-utf8-to-buffer org-export-as-utf8 org-export-as-latin1-to-buffer
-;;;;;;  org-export-as-latin1) "org-ascii" "org-ascii.el" "25b3f9c5f15d470567543f2e0d399fb7")
+;;;;;;  org-export-as-latin1) "org-ascii" "org-ascii.el" "da07ccc26a5d463f4837cb635b822408")
 ;;; Generated autoloads from org-ascii.el
 
 (autoload 'org-export-as-latin1 "org-ascii" "\
@@ -409,8 +409,7 @@ Export the outline as a pretty ASCII file.
 If there is an active region, export only the region.
 The prefix ARG specifies how many levels of the outline should become
 underlined headlines, default is 3.    Lower levels will become bulleted
-lists.  When HIDDEN is non-nil, don't display the ASCII buffer.
-EXT-PLIST is a property list with external parameters overriding
+lists.  EXT-PLIST is a property list with external parameters overriding
 org-mode's default settings, but still inferior to file-local
 settings.  When TO-BUFFER is non-nil, create a buffer with that
 name and export to that buffer.  If TO-BUFFER is the symbol
@@ -419,7 +418,7 @@ resulting ASCII as a string.  When BODY-ONLY is set, don't produce
 the file header and footer.  When PUB-DIR is set, use this as the
 publishing directory.
 
-\(fn ARG &optional HIDDEN EXT-PLIST TO-BUFFER BODY-ONLY PUB-DIR)" t nil)
+\(fn ARG &optional EXT-PLIST TO-BUFFER BODY-ONLY PUB-DIR)" t nil)
 
 (autoload 'org-export-ascii-preprocess "org-ascii" "\
 Do extra work for ASCII export.
@@ -428,7 +427,7 @@ Do extra work for ASCII export.
 
 ;;;***
 
-;;;### (autoloads (org-attach) "org-attach" "org-attach.el" "0ccb7852653d53bc7d5084eed31d1929")
+;;;### (autoloads (org-attach) "org-attach" "org-attach.el" "79417b5570af2dd67ba42a8530b52e02")
 ;;; Generated autoloads from org-attach.el
 
 (autoload 'org-attach "org-attach" "\
@@ -440,7 +439,7 @@ Shows a list of commands and prompts for another key to execute a command.
 ;;;***
 
 ;;;### (autoloads (org-bbdb-anniversaries) "org-bbdb" "org-bbdb.el"
-;;;;;;  "fc56eeb182c9a8f68e636bd32707feb9")
+;;;;;;  "74769a415220e4a0eedde063eb20d5e3")
 ;;; Generated autoloads from org-bbdb.el
 
 (autoload 'org-bbdb-anniversaries "org-bbdb" "\
@@ -453,7 +452,7 @@ Extract anniversaries from BBDB for display in the agenda.
 ;;;### (autoloads (org-dblock-write:clocktable org-clock-report org-clock-get-clocktable
 ;;;;;;  org-clock-display org-clock-sum org-clock-goto org-clock-cancel
 ;;;;;;  org-clock-out org-clock-in-last org-clock-in org-resolve-clocks)
-;;;;;;  "org-clock" "org-clock.el" "c3fcccd08489d9338a22edfbc70de1ad")
+;;;;;;  "org-clock" "org-clock.el" "f4fe4dad0b3ee09902c215595d391151")
 ;;; Generated autoloads from org-clock.el
 
 (autoload 'org-resolve-clocks "org-clock" "\
@@ -555,7 +554,7 @@ Write the standard clocktable.
 ;;;***
 
 ;;;### (autoloads (org-datetree-find-date-create) "org-datetree"
-;;;;;;  "org-datetree.el" "6247fd9fe100b26281023dc00b0c8a86")
+;;;;;;  "org-datetree.el" "9ca2cfc0338149594d81885680ab2b78")
 ;;; Generated autoloads from org-datetree.el
 
 (autoload 'org-datetree-find-date-create "org-datetree" "\
@@ -571,7 +570,7 @@ tree can be found.
 ;;;### (autoloads (org-export-as-docbook org-export-as-docbook-pdf-and-open
 ;;;;;;  org-export-as-docbook-pdf org-export-region-as-docbook org-replace-region-by-docbook
 ;;;;;;  org-export-as-docbook-to-buffer org-export-as-docbook-batch)
-;;;;;;  "org-docbook" "org-docbook.el" "6db7e2b0403eb6cf6f2f290ed9d047b8")
+;;;;;;  "org-docbook" "org-docbook.el" "b5175098b85e3e658a821b488bc0a9a9")
 ;;; Generated autoloads from org-docbook.el
 
 (autoload 'org-export-as-docbook-batch "org-docbook" "\
@@ -621,7 +620,7 @@ in a window.  A non-interactive call will only return the buffer.
 (autoload 'org-export-as-docbook-pdf "org-docbook" "\
 Export as DocBook XML file, and generate PDF file.
 
-\(fn &optional HIDDEN EXT-PLIST TO-BUFFER BODY-ONLY PUB-DIR)" t nil)
+\(fn &optional EXT-PLIST TO-BUFFER BODY-ONLY PUB-DIR)" t nil)
 
 (autoload 'org-export-as-docbook-pdf-and-open "org-docbook" "\
 Export as DocBook XML file, generate PDF file, and open it.
@@ -642,12 +641,12 @@ header and footer, simply return the content of the document (all
 top-level sections).  When PUB-DIR is set, use this as the
 publishing directory.
 
-\(fn &optional HIDDEN EXT-PLIST TO-BUFFER BODY-ONLY PUB-DIR)" t nil)
+\(fn &optional EXT-PLIST TO-BUFFER BODY-ONLY PUB-DIR)" t nil)
 
 ;;;***
 
 ;;;### (autoloads (org-element-context org-element-at-point org-element-interpret-data)
-;;;;;;  "org-element" "org-element.el" "f4c69189dd14d9e6b42fbb92e60c0393")
+;;;;;;  "org-element" "org-element.el" "4ecc313cb6796b01d5954ddba4682d17")
 ;;; Generated autoloads from org-element.el
 
 (autoload 'org-element-interpret-data "org-element" "\
@@ -705,7 +704,7 @@ and :post-blank properties.
 ;;;***
 
 ;;;### (autoloads (org-export-as-org org-export-visible org-export)
-;;;;;;  "org-exp" "org-exp.el" "cdc8f6a6aaec4a163680d1d7ca010e9c")
+;;;;;;  "org-exp" "org-exp.el" "a54f2298e39d40d75e8609cb32dc3bc3")
 ;;; Generated autoloads from org-exp.el
 
 (autoload 'org-export "org-exp" "\
@@ -756,12 +755,12 @@ org-mode's default settings, but still inferior to file-local
 settings.  When PUB-DIR is set, use this as the publishing
 directory.
 
-\(fn ARG &optional HIDDEN EXT-PLIST TO-BUFFER BODY-ONLY PUB-DIR)" t nil)
+\(fn ARG &optional EXT-PLIST TO-BUFFER BODY-ONLY PUB-DIR)" t nil)
 
 ;;;***
 
 ;;;### (autoloads (org-feed-show-raw-feed org-feed-goto-inbox org-feed-update
-;;;;;;  org-feed-update-all) "org-feed" "org-feed.el" "47c3efb363c18a99a5dc2664a30d3a72")
+;;;;;;  org-feed-update-all) "org-feed" "org-feed.el" "f5f190118c0e7321f88972d9a4749f5f")
 ;;; Generated autoloads from org-feed.el
 
 (autoload 'org-feed-update-all "org-feed" "\
@@ -789,7 +788,7 @@ Show the raw feed buffer of a feed.
 ;;;***
 
 ;;;### (autoloads (org-footnote-normalize org-footnote-action) "org-footnote"
-;;;;;;  "org-footnote.el" "0143ec30cb8f52e741429f57a121bfcd")
+;;;;;;  "org-footnote.el" "7c167514518f697ae37118065d47d811")
 ;;; Generated autoloads from org-footnote.el
 
 (autoload 'org-footnote-action "org-footnote" "\
@@ -840,7 +839,7 @@ Additional note on `org-footnote-insert-pos-for-preprocessor':
 ;;;### (autoloads (org-freemind-to-org-mode org-freemind-from-org-sparse-tree
 ;;;;;;  org-freemind-from-org-mode org-freemind-from-org-mode-node
 ;;;;;;  org-freemind-show org-export-as-freemind) "org-freemind"
-;;;;;;  "org-freemind.el" "4917c61e8d3d72825019899324b57a6c")
+;;;;;;  "org-freemind.el" "3a98110463e00bcdab11d312409658b5")
 ;;; Generated autoloads from org-freemind.el
 
 (autoload 'org-export-as-freemind "org-freemind" "\
@@ -900,7 +899,7 @@ Convert FreeMind file MM-FILE to `org-mode' file ORG-FILE.
 
 ;;;### (autoloads (org-export-as-html org-export-region-as-html org-replace-region-by-html
 ;;;;;;  org-export-as-html-to-buffer org-export-as-html-batch org-export-as-html-and-open)
-;;;;;;  "org-html" "org-html.el" "8a0bf5a91bc3bbf2606cca373aa89707")
+;;;;;;  "org-html" "org-html.el" "852ca5585c080a8ee44eacdb90aca346")
 ;;; Generated autoloads from org-html.el
 
 (put 'org-export-html-style-include-default 'safe-local-variable 'booleanp)
@@ -963,8 +962,7 @@ Export the outline as a pretty HTML file.
 If there is an active region, export only the region.  The prefix
 ARG specifies how many levels of the outline should become
 headlines.  The default is 3.  Lower levels will become bulleted
-lists.  HIDDEN is obsolete and does nothing.
-EXT-PLIST is a property list with external parameters overriding
+lists.  EXT-PLIST is a property list with external parameters overriding
 org-mode's default settings, but still inferior to file-local
 settings.  When TO-BUFFER is non-nil, create a buffer with that
 name and export to that buffer.  If TO-BUFFER is the symbol
@@ -974,13 +972,13 @@ the file header and footer, simply return the content of
 <body>...</body>, without even the body tags themselves.  When
 PUB-DIR is set, use this as the publishing directory.
 
-\(fn ARG &optional HIDDEN EXT-PLIST TO-BUFFER BODY-ONLY PUB-DIR)" t nil)
+\(fn ARG &optional EXT-PLIST TO-BUFFER BODY-ONLY PUB-DIR)" t nil)
 
 ;;;***
 
 ;;;### (autoloads (org-export-icalendar-combine-agenda-files org-export-icalendar-all-agenda-files
 ;;;;;;  org-export-icalendar-this-file) "org-icalendar" "org-icalendar.el"
-;;;;;;  "a0008bf0e97c69bc8ced26a9154efb63")
+;;;;;;  "1017e9f1f85d0c25fae1a0ea5703a34f")
 ;;; Generated autoloads from org-icalendar.el
 
 (autoload 'org-export-icalendar-this-file "org-icalendar" "\
@@ -1007,7 +1005,7 @@ The file is stored under the name `org-combined-agenda-icalendar-file'.
 
 ;;;### (autoloads (org-id-store-link org-id-find-id-file org-id-find
 ;;;;;;  org-id-goto org-id-get org-id-get-create) "org-id" "org-id.el"
-;;;;;;  "f1e94fa6a5cbf26834fdc42f89b0e479")
+;;;;;;  "ffd9c0cde8b5889ce23c873d04315f02")
 ;;; Generated autoloads from org-id.el
 
 (autoload 'org-id-get-create "org-id" "\
@@ -1054,7 +1052,7 @@ Store a link to the current entry, using its ID.
 ;;;***
 
 ;;;### (autoloads (org-indent-mode) "org-indent" "org-indent.el"
-;;;;;;  "9b6368b8a01741daebf1a72c87c40096")
+;;;;;;  "aa4274a858622c6b22f3497df83a7aeb")
 ;;; Generated autoloads from org-indent.el
 
 (autoload 'org-indent-mode "org-indent" "\
@@ -1071,7 +1069,7 @@ during idle time.
 
 ;;;***
 
-;;;### (autoloads (org-irc-store-link) "org-irc" "org-irc.el" "650dd51e8de4fd3f551ce4ced9672395")
+;;;### (autoloads (org-irc-store-link) "org-irc" "org-irc.el" "f5d45d21f475b63408f333384ce1cc61")
 ;;; Generated autoloads from org-irc.el
 
 (autoload 'org-irc-store-link "org-irc" "\
@@ -1083,7 +1081,7 @@ Dispatch to the appropriate function to store a link to an IRC session.
 
 ;;;### (autoloads (org-export-as-pdf-and-open org-export-as-pdf org-export-as-latex
 ;;;;;;  org-export-region-as-latex org-replace-region-by-latex org-export-as-latex-to-buffer
-;;;;;;  org-export-as-latex-batch) "org-latex" "org-latex.el" "cf64f82f468e29919aaa1ba94cd9d127")
+;;;;;;  org-export-as-latex-batch) "org-latex" "org-latex.el" "f5224057e83fb06e245b730d41ab8fee")
 ;;; Generated autoloads from org-latex.el
 
 (autoload 'org-export-as-latex-batch "org-latex" "\
@@ -1145,7 +1143,7 @@ no LaTeX header.
 When BODY-ONLY is set, don't produce the file header and footer,
 simply return the content of \\begin{document}...\\end{document},
 without even the \\begin{document} and \\end{document} commands.
-when PUB-DIR is set, use this as the publishing directory.
+When PUB-DIR is set, use this as the publishing directory.
 
 \(fn ARG &optional EXT-PLIST TO-BUFFER BODY-ONLY PUB-DIR)" t nil)
 
@@ -1162,11 +1160,11 @@ Export as LaTeX, then process through to PDF, and open.
 ;;;***
 
 ;;;### (autoloads (org-mobile-pull org-mobile-push) "org-mobile"
-;;;;;;  "org-mobile.el" "168ee0f5a733da1eecd0afa7d81491cb")
+;;;;;;  "org-mobile.el" "87dc988c013fe0dc1705ea7e8036bf61")
 ;;; Generated autoloads from org-mobile.el
 
 (autoload 'org-mobile-push "org-mobile" "\
-Push the current state of Org affairs to the WebDAV directory.
+Push the current state of Org affairs to the target directory.
 This will create the index file, copy all agenda files there, and also
 create all custom agenda views, for upload to the mobile phone.
 
@@ -1183,7 +1181,7 @@ agenda view showing the flagged items.
 
 ;;;### (autoloads (org-export-as-odf-and-open org-export-as-odf org-export-odt-convert
 ;;;;;;  org-export-as-odt org-export-as-odt-batch org-export-as-odt-and-open)
-;;;;;;  "org-odt" "org-odt.el" "e19699c6ae706ab1b6511644fae96d8f")
+;;;;;;  "org-odt" "org-odt.el" "411d780a8042787e922915ece9849337")
 ;;; Generated autoloads from org-odt.el
 
 (put 'org-export-odt-preferred-output-format 'safe-local-variable 'stringp)
@@ -1254,7 +1252,7 @@ formula file.
 
 ;;;***
 
-;;;### (autoloads (org-plot/gnuplot) "org-plot" "org-plot.el" "ac985775c25b12caadad92fa0e97f76b")
+;;;### (autoloads (org-plot/gnuplot) "org-plot" "org-plot.el" "c0ade398350d86fcbe2d2a2db8c9e9ef")
 ;;; Generated autoloads from org-plot.el
 
 (autoload 'org-plot/gnuplot "org-plot" "\
@@ -1268,7 +1266,7 @@ line directly before or after the table.
 
 ;;;### (autoloads (org-publish-current-project org-publish-current-file
 ;;;;;;  org-publish-all org-publish) "org-publish" "org-publish.el"
-;;;;;;  "c757194fd2bac752210f49cef99450df")
+;;;;;;  "5b8f7e096ac50ffe61b1efc23ade67e6")
 ;;; Generated autoloads from org-publish.el
 
 (defalias 'org-publish-project 'org-publish)
@@ -1302,7 +1300,7 @@ the project.
 
 ;;;### (autoloads (org-remember-handler org-remember org-remember-apply-template
 ;;;;;;  org-remember-annotation org-remember-insinuate) "org-remember"
-;;;;;;  "org-remember.el" "9db7f5a5175eeca25b0ca30b1022c444")
+;;;;;;  "org-remember.el" "8695b11a6682036dacc8caac7c71be0d")
 ;;; Generated autoloads from org-remember.el
 
 (autoload 'org-remember-insinuate "org-remember" "\
@@ -1397,7 +1395,7 @@ See also the variable `org-reverse-note-order'.
 ;;;;;;  org-table-justify-field-maybe org-table-align org-table-export
 ;;;;;;  org-table-import org-table-convert-region org-table-create
 ;;;;;;  org-table-create-or-convert-from-region org-table-create-with-table\.el)
-;;;;;;  "org-table" "org-table.el" "b85e84cd1ecb1fbd02ae3434b51509cd")
+;;;;;;  "org-table" "org-table.el" "bb1b4edf5c1f6affbc4a4ac93e48e43f")
 ;;; Generated autoloads from org-table.el
 
 (autoload 'org-table-create-with-table\.el "org-table" "\
@@ -1983,7 +1981,7 @@ provide ORGTBL directives for the generated table.
 ;;;***
 
 ;;;### (autoloads (org-export-as-taskjuggler-and-open org-export-as-taskjuggler)
-;;;;;;  "org-taskjuggler" "org-taskjuggler.el" "8111766cd96e8e3433fabedd30800e2b")
+;;;;;;  "org-taskjuggler" "org-taskjuggler.el" "32757b981673218b34878b9a05e46c8a")
 ;;; Generated autoloads from org-taskjuggler.el
 
 (autoload 'org-export-as-taskjuggler "org-taskjuggler" "\
@@ -2010,7 +2008,7 @@ with the TaskJuggler GUI.
 ;;;***
 
 ;;;### (autoloads (org-timer-set-timer org-timer-item org-timer-change-times-in-region
-;;;;;;  org-timer org-timer-start) "org-timer" "org-timer.el" "13eedada5bccc7d8f2739b6497e4cd87")
+;;;;;;  org-timer org-timer-start) "org-timer" "org-timer.el" "24d58bf234f548224d83186703c58ff0")
 ;;; Generated autoloads from org-timer.el
 
 (autoload 'org-timer-start "org-timer" "\
@@ -2070,7 +2068,7 @@ replace any running timer.
 
 ;;;***
 
-;;;### (autoloads (org-export-as-xoxo) "org-xoxo" "org-xoxo.el" "fb6b70f2d9b66316b727d7f6e3886a49")
+;;;### (autoloads (org-export-as-xoxo) "org-xoxo" "org-xoxo.el" "3ff04d93032e66aca1e0c6a021c28eca")
 ;;; Generated autoloads from org-xoxo.el
 
 (autoload 'org-export-as-xoxo "org-xoxo" "\

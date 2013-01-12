@@ -3,7 +3,7 @@
 ;;; Code:
 
 
-;;;### (autoloads nil "em-alias" "em-alias.el" "5e497f22b615692af0c0de57a43324c1")
+;;;### (autoloads nil "em-alias" "em-alias.el" "9fd98060cf826aaf8696ab31a593655a")
 ;;; Generated autoloads from em-alias.el
 
 (defgroup eshell-alias nil "\
@@ -11,7 +11,7 @@ Command aliases allow for easy definition of alternate commands." :tag "Command 
 
 ;;;***
 
-;;;### (autoloads nil "em-banner" "em-banner.el" "deae0ea01530e2663e526807555f9a7d")
+;;;### (autoloads nil "em-banner" "em-banner.el" "6d884e8632e35c85076a353b0f82a2cc")
 ;;; Generated autoloads from em-banner.el
 
 (defgroup eshell-banner nil "\
@@ -21,7 +21,7 @@ modules may have a simple template to begin with." :tag "Login banner" :group (q
 
 ;;;***
 
-;;;### (autoloads nil "em-basic" "em-basic.el" "ee6faca43c9a712641fe1fd74ae841b2")
+;;;### (autoloads nil "em-basic" "em-basic.el" "93372087c94e9468af0961b16ed987fa")
 ;;; Generated autoloads from em-basic.el
 
 (defgroup eshell-basic nil "\
@@ -33,7 +33,7 @@ same thing." :tag "Basic shell commands" :group (quote eshell-module))
 
 ;;;***
 
-;;;### (autoloads nil "em-cmpl" "em-cmpl.el" "24d01744aa63f0d46221c7491b78e678")
+;;;### (autoloads nil "em-cmpl" "em-cmpl.el" "34d248ff68f0fe56a8e9f507ae599c5f")
 ;;; Generated autoloads from em-cmpl.el
 
 (defgroup eshell-cmpl nil "\
@@ -43,7 +43,7 @@ variable names, arguments, etc." :tag "Argument completion" :group (quote eshell
 
 ;;;***
 
-;;;### (autoloads nil "em-dirs" "em-dirs.el" "55684aa87b0c9b5254600e96c6a91094")
+;;;### (autoloads nil "em-dirs" "em-dirs.el" "ab62432a3529d47841acbe18dfc3da7d")
 ;;; Generated autoloads from em-dirs.el
 
 (defgroup eshell-dirs nil "\
@@ -55,7 +55,7 @@ they lack somewhat in feel from the typical shell equivalents." :tag "Directory 
 
 ;;;***
 
-;;;### (autoloads nil "em-glob" "em-glob.el" "3d815d4a134de881a9a03f987ae4e508")
+;;;### (autoloads nil "em-glob" "em-glob.el" "a0ebd90d3149c2aae1254c45de9af499")
 ;;; Generated autoloads from em-glob.el
 
 (defgroup eshell-glob nil "\
@@ -64,7 +64,7 @@ by zsh for filename generation." :tag "Extended filename globbing" :group (quote
 
 ;;;***
 
-;;;### (autoloads nil "em-hist" "em-hist.el" "6b255a2f6378c1aa38f0a3cbff52b4c7")
+;;;### (autoloads nil "em-hist" "em-hist.el" "e0ca2bf7b25e5596246c0fd8fd3a6a3f")
 ;;; Generated autoloads from em-hist.el
 
 (defgroup eshell-hist nil "\
@@ -72,7 +72,7 @@ This module provides command history management." :tag "History list management"
 
 ;;;***
 
-;;;### (autoloads nil "em-ls" "em-ls.el" "07488acbbffac6d44bda595912721eaa")
+;;;### (autoloads nil "em-ls" "em-ls.el" "c7b48e4e9e87d3448bd897073b338b46")
 ;;; Generated autoloads from em-ls.el
 
 (defgroup eshell-ls nil "\
@@ -84,7 +84,7 @@ properties to colorize its output based on the setting of
 
 ;;;***
 
-;;;### (autoloads nil "em-pred" "em-pred.el" "5eba0df5932ad6f9afb19273a506c28d")
+;;;### (autoloads nil "em-pred" "em-pred.el" "5a4512813e27d293a28e430d5b12e271")
 ;;; Generated autoloads from em-pred.el
 
 (defgroup eshell-pred nil "\
@@ -95,7 +95,7 @@ ordinary strings." :tag "Value modifiers and predicates" :group (quote eshell-mo
 
 ;;;***
 
-;;;### (autoloads nil "em-prompt" "em-prompt.el" "711ef681a157bfbbfe1b1db9e2c7f95c")
+;;;### (autoloads nil "em-prompt" "em-prompt.el" "ad2347a6abca17eb6a0a91f3ad155d3b")
 ;;; Generated autoloads from em-prompt.el
 
 (defgroup eshell-prompt nil "\
@@ -104,7 +104,7 @@ as is common with most shells." :tag "Command prompts" :group (quote eshell-modu
 
 ;;;***
 
-;;;### (autoloads nil "em-rebind" "em-rebind.el" "d5f8df81bc6445cb9e46a57a584db988")
+;;;### (autoloads nil "em-rebind" "em-rebind.el" "8c4b7969ce6a254ecebb5a680e38d046")
 ;;; Generated autoloads from em-rebind.el
 
 (defgroup eshell-rebind nil "\
@@ -120,7 +120,7 @@ the behavior of normal shells while the user editing new input text." :tag "Rebi
 
 ;;;***
 
-;;;### (autoloads nil "em-script" "em-script.el" "85554db4a9317eda9b3c4c28e8e9a68b")
+;;;### (autoloads nil "em-script" "em-script.el" "1b1419ce3fdc7b1b48ae30ed445f9630")
 ;;; Generated autoloads from em-script.el
 
 (defgroup eshell-script nil "\
@@ -129,7 +129,7 @@ commands, as a script file." :tag "Running script files." :group (quote eshell-m
 
 ;;;***
 
-;;;### (autoloads nil "em-smart" "em-smart.el" "f65ca10d8ad35f52f1ac7052aa388f86")
+;;;### (autoloads nil "em-smart" "em-smart.el" "941fb40fefca7f6f1622c44d228cbad7")
 ;;; Generated autoloads from em-smart.el
 
 (defgroup eshell-smart nil "\
@@ -142,7 +142,7 @@ it to get a real sense of how it works." :tag "Smart display of output" :group (
 
 ;;;***
 
-;;;### (autoloads nil "em-term" "em-term.el" "e5de8970235a15b05aeb8f97ec529e2c")
+;;;### (autoloads nil "em-term" "em-term.el" "6d12f3e509735ea3b239ab3515580a27")
 ;;; Generated autoloads from em-term.el
 
 (defgroup eshell-term nil "\
@@ -154,7 +154,7 @@ which commands are considered visual in nature." :tag "Running visual commands" 
 
 ;;;***
 
-;;;### (autoloads nil "em-unix" "em-unix.el" "a582f28007dbf0e92db07388b79a385b")
+;;;### (autoloads nil "em-unix" "em-unix.el" "bc0658000332a2f7ea8691f692b64473")
 ;;; Generated autoloads from em-unix.el
 
 (defgroup eshell-unix nil "\
@@ -170,7 +170,7 @@ by name)." :tag "UNIX commands in Lisp" :group (quote eshell-module))
 
 ;;;***
 
-;;;### (autoloads nil "em-xtra" "em-xtra.el" "a6c4f2646be5435cccb6a003a3bdfc96")
+;;;### (autoloads nil "em-xtra" "em-xtra.el" "ec7cb12d5bc0fca01c3ef4adde78a568")
 ;;; Generated autoloads from em-xtra.el
 
 (defgroup eshell-xtra nil "\

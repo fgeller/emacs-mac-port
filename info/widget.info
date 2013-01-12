@@ -1,7 +1,8 @@
-This is /home/cyd/emacs/doc/misc/../../info/widget.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/widget.texi.
+This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/widget.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/widget.texi.
 
-Copyright (C) 2000-2012  Free Software Foundation, Inc.
+Copyright (C) 2000-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -12,8 +13,7 @@ Copyright (C) 2000-2012  Free Software Foundation, Inc.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs lisp libraries
 START-INFO-DIR-ENTRY
@@ -27,7 +27,7 @@ File: widget.info,  Node: Top,  Next: Introduction,  Prev: (dir),  Up: (dir)
 The Emacs Widget Library
 ************************
 
-Copyright (C) 2000-2012  Free Software Foundation, Inc.
+Copyright (C) 2000-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -38,8 +38,7 @@ Copyright (C) 2000-2012  Free Software Foundation, Inc.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -358,13 +357,14 @@ Interface::).
        (setq widget-example-repeat
              (widget-create 'editable-list
                             :entry-format "%i %d %v"
-                            :notify (lambda (widget &rest ignore)
-                                      (let ((old (widget-get widget
-                                                             ':example-length))
-                                            (new (length (widget-value widget))))
-                                        (unless (eq old new)
-                                          (widget-put widget ':example-length new)
-                                          (message "You can count to %d." new))))
+                            :notify
+                            (lambda (widget &rest ignore)
+                              (let ((old (widget-get widget
+                                                     ':example-length))
+                                    (new (length (widget-value widget))))
+                                (unless (eq old new)
+                                  (widget-put widget ':example-length new)
+                                  (message "You can count to %d." new))))
                             :value '("One" "Eh, two?" "Five!")
                             '(editable-field :value "three")))
        (widget-insert "\n\nSelect multiple:\n\n")
@@ -381,11 +381,13 @@ Interface::).
                       :notify (lambda (widget &rest ignore)
                                 (message "You selected %s"
                                          (widget-value widget)))
-                      '(item "One") '(item "Another One.") '(item "A Final One."))
+                      '(item "One") '(item "Another One.")
+                      '(item "A Final One."))
        (widget-insert "\n")
        (widget-create 'push-button
                       :notify (lambda (&rest ignore)
-                                (if (= (length (widget-value widget-example-repeat))
+                                (if (= (length
+                                        (widget-value widget-example-repeat))
                                        3)
                                     (message "Congratulation!")
                                   (error "Three was the count!")))
@@ -2301,39 +2303,39 @@ variables, and widgets described in this manual.
 
 
 Tag Table:
-Node: Top1053
-Node: Introduction2188
-Node: User Interface5264
-Node: Programming Example10990
-Node: Setting Up the Buffer15202
-Node: Basic Types16874
-Node: link23504
-Node: url-link24017
-Node: info-link24326
-Node: push-button24613
-Node: editable-field25185
-Node: text26579
-Node: menu-choice26873
-Node: radio-button-choice27726
-Node: item29315
-Node: choice-item29700
-Node: toggle30195
-Node: checkbox30947
-Node: checklist31251
-Node: editable-list32694
-Node: group33873
-Node: Sexp Types34158
-Node: constants34507
-Node: generic35580
-Node: atoms36135
-Node: composite38061
-Node: Widget Properties41046
-Node: Defining New Widgets44105
-Node: Widget Browser50138
-Node: Widget Minor Mode50996
-Node: Utilities51550
-Node: Widget Wishlist52038
-Node: GNU Free Documentation License53300
-Node: Index78475
+Node: Top985
+Node: Introduction2024
+Node: User Interface5100
+Node: Programming Example10826
+Node: Setting Up the Buffer15080
+Node: Basic Types16752
+Node: link23382
+Node: url-link23895
+Node: info-link24204
+Node: push-button24491
+Node: editable-field25063
+Node: text26457
+Node: menu-choice26751
+Node: radio-button-choice27604
+Node: item29193
+Node: choice-item29578
+Node: toggle30073
+Node: checkbox30825
+Node: checklist31129
+Node: editable-list32572
+Node: group33751
+Node: Sexp Types34036
+Node: constants34385
+Node: generic35458
+Node: atoms36013
+Node: composite37939
+Node: Widget Properties40924
+Node: Defining New Widgets43983
+Node: Widget Browser50016
+Node: Widget Minor Mode50874
+Node: Utilities51428
+Node: Widget Wishlist51916
+Node: GNU Free Documentation License53178
+Node: Index78353
 
 End Tag Table

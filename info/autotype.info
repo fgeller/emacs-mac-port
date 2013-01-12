@@ -1,7 +1,9 @@
-This is /home/cyd/emacs/doc/misc/../../info/autotype.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/autotype.texi.
+This is
+/misc/emacs/bzr/emacs24-merge/doc/misc/../../info/autotype.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/autotype.texi.
 
-Copyright (C) 1994-1995, 1999, 2001-2012  Free Software Foundation, Inc.
+Copyright (C) 1994-1995, 1999, 2001-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -12,8 +14,7 @@ Copyright (C) 1994-1995, 1999, 2001-2012  Free Software Foundation, Inc.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
@@ -33,7 +34,7 @@ programming language constructs.  Project-specific header comments,
 flow-control constructs or magic numbers are essentially the same every
 time.  Emacs has various features for doing tedious and repetitive
 typing chores for you in addition to the Abbrev features (*note
-(emacs)Abbrevs::).
+Abbrevs: (emacs)Abbrevs.).
 
    One solution is using skeletons, flexible rules that say what to
 insert, and how to do it.  Various programming language modes offer some
@@ -53,7 +54,7 @@ can be defined for inserting and navigating between text more
 generally.  A sort of meta-expansion facility can be used to try a set
 of alternative completions and expansions of text at point.
 
-   Copyright (C) 1994-1995, 1999, 2001-2012  Free Software Foundation,
+   Copyright (C) 1994-1995, 1999, 2001-2013 Free Software Foundation,
 Inc.
 
      Permission is granted to copy, distribute and/or modify this
@@ -65,8 +66,7 @@ Inc.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -99,9 +99,9 @@ When you want Emacs to insert a form letter or a typical construct of
 the programming language you are using, skeletons are a means of
 accomplishing this.  Normally skeletons each have a command of their
 own, that, when called, will insert the skeleton.  These commands can
-be issued in the usual ways (*note (emacs)Commands::).  Modes that
-offer various skeletons will often bind these to key-sequences on the
-`C-c' prefix, as well as having an `Insert' menu and maybe even
+be issued in the usual ways (*note Commands: (emacs)Commands.).  Modes
+that offer various skeletons will often bind these to key-sequences on
+the `C-c' prefix, as well as having an `Insert' menu and maybe even
 predefined abbrevs for them (*note Skeletons as Abbrevs::).
 
    The simplest kind of skeleton will simply insert some text indented
@@ -132,21 +132,21 @@ means for accomplishing this, and can even, in the case of programming
 languages, reindent the wrapped code for you.
 
    Skeleton commands take an optional numeric prefix argument (*note
-(emacs)Arguments::).  This is interpreted in two different ways
-depending on whether the prefix is positive, i.e., forwards oriented,
-or negative, i.e., backwards oriented.
+Arguments: (emacs)Arguments.).  This is interpreted in two different
+ways depending on whether the prefix is positive, i.e., forwards
+oriented, or negative, i.e., backwards oriented.
 
    A positive prefix means to wrap the skeleton around that many
 following words.  This is accomplished by putting the words there where
 the point is normally left after that skeleton is inserted (*note Using
-Skeletons::).  The point (*note (emacs)Point::) is left at the next
-interesting spot in the skeleton instead.
+Skeletons::).  The point (*note Point: (emacs)Point.) is left at the
+next interesting spot in the skeleton instead.
 
    A negative prefix means to do something similar with that many
-previously marked interregions (*note (emacs)Mark::).  In the simplest
-case, if you type `M--' just before issuing the skeleton command, that
-will wrap the skeleton around the current region, just like a positive
-argument would have wrapped it around a number of words.
+previously marked interregions (*note Mark: (emacs)Mark.).  In the
+simplest case, if you type `M--' just before issuing the skeleton
+command, that will wrap the skeleton around the current region, just
+like a positive argument would have wrapped it around a number of words.
 
    Smaller negative arguments will wrap that many interregions into
 successive interesting spots within the skeleton, again leaving the
@@ -177,8 +177,9 @@ File: autotype.info,  Node: Skeletons as Abbrevs,  Next: Skeleton Language,  Pre
 ********************************
 
 Rather than use a key binding for every skeleton command, you can also
-define an abbreviation (*note (emacs)Defining Abbrevs::) that will
-expand (*note (emacs)Expanding Abbrevs::) into the skeleton.
+define an abbreviation (*note Defining Abbrevs: (emacs)Defining
+Abbrevs.) that will expand (*note Expanding Abbrevs: (emacs)Expanding
+Abbrevs.) into the skeleton.
 
    Say you want `ifst' to be an abbreviation for the C language if
 statement.  You will tell Emacs that `ifst' expands to the empty string
@@ -287,7 +288,8 @@ skeleton.  The first argument is the command name, the second is a
 documentation string, and the rest is an interactor and any number of
 skeleton elements together forming a skeleton.  This skeleton is
 assigned to a variable of the same name as the command and can thus be
-overridden from your `~/.emacs' file (*note (emacs)Init File::).
+overridden from your `~/.emacs' file (*note Init File: (emacs)Init
+File.).
 
 
 File: autotype.info,  Node: Inserting Pairs,  Next: Autoinserting,  Prev: Skeleton Language,  Up: Top
@@ -304,13 +306,14 @@ have a non-qwerty keyboard, where typing some of the stranger
 programming language symbols makes you bend your fingers backwards,
 this can be quite relieving too.
 
-   This is done by binding the first key (*note (emacs)Rebinding::) of
-the pair to `skeleton-pair-insert-maybe' instead of
-`self-insert-command'.  The "maybe" comes from the fact that this
+   This is done by binding the first key (*note Rebinding:
+(emacs)Rebinding.) of the pair to `skeleton-pair-insert-maybe' instead
+of `self-insert-command'.  The "maybe" comes from the fact that this
 at-first surprising behavior is initially turned off.  To enable it,
 you must set `skeleton-pair' to some non-`nil' value.  And even then, a
-positive argument (*note (emacs)Arguments::) will make this key behave
-like a self-inserting key (*note (emacs)Inserting Text::).
+positive argument (*note Arguments: (emacs)Arguments.) will make this
+key behave like a self-inserting key (*note Inserting Text:
+(emacs)Inserting Text.).
 
    While this breaks with the stated intention of always balancing
 pairs, it turns out that one often doesn't want pairing to occur, when
@@ -344,8 +347,8 @@ File: autotype.info,  Node: Autoinserting,  Next: Copyrights,  Prev: Inserting P
 buffer.  The main application for this function, as its name suggests,
 is to have it be called automatically every time an empty, and only an
 empty file is visited.  This is accomplished by putting `(add-hook
-'find-file-hook 'auto-insert)' into your `~/.emacs' file (*note
-(emacs)Init File::).
+'find-file-hook 'auto-insert)' into your `~/.emacs' file (*note Init
+File: (emacs)Init File.).
 
    What gets inserted, if anything, is determined by the variable
 `auto-insert-alist'.  The CARs of this list are each either a mode
@@ -383,10 +386,10 @@ Html files insert a skeleton with the usual frame.
 source files insert the usual header, with a copyright of your
 environment variable `$ORGANIZATION' or else the FSF, and prompt for
 valid keywords describing the contents.  Files in a `bin' directory for
-which Emacs could determine no specialized mode (*note (emacs)Choosing
-Modes::) are set to Shell script mode.
+which Emacs could determine no specialized mode (*note Choosing Modes:
+(emacs)Choosing Modes.) are set to Shell script mode.
 
-   In Lisp (*note (emacs)Init File::) you can use the function
+   In Lisp (*note Init File: (emacs)Init File.) you can use the function
 `define-auto-insert' to add to or modify `auto-insert-alist'.  See its
 documentation with `C-h f define-auto-insert'.
 
@@ -425,8 +428,8 @@ File: autotype.info,  Node: Copyrights,  Next: Executables,  Prev: Autoinserting
 `M-x copyright' is a skeleton inserting command, that adds a copyright
 notice at the point.  The "by" part is taken from your environment
 variable `$ORGANIZATION' or if that isn't set you are prompted for it.
-If the buffer has a comment syntax (*note (emacs)Comments::), this is
-inserted as a comment.
+If the buffer has a comment syntax (*note Comments: (emacs)Comments.),
+this is inserted as a comment.
 
    `M-x copyright-update' looks for a copyright notice in the first
 `copyright-limit' characters of the buffer and updates it when
@@ -436,14 +439,14 @@ i.e., 1994, '94 or 94.  If a dash-separated year list up to last year
 is found, that is extended to current year, else the year is added
 separated by a comma.  Or it replaces them when this is called with a
 prefix argument.  If a header referring to a wrong version of the GNU
-General Public License (*note (emacs)Copying::) is found, that is
-updated too.
+General Public License (*note Copying: (emacs)Copying.) is found, that
+is updated too.
 
    An interesting application for this function is to have it be called
 automatically every time a file is saved.  This is accomplished by
 putting `(add-hook 'before-save-hook 'copyright-update)' into your
-`~/.emacs' file (*note (emacs)Init File::).  Alternative, you can do
-`M-x customize-variable <RET> before-save-hook <RET>'.
+`~/.emacs' file (*note Init File: (emacs)Init File.).  Alternative, you
+can do `M-x customize-variable <RET> before-save-hook <RET>'.
 `copyright-update' is conveniently listed as an option in the
 customization buffer.
 
@@ -1165,8 +1168,8 @@ Variable Index
 * hippie-expand-try-functions-list:      Hippie Expand.        (line  6)
 * quickurl-url-file:                     QuickURL.             (line  6)
 * skeleton-pair:                         Inserting Pairs.      (line 15)
-* skeleton-pair-alist:                   Inserting Pairs.      (line 28)
-* skeleton-pair-on-word:                 Inserting Pairs.      (line 23)
+* skeleton-pair-alist:                   Inserting Pairs.      (line 29)
+* skeleton-pair-on-word:                 Inserting Pairs.      (line 24)
 * skeleton-transformation:               Skeleton Language.    (line 18)
 * time-stamp-active:                     Timestamps.           (line 12)
 * time-stamp-count:                      Timestamps.           (line 17)
@@ -1179,22 +1182,22 @@ Variable Index
 
 
 Tag Table:
-Node: Top1075
-Node: Using Skeletons4321
-Node: Wrapping Skeletons5798
-Node: Skeletons as Abbrevs8409
-Node: Skeleton Language9305
-Node: Inserting Pairs12890
-Node: Autoinserting15277
-Node: Copyrights19072
-Node: Executables20946
-Node: Timestamps22650
-Node: QuickURL24030
-Node: Tempo24901
-Node: Hippie Expand26089
-Node: GNU Free Documentation License27126
-Node: Concept Index52309
-Node: Command Index53425
-Node: Variable Index54890
+Node: Top1007
+Node: Using Skeletons4165
+Node: Wrapping Skeletons5651
+Node: Skeletons as Abbrevs8283
+Node: Skeleton Language9214
+Node: Inserting Pairs12809
+Node: Autoinserting15231
+Node: Copyrights19061
+Node: Executables20962
+Node: Timestamps22666
+Node: QuickURL24046
+Node: Tempo24917
+Node: Hippie Expand26105
+Node: GNU Free Documentation License27142
+Node: Concept Index52325
+Node: Command Index53441
+Node: Variable Index54906
 
 End Tag Table

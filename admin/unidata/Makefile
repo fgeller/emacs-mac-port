@@ -1,6 +1,6 @@
 # Makefile -- Makefile to generate character property tables.
 
-# Copyright (C) 2012 Free Software Foundation, Inc.
+# Copyright (C) 2012-2013 Free Software Foundation, Inc.
 
 # Copyright (C) 2005, 2006, 2007, 2008, 2009, 2010, 2011
 #   National Institute of Advanced Industrial Science and Technology (AIST)
@@ -23,10 +23,10 @@
 
 SHELL = /bin/sh
 
-srcdir = /home/cyd/emacs/admin/unidata
-abs_builddir = /home/cyd/emacs/admin/unidata
-top_srcdir = /home/cyd/emacs
-abs_top_builddir = /home/cyd/emacs
+srcdir = /misc/emacs/bzr/emacs24-merge/admin/unidata
+abs_builddir = /misc/emacs/bzr/emacs24-merge/admin/unidata
+top_srcdir = /misc/emacs/bzr/emacs24-merge
+abs_top_builddir = /misc/emacs/bzr/emacs24-merge
 
 EMACS = ${abs_top_builddir}/src/emacs
 DSTDIR = ${top_srcdir}/lisp/international

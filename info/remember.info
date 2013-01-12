@@ -1,9 +1,11 @@
-This is /home/cyd/emacs/doc/misc/../../info/remember.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/remember.texi.
+This is
+/misc/emacs/bzr/emacs24-merge/doc/misc/../../info/remember.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/remember.texi.
 
 This manual is for Remember Mode, version 1.9
 
-   Copyright (C) 2001, 2004-2005, 2007-2012 Free Software Foundation,
+   Copyright (C) 2001, 2004-2005, 2007-2013 Free Software Foundation,
 Inc.
 
      Permission is granted to copy, distribute and/or modify this
@@ -15,8 +17,7 @@ Inc.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
@@ -31,7 +32,7 @@ Remember
 
 This manual is for Remember Mode, version 1.9
 
-   Copyright (C) 2001, 2004-2005, 2007-2012 Free Software Foundation,
+   Copyright (C) 2001, 2004-2005, 2007-2013 Free Software Foundation,
 Inc.
 
      Permission is granted to copy, distribute and/or modify this
@@ -43,8 +44,7 @@ Inc.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -884,20 +884,20 @@ Index
 
 
 Tag Table:
-Node: Top1063
-Node: Preface2829
-Node: Introduction3179
-Node: Installation5531
-Node: Implementation5884
-Node: Quick Start8212
-Node: Function Reference10466
-Node: Keystrokes11654
-Node: Backends12099
-Node: Text File12521
-Node: Diary12944
-Node: Mailbox13347
-Node: Org13783
-Node: GNU Free Documentation License14011
-Node: Concept Index39189
+Node: Top996
+Node: Preface2667
+Node: Introduction3017
+Node: Installation5369
+Node: Implementation5722
+Node: Quick Start8050
+Node: Function Reference10304
+Node: Keystrokes11492
+Node: Backends11937
+Node: Text File12359
+Node: Diary12782
+Node: Mailbox13185
+Node: Org13621
+Node: GNU Free Documentation License13849
+Node: Concept Index39027
 
 End Tag Table

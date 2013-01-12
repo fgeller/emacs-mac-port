@@ -1,10 +1,11 @@
-This is /home/cyd/emacs/doc/misc/../../info/sieve.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/sieve.texi.
+This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/sieve.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/sieve.texi.
 
 This file documents the Emacs Sieve package, for server-side mail
 filtering.
 
-   Copyright (C) 2001-2012  Free Software Foundation, Inc.
+   Copyright (C) 2001-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -15,8 +16,7 @@ filtering.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs network features
 START-INFO-DIR-ENTRY
@@ -39,7 +39,7 @@ the language, so keep RFC 3028 around.
    This file documents the Emacs Sieve package, for server-side mail
 filtering.
 
-   Copyright (C) 2001-2012  Free Software Foundation, Inc.
+   Copyright (C) 2001-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -50,8 +50,7 @@ filtering.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -810,14 +809,14 @@ Index
 
 
 Tag Table:
-Node: Top1070
-Node: Installation2813
-Node: Sieve Mode3291
-Node: Managing Sieve4264
-Node: Examples5769
-Node: Manage Sieve API7096
-Node: Standards8500
-Node: GNU Free Documentation License8992
-Node: Index34160
+Node: Top1002
+Node: Installation2649
+Node: Sieve Mode3127
+Node: Managing Sieve4100
+Node: Examples5605
+Node: Manage Sieve API6932
+Node: Standards8336
+Node: GNU Free Documentation License8828
+Node: Index33996
 
 End Tag Table

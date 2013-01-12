@@ -1,9 +1,10 @@
-This is /home/cyd/emacs/doc/misc/../../info/eshell.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/eshell.texi.
+This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/eshell.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/eshell.texi.
 
 This manual is for Eshell, the Emacs shell.
 
-   Copyright (C) 1999-2012 Free Software Foundation, Inc.
+   Copyright (C) 1999-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -14,8 +15,7 @@ This manual is for Eshell, the Emacs shell.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
@@ -36,7 +36,7 @@ handling the sort of tasks accomplished by those tools.
 
    This manual is for Eshell, the Emacs shell.
 
-   Copyright (C) 1999-2012 Free Software Foundation, Inc.
+   Copyright (C) 1999-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -47,8 +47,7 @@ handling the sort of tasks accomplished by those tools.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -1489,44 +1488,44 @@ Key Index
 
 
 Tag Table:
-Node: Top1045
-Node: What is Eshell?2696
-Ref: What is Eshell?-Footnote-15351
-Ref: What is Eshell?-Footnote-25441
-Node: Contributors to Eshell5634
-Node: Command basics6793
-Node: Commands verbs7354
-Node: Command arguments9123
-Node: Commands10379
-Node: Invocation10767
-Ref: Invocation-Footnote-111398
-Node: Completion11491
-Node: Aliases11612
-Node: History11724
-Node: Scripts12396
-Node: Built-ins12507
-Node: Arguments15272
-Node: The Parser15468
-Node: Variables15573
-Node: Substitution15697
-Node: Globbing15825
-Node: Predicates15946
-Node: Input/Output16050
-Node: Process control16175
-Node: Extension modules16314
-Node: Writing a module16624
-Node: Module testing16760
-Node: Directory handling16919
-Node: Key rebinding17083
-Node: Smart scrolling17238
-Node: Terminal emulation17397
-Node: Built-in UNIX commands17571
-Node: Extras and Goodies17729
-Node: Bugs and ideas17879
-Node: Known problems18479
-Node: GNU Free Documentation License33635
-Node: Concept Index58817
-Node: Function and Variable Index60002
-Node: Key Index60845
+Node: Top978
+Node: What is Eshell?2534
+Ref: What is Eshell?-Footnote-15189
+Ref: What is Eshell?-Footnote-25279
+Node: Contributors to Eshell5472
+Node: Command basics6631
+Node: Commands verbs7192
+Node: Command arguments8961
+Node: Commands10217
+Node: Invocation10605
+Ref: Invocation-Footnote-111236
+Node: Completion11329
+Node: Aliases11450
+Node: History11562
+Node: Scripts12234
+Node: Built-ins12345
+Node: Arguments15110
+Node: The Parser15306
+Node: Variables15411
+Node: Substitution15535
+Node: Globbing15663
+Node: Predicates15784
+Node: Input/Output15888
+Node: Process control16013
+Node: Extension modules16152
+Node: Writing a module16462
+Node: Module testing16598
+Node: Directory handling16757
+Node: Key rebinding16921
+Node: Smart scrolling17076
+Node: Terminal emulation17235
+Node: Built-in UNIX commands17409
+Node: Extras and Goodies17567
+Node: Bugs and ideas17717
+Node: Known problems18317
+Node: GNU Free Documentation License33473
+Node: Concept Index58655
+Node: Function and Variable Index59840
+Node: Key Index60683
 
 End Tag Table

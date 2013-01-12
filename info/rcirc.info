@@ -1,7 +1,8 @@
-This is /home/cyd/emacs/doc/misc/../../info/rcirc.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/rcirc.texi.
+This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/rcirc.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/rcirc.texi.
 
-Copyright (C) 2006-2012 Free Software Foundation, Inc.
+Copyright (C) 2006-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -12,8 +13,7 @@ Copyright (C) 2006-2012 Free Software Foundation, Inc.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs network features
 START-INFO-DIR-ENTRY
@@ -33,7 +33,7 @@ communicate with each other in real-time.  Communication occurs both in
 topic channels which are collections of many users, or privately, with
 just one other user.
 
-   Copyright (C) 2006-2012 Free Software Foundation, Inc.
+   Copyright (C) 2006-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -44,8 +44,7 @@ just one other user.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -686,7 +685,7 @@ client doesn't realize that it has been disconnected.  It takes several
 minutes until the client decides that the connection has in fact been
 lost.  The simple solution is to use `M-x rcirc'.  The problem is that
 this opens an _additional_ connection, so you'll have two copies of
-every channel buffer -- one dead and one live.
+every channel buffer, one dead and one live.
 
    The real answer, therefore, is a `/reconnect' command:
 
@@ -1492,29 +1491,29 @@ Index
 
 
 Tag Table:
-Node: Top989
-Node: Basics2726
-Node: Internet Relay Chat2992
-Node: Getting started with rcirc4513
-Node: Reference7397
-Node: rcirc commands7739
-Node: Useful IRC commands10606
-Node: Configuration11338
-Node: Fighting Information Overload16239
-Node: Channels16739
-Node: People18315
-Node: Keywords19926
-Node: Notices20431
-Node: Hacking and Tweaking21330
-Node: Skipping /away messages using handlers21800
-Node: Using fly spell mode22552
-Node: Scrolling conservatively22978
-Node: Changing the time stamp format23655
-Node: Defining a new command24036
-Node: Reconnecting after you have lost the connection24861
-Node: GNU Free Documentation License26726
-Node: Key Index51909
-Node: Variable Index53295
-Node: Index54804
+Node: Top922
+Node: Basics2564
+Node: Internet Relay Chat2830
+Node: Getting started with rcirc4351
+Node: Reference7235
+Node: rcirc commands7577
+Node: Useful IRC commands10444
+Node: Configuration11176
+Node: Fighting Information Overload16077
+Node: Channels16577
+Node: People18153
+Node: Keywords19764
+Node: Notices20269
+Node: Hacking and Tweaking21168
+Node: Skipping /away messages using handlers21638
+Node: Using fly spell mode22390
+Node: Scrolling conservatively22816
+Node: Changing the time stamp format23493
+Node: Defining a new command23874
+Node: Reconnecting after you have lost the connection24699
+Node: GNU Free Documentation License26562
+Node: Key Index51745
+Node: Variable Index53131
+Node: Index54640
 
 End Tag Table

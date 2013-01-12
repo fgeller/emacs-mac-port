@@ -1,10 +1,11 @@
-This is /home/cyd/emacs/doc/misc/../../info/ediff.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/ediff.texi.
+This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/ediff.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/ediff.texi.
 
 This file documents Ediff, a comprehensive visual interface to Unix diff
 and patch utilities.
 
-   Copyright (C) 1995-2012 Free Software Foundation, Inc.
+   Copyright (C) 1995-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -15,8 +16,7 @@ and patch utilities.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
@@ -32,7 +32,7 @@ Ediff
 This file documents Ediff, a comprehensive visual interface to Unix diff
 and patch utilities.
 
-   Copyright (C) 1995-2012 Free Software Foundation, Inc.
+   Copyright (C) 1995-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -43,8 +43,7 @@ and patch utilities.
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -881,7 +880,7 @@ although some of them are not bound to a key.
 `ediff-use-toolbar-p'
      The use of the toolbar can also be specified via the variable
      `ediff-use-toolbar-p' (default is `t').  This variable can be set
-     only in `.emacs' -- do *not* change it interactively.  Use the
+     only in `.emacs': do *not* change it interactively.  Use the
      function `ediff-toggle-use-toolbar' instead.
 
 `ediff-revert-buffers-then-recompute-diffs'
@@ -1231,7 +1230,7 @@ The bulk of customization can be done via the following hooks:
      Hooks run just before exiting a session group.
 
 `ediff-meta-buffer-keymap-setup-hook'
-     Hooks run just after setting up the `ediff-meta-buffer-map' -- the
+     Hooks run just after setting up the `ediff-meta-buffer-map', the
      map that controls key bindings in the meta buffer.  Since
      `ediff-meta-buffer-map' is a local variable, you can set different
      bindings for different kinds of meta buffers.
@@ -3150,31 +3149,31 @@ Index
 
 
 Tag Table:
-Node: Top1097
-Node: Introduction2592
-Node: Major Entry Points4987
-Node: Session Commands14761
-Node: Quick Help Commands16285
-Node: Other Session Commands34739
-Node: Registry of Ediff Sessions37544
-Node: Session Groups39105
-Node: Remote and Compressed Files45275
-Node: Customization46507
-Node: Hooks48465
-Node: Quick Help Customization53768
-Node: Window and Frame Configuration54784
-Node: Selective Browsing60754
-Node: Highlighting Difference Regions65855
-Node: Narrowing70603
-Node: Refinement of Difference Regions71886
-Node: Patch and Diff Programs74826
-Node: Merging and diff379398
-Node: Support for Version Control89206
-Node: Customizing the Mode Line90836
-Node: Miscellaneous91695
-Node: Notes on Heavy-duty Customization96949
-Node: Credits99539
-Node: GNU Free Documentation License104947
-Node: Index130113
+Node: Top1030
+Node: Introduction2430
+Node: Major Entry Points4825
+Node: Session Commands14599
+Node: Quick Help Commands16123
+Node: Other Session Commands34577
+Node: Registry of Ediff Sessions37380
+Node: Session Groups38941
+Node: Remote and Compressed Files45111
+Node: Customization46343
+Node: Hooks48301
+Node: Quick Help Customization53602
+Node: Window and Frame Configuration54618
+Node: Selective Browsing60588
+Node: Highlighting Difference Regions65689
+Node: Narrowing70437
+Node: Refinement of Difference Regions71720
+Node: Patch and Diff Programs74660
+Node: Merging and diff379232
+Node: Support for Version Control89040
+Node: Customizing the Mode Line90670
+Node: Miscellaneous91529
+Node: Notes on Heavy-duty Customization96783
+Node: Credits99373
+Node: GNU Free Documentation License104781
+Node: Index129947
 
 End Tag Table

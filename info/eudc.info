@@ -1,5 +1,6 @@
-This is /home/cyd/emacs/doc/misc/../../info/eudc.info, produced by
-makeinfo version 4.13 from /home/cyd/emacs/doc/misc/eudc.texi.
+This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/eudc.info,
+produced by makeinfo version 4.13 from
+/misc/emacs/bzr/emacs24-merge/doc/misc/eudc.texi.
 
 This file documents EUDC v1.30b.
 
@@ -7,7 +8,7 @@ This file documents EUDC v1.30b.
 directory servers using various protocols such as LDAP or the CCSO white
 pages directory system (PH/QI)
 
-   Copyright (C) 1998, 2000-2012  Free Software Foundation, Inc.
+   Copyright (C) 1998, 2000-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -18,8 +19,7 @@ pages directory system (PH/QI)
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 INFO-DIR-SECTION Emacs network features
 START-INFO-DIR-ENTRY
@@ -38,7 +38,7 @@ This file documents EUDC v1.30b.
 directory servers using various protocols such as LDAP or the CCSO white
 pages directory system (PH/QI)
 
-   Copyright (C) 1998, 2000-2012  Free Software Foundation, Inc.
+   Copyright (C) 1998, 2000-2013 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -49,8 +49,7 @@ pages directory system (PH/QI)
      "GNU Free Documentation License".
 
      (a) The FSF's Back-Cover Text is: "You have the freedom to copy and
-     modify this GNU manual.  Buying copies from the FSF supports it in
-     developing GNU and promoting software freedom."
+     modify this GNU manual."
 
 * Menu:
 
@@ -1479,31 +1478,31 @@ Variables Index
 
 
 Tag Table:
-Node: Top1218
-Node: Overview2645
-Node: LDAP3719
-Node: CCSO PH/QI4700
-Node: BBDB5680
-Node: Installation6702
-Node: LDAP Requirements7591
-Node: Usage7921
-Node: Querying Servers8778
-Node: Selecting a Server9302
-Node: Return Attributes11127
-Node: Duplicate Attributes12210
-Node: Query Form14787
-Node: Display of Query Results17274
-Node: Inline Query Expansion20249
-Node: The Server Hotlist24703
-Node: The Hotlist Edit Buffer26312
-Node: Multi-server Queries27377
-Node: Creating BBDB Records28665
-Ref: Creating BBDB Records-Footnote-133572
-Node: Server/Protocol Locals33701
-Node: Manipulating local bindings34213
-Node: Credits36885
-Node: GNU Free Documentation License37213
-Node: Command and Function Index62399
-Node: Variables Index66616
+Node: Top1150
+Node: Overview2481
+Node: LDAP3555
+Node: CCSO PH/QI4536
+Node: BBDB5516
+Node: Installation6538
+Node: LDAP Requirements7427
+Node: Usage7757
+Node: Querying Servers8614
+Node: Selecting a Server9138
+Node: Return Attributes10963
+Node: Duplicate Attributes12046
+Node: Query Form14623
+Node: Display of Query Results17110
+Node: Inline Query Expansion20085
+Node: The Server Hotlist24539
+Node: The Hotlist Edit Buffer26148
+Node: Multi-server Queries27213
+Node: Creating BBDB Records28501
+Ref: Creating BBDB Records-Footnote-133408
+Node: Server/Protocol Locals33537
+Node: Manipulating local bindings34049
+Node: Credits36721
+Node: GNU Free Documentation License37049
+Node: Command and Function Index62235
+Node: Variables Index66452
 
 End Tag Table
