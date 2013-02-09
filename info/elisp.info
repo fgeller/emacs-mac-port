@@ -4,7 +4,7 @@ produced by makeinfo version 4.13 from
 /misc/emacs/bzr/emacs24-merge/doc/lispref/elisp.texi.
 
 This is the `GNU Emacs Lisp Reference Manual' corresponding to Emacs
-version 24.2.92.
+version 24.2.93.
 
 Copyright (C) 1990-1996, 1998-2013 Free Software Foundation, Inc.
 
@@ -33,7 +33,7 @@ Emacs Lisp
 **********
 
 This is the `GNU Emacs Lisp Reference Manual' corresponding to Emacs
-version 24.2.92.
+version 24.2.93.
 
 Copyright (C) 1990-1996, 1998-2013 Free Software Foundation, Inc.
 
@@ -1445,7 +1445,7 @@ chapters describe features that are peculiar to Emacs Lisp or relate
 specifically to editing.
 
    This is the `GNU Emacs Lisp Reference Manual', corresponding to
-Emacs version 24.2.92.
+Emacs version 24.2.93.
 
 * Menu:
 
@@ -14300,13 +14300,13 @@ a symbol, SYMBOL
      calculate the indentation of a line within this expression.  The
      function receives two arguments:
 
+    POS
+          The position at which the line being indented begins.
+
     STATE
           The value returned by `parse-partial-sexp' (a Lisp primitive
           for indentation and nesting computation) when it parses up to
           the beginning of this line.
-
-    POS
-          The position at which the line being indented begins.
 
      It should return either a number, which is the number of columns of
      indentation for that line, or a list whose car is such a number.
@@ -64504,7 +64504,7 @@ Appendix A Emacs 23 Antinews
 
 For those users who live backwards in time, here is information about
 downgrading to Emacs version 23.4.  We hope you will enjoy the greater
-simplicity that results from the absence of many Emacs 24.2.92 features.
+simplicity that results from the absence of many Emacs 24.2.93 features.
 
 A.1 Old Lisp Features in Emacs 23
 =================================

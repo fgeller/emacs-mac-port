@@ -452,7 +452,7 @@ Extract anniversaries from BBDB for display in the agenda.
 ;;;### (autoloads (org-dblock-write:clocktable org-clock-report org-clock-get-clocktable
 ;;;;;;  org-clock-display org-clock-sum org-clock-goto org-clock-cancel
 ;;;;;;  org-clock-out org-clock-in-last org-clock-in org-resolve-clocks)
-;;;;;;  "org-clock" "org-clock.el" "f4fe4dad0b3ee09902c215595d391151")
+;;;;;;  "org-clock" "org-clock.el" "e99b2d419eec3abfa05293fed40db2c9")
 ;;; Generated autoloads from org-clock.el
 
 (autoload 'org-resolve-clocks "org-clock" "\
@@ -646,7 +646,7 @@ publishing directory.
 ;;;***
 
 ;;;### (autoloads (org-element-context org-element-at-point org-element-interpret-data)
-;;;;;;  "org-element" "org-element.el" "4ecc313cb6796b01d5954ddba4682d17")
+;;;;;;  "org-element" "org-element.el" "011518560024f5e5f2fad7a73a374561")
 ;;; Generated autoloads from org-element.el
 
 (autoload 'org-element-interpret-data "org-element" "\
@@ -670,8 +670,8 @@ of the element and PROPS a plist of properties associated to the
 element.
 
 Possible types are defined in `org-element-all-elements'.
-Properties depend on element or object type, but always
-include :begin, :end, :parent and :post-blank properties.
+Properties depend on element or object type, but always include
+`:begin', `:end', `:parent' and `:post-blank' properties.
 
 As a special case, if point is at the very beginning of a list or
 sub-list, returned element will be that list instead of the first
@@ -680,8 +680,8 @@ row of a table, returned element will be the table instead of the
 first row.
 
 If optional argument KEEP-TRAIL is non-nil, the function returns
-a list of of elements leading to element at point.  The list's
-CAR is always the element at point.  Following positions contain
+a list of elements leading to element at point.  The list's CAR
+is always the element at point.  The following positions contain
 element's siblings, then parents, siblings of parents, until the
 first element of current section.
 
@@ -696,15 +696,15 @@ associated to it.
 
 Possible types are defined in `org-element-all-elements' and
 `org-element-all-objects'.  Properties depend on element or
-object type, but always include :begin, :end, :parent
-and :post-blank properties.
+object type, but always include `:begin', `:end', `:parent' and
+`:post-blank'.
 
 \(fn)" nil nil)
 
 ;;;***
 
 ;;;### (autoloads (org-export-as-org org-export-visible org-export)
-;;;;;;  "org-exp" "org-exp.el" "a54f2298e39d40d75e8609cb32dc3bc3")
+;;;;;;  "org-exp" "org-exp.el" "0e15df69da36a13a4e380b7799aedcd6")
 ;;; Generated autoloads from org-exp.el
 
 (autoload 'org-export "org-exp" "\
@@ -788,7 +788,7 @@ Show the raw feed buffer of a feed.
 ;;;***
 
 ;;;### (autoloads (org-footnote-normalize org-footnote-action) "org-footnote"
-;;;;;;  "org-footnote.el" "7c167514518f697ae37118065d47d811")
+;;;;;;  "org-footnote.el" "49d69a14a72114f4eaecb17e797760bb")
 ;;; Generated autoloads from org-footnote.el
 
 (autoload 'org-footnote-action "org-footnote" "\
@@ -899,7 +899,7 @@ Convert FreeMind file MM-FILE to `org-mode' file ORG-FILE.
 
 ;;;### (autoloads (org-export-as-html org-export-region-as-html org-replace-region-by-html
 ;;;;;;  org-export-as-html-to-buffer org-export-as-html-batch org-export-as-html-and-open)
-;;;;;;  "org-html" "org-html.el" "852ca5585c080a8ee44eacdb90aca346")
+;;;;;;  "org-html" "org-html.el" "6b53aed335800c4c16dde448e67b64e0")
 ;;; Generated autoloads from org-html.el
 
 (put 'org-export-html-style-include-default 'safe-local-variable 'booleanp)
@@ -1005,7 +1005,7 @@ The file is stored under the name `org-combined-agenda-icalendar-file'.
 
 ;;;### (autoloads (org-id-store-link org-id-find-id-file org-id-find
 ;;;;;;  org-id-goto org-id-get org-id-get-create) "org-id" "org-id.el"
-;;;;;;  "ffd9c0cde8b5889ce23c873d04315f02")
+;;;;;;  "57ce1e881c03a97750fea6fcbfba15f5")
 ;;; Generated autoloads from org-id.el
 
 (autoload 'org-id-get-create "org-id" "\
@@ -1052,7 +1052,7 @@ Store a link to the current entry, using its ID.
 ;;;***
 
 ;;;### (autoloads (org-indent-mode) "org-indent" "org-indent.el"
-;;;;;;  "aa4274a858622c6b22f3497df83a7aeb")
+;;;;;;  "8c1dbbd167497ffc6d06a408aba8f744")
 ;;; Generated autoloads from org-indent.el
 
 (autoload 'org-indent-mode "org-indent" "\
@@ -1160,7 +1160,7 @@ Export as LaTeX, then process through to PDF, and open.
 ;;;***
 
 ;;;### (autoloads (org-mobile-pull org-mobile-push) "org-mobile"
-;;;;;;  "org-mobile.el" "87dc988c013fe0dc1705ea7e8036bf61")
+;;;;;;  "org-mobile.el" "2617ca40f7147aa9e041d0defb4351a1")
 ;;; Generated autoloads from org-mobile.el
 
 (autoload 'org-mobile-push "org-mobile" "\
@@ -1181,7 +1181,7 @@ agenda view showing the flagged items.
 
 ;;;### (autoloads (org-export-as-odf-and-open org-export-as-odf org-export-odt-convert
 ;;;;;;  org-export-as-odt org-export-as-odt-batch org-export-as-odt-and-open)
-;;;;;;  "org-odt" "org-odt.el" "411d780a8042787e922915ece9849337")
+;;;;;;  "org-odt" "org-odt.el" "a362046f28ee07a026ab3cd95cf2f391")
 ;;; Generated autoloads from org-odt.el
 
 (put 'org-export-odt-preferred-output-format 'safe-local-variable 'stringp)

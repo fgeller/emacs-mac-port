@@ -2,7 +2,7 @@ This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/reftex.info,
 produced by makeinfo version 4.13 from
 /misc/emacs/bzr/emacs24-merge/doc/misc/reftex.texi.
 
-This manual documents RefTeX (version 24.2.92), a package to do labels,
+This manual documents RefTeX (version 24.2.93), a package to do labels,
 references, citations and indices for LaTeX documents with Emacs.
 
    Copyright (C) 1997-2013 Free Software Foundation, Inc.
@@ -33,7 +33,7 @@ RefTeX
 RefTeX is a package for managing Labels, References, Citations and
 index entries with GNU Emacs.
 
-   This manual documents RefTeX version 24.2.92.
+   This manual documents RefTeX version 24.2.93.
 
    Don't be discouraged by the size of this manual, which covers RefTeX
 in great depth.  All you need to know to use RefTeX can be summarized

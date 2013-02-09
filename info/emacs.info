@@ -2,7 +2,7 @@ This is /misc/emacs/bzr/emacs24-merge/doc/emacs/../../info/emacs.info,
 produced by makeinfo version 4.13 from
 /misc/emacs/bzr/emacs24-merge/doc/emacs/emacs.texi.
 
-This is the `GNU Emacs Manual', updated for Emacs version 24.2.92.
+This is the `GNU Emacs Manual', updated for Emacs version 24.2.93.
 
 Copyright (C) 1985-1987, 1993-2013 Free Software Foundation, Inc.
 
@@ -33,14 +33,14 @@ The Emacs Editor
 Emacs is the extensible, customizable, self-documenting real-time
 display editor.  This Info file describes how to edit with Emacs and
 some of the ways to customize it; it corresponds to GNU Emacs version
-24.2.92.
+24.2.93.
 
    If you are reading this in Emacs, type `h' to read a basic
 introduction to the Info documentation system.
 
    For information on extending Emacs, see *note Emacs Lisp: (elisp)Top.
 
-   This is the `GNU Emacs Manual', updated for Emacs version 24.2.92.
+   This is the `GNU Emacs Manual', updated for Emacs version 24.2.93.
 
    Copyright (C) 1985-1987, 1993-2013 Free Software Foundation, Inc.
 
@@ -32440,8 +32440,8 @@ disabled as a unit.  You can use Custom themes to switch easily between
 various collections of settings, and to transfer such collections from
 one computer to another.
 
-   A Custom theme is stored an Emacs Lisp source file.  If the name of
-the Custom theme is NAME, the theme file is named `NAME-theme.el'.
+   A Custom theme is stored as an Emacs Lisp source file.  If the name
+of the Custom theme is NAME, the theme file is named `NAME-theme.el'.
 *Note Creating Custom Themes::, for the format of a theme file and how
 to make one.
 
@@ -33085,7 +33085,7 @@ applies to all files in that subdirectory.
 
      ((nil . ((indent-tabs-mode . t)
               (fill-column . 80)))
-      (c-mode . ((c-file-style . "BSD")))
+      (c-mode . ((c-file-style . "BSD")
                  (subdirs . nil)))
       ("src/imported"
        . ((nil . ((change-log-default-name
@@ -34460,11 +34460,11 @@ your system has the `addr2line' utility, the following shell command
 outputs a backtrace with source-code line numbers:
 
      sed -n 's/.*\[\(.*\)]$/\1/p' BACKTRACE |
-       addr2line -Cfip -e BINDIR/emacs
+       addr2line -C -f -i -e BINDIR/emacs
 
 Here, BACKTRACE is the name of a text file containing a copy of the
 backtrace, and BINDIR is the name of the directory that contains the
-Emacs executable.
+Emacs executable.(1)
 
    Optionally, Emacs can generate a "core dump" when it crashes.  A
 core dump is a file containing voluminous data about the state of the
@@ -34472,6 +34472,11 @@ program prior to the crash, usually examined by loading it into a
 debugger such as GDB.  On many platforms, core dumps are disabled by
 default, and you must explicitly enable them by running the shell
 command `ulimit -c unlimited' (e.g., in your shell startup script).
+
+   ---------- Footnotes ----------
+
+   (1) You may wish to add the `-p' option, if your version of
+`addr2line' supports it.
 
 
 File: emacs.info,  Node: After a Crash,  Next: Emergency Escape,  Prev: Crashing,  Up: Lossage
@@ -38195,7 +38200,7 @@ Appendix E Emacs 23 Antinews
 
 For those users who live backwards in time, here is information about
 downgrading to Emacs version 23.4.  We hope you will enjoy the greater
-simplicity that results from the absence of many Emacs 24.2.92 features.
+simplicity that results from the absence of many Emacs 24.2.93 features.
 
    * Support for displaying and editing "bidirectional" text has been
      removed.  Text is now always displayed on the screen in a single
@@ -48823,158 +48828,159 @@ Node: Saving Customizations1428712
 Node: Face Customization1430643
 Node: Specific Customization1433819
 Node: Custom Themes1436480
-Node: Creating Custom Themes1440736
-Node: Variables1443076
-Node: Examining1445707
-Node: Hooks1448029
-Node: Locals1452493
-Node: File Variables1456129
-Node: Specifying File Variables1456697
-Node: Safe File Variables1462812
-Node: Directory Variables1465809
-Ref: Directory Variables-Footnote-11469749
-Node: Key Bindings1469978
-Node: Keymaps1471205
-Node: Prefix Keymaps1473523
-Node: Local Keymaps1475462
-Node: Minibuffer Maps1477166
-Node: Rebinding1477974
-Node: Init Rebinding1481129
-Node: Modifier Keys1485006
-Node: Function Keys1486839
-Node: Named ASCII Chars1489576
-Node: Mouse Buttons1491084
-Node: Disabling1496437
-Node: Init File1498601
-Node: Init Syntax1501619
-Node: Init Examples1504485
-Node: Terminal Init1510204
-Node: Find Init1512146
-Node: Init Non-ASCII1513256
-Node: Quitting1514876
-Node: Lossage1519826
-Node: DEL Does Not Delete1520753
-Node: Stuck Recursive1522832
-Node: Screen Garbled1523502
-Node: Text Garbled1524402
-Node: Memory Full1525081
-Node: Crashing1526230
-Node: After a Crash1528369
-Node: Emergency Escape1530737
-Node: Bugs1532783
-Node: Known Problems1533564
-Node: Bug Criteria1536547
-Node: Understanding Bug Reporting1539251
-Node: Checklist1542070
-Node: Sending Patches1559765
-Node: Contributing1564908
-Node: Service1566013
-Node: Copying1566658
-Node: GNU Free Documentation License1604237
-Node: Emacs Invocation1629414
-Node: Action Arguments1632881
-Node: Initial Options1635500
-Ref: Initial Options-Footnote-11640727
-Node: Command Example1640776
-Node: Environment1641613
-Node: General Variables1643642
-Ref: General Variables-Footnote-11650465
-Node: Misc Variables1650742
-Node: MS-Windows Registry1653458
-Node: Display X1655076
-Node: Font X1656982
-Node: Colors X1657658
-Node: Window Size X1660575
-Node: Borders X1665107
-Node: Title X1666340
-Node: Icons X1667095
-Node: Misc X1668118
-Node: X Resources1669008
-Node: Resources1670047
-Node: Table of Resources1673981
-Node: Lucid Resources1680041
-Node: LessTif Resources1681862
-Node: GTK resources1684822
-Node: GTK Resource Basics1686856
-Node: GTK Widget Names1688627
-Node: GTK Names in Emacs1690257
-Node: GTK styles1691919
-Node: Antinews1696557
-Node: Mac OS / GNUstep1701480
-Node: Mac / GNUstep Basics1702939
-Node: Mac / GNUstep Customization1705441
-Node: Mac / GNUstep Events1706796
-Node: GNUstep Support1710632
-Node: Microsoft Windows1710917
-Node: Windows Startup1712453
-Node: Text and Binary1716407
-Node: Windows Files1721764
-Node: ls in Lisp1723349
-Node: Windows HOME1728824
-Ref: Windows HOME-Footnote-11731349
-Node: Windows Keyboard1731426
-Ref: Windows Keyboard-Footnote-11737212
-Node: Windows Mouse1737511
-Node: Windows Processes1738520
-Node: Windows Printing1741869
-Ref: Windows Printing-Footnote-11748256
-Node: Windows Fonts1748454
-Node: Windows Misc1753140
-Node: MS-DOS1754153
-Node: MS-DOS Keyboard1755400
-Node: MS-DOS Mouse1757348
-Node: MS-DOS Display1760083
-Node: MS-DOS File Names1764155
-Node: MS-DOS Printing1766899
-Node: MS-DOS and MULE1768303
-Ref: MS-DOS and MULE-Footnote-11773208
-Ref: MS-DOS and MULE-Footnote-21773543
-Node: MS-DOS Processes1773888
-Node: Manifesto1776281
-Ref: Manifesto-Footnote-11800497
-Ref: Manifesto-Footnote-21801386
-Ref: Manifesto-Footnote-31801659
-Ref: Manifesto-Footnote-41801701
-Ref: Manifesto-Footnote-51802221
-Ref: Manifesto-Footnote-61802327
-Ref: Manifesto-Footnote-71802928
-Node: Glossary1803279
-Ref: Glossary---Abbrev1803387
-Ref: Glossary---Balanced Expression1806322
-Ref: Glossary---Binding1807091
-Ref: Glossary---C-1809517
-Ref: Glossary---Compilation1812283
-Ref: Glossary---Continuation Line1813415
-Ref: Glossary---Daemon1816119
-Ref: Glossary---Default1816717
-Ref: Glossary---Deletion of Files1817761
-Ref: Glossary---Directory Local Variable1818779
-Ref: Glossary---End Of Line1820812
-Ref: Glossary---File Locking1823280
-Ref: Glossary---Filling1824807
-Ref: Glossary---Font Lock1825064
-Ref: Glossary---Free Software Foundation1826401
-Ref: Glossary---Global Substitution1828227
-Ref: Glossary---Incremental Search1832020
-Ref: Glossary---Killing1835191
-Ref: Glossary---Mail1837872
-Ref: Glossary---Minibuffer History1840407
-Ref: Glossary---Numeric Argument1843005
-Ref: Glossary---Page1843615
-Ref: Glossary---Quitting1845705
-Ref: Glossary---Regular Expression1848147
-Ref: Glossary---Server1852172
-Ref: Glossary---Tags Table1855363
-Ref: Glossary---Text Terminal1856225
-Ref: Glossary---Tooltips1857195
-Ref: Glossary---Truncation1858086
-Ref: Glossary---Yanking1860908
-Node: Acknowledgments1861121
-Node: Key Index1913438
-Node: Option Index1986553
-Node: Command Index1992853
-Node: Variable Index2110600
-Node: Concept Index2171292
+Node: Creating Custom Themes1440739
+Node: Variables1443079
+Node: Examining1445710
+Node: Hooks1448032
+Node: Locals1452496
+Node: File Variables1456132
+Node: Specifying File Variables1456700
+Node: Safe File Variables1462815
+Node: Directory Variables1465812
+Ref: Directory Variables-Footnote-11469750
+Node: Key Bindings1469979
+Node: Keymaps1471206
+Node: Prefix Keymaps1473524
+Node: Local Keymaps1475463
+Node: Minibuffer Maps1477167
+Node: Rebinding1477975
+Node: Init Rebinding1481130
+Node: Modifier Keys1485007
+Node: Function Keys1486840
+Node: Named ASCII Chars1489577
+Node: Mouse Buttons1491085
+Node: Disabling1496438
+Node: Init File1498602
+Node: Init Syntax1501620
+Node: Init Examples1504486
+Node: Terminal Init1510205
+Node: Find Init1512147
+Node: Init Non-ASCII1513257
+Node: Quitting1514877
+Node: Lossage1519827
+Node: DEL Does Not Delete1520754
+Node: Stuck Recursive1522833
+Node: Screen Garbled1523503
+Node: Text Garbled1524403
+Node: Memory Full1525082
+Node: Crashing1526231
+Ref: Crashing-Footnote-11528412
+Node: After a Crash1528501
+Node: Emergency Escape1530869
+Node: Bugs1532915
+Node: Known Problems1533696
+Node: Bug Criteria1536679
+Node: Understanding Bug Reporting1539383
+Node: Checklist1542202
+Node: Sending Patches1559897
+Node: Contributing1565040
+Node: Service1566145
+Node: Copying1566790
+Node: GNU Free Documentation License1604369
+Node: Emacs Invocation1629546
+Node: Action Arguments1633013
+Node: Initial Options1635632
+Ref: Initial Options-Footnote-11640859
+Node: Command Example1640908
+Node: Environment1641745
+Node: General Variables1643774
+Ref: General Variables-Footnote-11650597
+Node: Misc Variables1650874
+Node: MS-Windows Registry1653590
+Node: Display X1655208
+Node: Font X1657114
+Node: Colors X1657790
+Node: Window Size X1660707
+Node: Borders X1665239
+Node: Title X1666472
+Node: Icons X1667227
+Node: Misc X1668250
+Node: X Resources1669140
+Node: Resources1670179
+Node: Table of Resources1674113
+Node: Lucid Resources1680173
+Node: LessTif Resources1681994
+Node: GTK resources1684954
+Node: GTK Resource Basics1686988
+Node: GTK Widget Names1688759
+Node: GTK Names in Emacs1690389
+Node: GTK styles1692051
+Node: Antinews1696689
+Node: Mac OS / GNUstep1701612
+Node: Mac / GNUstep Basics1703071
+Node: Mac / GNUstep Customization1705573
+Node: Mac / GNUstep Events1706928
+Node: GNUstep Support1710764
+Node: Microsoft Windows1711049
+Node: Windows Startup1712585
+Node: Text and Binary1716539
+Node: Windows Files1721896
+Node: ls in Lisp1723481
+Node: Windows HOME1728956
+Ref: Windows HOME-Footnote-11731481
+Node: Windows Keyboard1731558
+Ref: Windows Keyboard-Footnote-11737344
+Node: Windows Mouse1737643
+Node: Windows Processes1738652
+Node: Windows Printing1742001
+Ref: Windows Printing-Footnote-11748388
+Node: Windows Fonts1748586
+Node: Windows Misc1753272
+Node: MS-DOS1754285
+Node: MS-DOS Keyboard1755532
+Node: MS-DOS Mouse1757480
+Node: MS-DOS Display1760215
+Node: MS-DOS File Names1764287
+Node: MS-DOS Printing1767031
+Node: MS-DOS and MULE1768435
+Ref: MS-DOS and MULE-Footnote-11773340
+Ref: MS-DOS and MULE-Footnote-21773675
+Node: MS-DOS Processes1774020
+Node: Manifesto1776413
+Ref: Manifesto-Footnote-11800629
+Ref: Manifesto-Footnote-21801518
+Ref: Manifesto-Footnote-31801791
+Ref: Manifesto-Footnote-41801833
+Ref: Manifesto-Footnote-51802353
+Ref: Manifesto-Footnote-61802459
+Ref: Manifesto-Footnote-71803060
+Node: Glossary1803411
+Ref: Glossary---Abbrev1803519
+Ref: Glossary---Balanced Expression1806454
+Ref: Glossary---Binding1807223
+Ref: Glossary---C-1809649
+Ref: Glossary---Compilation1812415
+Ref: Glossary---Continuation Line1813547
+Ref: Glossary---Daemon1816251
+Ref: Glossary---Default1816849
+Ref: Glossary---Deletion of Files1817893
+Ref: Glossary---Directory Local Variable1818911
+Ref: Glossary---End Of Line1820944
+Ref: Glossary---File Locking1823412
+Ref: Glossary---Filling1824939
+Ref: Glossary---Font Lock1825196
+Ref: Glossary---Free Software Foundation1826533
+Ref: Glossary---Global Substitution1828359
+Ref: Glossary---Incremental Search1832152
+Ref: Glossary---Killing1835323
+Ref: Glossary---Mail1838004
+Ref: Glossary---Minibuffer History1840539
+Ref: Glossary---Numeric Argument1843137
+Ref: Glossary---Page1843747
+Ref: Glossary---Quitting1845837
+Ref: Glossary---Regular Expression1848279
+Ref: Glossary---Server1852304
+Ref: Glossary---Tags Table1855495
+Ref: Glossary---Text Terminal1856357
+Ref: Glossary---Tooltips1857327
+Ref: Glossary---Truncation1858218
+Ref: Glossary---Yanking1861040
+Node: Acknowledgments1861253
+Node: Key Index1913570
+Node: Option Index1986685
+Node: Command Index1992985
+Node: Variable Index2110732
+Node: Concept Index2171424
 
 End Tag Table
 
