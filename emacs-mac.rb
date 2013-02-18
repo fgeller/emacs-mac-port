@@ -4,7 +4,14 @@ class EmacsMac <Formula
   homepage 'http://www.gnu.org/software/emacs/'
 
   head 'git://github.com/railwaycat/emacs-mac-port.git'
-  depends_on 'automake'
+
+  depends_on 'automake' => :build
+  depends_on 'pkg-config' => :build
+
+  depends_on 'libxml2' => [:optional, 'with-xml2']
+  depends_on 'dbus' => :optional
+  depends_on 'gnutls' => :optional
+  depends_on 'imagemagick' => :optional
   
   def caveats
     s = ""
