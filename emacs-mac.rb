@@ -9,7 +9,7 @@ class EmacsMac <Formula
   depends_on 'pkg-config' => :build
 
   depends_on 'libxml2' => [:optional, 'with-xml2']
-  depends_on 'd-bus' => :optional
+  depends_on 'd-bus' => [:optional, 'with-dbus']
   depends_on 'gnutls' => :optional
   depends_on 'imagemagick' => :optional
   
