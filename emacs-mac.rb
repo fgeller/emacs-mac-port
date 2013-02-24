@@ -11,10 +11,10 @@ class EmacsMac <Formula
   option 'with-dbus', 'Build with d-bus support'
   option 'with-xml2', 'Build with libxml2 support'
 
-  depends_on 'd-bus' => :optional if build.include? 'with-dbus'
+  depends_on 'd-bus' if build.include? 'with-dbus'
   depends_on 'gnutls' => :optional
   depends_on 'imagemagick' => :optional
-  depends_on 'libxml2' => :optional if build.include? 'with-xml2'
+  depends_on 'libxml2' if build.include? 'with-xml2'
   
   def caveats
     s = ""
