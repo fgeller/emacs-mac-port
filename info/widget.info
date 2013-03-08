@@ -22,7 +22,7 @@ START-INFO-DIR-ENTRY
 END-INFO-DIR-ENTRY
 
 
-File: widget.info,  Node: Top,  Next: Introduction,  Prev: (dir),  Up: (dir)
+File: widget.info,  Node: Top,  Next: Introduction,  Up: (dir)
 
 The Emacs Widget Library
 ************************
@@ -60,8 +60,8 @@ Copyright (C) 2000-2013 Free Software Foundation, Inc.
 
 File: widget.info,  Node: Introduction,  Next: User Interface,  Prev: Top,  Up: Top
 
-Introduction
-============
+1 Introduction
+**************
 
 Most graphical user interface toolkits provide a number of standard
 user interface controls (sometimes known as `widgets' or `gadgets').
@@ -145,8 +145,8 @@ implement forms are:
 
 File: widget.info,  Node: User Interface,  Next: Programming Example,  Prev: Introduction,  Up: Top
 
-User Interface
-==============
+2 User Interface
+****************
 
 A form consists of read only text for documentation and some fields,
 where each field contains two parts, a tag and a value.  The tags are
@@ -188,8 +188,8 @@ field', meaning the field tagged with `Foo'. Here is an example form:
 user can do within a form, namely editing the editable text fields and
 activating the buttons.
 
-Editable Text Fields
---------------------
+2.1 Editable Text Fields
+========================
 
 In the example, the value for the `Name' is most likely displayed in an
 editable text field, and so are values for each of the members of the
@@ -223,8 +223,8 @@ face, making them easy to find.
  -- Face: widget-field-face
      Face used for other editing fields.
 
-Buttons
--------
+2.2 Buttons
+===========
 
 Some portions of the buffer have an associated "action", which can be
 "invoked" by a standard key or mouse command.  These portions are
@@ -287,8 +287,8 @@ _The `[Apply Form]' and `[Reset Form]' buttons_
      Face used for highlighting a button when the mouse pointer moves
      across it.
 
-Navigation
-----------
+2.3 Navigation
+==============
 
 You can use all the normal Emacs commands to move around in a form
 buffer, plus you will have these additional commands:
@@ -305,8 +305,8 @@ buffer, plus you will have these additional commands:
 
 File: widget.info,  Node: Programming Example,  Next: Setting Up the Buffer,  Prev: User Interface,  Up: Top
 
-Programming Example
-===================
+3 Programming Example
+*********************
 
 Here is the code to implement the user interface example (*note User
 Interface::).
@@ -404,8 +404,8 @@ Interface::).
 
 File: widget.info,  Node: Setting Up the Buffer,  Next: Basic Types,  Prev: Programming Example,  Up: Top
 
-Setting Up the Buffer
-=====================
+4 Setting Up the Buffer
+***********************
 
 Widgets are created with `widget-create', which returns a "widget"
 object.  This object can be queried and manipulated by other widget
@@ -450,8 +450,8 @@ recommended way to do that is with `widget-insert'.
 
 File: widget.info,  Node: Basic Types,  Next: Sexp Types,  Prev: Setting Up the Buffer,  Up: Top
 
-Basic Types
-===========
+5 Basic Types
+*************
 
 This is the general syntax of a type specification:
 
@@ -656,10 +656,10 @@ widget specific way.
 * group::
 
 
-File: widget.info,  Node: link,  Next: url-link,  Prev: Basic Types,  Up: Basic Types
+File: widget.info,  Node: link,  Next: url-link,  Up: Basic Types
 
-The `link' Widget
------------------
+5.1 The `link' Widget
+=====================
 
 Syntax:
 
@@ -679,8 +679,8 @@ The value should be a string, which will be inserted in the buffer.
 
 File: widget.info,  Node: url-link,  Next: info-link,  Prev: link,  Up: Basic Types
 
-The `url-link' Widget
----------------------
+5.2 The `url-link' Widget
+=========================
 
 Syntax:
 
@@ -692,8 +692,8 @@ Syntax:
 
 File: widget.info,  Node: info-link,  Next: push-button,  Prev: url-link,  Up: Basic Types
 
-The `info-link' Widget
-----------------------
+5.3 The `info-link' Widget
+==========================
 
 Syntax:
 
@@ -705,8 +705,8 @@ ADDRESS.
 
 File: widget.info,  Node: push-button,  Next: editable-field,  Prev: info-link,  Up: Basic Types
 
-The `push-button' Widget
-------------------------
+5.4 The `push-button' Widget
+============================
 
 Syntax:
 
@@ -726,8 +726,8 @@ The value should be a string, which will be inserted in the buffer.
 
 File: widget.info,  Node: editable-field,  Next: text,  Prev: push-button,  Up: Basic Types
 
-The `editable-field' Widget
----------------------------
+5.5 The `editable-field' Widget
+===============================
 
 Syntax:
 
@@ -767,8 +767,8 @@ This widget will match all string values.
 
 File: widget.info,  Node: text,  Next: menu-choice,  Prev: editable-field,  Up: Basic Types
 
-The `text' Widget
------------------
+5.6 The `text' Widget
+=====================
 
 This is just like `editable-field', but intended for multiline text
 fields.  The default `:keymap' is `widget-text-keymap', which does not
@@ -777,8 +777,8 @@ rebind the <RET> key.
 
 File: widget.info,  Node: menu-choice,  Next: radio-button-choice,  Prev: text,  Up: Basic Types
 
-The `menu-choice' Widget
-------------------------
+5.7 The `menu-choice' Widget
+============================
 
 Syntax:
 
@@ -809,8 +809,8 @@ any value matching at least one of the specified TYPE arguments.
 
 File: widget.info,  Node: radio-button-choice,  Next: item,  Prev: menu-choice,  Up: Basic Types
 
-The `radio-button-choice' Widget
---------------------------------
+5.8 The `radio-button-choice' Widget
+====================================
 
 Syntax:
 
@@ -866,8 +866,8 @@ widget has been created will *not* be properly destructed when you call
 
 File: widget.info,  Node: item,  Next: choice-item,  Prev: radio-button-choice,  Up: Basic Types
 
-The `item' Widget
------------------
+5.9 The `item' Widget
+=====================
 
 Syntax:
 
@@ -880,8 +880,8 @@ This widget will only match the specified value.
 
 File: widget.info,  Node: choice-item,  Next: toggle,  Prev: item,  Up: Basic Types
 
-The `choice-item' Widget
-------------------------
+5.10 The `choice-item' Widget
+=============================
 
 Syntax:
 
@@ -896,8 +896,8 @@ specified value.
 
 File: widget.info,  Node: toggle,  Next: checkbox,  Prev: choice-item,  Up: Basic Types
 
-The `toggle' Widget
--------------------
+5.11 The `toggle' Widget
+========================
 
 Syntax:
 
@@ -926,8 +926,8 @@ to a `t' or `nil' value, respectively.
 
 File: widget.info,  Node: checkbox,  Next: checklist,  Prev: toggle,  Up: Basic Types
 
-The `checkbox' Widget
----------------------
+5.12 The `checkbox' Widget
+==========================
 
 This widget has two possible states, `selected' and `unselected', which
 corresponds to a `t' or `nil' value.
@@ -939,8 +939,8 @@ corresponds to a `t' or `nil' value.
 
 File: widget.info,  Node: checklist,  Next: editable-list,  Prev: checkbox,  Up: Basic Types
 
-The `checklist' Widget
-----------------------
+5.13 The `checklist' Widget
+===========================
 
 Syntax:
 
@@ -988,8 +988,8 @@ match at least one of the specified TYPE arguments.
 
 File: widget.info,  Node: editable-list,  Next: group,  Prev: checklist,  Up: Basic Types
 
-The `editable-list' Widget
---------------------------
+5.14 The `editable-list' Widget
+===============================
 
 Syntax:
 
@@ -1037,8 +1037,8 @@ TYPE.
 
 File: widget.info,  Node: group,  Prev: editable-list,  Up: Basic Types
 
-The `group' Widget
-------------------
+5.15 The `group' Widget
+=======================
 
 This widget simply group other widgets together.
 
@@ -1051,8 +1051,8 @@ This widget simply group other widgets together.
 
 File: widget.info,  Node: Sexp Types,  Next: Widget Properties,  Prev: Basic Types,  Up: Top
 
-Sexp Types
-==========
+6 Sexp Types
+************
 
 A number of widgets for editing "s-expressions" (Lisp types), sexp for
 short, are also available.  These basically fall in several categories
@@ -1066,10 +1066,10 @@ described in this section.
 * composite::
 
 
-File: widget.info,  Node: constants,  Next: generic,  Prev: Sexp Types,  Up: Sexp Types
+File: widget.info,  Node: constants,  Next: generic,  Up: Sexp Types
 
-The Constant Widgets
---------------------
+6.1 The Constant Widgets
+========================
 
 The `const' widget can contain any Lisp expression, but the user is
 prohibited from editing it, which is mainly useful as a component of one
@@ -1101,8 +1101,8 @@ function documentation for the symbol.
 
 File: widget.info,  Node: generic,  Next: atoms,  Prev: constants,  Up: Sexp Types
 
-Generic Sexp Widget
--------------------
+6.2 Generic Sexp Widget
+=======================
 
 The `sexp' widget can contain any Lisp expression, and allows the user
 to edit it inline in the buffer.
@@ -1121,8 +1121,8 @@ to edit it inline in the buffer.
 
 File: widget.info,  Node: atoms,  Next: composite,  Prev: generic,  Up: Sexp Types
 
-Atomic Sexp Widgets
--------------------
+6.3 Atomic Sexp Widgets
+=======================
 
 The atoms are s-expressions that do not consist of other s-expressions.
 For example, a string, a file name, or a symbol are atoms, while a list
@@ -1184,8 +1184,8 @@ string widget can only be initialized with a string.
 
 File: widget.info,  Node: composite,  Prev: atoms,  Up: Sexp Types
 
-Composite Sexp Widgets
-----------------------
+6.4 Composite Sexp Widgets
+==========================
 
 The syntax for the composite widget construct is:
 
@@ -1264,8 +1264,8 @@ to explain it here, I'll just suggest you meditate over it for a while.
 
 File: widget.info,  Node: Widget Properties,  Next: Defining New Widgets,  Prev: Sexp Types,  Up: Top
 
-Properties
-==========
+7 Properties
+************
 
 You can examine or set the value of a widget by using the widget object
 that was returned by `widget-create'.
@@ -1342,8 +1342,8 @@ keyword directly.  Use the `:activate' `:deactivate' keywords instead.
 
 File: widget.info,  Node: Defining New Widgets,  Next: Widget Browser,  Prev: Widget Properties,  Up: Top
 
-Defining New Widgets
-====================
+8 Defining New Widgets
+**********************
 
 You can define specialized widgets with `define-widget'.  It allows you
 to create a shorthand for more complex widgets, including specifying
@@ -1497,8 +1497,8 @@ widget as its base.
 
 File: widget.info,  Node: Widget Browser,  Next: Widget Minor Mode,  Prev: Defining New Widgets,  Up: Top
 
-Widget Browser
-==============
+9 Widget Browser
+****************
 
 There is a separate package to browse widgets.  This is intended to help
 programmers who want to examine the content of a widget.  The browser
@@ -1520,8 +1520,8 @@ such as `:parent', which avoids printing cyclic structures.
 
 File: widget.info,  Node: Widget Minor Mode,  Next: Utilities,  Prev: Widget Browser,  Up: Top
 
-Widget Minor Mode
-=================
+10 Widget Minor Mode
+********************
 
 There is a minor mode for manipulating widgets in major modes that
 don't provide any support for widgets themselves.  This is mostly
@@ -1537,8 +1537,8 @@ intended to be useful for programmers doing experiments.
 
 File: widget.info,  Node: Utilities,  Next: Widget Wishlist,  Prev: Widget Minor Mode,  Up: Top
 
-Utilities.
-==========
+11 Utilities
+************
 
  -- Function: widget-prompt-value widget prompt [ value unbound ]
      Prompt for a value matching WIDGET, using PROMPT.  The current
@@ -1551,8 +1551,8 @@ Utilities.
 
 File: widget.info,  Node: Widget Wishlist,  Next: GNU Free Documentation License,  Prev: Utilities,  Up: Top
 
-Wishlist
-========
+12 Wishlist
+***********
 
    * It should be possible to add or remove items from a list with `C-k'
      and `C-o' (suggested by RMS).
@@ -2304,38 +2304,38 @@ variables, and widgets described in this manual.
 
 Tag Table:
 Node: Top985
-Node: Introduction2024
-Node: User Interface5100
-Node: Programming Example10826
-Node: Setting Up the Buffer15080
-Node: Basic Types16752
-Node: link23382
-Node: url-link23895
-Node: info-link24204
-Node: push-button24491
-Node: editable-field25063
-Node: text26457
-Node: menu-choice26751
-Node: radio-button-choice27604
-Node: item29193
-Node: choice-item29578
-Node: toggle30073
-Node: checkbox30825
-Node: checklist31129
-Node: editable-list32572
-Node: group33751
-Node: Sexp Types34036
-Node: constants34385
-Node: generic35458
-Node: atoms36013
-Node: composite37939
-Node: Widget Properties40924
-Node: Defining New Widgets43983
-Node: Widget Browser50016
-Node: Widget Minor Mode50874
-Node: Utilities51428
-Node: Widget Wishlist51916
-Node: GNU Free Documentation License53178
-Node: Index78353
+Node: Introduction2010
+Node: User Interface5090
+Node: Programming Example10844
+Node: Setting Up the Buffer15102
+Node: Basic Types16778
+Node: link23412
+Node: url-link23913
+Node: info-link24230
+Node: push-button24525
+Node: editable-field25105
+Node: text26507
+Node: menu-choice26809
+Node: radio-button-choice27670
+Node: item29267
+Node: choice-item29660
+Node: toggle30165
+Node: checkbox30927
+Node: checklist31241
+Node: editable-list32694
+Node: group33883
+Node: Sexp Types34178
+Node: constants34531
+Node: generic35593
+Node: atoms36156
+Node: composite38090
+Node: Widget Properties41083
+Node: Defining New Widgets44146
+Node: Widget Browser50183
+Node: Widget Minor Mode51045
+Node: Utilities51605
+Node: Widget Wishlist52097
+Node: GNU Free Documentation License53365
+Node: Index78540
 
 End Tag Table

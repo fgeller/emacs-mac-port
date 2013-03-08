@@ -70,7 +70,7 @@ existing code and facilitates writing new code.
 
    When the Gnu Ada compiler GNAT is used, the cross-reference
 information output by the compiler is used to provide powerful code
-navigation (jump to definition, find all uses, etc).
+navigation (jump to definition, find all uses, etc.).
 
    When you open a file with a file extension of `.ads' or `.adb',
 Emacs will automatically load and activate Ada mode.
@@ -1211,7 +1211,7 @@ can also configure the indentation, via the following variables:
      Non-`nil' means that the current line will also be re-indented
      before inserting a newline, when you press <RET>.
 
-   Most of the time, the indentation will be automatic, i.e when you
+   Most of the time, the indentation will be automatic, i.e., when you
 press <RET>, the cursor will move to the correct column on the next
 line.
 
@@ -2005,32 +2005,32 @@ Index
 Tag Table:
 Node: Top938
 Node: Overview2609
-Node: Installation3917
-Node: Customization5045
-Node: Non-standard file names5952
-Node: Other compiler7447
-Node: Other customization7950
-Node: Compiling Executing8603
-Node: Compile commands9274
-Node: Compiler errors12011
-Node: Project files12890
-Node: Project File Overview13593
-Node: GUI Editor15895
-Node: Project file variables16370
-Node: Compiling Examples23465
-Node: No project files24263
-Node: Set compiler options28949
-Node: Set source search path30914
-Node: Use GNAT project file33191
-Node: Use multiple GNAT project files35374
-Node: Moving Through Ada Code37263
-Node: Identifier completion39219
-Node: Automatic Smart Indentation40781
-Node: Formatting Parameter Lists43598
-Node: Automatic Casing44004
-Node: Statement Templates47248
-Node: Comment Handling48716
-Node: GNU Free Documentation License49250
-Node: Index74428
+Node: Installation3918
+Node: Customization5046
+Node: Non-standard file names5953
+Node: Other compiler7448
+Node: Other customization7951
+Node: Compiling Executing8604
+Node: Compile commands9275
+Node: Compiler errors12012
+Node: Project files12891
+Node: Project File Overview13594
+Node: GUI Editor15896
+Node: Project file variables16371
+Node: Compiling Examples23466
+Node: No project files24264
+Node: Set compiler options28950
+Node: Set source search path30915
+Node: Use GNAT project file33192
+Node: Use multiple GNAT project files35375
+Node: Moving Through Ada Code37264
+Node: Identifier completion39220
+Node: Automatic Smart Indentation40782
+Node: Formatting Parameter Lists43601
+Node: Automatic Casing44007
+Node: Statement Templates47251
+Node: Comment Handling48719
+Node: GNU Free Documentation License49253
+Node: Index74431
 
 End Tag Table

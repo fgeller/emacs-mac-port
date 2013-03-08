@@ -4005,7 +4005,7 @@ File: ccmode.info,  Node: Statement Block Symbols,  Next: K&R Symbols,  Prev: Ja
 
 There are a few occasions where a statement block might be used inside
 an expression.  One is in C or C++ code using the gcc extension for
-this, e.g:
+this, e.g.:
 
       1: int res = ({
       2:         int y = foo (); int z;
@@ -4516,7 +4516,7 @@ parentheses and statements within brace blocks.
  -- Function: c-lineup-close-paren
      Line up the closing paren under its corresponding open paren if the
      open paren is followed by code.  If the open paren ends its line,
-     no indentation is added.  E.g:
+     no indentation is added.  E.g.:
 
           main (int,
                 char **
@@ -4552,7 +4552,7 @@ parentheses and statements within brace blocks.
      `arglist-cont-nonempty'.
 
  -- Function: c-indent-one-line-block
-     Indent a one line block `c-basic-offset' extra.  E.g:
+     Indent a one line block `c-basic-offset' extra.  E.g.:
 
           if (n > 0)
               {m+=n; n=0;}      <- c-indent-one-line-block
@@ -4573,7 +4573,7 @@ parentheses and statements within brace blocks.
      `-open' symbols.
 
  -- Function: c-indent-multi-line-block
-     Indent a multiline block `c-basic-offset' extra.  E.g:
+     Indent a multiline block `c-basic-offset' extra.  E.g.:
 
           int *foo[] = {
               NULL,
@@ -4598,7 +4598,7 @@ parentheses and statements within brace blocks.
  -- Function: c-lineup-runin-statements
      Line up statements for coding standards which place the first
      statement in a block on the same line as the block opening
-     brace(1).  E.g:
+     brace(1).  E.g.:
 
           int main()
           { puts ("Hello!");
@@ -4657,7 +4657,7 @@ parentheses and statements within brace blocks.
  -- Function: c-lineup-whitesmith-in-block
      Line up lines inside a block in Whitesmith style.  It's done in a
      way that works both when the opening brace hangs and when it
-     doesn't.  E.g:
+     doesn't.  E.g.:
 
           something
               {
@@ -4704,7 +4704,7 @@ contained within parentheses.
      As a special case, if an argument on the same line as the open
      parenthesis starts with a brace block opener, the indentation is
      `c-basic-offset' only.  This is intended as a "DWIM" measure in
-     cases like macros that contain statement blocks, e.g:
+     cases like macros that contain statement blocks, e.g.:
 
           A_VERY_LONG_MACRO_NAME ({
                   some (code, with + long, lines * in[it]);
@@ -4727,7 +4727,7 @@ contained within parentheses.
 
  -- Function: c-lineup-multi-inher
      Line up the classes in C++ multiple inheritance clauses and member
-     initializers under each other.  E.g:
+     initializers under each other.  E.g.:
 
           Foo::Foo (int a, int b):
               Cyphr (a),
@@ -4751,7 +4751,7 @@ contained within parentheses.
      Line up Java implements and extends declarations.  If class names
      follow on the same line as the `implements'/`extends' keyword,
      they are lined up under each other.  Otherwise, they are indented
-     by adding `c-basic-offset' to the column of the keyword.  E.g:
+     by adding `c-basic-offset' to the column of the keyword.  E.g.:
 
           class Foo
               extends
@@ -4772,7 +4772,7 @@ contained within parentheses.
      other.  Otherwise, they are indented by adding `c-basic-offset' to
      the column of the `throws' keyword.  The `throws' keyword itself
      is also indented by `c-basic-offset' from the function declaration
-     start if it doesn't hang.  E.g:
+     start if it doesn't hang.  E.g.:
 
           int foo()
               throws            <- c-lineup-java-throws
@@ -4831,7 +4831,7 @@ start with an operator, by lining it up with something on the previous
 line.
 
  -- Function: c-lineup-argcont
-     Line up a continued argument.  E.g:
+     Line up a continued argument.  E.g.:
 
           foo (xyz, aaa + bbb + ccc
                     + ddd + eee + fff);  <- c-lineup-argcont
@@ -4893,7 +4893,7 @@ line.
      Line up "cascaded calls" under each other.  If the line begins with
      `->' or `.' and the preceding line ends with one or more function
      calls preceded by the same token, then the arrow is lined up with
-     the first of those tokens.  E.g:
+     the first of those tokens.  E.g.:
 
           r = proc->add(17)->add(18)
                   ->add(19) +         <- c-lineup-cascaded-calls
@@ -4913,7 +4913,7 @@ line.
  -- Function: c-lineup-string-cont
      Line up a continued string under the one it continues.  A continued
      string in this sense is where a string literal follows directly
-     after another one.  E.g:
+     after another one.  E.g.:
 
           result = prefix + "A message "
                             "string.";    <- c-lineup-string-cont
@@ -4986,7 +4986,7 @@ of comment structure.
  -- Function: c-lineup-knr-region-comment
      Line up a comment in the "K&R region" with the declaration.  That
      is the region between the function or class header and the
-     beginning of the block.  E.g:
+     beginning of the block.  E.g.:
 
           int main()
           /* Called at startup. */  <- c-lineup-knr-region-comment
@@ -5016,7 +5016,7 @@ any earlier category.
 
  -- Function: c-lineup-cpp-define
      Line up macro continuation lines according to the indentation of
-     the construct preceding the macro.  E.g:
+     the construct preceding the macro.  E.g.:
 
           const char msg[] =    <- The beginning of the preceding construct.
             \"Some text.\";
@@ -5105,7 +5105,7 @@ any earlier category.
  -- Function: c-lineup-topmost-intro-cont
      Line up declaration continuation lines zero or one indentation
      step(1).  For lines preceding a definition, zero is used.  For
-     other lines, `c-basic-offset' is added to the indentation.  E.g:
+     other lines, `c-basic-offset' is added to the indentation.  E.g.:
 
           int
           neg (int i)           <- c-lineup-topmost-intro-cont
@@ -5186,7 +5186,7 @@ in CC Mode 5.28 and earlier.  Line-up functions are still passed this
 cons cell, so as to preserve compatibility with older configurations.
 In the future, we may decide to convert to using the full list
 format--you can prepare your setup for this by using the access
-functions (`c-langelem-sym', etc.)  described below.
+functions (`c-langelem-sym', etc.) described below.
 
    Some syntactic symbols, e.g., `arglist-cont-nonempty', have more
 info in the syntactic element: typically other positions that can be
@@ -7186,45 +7186,45 @@ Ref: Multiline Macro Symbols-Footnote-1159273
 Node: Objective-C Method Symbols159335
 Node: Java Symbols160103
 Node: Statement Block Symbols161379
-Ref: Statement Block Symbols-Footnote-1163404
-Node: K&R Symbols163717
-Ref: K&R Symbols-Footnote-1164344
-Node: Indentation Calculation164391
-Node: Customizing Indentation167625
-Node: c-offsets-alist169222
-Ref: c-offsets-alist-Footnote-1175732
-Ref: c-offsets-alist-Footnote-2175847
-Node: Interactive Customization176170
-Ref: Interactive Customization-Footnote-1179125
-Node: Line-Up Functions179264
-Node: Brace/Paren Line-Up181065
-Ref: c-lineup-arglist-close-under-paren182135
-Ref: Brace/Paren Line-Up-Footnote-1187506
-Node: List Line-Up187646
-Node: Operator Line-Up192480
-Node: Comment Line-Up196536
-Node: Misc Line-Up199364
-Ref: Misc Line-Up-Footnote-1203930
-Node: Custom Line-Up204241
-Ref: Custom Line-Up-Footnote-1208499
-Node: Other Indentation208656
-Ref: Other Indentation-Footnote-1210664
-Node: Custom Macros210858
-Node: Macro Backslashes212313
-Node: Macros with ;214256
-Node: Odds and Ends216135
-Node: Sample .emacs File217788
-Node: Performance Issues220132
-Ref: Performance Issues-Footnote-1225625
-Ref: Performance Issues-Footnote-2225702
-Node: Limitations and Known Bugs225766
-Node: FAQ228224
-Ref: FAQ-Footnote-1230984
-Node: Updating CC Mode231052
-Node: Mailing Lists and Bug Reports231652
-Node: GNU Free Documentation License233532
-Node: Command and Function Index258742
-Node: Variable Index279387
-Node: Concept and Key Index293150
+Ref: Statement Block Symbols-Footnote-1163405
+Node: K&R Symbols163718
+Ref: K&R Symbols-Footnote-1164345
+Node: Indentation Calculation164392
+Node: Customizing Indentation167626
+Node: c-offsets-alist169223
+Ref: c-offsets-alist-Footnote-1175733
+Ref: c-offsets-alist-Footnote-2175848
+Node: Interactive Customization176171
+Ref: Interactive Customization-Footnote-1179126
+Node: Line-Up Functions179265
+Node: Brace/Paren Line-Up181066
+Ref: c-lineup-arglist-close-under-paren182137
+Ref: Brace/Paren Line-Up-Footnote-1187512
+Node: List Line-Up187652
+Node: Operator Line-Up192490
+Node: Comment Line-Up196549
+Node: Misc Line-Up199378
+Ref: Misc Line-Up-Footnote-1203946
+Node: Custom Line-Up204257
+Ref: Custom Line-Up-Footnote-1208514
+Node: Other Indentation208671
+Ref: Other Indentation-Footnote-1210679
+Node: Custom Macros210873
+Node: Macro Backslashes212328
+Node: Macros with ;214271
+Node: Odds and Ends216150
+Node: Sample .emacs File217803
+Node: Performance Issues220147
+Ref: Performance Issues-Footnote-1225640
+Ref: Performance Issues-Footnote-2225717
+Node: Limitations and Known Bugs225781
+Node: FAQ228239
+Ref: FAQ-Footnote-1230999
+Node: Updating CC Mode231067
+Node: Mailing Lists and Bug Reports231667
+Node: GNU Free Documentation License233547
+Node: Command and Function Index258757
+Node: Variable Index279402
+Node: Concept and Key Index293165
 
 End Tag Table

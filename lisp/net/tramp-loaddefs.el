@@ -10,7 +10,7 @@
 ;;;;;;  tramp-parse-shostkeys tramp-parse-sconfig tramp-parse-shosts
 ;;;;;;  tramp-parse-rhosts tramp-completion-mode-p tramp-set-completion-function
 ;;;;;;  tramp-tramp-file-p tramp-default-user-alist tramp-default-method-alist)
-;;;;;;  "tramp" "tramp.el" (20748 34276 6200 0))
+;;;;;;  "tramp" "tramp.el" (20773 47373 975742 0))
 ;;; Generated autoloads from tramp.el
 
 (defvar tramp-methods nil "\
@@ -468,7 +468,7 @@ instead of the host name declared in TARGET-VEC.
 ;;;***
 
 ;;;### (autoloads (tramp-sh-file-name-handler tramp-remote-path tramp-terminal-type)
-;;;;;;  "tramp-sh" "tramp-sh.el" (20710 42021 9182 0))
+;;;;;;  "tramp-sh" "tramp-sh.el" (20770 34246 257277 0))
 ;;; Generated autoloads from tramp-sh.el
 
 (defvar tramp-terminal-type "dumb" "\
@@ -652,7 +652,7 @@ Email address to send bug reports to.")
 ;;;;;;  "sasl-cram.el" "sasl-digest.el" "sasl-ntlm.el" "sasl.el"
 ;;;;;;  "secrets.el" "snmp-mode.el" "soap-client.el" "soap-inspect.el"
 ;;;;;;  "socks.el" "telnet.el" "tls.el" "tramp-compat.el" "webjump.el"
-;;;;;;  "xesam.el" "zeroconf.el") (20755 24212 103946 476000))
+;;;;;;  "xesam.el" "zeroconf.el") (20789 27947 313364 373000))
 
 ;;;***
 

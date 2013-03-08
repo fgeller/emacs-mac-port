@@ -2781,9 +2781,9 @@ syntax tables in order to not thwart the various major modes that set
 these tables.
 
    The usual Emacs convention is used to indicate Control Characters,
-i.e C-h for Control-h.  _Do not confuse this with a sequence of separate
-characters C, -, h!!!_ The `^' is itself, never used to indicate a
-Control character.
+i.e., C-h for Control-h.  _Do not confuse this with a sequence of
+separate characters C, -, h!!!_ The `^' is itself, never used to
+indicate a Control character.
 
    Finally, we note that Viper's Ex-style commands can be made to work
 on the current Emacs region.  This is done by typing a digit argument
@@ -5277,29 +5277,29 @@ Node: Viper Specials92703
 Node: Vi Macros110423
 Node: Commands123830
 Node: Groundwork124674
-Node: Text Handling131148
-Node: Move Commands131825
-Node: Marking135583
-Node: Appending Text136836
-Node: Editing in Insert State139179
-Node: Deleting Text139774
-Node: Changing Text141123
-Node: Search and Replace144130
-Node: Yanking146695
-Node: Undoing147621
-Node: Display147969
-Node: File and Buffer Handling149285
-Node: Mapping153815
-Node: Shell Commands155518
-Node: Options157363
-Node: Emacs Related Commands159562
-Node: Mouse-bound Commands161143
-Node: Acknowledgments162015
-Node: GNU Free Documentation License165161
-Node: Key Index190297
-Node: Function Index207912
-Node: Variable Index219594
-Node: Package Index225265
-Node: Concept Index225924
+Node: Text Handling131150
+Node: Move Commands131827
+Node: Marking135585
+Node: Appending Text136838
+Node: Editing in Insert State139181
+Node: Deleting Text139776
+Node: Changing Text141125
+Node: Search and Replace144132
+Node: Yanking146697
+Node: Undoing147623
+Node: Display147971
+Node: File and Buffer Handling149287
+Node: Mapping153817
+Node: Shell Commands155520
+Node: Options157365
+Node: Emacs Related Commands159564
+Node: Mouse-bound Commands161145
+Node: Acknowledgments162017
+Node: GNU Free Documentation License165163
+Node: Key Index190299
+Node: Function Index207914
+Node: Variable Index219596
+Node: Package Index225267
+Node: Concept Index225926
 
 End Tag Table

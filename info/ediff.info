@@ -1070,7 +1070,7 @@ compression and encryption packages also use this method).
    Regular files are treated by the `patch' utility in the usual manner,
 i.e., the original is renamed into `source-name.orig' and the result of
 the patch is placed into the file source-name (`_orig' is used on
-systems like DOS, etc.)
+systems like DOS, etc.).
 
 
 File: ediff.info,  Node: Customization,  Next: Credits,  Prev: Remote and Compressed Files,  Up: Top
@@ -3158,22 +3158,22 @@ Node: Other Session Commands34577
 Node: Registry of Ediff Sessions37380
 Node: Session Groups38941
 Node: Remote and Compressed Files45111
-Node: Customization46343
-Node: Hooks48301
-Node: Quick Help Customization53602
-Node: Window and Frame Configuration54618
-Node: Selective Browsing60588
-Node: Highlighting Difference Regions65689
-Node: Narrowing70437
-Node: Refinement of Difference Regions71720
-Node: Patch and Diff Programs74660
-Node: Merging and diff379232
-Node: Support for Version Control89040
-Node: Customizing the Mode Line90670
-Node: Miscellaneous91529
-Node: Notes on Heavy-duty Customization96783
-Node: Credits99373
-Node: GNU Free Documentation License104781
-Node: Index129947
+Node: Customization46344
+Node: Hooks48302
+Node: Quick Help Customization53603
+Node: Window and Frame Configuration54619
+Node: Selective Browsing60589
+Node: Highlighting Difference Regions65690
+Node: Narrowing70438
+Node: Refinement of Difference Regions71721
+Node: Patch and Diff Programs74661
+Node: Merging and diff379233
+Node: Support for Version Control89041
+Node: Customizing the Mode Line90671
+Node: Miscellaneous91530
+Node: Notes on Heavy-duty Customization96784
+Node: Credits99374
+Node: GNU Free Documentation License104782
+Node: Index129948
 
 End Tag Table

@@ -2,7 +2,7 @@ This is /misc/emacs/bzr/emacs24-merge/doc/misc/../../info/erc.info,
 produced by makeinfo version 4.13 from
 /misc/emacs/bzr/emacs24-merge/doc/misc/erc.texi.
 
-This manual is for ERC as distributed with Emacs 24.2.93.
+This manual is for ERC as distributed with Emacs 24.3.
 
    Copyright (C) 2005-2013 Free Software Foundation, Inc.
 
@@ -31,7 +31,7 @@ File: erc.info,  Node: Top,  Next: Introduction,  Up: (dir)
 ERC
 ***
 
-This manual is for ERC as distributed with Emacs 24.2.93.
+This manual is for ERC as distributed with Emacs 24.3.
 
    Copyright (C) 2005-2013 Free Software Foundation, Inc.
 
@@ -1355,20 +1355,20 @@ Index
 
 
 Tag Table:
-Node: Top1110
-Node: Introduction2903
-Node: Getting Started3629
-Node: Sample Session4406
-Node: Special Features6790
-Node: Keystroke Summary9089
-Node: Modules11631
-Node: Advanced Usage13675
-Node: Connecting14027
-Node: Sample Configuration18007
-Node: Options21377
-Node: Getting Help and Reporting Bugs22007
-Node: History22795
-Node: GNU Free Documentation License25024
-Node: Concept Index50196
+Node: Top1107
+Node: Introduction2897
+Node: Getting Started3623
+Node: Sample Session4400
+Node: Special Features6784
+Node: Keystroke Summary9083
+Node: Modules11625
+Node: Advanced Usage13669
+Node: Connecting14021
+Node: Sample Configuration18001
+Node: Options21371
+Node: Getting Help and Reporting Bugs22001
+Node: History22789
+Node: GNU Free Documentation License25018
+Node: Concept Index50190
 
 End Tag Table

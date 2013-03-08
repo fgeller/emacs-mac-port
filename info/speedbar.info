@@ -225,8 +225,8 @@ Anything not highlighted by the mouse will not be clickable.
 how to read these textual elements will make it easier to navigate by
 identifying the types of data available.
 
-2.2.0.1 Groups
-..............
+2.2.1 Groups
+------------
 
 Groups summarize information in a single line, and provide a high level
 view of more complex systems, like a directory tree, or manual chapters.
@@ -259,14 +259,14 @@ extracting contents of that group.
 the `-' button to contract the group, or hide the contents currently
 displayed.
 
-2.2.0.2 Tags
+2.2.1.1 Tags
 ............
 
 Tags are the leaf nodes of the tree system.  Tags are generally prefixed
 with a simple character, such as `>'.  Tags can only be jumped to using
 `RET' or `e'.
 
-2.2.0.3 Boolean Flags
+2.2.1.2 Boolean Flags
 .....................
 
 Sometimes a group or tag is given a boolean flag.  These flags appear as
@@ -277,7 +277,7 @@ versioning system.
    For additional flags, see *note File Mode::, and *note Version
 Control::.
 
-2.2.0.4 Unadorned Text
+2.2.1.3 Unadorned Text
 ......................
 
 Unadorned text generally starts in column 0, without any special symbols
@@ -287,7 +287,7 @@ buffers, and invisible buffers.)
 
    Unadorned text will generally be colorless, and not clickable.
 
-2.2.0.5 Color Cues
+2.2.1.4 Color Cues
 ..................
 
 Each type of Group, item indicator, and label is given a different
@@ -1141,14 +1141,14 @@ by the navigation commands.
      Create a tag line with EXP-BUTTON-TYPE for the small expansion
      button.  This is the button that expands or contracts a node (if
      applicable), and EXP-BUTTON-CHAR the character in it (`+', `-',
-     `?', etc).  EXP-BUTTON-FUNCTION is the function to call if it's
+     `?', etc.).  EXP-BUTTON-FUNCTION is the function to call if it's
      clicked on.  Button types are `bracket', `angle', `curly',
      `expandtag', `statictag', and `nil'.  EXP-BUTTON-DATA is extra
      data attached to the text forming the expansion button.
 
      Next, TAG-BUTTON is the text of the tag.  TAG-BUTTON-FUNCTION is
      the function to call if clicked on, and TAG-BUTTON-DATA is the
-     data to attach to the text field (such a tag positioning, etc).
+     data to attach to the text field (such a tag positioning, etc.).
      TAG-BUTTON-FACE is a face used for this type of tag.
 
      Lastly, DEPTH shows the depth of expansion.
@@ -1793,28 +1793,28 @@ Node: Introduction3401
 Node: Basic Navigation4928
 Node: Basic Key Bindings5373
 Node: Basic Visuals7514
-Node: Mouse Bindings11469
-Node: Displays Submenu13094
-Node: File Mode13774
-Node: Directory Display14381
-Node: Hidden Files17421
-Node: File Key Bindings18642
-Node: Buffer Mode20076
-Node: Minor Modes21191
-Node: RMAIL22050
-Node: Info22948
-Node: GDB23555
-Node: Customizing24353
-Node: Frames and Faces25164
-Node: Tag Hierarchy Methods26502
-Node: Version Control28728
-Node: Hooks30070
-Node: Extending31326
-Node: Minor Display Modes32397
-Node: Major Display Modes34388
-Node: Tagging Extensions39163
-Node: Creating a display40570
-Node: GNU Free Documentation License45113
-Node: Index70284
+Node: Mouse Bindings11465
+Node: Displays Submenu13090
+Node: File Mode13770
+Node: Directory Display14377
+Node: Hidden Files17417
+Node: File Key Bindings18638
+Node: Buffer Mode20072
+Node: Minor Modes21187
+Node: RMAIL22046
+Node: Info22944
+Node: GDB23551
+Node: Customizing24349
+Node: Frames and Faces25160
+Node: Tag Hierarchy Methods26498
+Node: Version Control28724
+Node: Hooks30066
+Node: Extending31322
+Node: Minor Display Modes32393
+Node: Major Display Modes34384
+Node: Tagging Extensions39159
+Node: Creating a display40566
+Node: GNU Free Documentation License45111
+Node: Index70282
 
 End Tag Table

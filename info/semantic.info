@@ -2496,21 +2496,6 @@ Node: Analyzer Internals66391
 Node: Tools68353
 Node: Tests70040
 Node: Glossary70498
-Ref: BNF70655
-Ref: bovinate70854
-Ref: bovine lambda70943
-Ref: bovine parser71126
-Ref: context71252
-Ref: LALR71261
-Ref: lexer71267
-Ref: LL71481
-Ref: nonterminal71485
-Ref: overloadable71677
-Ref: parser71785
-Ref: tag71838
-Ref: token72183
-Ref: token stream72301
-Ref: wisent parser72380
 Node: GNU Free Documentation License72546
 Node: Index97716
 

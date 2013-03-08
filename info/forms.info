@@ -98,7 +98,7 @@ they make up a forms.
 
    The contents of the forms consist of the contents of the fields of
 the record (e.g., `root', `0', `1', `Super User') interspersed with
-normal text (e.g `User : ', `Uid: ').
+normal text (e.g., `User : ', `Uid: ').
 
    If you modify the contents of the fields, Forms mode will analyze
 your changes and update the file appropriately.  You cannot modify the
@@ -1366,17 +1366,17 @@ Index
 Tag Table:
 Node: Top1066
 Node: Forms Example3251
-Node: Entering and Exiting Forms Mode4457
-Node: Forms Commands6671
-Node: Data File Format10478
-Node: Control File Format11823
-Node: Format Description16457
-Node: Modifying Forms Contents19795
-Node: Miscellaneous21678
-Node: Error Messages23223
-Node: Long Example27472
-Node: Credits30598
-Node: GNU Free Documentation License31384
-Node: Index56550
+Node: Entering and Exiting Forms Mode4459
+Node: Forms Commands6673
+Node: Data File Format10480
+Node: Control File Format11825
+Node: Format Description16459
+Node: Modifying Forms Contents19797
+Node: Miscellaneous21680
+Node: Error Messages23225
+Node: Long Example27474
+Node: Credits30600
+Node: GNU Free Documentation License31386
+Node: Index56552
 
 End Tag Table

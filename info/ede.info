@@ -1006,7 +1006,7 @@ configuration is saved in `EDEConfig.el'.
 
    Generic projects are disabled by default because they have the
 potential to interfere with other projects.  To use the generic project
-sytem to start detecting projects, you need to enable it.
+system to start detecting projects, you need to enable it.
 
  -- Command: ede-enable-generic-projects
      Enable generic project loaders.
@@ -1862,7 +1862,7 @@ Slots:
           Default Value: `(quote ("/include" "../include/"))'
 
           The default locate function expands filenames within a
-          project.  If a header file (.h, .hh, etc) name is expanded,
+          project.  If a header file (.h, .hh, etc.) name is expanded,
           and the `:locate-fcn' slot is `nil', then the include path is
           checked first, and other directories are ignored.  For very
           large projects, this optimization can save a lot of time.
@@ -4500,52 +4500,52 @@ Node: ede-java-root32929
 Node: ede-emacs35911
 Node: ede-linux36282
 Node: ede-generic-project36670
-Node: Custom Locate38692
-Node: Extending EDE40274
-Node: Development Overview42984
-Node: Detecting a Project47251
-Node: User interface methods50301
-Node: Base project methods51529
-Node: Sourcecode objects52903
-Node: Compiler and Linker objects54651
-Node: Project56930
-Node: ede-project-placeholder57257
-Node: ede-project59261
-Node: ede-cpp-root-project68227
-Node: ede-simple-project72185
-Node: ede-simple-base-project72767
-Node: ede-proj-project73306
-Node: project-am-makefile78976
-Node: ede-step-project80053
-Node: Targets83444
-Node: ede-target84180
-Node: ede-proj-target90267
-Node: ede-proj-target-makefile96241
-Node: semantic-ede-proj-target-grammar99356
-Node: ede-proj-target-makefile-objectcode100745
-Node: ede-proj-target-makefile-archive102303
-Node: ede-proj-target-makefile-program103421
-Node: ede-proj-target-makefile-shared-object105317
-Node: ede-proj-target-elisp107012
-Node: ede-proj-target-elisp-autoloads108925
-Node: ede-proj-target-makefile-miscelaneous112303
-Node: ede-proj-target-makefile-info113508
-Node: ede-proj-target-scheme115932
-Node: project-am-target116699
-Node: project-am-objectcode117700
-Node: project-am-program118723
-Node: project-am-header-noinst119321
-Node: project-am-header-inst119988
-Node: project-am-lisp120646
-Node: project-am-texinfo121221
-Node: project-am-man122240
-Node: Sourcecode122785
-Node: ede-sourcecode123014
-Node: Compilers125668
-Node: ede-compilation-program126082
-Node: ede-compiler129305
-Node: ede-object-compiler132444
-Node: ede-linker133203
-Node: GNU Free Documentation License134671
+Node: Custom Locate38693
+Node: Extending EDE40275
+Node: Development Overview42985
+Node: Detecting a Project47252
+Node: User interface methods50302
+Node: Base project methods51530
+Node: Sourcecode objects52904
+Node: Compiler and Linker objects54652
+Node: Project56931
+Node: ede-project-placeholder57258
+Node: ede-project59262
+Node: ede-cpp-root-project68228
+Node: ede-simple-project72187
+Node: ede-simple-base-project72769
+Node: ede-proj-project73308
+Node: project-am-makefile78978
+Node: ede-step-project80055
+Node: Targets83446
+Node: ede-target84182
+Node: ede-proj-target90269
+Node: ede-proj-target-makefile96243
+Node: semantic-ede-proj-target-grammar99358
+Node: ede-proj-target-makefile-objectcode100747
+Node: ede-proj-target-makefile-archive102305
+Node: ede-proj-target-makefile-program103423
+Node: ede-proj-target-makefile-shared-object105319
+Node: ede-proj-target-elisp107014
+Node: ede-proj-target-elisp-autoloads108927
+Node: ede-proj-target-makefile-miscelaneous112305
+Node: ede-proj-target-makefile-info113510
+Node: ede-proj-target-scheme115934
+Node: project-am-target116701
+Node: project-am-objectcode117702
+Node: project-am-program118725
+Node: project-am-header-noinst119323
+Node: project-am-header-inst119990
+Node: project-am-lisp120648
+Node: project-am-texinfo121223
+Node: project-am-man122242
+Node: Sourcecode122787
+Node: ede-sourcecode123016
+Node: Compilers125670
+Node: ede-compilation-program126084
+Node: ede-compiler129307
+Node: ede-object-compiler132446
+Node: ede-linker133205
+Node: GNU Free Documentation License134673
 
 End Tag Table

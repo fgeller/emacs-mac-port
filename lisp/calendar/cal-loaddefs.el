@@ -999,7 +999,7 @@ Local time of sunrise and sunset for month under cursor or at EVENT.
 
 ;;;### (autoloads nil nil ("appt.el" "cal-dst.el" "cal-menu.el" "calendar.el"
 ;;;;;;  "icalendar.el" "parse-time.el" "time-date.el" "timeclock.el"
-;;;;;;  "todo-mode.el") (20755 24209 478727 561000))
+;;;;;;  "todo-mode.el") (20789 27944 792256 330000))
 
 ;;;***
 

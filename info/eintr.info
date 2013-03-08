@@ -7178,22 +7178,15 @@ it here.
 is written as an instance of a C macro, a macro being a template for
 code.  The complete macro looks like this:
 
-     DEFUN ("buffer-substring-no-properties", Fbuffer_substring_no_properties,
-            Sbuffer_substring_no_properties, 2, 2, 0,
-            doc: /* Return the characters of part of the buffer,
-     without the text properties.
-     The two arguments START and END are character positions;
-     they can be in either order.  */)
-          (start, end)
-          Lisp_Object start, end;
+     DEFUN ("delete-and-extract-region", Fdelete_and_extract_region,
+            Sdelete_and_extract_region, 2, 2, 0,
+            doc: /* Delete the text between START and END and return it.  */)
+            (Lisp_Object start, Lisp_Object end)
      {
-       register int b, e;
-
        validate_region (&start, &end);
-       b = XINT (start);
-       e = XINT (end);
-
-       return make_buffer_string (b, e, 0);
+       if (XINT (start) == XINT (end))
+         return empty_unibyte_string;
+       return del_range_1 (XINT (start), XINT (end), 1, 1);
      }
 
    Without going into the details of the macro writing process, let me
@@ -7232,15 +7225,9 @@ does in Lisp.  (The `DEFUN' C macro is defined in `emacs/src/lisp.h'.)
      provides a prompt.
 
    * The seventh part is a documentation string, just like the one for a
-     function written in Emacs Lisp, except that every newline must be
-     written explicitly as `\n' followed by a backslash and carriage
-     return.
-
-     Thus, the first two lines of documentation for  `goto-char' are
-     written like this:
-
-            "Set point to POSITION, a number or marker.\n\
-          Beginning of buffer is position (point-min), end is (point-max)."
+     function written in Emacs Lisp.  This is written as a C comment.
+     (When you build Emacs, the program `lib-src/make-docfile' extracts
+     these comments and uses them to make the "real" documentation.)
 
    In a C macro, the formal parameters come next, with a statement of
 what kind of object they are, followed by what might be called the
@@ -7249,13 +7236,13 @@ consists of the following four lines:
 
      validate_region (&start, &end);
      if (XINT (start) == XINT (end))
-       return build_string ("");
+       return empty_unibyte_string;
      return del_range_1 (XINT (start), XINT (end), 1, 1);
 
-   The   `validate_region' function checks whether the values passed as
+   The `validate_region' function checks whether the values passed as
 the beginning and end of the region are the proper type and are within
-range.  If the beginning and end positions are the same, then return
-and empty string.
+range.  If the beginning and end positions are the same, then return an
+empty string.
 
    The `del_range_1' function actually deletes the text.  It is a
 complex function we will not look into.  It updates the buffer and does
@@ -13224,7 +13211,7 @@ looks like this:
        "Normal hook run when entering Text mode and many related modes."
        :type 'hook
        :options '(turn-on-auto-fill flyspell-mode)
-       :group 'data)
+       :group 'wp)
 
 The name of the variable is `text-mode-hook'; it has no default value;
 and its documentation string tells you what it does.
@@ -13880,7 +13867,7 @@ file or any site file, I also turn off blinking:
 
 Or nowadays, using an even more sophisticated set of options,
 
-     emacs -Q - D
+     emacs -Q -D
 
 
 File: eintr.info,  Node: X11 Colors,  Next: Miscellaneous,  Prev: Simple Extension,  Up: Emacs Initialization
@@ -17822,161 +17809,161 @@ Node: last-command & this-command283272
 Node: kill-append function285466
 Node: kill-new function289519
 Node: Digression into C299838
-Ref: Digression into C-Footnote-1305236
-Node: defvar305411
-Node: See variable current value306880
-Node: defvar and asterisk308738
-Node: cons & search-fwd Review310532
-Node: search Exercises313446
-Node: List Implementation314173
-Node: Lists diagrammed315234
-Node: Symbols as Chest321215
-Node: List Exercise323215
-Node: Yanking323547
-Node: Kill Ring Overview324829
-Node: kill-ring-yank-pointer326441
-Node: yank nthcdr Exercises328809
-Node: Loops & Recursion329513
-Ref: Loops & Recursion-Footnote-1330599
-Node: while331101
-Node: Looping with while332424
-Node: Loop Example334180
-Node: print-elements-of-list337497
-Node: Incrementing Loop339966
-Node: Incrementing Loop Details340528
-Node: Incrementing Example341861
-Node: Inc Example parts344227
-Node: Inc Example altogether348112
-Node: Decrementing Loop351568
-Node: Decrementing Example352988
-Node: Dec Example parts354452
-Node: Dec Example altogether356423
-Node: dolist dotimes358628
-Node: dolist359360
-Node: dotimes362404
-Node: Recursion363938
-Node: Building Robots365031
-Node: Recursive Definition Parts366743
-Node: Recursion with list369149
-Node: Recursive triangle function372674
-Node: Recursive Example arg of 1 or 2373950
-Node: Recursive Example arg of 3 or 4376137
-Node: Recursion with cond379096
-Node: Recursive Patterns381397
-Node: Every381799
-Node: Accumulate384215
-Node: Keep385465
-Node: No Deferment387334
-Node: No deferment solution389990
-Ref: No deferment solution-Footnote-1393908
-Ref: No deferment solution-Footnote-2394012
-Node: Looping exercise394507
-Node: Regexp Search395687
-Node: sentence-end397638
-Node: re-search-forward401451
-Node: forward-sentence403913
-Node: Complete forward-sentence404621
-Node: fwd-sentence while loops408071
-Node: fwd-sentence re-search411570
-Node: forward-paragraph413657
-Node: forward-paragraph in brief415361
-Node: fwd-para let416793
-Node: fwd-para while421998
-Node: etags430232
-Node: Regexp Review434550
-Node: re-search Exercises436877
-Node: Counting Words437633
-Node: Why Count Words438261
-Node: count-words-example439282
-Node: Design count-words-example440504
-Node: Whitespace Bug447015
-Node: recursive-count-words456373
-Node: Counting Exercise468300
-Node: Words in a defun468664
-Node: Divide and Conquer470229
-Node: Words and Symbols471437
-Node: Syntax473388
-Node: count-words-in-defun476948
-Node: Several defuns482997
-Node: Find a File485341
-Node: lengths-list-file487853
-Node: Several files493033
-Node: lengths-list-many-files493734
-Node: append496453
-Node: Several files recursively497053
-Node: Prepare the data499820
-Node: Data for Display in Detail500855
-Node: Sorting501769
-Node: Files List503388
-Node: Counting function definitions510710
-Node: Readying a Graph519807
-Node: Columns of a graph520964
-Node: graph-body-print534321
-Node: recursive-graph-body-print538949
-Node: Printed Axes541591
-Node: Line Graph Exercise542309
-Node: Emacs Initialization542491
-Node: Default Configuration543857
-Ref: Default Configuration-Footnote-1545806
-Node: Site-wide Init546106
-Node: defcustom548064
-Node: Beginning a .emacs File553744
-Node: Text and Auto-fill556078
-Node: Mail Aliases559909
-Node: Indent Tabs Mode560792
-Node: Keybindings561724
-Node: Keymaps565178
-Node: Loading Files567362
-Node: Autoload570344
-Node: Simple Extension573157
-Ref: Simple Extension-Footnote-1575766
-Node: X11 Colors576028
-Ref: X11 Colors-Footnote-1577863
-Node: Miscellaneous578017
-Node: Mode Line582160
-Node: Debugging587579
-Node: debug588382
-Node: debug-on-entry591393
-Node: debug-on-quit594491
-Node: edebug595466
-Node: Debugging Exercises599513
-Node: Conclusion601180
-Node: the-the606394
-Node: Kill Ring609139
-Node: What the Kill Ring Does609823
-Node: current-kill611303
-Node: Code for current-kill611904
-Node: Understanding current-kill614015
-Node: Body of current-kill614750
-Node: Digression concerning error617784
-Node: Determining the Element618956
-Node: yank622437
-Node: yank-pop625570
-Node: ring file628041
-Node: Full Graph628387
-Node: Labeled Example629151
-Node: print-graph Varlist631119
-Node: print-Y-axis632782
-Node: print-Y-axis in Detail633599
-Node: Height of label634377
-Node: Compute a Remainder636366
-Node: Y Axis Element640122
-Node: Y-axis-column643804
-Node: print-Y-axis Penultimate645389
-Node: print-X-axis647296
-Node: Similarities differences648519
-Node: X Axis Tic Marks649309
-Node: Print Whole Graph656209
-Node: The final version657236
-Node: Test print-graph661448
-Node: Graphing words in defuns663037
-Node: lambda665606
-Node: mapcar667253
-Node: Another Bug669231
-Node: Final printed graph674689
-Node: Free Software and Free Manuals675604
-Node: GNU Free Documentation License681848
-Node: Index707037
-Node: About the Author741918
+Ref: Digression into C-Footnote-1304936
+Node: defvar305111
+Node: See variable current value306580
+Node: defvar and asterisk308438
+Node: cons & search-fwd Review310232
+Node: search Exercises313146
+Node: List Implementation313873
+Node: Lists diagrammed314934
+Node: Symbols as Chest320915
+Node: List Exercise322915
+Node: Yanking323247
+Node: Kill Ring Overview324529
+Node: kill-ring-yank-pointer326141
+Node: yank nthcdr Exercises328509
+Node: Loops & Recursion329213
+Ref: Loops & Recursion-Footnote-1330299
+Node: while330801
+Node: Looping with while332124
+Node: Loop Example333880
+Node: print-elements-of-list337197
+Node: Incrementing Loop339666
+Node: Incrementing Loop Details340228
+Node: Incrementing Example341561
+Node: Inc Example parts343927
+Node: Inc Example altogether347812
+Node: Decrementing Loop351268
+Node: Decrementing Example352688
+Node: Dec Example parts354152
+Node: Dec Example altogether356123
+Node: dolist dotimes358328
+Node: dolist359060
+Node: dotimes362104
+Node: Recursion363638
+Node: Building Robots364731
+Node: Recursive Definition Parts366443
+Node: Recursion with list368849
+Node: Recursive triangle function372374
+Node: Recursive Example arg of 1 or 2373650
+Node: Recursive Example arg of 3 or 4375837
+Node: Recursion with cond378796
+Node: Recursive Patterns381097
+Node: Every381499
+Node: Accumulate383915
+Node: Keep385165
+Node: No Deferment387034
+Node: No deferment solution389690
+Ref: No deferment solution-Footnote-1393608
+Ref: No deferment solution-Footnote-2393712
+Node: Looping exercise394207
+Node: Regexp Search395387
+Node: sentence-end397338
+Node: re-search-forward401151
+Node: forward-sentence403613
+Node: Complete forward-sentence404321
+Node: fwd-sentence while loops407771
+Node: fwd-sentence re-search411270
+Node: forward-paragraph413357
+Node: forward-paragraph in brief415061
+Node: fwd-para let416493
+Node: fwd-para while421698
+Node: etags429932
+Node: Regexp Review434250
+Node: re-search Exercises436577
+Node: Counting Words437333
+Node: Why Count Words437961
+Node: count-words-example438982
+Node: Design count-words-example440204
+Node: Whitespace Bug446715
+Node: recursive-count-words456073
+Node: Counting Exercise468000
+Node: Words in a defun468364
+Node: Divide and Conquer469929
+Node: Words and Symbols471137
+Node: Syntax473088
+Node: count-words-in-defun476648
+Node: Several defuns482697
+Node: Find a File485041
+Node: lengths-list-file487553
+Node: Several files492733
+Node: lengths-list-many-files493434
+Node: append496153
+Node: Several files recursively496753
+Node: Prepare the data499520
+Node: Data for Display in Detail500555
+Node: Sorting501469
+Node: Files List503088
+Node: Counting function definitions510410
+Node: Readying a Graph519507
+Node: Columns of a graph520664
+Node: graph-body-print534021
+Node: recursive-graph-body-print538649
+Node: Printed Axes541291
+Node: Line Graph Exercise542009
+Node: Emacs Initialization542191
+Node: Default Configuration543557
+Ref: Default Configuration-Footnote-1545506
+Node: Site-wide Init545806
+Node: defcustom547764
+Node: Beginning a .emacs File553442
+Node: Text and Auto-fill555776
+Node: Mail Aliases559607
+Node: Indent Tabs Mode560490
+Node: Keybindings561422
+Node: Keymaps564876
+Node: Loading Files567060
+Node: Autoload570042
+Node: Simple Extension572855
+Ref: Simple Extension-Footnote-1575464
+Node: X11 Colors575725
+Ref: X11 Colors-Footnote-1577560
+Node: Miscellaneous577714
+Node: Mode Line581857
+Node: Debugging587276
+Node: debug588079
+Node: debug-on-entry591090
+Node: debug-on-quit594188
+Node: edebug595163
+Node: Debugging Exercises599210
+Node: Conclusion600877
+Node: the-the606091
+Node: Kill Ring608836
+Node: What the Kill Ring Does609520
+Node: current-kill611000
+Node: Code for current-kill611601
+Node: Understanding current-kill613712
+Node: Body of current-kill614447
+Node: Digression concerning error617481
+Node: Determining the Element618653
+Node: yank622134
+Node: yank-pop625267
+Node: ring file627738
+Node: Full Graph628084
+Node: Labeled Example628848
+Node: print-graph Varlist630816
+Node: print-Y-axis632479
+Node: print-Y-axis in Detail633296
+Node: Height of label634074
+Node: Compute a Remainder636063
+Node: Y Axis Element639819
+Node: Y-axis-column643501
+Node: print-Y-axis Penultimate645086
+Node: print-X-axis646993
+Node: Similarities differences648216
+Node: X Axis Tic Marks649006
+Node: Print Whole Graph655906
+Node: The final version656933
+Node: Test print-graph661145
+Node: Graphing words in defuns662734
+Node: lambda665303
+Node: mapcar666950
+Node: Another Bug668928
+Node: Final printed graph674386
+Node: Free Software and Free Manuals675301
+Node: GNU Free Documentation License681545
+Node: Index706734
+Node: About the Author741615
 
 End Tag Table

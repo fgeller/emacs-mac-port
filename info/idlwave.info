@@ -1849,7 +1849,7 @@ of strings and comments, of course), try this in `.emacs'
 
    Note that the modified assignment operators which begin with a word
 (`AND=', `OR=', `NOT=', etc.) require a leading space to be recognized
-(e.g `vAND=4' would be interpreted as a variable `vAND').  Also note
+(e.g., `vAND=4' would be interpreted as a variable `vAND').  Also note
 that since, e.g., `>' and `>=' are both valid operators, it is
 impossible to surround both by blanks while they are being typed.
 Similarly with `&' and `&&'.  For these, a compromise is made: the
@@ -4722,43 +4722,43 @@ Node: Abbreviations74411
 Node: Actions78286
 Node: Block Boundary Check80129
 Node: Padding Operators81183
-Node: Case Changes83315
-Node: Doc Header84809
-Node: Motion Commands86073
-Node: Misc Options87157
-Node: The IDLWAVE Shell87760
-Node: Starting the Shell88769
-Node: Using the Shell92329
-Ref: Using the Shell-Footnote-196160
-Node: Commands Sent to the Shell96348
-Node: Debugging IDL Programs98471
-Node: A Tale of Two Modes99873
-Node: Debug Key Bindings101003
-Node: Breakpoints and Stepping102884
-Node: Compiling Programs108725
-Node: Walking the Calling Stack110187
-Node: Electric Debug Mode111285
-Ref: Electric Debug Mode-Footnote-1117254
-Node: Examining Variables117381
-Ref: Examining Variables-Footnote-1122249
-Node: Custom Expression Examination122335
-Ref: Custom Expression Examination-Footnote-1125829
-Node: Acknowledgments126033
-Node: Sources of Routine Info128058
-Node: Routine Definitions128772
-Node: Routine Information Sources130158
-Node: Catalogs133667
-Node: Library Catalogs136285
-Node: User Catalog139164
-Ref: User Catalog-Footnote-1142230
-Ref: User Catalog-Footnote-2142313
-Node: Load-Path Shadows142349
-Node: Documentation Scan144942
-Node: HTML Help Browser Tips146419
-Node: Configuration Examples149571
-Node: Windows and MacOS156666
-Node: Troubleshooting158863
-Node: GNU Free Documentation License168603
-Node: Index193779
+Node: Case Changes83317
+Node: Doc Header84811
+Node: Motion Commands86075
+Node: Misc Options87159
+Node: The IDLWAVE Shell87762
+Node: Starting the Shell88771
+Node: Using the Shell92331
+Ref: Using the Shell-Footnote-196162
+Node: Commands Sent to the Shell96350
+Node: Debugging IDL Programs98473
+Node: A Tale of Two Modes99875
+Node: Debug Key Bindings101005
+Node: Breakpoints and Stepping102886
+Node: Compiling Programs108727
+Node: Walking the Calling Stack110189
+Node: Electric Debug Mode111287
+Ref: Electric Debug Mode-Footnote-1117256
+Node: Examining Variables117383
+Ref: Examining Variables-Footnote-1122251
+Node: Custom Expression Examination122337
+Ref: Custom Expression Examination-Footnote-1125831
+Node: Acknowledgments126035
+Node: Sources of Routine Info128060
+Node: Routine Definitions128774
+Node: Routine Information Sources130160
+Node: Catalogs133669
+Node: Library Catalogs136287
+Node: User Catalog139166
+Ref: User Catalog-Footnote-1142232
+Ref: User Catalog-Footnote-2142315
+Node: Load-Path Shadows142351
+Node: Documentation Scan144944
+Node: HTML Help Browser Tips146421
+Node: Configuration Examples149573
+Node: Windows and MacOS156668
+Node: Troubleshooting158865
+Node: GNU Free Documentation License168605
+Node: Index193781
 
 End Tag Table

@@ -204,14 +204,14 @@ After syntax check is finished, its status is displayed in the mode
 line.  The following statuses are defined.
 
 Flymake* or        Flymake is currently running. For the second case,
-Flymake:E/W*       E/W contains the       error and warning count for
-                   the previous run.
+Flymake:E/W*       E/W contains the error and warning count for the
+                   previous run.
 Flymake            Syntax check is not running. Usually this means
-                   syntax check was       successfully passed (no
-                   errors, no warnings). Other possibilities are:
-                   syntax check was killed as a result of executing
-                   `flymake-compile', or syntax check cannot start as
-                   compilation       is currently in progress.
+                   syntax check was successfully passed (no errors, no
+                   warnings). Other possibilities are: syntax check was
+                   killed as a result of executing `flymake-compile', or
+                   syntax check cannot start as compilation is currently
+                   in progress.
 Flymake:E/W        Number of errors/warnings found by the syntax check
                    process.
 Flymake:!          Flymake was unable to find master file for the
@@ -221,10 +221,10 @@ Flymake:!          Flymake was unable to find master file for the
 OFF for the buffer.
 
 CFGERR             Syntax check process returned nonzero exit code, but
-                   no       errors/warnings were reported. This
-                   indicates a possible configuration       error (for
-                   example, no suitable error message patterns for the
-                      syntax check tool).
+                   no errors/warnings were reported. This indicates a
+                   possible configuration error (for example, no
+                   suitable error message patterns for the syntax check
+                   tool).
 NOMASTER           Flymake was unable to find master file for the
                    current buffer.
 NOMK               Flymake was unable to find a suitable buildfile for
@@ -1287,23 +1287,23 @@ Node: Running the syntax check5406
 Node: Navigating to error lines5931
 Node: Viewing error messages6691
 Node: Syntax check statuses7284
-Node: Troubleshooting9051
-Node: Configuring Flymake9572
-Node: Customizable variables9955
-Node: Adding support for a new syntax check tool12411
-Node: Example---Configuring a tool called directly14648
-Node: Example---Configuring a tool called via make16266
-Node: Flymake Implementation17890
-Node: Determining whether syntax check is possible18988
-Node: Making a temporary copy20364
-Node: Locating a master file21674
-Node: Getting the include directories23055
-Node: Locating the buildfile24112
-Node: Starting the syntax check process25428
-Node: Parsing the output25965
-Node: Highlighting erroneous lines27410
-Node: Interaction with other modes28145
-Node: GNU Free Documentation License29219
-Node: Index54402
+Node: Troubleshooting9018
+Node: Configuring Flymake9539
+Node: Customizable variables9922
+Node: Adding support for a new syntax check tool12378
+Node: Example---Configuring a tool called directly14615
+Node: Example---Configuring a tool called via make16233
+Node: Flymake Implementation17857
+Node: Determining whether syntax check is possible18955
+Node: Making a temporary copy20331
+Node: Locating a master file21641
+Node: Getting the include directories23022
+Node: Locating the buildfile24079
+Node: Starting the syntax check process25395
+Node: Parsing the output25932
+Node: Highlighting erroneous lines27377
+Node: Interaction with other modes28112
+Node: GNU Free Documentation License29186
+Node: Index54369
 
 End Tag Table

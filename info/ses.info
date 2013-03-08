@@ -733,7 +733,7 @@ Begins with an 014 character, followed by sets of cell-definition
 macros for each row, followed by column-widths, column-printers,
 default-printer, and header-row.  Then there's the global parameters
 (file-format ID, numrows, numcols) and the local variables (specifying
-SES mode for the buffer, etc.)
+SES mode for the buffer, etc.).
 
    When a SES file is loaded, first the numrows and numcols values are
 loaded, then the entire data area is `eval'ed, and finally the local
@@ -1479,10 +1479,10 @@ Node: For Gurus22729
 Node: Deferred updates22991
 Node: Nonrelocatable references24515
 Node: The data area25420
-Node: Buffer-local variables in spreadsheets26646
-Node: Uses of defadvice in SES28096
-Node: Index28919
-Node: Acknowledgments37259
-Node: GNU Free Documentation License38429
+Node: Buffer-local variables in spreadsheets26647
+Node: Uses of defadvice in SES28097
+Node: Index28920
+Node: Acknowledgments37260
+Node: GNU Free Documentation License38430
 
 End Tag Table

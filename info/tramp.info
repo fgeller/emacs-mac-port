@@ -70,9 +70,6 @@ For the end user:
 * Usage::                       An overview of the operation of TRAMP.
 * Bug Reports::                 Reporting Bugs and Problems.
 * Frequently Asked Questions::  Questions and answers from the mailing list.
-* Function Index::              TRAMP functions.
-* Variable Index::              User options and variables.
-* Concept Index::               An item for each concept.
 
 For the developer:
 
@@ -81,6 +78,9 @@ For the developer:
 * Issues::                      Debatable Issues and What Was Decided.
 
 * GNU Free Documentation License:: The license for this documentation.
+* Function Index::              TRAMP functions.
+* Variable Index::              User options and variables.
+* Concept Index::               An item for each concept.
 
  --- The Detailed Node Listing ---
 
@@ -1813,8 +1813,8 @@ be activated in your `.emacs'.  *Note Completion Options:
    If you, for example, type `C-x C-f /t <TAB>', TRAMP might give you
 as result the choice for
 
-     telnet:                           tmp/
-     toto:                             
+     telnet:                            tmp/
+     toto:                              
 
    `telnet:' is a possible completion for the respective method, `tmp/'
 stands for the directory `/tmp' on your local machine, and `toto:'
@@ -1825,9 +1825,9 @@ might be a host TRAMP has detected in your `~/.ssh/known_hosts' file
 `/telnet:'.  Next `<TAB>' brings you all machine names TRAMP detects in
 your `/etc/hosts' file, let's say
 
-     /telnet:127.0.0.1:                /telnet:192.168.0.1:
-     /telnet:[::1]:                    /telnet:localhost:
-     /telnet:melancholia.danann.net:   /telnet:melancholia:
+     /telnet:127.0.0.1:                 /telnet:192.168.0.1:
+     /telnet:[::1]:                     /telnet:localhost:
+     /telnet:melancholia.danann.net:    /telnet:melancholia:
 
    Now you can choose the desired machine, and you can continue to
 complete file names on that machine.
@@ -2182,7 +2182,7 @@ contents of files and directories will be included in the debug buffer.
 Passwords you've typed will never be included there.
 
 
-File: tramp.info,  Node: Frequently Asked Questions,  Next: Function Index,  Prev: Bug Reports,  Up: Top
+File: tramp.info,  Node: Frequently Asked Questions,  Next: Files directories and localnames,  Prev: Bug Reports,  Up: Top
 
 7 Frequently Asked Questions
 ****************************
@@ -2724,7 +2724,7 @@ File: tramp.info,  Node: Frequently Asked Questions,  Next: Function Index,  Pre
           tramp-unload-tramp'.  This resets also the Ange-FTP plugins.
 
 
-File: tramp.info,  Node: Files directories and localnames,  Next: Traces and Profiles,  Prev: Concept Index,  Up: Top
+File: tramp.info,  Node: Files directories and localnames,  Next: Traces and Profiles,  Prev: Frequently Asked Questions,  Up: Top
 
 8 How file names, directories and localnames are mangled and managed.
 *********************************************************************
@@ -2906,7 +2906,7 @@ File: tramp.info,  Node: Issues,  Next: GNU Free Documentation License,  Prev: T
 
 
 
-File: tramp.info,  Node: GNU Free Documentation License,  Prev: Issues,  Up: Top
+File: tramp.info,  Node: GNU Free Documentation License,  Next: Function Index,  Prev: Issues,  Up: Top
 
 Appendix A GNU Free Documentation License
 *****************************************
@@ -3392,7 +3392,7 @@ free software license, such as the GNU General Public License, to
 permit their use in free software.
 
 
-File: tramp.info,  Node: Function Index,  Next: Variable Index,  Prev: Frequently Asked Questions,  Up: Top
+File: tramp.info,  Node: Function Index,  Next: Variable Index,  Prev: GNU Free Documentation License,  Up: Top
 
 Function Index
 **************
@@ -3467,7 +3467,7 @@ Variable Index
 * tramp-wrong-passwd-regexp:             Remote shell setup.  (line  59)
 
 
-File: tramp.info,  Node: Concept Index,  Next: Files directories and localnames,  Prev: Variable Index,  Up: Top
+File: tramp.info,  Node: Concept Index,  Prev: Variable Index,  Up: Top
 
 Concept Index
 *************
@@ -3675,20 +3675,20 @@ Node: Usage72683
 Node: Filename Syntax74067
 Node: Alternative Syntax76631
 Node: Filename completion77621
-Node: Ad-hoc multi-hops80600
-Node: Remote processes82038
-Ref: Running a debugger on a remote host88273
-Node: Cleanup remote connections90156
-Node: Bug Reports91482
-Node: Frequently Asked Questions93802
-Node: Files directories and localnames114196
-Node: Localname deconstruction114616
-Node: External packages115350
-Node: Traces and Profiles117796
-Node: Issues120001
-Node: GNU Free Documentation License121707
-Node: Function Index146858
-Node: Variable Index148905
-Node: Concept Index151075
+Node: Ad-hoc multi-hops80605
+Node: Remote processes82043
+Ref: Running a debugger on a remote host88278
+Node: Cleanup remote connections90161
+Node: Bug Reports91487
+Node: Frequently Asked Questions93807
+Node: Files directories and localnames114219
+Node: Localname deconstruction114652
+Node: External packages115386
+Node: Traces and Profiles117832
+Node: Issues120037
+Node: GNU Free Documentation License121743
+Node: Function Index146917
+Node: Variable Index148968
+Node: Concept Index151138
 
 End Tag Table

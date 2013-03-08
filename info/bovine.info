@@ -257,7 +257,7 @@ into the return list whereas:
      a non-terminal).
 
 `'$1'
-     The first object matched, placed in a list.  i.e. `( $1 )'.
+     The first object matched, placed in a list.  I.e., `( $1 )'.
 
 `foo'
      The symbol `foo' (exactly as displayed).
@@ -871,7 +871,7 @@ Node: How Lexical Tokens Match5091
 Node: Grammar-to-Lisp Details6609
 Node: Order of components in rules7782
 Node: Optional Lambda Expression8327
-Node: Bovine Examples11986
-Node: GNU Free Documentation License12935
+Node: Bovine Examples11987
+Node: GNU Free Documentation License12936
 
 End Tag Table

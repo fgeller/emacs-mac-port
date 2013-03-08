@@ -301,7 +301,7 @@ File: vip.info,  Node: Searching,  Next: z Command,  Prev: Changing,  Up: Differ
 As in Vi, searching is done by `/' and `?'.  The string will be
 searched literally by default.  To invoke a regular expression search,
 first execute the search command `/' (or `?') with empty search string.
-(I.e, type `/' followed by <RET>.)  A search for empty string will
+(I.e., type `/' followed by <RET>.)  A search for empty string will
 toggle the search mode between vanilla search and regular expression
 search.  You cannot give an offset to the search string.  (It is a
 limitation.)  By default, search will wrap around the buffer as in Vi.
@@ -2614,38 +2614,38 @@ Node: Differences from Vi9517
 Node: Undoing10705
 Node: Changing11074
 Node: Searching11706
-Node: z Command12433
-Node: Counts12780
-Node: Marking13297
-Node: Region Commands13811
-Node: New Commands14493
-Node: New Bindings17258
-Node: Window Commands19439
-Node: Buffer Commands19920
-Node: File Commands20419
-Node: Misc Commands20800
-Node: Vi Commands21230
-Node: Numeric Arguments22255
-Node: Important Keys22755
-Node: Buffers and Windows24509
-Node: Files26743
-Node: Viewing the Buffer29999
-Node: Mark Commands31912
-Node: Motion Commands32759
-Node: Searching and Replacing38307
-Node: Modifying Commands40592
-Node: Delete Commands42024
-Node: Yank Commands43741
-Node: Put Back Commands44637
-Node: Change Commands46102
-Node: Repeating and Undoing Modifications47135
-Node: Other Vi Commands47964
-Node: Commands in Insert Mode51606
-Node: Ex Commands53689
-Node: Ex Command Reference54878
-Node: Customization61351
-Node: Customizing Constants61783
-Node: Customizing Key Bindings63117
-Node: GNU Free Documentation License64179
+Node: z Command12434
+Node: Counts12781
+Node: Marking13298
+Node: Region Commands13812
+Node: New Commands14494
+Node: New Bindings17259
+Node: Window Commands19440
+Node: Buffer Commands19921
+Node: File Commands20420
+Node: Misc Commands20801
+Node: Vi Commands21231
+Node: Numeric Arguments22256
+Node: Important Keys22756
+Node: Buffers and Windows24510
+Node: Files26744
+Node: Viewing the Buffer30000
+Node: Mark Commands31913
+Node: Motion Commands32760
+Node: Searching and Replacing38308
+Node: Modifying Commands40593
+Node: Delete Commands42025
+Node: Yank Commands43742
+Node: Put Back Commands44638
+Node: Change Commands46103
+Node: Repeating and Undoing Modifications47136
+Node: Other Vi Commands47965
+Node: Commands in Insert Mode51607
+Node: Ex Commands53690
+Node: Ex Command Reference54879
+Node: Customization61352
+Node: Customizing Constants61784
+Node: Customizing Key Bindings63118
+Node: GNU Free Documentation License64180
 
 End Tag Table

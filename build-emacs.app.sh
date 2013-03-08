@@ -14,6 +14,7 @@ version=24.2.93
 compver=x86_64-apple-darwin`uname -r`
 
 # make an emacs bundle
+find . -name *.elc | xargs rm
 mkdir $installprefix
 set -e
 ./configure --with-mac --enable-mac-app=$installprefix --prefix=$installprefix
@@ -31,8 +32,9 @@ mv $installprefix/bin $app_dir/../MacOS/bin
 mv $installprefix/libexec/emacs/$version/$compver $app_dir/../MacOS/libexec
 rm -rf $installprefix/libexec
 # Make the application binary a hard link
-rm $app_dir/../MacOS/Emacs
-ln $app_dir/../MacOS/bin/emacs $app_dir/../MacOS/Emacs
+# no longer necessary issue#17
+# rm $app_dir/../MacOS/Emacs
+# ln $app_dir/../MacOS/bin/emacs $app_dir/../MacOS/Emacs
 
 echo 'Done! Find your Emacs.app at '$installprefix'.'
 

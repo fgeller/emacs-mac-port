@@ -133,7 +133,7 @@ buffer looks something like:
              template.siv
 
    One of the scripts are highlighted, and standard point navigation
-commands (`<up>', `<down>' etc) can be used to navigate the list.
+commands (`<up>', `<down>' etc.) can be used to navigate the list.
 
    The following commands are available in the Manage Sieve buffer:
 
@@ -813,10 +813,10 @@ Node: Top1002
 Node: Installation2649
 Node: Sieve Mode3127
 Node: Managing Sieve4100
-Node: Examples5605
-Node: Manage Sieve API6932
-Node: Standards8336
-Node: GNU Free Documentation License8828
-Node: Index33996
+Node: Examples5606
+Node: Manage Sieve API6933
+Node: Standards8337
+Node: GNU Free Documentation License8829
+Node: Index33997
 
 End Tag Table

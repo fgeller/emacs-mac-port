@@ -877,8 +877,8 @@ Customization::).
    The charset to be used can be overridden by setting the `charset'
 MML tag (*note MML Definition::) when composing the message.
 
-   The encoding of characters (quoted-printable, 8bit etc) is orthogonal
-to the discussion here, and is controlled by the variables
+   The encoding of characters (quoted-printable, 8bit, etc.) is
+orthogonal to the discussion here, and is controlled by the variables
 `mm-body-charset-encoding-alist' and
 `mm-content-transfer-encoding-defaults' (*note Encoding
 Customization::).
@@ -2345,25 +2345,25 @@ Node: MML Definition18778
 Node: Advanced MML Example22604
 Node: Encoding Customization25349
 Node: Charset Translation29790
-Node: Conversion32331
-Node: Flowed text33457
-Node: Interface Functions34713
-Node: Basic Functions40276
-Node: rfc204541325
-Node: rfc223141845
-Node: ietf-drums43139
-Node: rfc204744229
-Node: time-date47040
-Node: qp50509
-Node: base6451481
-Node: binhex52439
-Node: uudecode52840
-Node: yenc53201
-Node: rfc184353484
-Node: mailcap54098
-Node: Standards55027
-Node: GNU Free Documentation License56452
-Node: Index81607
+Node: Conversion32333
+Node: Flowed text33459
+Node: Interface Functions34715
+Node: Basic Functions40278
+Node: rfc204541327
+Node: rfc223141847
+Node: ietf-drums43141
+Node: rfc204744231
+Node: time-date47042
+Node: qp50511
+Node: base6451483
+Node: binhex52441
+Node: uudecode52842
+Node: yenc53203
+Node: rfc184353486
+Node: mailcap54100
+Node: Standards55029
+Node: GNU Free Documentation License56454
+Node: Index81609
 
 End Tag Table
 

@@ -31,7 +31,7 @@ provided by the file `dired-x.el'.
 
    * Based on `dired.texi' by Sebastian Kremer <sk@thp.uni-koeln.de>
 
-   * For `dired-x.el' as distributed with GNU Emacs 24.2.93.
+   * For `dired-x.el' as distributed with GNU Emacs 24.3.
 
 
    Copyright (C) 1994-1995, 1999, 2001-2013 Free Software Foundation,
@@ -1598,31 +1598,31 @@ Variable Index
 
 Tag Table:
 Node: Top928
-Node: Introduction2254
-Node: Features2572
-Node: Technical Details3454
-Node: Installation4145
-Node: Optional Installation Dired Jump5251
-Node: Optional Installation File At Point6026
-Node: Omitting Files in Dired6759
-Node: Omitting Variables8252
-Node: Omitting Examples11160
-Node: Omitting Technical12518
-Node: Local Variables12920
-Node: Shell Command Guessing14948
-Node: Virtual Dired18210
-Node: Advanced Mark Commands19740
-Node: Advanced Cleaning Functions21144
-Node: Advanced Cleaning Variables21955
-Node: Special Marking Function23083
-Node: Multiple Dired Directories24651
-Node: Find File At Point25470
-Node: Miscellaneous Commands28231
-Node: Bugs31490
-Node: GNU Free Documentation License31751
-Node: Concept Index56924
-Node: Command Index61226
-Node: Key Index64598
-Node: Variable Index66757
+Node: Introduction2251
+Node: Features2569
+Node: Technical Details3451
+Node: Installation4142
+Node: Optional Installation Dired Jump5248
+Node: Optional Installation File At Point6023
+Node: Omitting Files in Dired6756
+Node: Omitting Variables8249
+Node: Omitting Examples11157
+Node: Omitting Technical12515
+Node: Local Variables12917
+Node: Shell Command Guessing14945
+Node: Virtual Dired18207
+Node: Advanced Mark Commands19737
+Node: Advanced Cleaning Functions21141
+Node: Advanced Cleaning Variables21952
+Node: Special Marking Function23080
+Node: Multiple Dired Directories24648
+Node: Find File At Point25467
+Node: Miscellaneous Commands28228
+Node: Bugs31487
+Node: GNU Free Documentation License31748
+Node: Concept Index56921
+Node: Command Index61223
+Node: Key Index64595
+Node: Variable Index66754
 
 End Tag Table

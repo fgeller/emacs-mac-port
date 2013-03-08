@@ -172,7 +172,7 @@ typing it into a buffer, or using the contents of the selected region,
 it will store that data--unindexed, uninterpreted--in a data pool.  It
 will also try to remember as much context information as possible (any
 text properties that were set, where you copied it from, when, how,
-etc).  Later, you can walk through your accumulated set of data (both
+etc.).  Later, you can walk through your accumulated set of data (both
 organized, and unorganized) and easily begin moving things around, and
 making annotations that will express the full meaning of that data, as
 far as you know it.
@@ -889,15 +889,15 @@ Node: Preface2667
 Node: Introduction3017
 Node: Installation5369
 Node: Implementation5722
-Node: Quick Start8050
-Node: Function Reference10304
-Node: Keystrokes11492
-Node: Backends11937
-Node: Text File12359
-Node: Diary12782
-Node: Mailbox13185
-Node: Org13621
-Node: GNU Free Documentation License13849
-Node: Concept Index39027
+Node: Quick Start8051
+Node: Function Reference10305
+Node: Keystrokes11493
+Node: Backends11938
+Node: Text File12360
+Node: Diary12783
+Node: Mailbox13186
+Node: Org13622
+Node: GNU Free Documentation License13850
+Node: Concept Index39028
 
 End Tag Table
