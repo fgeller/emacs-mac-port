@@ -99,7 +99,7 @@
 
       and then
        
-        $ brew install --HEAD emacs-mac
+        $ brew install emacs-mac
 
     To disable this tap, please:
 
