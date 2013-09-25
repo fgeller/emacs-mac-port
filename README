@@ -96,7 +96,7 @@
         https://www.dropbox.com/s/qm5uhpye6rx59p7/emacs-mac-port-24.2.92-mac-3.92-official-icon.zip
         https://www.dropbox.com/s/sx5tpej6ojczbvp/emacs-mac-port-24.2.91-mac-3.91-official-icon.zip
 
-    * Tested on Mac OS X 10.8.3/10.7.5*
+    * Tested on Mac OS X 10.8.5/10.7.5 *
 	
    Plan B. 
    	Build a self-contained Emacs.app with build-emacs.app.sh
