@@ -1,5 +1,6 @@
 0. current  
 
+   + update 10/25/2013: Emacs 24.3    with emacs-24.3-mac-4.4
    + update 09/24/2013: Emacs 24.3    with emacs-24.3-mac-4.3
    + update 05/13/2013: Emacs 24.3    with emacs-24.3-mac-4.2
    + update 04/13/2013: Emacs 24.3    with emacs-24.3-mac-4.1
@@ -44,7 +45,7 @@
 
    This is "Mac port" addition to GNU Emacs 24 by Yamamoto Mitsuharu
    <mituharu@math.s.chiba-u.ac.jp>. This provides a native GUI support
-   for Mac OS X 10.4 - 10.8.  Note that Emacs 23 already contains the
+   for Mac OS X 10.4 - 10.9.  Note that Emacs 23 already contains the
    official GUI support via the NS (Cocoa) port for Mac OS X 10.4 and
    later.  So if it is good enough for you, then you don't need to try
    this.
