@@ -74,32 +74,8 @@
    Plan A.
    	Without clone and compile, just download from
 
-        https://www.dropbox.com/s/6pmh9xv1zl4fxrr/emacs-mac-port-24.3-mac-4.3.zip
+        https://github.com/railwaycat/emacs-mac-port/wiki/Downloads
 
-        Previous versions:
-        https://www.dropbox.com/s/q3y2czic2lsbrr4/emacs-mac-port-24.3-mac-4.2.zip
-        https://www.dropbox.com/s/tsnjxnj3p7m1j32/emacs-mac-port-24.3-mac-4.1.zip
-        https://www.dropbox.com/s/c8ggzx2q2ekdekn/emacs-mac-port-24.3-mac-4.0.zip
-        https://www.dropbox.com/s/camimndvx42d318/emacs-mac-port-24.3-rc1-mac-3.94.zip
-        https://www.dropbox.com/s/iuzfl4jcwg16mk1/emacs-mac-port-24.2.93-mac-3.93.zip
-        https://www.dropbox.com/s/xk7b53scwuipvfa/emacs-mac-port-24.2.92-mac-3.92.zip
-        https://www.dropbox.com/s/ql99ytm7h5km633/emacs-mac-port-24.2.91-mac-3.91.zip
-
-        If you prefer the official Emacs icon (the "E" and a pan), please download this
-
-        https://www.dropbox.com/s/5dmh9j4u6udvtd7/emacs-mac-port-24.3-mac-4.3-official-icon.zip
-
-        Previous versions:
-        https://www.dropbox.com/s/55qfauor9m46tvs/emacs-mac-port-24.3-mac-4.2-official-icon.zip
-        https://www.dropbox.com/s/n9m2fchin6gqe1h/emacs-mac-port-24.3-mac-4.1-official-icon.zip
-        https://www.dropbox.com/s/bzeshsvtjqzb62o/emacs-mac-port-24.3-mac-4.0-official-icon.zip
-        https://www.dropbox.com/s/ucx48kcg3jgzndv/emacs-mac-port-24.3-rc1-mac-3.94-official-icon.zip
-        https://www.dropbox.com/s/yhj2l4d3u3gora7/emacs-mac-port-24.2.93-mac-3.93-official-icon.zip
-        https://www.dropbox.com/s/qm5uhpye6rx59p7/emacs-mac-port-24.2.92-mac-3.92-official-icon.zip
-        https://www.dropbox.com/s/sx5tpej6ojczbvp/emacs-mac-port-24.2.91-mac-3.91-official-icon.zip
-
-    * Tested on Mac OS X 10.8.5/10.7.5 *
-	
    Plan B. 
    	Build a self-contained Emacs.app with build-emacs.app.sh
 
@@ -130,6 +106,10 @@
 
       	  You can SKIP step a. b. c. d. e. f. and g. because code in this
       	  repository was patched already.
+
+   Plan E.
+        Macports (the package manager) also have emacs-mac-port, with
+        package name "emacs-mac-app". It's not maintains by me. 
 
 3. Useful links
    * switch meta and option key
