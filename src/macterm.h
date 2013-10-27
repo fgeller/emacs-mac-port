@@ -654,6 +654,10 @@ extern int mac_tracking_area_works_with_cursor_rects_invalidation_p (void);
 extern void mac_invalidate_frame_cursor_rects (struct frame *f);
 extern void mac_mask_rounded_bottom_corners (struct frame *, CGRect, Boolean);
 extern int mac_webkit_supports_svg_p (void);
+extern CFArrayRef mac_pdf_page_copy_type_identifiers (void);
+extern CFTypeRef mac_pdf_page_create (CFURLRef, CFDataRef, CFIndex,
+				      CGSize *, CGColorRef *, Lisp_Object *);
+extern void mac_pdf_page_draw (CGContextRef, CGRect, CFTypeRef);
 extern CFArrayRef mac_document_copy_type_identifiers (void);
 extern CFTypeRef mac_document_create (CFURLRef, CFDataRef, CFIndex,
 				      CGSize *, CGColorRef *, Lisp_Object *);

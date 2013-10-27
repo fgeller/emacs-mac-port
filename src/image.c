@@ -2734,12 +2734,21 @@ image_load_image_io (struct frame *f, struct image *img, CFStringRef type)
       EMACS_INT ino = 0;
       CGSize size;
       Lisp_Object image;
+      Boolean pdf_p;
 
       image = image_spec_value (img->spec, QCindex, NULL);
       if (INTEGERP (image))
 	ino = XFASTINT (image);
 
-      obj = mac_document_create (url, data, ino, &size, &default_bg, &metadata);
+      obj = mac_pdf_page_create (url, data, ino, &size, &default_bg, &metadata);
+      if (obj)
+	pdf_p = true;
+      else
+	{
+	  obj = mac_document_create (url, data, ino, &size, &default_bg,
+				     &metadata);
+	  pdf_p = false;
+	}
       if (obj)
 	{
 	  width = size.width;
@@ -2747,7 +2756,7 @@ image_load_image_io (struct frame *f, struct image *img, CFStringRef type)
 	  if (img->target_backing_scale == 0)
 	    img->target_backing_scale = FRAME_BACKING_SCALE_FACTOR (f);
 	  scale_factor = (img->target_backing_scale == 2 ? 2 : 1);
-	  obj_draw_func = mac_document_draw;
+	  obj_draw_func = pdf_p ? mac_pdf_page_draw : mac_document_draw;
 	  has_alpha_p = true;
 	  if (default_bg == NULL)
 	    {
@@ -9114,12 +9123,13 @@ is not available.  */)
   (void)
 {
   Lisp_Object typelist = Qnil;
-  CFArrayRef identifiers[2];
+  CFArrayRef identifiers[3];
   int j;
 
   block_input ();
   identifiers[0] = CGImageSourceCopyTypeIdentifiers ();
-  identifiers[1] = mac_document_copy_type_identifiers ();
+  identifiers[1] = mac_pdf_page_copy_type_identifiers ();
+  identifiers[2] = mac_document_copy_type_identifiers ();
   for (j = 0; j < sizeof (identifiers) / sizeof (identifiers[0]); j++)
     if (identifiers[j])
       {

@@ -2214,7 +2214,8 @@ extern void mac_save_keyboard_input_source (void);
 - (void)toggleToolbarShown:(id)sender
 {
   Lisp_Object alist =
-    list1 (Fcons (Qtool_bar_lines, make_number ([sender state] != NSOffState)));
+    list1 (Fcons (Qtool_bar_lines,
+		  make_number ([(NSMenuItem *)sender state] != NSOffState)));
   EmacsFrameController *frameController = ((EmacsFrameController *)
 					   [self delegate]);
 
@@ -10337,10 +10338,145 @@ mac_svg_load_image (struct frame *f, struct image *img, unsigned char *contents,
 
 
 /***********************************************************************
-			Document rasterization
+			  PDF rasterization
 ***********************************************************************/
 
 extern Lisp_Object Qcount, Qdocument_attributes;
+
+CFArrayRef
+mac_pdf_page_copy_type_identifiers ()
+{
+  CFStringRef types[] = {kUTTypePDF};
+
+  return CFArrayCreate (NULL, (const void **) types,
+			sizeof (types) / sizeof (types[0]),
+			&kCFTypeArrayCallBacks);
+}
+
+CFTypeRef
+mac_pdf_page_create (CFURLRef url, CFDataRef data, CFIndex pageIndex,
+		     CGSize *size, CGColorRef *background,
+		     Lisp_Object *metadata)
+{
+  PDFDocument *document = NULL;
+  NSDictionary *docAttributes;
+  CFTypeRef result = NULL;
+  NSData *nsdata;
+
+  /* Reading non-PDF files/data with initWith... produces warning.  */
+  if (url)
+    {
+      NSURL *nsurl = (__bridge NSURL *) url;
+      NSFileHandle *fileHandle;
+
+      if ([NSFileHandle
+	    respondsToSelector:@selector(fileHandleForReadingFromURL:error:)])
+	fileHandle = [NSFileHandle fileHandleForReadingFromURL:nsurl
+							 error:NULL];
+      else if ([nsurl isFileURL])
+	fileHandle = [NSFileHandle fileHandleForReadingAtPath:[nsurl path]];
+      else
+	fileHandle = nil;
+      nsdata = [fileHandle readDataOfLength:5];
+    }
+  else
+    nsdata = (__bridge NSData *) data;
+  if ([nsdata length] < 5
+      || memcmp ([nsdata bytes], "%PDF-", 5) != 0)
+    return NULL;
+
+  if (url)
+    document = [[PDFDocument alloc] initWithURL:((__bridge NSURL *) url)];
+  else if (data)
+    document = [[PDFDocument alloc] initWithData:((__bridge NSData *) data)];
+  if (document)
+    {
+      NSUInteger pageCount = [document pageCount];
+
+      if (pageIndex >= 0 && pageIndex < pageCount)
+	{
+	  PDFPage *page = [document pageAtIndex:pageIndex];
+	  result = CF_BRIDGING_RETAIN (page);
+
+	  if (size)
+	    {
+	      NSRect bounds = [page boundsForBox:kPDFDisplayBoxTrimBox];
+	      int rotation = [page rotation];
+
+	      if (rotation == 0 || rotation == 180)
+		{
+		  size->width = ceil (NSWidth (bounds));
+		  size->height = ceil (NSHeight (bounds));
+		}
+	      else
+		{
+		  size->width = ceil (NSHeight (bounds));
+		  size->height = ceil (NSWidth (bounds));
+		}
+	    }
+	  if (background)
+	    *background = NULL;
+	  if (metadata)
+	    {
+	      *metadata =
+		Fcons (Qdocument_attributes,
+		       Fcons (cfobject_to_lisp (((__bridge CFTypeRef)
+						 [document documentAttributes]),
+						0, -1),
+			      Qnil));
+	      if (pageCount > 1)
+		*metadata = Fcons (Qcount,
+				   Fcons (make_number (pageCount),
+					  *metadata));
+	    }
+	}
+      /* The line below should be `MRC_RELEASE (document)', but
+	 releasing a PDFDocument object seems to corrupt the
+	 containing PDFPage objects on Mac OS X 10.5 and earlier.  On
+	 these versions, one must consume the resulting PDFPage object
+	 before draining the autorelease pool next time.  */
+      (void) MRC_AUTORELEASE (document);
+    }
+
+  return result;
+}
+
+void
+mac_pdf_page_draw (CGContextRef c, CGRect rect, CFTypeRef obj)
+{
+  PDFPage *page = (__bridge PDFPage *) obj;
+  NSRect bounds = [page boundsForBox:kPDFDisplayBoxTrimBox];
+  int rotation = [page rotation];
+  NSAffineTransform *transform = [NSAffineTransform transform];
+  CGFloat width, height;
+  NSGraphicsContext *gcontext;
+
+  if (rotation == 0 || rotation == 180)
+    {
+      width = ceil (NSWidth (bounds));
+      height = ceil (NSHeight (bounds));
+    }
+  else
+    {
+      width = ceil (NSHeight (bounds));
+      height = ceil (NSWidth (bounds));
+    }
+
+  gcontext = [NSGraphicsContext graphicsContextWithGraphicsPort:c flipped:NO];
+  [NSGraphicsContext saveGraphicsState];
+  [NSGraphicsContext setCurrentContext:gcontext];
+  [transform translateXBy:(CGRectGetMinX (rect)) yBy:(CGRectGetMinY (rect))];
+  [transform scaleXBy:(CGRectGetWidth (rect) / width)
+		  yBy:(CGRectGetHeight (rect) / height)];
+  [transform concat];
+  [page drawWithBox:kPDFDisplayBoxTrimBox];
+  [NSGraphicsContext restoreGraphicsState];
+}
+
+
+/***********************************************************************
+			Document rasterization
+***********************************************************************/
 
 @implementation EmacsDocumentRasterizer
 - (id)initWithAttributedString:(NSAttributedString *)anAttributedString

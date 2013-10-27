@@ -19,6 +19,7 @@ along with GNU Emacs Mac port.  If not, see <http://www.gnu.org/licenses/>.  */
 #undef Z
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
+#import <Quartz/Quartz.h>
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= 1050
 #import <QuartzCore/QuartzCore.h>
 #endif
@@ -943,6 +944,12 @@ enum {
 @property CGFloat contentsScale;
 @end
 #endif
+#endif
+
+#if MAC_OS_X_VERSION_MAX_ALLOWED < 1060
+@interface NSFileHandle (AvailableOn1060AndLater)
++ (id)fileHandleForReadingFromURL:(NSURL *)url error:(NSError **)error;
+@end
 #endif
 
 #if MAC_OS_X_VERSION_MAX_ALLOWED < 1090
