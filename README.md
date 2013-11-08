@@ -25,7 +25,8 @@ This build has *many* features, a great number of which are particularly helpful
 
 ### Download ###
 
-Without clone and compile, just download from https://github.com/railwaycat/emacs-mac-port/wiki/Downloads
+Without clone and compile, just download from  
+https://github.com/railwaycat/emacs-mac-port/wiki/Downloads
 
 ### Homebrew ###
 If you'd like to install with Homebrew, please
@@ -70,6 +71,10 @@ https://gist.github.com/3498096
 * An Emacs.app CLI starter, modified from Aquamacs - https://gist.github.com/4043945
 
 ## Changelog ##
+
+#### 11/07/2013 ####
+  * Emacs 24.3    with emacs-24.3-mac-4.5
+  * clean up and convert README file to Markdown by @masondesu (Thanks, Mason Stewart)
 
 #### 10/27/2013 ####
   * PDF patch, mark as 4.4.1
