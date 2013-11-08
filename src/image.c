@@ -701,12 +701,10 @@ static Lisp_Object QCcrop, QCrotation;
 
 /* Other symbols.  */
 
+static Lisp_Object Qcount, Qextension_data, Qdelay;
 #ifdef HAVE_MACGUI
-Lisp_Object Qcount, Qdocument_attributes;
-#else
-static Lisp_Object Qcount;
+static Lisp_Object Qdocument_attributes;
 #endif
-static Lisp_Object Qextension_data, Qdelay;
 static Lisp_Object Qlaplace, Qemboss, Qedge_detection, Qheuristic;
 
 /* Forward function prototypes.  */
@@ -2506,7 +2504,7 @@ image_load_image_io (struct frame *f, struct image *img, CFStringRef type)
   CFIndex num_values;
   CGImageSourceRef source = NULL;
   CFTypeRef obj = NULL;
-  void (*obj_draw_func) (CGContextRef, CGRect, CFTypeRef);
+  size_t page_index;
   /* If non-NULL and the background is not specified by the image
      spec, then the background is filled with the specified color on
      top of the frame background, in case the former isn't opaque.  */
@@ -2627,9 +2625,6 @@ image_load_image_io (struct frame *f, struct image *img, CFStringRef type)
 		      width = CGImageGetWidth (cg_image) / scale_factor;
 		      height = CGImageGetHeight (cg_image) / scale_factor;
 		      obj = cg_image;
-		      obj_draw_func =
-			((void (*) (CGContextRef, CGRect, CFTypeRef))
-			 CGContextDrawImage);
 		      default_bg = NULL;
 		    }
 		}
@@ -2731,49 +2726,66 @@ image_load_image_io (struct frame *f, struct image *img, CFStringRef type)
 
   if (obj == NULL && type == NULL)
     {
-      EMACS_INT ino = 0;
-      CGSize size;
-      Lisp_Object image;
-      Boolean pdf_p;
+      EmacsDocumentRef document;
 
-      image = image_spec_value (img->spec, QCindex, NULL);
-      if (INTEGERP (image))
-	ino = XFASTINT (image);
-
-      obj = mac_pdf_page_create (url, data, ino, &size, &default_bg, &metadata);
-      if (obj)
-	pdf_p = true;
+      if (url)
+	document = mac_document_create_with_url (url);
+      else if (data)
+	document = mac_document_create_with_data (data);
       else
-	{
-	  obj = mac_document_create (url, data, ino, &size, &default_bg,
-				     &metadata);
-	  pdf_p = false;
-	}
-      if (obj)
-	{
-	  width = size.width;
-	  height = size.height;
-	  if (img->target_backing_scale == 0)
-	    img->target_backing_scale = FRAME_BACKING_SCALE_FACTOR (f);
-	  scale_factor = (img->target_backing_scale == 2 ? 2 : 1);
-	  obj_draw_func = pdf_p ? mac_pdf_page_draw : mac_document_draw;
-	  has_alpha_p = true;
-	  if (default_bg == NULL)
-	    {
-	      /* Specify the clear color as the default background,
-		 which actually results in the frame background.  We
-		 prefer not to use image masks for rasterized
-		 documents because proper text smoothing requires
-		 opaque background.  */
-#if MAC_OS_X_VERSION_MIN_REQUIRED >= 1050
-	      default_bg =
-		CGColorRetain (CGColorGetConstantColor (kCGColorClear));
-#else
-	      CGFloat rgba[] = {0.0f, 0.0f, 0.0f, 0.0f};
+	document = NULL;
 
-	      default_bg = CGColorCreate (mac_cg_color_space_rgb, rgba);
+      if (document)
+	{
+	  Lisp_Object image = image_spec_value (img->spec, QCindex, NULL);
+	  EMACS_INT ino = INTEGERP (image) ? XFASTINT (image) : 0;
+	  size_t count = mac_document_get_page_count (document);
+
+	  if (ino < count)
+	    {
+	      CGSize size;
+	      CFDictionaryRef attributes;
+
+	      mac_document_copy_page_info (document, ino, &size, &default_bg,
+					   &attributes);
+	      width = size.width;
+	      height = size.height;
+	      obj = document;
+	      page_index = ino;
+	      if (img->target_backing_scale == 0)
+		img->target_backing_scale = FRAME_BACKING_SCALE_FACTOR (f);
+	      scale_factor = (img->target_backing_scale == 2 ? 2 : 1);
+	      has_alpha_p = true;
+	      if (default_bg == NULL)
+		{
+		  /* Specify the clear color as the default
+		     background, which actually results in the frame
+		     background.  We prefer not to use image masks for
+		     rasterized documents because proper text
+		     smoothing requires opaque background.  */
+#if MAC_OS_X_VERSION_MIN_REQUIRED >= 1050
+		  default_bg =
+		    CGColorRetain (CGColorGetConstantColor (kCGColorClear));
+#else
+		  CGFloat rgba[] = {0.0f, 0.0f, 0.0f, 0.0f};
+
+		  default_bg = CGColorCreate (mac_cg_color_space_rgb, rgba);
 #endif
+		}
+	      if (attributes)
+		{
+		  metadata = Fcons (Qdocument_attributes,
+				    Fcons (cfobject_to_lisp (attributes, 0, -1),
+					   Qnil));
+		  CFRelease (attributes);
+		}
+	      if (count > 1)
+		metadata = Fcons (Qcount,
+				  Fcons (make_number (count),
+					 metadata));
 	    }
+	  else
+	    CFRelease (document);
 	}
     }
 
@@ -2956,7 +2968,13 @@ image_load_image_io (struct frame *f, struct image *img, CFStringRef type)
 		   CGContextScaleCTM (mask_context, scale_factor, scale_factor);
 		   CGContextConcatCTM (mask_context, transform);
 		   CGContextClipToRect (mask_context, clip_rectangle);
-		   obj_draw_func (mask_context, rectangle, obj);
+		   if (CFGetTypeID (obj) == CGImageGetTypeID ())
+		     CGContextDrawImage (mask_context, rectangle,
+					 (CGImageRef) obj);
+		   else
+		     mac_document_draw_page (mask_context, rectangle,
+					     (EmacsDocumentRef) obj,
+					     page_index);
 		   CGContextRelease (mask_context);
 		   CFRelease (obj);
 		 }
@@ -3005,7 +3023,11 @@ image_load_image_io (struct frame *f, struct image *img, CFStringRef type)
   CGContextScaleCTM (context, scale_factor, scale_factor);
   CGContextConcatCTM (context, transform);
   CGContextClipToRect (context, clip_rectangle);
-  obj_draw_func (context, rectangle, obj);
+  if (CFGetTypeID (obj) == CGImageGetTypeID ())
+    CGContextDrawImage (context, rectangle, (CGImageRef) obj);
+  else
+    mac_document_draw_page (context, rectangle, (EmacsDocumentRef) obj,
+			    page_index);
   CGContextRelease (context);
   CFRelease (obj);
 
@@ -9123,13 +9145,12 @@ is not available.  */)
   (void)
 {
   Lisp_Object typelist = Qnil;
-  CFArrayRef identifiers[3];
+  CFArrayRef identifiers[2];
   int j;
 
   block_input ();
   identifiers[0] = CGImageSourceCopyTypeIdentifiers ();
-  identifiers[1] = mac_pdf_page_copy_type_identifiers ();
-  identifiers[2] = mac_document_copy_type_identifiers ();
+  identifiers[1] = mac_document_copy_type_identifiers ();
   for (j = 0; j < sizeof (identifiers) / sizeof (identifiers[0]); j++)
     if (identifiers[j])
       {
@@ -10142,11 +10163,11 @@ non-numeric, there is no explicit limit on the size of images.  */);
   Vmax_image_size = make_float (MAX_IMAGE_SIZE);
 
   DEFSYM (Qcount, "count");
+  DEFSYM (Qextension_data, "extension-data");
+  DEFSYM (Qdelay, "delay");
 #ifdef HAVE_MACGUI
   DEFSYM (Qdocument_attributes, "document-attributes");
 #endif
-  DEFSYM (Qextension_data, "extension-data");
-  DEFSYM (Qdelay, "delay");
 
   DEFSYM (QCascent, ":ascent");
   DEFSYM (QCmargin, ":margin");
