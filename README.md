@@ -72,6 +72,9 @@ https://gist.github.com/3498096
 
 ## Changelog ##
 
+#### 12/31/2013 ####
+  * Emacs 24.3    with emacs-24.3-mac-4.6
+
 #### 11/07/2013 ####
   * Emacs 24.3    with emacs-24.3-mac-4.5
   * clean up and convert README file to Markdown by @masondesu (Thanks, Mason Stewart)
