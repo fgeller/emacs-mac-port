@@ -72,6 +72,9 @@ https://gist.github.com/3498096
 
 ## Changelog ##
 
+#### 03/05/2014 ####
+  * Emacs 24.3    with emacs-24.3-mac-4.7
+
 #### 12/31/2013 ####
   * Emacs 24.3    with emacs-24.3-mac-4.6
   * add a more modern looking icon, PR #37. (Thanks, @tpanum)
