@@ -1,4 +1,140 @@
+* emacs-24.4-mac-5.0 (2014-10-21)
+Based on Emacs 24.4.
+
+** Fixed bugs
+
+*** Keyboard input via Screen Sharing causes crash.
+Reported by Kazu Yamamoto.
+
+
+* emacs-24.3.94-mac-4.94 [experimental/hackers-only] (2014-10-02)
+Based on Emacs 24.3.94.
+http://lists.gnu.org/archive/html/emacs-devel/2014-10/msg00028.html
+
+** Fixed bugs
+
+*** Right fringe on the row containing a hollow cursor at the tab
+character in a non-selected window sometimes gets erased on wheel
+scrolling.
+
+*** M-x toggle-frame-fullscreen RET -> M-x tool-bar-mode RET -> M-x
+toggle-frame-fullscreen RET does not preserve tool bar visibility on
+OS X 10.7 - 10.9.
+
+** Improvements
+
+*** Add mouse pointer color support.
+
+*** Animation-related properties of animated GIF are added to metadata
+of images in the `image-io' image type.  Likewise for animated PNG on
+OS X 10.10.
+
+
+* emacs-24.3.93-mac-4.93 [experimental/hackers-only] (2014-08-15)
+Based on Emacs 24.3.93.
+Remove mac-ts-script-language-on-focus, which hasn't had any effect
+on 64-bit executables.
+http://lists.gnu.org/archive/html/emacs-devel/2014-08/msg00343.html
+
+** Fixed bugs
+
+*** Several glitches in pixel-based smooth scrolling.
+
+*** Crash when closing a fullscreen frame on OS X 10.10 Beta.
+
+*** Full screen transition animation is broken on OS X 10.10 Beta.
+
+*** Title bar buttons are misplaced if we toggle the tool bar on
+a fullscreen frame on OS X 10.10 Beta.
+I think this is a bug in AppKit.  A workaround is added.
+
+** Improvements
+
+*** Blend and blur fringe background of the focused frame with the
+contents behind it on OS X 10.10 Beta.
+This is currently experimental, hard-coded, and subject to change.
+
+
+* emacs-24.3.92-mac-4.92 [experimental/hackers-only] (2014-06-27)
+Based on Emacs 24.3.92.
+Carbon version in mac-carbon-version-string now uses the bundle
+version rather than what's obtained by Gestalt.
+http://lists.gnu.org/archive/html/emacs-devel/2014-06/msg00529.html
+
+** Fixed bugs
+
+*** Left scroll bar was not included in the window animation area.
+
+** Improvements
+
+*** New full screen transition animation.
+
+
+* emacs-24.3.91-mac-4.91 [experimental/hackers-only] (2014-05-12)
+Based on Emacs 24.3.91.
+http://lists.gnu.org/archive/html/emacs-devel/2014-05/msg00149.html
+
+** Fixed bugs
+
+*** Wrong return value of display-monitor-attributes-list.
+Reported by Leo.
+
+*** If you point to the left "%", which has both left and right
+overhangs for Monaco 12pt, of "%%" in the mode line, then the right
+one is also drawn with upper and lower box.
+
+** Improvements
+
+*** New variables mac-right-control-modifier,
+mac-right-command-modifier, and mac-right-option-modifier.
+Note: the left and right versions cannot be distinguished on some
+environments such as Screen Sharing.  Also, certain combinations of a
+key with both versions of the same modifier do not emit events at the
+system level.
+
+*** A single physical modifier key can be mapped to different Emacs
+modifiers depending on its input type (ordinary keys, function keys,
+or mouse operations) using the property list format `(:ordinary SYMBOL
+:function SYMBOL :mouse SYMBOL)'.  By default, the option key works as
+the normal Mac option key for the ordinary keys, and as the Alt
+modifier for the function keys and the mouse operations.
+
+
+* emacs-24.3.90-mac-4.90 [experimental/hackers-only] (2014-04-14)
+Based on Emacs 24.3.90.
+High-resolution icons are now distributed as a separate package.
+File notification is supported via GLib (you'll also need `pkg-config'
+when running the configure command).
+The `image-io' image type supports `:max-width', `:max-height', and
+`:format' keywords just as in `imagemagick'.
+Now that Image mode supports multi-frame image navigation (`f', 'b',
+and `F'), you can browse multi-page documents in several formats that
+`image-io' supports (e.g., PDF and DOC) with the setting like this:
+  (when (and (image-type-available-p 'image-io)
+	     (not (boundp 'imagemagick-render-type)))
+     ;; Image I/O is used as a fallback of ImageMagick.
+     (setq imagemagick-enabled-types t)
+     (setq imagemagick-types-inhibit
+	  (cons 'XML (delq 'PDF imagemagick-types-inhibit)))
+     (imagemagick-register-types))
+Note: if you have ImageMagick installed, you need to build the Mac
+port executable without the genuine ImageMagick support so `image-io'
+can be used as a fallback of `imagemagick'.
+http://lists.gnu.org/archive/html/emacs-devel/2014-04/msg00176.html
+
+** Improvements
+
+*** Graphical drawing operations might be performed in non-main
+threads via GCD (Grand Central Dispatch) on Mac OS X 10.6 and later.
+You can turn this off by setting `mac-drawing-use-gcd' to nil.
+
+*** DocView mode generates pixel-doubled "@2x" bitmap image files in
+addition to normal ones on high-resolution environments such as Retina
+display or HiDPI mode.
+
+
 * emacs-24.3-mac-4.8 (2014-04-01)
+http://lists.gnu.org/archive/html/emacs-devel/2014-03/msg01271.html
 
 ** Fixed bugs
 

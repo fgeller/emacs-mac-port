@@ -1,7 +1,7 @@
 1. What's this?
 
 This is "Mac port" addition to GNU Emacs 24.  This provides a native
-GUI support for Mac OS X 10.4 - 10.9.  Note that Emacs 23 and later
+GUI support for Mac OS X 10.4 - 10.10.  Note that Emacs 23 and later
 already contain the official GUI support via the NS (Cocoa) port for
 Mac OS X 10.4 and later.  So if it is good enough for you, then you
 don't need to try this.
@@ -239,8 +239,10 @@ Dock without separating a GUI process (not thread) from the main Emacs
 
   e. [Optional, recommended for Retina Display]
      If you want to use high resolution versions of some tool bar
-     icons and the splash screen image, then copy all the files in the
-     subdirectory `etc/images' to `EMACS_SOURCE_TOP/etc/images'.
+     icons and the splash screen image, then download the latest
+     `emacs-hires-icons-VERSION_NUMBER.tar.gz' file from
+     ftp://ftp.math.s.chiba-u.ac.jp/emacs/ and copy all the files in
+     the subdirectory `etc/images' to `EMACS_SOURCE_TOP/etc/images'.
 
   f. Copy all the files in the `src' subdirectory to
      `EMACS_SOURCE_TOP/src'.

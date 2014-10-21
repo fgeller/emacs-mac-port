@@ -3,7 +3,7 @@
 ## What is this? ##
 
 This is "Mac port" addition to GNU Emacs 24.  This provides a native
-GUI support for Mac OS X 10.4 - 10.9.  Note that Emacs 23 and later
+GUI support for Mac OS X 10.4 - 10.10.  Note that Emacs 23 and later
 already contain the official GUI support via the NS (Cocoa) port for
 Mac OS X 10.4 and later.  So if it is good enough for you, then you
 don't need to try this.
@@ -71,6 +71,9 @@ https://gist.github.com/3498096
 * An Emacs.app CLI starter, modified from Aquamacs - https://gist.github.com/4043945
 
 ## Changelog ##
+
+#### 10/21/2014 ####
+  * Emacs 24.4    with emacs-24.4-mac-5.0
 
 #### 04/02/2014 ####
   * Emacs 24.3    with emacs-24.3-mac-4.8
