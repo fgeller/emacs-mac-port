@@ -72,6 +72,9 @@ https://gist.github.com/3498096
 
 ## Changelog ##
 
+#### 11/04/2014 ####
+  * Emacs 24.4    with emacs-24.4-mac-5.1
+
 #### 10/21/2014 ####
   * Emacs 24.4    with emacs-24.4-mac-5.0
 
