@@ -5165,7 +5165,7 @@ static int mac_event_to_emacs_modifiers (NSEvent *);
     {
       keyEventsInterpreted = YES;
       rawKeyEvent = theEvent;
-      rawKeyEventHasMappedFlags = !!(mapped_flags & ~kCGEventFlagMaskControl);
+      rawKeyEventHasMappedFlags = (mapped_flags != 0);
       [self interpretKeyEvents:[NSArray arrayWithObject:theEvent]];
       rawKeyEvent = nil;
       rawKeyEventHasMappedFlags = NO;
